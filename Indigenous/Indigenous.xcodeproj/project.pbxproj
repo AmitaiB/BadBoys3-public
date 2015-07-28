@@ -14,6 +14,9 @@
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
 		451565241B68221B005A2871 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451565221B68221B005A2871 /* LaunchScreen.xib */; };
 		451565301B68221B005A2871 /* IndigenousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4515652F1B68221B005A2871 /* IndigenousTests.m */; };
+		45E772CD1B6824C400003C7C /* TRVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CC1B6824C400003C7C /* TRVUser.m */; };
+		45E772D01B68291300003C7C /* TRVBio.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CF1B68291300003C7C /* TRVBio.m */; };
+		45E772D31B682F7000003C7C /* TRVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772D21B682F7000003C7C /* TRVConstants.m */; };
 		EC59EB9C3ACE15DDE1D021D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D69FD457D9B6860BB4D3A8B4 /* libPods.a */; };
 		FA57FA141B6826FC00CFBB89 /* TRVTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA131B6826FC00CFBB89 /* TRVTrip.m */; };
 /* End PBXBuildFile section */
@@ -43,6 +46,12 @@
 		451565291B68221B005A2871 /* IndigenousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IndigenousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4515652E1B68221B005A2871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4515652F1B68221B005A2871 /* IndigenousTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndigenousTests.m; sourceTree = "<group>"; };
+		45E772CB1B6824C400003C7C /* TRVUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVUser.h; sourceTree = "<group>"; };
+		45E772CC1B6824C400003C7C /* TRVUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVUser.m; sourceTree = "<group>"; };
+		45E772CE1B68291300003C7C /* TRVBio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVBio.h; sourceTree = "<group>"; };
+		45E772CF1B68291300003C7C /* TRVBio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVBio.m; sourceTree = "<group>"; };
+		45E772D11B682F7000003C7C /* TRVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVConstants.h; sourceTree = "<group>"; };
+		45E772D21B682F7000003C7C /* TRVConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVConstants.m; sourceTree = "<group>"; };
 		978AD411918DBD4335023B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D69FD457D9B6860BB4D3A8B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA57FA121B6826FC00CFBB89 /* TRVTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTrip.h; sourceTree = "<group>"; };
@@ -95,6 +104,12 @@
 				451565181B68221B005A2871 /* AppDelegate.m */,
 				4515651A1B68221B005A2871 /* ViewController.h */,
 				4515651B1B68221B005A2871 /* ViewController.m */,
+				45E772CB1B6824C400003C7C /* TRVUser.h */,
+				45E772CC1B6824C400003C7C /* TRVUser.m */,
+				45E772CE1B68291300003C7C /* TRVBio.h */,
+				45E772CF1B68291300003C7C /* TRVBio.m */,
+				45E772D11B682F7000003C7C /* TRVConstants.h */,
+				45E772D21B682F7000003C7C /* TRVConstants.m */,
 				FA57FA121B6826FC00CFBB89 /* TRVTrip.h */,
 				FA57FA131B6826FC00CFBB89 /* TRVTrip.m */,
 				4515651D1B68221B005A2871 /* Main.storyboard */,
@@ -286,7 +301,10 @@
 			files = (
 				4515651C1B68221B005A2871 /* ViewController.m in Sources */,
 				451565191B68221B005A2871 /* AppDelegate.m in Sources */,
+				45E772D31B682F7000003C7C /* TRVConstants.m in Sources */,
 				451565161B68221B005A2871 /* main.m in Sources */,
+				45E772CD1B6824C400003C7C /* TRVUser.m in Sources */,
+				45E772D01B68291300003C7C /* TRVBio.m in Sources */,
 				FA57FA141B6826FC00CFBB89 /* TRVTrip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
