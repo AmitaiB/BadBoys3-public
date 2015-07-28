@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic) NSUInteger phoneNumber;
 @property (nonatomic, strong) UIImage *profileImage;
 @property (nonatomic, strong) NSString *bioDescription;
 @property (nonatomic, strong) NSMutableArray *interests;

@@ -13,12 +13,11 @@
 @interface TRVUser : NSObject
 
 @property (nonatomic, strong) TRVBio *userBio;
+@property (nonatomic) BOOL isGuide;
 
 @property (nonatomic) TRVRating *rating;
 
 @property (nonatomic, strong) NSMutableArray *tripHistory;
-@property (nonatomic) BOOL isGuide;
-
 @property (nonatomic, strong) NSMutableArray *tripsLeading;
 @property (nonatomic, strong) NSMutableArray *tripsTaking;
 
