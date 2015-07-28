@@ -11,6 +11,22 @@
 @implementation TRVEvent
 
 
+-(instancetype)initWithLocation:(NSString *)location address:(NSString *)address cost:(CGFloat)cost description:(NSString *)description {
+
+    self = [super init];
+    
+    if (self) {
+        _locationOfEvent = location;
+        _addressOfEvent = address;
+        _costOfEvent = cost;
+        _descriptionOfEvent = description;
+    }
+    
+    return self;
+};
+
+
+
 
 
 @end
