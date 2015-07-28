@@ -53,10 +53,10 @@
 		45E772CE1B68291300003C7C /* TRVBio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVBio.h; sourceTree = "<group>"; };
 		45E772CF1B68291300003C7C /* TRVBio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVBio.m; sourceTree = "<group>"; };
 		45E772D11B682F7000003C7C /* TRVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVConstants.h; sourceTree = "<group>"; };
-		945407381B6823EA0029AC9B /* TRVEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVEvent.h; sourceTree = "<group>"; };
-		945407391B6823EA0029AC9B /* TRVEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVEvent.m; sourceTree = "<group>"; };
-		9454073B1B6828570029AC9B /* TRVRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRating.h; sourceTree = "<group>"; };
-		9454073C1B6828570029AC9B /* TRVRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVRating.m; sourceTree = "<group>"; };
+		945407381B6823EA0029AC9B /* TRVEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVEvent.h; path = ../TRVEvent.h; sourceTree = "<group>"; };
+		945407391B6823EA0029AC9B /* TRVEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRVEvent.m; path = ../TRVEvent.m; sourceTree = "<group>"; };
+		9454073B1B6828570029AC9B /* TRVRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVRating.h; path = ../TRVRating.h; sourceTree = "<group>"; };
+		9454073C1B6828570029AC9B /* TRVRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRVRating.m; path = ../TRVRating.m; sourceTree = "<group>"; };
 		94C77F811B68341E003836E3 /* TRVConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVConstants.m; sourceTree = "<group>"; };
 		978AD411918DBD4335023B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D69FD457D9B6860BB4D3A8B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,10 +86,6 @@
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
-				945407381B6823EA0029AC9B /* TRVEvent.h */,
-				945407391B6823EA0029AC9B /* TRVEvent.m */,
-				9454073B1B6828570029AC9B /* TRVRating.h */,
-				9454073C1B6828570029AC9B /* TRVRating.m */,
 				451565121B68221B005A2871 /* Indigenous */,
 				4515652C1B68221B005A2871 /* IndigenousTests */,
 				451565111B68221B005A2871 /* Products */,
@@ -110,6 +106,10 @@
 		451565121B68221B005A2871 /* Indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				945407381B6823EA0029AC9B /* TRVEvent.h */,
+				945407391B6823EA0029AC9B /* TRVEvent.m */,
+				9454073B1B6828570029AC9B /* TRVRating.h */,
+				9454073C1B6828570029AC9B /* TRVRating.m */,
 				451565171B68221B005A2871 /* AppDelegate.h */,
 				451565181B68221B005A2871 /* AppDelegate.m */,
 				4515651A1B68221B005A2871 /* ViewController.h */,
