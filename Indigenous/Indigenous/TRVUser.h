@@ -7,16 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "TRVBio.h"
 
 @interface TRVUser : NSObject
-@property (nonatomic, strong) NSString *userName;
 
-// I think this could be a class
-@property (nonatomic, strong) NSString *userBio;
+@property (nonatomic, strong) TRVBio *userBio;
 
-// I think this could be a class
-@property (nonatomic) NSUInteger touristRating;
-@property (nonatomic) NSUInteger guideRating;
+@property (nonatomic) TRVRating *rating;
 
 @property (nonatomic, strong) NSMutableArray *tripHistory;
 @property (nonatomic) BOOL isGuide;
