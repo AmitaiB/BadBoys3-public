@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3859EDF01B694003001C5693 /* TRVTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDEF1B694003001C5693 /* TRVTour.m */; };
+		3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDF31B694031001C5693 /* TRVItinerary.m */; };
 		38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */; };
 		451565161B68221B005A2871 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565151B68221B005A2871 /* main.m */; };
 		451565191B68221B005A2871 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565181B68221B005A2871 /* AppDelegate.m */; };
@@ -18,10 +20,10 @@
 		45E772CD1B6824C400003C7C /* TRVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CC1B6824C400003C7C /* TRVUser.m */; };
 		45E772D01B68291300003C7C /* TRVBio.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CF1B68291300003C7C /* TRVBio.m */; };
 		94C77F821B68341E003836E3 /* TRVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F811B68341E003836E3 /* TRVConstants.m */; };
-		94C77F871B68354E003836E3 /* TRVEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F841B68354E003836E3 /* TRVEvent.m */; };
+		94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F841B68354E003836E3 /* TRVTourStop.m */; };
 		94C77F881B68354E003836E3 /* TRVRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F861B68354E003836E3 /* TRVRating.m */; };
+		9939EF075531E17F37DFA944 /* libPods-Indigenous.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2D729CE63AF68C9FEE85FC /* libPods-Indigenous.a */; };
 		EC59EB9C3ACE15DDE1D021D6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D69FD457D9B6860BB4D3A8B4 /* libPods.a */; };
-		FA57FA141B6826FC00CFBB89 /* TRVTrip.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA131B6826FC00CFBB89 /* TRVTrip.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,10 @@
 
 /* Begin PBXFileReference section */
 		2A091188074B9C927FC5D79C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3859EDEE1B694003001C5693 /* TRVTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTour.h; sourceTree = "<group>"; };
+		3859EDEF1B694003001C5693 /* TRVTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTour.m; sourceTree = "<group>"; };
+		3859EDF21B694031001C5693 /* TRVItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVItinerary.h; sourceTree = "<group>"; };
+		3859EDF31B694031001C5693 /* TRVItinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVItinerary.m; sourceTree = "<group>"; };
 		38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTopLVLMenuViewController.h; sourceTree = "<group>"; };
 		38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTopLVLMenuViewController.m; sourceTree = "<group>"; };
 		451565101B68221B005A2871 /* Indigenous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indigenous.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,14 +63,13 @@
 		45E772CF1B68291300003C7C /* TRVBio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVBio.m; sourceTree = "<group>"; };
 		45E772D11B682F7000003C7C /* TRVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVConstants.h; sourceTree = "<group>"; };
 		94C77F811B68341E003836E3 /* TRVConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVConstants.m; sourceTree = "<group>"; };
-		94C77F831B68354E003836E3 /* TRVEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVEvent.h; sourceTree = "<group>"; };
-		94C77F841B68354E003836E3 /* TRVEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVEvent.m; sourceTree = "<group>"; };
+		94C77F831B68354E003836E3 /* TRVTourStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStop.h; sourceTree = "<group>"; };
+		94C77F841B68354E003836E3 /* TRVTourStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStop.m; sourceTree = "<group>"; };
 		94C77F851B68354E003836E3 /* TRVRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRating.h; sourceTree = "<group>"; };
 		94C77F861B68354E003836E3 /* TRVRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVRating.m; sourceTree = "<group>"; };
 		978AD411918DBD4335023B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D69FD457D9B6860BB4D3A8B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA57FA121B6826FC00CFBB89 /* TRVTrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTrip.h; sourceTree = "<group>"; };
-		FA57FA131B6826FC00CFBB89 /* TRVTrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTrip.m; sourceTree = "<group>"; };
+		EB2D729CE63AF68C9FEE85FC /* libPods-Indigenous.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Indigenous.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC59EB9C3ACE15DDE1D021D6 /* libPods.a in Frameworks */,
+				9939EF075531E17F37DFA944 /* libPods-Indigenous.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +92,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3859EDF11B69400E001C5693 /* Business Logic/Models */ = {
+			isa = PBXGroup;
+			children = (
+				3859EDEE1B694003001C5693 /* TRVTour.h */,
+				3859EDEF1B694003001C5693 /* TRVTour.m */,
+				3859EDF21B694031001C5693 /* TRVItinerary.h */,
+				3859EDF31B694031001C5693 /* TRVItinerary.m */,
+				94C77F831B68354E003836E3 /* TRVTourStop.h */,
+				94C77F841B68354E003836E3 /* TRVTourStop.m */,
+			);
+			name = "Business Logic/Models";
+			sourceTree = "<group>";
+		};
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +128,7 @@
 		451565121B68221B005A2871 /* Indigenous */ = {
 			isa = PBXGroup;
 			children = (
-				94C77F831B68354E003836E3 /* TRVEvent.h */,
-				94C77F841B68354E003836E3 /* TRVEvent.m */,
+				3859EDF11B69400E001C5693 /* Business Logic/Models */,
 				94C77F851B68354E003836E3 /* TRVRating.h */,
 				94C77F861B68354E003836E3 /* TRVRating.m */,
 				451565171B68221B005A2871 /* AppDelegate.h */,
@@ -125,8 +143,6 @@
 				45E772CF1B68291300003C7C /* TRVBio.m */,
 				45E772D11B682F7000003C7C /* TRVConstants.h */,
 				94C77F811B68341E003836E3 /* TRVConstants.m */,
-				FA57FA121B6826FC00CFBB89 /* TRVTrip.h */,
-				FA57FA131B6826FC00CFBB89 /* TRVTrip.m */,
 				4515651D1B68221B005A2871 /* Main.storyboard */,
 				451565201B68221B005A2871 /* Images.xcassets */,
 				451565221B68221B005A2871 /* LaunchScreen.xib */,
@@ -174,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				D69FD457D9B6860BB4D3A8B4 /* libPods.a */,
+				EB2D729CE63AF68C9FEE85FC /* libPods-Indigenous.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -319,11 +336,12 @@
 				451565191B68221B005A2871 /* AppDelegate.m in Sources */,
 				451565161B68221B005A2871 /* main.m in Sources */,
 				94C77F881B68354E003836E3 /* TRVRating.m in Sources */,
-				94C77F871B68354E003836E3 /* TRVEvent.m in Sources */,
+				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
 				94C77F821B68341E003836E3 /* TRVConstants.m in Sources */,
 				45E772CD1B6824C400003C7C /* TRVUser.m in Sources */,
+				3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */,
 				45E772D01B68291300003C7C /* TRVBio.m in Sources */,
-				FA57FA141B6826FC00CFBB89 /* TRVTrip.m in Sources */,
+				3859EDF01B694003001C5693 /* TRVTour.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
