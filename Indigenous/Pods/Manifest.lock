@@ -1,17 +1,20 @@
 PODS:
   - Bolts/Tasks (1.2.0)
+  - MPSkewed (0.9.0)
   - Parse (1.7.5.3):
     - Bolts/Tasks (>= 1.2.0)
   - ParseUI (1.1.4):
     - Parse (~> 1.7)
 
 DEPENDENCIES:
+  - MPSkewed
   - Parse
   - ParseUI (~> 1.1)
 
 SPEC CHECKSUMS:
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  MPSkewed: 53d2f5ae0ce57c2ee475107cfb8899426f0b68fa
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
 
-COCOAPODS: 0.37.2
+COCOAPODS: 0.38.2
