@@ -28,4 +28,37 @@
 @property (nonatomic, strong) NSString *region;
 
 
+//INITIALIZERS
+-(instancetype)initTourist;
+-(instancetype)initGuide;
+
+-(instancetype)initTouristWithUserName:(NSString*)username
+                      firstName:(NSString*)firstName
+                       lastName:(NSString*)lastName
+                          email:(NSString*)email
+                    phoneNumber:(NSUInteger)phoneNumber
+                   profileImage:(UIImage*)profileImage
+                 bioDescription:(NSString*)bioDescription
+                      interests:(NSMutableArray*)interests
+                       language:(NSString*)language;
+
+-(instancetype)initGuideWithUserName:(NSString*)username
+                             firstName:(NSString*)firstName
+                              lastName:(NSString*)lastName
+                                 email:(NSString*)email
+                           phoneNumber:(NSUInteger)phoneNumber
+                          profileImage:(UIImage*)profileImage
+                        bioDescription:(NSString*)bioDescription
+                             interests:(NSMutableArray*)interests
+                              language:(NSString*)language
+                                 age:(NSUInteger)age
+                              gender:(NSString*)gender
+                              region:(NSString*)region;
+
+-(void)convertTouristToGuideWithAge:(NSUInteger)age
+                             gender:(NSString*)gender
+                             region:(NSString*)region;
+
+
+
 @end
