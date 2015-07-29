@@ -20,7 +20,6 @@
 		451565301B68221B005A2871 /* IndigenousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4515652F1B68221B005A2871 /* IndigenousTests.m */; };
 		45E772CD1B6824C400003C7C /* TRVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CC1B6824C400003C7C /* TRVUser.m */; };
 		45E772D01B68291300003C7C /* TRVBio.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CF1B68291300003C7C /* TRVBio.m */; };
-		947BE9F51B69750F007268A3 /* addTour.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 947BE9F41B69750F007268A3 /* addTour.Storyboard */; };
 		94C2EDA21B69637900BC2F7C /* addTour.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C2EDA11B69637900BC2F7C /* addTour.Storyboard */; };
 		94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */; };
 		94C2EDA81B69662F00BC2F7C /* TRVProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */; };
@@ -68,7 +67,6 @@
 		45E772CE1B68291300003C7C /* TRVBio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVBio.h; sourceTree = "<group>"; };
 		45E772CF1B68291300003C7C /* TRVBio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVBio.m; sourceTree = "<group>"; };
 		45E772D11B682F7000003C7C /* TRVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVConstants.h; sourceTree = "<group>"; };
-		947BE9F41B69750F007268A3 /* addTour.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = addTour.Storyboard; sourceTree = "<group>"; };
 		94C2EDA11B69637900BC2F7C /* addTour.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = addTour.Storyboard; sourceTree = "<group>"; };
 		94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSearchTripsViewController.h; sourceTree = "<group>"; };
 		94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSearchTripsViewController.m; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
-				947BE9F41B69750F007268A3 /* addTour.Storyboard */,
 				94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */,
 				94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */,
 				451565121B68221B005A2871 /* Indigenous */,
@@ -304,7 +301,6 @@
 			files = (
 				94C2EDA21B69637900BC2F7C /* addTour.Storyboard in Resources */,
 				4515651F1B68221B005A2871 /* Main.storyboard in Resources */,
-				947BE9F51B69750F007268A3 /* addTour.Storyboard in Resources */,
 				451565241B68221B005A2871 /* LaunchScreen.xib in Resources */,
 				451565211B68221B005A2871 /* Images.xcassets in Resources */,
 			);
