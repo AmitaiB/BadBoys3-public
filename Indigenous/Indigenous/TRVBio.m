@@ -10,4 +10,68 @@
 
 @implementation TRVBio
 
+
+-(instancetype)initTouristWithUserName:(NSString*)username
+                             firstName:(NSString*)firstName
+                              lastName:(NSString*)lastName
+                                 email:(NSString*)email
+                           phoneNumber:(NSUInteger)phoneNumber
+                          profileImage:(UIImage*)profileImage
+                        bioDescription:(NSString*)bioDescription
+                             interests:(NSMutableArray*)interests
+                              language:(NSString*)language
+{
+    self = [super init];
+    if (self){
+        _userName = username;
+        _firstName = firstName;
+        _lastName = lastName;
+        _email = email;
+        _phoneNumber = phoneNumber;
+        _profileImage = profileImage;
+        _bioDescription = bioDescription;
+        _interests = interests;
+        _language = language;
+  
+    }
+    return self;
+}
+
+-(instancetype)initGuideWithUserName:(NSString*)username
+                           firstName:(NSString*)firstName
+                            lastName:(NSString*)lastName
+                               email:(NSString*)email
+                         phoneNumber:(NSUInteger)phoneNumber
+                        profileImage:(UIImage*)profileImage
+                      bioDescription:(NSString*)bioDescription
+                           interests:(NSMutableArray*)interests
+                            language:(NSString*)language
+                                 age:(NSUInteger)age
+                              gender:(NSString*)gender
+                              region:(NSString*)region
+{
+    
+    self = [super init];
+    if (self){
+        _userName = username;
+        _firstName = firstName;
+        _lastName = lastName;
+        _email = email;
+        _phoneNumber = phoneNumber;
+        _profileImage = profileImage;
+        _bioDescription = bioDescription;
+        _interests = interests;
+        _language = language;
+        _age = age;
+        _gender = gender;
+        _region = region;
+        
+    }
+    return self;
+    
+    
+}
+
+
+
 @end
