@@ -13,23 +13,30 @@
 
 @interface TRVTourStop : NSObject
 
-@property (nonatomic) CLLocationDegrees lat;
-@property (nonatomic) CLLocationDegrees lng;
-@property (nonatomic) CLLocationCoordinate2D *tourStopLocation;
-@property (nonatomic, strong) GMSMarker *tourStopMarker;
 @property (nonatomic) CGFloat operatorCost;
 @property (nonatomic) CGFloat incidentalCost;
+@property (nonatomic) CLLocationDegrees lat;
+@property (nonatomic) CLLocationDegrees lng;
+@property (nonatomic) CLLocationCoordinate2D tourStopLocation;
+@property (nonatomic, strong) GMSMarker *tourStopMarker;
 
 //@property (nonatomic) BOOL isDeparturePoint;
 //@property (nonatomic) BOOL isFinalPoint;
 
-    //@property (nonatomic, strong) NSString *locationOfEvent;
-@property (nonatomic, strong) NSString *addressOfEvent;
-@property (nonatomic) CGFloat costOfEvent;
-@property (nonatomic, strong) NSString *descriptionOfEvent;
-@property (nonatomic, strong) UIImage *image;
+    //deprecated:
+//@property (nonatomic) CGFloat costOfEvent;
+
+    //Included in GMSMarker
+//@property (nonatomic, strong) NSString *locationOfEvent;
+//@property (nonatomic, strong) NSString *addressOfEvent;
+//@property (nonatomic, strong) NSString *descriptionOfEvent;
+//@property (nonatomic, strong) UIImage *image;
 
 
--(instancetype)initWithLocation:(NSString *)location address:(NSString *)address cost:(CGFloat)cost description:(NSString *)description;
+-initWithCoordinates:(CLLocationCoordinate2D)coordinates operatorCost:(CGFloat)oCost incidentalCost:(CGFloat)iCost;
+
+-initWithCoordinates:(CLLocationCoordinate2D)coordinates;
+
+-initWithMapMarker:(GMSMarker *)marker;
 
 @end

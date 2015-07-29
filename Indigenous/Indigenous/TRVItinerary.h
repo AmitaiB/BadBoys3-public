@@ -16,4 +16,8 @@
 @property (nonatomic, strong) NSArray *attractions; //Attractions: Item of specific interest to travelers, such as natural wonders, manmade facilities and structures, entertainment, and activities.
 
 
+-initWithItinerary:(TRVItinerary *)anItinerary;
+
+-initWithStops:(NSArray *)arrayOfStops
+
 @end

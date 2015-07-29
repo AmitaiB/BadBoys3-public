@@ -10,4 +10,18 @@
 
 @implementation TRVItinerary
 
+-(id)initWithItinerary:(TRVItinerary *)anItinerary {
+    if (!self) {
+        return nil;
+    }
+    
+    _stop        = anItinerary.stops;
+    _legs        = anItinerary.legs;
+    _attractions = anItinerary.attractions;
+    
+    return self;
+}
+
+
+
 @end
