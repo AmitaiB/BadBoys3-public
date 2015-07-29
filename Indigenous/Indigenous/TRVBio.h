@@ -26,6 +26,7 @@
 @property (nonatomic) NSUInteger age;
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *region;
+@property (nonatomic, strong) NSString *oneLineSummary;
 
 
 //INITIALIZERS
@@ -53,11 +54,13 @@
                               language:(NSString*)language
                                  age:(NSUInteger)age
                               gender:(NSString*)gender
-                              region:(NSString*)region;
+                              region:(NSString*)region
+                      oneLineSummary:(NSString*)oneLineSummary;
 
 -(void)convertTouristToGuideWithAge:(NSUInteger)age
                              gender:(NSString*)gender
-                             region:(NSString*)region;
+                             region:(NSString*)region
+                     oneLineSummary:(NSString*)oneLineSummary;
 
 
 
