@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8u-vK-vkl">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Login Signup View Controller-->
+        <scene sceneID="VbL-Rd-9oA">
+            <objects>
+                <viewController id="S8u-vK-vkl" customClass="TRVLoginSignupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gOR-Qt-Ueq"/>
+                        <viewControllerLayoutGuide type="bottom" id="GKt-bh-Raq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TEJ-vb-G6a">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ol-cR-v6k">
+                                <rect key="frame" x="279" y="173" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAl-8D-Wqj">
+                                <rect key="frame" x="242" y="262" width="117" height="30"/>
+                                <state key="normal" title="Log in with Email">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sign Up!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3R-JH-AgG">
+                                <rect key="frame" x="267" y="367" width="67" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6V-Ah-oco">
+                                <rect key="frame" x="219" y="402" width="163" height="30"/>
+                                <state key="normal" title="Sign Up With Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dBH-cr-WCy">
+                                <rect key="frame" x="234" y="440" width="132" height="30"/>
+                                <state key="normal" title="Sign Up With Email">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="WELCOME TO TRVLR!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnx-CN-ZTw">
+                                <rect key="frame" x="186" y="91" width="229" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLp-fy-OjG" userLabel="FacebookLoginButton" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="60" y="212" width="480" height="42"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.20392156859999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="tnx-CN-ZTw" secondAttribute="centerX" constant="-0.5" id="8MP-Ce-3LK"/>
+                            <constraint firstItem="uLp-fy-OjG" firstAttribute="centerX" secondItem="TEJ-vb-G6a" secondAttribute="centerX" id="Rfx-g5-ZOA"/>
+                            <constraint firstItem="uLp-fy-OjG" firstAttribute="width" secondItem="TEJ-vb-G6a" secondAttribute="width" multiplier="0.8" id="UrZ-Or-TGS"/>
+                            <constraint firstAttribute="centerX" secondItem="0Ol-cR-v6k" secondAttribute="centerX" constant="-0.5" id="WA6-gs-3wm"/>
+                            <constraint firstAttribute="centerX" secondItem="B6V-Ah-oco" secondAttribute="centerX" constant="-0.5" id="Ww4-8Z-5u8"/>
+                            <constraint firstAttribute="centerX" secondItem="d3R-JH-AgG" secondAttribute="centerX" constant="-0.5" id="XF1-l6-2nl"/>
+                            <constraint firstAttribute="centerX" secondItem="PAl-8D-Wqj" secondAttribute="centerX" constant="-0.5" id="ea7-jd-81a"/>
+                            <constraint firstAttribute="centerX" secondItem="dBH-cr-WCy" secondAttribute="centerX" id="ezb-mN-oFL"/>
+                            <constraint firstItem="uLp-fy-OjG" firstAttribute="height" secondItem="TEJ-vb-G6a" secondAttribute="height" multiplier="0.07" id="pqQ-O4-bxm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="facebookLoginButton" destination="uLp-fy-OjG" id="TEc-Zh-Sw1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVc-mT-ojV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="456" y="390"/>
+        </scene>
+    </scenes>
+</document>
