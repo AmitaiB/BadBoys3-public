@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "TRVBio.h"
+#import "TRVRating.h"
 
 @interface TRVUser : NSObject
 
