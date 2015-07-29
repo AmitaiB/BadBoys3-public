@@ -17,6 +17,9 @@
 @property (nonatomic, strong, nonnull) TRVItinerary *tourItinerary;  //A list of a tour's schedule and major travel elements. Maps can be made from this.
 @property (nonatomic, strong, nonnull) NSDate *tourDeparture;        //The date of the start of a tour program.
 @property (nonatomic) NSTimeInterval duration;
+@property (nonatomic) CGFloat costing;          //The process of itemizing and calculating all the costs the tour operator will pay on a given tour.
+@property (nonatomic) CGFloat incidentals;      //Charges incurred by the participants of a tour, but which are not included in the tour price.
+
 
 /**
  *  For what purpose is the image...? Perhaps it belongs elsewhere.

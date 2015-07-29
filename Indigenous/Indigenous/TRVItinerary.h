@@ -11,8 +11,9 @@
 
 @interface TRVItinerary : PFObject
 
-@property (nonatomic, strong) NSArray *stops;       //Self-explanatory
-@property (nonatomic, strong) NSArray *legs;        //Portion of a journey between two scheduled stops.
+@property (nonatomic, strong) NSArray *stops;       //...of TRVTourStops
+@property (nonatomic, strong) NSArray *legs;        //Portion of a journey between two scheduled stops. Not certain if this is necessary.
+@property (nonatomic, strong) NSArray *attractions; //Attractions: Item of specific interest to travelers, such as natural wonders, manmade facilities and structures, entertainment, and activities.
 
 
 @end
