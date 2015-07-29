@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVRating.h"
 
-@implementation TRVRating
+@implementation TRVRating 
 
 
 @end

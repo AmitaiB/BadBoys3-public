@@ -10,18 +10,27 @@
 
 @implementation TRVItinerary
 
--(id)initWithItinerary:(TRVItinerary *)anItinerary {
-    if (!self) {
-        return nil;
+-(instancetype)initWithItinerary:(TRVItinerary *)anItinerary {
+
+    self = [super init];
+    if (self) {
+        
+        
+        _stops       = anItinerary.stops;
+        _legs        = anItinerary.legs;
+        _attractions = anItinerary.attractions;
     }
-    
-    _stop        = anItinerary.stops;
-    _legs        = anItinerary.legs;
-    _attractions = anItinerary.attractions;
     
     return self;
 }
 
+
+-(instancetype)initWithStops:(NSArray *)arrayOfStops {
+    _stops       = arrayOfStops;
+    _legs        = [NSArray new];
+    _attractions = [NSArray new];
+    return self;
+}
 
 
 @end

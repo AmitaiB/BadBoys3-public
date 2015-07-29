@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TRVRating.h"
-
 
 @interface TRVRating : NSObject
 

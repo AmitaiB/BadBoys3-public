@@ -6,11 +6,10 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "PFObject.h"
 #import "TRVItinerary.h"
 #import "TRVUser.h"
 
-@interface TRVTour : PFObject
+@interface TRVTour : NSObject
 
 @property (nonatomic, strong, nonnull) NSArray *clientList;          //A collection of the names of all tour participants.
 @property (nonatomic, strong, nonnull) TRVUser *tourGuide;           //The user that created/owns this Tour object.

@@ -6,18 +6,17 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "PFObject.h"
+#import <PFObject.h>
 
-
-@interface TRVItinerary : PFObject
+@interface TRVItinerary : NSObject
 
 @property (nonatomic, strong) NSArray *stops;       //...of TRVTourStops
 @property (nonatomic, strong) NSArray *legs;        //Portion of a journey between two scheduled stops. Not certain if this is necessary.
 @property (nonatomic, strong) NSArray *attractions; //Attractions: Item of specific interest to travelers, such as natural wonders, manmade facilities and structures, entertainment, and activities.
 
 
--initWithItinerary:(TRVItinerary *)anItinerary;
+-(instancetype)initWithItinerary:(TRVItinerary *)anItinerary;
 
--initWithStops:(NSArray *)arrayOfStops
+-(instancetype)initWithStops:(NSArray *)arrayOfStops;
 
 @end
