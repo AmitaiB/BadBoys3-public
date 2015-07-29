@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:addTour.Storyboard">
-   </FileRef>
-   <FileRef
       location = "group:Indigenous.xcodeproj">
    </FileRef>
    <FileRef
