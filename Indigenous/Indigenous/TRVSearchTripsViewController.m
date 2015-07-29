@@ -7,8 +7,12 @@
 //
 
 #import "TRVSearchTripsViewController.h"
+#import "TRVUser.h"
+#import "TRVBio.h"
 
 @interface TRVSearchTripsViewController ()
+
+
 
 @end
 
@@ -16,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 }
 

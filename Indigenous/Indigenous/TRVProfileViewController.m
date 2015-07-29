@@ -7,6 +7,8 @@
 //
 
 #import "TRVProfileViewController.h"
+#import "TRVUser.h"
+#import "TRVBio.h"
 
 @interface TRVProfileViewController ()
 
@@ -16,6 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    TRVBio *currentBio = [[TRVBio alloc] initTouristWithUserName:@"leo" firstName:@"Leo" lastName:@"Kwan" email:@"leokwanbt14@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
+    
+    TRVUser *currentUser = [[TRVUser alloc] init];
+    currentUser.userBio = currentBio;
+    
+
     // Do any additional setup after loading the view.
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Jbt-kM-5oK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QpX-Ew-DHY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -34,7 +34,51 @@
                     <view key="view" contentMode="scaleToFill" id="gxQ-kr-w1f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SPS-XF-6mQ">
+                                <rect key="frame" x="225" y="109" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="csh-Nw-F4J"/>
+                                    <constraint firstAttribute="width" constant="150" id="zzv-cb-J3r"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP2-Tk-H41">
+                                <rect key="frame" x="279" y="395" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="about me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGz-Uo-l5O">
+                                <rect key="frame" x="264" y="275" width="73" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="SPS-XF-6mQ" secondAttribute="centerX" id="13e-ew-9QL"/>
+                            <constraint firstAttribute="centerX" secondItem="sP2-Tk-H41" secondAttribute="centerX" id="212-Py-TOK"/>
+                            <constraint firstItem="TGz-Uo-l5O" firstAttribute="top" secondItem="SPS-XF-6mQ" secondAttribute="bottom" constant="16" id="38x-RC-3wX"/>
+                            <constraint firstItem="SPS-XF-6mQ" firstAttribute="top" secondItem="E6C-70-eEj" secondAttribute="bottom" constant="89" id="IS8-9H-q2j"/>
+                            <constraint firstItem="SPS-XF-6mQ" firstAttribute="top" secondItem="E6C-70-eEj" secondAttribute="bottom" constant="89" id="MBQ-Yp-tuE"/>
+                            <constraint firstItem="sP2-Tk-H41" firstAttribute="top" secondItem="TGz-Uo-l5O" secondAttribute="bottom" constant="99" id="Mci-NK-OZH"/>
+                            <constraint firstAttribute="centerX" secondItem="sP2-Tk-H41" secondAttribute="centerX" id="PDt-LF-iNz"/>
+                            <constraint firstItem="TGz-Uo-l5O" firstAttribute="top" secondItem="sP2-Tk-H41" secondAttribute="bottom" constant="26" id="aqc-5k-VJt"/>
+                            <constraint firstItem="sP2-Tk-H41" firstAttribute="top" secondItem="SPS-XF-6mQ" secondAttribute="bottom" constant="24" id="gVu-ea-WnH"/>
+                            <constraint firstAttribute="centerX" secondItem="SPS-XF-6mQ" secondAttribute="centerX" id="ggA-V5-RRp"/>
+                            <constraint firstAttribute="centerX" secondItem="TGz-Uo-l5O" secondAttribute="centerX" id="qxF-Cn-oLx"/>
+                            <constraint firstAttribute="centerX" secondItem="TGz-Uo-l5O" secondAttribute="centerX" id="zPg-m6-p19"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="13e-ew-9QL"/>
+                                <exclude reference="IS8-9H-q2j"/>
+                                <exclude reference="aqc-5k-VJt"/>
+                                <exclude reference="zPg-m6-p19"/>
+                                <exclude reference="gVu-ea-WnH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="lZz-Hl-imM"/>
                 </viewController>
@@ -59,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGg-5g-oki" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="141"/>
+            <point key="canvasLocation" x="939" y="53"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Kye-d7-XWm">
