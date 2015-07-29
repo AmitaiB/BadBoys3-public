@@ -20,8 +20,13 @@
 		451565301B68221B005A2871 /* IndigenousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4515652F1B68221B005A2871 /* IndigenousTests.m */; };
 		45E772CD1B6824C400003C7C /* TRVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CC1B6824C400003C7C /* TRVUser.m */; };
 		45E772D01B68291300003C7C /* TRVBio.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CF1B68291300003C7C /* TRVBio.m */; };
+		94C2EDA21B69637900BC2F7C /* addTour.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C2EDA11B69637900BC2F7C /* addTour.Storyboard */; };
+		94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */; };
+		94C2EDA81B69662F00BC2F7C /* TRVProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */; };
+		94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */; };
 		94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F841B68354E003836E3 /* TRVTourStop.m */; };
 		94C77F881B68354E003836E3 /* TRVRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F861B68354E003836E3 /* TRVRating.m */; };
+		CABB73DD260A27FA46F73396 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D69FD457D9B6860BB4D3A8B4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,13 @@
 		45E772CE1B68291300003C7C /* TRVBio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVBio.h; sourceTree = "<group>"; };
 		45E772CF1B68291300003C7C /* TRVBio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVBio.m; sourceTree = "<group>"; };
 		45E772D11B682F7000003C7C /* TRVConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVConstants.h; sourceTree = "<group>"; };
+		94C2EDA11B69637900BC2F7C /* addTour.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = addTour.Storyboard; sourceTree = "<group>"; };
+		94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSearchTripsViewController.h; sourceTree = "<group>"; };
+		94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSearchTripsViewController.m; sourceTree = "<group>"; };
+		94C2EDA61B69662F00BC2F7C /* TRVProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVProfileViewController.h; sourceTree = "<group>"; };
+		94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVProfileViewController.m; sourceTree = "<group>"; };
+		94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSearchViewController.h; sourceTree = "<group>"; };
+		94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSearchViewController.m; sourceTree = "<group>"; };
 		94C77F831B68354E003836E3 /* TRVTourStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStop.h; sourceTree = "<group>"; };
 		94C77F841B68354E003836E3 /* TRVTourStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStop.m; sourceTree = "<group>"; };
 		94C77F851B68354E003836E3 /* TRVRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRating.h; sourceTree = "<group>"; };
@@ -75,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CABB73DD260A27FA46F73396 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +104,11 @@
 		3859EDF11B69400E001C5693 /* Business Logic/Models */ = {
 			isa = PBXGroup;
 			children = (
+				94C2EDA11B69637900BC2F7C /* addTour.Storyboard */,
+				94C2EDA61B69662F00BC2F7C /* TRVProfileViewController.h */,
+				94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */,
+				94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */,
+				94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */,
 				3859EDEE1B694003001C5693 /* TRVTour.h */,
 				3859EDEF1B694003001C5693 /* TRVTour.m */,
 				3859EDF21B694031001C5693 /* TRVItinerary.h */,
@@ -133,6 +151,8 @@
 				4515651A1B68221B005A2871 /* ViewController.h */,
 				38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */,
 				38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */,
+				94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */,
+				94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */,
 				45E772CB1B6824C400003C7C /* TRVUser.h */,
 				45E772CC1B6824C400003C7C /* TRVUser.m */,
 				45E772CE1B68291300003C7C /* TRVBio.h */,
@@ -274,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C2EDA21B69637900BC2F7C /* addTour.Storyboard in Resources */,
 				4515651F1B68221B005A2871 /* Main.storyboard in Resources */,
 				451565241B68221B005A2871 /* LaunchScreen.xib in Resources */,
 				451565211B68221B005A2871 /* Images.xcassets in Resources */,
@@ -328,13 +349,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4515651C1B68221B005A2871 /* ViewController.m in Sources */,
+				94C2EDA81B69662F00BC2F7C /* TRVProfileViewController.m in Sources */,
 				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,
 				384AFBB71B695DF400E169A9 /* TRVConstants.m in Sources */,
 				451565191B68221B005A2871 /* AppDelegate.m in Sources */,
 				451565161B68221B005A2871 /* main.m in Sources */,
 				94C77F881B68354E003836E3 /* TRVRating.m in Sources */,
+				94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */,
 				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
 				45E772CD1B6824C400003C7C /* TRVUser.m in Sources */,
+				94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */,
 				3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */,
 				45E772D01B68291300003C7C /* TRVBio.m in Sources */,
 				3859EDF01B694003001C5693 /* TRVTour.m in Sources */,
