@@ -58,6 +58,10 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="6S6-zR-HLz"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="NPq-bg-Wa6" id="JFC-fz-iEU"/>
+                        <outlet property="tripTableView" destination="ZGd-SG-l7o" id="Z2d-6H-YNI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmV-1h-xBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

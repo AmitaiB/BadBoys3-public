@@ -25,6 +25,7 @@
 		FA57FA181B69663200CFBB89 /* MyTripsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA57FA171B69663200CFBB89 /* MyTripsStoryboard.storyboard */; };
 		FA57FA1C1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */; };
 		FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */; };
+		FA57FA221B696F2A00CFBB89 /* TRVTouristTripDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristMyTripsViewController.m; sourceTree = "<group>"; };
 		FA57FA1D1B696AF800CFBB89 /* TRVTouristTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTouristTripTableViewCell.h; sourceTree = "<group>"; };
 		FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristTripTableViewCell.m; sourceTree = "<group>"; };
+		FA57FA201B696F2A00CFBB89 /* TRVTouristTripDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTouristTripDataSource.h; sourceTree = "<group>"; };
+		FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristTripDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +211,8 @@
 				FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */,
 				FA57FA1D1B696AF800CFBB89 /* TRVTouristTripTableViewCell.h */,
 				FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */,
+				FA57FA201B696F2A00CFBB89 /* TRVTouristTripDataSource.h */,
+				FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */,
 			);
 			name = MyTrips;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				451565191B68221B005A2871 /* AppDelegate.m in Sources */,
 				451565161B68221B005A2871 /* main.m in Sources */,
 				FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */,
+				FA57FA221B696F2A00CFBB89 /* TRVTouristTripDataSource.m in Sources */,
 				94C77F881B68354E003836E3 /* TRVRating.m in Sources */,
 				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
 				45E772CD1B6824C400003C7C /* TRVUser.m in Sources */,

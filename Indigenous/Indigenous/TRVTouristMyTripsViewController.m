@@ -7,16 +7,32 @@
 //
 
 #import "TRVTouristMyTripsViewController.h"
+#import "TRVTouristTripDataSource.h"
+#import "TRVUser.h"
 
 @interface TRVTouristMyTripsViewController ()
-
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UITableView *tripTableView;
+@property (nonatomic, strong) TRVTouristTripDataSource *tableViewDataSource;
 @end
 
 @implementation TRVTouristMyTripsViewController
 
+- (NSArray*)pastTrips {
+    NSPredicate *pastPred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject compare:[NSDate date]] == NSOrderedAscending;
+    }];
+    return [self.tourist.myTrips filteredArrayUsingPredicate:pastPred];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] init];
+    
+    self.tripTableView.dataSource = self.tableViewDataSource;
+    //(__bridge id<UITableViewDataSource>)(CFRetain((__bridge CFTypeRef)([[TRVTouristTripDataSource alloc] init])));
     // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
