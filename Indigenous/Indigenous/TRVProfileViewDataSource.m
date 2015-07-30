@@ -9,6 +9,7 @@
 #import "TRVProfileViewDataSource.h"
 #import "TRVUserSnippetTableViewCell.h"
 #import "TRVProfileImageTableViewCell.h"
+#import "TRVContactTableViewCell.h"
 #import "TRVBio.h"
 #import "TRVUser.h"
 
@@ -24,7 +25,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 2;
+    return 3;
 }
 
 
@@ -52,6 +53,10 @@
     else if (indexPath.row == 1) {
         TRVUserSnippetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userInfoSnippetCell"];
         cell.user = self.user;
+        return cell;
+    } else if (indexPath.row == 2){
+        TRVContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userContactCell"];
+        cell.userForThisContactCell = self.user;
         return cell;
     }
     

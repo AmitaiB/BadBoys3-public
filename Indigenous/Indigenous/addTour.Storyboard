@@ -62,7 +62,7 @@
                                             <outlet property="profilePictureImageView" destination="Uyd-lc-dnv" id="DCg-Sn-0Lm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userInfoSnippetCell" rowHeight="149" id="W4l-zw-PBb" customClass="TRVUserSnippetTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userInfoSnippetCell" rowHeight="148" id="W4l-zw-PBb" customClass="TRVUserSnippetTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W4l-zw-PBb" id="uXj-a3-dsT">
@@ -92,7 +92,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" ambiguous="YES" text="one line tagline" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPz-8W-FfN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" text="one line tagline" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPz-8W-FfN">
                                                     <rect key="frame" x="58" y="99" width="524" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -128,6 +128,46 @@
                                             <outlet property="homeCountryLabel" destination="dqN-q1-vKy" id="c7u-BJ-bOl"/>
                                             <outlet property="lastNameLabel" destination="YKM-Bi-MQy" id="PQv-de-PbC"/>
                                             <outlet property="userTaglineLabel" destination="fPz-8W-FfN" id="2qP-IF-UuS"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userContactCell" rowHeight="144" id="72F-EU-Fre" customClass="TRVContactTableViewCell">
+                                        <rect key="frame" x="0.0" y="320" width="600" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="72F-EU-Fre" id="7nb-5Q-TM0">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEU-2Z-NNC">
+                                                    <rect key="frame" x="43" y="18" width="61" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MI-f0-St6">
+                                                    <rect key="frame" x="43" y="54" width="41" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="my email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzO-Vh-o8c">
+                                                    <rect key="frame" x="94" y="53" width="69" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.32781942580000001" green="0.87879207329999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="5MI-f0-St6" firstAttribute="top" secondItem="xEU-2Z-NNC" secondAttribute="bottom" constant="15" id="Czc-n9-1wg"/>
+                                                <constraint firstItem="jzO-Vh-o8c" firstAttribute="centerY" secondItem="5MI-f0-St6" secondAttribute="centerY" constant="-1" id="Ioc-Co-K0E"/>
+                                                <constraint firstItem="xEU-2Z-NNC" firstAttribute="leading" secondItem="7nb-5Q-TM0" secondAttribute="leadingMargin" constant="35" id="KqX-rb-d8d"/>
+                                                <constraint firstItem="xEU-2Z-NNC" firstAttribute="top" secondItem="7nb-5Q-TM0" secondAttribute="topMargin" constant="10" id="QzP-bi-0t6"/>
+                                                <constraint firstItem="jzO-Vh-o8c" firstAttribute="leading" secondItem="5MI-f0-St6" secondAttribute="trailing" constant="10" id="deS-u2-QFR"/>
+                                                <constraint firstItem="5MI-f0-St6" firstAttribute="leading" secondItem="7nb-5Q-TM0" secondAttribute="leadingMargin" constant="35" id="rL6-hZ-xdX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contactCategoryLabel" destination="xEU-2Z-NNC" id="lmj-5G-wRp"/>
+                                            <outlet property="emailLabel" destination="jzO-Vh-o8c" id="j0l-cg-7sV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
