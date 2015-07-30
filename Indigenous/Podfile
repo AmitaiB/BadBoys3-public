@@ -2,3 +2,5 @@
     pod 'Parse'
     pod 'MPSkewed'
     pod 'GoogleMaps' #, '~> 1.10'
+    pod 'Masonry'
+#    pod 'JVFloatLabeledTextField'
