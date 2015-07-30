@@ -149,14 +149,9 @@
 		451565121B68221B005A2871 /* Indigenous */ = {
 			isa = PBXGroup;
 			children = (
-				94D8FCB61B6AA31D00B89C29 /* View */,
 				94C2EDA11B69637900BC2F7C /* addTour.Storyboard */,
-				94D8FCBD1B6ABDD300B89C29 /* TRVContactTableViewCell.h */,
-				94D8FCBE1B6ABDD300B89C29 /* TRVContactTableViewCell.m */,
-				94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */,
-				94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */,
-				94D8FCBA1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.h */,
-				94D8FCBB1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m */,
+				94D8FCC01B6AC52300B89C29 /* Custom Cells */,
+				94D8FCB61B6AA31D00B89C29 /* View */,
 				94C2EDA61B69662F00BC2F7C /* TRVProfileViewController.h */,
 				94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */,
 				94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */,
@@ -238,6 +233,19 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		94D8FCC01B6AC52300B89C29 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				94D8FCBD1B6ABDD300B89C29 /* TRVContactTableViewCell.h */,
+				94D8FCBE1B6ABDD300B89C29 /* TRVContactTableViewCell.m */,
+				94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */,
+				94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */,
+				94D8FCBA1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.h */,
+				94D8FCBB1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		E016E9421874380702EDBE50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +307,7 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9RXLE5FXUN;
 					};
 					451565281B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -528,6 +537,7 @@
 			baseConfigurationReference = 2A091188074B9C927FC5D79C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Indigenous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -539,6 +549,7 @@
 			baseConfigurationReference = 978AD411918DBD4335023B25 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Indigenous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

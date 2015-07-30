@@ -23,6 +23,11 @@
 -(void)setUserForThisImageCell:(TRVUser *)userForThisImageCell {
     _userForThisImageCell = userForThisImageCell;
     self.profilePictureImageView.image = userForThisImageCell.userBio.profileImage;
+    
+    [self.profilePictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+        make.height.equalTo(@300);
+    }];
 }
 
 @end

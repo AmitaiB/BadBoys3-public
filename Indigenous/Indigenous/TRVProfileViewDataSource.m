@@ -29,7 +29,6 @@
 }
 
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  
     
@@ -55,6 +54,7 @@
         cell.user = self.user;
         return cell;
     } else if (indexPath.row == 2){
+        // User Email Cell
         TRVContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userContactCell"];
         cell.userForThisContactCell = self.user;
         return cell;

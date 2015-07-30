@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
 #import "TRVBio.h"
+#import <Masonry.h>
 
 @interface TRVProfileImageTableViewCell : UITableViewCell
 
