@@ -29,9 +29,11 @@
 
 -(void)setUser:(TRVUser *)user {
     _user = user;
-    self.nameLabel.text = user.userBio.firstName;
+    self.firstNameLabel.text = user.userBio.firstName;
+    self.lastNameLabel.text = user.userBio.lastName;
     self.homeCityLabel.text = user.userBio.homeCity;
     self.homeCountryLabel.text = user.userBio.homeCountry;
+    self.userTaglineLabel.text = user.userBio.userTagline;
 }
 
 

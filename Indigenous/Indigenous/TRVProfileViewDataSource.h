@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TRVUser.h"
+
 
 @interface TRVProfileViewDataSource : NSObject <UITableViewDataSource>
 
+@property (nonatomic, strong) TRVUser *user;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 

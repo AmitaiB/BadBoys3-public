@@ -11,7 +11,8 @@
 #import "TRVBio.h"
 
 @interface TRVUserSnippetTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *homeCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *homeCountryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userTaglineLabel;

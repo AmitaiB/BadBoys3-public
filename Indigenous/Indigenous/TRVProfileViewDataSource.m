@@ -8,11 +8,11 @@
 
 #import "TRVProfileViewDataSource.h"
 #import "TRVUserSnippetTableViewCell.h"
+#import "TRVProfileImageTableViewCell.h"
 #import "TRVBio.h"
 #import "TRVUser.h"
 
 @interface TRVProfileViewDataSource()
-@property (nonatomic, strong) TRVUser *currentUser;
 @end
 
 @implementation TRVProfileViewDataSource
@@ -27,21 +27,39 @@
     return 2;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if(indexPath.row == 0) {
+        return [indexPath row] * 5.5;
+    }
+        return [indexPath row]  ;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  
-    self.currentUser = [[TRVUser alloc] init];
-
-    self.currentUser.userBio = [[TRVBio alloc] initTouristWithUserName:@"leo" firstName:@"Leo" lastName:@"Kwan" email:@"leokwanbt14@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
     
+    // Create an instance of current user and user bio
+    self.user = [[TRVUser alloc] init];
 
+    self.user.userBio = [[TRVBio alloc] initTouristWithUserName:@"leo" firstName:@"Leo" lastName:@"Kwan" email:@"leokwanbt14@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
+    self.user.userBio.homeCity = @"New York";
+    self.user.userBio.homeCountry = @"United States";
+    self.user.userBio.userTagline = @"Loves fried chicken and ramen. Super Spontaneous Person!";
+    self.user.userBio.profileImage = [UIImage imageNamed:@"leo.jpg"];
+    
+    
+    // Profile Picture Cell
     if(indexPath.row == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"profileImageCell"];
+        TRVProfileImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"profileImageCell"];
+        cell.userForThisImageCell = self.user;
         return cell;
     }
+    // User Snippet Cell
     else if (indexPath.row == 1) {
         TRVUserSnippetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userInfoSnippetCell"];
-        cell.user = self.currentUser;
+        cell.user = self.user;
         return cell;
     }
     

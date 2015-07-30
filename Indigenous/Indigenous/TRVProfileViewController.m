@@ -24,10 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableViewDataSource = [[TRVProfileViewDataSource alloc] init];
-
     self.profileTableView.dataSource = self.tableViewDataSource;
     
-       // Do any additional setup after loading the view.
 }
 
 @end
