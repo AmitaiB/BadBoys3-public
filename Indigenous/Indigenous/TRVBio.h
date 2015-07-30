@@ -11,13 +11,17 @@
 
 @interface TRVBio : NSObject
 
+// Don't need a username really.  We go via Fist and Last name.
 @property (nonatomic, strong) NSString *userName;
+
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic) NSUInteger phoneNumber;
 @property (nonatomic, strong) UIImage *profileImage;
 @property (nonatomic, strong) NSString *bioDescription;
+
+// Not sure if we need interests
 @property (nonatomic, strong) NSMutableArray *interests;
 @property (nonatomic, strong) NSString *language;
 

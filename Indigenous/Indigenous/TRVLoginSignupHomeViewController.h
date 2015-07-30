@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TRVLoginSignupViewController : UIViewController
+@interface TRVLoginSignupHomeViewController : UIViewController
 
 @end
