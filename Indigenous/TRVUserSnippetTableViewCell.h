@@ -12,7 +12,9 @@
 
 @interface TRVUserSnippetTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeCityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeCountryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userTaglineLabel;
 @property (nonatomic, strong) TRVUser *user;
 
 

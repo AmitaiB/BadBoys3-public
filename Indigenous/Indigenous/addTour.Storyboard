@@ -53,27 +53,39 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userInfoSnippetCell" id="W4l-zw-PBb" customClass="TRVUserSnippetTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userInfoSnippetCell" rowHeight="114" id="W4l-zw-PBb" customClass="TRVUserSnippetTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W4l-zw-PBb" id="uXj-a3-dsT">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2z-Ao-U5p">
-                                                    <rect key="frame" x="77" y="38" width="45.5" height="20.5"/>
+                                                    <rect key="frame" x="77" y="38" width="46" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLs-7v-AP1">
-                                                    <rect key="frame" x="77" y="79" width="41" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="home city" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLs-7v-AP1">
+                                                    <rect key="frame" x="58" y="79" width="75" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="one line tagline" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPz-8W-FfN">
+                                                    <rect key="frame" x="395" y="51" width="116" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="home country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqN-q1-vKy">
+                                                    <rect key="frame" x="178" y="79" width="106" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="xLs-7v-AP1" firstAttribute="leading" secondItem="uXj-a3-dsT" secondAttribute="leadingMargin" constant="69" id="7Ja-kb-xmS"/>
+                                                <constraint firstItem="xLs-7v-AP1" firstAttribute="leading" secondItem="uXj-a3-dsT" secondAttribute="leadingMargin" constant="50" id="7Ja-kb-xmS"/>
                                                 <constraint firstItem="K2z-Ao-U5p" firstAttribute="leading" secondItem="uXj-a3-dsT" secondAttribute="leadingMargin" constant="69" id="bpA-RW-giJ"/>
                                                 <constraint firstItem="K2z-Ao-U5p" firstAttribute="top" secondItem="uXj-a3-dsT" secondAttribute="topMargin" constant="30" id="mQK-Xr-wPv"/>
                                                 <constraint firstItem="xLs-7v-AP1" firstAttribute="top" secondItem="K2z-Ao-U5p" secondAttribute="bottom" constant="21" id="q1T-fX-vJg"/>
@@ -86,8 +98,10 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="emailLabel" destination="xLs-7v-AP1" id="IMu-FP-lXa"/>
+                                            <outlet property="homeCityLabel" destination="xLs-7v-AP1" id="zfV-q1-S01"/>
+                                            <outlet property="homeCountryLabel" destination="dqN-q1-vKy" id="c7u-BJ-bOl"/>
                                             <outlet property="nameLabel" destination="K2z-Ao-U5p" id="ik7-eX-ZsM"/>
+                                            <outlet property="userTaglineLabel" destination="fPz-8W-FfN" id="2qP-IF-UuS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

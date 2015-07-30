@@ -75,8 +75,8 @@
 		94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVProfileViewController.m; sourceTree = "<group>"; };
 		94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSearchViewController.h; sourceTree = "<group>"; };
 		94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSearchViewController.m; sourceTree = "<group>"; };
-		94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVUserSnippetTableViewCell.h; sourceTree = "<group>"; };
-		94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVUserSnippetTableViewCell.m; sourceTree = "<group>"; };
+		94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVUserSnippetTableViewCell.h; path = ../TRVUserSnippetTableViewCell.h; sourceTree = "<group>"; };
+		94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRVUserSnippetTableViewCell.m; path = ../TRVUserSnippetTableViewCell.m; sourceTree = "<group>"; };
 		94C77F831B68354E003836E3 /* TRVTourStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStop.h; sourceTree = "<group>"; };
 		94C77F841B68354E003836E3 /* TRVTourStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStop.m; sourceTree = "<group>"; };
 		94C77F851B68354E003836E3 /* TRVRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRating.h; sourceTree = "<group>"; };
@@ -110,15 +110,6 @@
 		3859EDF11B69400E001C5693 /* Business Logic/Models */ = {
 			isa = PBXGroup;
 			children = (
-				94C2EDA11B69637900BC2F7C /* addTour.Storyboard */,
-				94C2EDA61B69662F00BC2F7C /* TRVProfileViewController.h */,
-				94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */,
-				94D8FCB21B6A7B2B00B89C29 /* TRVProfileViewDataSource.h */,
-				94D8FCB31B6A7B2B00B89C29 /* TRVProfileViewDataSource.m */,
-				94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */,
-				94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */,
-				94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */,
-				94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */,
 				3859EDEE1B694003001C5693 /* TRVTour.h */,
 				3859EDEF1B694003001C5693 /* TRVTour.m */,
 				3859EDF21B694031001C5693 /* TRVItinerary.h */,
@@ -132,8 +123,6 @@
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
-				94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */,
-				94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */,
 				451565121B68221B005A2871 /* Indigenous */,
 				4515652C1B68221B005A2871 /* IndigenousTests */,
 				451565111B68221B005A2871 /* Products */,
@@ -154,6 +143,17 @@
 		451565121B68221B005A2871 /* Indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				94D8FCB61B6AA31D00B89C29 /* View */,
+				94C2EDA11B69637900BC2F7C /* addTour.Storyboard */,
+				94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */,
+				94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */,
+				94C2EDA61B69662F00BC2F7C /* TRVProfileViewController.h */,
+				94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */,
+				94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */,
+				94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */,
+				94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */,
+				94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */,
+				94D8FCB51B6AA2B400B89C29 /* Profile Models */,
 				3859EDF11B69400E001C5693 /* Business Logic/Models */,
 				94C77F851B68354E003836E3 /* TRVRating.h */,
 				94C77F861B68354E003836E3 /* TRVRating.m */,
@@ -210,6 +210,22 @@
 				978AD411918DBD4335023B25 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		94D8FCB51B6AA2B400B89C29 /* Profile Models */ = {
+			isa = PBXGroup;
+			children = (
+				94D8FCB21B6A7B2B00B89C29 /* TRVProfileViewDataSource.h */,
+				94D8FCB31B6A7B2B00B89C29 /* TRVProfileViewDataSource.m */,
+			);
+			name = "Profile Models";
+			sourceTree = "<group>";
+		};
+		94D8FCB61B6AA31D00B89C29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		E016E9421874380702EDBE50 /* Frameworks */ = {

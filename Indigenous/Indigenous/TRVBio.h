@@ -20,6 +20,8 @@
 @property (nonatomic, strong) NSString *bioDescription;
 @property (nonatomic, strong) NSMutableArray *interests;
 @property (nonatomic, strong) NSString *language;
+@property (nonatomic, strong) NSString *homeCity;
+@property (nonatomic, strong) NSString *homeCountry;
 
 
 //GUIDE SPECIFIC PROPERTIES
