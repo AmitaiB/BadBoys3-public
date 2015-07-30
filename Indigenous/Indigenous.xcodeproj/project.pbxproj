@@ -19,7 +19,6 @@
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
 		451565241B68221B005A2871 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451565221B68221B005A2871 /* LaunchScreen.xib */; };
 		451565301B68221B005A2871 /* IndigenousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4515652F1B68221B005A2871 /* IndigenousTests.m */; };
-		45E772CD1B6824C400003C7C /* TRVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CC1B6824C400003C7C /* TRVUser.m */; };
 		45E772D01B68291300003C7C /* TRVBio.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CF1B68291300003C7C /* TRVBio.m */; };
 		45E772D51B6961D700003C7C /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E772D41B6961D700003C7C /* LoginSignup.storyboard */; };
 		45E772D91B6962E700003C7C /* TRVLoginSignupHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772D81B6962E700003C7C /* TRVLoginSignupHomeViewController.m */; };
@@ -29,8 +28,16 @@
 		45E772E61B6A695F00003C7C /* TRVSignupWithEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772E51B6A695F00003C7C /* TRVSignupWithEmailViewController.m */; };
 		45E772E91B6A778200003C7C /* TRVFacebookLoginHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772E81B6A778200003C7C /* TRVFacebookLoginHandler.m */; };
 		45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */; };
-		94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F841B68354E003836E3 /* TRVTourStop.m */; };
+		94A5559F1B6AD22900076C99 /* TRVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CC1B6824C400003C7C /* TRVUser.m */; };
+		94C2EDA21B69637900BC2F7C /* addTour.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C2EDA11B69637900BC2F7C /* addTour.Storyboard */; };
+		94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */; };
+		94C2EDA81B69662F00BC2F7C /* TRVProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */; };
+		94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */; };
+		94C2EDB01B69709600BC2F7C /* TRVUserSnippetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */; };
 		94C77F881B68354E003836E3 /* TRVRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F861B68354E003836E3 /* TRVRating.m */; };
+		94D8FCB41B6A7B2B00B89C29 /* TRVProfileViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8FCB31B6A7B2B00B89C29 /* TRVProfileViewDataSource.m */; };
+		94D8FCBC1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8FCBB1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m */; };
+		94D8FCBF1B6ABDD300B89C29 /* TRVContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94D8FCBE1B6ABDD300B89C29 /* TRVContactTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,10 +92,25 @@
 		45E772E81B6A778200003C7C /* TRVFacebookLoginHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVFacebookLoginHandler.m; sourceTree = "<group>"; };
 		45E772EA1B6AC4DA00003C7C /* TRVUserSignupHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVUserSignupHandler.h; sourceTree = "<group>"; };
 		45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVUserSignupHandler.m; sourceTree = "<group>"; };
+		94C2EDA11B69637900BC2F7C /* addTour.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = addTour.Storyboard; sourceTree = "<group>"; };
+		94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSearchTripsViewController.h; sourceTree = "<group>"; };
+		94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSearchTripsViewController.m; sourceTree = "<group>"; };
+		94C2EDA61B69662F00BC2F7C /* TRVProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVProfileViewController.h; sourceTree = "<group>"; };
+		94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVProfileViewController.m; sourceTree = "<group>"; };
+		94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSearchViewController.h; sourceTree = "<group>"; };
+		94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSearchViewController.m; sourceTree = "<group>"; };
+		94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVUserSnippetTableViewCell.h; path = ../TRVUserSnippetTableViewCell.h; sourceTree = "<group>"; };
+		94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRVUserSnippetTableViewCell.m; path = ../TRVUserSnippetTableViewCell.m; sourceTree = "<group>"; };
 		94C77F831B68354E003836E3 /* TRVTourStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStop.h; sourceTree = "<group>"; };
 		94C77F841B68354E003836E3 /* TRVTourStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStop.m; sourceTree = "<group>"; };
 		94C77F851B68354E003836E3 /* TRVRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRating.h; sourceTree = "<group>"; };
 		94C77F861B68354E003836E3 /* TRVRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVRating.m; sourceTree = "<group>"; };
+		94D8FCB21B6A7B2B00B89C29 /* TRVProfileViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVProfileViewDataSource.h; sourceTree = "<group>"; };
+		94D8FCB31B6A7B2B00B89C29 /* TRVProfileViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVProfileViewDataSource.m; sourceTree = "<group>"; };
+		94D8FCBA1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVProfileImageTableViewCell.h; sourceTree = "<group>"; };
+		94D8FCBB1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVProfileImageTableViewCell.m; sourceTree = "<group>"; };
+		94D8FCBD1B6ABDD300B89C29 /* TRVContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVContactTableViewCell.h; sourceTree = "<group>"; };
+		94D8FCBE1B6ABDD300B89C29 /* TRVContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVContactTableViewCell.m; sourceTree = "<group>"; };
 		978AD411918DBD4335023B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D69FD457D9B6860BB4D3A8B4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2D729CE63AF68C9FEE85FC /* libPods-Indigenous.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Indigenous.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +171,16 @@
 		451565121B68221B005A2871 /* Indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				94C2EDA11B69637900BC2F7C /* addTour.Storyboard */,
+				94D8FCC01B6AC52300B89C29 /* Custom Cells */,
+				94D8FCB61B6AA31D00B89C29 /* View */,
+				94C2EDA61B69662F00BC2F7C /* TRVProfileViewController.h */,
+				94C2EDA71B69662F00BC2F7C /* TRVProfileViewController.m */,
+				94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */,
+				94C2EDAA1B69664400BC2F7C /* TRVSearchViewController.m */,
+				94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */,
+				94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */,
+				94D8FCB51B6AA2B400B89C29 /* Profile Models */,
 				3859EDF11B69400E001C5693 /* Business Logic/Models */,
 				94C77F851B68354E003836E3 /* TRVRating.h */,
 				94C77F861B68354E003836E3 /* TRVRating.m */,
@@ -238,6 +270,35 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		94D8FCB51B6AA2B400B89C29 /* Profile Models */ = {
+			isa = PBXGroup;
+			children = (
+				94D8FCB21B6A7B2B00B89C29 /* TRVProfileViewDataSource.h */,
+				94D8FCB31B6A7B2B00B89C29 /* TRVProfileViewDataSource.m */,
+			);
+			name = "Profile Models";
+			sourceTree = "<group>";
+		};
+		94D8FCB61B6AA31D00B89C29 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		94D8FCC01B6AC52300B89C29 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				94D8FCBD1B6ABDD300B89C29 /* TRVContactTableViewCell.h */,
+				94D8FCBE1B6ABDD300B89C29 /* TRVContactTableViewCell.m */,
+				94C2EDAE1B69709600BC2F7C /* TRVUserSnippetTableViewCell.h */,
+				94C2EDAF1B69709600BC2F7C /* TRVUserSnippetTableViewCell.m */,
+				94D8FCBA1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.h */,
+				94D8FCBB1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		E016E9421874380702EDBE50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +360,7 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9RXLE5FXUN;
 					};
 					451565281B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -330,6 +392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C2EDA21B69637900BC2F7C /* addTour.Storyboard in Resources */,
 				45E772D51B6961D700003C7C /* LoginSignup.storyboard in Resources */,
 				4515651F1B68221B005A2871 /* Main.storyboard in Resources */,
 				451565241B68221B005A2871 /* LaunchScreen.xib in Resources */,
@@ -385,16 +448,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				4515651C1B68221B005A2871 /* ViewController.m in Sources */,
+				94C2EDA81B69662F00BC2F7C /* TRVProfileViewController.m in Sources */,
+				94D8FCBC1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m in Sources */,
 				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,
+				94C2EDB01B69709600BC2F7C /* TRVUserSnippetTableViewCell.m in Sources */,
 				45E772E91B6A778200003C7C /* TRVFacebookLoginHandler.m in Sources */,
 				384AFBB71B695DF400E169A9 /* TRVConstants.m in Sources */,
+				94A5559F1B6AD22900076C99 /* TRVUser.m in Sources */,
 				451565191B68221B005A2871 /* AppDelegate.m in Sources */,
 				451565161B68221B005A2871 /* main.m in Sources */,
 				45E772DC1B6A670100003C7C /* TRVLoginViewController.m in Sources */,
 				94C77F881B68354E003836E3 /* TRVRating.m in Sources */,
+				94D8FCB41B6A7B2B00B89C29 /* TRVProfileViewDataSource.m in Sources */,
+				94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */,
+				94D8FCBF1B6ABDD300B89C29 /* TRVContactTableViewCell.m in Sources */,
+				94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */,
 				45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */,
-				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
-				45E772CD1B6824C400003C7C /* TRVUser.m in Sources */,
 				45E772E01B6A674800003C7C /* TRVSignupViewController.m in Sources */,
 				45E772E61B6A695F00003C7C /* TRVSignupWithEmailViewController.m in Sources */,
 				3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */,
@@ -528,6 +597,7 @@
 			baseConfigurationReference = 2A091188074B9C927FC5D79C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Indigenous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -539,6 +609,7 @@
 			baseConfigurationReference = 978AD411918DBD4335023B25 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Indigenous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -32,7 +32,6 @@
         _bioDescription = bioDescription;
         _interests = interests;
         _language = language;
-  
     }
     return self;
 }
