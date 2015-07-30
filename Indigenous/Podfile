@@ -1,4 +1,8 @@
-    pod 'ParseUI', '~> 1.1'
-    pod 'Parse'
-    pod 'MPSkewed'
-    pod 'GoogleMaps' #, '~> 1.10'
+pod 'ParseUI', '~> 1.1'
+pod 'Parse'
+pod 'MPSkewed'
+pod 'GoogleMaps' #, '~> 1.10'
+pod 'Masonry'
+pod "FBSDKCoreKit" 
+pod "FBSDKLoginKit"
+pod "FBSDKShareKit"
