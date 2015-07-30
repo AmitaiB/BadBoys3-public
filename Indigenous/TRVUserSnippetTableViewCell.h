@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVUser.h"
+#import "TRVBio.h"
 
 @interface TRVUserSnippetTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (nonatomic, strong) TRVUser *user;
 
 
 

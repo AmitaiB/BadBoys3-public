@@ -8,6 +8,12 @@
 
 #import "TRVUserSnippetTableViewCell.h"
 
+@interface TRVUserSnippetTableViewCell()
+
+@property (nonatomic, strong) TRVBio *bioForThisUser;
+
+@end
+
 @implementation TRVUserSnippetTableViewCell
 
 - (void)awakeFromNib {
@@ -19,5 +25,13 @@
 
     // Configure the view for the selected state
 }
+
+
+-(void)setUser:(TRVUser *)user {
+    _user = user;
+    self.nameLabel.text = user.userBio.firstName;
+    self.emailLabel.text = user.userBio.email;
+}
+
 
 @end
