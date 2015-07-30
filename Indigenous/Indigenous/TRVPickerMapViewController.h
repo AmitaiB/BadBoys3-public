@@ -10,6 +10,4 @@
 
 @interface TRVPickerMapViewController : UIViewController
 
--(void) safeRequestForWhenInUseAuth;
-
 @end

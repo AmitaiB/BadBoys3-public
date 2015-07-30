@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <UIKit/UIKit.h>
 
-@interface TRVCoreLocator : NSObject <CLLocationManagerDelegate>
+@interface TRVCoreLocator : UIViewController <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocation *currentLocation;
 
+-(instancetype)init;
+
 -(CLLocation*)YouAreHere;
+
+-(void) safeRequestForWhenInUseAuth;
 
 @end
