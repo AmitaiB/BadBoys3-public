@@ -9,6 +9,7 @@
 #import "TRVTouristMyTripsViewController.h"
 #import "TRVTouristTripDataSource.h"
 #import "TRVUser.h"
+#import "TRVTour.h"
 
 @interface TRVTouristMyTripsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -18,26 +19,24 @@
 
 @implementation TRVTouristMyTripsViewController
 
-- (NSArray*)pastTrips {
-    NSPredicate *pastPred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [evaluatedObject compare:[NSDate date]] == NSOrderedAscending;
-    }];
-    return [self.tourist.myTrips filteredArrayUsingPredicate:pastPred];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] init];
-    
+    TRVTour *aTour = [[TRVTour alloc] init];
+    aTour.tourItinerary = [[TRVItinerary alloc] init];
+    aTour.tourItinerary.name = @"PBBBBBBBBT";
+    aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
+    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:@[aTour] configuration:nil];
     self.tripTableView.dataSource = self.tableViewDataSource;
-    //(__bridge id<UITableViewDataSource>)(CFRetain((__bridge CFTypeRef)([[TRVTouristTripDataSource alloc] init])));
-    // Do any additional setup after loading the view.
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)segmentedControlChanged:(id)sender {
+    [self.tableViewDataSource changeTripsDisplayed];
+    [self.tripTableView reloadData];
 }
 
 /*

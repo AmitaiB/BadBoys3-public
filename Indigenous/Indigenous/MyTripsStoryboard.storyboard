@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1j9-JH-MIQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -23,17 +23,23 @@
                                     <segment title="Upcoming"/>
                                     <segment title="Past Tours"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="U3t-qH-CFD" eventType="valueChanged" id="hLT-p5-SIM"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-SG-l7o">
                                 <rect key="frame" x="0.0" y="167" width="600" height="433"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripIdentifier" id="iPL-Gz-GYw" customClass="TRVTouristTripTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" id="iPL-Gz-GYw" customClass="TRVTouristTripTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iPL-Gz-GYw" id="GO6-8U-1yi">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="gqK-AQ-dGd" kind="show" identifier="tripDetailSegue" id="5PZ-xr-ZTA"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -65,7 +71,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xmV-1h-xBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="268"/>
+            <point key="canvasLocation" x="4" y="342"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="EFV-hU-2rO">
+            <objects>
+                <viewController id="gqK-AQ-dGd" customClass="TRVTouristTripDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c30-ZK-Riu"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ra4-1G-OuD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4Aw-Ck-NtL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JpQ-S0-Elr">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nmb-wC-hLb">
+                                <rect key="frame" x="0.0" y="172" width="600" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nmb-wC-hLb" firstAttribute="top" secondItem="JpQ-S0-Elr" secondAttribute="bottom" id="OTu-OL-XOy"/>
+                            <constraint firstItem="JpQ-S0-Elr" firstAttribute="leading" secondItem="4Aw-Ck-NtL" secondAttribute="leading" id="SXm-Ka-Fgo"/>
+                            <constraint firstAttribute="trailing" secondItem="JpQ-S0-Elr" secondAttribute="trailing" id="uDQ-6C-qZM"/>
+                            <constraint firstItem="JpQ-S0-Elr" firstAttribute="top" secondItem="c30-ZK-Riu" secondAttribute="bottom" id="uZE-5U-854"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="3aD-oR-lZn"/>
+                    <connections>
+                        <outlet property="navBarTitle" destination="3aD-oR-lZn" id="wrw-pr-P4Y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJt-6P-oq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="762" y="342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zb5-qK-BbQ">
@@ -83,7 +129,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KM9-5k-h6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-80" y="268"/>
+            <point key="canvasLocation" x="-808" y="342"/>
         </scene>
     </scenes>
 </document>

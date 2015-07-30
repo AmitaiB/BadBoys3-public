@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface TRVTouristTripDataSource : NSObject
+@interface TRVTouristTripDataSource : NSObject <UITableViewDataSource>
 
 -(instancetype)initWithTrips:(NSArray*)trips configuration:(void (^)())configureCell;
+- (void) changeTripsDisplayed;
 
 @end

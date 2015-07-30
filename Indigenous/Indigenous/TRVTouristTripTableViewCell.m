@@ -7,17 +7,26 @@
 //
 
 #import "TRVTouristTripTableViewCell.h"
+#import "TRVTour.h"
 
 @implementation TRVTouristTripTableViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
+//-(instancetype)initWithTour:(TRVTour*)tour reuseIdentifier:(NSString*)reuseIdentifier {
+//    if (self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
+//        self.textLabel.text = tour.tourItinerary.name;
+//    }
+//    return self;
+//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setTour:(TRVTour *)tour {
+    _tour = tour;
+    self.textLabel.text = tour.tourItinerary.name;
 }
 
 @end

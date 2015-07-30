@@ -7,21 +7,29 @@
 //
 
 #import "TRVTouristTripDataSource.h"
-#import <UIKit/UIKit.h>
+#import "TRVTour.h"
+#import "TRVTouristTripTableViewCell.h"
 
-@interface TRVTouristTripDataSource () <UITableViewDataSource>
+@interface TRVTouristTripDataSource ()
 
 @property (nonatomic, weak) NSArray *trips;
 @property (nonatomic, copy) void (^configureCell)();
 
 @end
 
-@implementation TRVTouristTripDataSource
+@implementation TRVTouristTripDataSource {
+    NSArray *_pastTrips;
+    NSArray *_futureTrips;
+    BOOL     _past;
+}
 
 -(instancetype)initWithTrips:(NSArray *)trips configuration:(void (^)())configureCell {
     if (self = [super init]) {
         _trips = trips;
+        _pastTrips = [self filterTripsWithComparisonResult:NSOrderedAscending];
+        _futureTrips = [self futureTrips];
         _configureCell = configureCell;
+        _past = NO;
     }
     return self;
 }
@@ -32,16 +40,40 @@
 
 - (NSInteger)tableView:(UITableView*)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return 0;//items.count;
+    if (_past)
+        return [_pastTrips count];
+    return [_futureTrips count];
 }
 
 - (UITableViewCell*)tableView:(UITableView*)tableView
         cellForRowAtIndexPath:(NSIndexPath*)indexPath {
-    //id cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
-    //                                          forIndexPath:indexPath];
-    //id item = [self itemAtIndexPath:indexPath];
-    //configureCellBlock(cell,item);
-    return nil;//cell;
+    TRVTour *tourForCell = nil;
+    if (_past)
+        tourForCell = _pastTrips[indexPath.row];
+    else
+        tourForCell = _futureTrips[indexPath.row];
+    TRVTouristTripTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
+    cell.tour = tourForCell;
+    //cell.textLabel.text = tourForCell.tourItinerary.name;
+    return cell;
+}
+
+- (void) changeTripsDisplayed {
+    _past = !_past;
+}
+
+- (NSArray*)filterTripsWithComparisonResult:(NSComparisonResult)comparisonResult {
+    NSPredicate *pastPred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [[evaluatedObject valueForKey:@"tourDeparture"] compare:[NSDate date]] == comparisonResult;
+    }];
+    return [self.trips filteredArrayUsingPredicate:pastPred];
+}
+
+- (NSArray*)futureTrips {
+    NSPredicate *futurePred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [[evaluatedObject valueForKey:@"tourDeparture"] compare:[NSDate date]] == NSOrderedDescending;
+    }];
+    return [self.trips filteredArrayUsingPredicate:futurePred];
 }
 
 @end

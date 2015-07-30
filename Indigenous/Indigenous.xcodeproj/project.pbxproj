@@ -43,6 +43,8 @@
 		FA57FA1C1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */; };
 		FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */; };
 		FA57FA221B696F2A00CFBB89 /* TRVTouristTripDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */; };
+		FA57FA2A1B6A715F00CFBB89 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA57FA291B6A715F00CFBB89 /* libPods.a */; };
+		FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA2C1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,12 @@
 		FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristTripTableViewCell.m; sourceTree = "<group>"; };
 		FA57FA201B696F2A00CFBB89 /* TRVTouristTripDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTouristTripDataSource.h; sourceTree = "<group>"; };
 		FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristTripDataSource.m; sourceTree = "<group>"; };
+		FA57FA231B6A70C200CFBB89 /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "Pods/../build/Debug-iphoneos/libBolts.a"; sourceTree = "<group>"; };
+		FA57FA251B6A710400CFBB89 /* libBolts.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBolts.a; path = "Pods/../build/Debug-iphoneos/libBolts.a"; sourceTree = "<group>"; };
+		FA57FA271B6A715400CFBB89 /* libMPSkewed.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMPSkewed.a; path = "Pods/../build/Debug-iphoneos/libMPSkewed.a"; sourceTree = "<group>"; };
+		FA57FA291B6A715F00CFBB89 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		FA57FA2B1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTouristTripDetailViewController.h; sourceTree = "<group>"; };
+		FA57FA2C1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristTripDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2962A5F97D5F70B097944CA3 /* libPods.a in Frameworks */,
+				FA57FA2A1B6A715F00CFBB89 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +323,10 @@
 		E016E9421874380702EDBE50 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA57FA291B6A715F00CFBB89 /* libPods.a */,
+				FA57FA271B6A715400CFBB89 /* libMPSkewed.a */,
+				FA57FA251B6A710400CFBB89 /* libBolts.a */,
+				FA57FA231B6A70C200CFBB89 /* libBolts.a */,
 				D69FD457D9B6860BB4D3A8B4 /* libPods.a */,
 				EB2D729CE63AF68C9FEE85FC /* libPods-Indigenous.a */,
 			);
@@ -324,15 +336,33 @@
 		FA57FA191B6969EF00CFBB89 /* MyTrips */ = {
 			isa = PBXGroup;
 			children = (
+				FA57FA321B6AB21E00CFBB89 /* DataSources */,
+				FA57FA2E1B6AB1E600CFBB89 /* DetailViewCells */,
 				FA57FA171B69663200CFBB89 /* MyTripsStoryboard.storyboard */,
 				FA57FA1A1B696A9100CFBB89 /* TRVTouristMyTripsViewController.h */,
 				FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */,
 				FA57FA1D1B696AF800CFBB89 /* TRVTouristTripTableViewCell.h */,
 				FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */,
+				FA57FA2B1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.h */,
+				FA57FA2C1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m */,
+			);
+			name = MyTrips;
+			sourceTree = "<group>";
+		};
+		FA57FA2E1B6AB1E600CFBB89 /* DetailViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DetailViewCells;
+			sourceTree = "<group>";
+		};
+		FA57FA321B6AB21E00CFBB89 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
 				FA57FA201B696F2A00CFBB89 /* TRVTouristTripDataSource.h */,
 				FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */,
 			);
-			name = MyTrips;
+			name = DataSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4515651C1B68221B005A2871 /* ViewController.m in Sources */,
+				FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */,
 				94C2EDA81B69662F00BC2F7C /* TRVProfileViewController.m in Sources */,
 				94D8FCBC1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m in Sources */,
 				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,
@@ -632,6 +663,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Indigenous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -644,6 +679,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Indigenous/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

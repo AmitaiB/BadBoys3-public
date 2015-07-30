@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class TRVTour;
+
 @interface TRVTouristTripTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) TRVTour *tour;
+
+-(instancetype)initWithTour:(TRVTour*)tour reuseIdentifier:(NSString*)reuseIdentifier;
 
 @end
