@@ -146,6 +146,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="NIu-Ea-YQQ"/>
+                    <connections>
+                        <outlet property="facebookLoginButton" destination="uLp-fy-OjG" id="ch2-hT-OgD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfQ-yr-ziZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

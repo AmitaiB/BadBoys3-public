@@ -33,7 +33,7 @@
     if ([FBSDKAccessToken currentAccessToken]) {
         // User is logged in, do work such as go to next view controller.
         NSLog(@"Facebook user logged in");
-        [self transitionToHomeStoryboard];
+        [self transitionToHomeStoryboardWithFacebookID:@([[FBSDKAccessToken currentAccessToken].userID integerValue])];
     } else {
         NSLog(@"Facebook user not logged in.");
     }
@@ -43,12 +43,12 @@
 
 -(void)setUpFacebookLoginButton{
     
-    self.loginHandler = [[TRVFacebookLoginHandler alloc]initWithButton:self.facebookLoginButton];
+    self.loginHandler = [[TRVFacebookLoginHandler alloc]initLoginWithButton:self.facebookLoginButton];
     
-    [self.loginHandler presentHomeStoryboardOnSuccessfulLogin:^(BOOL success) {
+    [self.loginHandler loginToFacebook:^(BOOL success, NSNumber *facebookID) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSLog(@"About to transition!");
-            [self transitionToHomeStoryboard];
+            NSLog(@"Email: %@ \nAbout to transition!", facebookID);
+            [self transitionToHomeStoryboardWithFacebookID:facebookID];
         }];
     }];
     
@@ -57,12 +57,12 @@
 
 - (IBAction)loginButtonPressed:(id)sender {
 
-    [self transitionToHomeStoryboard];
+    [self transitionToHomeStoryboardWithEmail:nil andPassword:nil];
 
 }
 
 
--(void)transitionToHomeStoryboard {
+-(void)transitionToHomeStoryboardWithFacebookID:(NSNumber *)facebookID {
     
     
     
@@ -71,6 +71,12 @@
     
 }
 
+
+-(void)transitionToHomeStoryboardWithEmail:(NSString*)email andPassword:(NSString*)password{
+    
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

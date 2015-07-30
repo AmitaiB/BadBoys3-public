@@ -7,8 +7,13 @@
 //
 
 #import "TRVSignupViewController.h"
+#import "TRVFacebookLoginHandler.h"
+
 
 @interface TRVSignupViewController ()
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *facebookLoginButton;
+@property (nonatomic, strong) TRVFacebookLoginHandler *loginHandler;
+
 
 @end
 
@@ -16,7 +21,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self setUpFacebookSignupButton];
+}
+
+
+-(void)setUpFacebookSignupButton{
+    
+    self.loginHandler = [[TRVFacebookLoginHandler alloc]initSignupWithButton:self.facebookLoginButton];
+    
+    [self.loginHandler loginToFacebook:^(BOOL success, NSNumber *facebookID) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSLog(@"Email: %@ \nAbout to transition!", facebookID);
+            [self transitionToCompleteProfileViewWithFacebookID:facebookID];
+        }];
+    }];
+    
+}
+
+
+-(void)transitionToCompleteProfileViewWithFacebookID:(NSNumber*)facebookID {
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

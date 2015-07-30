@@ -7,6 +7,7 @@
 //
 
 #import "TRVFacebookLoginHandler.h"
+#import "TRVUserSignupHandler.h"
 
 @interface TRVFacebookLoginHandler () <FBSDKLoginButtonDelegate>
 
@@ -21,7 +22,7 @@
 
 
 
--(instancetype)initWithButton:(FBSDKLoginButton*)button {
+-(instancetype)initLoginWithButton:(FBSDKLoginButton*)button {
     
     self = [super init];
     if (self){
@@ -36,7 +37,21 @@
 }
 
 
--(void)presentHomeStoryboardOnSuccessfulLogin:(void (^)(BOOL success))completion{
+-(instancetype)initSignupWithButton:(FBSDKLoginButton*)button {
+    
+    self = [super init];
+    if (self){
+        _facebookLoginButton = button;
+        
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignupStatusChanged) name:FBSDKProfileDidChangeNotification object:nil];
+    
+    return self;
+    
+}
+
+-(void)loginToFacebook:(void (^)(BOOL success, NSNumber *facebookID))completion{
     
     
     self.facebookLoginButton.delegate = self;
@@ -49,6 +64,45 @@
     
 }
 
+-(void)userSignupStatusChanged{
+    
+    self.currentFacebookProfile = [FBSDKProfile currentProfile];
+    NSLog(@"Current Profile %@", self.currentFacebookProfile);
+    
+    if (self.currentFacebookProfile){
+        
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"first_name, last_name, picture.width(540).height(540), email, name, id, gender, birthday"}]
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             if (error) {
+                 NSLog(@"Login error: %@", [error localizedDescription]);
+                 return;
+             }
+             
+             
+              NSLog(@"fecthed user: %@  email: %@ birthday: %@, profilePhotoURL: %@", result, result[@"email"], result[@"birthday"], result[@"picture"][@"data"][@"url"]);
+             
+             [TRVUserSignupHandler addUserToParse:result withCompletion:^(BOOL success, NSError *error) {
+                 if (success){
+                     self.loginCompletionBlock(YES, result[@"id"]);
+                     // TODO: do we need to nil out this block property? Is there a retain cycle between this handler & the VC?
+                     //self.loginCompletionBlock = nil;
+                     return;
+                 }
+                 NSLog(@"Error adding user to parse: %@", error);
+             }];
+            
+             
+            
+             
+         }];
+        
+        
+    }
+    
+    
+}
+
+
 -(void)userLoginStatusChanged{
     
     self.currentFacebookProfile = [FBSDKProfile currentProfile];
@@ -56,7 +110,7 @@
     
     if (self.currentFacebookProfile){
         
-            [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"first_name, last_name, picture.type(large), email, name, id, gender, birthday"}]
+            [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"email"}]
              startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                  if (error) {
                      NSLog(@"Login error: %@", [error localizedDescription]);
@@ -64,9 +118,10 @@
                  }
                  
                  //SUCCESS - PRESENT NEXT VIEW
-                 self.loginCompletionBlock(YES);
-                 self.loginCompletionBlock = nil;
-                 NSLog(@"fecthed user: %@  email: %@ birthday: %@", result, result[@"email"], result[@"birthday"]);
+                 self.loginCompletionBlock(YES, result[@"id"]);
+                 // TODO: do we need to nil out this block property? Is there a retain cycle between this handler & the VC?
+                 //self.loginCompletionBlock = nil;
+                 NSLog(@"fecthed user email: %@",result[@"email"]);
 
              }];
       

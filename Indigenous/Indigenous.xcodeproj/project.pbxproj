@@ -28,6 +28,7 @@
 		45E772E31B6A68FC00003C7C /* TRVCompleteSignupWithFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772E21B6A68FC00003C7C /* TRVCompleteSignupWithFacebookViewController.m */; };
 		45E772E61B6A695F00003C7C /* TRVSignupWithEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772E51B6A695F00003C7C /* TRVSignupWithEmailViewController.m */; };
 		45E772E91B6A778200003C7C /* TRVFacebookLoginHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772E81B6A778200003C7C /* TRVFacebookLoginHandler.m */; };
+		45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */; };
 		94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F841B68354E003836E3 /* TRVTourStop.m */; };
 		94C77F881B68354E003836E3 /* TRVRating.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C77F861B68354E003836E3 /* TRVRating.m */; };
 /* End PBXBuildFile section */
@@ -82,6 +83,8 @@
 		45E772E51B6A695F00003C7C /* TRVSignupWithEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSignupWithEmailViewController.m; sourceTree = "<group>"; };
 		45E772E71B6A778200003C7C /* TRVFacebookLoginHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVFacebookLoginHandler.h; sourceTree = "<group>"; };
 		45E772E81B6A778200003C7C /* TRVFacebookLoginHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVFacebookLoginHandler.m; sourceTree = "<group>"; };
+		45E772EA1B6AC4DA00003C7C /* TRVUserSignupHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVUserSignupHandler.h; sourceTree = "<group>"; };
+		45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVUserSignupHandler.m; sourceTree = "<group>"; };
 		94C77F831B68354E003836E3 /* TRVTourStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStop.h; sourceTree = "<group>"; };
 		94C77F841B68354E003836E3 /* TRVTourStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStop.m; sourceTree = "<group>"; };
 		94C77F851B68354E003836E3 /* TRVRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRating.h; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 				45E772E51B6A695F00003C7C /* TRVSignupWithEmailViewController.m */,
 				45E772E71B6A778200003C7C /* TRVFacebookLoginHandler.h */,
 				45E772E81B6A778200003C7C /* TRVFacebookLoginHandler.m */,
+				45E772EA1B6AC4DA00003C7C /* TRVUserSignupHandler.h */,
+				45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */,
 			);
 			name = LoginSignupFlow;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				451565161B68221B005A2871 /* main.m in Sources */,
 				45E772DC1B6A670100003C7C /* TRVLoginViewController.m in Sources */,
 				94C77F881B68354E003836E3 /* TRVRating.m in Sources */,
+				45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */,
 				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
 				45E772CD1B6824C400003C7C /* TRVUser.m in Sources */,
 				45E772E01B6A674800003C7C /* TRVSignupViewController.m in Sources */,
