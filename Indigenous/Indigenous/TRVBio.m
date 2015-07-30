@@ -49,6 +49,7 @@
                                  age:(NSUInteger)age
                               gender:(NSString*)gender
                               region:(NSString*)region
+                      oneLineSummary:(NSString*)oneLineSummary;
 {
     
     self = [super init];
@@ -65,6 +66,7 @@
         _age = age;
         _gender = gender;
         _region = region;
+        _oneLineSummary = oneLineSummary;
         
     }
     return self;
