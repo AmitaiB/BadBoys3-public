@@ -27,14 +27,6 @@
     return 2;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    if(indexPath.row == 0) {
-        return [indexPath row] * 5.5;
-    }
-        return [indexPath row]  ;
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -16,16 +16,17 @@
 @property (weak, nonatomic) IBOutlet UITableView *profileTableView;
 @property (nonatomic, strong) TRVProfileViewDataSource *tableViewDataSource;
 
-
 @end
 
 @implementation TRVProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    self.profileTableView.estimatedRowHeight = 100;
+//    self.profileTableView.rowHeight = UITableViewAutomaticDimension;
+
     self.tableViewDataSource = [[TRVProfileViewDataSource alloc] init];
     self.profileTableView.dataSource = self.tableViewDataSource;
-    
 }
 
 @end
