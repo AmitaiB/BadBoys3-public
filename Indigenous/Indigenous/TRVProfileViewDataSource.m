@@ -42,6 +42,7 @@
     self.user.userBio.profileImage = [UIImage imageNamed:@"leo.jpg"];
     
     
+    
     // Profile Picture Cell
     if(indexPath.row == 0) {
         TRVProfileImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"profileImageCell"];
