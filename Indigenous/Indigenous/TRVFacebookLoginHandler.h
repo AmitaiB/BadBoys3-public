@@ -13,11 +13,11 @@
 @interface TRVFacebookLoginHandler : NSObject 
 
 
-@property (nonatomic, copy) void (^loginCompletionBlock)(BOOL success, NSNumber *facebookID);
+@property (nonatomic, copy) void (^loginCompletionBlock)(BOOL success, NSString *facebookID);
 
 -(instancetype)initLoginWithButton:(FBSDKLoginButton*)button;
 -(instancetype)initSignupWithButton:(FBSDKLoginButton*)button;
--(void)loginToFacebook:(void (^)(BOOL success, NSNumber *facebookID))completion;
+-(void)loginToFacebook:(void (^)(BOOL success, NSString *facebookID))completion;
 -(void)userLoginStatusChanged;
 
 @end
