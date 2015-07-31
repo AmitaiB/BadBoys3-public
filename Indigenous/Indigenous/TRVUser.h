@@ -14,6 +14,7 @@
 @interface TRVUser : NSObject
 
     //@property (nonatomic) BOOL isGuide;
+@property (nonatomic, strong) NSString *parseObjectID; //Is this a string?
 @property (nonatomic, strong) TRVBio *userBio;
 @property (nonatomic) TRVRating *rating;
 @property (nonatomic, strong) NSMutableArray *myTrips;  //past trips are tripHistory, futureTrips are, say, myUpcomingTrips.
