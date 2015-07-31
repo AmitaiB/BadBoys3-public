@@ -29,7 +29,10 @@
     self.tableViewDataSource = [[TRVProfileViewDataSource alloc] init];
     self.profileTableView.dataSource = self.tableViewDataSource;
     
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+
 }
 
 @end

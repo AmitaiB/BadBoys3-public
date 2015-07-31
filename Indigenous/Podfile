@@ -6,4 +6,5 @@ pod 'GoogleMaps' #, '~> 1.10'
 pod 'Masonry'
 pod "FBSDKCoreKit" 
 pod "FBSDKLoginKit"
+pod "AFNetworking", "~> 2.0"
 pod "FBSDKShareKit"
