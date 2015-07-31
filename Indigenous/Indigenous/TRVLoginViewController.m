@@ -45,7 +45,7 @@
     
     self.loginHandler = [[TRVFacebookLoginHandler alloc]initLoginWithButton:self.facebookLoginButton];
     
-    [self.loginHandler loginToFacebook:^(BOOL success, NSNumber *facebookID) {
+    [self.loginHandler loginToFacebook:^(BOOL success, NSString *facebookID) {
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSLog(@"Email: %@ \nAbout to transition!", facebookID);
             [self transitionToHomeStoryboardWithFacebookID:facebookID];
@@ -62,7 +62,7 @@
 }
 
 
--(void)transitionToHomeStoryboardWithFacebookID:(NSNumber *)facebookID {
+-(void)transitionToHomeStoryboardWithFacebookID:(NSString *)facebookID {
     
     
     

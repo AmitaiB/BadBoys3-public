@@ -51,7 +51,7 @@
     
 }
 
--(void)loginToFacebook:(void (^)(BOOL success, NSNumber *facebookID))completion{
+-(void)loginToFacebook:(void (^)(BOOL success, NSString *facebookID))completion{
     
     
     self.facebookLoginButton.delegate = self;
@@ -88,6 +88,7 @@
                      //self.loginCompletionBlock = nil;
                      return;
                  }
+                 self.loginCompletionBlock(NO, nil);
                  NSLog(@"Error adding user to parse: %@", error);
              }];
             

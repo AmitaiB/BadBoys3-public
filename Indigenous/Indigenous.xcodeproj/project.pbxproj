@@ -216,8 +216,7 @@
 				45E772CF1B68291300003C7C /* TRVBio.m */,
 				45E772D11B682F7000003C7C /* TRVConstants.h */,
 				FA57FA361B6ADACD00CFBB89 /* TRVConstants.m */,
-				45E772D61B6962C700003C7C /* Controllers */,
-				45E772D41B6961D700003C7C /* LoginSignup.storyboard */,
+				45E772D61B6962C700003C7C /* LoginSignup */,
 				4515651D1B68221B005A2871 /* Main.storyboard */,
 				451565201B68221B005A2871 /* Images.xcassets */,
 				451565221B68221B005A2871 /* LaunchScreen.xib */,
@@ -252,15 +251,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		45E772D61B6962C700003C7C /* Controllers */ = {
+		45E772D61B6962C700003C7C /* LoginSignup */ = {
 			isa = PBXGroup;
 			children = (
-				45E772DD1B6A671B00003C7C /* LoginSignupFlow */,
+				45E772ED1B6BAF9300003C7C /* Views */,
+				45E772DD1B6A671B00003C7C /* Controllers */,
 			);
-			name = Controllers;
+			name = LoginSignup;
 			sourceTree = "<group>";
 		};
-		45E772DD1B6A671B00003C7C /* LoginSignupFlow */ = {
+		45E772DD1B6A671B00003C7C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				45E772D71B6962E700003C7C /* TRVLoginSignupHomeViewController.h */,
@@ -278,7 +278,15 @@
 				45E772EA1B6AC4DA00003C7C /* TRVUserSignupHandler.h */,
 				45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */,
 			);
-			name = LoginSignupFlow;
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		45E772ED1B6BAF9300003C7C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				45E772D41B6961D700003C7C /* LoginSignup.storyboard */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		5C48CC399C45D8E89A305C19 /* Pods */ = {

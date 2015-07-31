@@ -10,6 +10,7 @@
 
 @interface TRVConstants : NSObject
 
-
+extern NSString *const PARSE_APPLICATION_ID;
+extern NSString *const PARSE_CLIENT_KEY;
 
 @end
