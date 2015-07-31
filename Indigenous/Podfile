@@ -2,6 +2,7 @@
     pod 'Parse'
     pod 'MPSkewed'
     pod 'GoogleMaps' #, '~> 1.10'
- pod "FBSDKCoreKit" 
+pod "FBSDKCoreKit"
 pod "FBSDKLoginKit"
 pod "FBSDKShareKit"
+pod 'Masonry'
