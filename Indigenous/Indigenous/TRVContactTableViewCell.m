@@ -31,6 +31,13 @@
 
     _userForThisContactCell = userForThisContactCell;
     self.emailLabel.text = userForThisContactCell.userBio.email;
+    
+//    UIButton *testButton = [[UIButton alloc] init];
+//    [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(@0);
+//        testButton.backgroundColor = [UIColor blueColor];
+//    }];
+//    [self addSubview:testButton];
 }
 
 @end
