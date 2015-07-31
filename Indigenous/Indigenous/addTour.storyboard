@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QpX-Ew-DHY">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -22,43 +21,12 @@
                                 <rect key="frame" x="0.0" y="46" width="600" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileImageCell" rowHeight="102" id="ijk-zc-wM2" customClass="TRVProfileImageTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileImageCell" rowHeight="27" id="ijk-zc-wM2" customClass="TRVProfileImageTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ijk-zc-wM2" id="8p5-gf-7Ge">
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-lc-dnv">
-                                                    <rect key="frame" x="0.0" y="8" width="86" height="86"/>
-                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="Uyd-lc-dnv" secondAttribute="height" multiplier="1:1" id="vw9-pb-WDk"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="vw9-pb-WDk"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Uyd-lc-dnv" firstAttribute="top" secondItem="8p5-gf-7Ge" secondAttribute="topMargin" id="4ZE-Jy-EbC"/>
-                                                <constraint firstItem="Uyd-lc-dnv" firstAttribute="leading" secondItem="8p5-gf-7Ge" secondAttribute="leading" id="DUH-LC-fx9"/>
-                                                <constraint firstAttribute="trailing" secondItem="Uyd-lc-dnv" secondAttribute="trailing" id="iOC-5h-FiZ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Uyd-lc-dnv" secondAttribute="bottom" id="jrb-u6-UoD"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="4ZE-Jy-EbC"/>
-                                                    <exclude reference="DUH-LC-fx9"/>
-                                                    <exclude reference="iOC-5h-FiZ"/>
-                                                    <exclude reference="jrb-u6-UoD"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="profilePictureImageView" destination="Uyd-lc-dnv" id="DCg-Sn-0Lm"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userInfoSnippetCell" rowHeight="133" id="W4l-zw-PBb" customClass="TRVUserSnippetTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
