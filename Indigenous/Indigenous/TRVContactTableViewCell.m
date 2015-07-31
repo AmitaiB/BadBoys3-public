@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *contactCategoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -32,12 +33,13 @@
     _userForThisContactCell = userForThisContactCell;
     self.emailLabel.text = userForThisContactCell.userBio.email;
     
-//    UIButton *testButton = [[UIButton alloc] init];
-//    [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(@0);
-//        testButton.backgroundColor = [UIColor blueColor];
-//    }];
-//    [self addSubview:testButton];
+    UIButton *testButton = [[UIButton alloc] init];
+    [self.contentView addSubview:testButton];
+
+    [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@100);
+        make.height.equalTo(self.contentView.mas_height);
+    }];
 }
 
 @end

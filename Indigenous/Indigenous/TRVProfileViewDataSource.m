@@ -10,6 +10,7 @@
 #import "TRVUserSnippetTableViewCell.h"
 #import "TRVProfileImageTableViewCell.h"
 #import "TRVContactTableViewCell.h"
+#import "TRVSocialMediaTableViewCell.h"
 #import "TRVBio.h"
 #import "TRVUser.h"
 
@@ -25,7 +26,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 3;
+    return 4;
 }
 
 
@@ -59,6 +60,11 @@
         TRVContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userContactCell"];
         cell.userForThisContactCell = self.user;
         return cell;
+    } else if (indexPath.row == 3) {
+        TRVSocialMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"socialMediaReuseCell"];
+        cell.userForThisConnectCell = self.user;
+        return cell;
+
     }
     
     return nil;
