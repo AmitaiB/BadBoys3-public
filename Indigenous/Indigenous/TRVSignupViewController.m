@@ -82,6 +82,8 @@
 
 -(void)transitionToCompleteProfileViewWithFacebookID:(NSString*)facebookID {
     
+
+    [self performSegueWithIdentifier:@"completeProfileSegue" sender:self];
     
     
 }
