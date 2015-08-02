@@ -108,7 +108,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Cell" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEU-2Z-NNC">
-                                                    <rect key="frame" x="43" y="8" width="95.5" height="23.5"/>
+                                                    <rect key="frame" x="18" y="8" width="95.5" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -116,7 +116,7 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.32781942580000001" green="0.87879207329999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="xEU-2Z-NNC" firstAttribute="leading" secondItem="7nb-5Q-TM0" secondAttribute="leadingMargin" constant="35" id="KqX-rb-d8d"/>
+                                                <constraint firstItem="xEU-2Z-NNC" firstAttribute="leading" secondItem="7nb-5Q-TM0" secondAttribute="leadingMargin" constant="10" id="KqX-rb-d8d"/>
                                                 <constraint firstItem="xEU-2Z-NNC" firstAttribute="top" secondItem="7nb-5Q-TM0" secondAttribute="topMargin" id="QzP-bi-0t6"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -411,11 +411,11 @@
             </objects>
             <point key="canvasLocation" x="2446" y="1520"/>
         </scene>
-        <!--Profile-->
+        <!--Navigation Controller-->
         <scene sceneID="VVK-gt-hbY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nUU-sq-eHD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="eGY-BT-5Yl"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="eGY-BT-5Yl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GFf-u3-mPD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
