@@ -30,15 +30,7 @@
     self.resultsDataSource = [[TRVSearchResultsDataSource alloc] init];
     self.resultsTableView.dataSource = self.resultsDataSource;
     
-    
-//    [self.view addSubview:self.resultsTableView];
-//    
-//        [self.resultsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.edges.equalTo(@0);
-//            make.width.equalTo(self.view.mas_width);
-//        }];
-    
-}
+    }
 
 
 
@@ -48,15 +40,5 @@
 }
 
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

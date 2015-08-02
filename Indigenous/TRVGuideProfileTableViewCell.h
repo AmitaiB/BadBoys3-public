@@ -15,7 +15,7 @@
 @property (nonatomic, strong) TRVUser *guideForThisCell;
 
 @property (weak, nonatomic) IBOutlet UIView *profileSectionContentView;
-@property (weak, nonatomic) IBOutlet UIScrollView *guideProfileScrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *guideProfileScrollView;  
 @property (weak, nonatomic) IBOutlet UIView *guideProfileScrollContentView;
 
 
