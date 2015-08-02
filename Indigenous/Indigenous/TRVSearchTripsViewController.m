@@ -6,11 +6,16 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVSearchTripsViewController.h"
 #import "TRVUser.h"
 #import "TRVBio.h"
+#import "TRVSearchTripsViewController.h"
+#import "TRVSearchResultsDataSource.h"
+#import <Masonry/Masonry.h>
+
 
 @interface TRVSearchTripsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
+@property (nonatomic, strong) TRVSearchResultsDataSource *resultsDataSource;
 
 
 
@@ -21,13 +26,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // set datasource file
+    self.resultsDataSource = [[TRVSearchResultsDataSource alloc] init];
+    self.resultsTableView.dataSource = self.resultsDataSource;
     // Do any additional setup after loading the view.
+        
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

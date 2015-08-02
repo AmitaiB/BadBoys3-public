@@ -28,8 +28,8 @@
 }
 
 -(void)setUserForThisContactCell:(TRVUser *)userForThisContactCell {
-
-    // set logged in TRV User
+    
+        // set logged in TRV User
     _userForThisContactCell = userForThisContactCell;
     self.contactCategoryLabel.text = @"Contact";
     
