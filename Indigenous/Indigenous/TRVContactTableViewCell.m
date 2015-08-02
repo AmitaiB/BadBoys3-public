@@ -11,8 +11,7 @@
 @interface TRVContactTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *contactCategoryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
+//@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -31,14 +30,17 @@
 -(void)setUserForThisContactCell:(TRVUser *)userForThisContactCell {
 
     _userForThisContactCell = userForThisContactCell;
-    self.emailLabel.text = userForThisContactCell.userBio.email;
+    self.contactCategoryLabel.text = @"Contact";
     
-    UIButton *testButton = [[UIButton alloc] init];
-    [self.contentView addSubview:testButton];
+    UILabel *emailLabel = [[UILabel alloc] init];
+    emailLabel.text = @"email";
+    
+    [self.contentView addSubview:emailLabel];
 
-    [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@100);
-        make.height.equalTo(self.contentView.mas_height);
+    [emailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contactCategoryLabel.mas_bottom).with.offset(5);
+        make.left.equalTo(self.contactCategoryLabel.mas_left);
+        make.bottom.equalTo(self.contentView.mas_bottomMargin);
     }];
 }
 
