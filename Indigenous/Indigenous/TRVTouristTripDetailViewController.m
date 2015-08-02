@@ -7,17 +7,28 @@
 //
 
 #import "TRVTouristTripDetailViewController.h"
+#import "TRVTour.h"
+#import "TRVTourStopCollectionViewDataSource.h"
+//#import "TRVTourStop.h"
 
 @interface TRVTouristTripDetailViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarTitle;
-
+@property (weak, nonatomic) IBOutlet UITextView *tourTextView;
+@property (weak, nonatomic) IBOutlet UICollectionView *tourStopCollectionView;
+@property (weak, nonatomic) IBOutlet UIImageView *tourStopImageView;
+@property (nonatomic, strong) TRVTourStopCollectionViewDataSource *dataSource;
 @end
 
 @implementation TRVTouristTripDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navBarTitle.title = @"sdlfkdslk";
+    self.navBarTitle.title = self.tour.tourItinerary.name;
+    
+    self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:nil configuration:^(TRVTourStop * stop) {
+        //self.tourStopImageView.image = stop.image;     stops do not yet have images
+    }];
+    self.tourStopCollectionView.dataSource = self.dataSource;
     // Do any additional setup after loading the view.
 }
 

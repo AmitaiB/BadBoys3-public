@@ -18,7 +18,7 @@
 @property (nonatomic) NSTimeInterval duration;
 @property (nonatomic) CGFloat costing;          //The process of itemizing and calculating all the costs the tour operator will pay on a given tour.
 @property (nonatomic) CGFloat incidentals;      //Charges incurred by the participants of a tour, but which are not included in the tour price.
-
+@property (nonatomic, strong) UIImage *image;
 
 /**
  *  For what purpose is the image...? Perhaps it belongs elsewhere.
