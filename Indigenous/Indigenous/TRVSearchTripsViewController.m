@@ -29,9 +29,18 @@
     // set datasource file
     self.resultsDataSource = [[TRVSearchResultsDataSource alloc] init];
     self.resultsTableView.dataSource = self.resultsDataSource;
-    // Do any additional setup after loading the view.
-        
+    
+    
+//    [self.view addSubview:self.resultsTableView];
+//    
+//        [self.resultsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.edges.equalTo(@0);
+//            make.width.equalTo(self.view.mas_width);
+//        }];
+    
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -1,21 +1,21 @@
 //
-//  TRVGuideProfileImageView.m
+//  TRVGuideDetailProfileView.m
 //  Indigenous
 //
 //  Created by Leo Kwan on 8/2/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVGuideProfileImageView.h"
-#import <Masonry/Masonry.h>
+#import "TRVGuideDetailProfileView.h"
+#import <Masonry.h>
 
-@interface TRVGuideProfileImageView ()
+@interface TRVGuideDetailProfileView ()
+@property (strong, nonatomic) IBOutlet UIView *guideDetailedProfileView;
 
-@property (strong, nonatomic) IBOutlet UIView *guideProfileView;
 
 @end
 
-@implementation TRVGuideProfileImageView
+@implementation TRVGuideDetailProfileView
 
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -44,12 +44,12 @@
                                   owner:self
                                 options:nil];
     
-    [self addSubview:self.guideProfileView];
+    [self addSubview:self.guideDetailedProfileView];
     
     
     // set constraints for imageView to superview
     
-    [self.guideProfileView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.guideDetailedProfileView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
     }];
     

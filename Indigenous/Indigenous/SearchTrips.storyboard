@@ -26,45 +26,50 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lmz-up-8QT" id="KeC-N9-9fr">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Svj-GQ-qSo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="208"/>
+                                                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hiE-Q1-xAo" userLabel="Profile Section Content View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wyu-dk-y0u" userLabel="Content View">
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        </view>
+                                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svj-GQ-qSo">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleAspectFit" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tA1-j0-Pgg" userLabel="guideProfileScrollContentView">
+                                                                    <color key="backgroundColor" red="1" green="0.98218170149999995" blue="0.41968016479999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </view>
+                                                            </subviews>
+                                                            <color key="backgroundColor" red="1" green="0.40163672189999999" blue="0.93015569470000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstItem="tA1-j0-Pgg" firstAttribute="bottom" secondItem="Svj-GQ-qSo" secondAttribute="bottom" id="Ix8-Hk-wM3"/>
+                                                                <constraint firstItem="tA1-j0-Pgg" firstAttribute="leading" secondItem="Svj-GQ-qSo" secondAttribute="leading" id="fw5-S4-mXN"/>
+                                                                <constraint firstItem="tA1-j0-Pgg" firstAttribute="top" secondItem="Svj-GQ-qSo" secondAttribute="top" id="tes-Ku-LK2"/>
+                                                                <constraint firstItem="tA1-j0-Pgg" firstAttribute="trailing" secondItem="Svj-GQ-qSo" secondAttribute="trailing" id="unl-Ga-B2g"/>
+                                                            </constraints>
+                                                        </scrollView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.98431372549999996" green="0.71372549019999998" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="Wyu-dk-y0u" secondAttribute="bottom" id="6fc-bm-jfV"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Wyu-dk-y0u" secondAttribute="trailing" id="LtN-p7-3DC"/>
-                                                        <constraint firstItem="Wyu-dk-y0u" firstAttribute="leading" secondItem="Svj-GQ-qSo" secondAttribute="leading" id="QhO-N8-mbR"/>
-                                                        <constraint firstItem="Wyu-dk-y0u" firstAttribute="top" secondItem="Svj-GQ-qSo" secondAttribute="top" id="jID-Mt-e4k"/>
+                                                        <constraint firstItem="Svj-GQ-qSo" firstAttribute="leading" secondItem="hiE-Q1-xAo" secondAttribute="leading" id="mTQ-K0-p6n"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Svj-GQ-qSo" secondAttribute="trailing" id="nKy-i2-huN"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Svj-GQ-qSo" secondAttribute="bottom" id="ufP-ho-N6G"/>
+                                                        <constraint firstItem="Svj-GQ-qSo" firstAttribute="top" secondItem="hiE-Q1-xAo" secondAttribute="top" id="zc2-cG-haF"/>
                                                     </constraints>
-                                                </scrollView>
+                                                </view>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f3c-dP-Tzh" userLabel="Profile Tours Content View">
+                                                    <rect key="frame" x="93" y="163" width="300" height="213"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
+                                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="Svj-GQ-qSo" firstAttribute="leading" secondItem="KeC-N9-9fr" secondAttribute="leading" id="6yI-6S-c65"/>
-                                                <constraint firstAttribute="trailing" secondItem="Svj-GQ-qSo" secondAttribute="trailing" id="D6G-5A-dug"/>
-                                                <constraint firstItem="Svj-GQ-qSo" firstAttribute="top" secondItem="KeC-N9-9fr" secondAttribute="top" id="Ghf-VB-tPS"/>
-                                                <constraint firstAttribute="bottom" secondItem="Svj-GQ-qSo" secondAttribute="bottom" constant="168.5" id="J73-0Q-997"/>
-                                                <constraint firstItem="Svj-GQ-qSo" firstAttribute="top" secondItem="KeC-N9-9fr" secondAttribute="top" id="Kkl-rX-gWh"/>
-                                                <constraint firstAttribute="trailing" secondItem="Svj-GQ-qSo" secondAttribute="trailing" id="Y5e-if-IaD"/>
-                                                <constraint firstAttribute="bottom" secondItem="Svj-GQ-qSo" secondAttribute="bottom" id="uEi-RI-gjY"/>
-                                                <constraint firstItem="Svj-GQ-qSo" firstAttribute="leading" secondItem="KeC-N9-9fr" secondAttribute="leading" id="yxl-mR-3vR"/>
+                                                <constraint firstAttribute="trailing" secondItem="hiE-Q1-xAo" secondAttribute="trailing" id="CXJ-mA-qeN"/>
+                                                <constraint firstItem="hiE-Q1-xAo" firstAttribute="top" secondItem="KeC-N9-9fr" secondAttribute="top" id="JkC-qZ-Ujc"/>
+                                                <constraint firstItem="hiE-Q1-xAo" firstAttribute="leading" secondItem="KeC-N9-9fr" secondAttribute="leading" id="suY-CJ-wOL"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="J73-0Q-997"/>
-                                                    <exclude reference="Kkl-rX-gWh"/>
-                                                    <exclude reference="Y5e-if-IaD"/>
-                                                    <exclude reference="yxl-mR-3vR"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="guideProfileScrollContentView" destination="Wyu-dk-y0u" id="JDu-bJ-D1h"/>
+                                            <outlet property="guideProfileScrollContentView" destination="tA1-j0-Pgg" id="JBW-QH-WQL"/>
                                             <outlet property="guideProfileScrollView" destination="Svj-GQ-qSo" id="Qiz-Me-1QG"/>
+                                            <outlet property="profileSectionContentView" destination="hiE-Q1-xAo" id="10z-8f-O7u"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
