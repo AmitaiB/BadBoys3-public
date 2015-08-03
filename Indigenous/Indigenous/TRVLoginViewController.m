@@ -8,12 +8,16 @@
 
 #import "TRVLoginViewController.h"
 #import "TRVFacebookLoginHandler.h"
+#import <Parse/Parse.h>
+#import <MBProgressHUD.h>
 
 @interface TRVLoginViewController ()
 
 @property (weak, nonatomic) IBOutlet FBSDKLoginButton *facebookLoginButton;
 @property (nonatomic, strong) TRVFacebookLoginHandler *loginHandler;
 
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
@@ -30,14 +34,27 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    if ([FBSDKAccessToken currentAccessToken]) {
-        // User is logged in, do work such as go to next view controller.
+    if ([FBSDKAccessToken currentAccessToken] && [PFUser currentUser]) {
+        
         NSLog(@"Facebook user logged in");
-        [self transitionToHomeStoryboardWithFacebookID:@([[FBSDKAccessToken currentAccessToken].userID integerValue])];
+        PFObject *userBio = [PFUser currentUser][@"userBio"];
+        [userBio fetchIfNeeded];
+        NSNumber *isGuide = userBio[@"isGuide"];
+        
+        if ([isGuide isEqualToNumber:@(NO)]){
+            [self transitionToHomeStoryboardWithFacebookID:[FBSDKAccessToken currentAccessToken].userID];
+        } else {
+            
+            //TRANSITION TO GUIDE HOME PAGE
+            
+        }
+        
+        
     } else {
         NSLog(@"Facebook user not logged in.");
     }
-    
+
+        
 }
 
 
@@ -57,7 +74,11 @@
 
 - (IBAction)loginButtonPressed:(id)sender {
 
-    [self transitionToHomeStoryboardWithEmail:nil andPassword:nil];
+    
+    
+    [self transitionToHomeStoryboardWithEmail:self.emailTextField.text andPassword:self.passwordTextField.text];
+
+
 
 }
 
@@ -66,7 +87,7 @@
     
     
     
-    
+    [self presentTouristHomeView];
     
     
 }
@@ -74,9 +95,105 @@
 
 -(void)transitionToHomeStoryboardWithEmail:(NSString*)email andPassword:(NSString*)password{
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES]; // start progres hud
+    hud.labelText = @"Logging In";
+    
+    [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error){
+        
+        [hud hide:YES];
+
+        if (user){
+            
+            NSLog(@"User: %@", user);
+            NSLog(@"bio: %@", user[@"userBio"]);
+            PFObject *bioObject = user[@"userBio"];
+            
+            [bioObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
+                
+                if (object){
+                    if ([user[@"userBio"][@"isGuide"] isEqualToNumber:@(YES)]){
+                        // present guide home
+                        // NEEDS TO GET DONE
+                        
+                        
+                    } else {
+                        // present guide home
+                        [self presentTouristHomeView];
+                        
+                    }
+                } else {
+                    
+                    NSLog(@"Unable to log in: %@", error);
+                    UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Logging In" message:@"Please check your username and password.  Then try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    [alertBox show];
+                }
+                
+                
+            }];
+            
+        } else {
+            
+            NSLog(@"Unable to log in: %@", error);
+            UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Logging In" message:@"Please check your username and password.  Then try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertBox show];
+            
+        }
+        
+  
+    }];
     
     
 }
+
+
+-(void)presentTouristHomeView {
+    
+    
+    UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+    
+    UIViewController *destination = [tourist instantiateInitialViewController];
+    
+    UIViewController *presentingViewController = self.presentingViewController;
+    
+    [presentingViewController dismissViewControllerAnimated:NO completion:^{
+        [presentingViewController presentViewController:destination animated:NO completion:nil];
+    }];
+
+}
+
+
+-(void)presentGuideHomeView {
+    
+    
+    // NEED TO CREATE
+    
+}
+
+
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
+
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if (![[touch view] isKindOfClass:[UITextField class]]) {
+        [self.view endEditing:YES];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

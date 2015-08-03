@@ -7,8 +7,14 @@
 //
 
 #import "TRVCompleteSignupWithFacebookViewController.h"
-
+#import <Parse/Parse.h>
+#import <MBProgressHUD.h>
 @interface TRVCompleteSignupWithFacebookViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *languagesSpokenTextField;
+@property (weak, nonatomic) IBOutlet UITextView *bioTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *isGuide;
+@property (weak, nonatomic) IBOutlet UITextField *oneLineBio;
 
 @end
 
@@ -16,8 +22,81 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.navigationController setNavigationBarHidden:YES];
+
 }
+
+
+
+
+
+
+
+
+- (IBAction)doneButtonPressed:(id)sender {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Signing Up!";
+        [hud show:YES];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    currentUser[@"userBio"][@"phoneNumber"] = self.phoneNumberTextField.text;
+    currentUser[@"userBio"][@"languagesSpoken"] = self.languagesSpokenTextField.text;
+    currentUser[@"userBio"][@"bioTextField"] = self.bioTextField.text;
+    currentUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
+    currentUser[@"userBio"][@"oneLineBio"] = self.oneLineBio.text;
+    
+    
+    
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        [hud hide:YES];
+        if (succeeded){
+            if (self.isGuide.on){
+                // TRANSITION TO GUIDE HOME PAGE
+            
+                
+                
+            } else {
+                // TRANSITION TO TOURIST HOME PAGE
+                // trvtabbar
+                UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+                
+                UIViewController *destination = [tourist instantiateInitialViewController];
+                
+                UIViewController *presentingViewController = self.presentingViewController;
+                
+               [presentingViewController dismissViewControllerAnimated:NO completion:^{
+                   [presentingViewController presentViewController:destination animated:NO completion:nil];
+               }];
+                
+            }
+            
+        } else {
+            NSLog(@"Error saving bio: %@", error);
+            UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Saving" message:@"Unable to save profile info." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertBox show];
+            
+        }
+        
+    }];
+    
+}
+
+
+
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    
+    if (![[touch view] isKindOfClass:[UITextField class]]) {
+        [self.view endEditing:YES];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

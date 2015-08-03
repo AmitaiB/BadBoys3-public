@@ -8,6 +8,8 @@
 
 #import "TRVUserSignupHandler.h"
 #import <Parse/Parse.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @implementation TRVUserSignupHandler
 
@@ -19,39 +21,27 @@
         [PFUser logOut];
     }
     PFUser *newUser = [PFUser new];
-    newUser.username = userDetails[@"id"];
+    newUser.username = userDetails[@"email"];
     newUser.password = userDetails[@"id"];
     newUser.email = userDetails[@"email"];
     newUser[@"facebookID"] = userDetails[@"id"];
-    
+    NSMutableDictionary *newDetails = [userDetails mutableCopy];
+    PFObject *userBio = [PFObject objectWithClassName:@"UserBio"];
+    NSString *profilePhotoURL = userDetails[@"picture"][@"data"][@"url"];
+    [newDetails setValue:profilePhotoURL forKey:@"picture"];
+    [userBio setValuesForKeysWithDictionary:newDetails];
+    newUser[@"userBio"] = userBio;
    
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         
         if (succeeded){
-            NSMutableDictionary *newDetails = [userDetails mutableCopy];
-            PFObject *userBio = [PFObject objectWithClassName:@"UserBio"];
-            NSString *profilePhotoURL = userDetails[@"picture"][@"data"][@"url"];
-            [newDetails setValue:profilePhotoURL forKey:@"picture"];
-            [userBio setValuesForKeysWithDictionary:newDetails];
-            userBio[@"user"] = [PFUser currentUser];
-            [[PFUser currentUser] setObject:userBio forKey:@"userBio"];
-            [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                if (succeeded){
-                    NSLog(@"Successfully signed up user to Parse!");
-                    completion(YES, nil);
-                } else {
-                    NSLog(@"Error saving bio: %@", error);
-                        UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Saving" message:@"Unable to save profile info." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                        [alertBox show];
-                    completion(NO, error);
-                        return;
-                }
 
-            
-            }];
-
+          completion(YES, nil);
             
         } else {
+            [PFUser logOut];
+            [FBSDKAccessToken setCurrentAccessToken:nil];
+            [FBSDKProfile setCurrentProfile:nil];
             NSLog(@"Error signing up: %@", error);
             if (error.code == 200){
                 NSLog(@"Missing username!");

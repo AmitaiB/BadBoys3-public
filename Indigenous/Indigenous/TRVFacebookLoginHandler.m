@@ -8,7 +8,8 @@
 
 #import "TRVFacebookLoginHandler.h"
 #import "TRVUserSignupHandler.h"
-
+#import <Parse/Parse.h>
+#import <MBProgressHUD.h>
 @interface TRVFacebookLoginHandler () <FBSDKLoginButtonDelegate>
 
 
@@ -75,6 +76,7 @@
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (error) {
                  NSLog(@"Login error: %@", [error localizedDescription]);
+                 self.loginCompletionBlock(NO, nil);
                  return;
              }
              
@@ -113,16 +115,32 @@
         
             [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"email"}]
              startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                 
                  if (error) {
                      NSLog(@"Login error: %@", [error localizedDescription]);
+                     self.loginCompletionBlock(NO, nil);
                      return;
                  }
                  
-                 //SUCCESS - PRESENT NEXT VIEW
-                 self.loginCompletionBlock(YES, result[@"id"]);
-                 // TODO: do we need to nil out this block property? Is there a retain cycle between this handler & the VC?
-                 //self.loginCompletionBlock = nil;
-                 NSLog(@"fecthed user email: %@",result[@"email"]);
+                
+                 
+                 // LOGIN
+                 [PFUser logInWithUsernameInBackground:result[@"email"] password:result[@"id"] block:^(PFUser *user, NSError *error){
+                     
+                     if(user){
+                         //SUCCESS - PRESENT NEXT VIEW
+                         NSLog(@"Parse logged in");
+                         self.loginCompletionBlock(YES, result[@"email"]);
+                         // TODO: do we need to nil out this block property? Is there a retain cycle between this handler & the VC?
+                         //self.loginCompletionBlock = nil;
+                         
+                     } else {
+                        self.loginCompletionBlock(NO, nil);
+                         
+                     }
+                     
+                 }];
+                 
 
              }];
       
@@ -131,6 +149,10 @@
     
     
 }
+
+
+
+
 
 -(void)dealloc{
     
