@@ -27,6 +27,8 @@
     self.sharedDataStore = [[TRVUserDataStore alloc] initWithCurrentUser:[PFUser currentUser]];
     self.sharedDataStore.loggedInUser = [PFUser currentUser];
     
+    
+    
     TRVCity *newYork = [[TRVCity alloc] initWithName:@"New York City" image:[UIImage imageNamed:@"newyork"]];
     TRVCity *beijing = [[TRVCity alloc] initWithName:@"Beijing" image:[UIImage imageNamed:@"beijing"]];
     TRVCity *london = [[TRVCity alloc] initWithName:@"London" image:[UIImage imageNamed:@"london"]];

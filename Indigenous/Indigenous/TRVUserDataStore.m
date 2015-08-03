@@ -29,10 +29,12 @@
 
 -(instancetype) initWithCurrentUser:(PFUser *)currentUser {
     
+    
     self = [super init];
     
     
     if (self) {
+        
         PFQuery *query = [PFQuery queryWithClassName:@"UserBio"];
         PFObject *object = currentUser[@"userBio"];
         
@@ -53,7 +55,7 @@
         
     // Set properties here
         _firstName = self.parseUserInfo[@"firstName"];
-        NSLog(@"%@",self.parseUserInfo[@"firstName"] );
+        NSLog(@"%@-----asrtnsktisrntsart",self.parseUserInfo);
         
         
     }
