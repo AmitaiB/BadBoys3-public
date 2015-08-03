@@ -17,8 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray *tabbarVCs = @[[[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController],
-                                                [[UIStoryboard storyboardWithName:@"SearchTrips" bundle:nil] instantiateInitialViewController]];
+    NSArray *tabbarVCs = @[[[UIStoryboard storyboardWithName:@"SearchTrips" bundle:nil] instantiateInitialViewController],
+                                                [[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController]];
 
     self.viewControllers = tabbarVCs;
 }
