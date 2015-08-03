@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [PFUser logInWithUsername:@"joe@g.com" password:@"joe"];
+//    [PFUser logInWithUsername:@"joe@g.com" password:@"joe"];
     self.sharedDataStore = [[TRVUserDataStore alloc] initWithCurrentUser:[PFUser currentUser]];
     self.sharedDataStore.loggedInUser = [PFUser currentUser];
     
