@@ -60,10 +60,14 @@
                 // TRANSITION TO TOURIST HOME PAGE
                 // trvtabbar
                 UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+                
                 UIViewController *destination = [tourist instantiateInitialViewController];
-                [self.navigationController dismissViewControllerAnimated:NO completion:^{
-                    [self presentViewController:destination animated:NO completion:nil];
-                }];
+                
+                UIViewController *presentingViewController = self.presentingViewController;
+                
+               [presentingViewController dismissViewControllerAnimated:NO completion:^{
+                   [presentingViewController presentViewController:destination animated:NO completion:nil];
+               }];
                 
             }
             

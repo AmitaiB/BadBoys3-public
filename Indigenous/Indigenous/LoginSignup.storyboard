@@ -287,6 +287,9 @@
                                 <state key="normal" title="Upload Profile Photo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="uploadProfilePhotoButtonPressed:" destination="m7V-Cx-13c" eventType="touchUpInside" id="43g-3a-J0e"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="A little bit about you..." translatesAutoresizingMaskIntoConstraints="NO" id="1Uc-v8-sa1">
                                 <rect key="frame" x="180" y="205" width="240" height="128"/>
@@ -294,7 +297,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Language" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vQQ-tw-N2W">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Language(s) Spoken" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vQQ-tw-N2W">
                                 <rect key="frame" x="252" y="167" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -305,18 +308,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthday" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qma-ll-5i0">
-                                <rect key="frame" x="252" y="392" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthday DD/MM/YYYY" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qma-ll-5i0">
+                                <rect key="frame" x="252" y="420" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gender" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLX-qH-Htx">
-                                <rect key="frame" x="252" y="430" width="97" height="30"/>
+                                <rect key="frame" x="252" y="458" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Expertise in 1 line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="olI-fP-fph">
-                                <rect key="frame" x="188" y="468" width="224" height="30"/>
+                                <rect key="frame" x="188" y="496" width="224" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -325,12 +328,40 @@
                                 <state key="normal" title="Done!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="m7V-Cx-13c" eventType="touchUpInside" id="xYK-EX-Ibp"/>
+                                </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YNS-3h-0r2">
+                                <rect key="frame" x="367" y="91" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Sg6-5j-i7C">
+                                <rect key="frame" x="276" y="387" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Sg6-5j-i7C" secondAttribute="centerX" constant="-0.5" id="BVE-cz-BKi"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="bioTextField" destination="1Uc-v8-sa1" id="iGA-Ub-Cns"/>
+                        <outlet property="birthdayTextField" destination="qma-ll-5i0" id="2yq-iX-wQC"/>
+                        <outlet property="emailTextField" destination="gCl-CV-2FB" id="7WP-UA-u1s"/>
+                        <outlet property="firstNameTextField" destination="XFh-j9-aYF" id="WEA-q5-8BT"/>
+                        <outlet property="genderTextField" destination="iLX-qH-Htx" id="uQS-AC-Pju"/>
+                        <outlet property="isGuide" destination="Sg6-5j-i7C" id="gT2-SG-1ZB"/>
+                        <outlet property="languageTextField" destination="vQQ-tw-N2W" id="5O8-Ne-0Wv"/>
+                        <outlet property="lastNameTextField" destination="zUg-C5-aK8" id="jHS-li-LEx"/>
+                        <outlet property="oneLineBioTextField" destination="olI-fP-fph" id="Fab-Yt-OJ7"/>
+                        <outlet property="passwordTextField" destination="YNS-3h-0r2" id="jax-9h-qkC"/>
+                        <outlet property="phoneNumberTextField" destination="4Aq-Sr-K1B" id="J1v-o2-5S6"/>
+                        <outlet property="uploadProfilePhotoButton" destination="oMM-H9-kzj" id="x7G-Wk-AHR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xM-pW-tNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

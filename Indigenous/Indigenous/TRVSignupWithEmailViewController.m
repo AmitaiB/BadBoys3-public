@@ -7,8 +7,27 @@
 //
 
 #import "TRVSignupWithEmailViewController.h"
+#import <Parse/Parse.h>
 
-@interface TRVSignupWithEmailViewController ()
+@interface TRVSignupWithEmailViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *languageTextField;
+@property (weak, nonatomic) IBOutlet UITextView *bioTextField;
+@property (weak, nonatomic) IBOutlet UIButton *uploadProfilePhotoButton;
+@property (weak, nonatomic) IBOutlet UITextField *birthdayTextField;
+@property (weak, nonatomic) IBOutlet UITextField *genderTextField;
+@property (weak, nonatomic) IBOutlet UITextField *oneLineBioTextField;
+@property (weak, nonatomic) IBOutlet UISwitch *isGuide;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (nonatomic, strong) UIImagePickerController *imagePickerController;
+@property (nonatomic, strong) UIImage *profilePhoto;
+@property (nonatomic, strong) PFFile *pfPhoto;
+
 
 @end
 
@@ -16,8 +35,86 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
+
+
+
+
+
+- (IBAction)uploadProfilePhotoButtonPressed:(id)sender {
+    
+    self.imagePickerController = [[UIImagePickerController alloc] init];
+    self.imagePickerController.delegate = self;
+    [self.imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+    self.imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+//    self.imagePickerController.showsCameraControls = NO;
+    self.imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+    
+    
+    [self.navigationController presentViewController:self.imagePickerController animated:YES completion:nil];
+
+    
+    
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    
+    self.profilePhoto = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    
+    // Convert to JPEG with 50% quality
+    NSData* data = UIImageJPEGRepresentation(self.profilePhoto, 0.3f);
+    
+    self.pfPhoto = [PFFile fileWithName:@"ProfilePhoto" data:data];
+    
+    [self.uploadProfilePhotoButton setTitle:@"Nice Pic!" forState:UIControlStateDisabled];
+    self.uploadProfilePhotoButton.enabled = NO;
+    
+    [self.imagePickerController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
+
+
+
+- (IBAction)doneButtonPressed:(id)sender {
+    
+    if ([PFUser currentUser]){
+        [PFUser logOut];
+    }
+    
+    PFUser *newUser = [PFUser new];
+    newUser.username = self.emailTextField.text;
+    newUser.email = self.emailTextField.text;
+    newUser.password = self.passwordTextField.text;
+    newUser[@"userBio"][@"first_name"] = self.firstNameTextField.text;
+    newUser[@"userBio"][@"last_name"] = self.lastNameTextField.text;
+    newUser[@"userBio"][@"email"] = self.emailTextField.text;
+    newUser[@"userBio"][@"gender"] = self.genderTextField.text;
+    newUser[@"userBio"][@"birthday"] = self.birthdayTextField.text;
+    newUser[@"userBio"][@"name"] = [NSString stringWithFormat:@"%@ %@", self.firstNameTextField.text, self.lastNameTextField.text];
+    newUser[@"userBio"][@"bioTextField"] = self.bioTextField.text;
+    newUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
+    newUser[@"userBio"][@"languagesSpoken"] = self.languageTextField.text;
+    newUser[@"userBio"][@"oneLineBio"] = self.oneLineBioTextField.text;
+    newUser[@"userBio"][@"phoneNumber"] = self.phoneNumberTextField.text;
+    
+    // NEED TO ADD PICTURE STUFF
+    newUser[@"userBio"][@"emailPicture"] = self.pfPhoto;
+    
+    
+}
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
