@@ -27,7 +27,6 @@
 }
 
 -(void)setUserForThisConnectCell:(TRVUser *)userForThisConnectCell {
-
     _userForThisConnectCell = userForThisConnectCell;
     
     UIButton *socialMediaButton = [[UIButton alloc] init];
