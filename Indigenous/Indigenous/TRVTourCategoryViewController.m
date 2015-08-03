@@ -9,6 +9,7 @@
 #import "TRVTourCategoryViewController.h"
 #import "TRVTourCategoryCollectionViewCell.h"
 #import "TRVTourCategoryView.h"
+#import <Masonry.h>
 
 @interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -29,10 +30,17 @@
     
     // Instantiate a category view and category
     
-    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
+    TRVTourCategory *seeCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
+    
+    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"Play" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"beijing.jpg"]];
+    
+    TRVTourCategory *eatCategory = [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];
+    
+    TRVTourCategory *feelCategory = [[TRVTourCategory alloc] initWithName:@"Feel" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid"]];
+
     
 
-    self.tourCategories = [@[playCategory, playCategory, playCategory] mutableCopy];
+    self.tourCategories = [@[seeCategory, playCategory, eatCategory, feelCategory] mutableCopy];
 
 }
 
@@ -54,7 +62,10 @@
     
     
     [cell.categoryView setCategoryForThisView:categoryForThisCell];
-    
+    [cell.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.and.width.equalTo(@10);
+        make.edges.equalTo(@0);
+    }];
     
     
     return cell;

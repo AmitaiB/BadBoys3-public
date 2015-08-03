@@ -11,6 +11,7 @@
 #import <Masonry/Masonry.h>
 
 
+
 @interface TRVTourCategoryView ()
 
 
@@ -48,10 +49,7 @@
     
     // This add subviews to show about root nib view
     [self.categoryContentView addSubview:self.categoryImageView];
-    [self.categoryImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-        make.height.equalTo(@10);
-    }];
+
     [self.categoryContentView addSubview:self.iconImageView];
     [self.categoryContentView addSubview:self.categoryNameLabel];
 
@@ -64,6 +62,7 @@
     _categoryForThisView = categoryForThisView;
     
     self.categoryImageView.image = categoryForThisView.categoryImage;
+
     self.iconImageView.image = categoryForThisView.iconImage;
     self.categoryNameLabel.text = categoryForThisView.categoryName;
 
