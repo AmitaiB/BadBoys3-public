@@ -13,7 +13,6 @@
 
 @interface TRVProfileImageTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 @property (nonatomic, strong) TRVUser *userForThisImageCell;
 
 @end

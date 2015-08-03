@@ -7,6 +7,7 @@
 //
 
 #import "TRVUserSnippetTableViewCell.h"
+#import <Masonry.h>
 
 @interface TRVUserSnippetTableViewCell()
 
@@ -34,6 +35,19 @@
     self.homeCityLabel.text = user.userBio.homeCity;
     self.homeCountryLabel.text = user.userBio.homeCountry;
     self.userTaglineLabel.text = user.userBio.userTagline;
+    
+    
+    // set the top padding of cell to top labe
+    [self.firstNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView.mas_top).with.offset(8);
+
+    }];
+    
+    // set the bottom padding of cell to bottom label
+    [self.userTaglineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-8);
+    }];
+    
 }
 
 

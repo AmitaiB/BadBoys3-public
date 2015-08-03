@@ -10,6 +10,7 @@
 #import "TRVUserSnippetTableViewCell.h"
 #import "TRVProfileImageTableViewCell.h"
 #import "TRVContactTableViewCell.h"
+#import "TRVSocialMediaTableViewCell.h"
 #import "TRVBio.h"
 #import "TRVUser.h"
 
@@ -25,7 +26,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 3;
+    return 4;
 }
 
 
@@ -35,11 +36,12 @@
     // Create an instance of current user and user bio
     self.user = [[TRVUser alloc] init];
 
-    self.user.userBio = [[TRVBio alloc] initTouristWithUserName:@"leo" firstName:@"Leo" lastName:@"Kwan" email:@"leokwanbt14@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
+    self.user.userBio = [[TRVBio alloc] initTouristWithUserName:@"Ashley" firstName:@"Ashley" lastName:@"Madison" email:@"ashleyfromthe6@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
     self.user.userBio.homeCity = @"New York";
     self.user.userBio.homeCountry = @"United States";
     self.user.userBio.userTagline = @"Loves fried chicken and ramen. Super Spontaneous Person!";
     self.user.userBio.profileImage = [UIImage imageNamed:@"leo.jpg"];
+    
     
     
     // Profile Picture Cell
@@ -58,6 +60,11 @@
         TRVContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"userContactCell"];
         cell.userForThisContactCell = self.user;
         return cell;
+    } else if (indexPath.row == 3) {
+        TRVSocialMediaTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"socialMediaReuseCell"];
+        cell.userForThisConnectCell = self.user;
+        return cell;
+
     }
     
     return nil;
