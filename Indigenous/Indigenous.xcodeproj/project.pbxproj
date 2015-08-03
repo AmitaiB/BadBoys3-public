@@ -323,7 +323,6 @@
 				45E772CF1B68291300003C7C /* TRVBio.m */,
 				946AAA901B6C517E00778418 /* TRVConstants.m */,
 				45E772D11B682F7000003C7C /* TRVConstants.h */,
-				45E772D41B6961D700003C7C /* LoginSignup.storyboard */,
 				45E772D61B6962C700003C7C /* LoginSignup */,
 				4515651D1B68221B005A2871 /* Main.storyboard */,
 				451565201B68221B005A2871 /* Images.xcassets */,
@@ -392,6 +391,7 @@
 		45E772ED1B6BAF9300003C7C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				45E772D41B6961D700003C7C /* LoginSignup.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";

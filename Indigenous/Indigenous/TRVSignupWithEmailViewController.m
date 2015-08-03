@@ -91,6 +91,8 @@
     newUser.username = self.emailTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
+    
+    newUser[@"userBio"] = [PFObject objectWithClassName:@"UserBio"];
     newUser[@"userBio"][@"first_name"] = self.firstNameTextField.text;
     newUser[@"userBio"][@"last_name"] = self.lastNameTextField.text;
     newUser[@"userBio"][@"email"] = self.emailTextField.text;
@@ -106,13 +108,61 @@
     // NEED TO ADD PICTURE STUFF
     newUser[@"userBio"][@"emailPicture"] = self.pfPhoto;
     
+    [newUser signUpInBackgroundWithBlock:^(BOOL success, NSError *error){
+        
+        if (success){
+            
+            [self goToNextStoryboard];
+            
+        } else {
+            NSLog(@"Error signing up: %@", error);
+            UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Saving" message:@"Unable to sign up.  Try again later." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertBox show];
+            
+        }
+    }];
+    
     
 }
 
 
 
+-(void)goToNextStoryboard {
+    
+    if (self.isGuide.on){
+        // TRANSITION TO GUIDE HOME PAGE
+        UIStoryboard *myTrips = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
+        UIViewController *myTripsVC = [myTrips instantiateInitialViewController];
+        
+        
+        
+    } else {
+        // TRANSITION TO TOURIST HOME PAGE
+        // trvtabbar
+        UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+        
+        UIViewController *destination = [tourist instantiateInitialViewController];
+        
+        UIViewController *presentingViewController = self.presentingViewController;
+        
+        [presentingViewController dismissViewControllerAnimated:NO completion:^{
+            [presentingViewController presentViewController:destination animated:NO completion:nil];
+        }];
+        
+    }
+
+}
 
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    
+    if (![[touch view] isKindOfClass:[UITextField class]]) {
+        [self.view endEditing:YES];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
 
 
 
