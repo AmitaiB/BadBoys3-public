@@ -14,6 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
 @property (nonatomic, strong) NSArray *tourCategoryViews;
+@property (weak, nonatomic) IBOutlet TRVTourCategoryView *testView;
+- (IBAction)changeImage:(id)sender;
 
 @end
 
@@ -28,39 +30,55 @@
     
     
     // Instantiate a category view and category
+//    
+//    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
+//    
+//    
+//    [self.testView setCategoryForThisView:playCategory];
     
-        TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
-    
-    // Instantiate a category view and category
-        TRVTourCategoryView *playCategoryView = [[TRVTourCategoryView alloc] init];
-        playCategoryView.categoryForThisView = playCategory;
-        
-        self.tourCategoryViews = @[playCategoryView,playCategoryView,playCategoryView];
-    
+    self.tourCategoryViews = @[self.testView,self.testView, self.testView];
+
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
-    
     //return array count
-    
     return self.tourCategoryViews.count;
 }
 
+
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    TRVTourCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"tourCategoryCollectionCell" forIndexPath:indexPath];
+    TRVTourCategoryCollectionViewCell *cell = (TRVTourCategoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"tourCategoryCollectionCell" forIndexPath:indexPath];
+ 
+    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
+
+    [cell.testView setCategoryForThisView:playCategory];
+
     
     TRVTourCategoryView *categoryViewForThisCell = [self.tourCategoryViews objectAtIndex:indexPath.row];
-    UIView *contentViewForThisCell = categoryViewForThisCell.categoryContentView;
-    //    UIImage *categoryImageForThisCell = categoryViewForThisCell.categoryForThisView.categoryImage;
     
-    cell.categoryViewForThisCell = contentViewForThisCell;
-
+    cell.testView = categoryViewForThisCell.categoryContentView;
+    
+    
     return cell;
 }
+
+
+
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
+    
+    UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
+    datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
+    
+    NSLog(@"Are you in here?");
+    [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
+}
+
 
 #pragma mark - UICollectionViewLayout
 
@@ -82,5 +100,23 @@
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    NSArray *ip = [self.categoryCollectionView indexPathsForSelectedItems];
+    
+    if([segue.identifier isEqualToString:@"entrySegue"]) {
+        
+       /// pass over filters..
+        
+    }
+         
+}
 
+
+- (IBAction)changeImage:(id)sender {
+    self.testView.categoryImageView.image = [UIImage imageNamed:@"london.jpg"];
+    self.testView.categoryNameLabel.text = @"YOOOOOOOOO";
+    
+    
+}
 @end

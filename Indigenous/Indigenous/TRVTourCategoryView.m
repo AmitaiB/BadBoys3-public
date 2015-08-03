@@ -51,10 +51,13 @@
     // set constraints for imageView to superview
 }
 
-
+//
 -(void)setCategoryForThisView:(TRVTourCategory *)categoryForThisView {
+    
+    NSLog(@"In setter method, are you getting called?");
 
     _categoryForThisView = categoryForThisView;
+    
     self.categoryImageView.image = categoryForThisView.categoryImage;
     self.iconImageView.image = categoryForThisView.iconImage;
     self.categoryNameLabel.text = categoryForThisView.categoryName;

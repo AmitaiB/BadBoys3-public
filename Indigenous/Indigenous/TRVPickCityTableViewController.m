@@ -58,6 +58,15 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TRVCityTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    // pass cell details into next vc...
+    
+    [self performSegueWithIdentifier:@"showCategoriesSegue" sender:self];
+    
+}
+
 
 /*
 // Override to support conditional editing of the table view.
