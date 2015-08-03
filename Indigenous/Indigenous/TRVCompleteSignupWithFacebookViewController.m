@@ -52,9 +52,7 @@
         if (succeeded){
             if (self.isGuide.on){
                 // TRANSITION TO GUIDE HOME PAGE
-                UIStoryboard *myTrips = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
-                UIViewController *myTripsVC = [myTrips instantiateInitialViewController];
-                
+            
                 
                 
             } else {

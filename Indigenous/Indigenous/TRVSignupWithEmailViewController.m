@@ -112,7 +112,9 @@
     newUser[@"userBio"][@"phoneNumber"] = self.phoneNumberTextField.text;
     
     // NEED TO ADD PICTURE STUFF
-    newUser[@"userBio"][@"emailPicture"] = self.pfPhoto;
+    if (self.pfPhoto){
+        newUser[@"userBio"][@"emailPicture"] = self.pfPhoto;
+    }
     
     [newUser signUpInBackgroundWithBlock:^(BOOL success, NSError *error){
         
