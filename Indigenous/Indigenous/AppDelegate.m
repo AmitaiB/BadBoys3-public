@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "TRVConstants.h"
+#import <Parse.h>
 
 @interface AppDelegate ()
 
@@ -26,6 +27,7 @@
     
     [GMSServices provideAPIKey:GOOGLE_API_KEY];
     
+
     return [[FBSDKApplicationDelegate sharedInstance] application:application
                                     didFinishLaunchingWithOptions:launchOptions];
 }

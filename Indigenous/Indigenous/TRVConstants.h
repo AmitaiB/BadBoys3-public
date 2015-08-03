@@ -10,7 +10,7 @@
 
 @interface TRVConstants : NSObject
 
-extern NSString *const GOOGLE_API_KEY;
+extern NSString * const GOOGLE_API_KEY;
 extern NSString *const PARSE_APPLICATION_ID;
 extern NSString *const PARSE_CLIENT_KEY;
 

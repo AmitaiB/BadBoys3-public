@@ -7,6 +7,8 @@
 //
 
 #import "TRVProfileImageTableViewCell.h"
+#import <Parse.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @implementation TRVProfileImageTableViewCell
 
@@ -22,12 +24,38 @@
 
 -(void)setUserForThisImageCell:(TRVUser *)userForThisImageCell {
     _userForThisImageCell = userForThisImageCell;
-    self.profilePictureImageView.image = userForThisImageCell.userBio.profileImage;
     
-    [self.profilePictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-        make.height.equalTo(@300);
+    
+    
+    //    PFUser *currentUser = [PFUser currentUser];
+    PFQuery *query = [PFQuery queryWithClassName:@"UserBio"];
+    //    [query whereKey:@"objectId" equalTo:@"mFwm7KX2TI"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        } else {
+            NSLog(@"This is the response: %@", objects);
+        }
     }];
+    
+    
+    // Created the profile image view
+    UIImageView *profilePictureImageView = [[UIImageView alloc] init];
+    profilePictureImageView.image = userForThisImageCell.userBio.profileImage;
+    
+    // added imageview to superview
+    [self.contentView addSubview:profilePictureImageView];
+    
+    
+    // set imageview constraints
+    [profilePictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+        
+        // what should the image height be?
+        make.height.equalTo(@300);
+           }];
+    
 }
 
 @end
