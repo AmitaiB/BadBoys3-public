@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVTourCategory.h"
+
 
 @interface TRVTourCategoryView : UIView
+
+@property (nonatomic, strong) TRVTourCategory *categoryForThisView;
+
+
+@property (strong, nonatomic) IBOutlet UIView *categoryContentView;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
+@property (weak, nonatomic) IBOutlet UILabel *categoryNameLabel;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "TRVTourCategoryCollectionViewCell.h"
+//#import TRVCate
 
 @implementation TRVTourCategoryCollectionViewCell
 
