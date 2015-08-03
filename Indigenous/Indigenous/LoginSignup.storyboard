@@ -68,6 +68,9 @@
                             <view contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JGH-fn-oeP" userLabel="FacebookLoginButton" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="60" y="172" width="480" height="42"/>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.20392156859999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="facebookButtonTappedAndAlreadyLoggedIn:" destination="JfK-2x-kZL" eventType="valueChanged" id="eVi-a4-YY3"/>
+                                </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Quickly log in with Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0N-6c-5rf">
                                 <rect key="frame" x="190" y="143" width="221" height="21"/>
@@ -100,6 +103,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COm-uZ-Rg9">
+                                <rect key="frame" x="263" y="28" width="75" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="JfK-2x-kZL" eventType="touchUpInside" id="E7X-Nu-x50"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -108,6 +120,7 @@
                             <constraint firstAttribute="centerX" secondItem="JGH-fn-oeP" secondAttribute="centerX" id="XKN-qz-k0j"/>
                             <constraint firstAttribute="centerX" secondItem="jOh-vy-dLv" secondAttribute="centerX" constant="-0.5" id="cHt-Oi-jiW"/>
                             <constraint firstAttribute="centerX" secondItem="Hdz-gt-INb" secondAttribute="centerX" constant="-0.5" id="jRl-zU-CZO"/>
+                            <constraint firstAttribute="centerX" secondItem="COm-uZ-Rg9" secondAttribute="centerX" constant="-0.5" id="ktc-UT-Wa0"/>
                             <constraint firstAttribute="centerX" secondItem="Fax-50-Owe" secondAttribute="centerX" constant="-0.5" id="qzx-oI-qCz"/>
                         </constraints>
                     </view>

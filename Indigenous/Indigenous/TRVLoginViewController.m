@@ -34,14 +34,27 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    if ([FBSDKAccessToken currentAccessToken]) {
-        // User is logged in, do work such as go to next view controller.
+    if ([FBSDKAccessToken currentAccessToken] && [PFUser currentUser]) {
+        
         NSLog(@"Facebook user logged in");
-        [self transitionToHomeStoryboardWithFacebookID:[FBSDKAccessToken currentAccessToken].userID];
+        PFObject *userBio = [PFUser currentUser][@"userBio"];
+        [userBio fetchIfNeeded];
+        NSNumber *isGuide = userBio[@"isGuide"];
+        
+        if ([isGuide isEqualToNumber:@(NO)]){
+            [self transitionToHomeStoryboardWithFacebookID:[FBSDKAccessToken currentAccessToken].userID];
+        } else {
+            
+            //TRANSITION TO GUIDE HOME PAGE
+            
+        }
+        
+        
     } else {
         NSLog(@"Facebook user not logged in.");
     }
-    
+
+        
 }
 
 
@@ -65,6 +78,8 @@
     
     [self transitionToHomeStoryboardWithEmail:self.emailTextField.text andPassword:self.passwordTextField.text];
 
+
+
 }
 
 
@@ -72,7 +87,7 @@
     
     
     
-    
+    [self presentTouristHomeView];
     
     
 }
@@ -85,7 +100,8 @@
     
     [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error){
         
-        
+        [hud hide:YES];
+
         if (user){
             
             NSLog(@"User: %@", user);
@@ -93,7 +109,6 @@
             PFObject *bioObject = user[@"userBio"];
             
             [bioObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
-                [hud hide:YES];
                 
                 if (object){
                     if ([user[@"userBio"][@"isGuide"] isEqualToNumber:@(YES)]){
@@ -150,22 +165,31 @@
 -(void)presentGuideHomeView {
     
     
-    
+    // NEED TO CREATE
     
 }
+
+
+
+- (IBAction)cancelButtonPressed:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
 
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
-    
     if (![[touch view] isKindOfClass:[UITextField class]]) {
         [self.view endEditing:YES];
     }
     [super touchesBegan:touches withEvent:event];
 }
-
 
 
 

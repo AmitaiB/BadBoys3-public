@@ -8,6 +8,8 @@
 
 #import "TRVUserSignupHandler.h"
 #import <Parse/Parse.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @implementation TRVUserSignupHandler
 
@@ -19,7 +21,7 @@
         [PFUser logOut];
     }
     PFUser *newUser = [PFUser new];
-    newUser.username = userDetails[@"id"];
+    newUser.username = userDetails[@"email"];
     newUser.password = userDetails[@"id"];
     newUser.email = userDetails[@"email"];
     newUser[@"facebookID"] = userDetails[@"id"];
@@ -37,6 +39,9 @@
           completion(YES, nil);
             
         } else {
+            [PFUser logOut];
+            [FBSDKAccessToken setCurrentAccessToken:nil];
+            [FBSDKProfile setCurrentProfile:nil];
             NSLog(@"Error signing up: %@", error);
             if (error.code == 200){
                 NSLog(@"Missing username!");
