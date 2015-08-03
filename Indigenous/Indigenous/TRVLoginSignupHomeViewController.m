@@ -7,7 +7,7 @@
 //
 
 #import "TRVLoginSignupHomeViewController.h"
-
+#import <Parse/Parse.h>
 
 @interface TRVLoginSignupHomeViewController ()
 
@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+   
 }
 
 
