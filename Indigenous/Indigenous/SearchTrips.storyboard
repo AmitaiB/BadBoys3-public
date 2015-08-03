@@ -133,10 +133,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wlv-xI-Z3d">
-                                <rect key="frame" x="0.0" y="150" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="75" width="600" height="450"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WeI-av-DBa">
-                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="itemSize" width="155" height="163"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -146,11 +146,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="155" height="163"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-DX-zZF" customClass="TRVTourCategoryView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="155" height="163"/>
                                                     <color key="backgroundColor" red="0.32395161319999999" green="1" blue="0.30490875610000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>
@@ -164,30 +164,20 @@
                                             <constraint firstAttribute="bottom" secondItem="uc2-DX-zZF" secondAttribute="bottom" id="yEO-N1-vHM"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="testView" destination="uc2-DX-zZF" id="xDG-V6-cbK"/>
+                                            <outlet property="categoryView" destination="uc2-DX-zZF" id="8sp-I8-a5e"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTp-5a-HCj" customClass="TRVTourCategoryView">
-                                <rect key="frame" x="16" y="427" width="88" height="78"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="78" id="6Ke-2w-zFY"/>
-                                    <constraint firstAttribute="width" constant="88" id="h8L-bA-Erd"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wlv-xI-Z3d" firstAttribute="top" secondItem="IuT-DM-dX5" secondAttribute="bottom" constant="139" id="9pQ-Ck-doi"/>
-                            <constraint firstItem="eTp-5a-HCj" firstAttribute="leading" secondItem="phj-DM-ddF" secondAttribute="leadingMargin" id="E7X-Vt-hk1"/>
                             <constraint firstAttribute="centerX" secondItem="Wlv-xI-Z3d" secondAttribute="centerX" id="P9K-t8-JJs"/>
-                            <constraint firstItem="Wlv-xI-Z3d" firstAttribute="height" secondItem="phj-DM-ddF" secondAttribute="height" multiplier="1/2" id="YDV-4P-jd1"/>
+                            <constraint firstItem="Wlv-xI-Z3d" firstAttribute="height" secondItem="phj-DM-ddF" secondAttribute="height" multiplier="3/4" id="YDV-4P-jd1"/>
                             <constraint firstAttribute="trailing" secondItem="Wlv-xI-Z3d" secondAttribute="trailing" id="hGM-Vw-6p3"/>
                             <constraint firstItem="O2J-1d-wQ2" firstAttribute="top" secondItem="Wlv-xI-Z3d" secondAttribute="bottom" constant="143" id="jzy-zY-5qO"/>
                             <constraint firstAttribute="centerY" secondItem="Wlv-xI-Z3d" secondAttribute="centerY" id="oxL-ir-6pj"/>
-                            <constraint firstItem="O2J-1d-wQ2" firstAttribute="top" secondItem="eTp-5a-HCj" secondAttribute="bottom" constant="46" id="rfK-gz-8Uy"/>
                             <constraint firstItem="Wlv-xI-Z3d" firstAttribute="width" secondItem="phj-DM-ddF" secondAttribute="width" id="s9H-nY-7Rb"/>
                             <constraint firstItem="Wlv-xI-Z3d" firstAttribute="leading" secondItem="phj-DM-ddF" secondAttribute="leading" id="wOK-xo-dXq"/>
                         </constraints>
@@ -202,7 +192,6 @@
                     </view>
                     <connections>
                         <outlet property="categoryCollectionView" destination="Wlv-xI-Z3d" id="fyT-D8-xQH"/>
-                        <outlet property="testView" destination="eTp-5a-HCj" id="8oD-L4-CBc"/>
                         <segue destination="wXz-1k-x5p" kind="show" identifier="showResultsSegue" id="tgd-MU-fFp"/>
                     </connections>
                 </viewController>

@@ -11,7 +11,7 @@
 
 @interface TRVTourCategoryCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet TRVTourCategoryView *testView;
+@property (weak, nonatomic) IBOutlet TRVTourCategoryView *categoryView;
 
 
 @end

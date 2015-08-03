@@ -13,9 +13,7 @@
 @interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
-@property (nonatomic, strong) NSArray *tourCategoryViews;
-@property (weak, nonatomic) IBOutlet TRVTourCategoryView *testView;
-- (IBAction)changeImage:(id)sender;
+@property (nonatomic, strong) NSMutableArray *tourCategories;
 
 @end
 
@@ -30,13 +28,11 @@
     
     
     // Instantiate a category view and category
-//    
-//    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
-//    
-//    
-//    [self.testView setCategoryForThisView:playCategory];
     
-    self.tourCategoryViews = @[self.testView,self.testView, self.testView];
+    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
+    
+
+    self.tourCategories = [@[playCategory, playCategory, playCategory] mutableCopy];
 
 }
 
@@ -44,7 +40,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     //return array count
-    return self.tourCategoryViews.count;
+    return self.tourCategories.count;
 }
 
 
@@ -53,14 +49,12 @@
     
     TRVTourCategoryCollectionViewCell *cell = (TRVTourCategoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"tourCategoryCollectionCell" forIndexPath:indexPath];
  
-    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
 
-    [cell.testView setCategoryForThisView:playCategory];
-
+    TRVTourCategory *categoryForThisCell = [self.tourCategories objectAtIndex:indexPath.row];
     
-    TRVTourCategoryView *categoryViewForThisCell = [self.tourCategoryViews objectAtIndex:indexPath.row];
     
-    cell.testView = categoryViewForThisCell.categoryContentView;
+    [cell.categoryView setCategoryForThisView:categoryForThisCell];
+    
     
     
     return cell;
@@ -82,18 +76,13 @@
 
 #pragma mark - UICollectionViewLayout
 
+// Set size of collection cell
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(150, 150);
+    return CGSizeMake(175, 175);
 }
 
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 8.0;
-    
-    // NOT WORKING?
-}
-
+// set vertical seperation of cell
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     return 8.0;
@@ -102,7 +91,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    NSArray *ip = [self.categoryCollectionView indexPathsForSelectedItems];
+//    NSArray *ip = [self.categoryCollectionView indexPathsForSelectedItems];
     
     if([segue.identifier isEqualToString:@"entrySegue"]) {
         
@@ -112,11 +101,4 @@
          
 }
 
-
-- (IBAction)changeImage:(id)sender {
-    self.testView.categoryImageView.image = [UIImage imageNamed:@"london.jpg"];
-    self.testView.categoryNameLabel.text = @"YOOOOOOOOO";
-    
-    
-}
 @end

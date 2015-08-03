@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TRVTourCategoryView.h"
+#import <Masonry/Masonry.h>
 
 
 @interface TRVTourCategoryView ()
@@ -44,17 +45,21 @@
                                 options:nil];
     
     [self addSubview:self.categoryContentView];
+    
+    // This add subviews to show about root nib view
     [self.categoryContentView addSubview:self.categoryImageView];
+    [self.categoryImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+        make.height.equalTo(@10);
+    }];
     [self.categoryContentView addSubview:self.iconImageView];
     [self.categoryContentView addSubview:self.categoryNameLabel];
 
-    // set constraints for imageView to superview
 }
 
-//
+
 -(void)setCategoryForThisView:(TRVTourCategory *)categoryForThisView {
     
-    NSLog(@"In setter method, are you getting called?");
 
     _categoryForThisView = categoryForThisView;
     
