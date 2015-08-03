@@ -9,14 +9,15 @@
 #import "TRVTouristTripDetailViewController.h"
 #import "TRVTour.h"
 #import "TRVTourStopCollectionViewDataSource.h"
+#import "TRVTourStopCollectionViewDelegateFlowLayout.h"
 //#import "TRVTourStop.h"
 
 @interface TRVTouristTripDetailViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarTitle;
-@property (weak, nonatomic) IBOutlet UITextView *tourTextView;
 @property (weak, nonatomic) IBOutlet UICollectionView *tourStopCollectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *tourStopImageView;
 @property (nonatomic, strong) TRVTourStopCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) TRVTourStopCollectionViewDelegateFlowLayout *collectionViewDelegate;
 @end
 
 @implementation TRVTouristTripDetailViewController
@@ -29,6 +30,9 @@
         //self.tourStopImageView.image = stop.image;     stops do not yet have images
     }];
     self.tourStopCollectionView.dataSource = self.dataSource;
+    self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init];
+    self.tourStopCollectionView.delegate = self.collectionViewDelegate;
+    self.tourStopCollectionView.scrollsToTop = NO;
     // Do any additional setup after loading the view.
 }
 

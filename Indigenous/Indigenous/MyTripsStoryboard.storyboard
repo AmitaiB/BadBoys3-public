@@ -150,29 +150,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGP-yU-yMd">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGP-yU-yMd">
                                 <rect key="frame" x="0.0" y="63" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5St-oQ-2w6">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5St-oQ-2w6" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Mj-YJ-eEA">
-                                                <rect key="frame" x="-3" y="4" width="600" height="100"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" scrollEnabled="NO" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbg-1S-hru">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" misplaced="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbg-1S-hru">
                                                 <rect key="frame" x="150" y="110" width="300" height="147"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Mz1-IP-Sei">
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ghk-eG-hYE"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="swt-qG-GXe">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nZJ-Ls-AaC" customClass="TRVCollectionViewCell">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tourStopCell" id="nZJ-Ls-AaC" customClass="TRVTourStopCollectionViewCell">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -180,35 +176,45 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </view>
+                                                        <color key="backgroundColor" red="0.073427904720000006" green="0.2111890481" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.073427904720000006" green="0.2111890481" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-55-svt">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" misplaced="YES" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-55-svt">
                                                 <rect key="frame" x="184" y="277" width="240" height="128"/>
                                             </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OI-QZ-k8a">
+                                                <rect key="frame" x="271" y="42" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration" label="ContentView"/>
                                         <constraints>
-                                            <constraint firstItem="1Mj-YJ-eEA" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="9gS-qZ-qr1"/>
+                                            <constraint firstItem="3OI-QZ-k8a" firstAttribute="top" secondItem="5St-oQ-2w6" secondAttribute="top" id="2dT-nD-IHm"/>
                                             <constraint firstAttribute="trailing" secondItem="nbg-1S-hru" secondAttribute="trailing" id="E51-Zi-GvY"/>
-                                            <constraint firstItem="1Mj-YJ-eEA" firstAttribute="top" secondItem="5St-oQ-2w6" secondAttribute="top" id="EWj-zd-168"/>
-                                            <constraint firstAttribute="width" constant="600" id="Efw-dP-XwX"/>
-                                            <constraint firstAttribute="bottom" secondItem="UbO-55-svt" secondAttribute="bottom" id="Mrm-ix-eSc"/>
+                                            <constraint firstItem="3OI-QZ-k8a" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="E9A-Od-lcs"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="Shh-I4-9Ny"/>
-                                            <constraint firstItem="nbg-1S-hru" firstAttribute="top" secondItem="1Mj-YJ-eEA" secondAttribute="bottom" id="axI-mS-AiH"/>
+                                            <constraint firstAttribute="trailing" secondItem="3OI-QZ-k8a" secondAttribute="trailing" id="aQY-5b-IZe"/>
                                             <constraint firstItem="UbO-55-svt" firstAttribute="top" secondItem="nbg-1S-hru" secondAttribute="bottom" id="cT6-0N-yMl"/>
-                                            <constraint firstAttribute="trailing" secondItem="1Mj-YJ-eEA" secondAttribute="trailing" id="dbU-9g-yS0"/>
-                                            <constraint firstAttribute="height" constant="600" id="de5-t7-hqg"/>
+                                            <constraint firstItem="nbg-1S-hru" firstAttribute="top" secondItem="3OI-QZ-k8a" secondAttribute="bottom" id="dmV-pb-1X2"/>
                                             <constraint firstAttribute="trailing" secondItem="UbO-55-svt" secondAttribute="trailing" id="eI6-0j-2ay"/>
+                                            <constraint firstItem="nbg-1S-hru" firstAttribute="width" secondItem="5St-oQ-2w6" secondAttribute="width" id="fzT-NO-kt7"/>
+                                            <constraint firstAttribute="bottom" secondItem="UbO-55-svt" secondAttribute="bottom" id="oUs-MM-Hme"/>
                                             <constraint firstItem="UbO-55-svt" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="xfq-sD-lJB"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="5St-oQ-2w6" secondAttribute="bottom" id="8WF-jD-FGR"/>
+                                    <constraint firstItem="5St-oQ-2w6" firstAttribute="height" secondItem="DGP-yU-yMd" secondAttribute="height" id="Dae-oD-iPj"/>
                                     <constraint firstItem="5St-oQ-2w6" firstAttribute="top" secondItem="DGP-yU-yMd" secondAttribute="top" id="Fa6-fK-GcG"/>
                                     <constraint firstAttribute="trailing" secondItem="5St-oQ-2w6" secondAttribute="trailing" id="HcG-Z7-leF"/>
                                     <constraint firstItem="5St-oQ-2w6" firstAttribute="leading" secondItem="DGP-yU-yMd" secondAttribute="leading" id="MKb-up-XTZ"/>
+                                    <constraint firstItem="5St-oQ-2w6" firstAttribute="width" secondItem="DGP-yU-yMd" secondAttribute="width" id="Rta-Uj-deI"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -225,7 +231,6 @@
                         <outlet property="navBarTitle" destination="3aD-oR-lZn" id="wrw-pr-P4Y"/>
                         <outlet property="tourStopCollectionView" destination="nbg-1S-hru" id="vVG-qb-yCj"/>
                         <outlet property="tourStopImageView" destination="UbO-55-svt" id="ndd-VV-l0O"/>
-                        <outlet property="tourTextView" destination="1Mj-YJ-eEA" id="cFs-GN-phk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJt-6P-oq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -269,4 +274,7 @@
             <point key="canvasLocation" x="148" y="-1016"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1" width="1544" height="1024"/>
+    </resources>
 </document>

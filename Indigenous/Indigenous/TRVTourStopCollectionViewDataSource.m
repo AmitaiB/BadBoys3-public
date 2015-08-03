@@ -8,6 +8,7 @@
 
 #import "TRVTourStopCollectionViewDataSource.h"
 #import "TRVTourStop.h"
+#import "TRVTourStopCollectionViewCell.h"
 
 @implementation TRVTourStopCollectionViewDataSource {
     NSArray *_stops;
@@ -23,11 +24,13 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 1;
+    return 50;
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    TRVTourStopCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"tourStopCell" forIndexPath:indexPath];
+    //cell.stop = _stops[indexPath.row];
+    return cell;
 }
 
 @end

@@ -45,7 +45,8 @@
 		FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA2C1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m */; };
 		FA57FA371B6ADACD00CFBB89 /* TRVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA361B6ADACD00CFBB89 /* TRVConstants.m */; };
 		FA57FA3B1B6BF0C600CFBB89 /* TRVTourStopCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA3A1B6BF0C600CFBB89 /* TRVTourStopCollectionViewDataSource.m */; };
-		FA57FA3E1B6C00DE00CFBB89 /* TRVCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA3D1B6C00DE00CFBB89 /* TRVCollectionViewCell.m */; };
+		FA57FA3E1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA3D1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.m */; };
+		FADB8F1A1B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FADB8F191B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,8 +138,10 @@
 		FA57FA361B6ADACD00CFBB89 /* TRVConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVConstants.m; sourceTree = "<group>"; };
 		FA57FA391B6BF0C600CFBB89 /* TRVTourStopCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStopCollectionViewDataSource.h; sourceTree = "<group>"; };
 		FA57FA3A1B6BF0C600CFBB89 /* TRVTourStopCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStopCollectionViewDataSource.m; sourceTree = "<group>"; };
-		FA57FA3C1B6C00DE00CFBB89 /* TRVCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVCollectionViewCell.h; sourceTree = "<group>"; };
-		FA57FA3D1B6C00DE00CFBB89 /* TRVCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVCollectionViewCell.m; sourceTree = "<group>"; };
+		FA57FA3C1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStopCollectionViewCell.h; sourceTree = "<group>"; };
+		FA57FA3D1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStopCollectionViewCell.m; sourceTree = "<group>"; };
+		FADB8F181B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStopCollectionViewDelegateFlowLayout.h; sourceTree = "<group>"; };
+		FADB8F191B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStopCollectionViewDelegateFlowLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +348,8 @@
 				FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */,
 				FA57FA2B1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.h */,
 				FA57FA2C1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m */,
+				FADB8F181B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.h */,
+				FADB8F191B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m */,
 			);
 			name = MyTrips;
 			sourceTree = "<group>";
@@ -376,8 +381,8 @@
 			children = (
 				FA57FA1D1B696AF800CFBB89 /* TRVTouristTripTableViewCell.h */,
 				FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */,
-				FA57FA3C1B6C00DE00CFBB89 /* TRVCollectionViewCell.h */,
-				FA57FA3D1B6C00DE00CFBB89 /* TRVCollectionViewCell.m */,
+				FA57FA3C1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.h */,
+				FA57FA3D1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -534,12 +539,13 @@
 				451565191B68221B005A2871 /* AppDelegate.m in Sources */,
 				451565161B68221B005A2871 /* main.m in Sources */,
 				45E772DC1B6A670100003C7C /* TRVLoginViewController.m in Sources */,
+				FADB8F1A1B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m in Sources */,
 				FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */,
 				FA57FA221B696F2A00CFBB89 /* TRVTouristTripDataSource.m in Sources */,
 				FA57FA371B6ADACD00CFBB89 /* TRVConstants.m in Sources */,
 				94C77F881B68354E003836E3 /* TRVRating.m in Sources */,
 				94D8FCB41B6A7B2B00B89C29 /* TRVProfileViewDataSource.m in Sources */,
-				FA57FA3E1B6C00DE00CFBB89 /* TRVCollectionViewCell.m in Sources */,
+				FA57FA3E1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.m in Sources */,
 				94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */,
 				94D8FCBF1B6ABDD300B89C29 /* TRVContactTableViewCell.m in Sources */,
 				94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */,

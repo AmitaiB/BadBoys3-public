@@ -10,8 +10,8 @@
 
 @class TRVTourStop;
 
-@interface TRVCollectionViewCell : UICollectionViewCell
+@interface TRVTourStopCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) TRVTourStop *stop;
+-(void)selectionAnimation;
 
 @end
