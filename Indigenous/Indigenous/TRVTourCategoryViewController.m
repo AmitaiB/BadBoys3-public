@@ -23,6 +23,7 @@
     // make self as datasource and delegate
     self.categoryCollectionView.delegate =self;
     self.categoryCollectionView.dataSource = self;
+    self.categoryCollectionView.collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
     
     self.tourCategoryViews = @[@"newyork.jpg",@"beijing.jpg"];
     
@@ -74,8 +75,8 @@
     
     TRVTourCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"tourCategoryCollectionCell" forIndexPath:indexPath];
     
-    cell.categoryImageView.image = [UIImage imageNamed:[self.tourCategoryViews objectAtIndex:indexPath.row]];
-    cell.categoryImageView.backgroundColor = [UIColor greenColor];
+//    cell.categoryImageView.image = [UIImage imageNamed:[self.tourCategoryViews objectAtIndex:indexPath.row]];
+//    cell.categoryImageView.backgroundColor = [UIColor greenColor];
     return cell;
 }
 

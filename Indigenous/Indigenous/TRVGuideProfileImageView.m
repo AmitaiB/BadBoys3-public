@@ -12,6 +12,7 @@
 @interface TRVGuideProfileImageView ()
 
 @property (strong, nonatomic) IBOutlet UIView *guideProfileView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
 @end
 
