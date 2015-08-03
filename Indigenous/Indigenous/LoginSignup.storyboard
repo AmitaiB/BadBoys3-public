@@ -197,7 +197,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Language" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T2U-TX-lJO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Language(s) Spoken" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T2U-TX-lJO">
                                 <rect key="frame" x="244" y="195" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -218,6 +218,9 @@
                                 <state key="normal" title="Done!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="V4x-8x-2ZQ" eventType="touchUpInside" id="rsC-KP-E9O"/>
+                                </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yHa-bl-xqL">
                                 <rect key="frame" x="276" y="415" width="51" height="31"/>
@@ -235,6 +238,13 @@
                             <constraint firstAttribute="centerX" secondItem="TJg-GR-cOh" secondAttribute="centerX" constant="7.5" id="xrp-mD-dS0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bioTextField" destination="LAi-7h-M7j" id="z4r-ha-9F6"/>
+                        <outlet property="isGuide" destination="yHa-bl-xqL" id="lft-HQ-7iD"/>
+                        <outlet property="languagesSpokenTextField" destination="T2U-TX-lJO" id="Jo1-6v-Bl3"/>
+                        <outlet property="oneLineBio" destination="IYc-aB-PfB" id="pRg-83-Alg"/>
+                        <outlet property="phoneNumberTextField" destination="TJg-GR-cOh" id="IFP-up-2OS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vmM-Pf-yUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
