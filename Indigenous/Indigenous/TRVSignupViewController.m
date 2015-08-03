@@ -25,6 +25,10 @@
     [self setUpFacebookSignupButton];
 }
 
+- (IBAction)cancelButtonPressed:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)setUpFacebookSignupButton{
     

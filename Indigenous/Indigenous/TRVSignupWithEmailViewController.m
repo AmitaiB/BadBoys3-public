@@ -48,9 +48,8 @@
     self.imagePickerController.delegate = self;
     [self.imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
     self.imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-//    self.imagePickerController.showsCameraControls = NO;
+
     self.imagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-    
     
     [self.navigationController presentViewController:self.imagePickerController animated:YES completion:nil];
 
@@ -82,6 +81,13 @@
 
 
 - (IBAction)doneButtonPressed:(id)sender {
+    
+    [self signUpUser];
+    
+}
+
+
+-(void)signUpUser {
     
     if ([PFUser currentUser]){
         [PFUser logOut];
@@ -121,10 +127,10 @@
             
         }
     }];
+
     
     
 }
-
 
 
 -(void)goToNextStoryboard {
