@@ -8,31 +8,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TRVTourCategoryView">
             <connections>
-                <outlet property="categoryContentView" destination="9oP-n6-DnE" id="jUT-6x-BsB"/>
+                <outlet property="categoryContentView" destination="Dk2-wI-RbG" id="8do-9a-vbv"/>
+                <outlet property="categoryImageView" destination="9oP-n6-DnE" id="6k4-om-j71"/>
+                <outlet property="categoryNameLabel" destination="khX-5L-kQT" id="o3C-5u-MKV"/>
+                <outlet property="iconImageView" destination="e29-dX-HUB" id="VQ5-yy-R50"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="Dk2-wI-RbG">
-            <rect key="frame" x="0.0" y="0.0" width="357" height="362"/>
+            <rect key="frame" x="0.0" y="0.0" width="280" height="302"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9oP-n6-DnE" userLabel="Tour Category Image">
-                    <rect key="frame" x="0.0" y="0.0" width="357" height="362"/>
-                    <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e29-dX-HUB" userLabel="Category Icon Image">
-                    <rect key="frame" x="119" y="121" width="119" height="119"/>
+                    <rect key="frame" x="94" y="105" width="93" height="93"/>
                     <color key="backgroundColor" red="0.23243727519999999" green="0.25309738009999999" blue="0.10211165210000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="e29-dX-HUB" secondAttribute="height" multiplier="1:1" id="nyC-RC-Rtu"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khX-5L-kQT">
-                    <rect key="frame" x="108" y="321" width="140" height="21"/>
+                    <rect key="frame" x="70" y="261" width="140" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9oP-n6-DnE" userLabel="Tour Category Image">
+                    <rect key="frame" x="0.0" y="0.0" width="280" height="302"/>
+                    <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -53,7 +56,7 @@
                     <exclude reference="gEK-7f-cWJ"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="367.5" y="316"/>
+            <point key="canvasLocation" x="353" y="340"/>
         </view>
     </objects>
 </document>

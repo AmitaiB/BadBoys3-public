@@ -8,6 +8,7 @@
 
 #import "TRVTourCategoryViewController.h"
 #import "TRVTourCategoryCollectionViewCell.h"
+#import "TRVTourCategoryView.h"
 
 @interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -25,24 +26,38 @@
     self.categoryCollectionView.delegate =self;
     self.categoryCollectionView.dataSource = self;
     
-    self.tourCategoryViews = @[@"newyork.jpg",@"beijing.jpg"];
     
-    [self.view addSubview:self.categoryCollectionView];
+    // Instantiate a category view and category
+    
+        TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
+    
+    // Instantiate a category view and category
+        TRVTourCategoryView *playCategoryView = [[TRVTourCategoryView alloc] init];
+        playCategoryView.categoryForThisView = playCategory;
+        
+        self.tourCategoryViews = @[playCategoryView,playCategoryView,playCategoryView];
+    
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    return self.tourCategoryViews.count;
-    return 10;
+
+    
+    //return array count
+    
+    return self.tourCategoryViews.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     TRVTourCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"tourCategoryCollectionCell" forIndexPath:indexPath];
     
-//    cell.categoryImageView.image = [UIImage imageNamed:[self.tourCategoryViews objectAtIndex:indexPath.row]];
-    cell.categoryImageView.backgroundColor = [UIColor greenColor];
+    TRVTourCategoryView *categoryViewForThisCell = [self.tourCategoryViews objectAtIndex:indexPath.row];
+    UIView *contentViewForThisCell = categoryViewForThisCell.categoryContentView;
+    //    UIImage *categoryImageForThisCell = categoryViewForThisCell.categoryForThisView.categoryImage;
+    
+    cell.categoryViewForThisCell = contentViewForThisCell;
 
     return cell;
 }

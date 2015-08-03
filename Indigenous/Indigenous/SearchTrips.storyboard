@@ -64,27 +64,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZB-rz-tMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1613" y="439"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="q1p-Xk-aOD">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oe4-FK-mnH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="WPI-vZ-svA"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BFW-Fv-6qG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="wXz-1k-x5p" kind="relationship" relationship="rootViewController" id="Xxg-ie-J05"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8lZ-54-ihA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="926" y="439"/>
+            <point key="canvasLocation" x="2639" y="1239"/>
         </scene>
         <!--Pick City Table View Controller-->
         <scene sceneID="efN-5l-52n">
@@ -166,21 +146,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bYZ-39-blp">
-                                                    <rect key="frame" x="8" y="8" width="84" height="84"/>
-                                                </imageView>
+                                                <view clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="uc2-DX-zZF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <color key="backgroundColor" red="0.32395161319999999" green="1" blue="0.30490875610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.32395161319999999" green="1" blue="0.30490875610000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="bYZ-39-blp" secondAttribute="trailing" id="AqN-cC-0Nl"/>
-                                            <constraint firstItem="bYZ-39-blp" firstAttribute="leading" secondItem="mDx-Et-khw" secondAttribute="leadingMargin" id="Ptj-gc-mO3"/>
-                                            <constraint firstItem="bYZ-39-blp" firstAttribute="top" secondItem="mDx-Et-khw" secondAttribute="topMargin" id="hN5-Gr-JyH"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="bYZ-39-blp" secondAttribute="bottom" id="lGs-LP-bfR"/>
+                                            <constraint firstItem="uc2-DX-zZF" firstAttribute="top" secondItem="mDx-Et-khw" secondAttribute="top" id="H0M-Aq-5ty"/>
+                                            <constraint firstAttribute="trailing" secondItem="uc2-DX-zZF" secondAttribute="trailing" id="fHp-jU-F1g"/>
+                                            <constraint firstItem="uc2-DX-zZF" firstAttribute="leading" secondItem="mDx-Et-khw" secondAttribute="leading" id="fcB-t2-IWf"/>
+                                            <constraint firstAttribute="bottom" secondItem="uc2-DX-zZF" secondAttribute="bottom" id="yEO-N1-vHM"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="categoryImageView" destination="bYZ-39-blp" id="uUZ-NO-8Ym"/>
+                                            <outlet property="categoryView" destination="uc2-DX-zZF" id="9x3-P6-rFS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -208,6 +189,7 @@
                     </view>
                     <connections>
                         <outlet property="categoryCollectionView" destination="Wlv-xI-Z3d" id="fyT-D8-xQH"/>
+                        <segue destination="wXz-1k-x5p" kind="show" id="tgd-MU-fFp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmM-xY-j26" userLabel="First Responder" sceneMemberID="firstResponder"/>

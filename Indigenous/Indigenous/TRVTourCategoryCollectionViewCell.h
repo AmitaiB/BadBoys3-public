@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVTourCategoryView.h"
 
 @interface TRVTourCategoryCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
+
+@property (weak, nonatomic) IBOutlet UIView *categoryView;
+
 
 @end

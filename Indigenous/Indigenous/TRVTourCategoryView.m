@@ -12,12 +12,10 @@
 
 @interface TRVTourCategoryView ()
 
-@property (strong, nonatomic) IBOutlet UIView *categoryContentView;
 
 @end
 
 @implementation TRVTourCategoryView
-
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -46,10 +44,22 @@
                                 options:nil];
     
     [self addSubview:self.categoryContentView];
+    [self.categoryContentView addSubview:self.categoryImageView];
+    [self.categoryContentView addSubview:self.iconImageView];
+    [self.categoryContentView addSubview:self.categoryNameLabel];
 
     // set constraints for imageView to superview
-
 }
 
+
+-(void)setCategoryForThisView:(TRVTourCategory *)categoryForThisView {
+
+    _categoryForThisView = categoryForThisView;
+    self.categoryImageView.image = categoryForThisView.categoryImage;
+    self.iconImageView.image = categoryForThisView.iconImage;
+    self.categoryNameLabel.text = categoryForThisView.categoryName;
+
+    
+}
 
 @end
