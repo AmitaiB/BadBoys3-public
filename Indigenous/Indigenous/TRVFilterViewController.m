@@ -17,8 +17,6 @@
 @property (nonatomic, strong) NSArray *prices;
 
 @property (nonatomic, strong) NSString *priceFilter;
-@property (nonatomic, strong) NSString *subCategoryFilter;
-@property (nonatomic, strong) NSDictionary *filterChoices;
 
 @property (nonatomic, strong) TRVUserDataStore *dataStore;
 
@@ -96,17 +94,23 @@
     
     TRVSubCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
+    cell.backgroundColor = [UIColor grayColor];
     cell.categoryLabel.text = self.subCategories[indexPath.row];
     
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor magentaColor];
     
     [self.selectedSubCategories addObject:self.subCategories[indexPath.row]];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    cell.backgroundColor = [UIColor grayColor];
+
     [self.selectedSubCategories removeObject:self.subCategories[indexPath.row]];
     
 }
@@ -146,11 +150,14 @@
 - (IBAction)doneButtonPressed:(id)sender {
     
     
-    self.filterChoices = [NSDictionary dictionaryWithObjectsAndKeys:
+    self.dataStore.filterChoices = [NSDictionary dictionaryWithObjectsAndKeys:
                           self.priceFilter,@"price",
-                          self.subCategoryFilter, @"subCategory",
+                          self.selectedSubCategories, @"subCategories",
                           nil];
     
+    NSLog(@"%@", self.dataStore.filterChoices);
+    [self dismissViewControllerAnimated:YES completion:nil];
+
     
 }
 
