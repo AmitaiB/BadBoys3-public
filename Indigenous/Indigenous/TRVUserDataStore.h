@@ -28,4 +28,9 @@
 @property (nonatomic) BOOL isGuide;
 
 
+// SET WHEN EAT/DRINK/PLAY/SEE IS SELECTED
+// NECESSARY FOR FILTER MODAL
+@property (nonatomic, strong) NSString *currentCategorySearching;
+@property (nonatomic, strong) NSDictionary *filterChoices;
+
 @end

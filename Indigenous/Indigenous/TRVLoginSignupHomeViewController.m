@@ -26,8 +26,8 @@
 //    [PFUser logOut];
 //    [FBSDKAccessToken setCurrentAccessToken:nil];
 //    [FBSDKProfile setCurrentProfile:nil];
-
-    
+//
+//    
     NSLog(@"PFUSER: %@", [PFUser currentUser]);
     NSLog(@"FACEBOOK USER: %@", [FBSDKAccessToken currentAccessToken]);
     
@@ -45,38 +45,41 @@
 
 -(void)checkToSeeIfUserIsLoggedIn {
     
-    if ([FBSDKAccessToken currentAccessToken] && [PFUser currentUser]) {
-        // User is logged in, do work such as go to next view controller.
-        NSLog(@"Facebook user logged in");
-        PFObject *userBio = [PFUser currentUser][@"userBio"];
-        [userBio fetchIfNeeded];
-        NSNumber *isGuide = userBio[@"isGuide"];
+    if (([FBSDKAccessToken currentAccessToken] && [PFUser currentUser]) || [PFUser currentUser]) {
         
-        if ([isGuide isEqualToNumber:@(NO)]){
-            [self transitionToHomeStoryboardWithFacebookID:[FBSDKAccessToken currentAccessToken].userID];
-        } else {
-            
-            //TRANSITION TO GUIDE HOME PAGE
-            
-        }
-        
+        [self transitionToHome];
         
     } else {
-        NSLog(@"Facebook user not logged in.");
+        
+        NSLog(@"No one logged in.");
+
     }
 
     
     
 }
 
--(void)transitionToHomeStoryboardWithFacebookID:(NSString *)facebookID {
+
+
+-(void)transitionToHome{
     
+    // User is logged in, do work such as go to next view controller.
+    NSLog(@"Facebook user logged in");
+    PFObject *userBio = [PFUser currentUser][@"userBio"];
+    [userBio fetchIfNeeded];
+    NSNumber *isGuide = userBio[@"isGuide"];
     
-    
-    [self presentTouristHomeView];
-    
+    if ([isGuide isEqualToNumber:@(NO)]){
+        [self presentTouristHomeView];
+    } else {
+        
+        //TRANSITION TO GUIDE HOME VIEW
+        
+    }
+
     
 }
+
 
 
 -(void)transitionToHomeStoryboardWithEmail:(NSString*)email andPassword:(NSString*)password{

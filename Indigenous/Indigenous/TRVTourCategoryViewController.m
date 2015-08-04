@@ -10,11 +10,14 @@
 #import "TRVTourCategoryCollectionViewCell.h"
 #import "TRVTourCategoryView.h"
 #import <Masonry.h>
+#import "TRVUserDataStore.h"
+
 
 @interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
 @property (nonatomic, strong) NSMutableArray *tourCategories;
+@property (nonatomic, strong) TRVUserDataStore *dataStore;
 
 @end
 
@@ -22,11 +25,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.dataStore = [TRVUserDataStore sharedUserInfoDataStore];
+
     // make self as datasource and delegate
     self.categoryCollectionView.delegate =self;
     self.categoryCollectionView.dataSource = self;
-    
     
     // Instantiate a category view and category
     
@@ -36,11 +39,9 @@
     
     TRVTourCategory *eatCategory = [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];
     
-    TRVTourCategory *feelCategory = [[TRVTourCategory alloc] initWithName:@"Feel" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid"]];
+    TRVTourCategory *drinkCategory = [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid"]];
 
-    
-
-    self.tourCategories = [@[seeCategory, playCategory, eatCategory, feelCategory] mutableCopy];
+    self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
 
 }
 
@@ -79,6 +80,11 @@
     
     UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
     datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
+    
+    
+    self.dataStore.currentCategorySearching = [self.tourCategories[indexPath.row] categoryName];
+    
+    
     
     NSLog(@"Are you in here?");
     [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
