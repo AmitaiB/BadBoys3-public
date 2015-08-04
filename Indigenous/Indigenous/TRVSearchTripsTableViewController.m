@@ -37,10 +37,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    if (self.filterDictionary == nil){
-        NSLog(@"Filter is nil!");
-        // SHOW ALL GUDES
-    }
+    
     
 }
 
@@ -60,8 +57,29 @@
     
     self.filterDictionary = dictionary;
     //THEN UPDATE SORTING
+    [self updateGuidesList];
     NSLog(@"The dictionary: %@", self.filterDictionary);
     
 }
 
+
+-(void)updateGuidesList {
+    // LEO
+    // THIS IS ALL YOU
+    // KILL IT
+    // OR MAYBE I CAN DO IT
+    // BUT WE SHALL SEE
+    
+    if (self.filterDictionary == nil){
+        NSLog(@"Filter is nil!");
+        
+        // SHOW ALL GUDES
+        
+    } else {
+        
+        // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
+        
+    }
+    
+}
 @end
