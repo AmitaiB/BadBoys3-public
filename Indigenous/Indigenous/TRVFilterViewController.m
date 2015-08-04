@@ -30,10 +30,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataStore = [TRVUserDataStore sharedUserInfoDataStore];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
     [self setUpSubCategories];
     [self setUpSubCategoryCollectionView];
     [self setUpPickerView];
+    
 }
+
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+}
+
+
 
 -(void)setUpSubCategoryCollectionView {
     
@@ -49,8 +63,18 @@
     self.pricePicker.dataSource = self;
     self.pricePicker.delegate = self;
     
+    if(self.dataStore.filterChoices[@"price"]){
+        NSInteger n = [self.prices indexOfObject:self.dataStore.filterChoices[@"price"]];
+        [self.pricePicker selectRow:n inComponent:0 animated:YES];
+        
+            
+        
+    }
+
     NSInteger row = [self.pricePicker selectedRowInComponent:0];
     self.priceFilter = self.prices[row];
+    
+    
 
     
 }
@@ -87,9 +111,13 @@
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
+
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.subCategories.count;
 }
+
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     TRVSubCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
@@ -97,15 +125,30 @@
     cell.backgroundColor = [UIColor grayColor];
     cell.categoryLabel.text = self.subCategories[indexPath.row];
     
+    if ([self.dataStore.filterChoices[@"subCategories"] containsObject:self.subCategories[indexPath.row]]){
+        cell.backgroundColor = [UIColor magentaColor];
+        [self.selectedSubCategories addObject:self.subCategories[indexPath.row]];
+        
+        
+    }
+
     return cell;
+    
 }
+
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     cell.backgroundColor = [UIColor magentaColor];
     
     [self.selectedSubCategories addObject:self.subCategories[indexPath.row]];
+    
+ 
 }
+
+
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
@@ -113,6 +156,7 @@
 
     [self.selectedSubCategories removeObject:self.subCategories[indexPath.row]];
     
+
 }
 
 
