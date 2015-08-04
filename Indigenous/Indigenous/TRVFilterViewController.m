@@ -59,7 +59,7 @@
 
 -(void)setUpPickerView {
     
-    self.prices = @[@"$0 - $25", @"$26 - $50", @"$50 - $100"];
+    self.prices = @[@"All Prices", @"$0 - $25", @"$26 - $50", @"$50 - $100"];
     self.pricePicker.dataSource = self;
     self.pricePicker.delegate = self;
     
@@ -192,14 +192,19 @@
 
 
 - (IBAction)doneButtonPressed:(id)sender {
+    //NSLog(@"Selected subs %@", self.selectedSubCategories);
+    if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
+        self.dataStore.filterChoices = nil;
+        NSLog(@"NIL Datastore: %@", self.dataStore.filterChoices);
+    } else {
+        self.dataStore.filterChoices = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        self.priceFilter,@"price",
+                                        self.selectedSubCategories, @"subCategories",
+                                        nil];
+        
+        NSLog(@"%@", self.dataStore.filterChoices);
+    }
     
-    
-    self.dataStore.filterChoices = [NSDictionary dictionaryWithObjectsAndKeys:
-                          self.priceFilter,@"price",
-                          self.selectedSubCategories, @"subCategories",
-                          nil];
-    
-    NSLog(@"%@", self.dataStore.filterChoices);
     [self dismissViewControllerAnimated:YES completion:nil];
 
     
@@ -207,12 +212,28 @@
 
 
 
+- (IBAction)resetButtonPressed:(id)sender {
+    
+    
+    self.dataStore.filterChoices = nil;
+    self.selectedSubCategories = [@[] mutableCopy];
+    [self.pricePicker selectRow:0 inComponent:0 animated:YES];
+    self.priceFilter = self.prices[0];
+    [self.subCategoryCollectionView reloadData];
+    
+    
+    
+}
 
 
 - (IBAction)dismissButtonPressed:(id)sender {
     
+    self.dataStore.filterChoices = nil;
+    self.selectedSubCategories = [@[] mutableCopy];
+    self.priceFilter = self.prices[0];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
+    NSLog(@"NIL Datastore: %@", self.dataStore.filterChoices);
+
 }
 
 
