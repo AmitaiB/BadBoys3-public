@@ -12,12 +12,14 @@
 #import "TRVSearchTripsViewController.h"
 #import "TRVSearchResultsDataSource.h"
 #import <Masonry/Masonry.h>
+#import "TRVFilterViewController.h"
 
 
-@interface TRVSearchTripsTableViewController ()
+
+@interface TRVSearchTripsTableViewController () <FilterProtocol>
 
 @property (nonatomic, strong) TRVSearchResultsDataSource *resultsDataSource;
-
+@property (nonatomic, strong) NSDictionary *filterDictionary;
 
 @end
 
@@ -32,6 +34,34 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if (self.filterDictionary == nil){
+        NSLog(@"Filter is nil!");
+        // SHOW ALL GUDES
+    }
+    
+}
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    TRVFilterViewController *filterModal = [segue destinationViewController];
+    
+    if (self.filterDictionary){
+        filterModal.filterDictionary = self.filterDictionary;
+    }
+    
+    filterModal.delegate = self;
+    
+}
+
+-(void)passFilterDictionary:(NSDictionary *)dictionary{
+    
+    self.filterDictionary = dictionary;
+    //THEN UPDATE SORTING
+    NSLog(@"The dictionary: %@", self.filterDictionary);
+    
+}
 
 @end

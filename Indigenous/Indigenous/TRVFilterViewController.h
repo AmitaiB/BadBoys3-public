@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TRVFilterViewController : UIViewController
 
+@protocol FilterProtocol <NSObject>
+@required
+-(void)passFilterDictionary:(NSDictionary*)dictionary;
+
+@end
+
+
+@interface TRVFilterViewController : UIViewController
+@property (nonatomic, weak) id<FilterProtocol> delegate;
+@property (nonatomic, strong) NSDictionary *filterDictionary;
 @end

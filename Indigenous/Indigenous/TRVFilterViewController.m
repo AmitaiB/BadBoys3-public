@@ -11,6 +11,10 @@
 #import "TRVSubCategoryCollectionView.h"
 #import "TRVSubCategoryCollectionViewCell.h"
 
+
+
+
+
 @interface TRVFilterViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pricePicker;
@@ -63,8 +67,8 @@
     self.pricePicker.dataSource = self;
     self.pricePicker.delegate = self;
     
-    if(self.dataStore.filterChoices[@"price"]){
-        NSInteger n = [self.prices indexOfObject:self.dataStore.filterChoices[@"price"]];
+    if(self.filterDictionary[@"price"]){
+        NSInteger n = [self.prices indexOfObject:self.filterDictionary[@"price"]];
         [self.pricePicker selectRow:n inComponent:0 animated:YES];
         
             
@@ -125,7 +129,7 @@
     cell.backgroundColor = [UIColor grayColor];
     cell.categoryLabel.text = self.subCategories[indexPath.row];
     
-    if ([self.dataStore.filterChoices[@"subCategories"] containsObject:self.subCategories[indexPath.row]]){
+    if ([self.filterDictionary[@"subCategories"] containsObject:self.subCategories[indexPath.row]]){
         cell.backgroundColor = [UIColor magentaColor];
         [self.selectedSubCategories addObject:self.subCategories[indexPath.row]];
         
@@ -193,17 +197,32 @@
 
 - (IBAction)doneButtonPressed:(id)sender {
     //NSLog(@"Selected subs %@", self.selectedSubCategories);
-    if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
-        self.dataStore.filterChoices = nil;
-        NSLog(@"NIL Datastore: %@", self.dataStore.filterChoices);
-    } else {
-        self.dataStore.filterChoices = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        self.priceFilter,@"price",
-                                        self.selectedSubCategories, @"subCategories",
-                                        nil];
-        
-        NSLog(@"%@", self.dataStore.filterChoices);
-    }
+    
+    
+    
+//    if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
+//        self.dataStore.filterChoices = nil;
+//        NSLog(@"NIL Datastore: %@", self.dataStore.filterChoices);
+//    } else {
+//        self.dataStore.filterChoices = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                        self.priceFilter,@"price",
+//                                        self.selectedSubCategories, @"subCategories",
+//                                        nil];
+//        
+//        NSLog(@"%@", self.dataStore.filterChoices);
+//    }
+    
+    
+  if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
+      [self.delegate passFilterDictionary:nil];
+  } else {
+      [self.delegate passFilterDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                           self.priceFilter,@"price",
+                                           self.selectedSubCategories, @"subCategories",
+                                           nil]];
+  }
+    
+    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -215,7 +234,9 @@
 - (IBAction)resetButtonPressed:(id)sender {
     
     
-    self.dataStore.filterChoices = nil;
+//  self.dataStore.filterChoices = nil;
+    [self.delegate passFilterDictionary:nil];
+    self.filterDictionary = nil;
     self.selectedSubCategories = [@[] mutableCopy];
     [self.pricePicker selectRow:0 inComponent:0 animated:YES];
     self.priceFilter = self.prices[0];
@@ -228,11 +249,15 @@
 
 - (IBAction)dismissButtonPressed:(id)sender {
     
-    self.dataStore.filterChoices = nil;
-    self.selectedSubCategories = [@[] mutableCopy];
-    self.priceFilter = self.prices[0];
+//    self.dataStore.filterChoices = nil;
+    if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
+        [self.delegate passFilterDictionary:nil];
+    } else {
+        [self.delegate passFilterDictionary:self.filterDictionary];
+    }
+//    self.selectedSubCategories = [@[] mutableCopy];
+//    self.priceFilter = self.prices[0];
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"NIL Datastore: %@", self.dataStore.filterChoices);
 
 }
 
