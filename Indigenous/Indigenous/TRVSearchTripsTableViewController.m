@@ -26,11 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addTapToProfileImageView];
+//    [self addTapToProfileImageView];
     
-    // set datasource file
-//    self.resultsDataSource = [[TRVSearchResultsDataSource alloc] init];
-//    self.tableView.dataSource = self.resultsDataSource;
+
 
 }
 
@@ -59,20 +57,20 @@
     
 }
 
-
--(void)addTapToProfileImageView {
-    NSLog(@"Are yoe in here?");
-    [self.cell.profileImageViewNib setUserInteractionEnabled:YES];
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    [self.cell addGestureRecognizer:singleTap];
-    singleTap.delegate = self;
-}
-
-- (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
-    
-[self.navigationController performSegueWithIdentifier:@"detailTourGuideSegue" sender:nil];
-    
-}
+//
+//-(void)addTapToProfileImageView {
+//    NSLog(@"Are yoe in here?");
+//    [self.cell.profileImageViewNib setUserInteractionEnabled:YES];
+//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+//    [self.cell addGestureRecognizer:singleTap];
+//    singleTap.delegate = self;
+//}
+//
+//- (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
+//    
+//[self.navigationController performSegueWithIdentifier:@"detailTourGuideSegue" sender:nil];
+//    
+//}
 
 
 

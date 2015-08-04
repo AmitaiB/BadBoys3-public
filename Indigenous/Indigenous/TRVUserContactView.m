@@ -1,19 +1,15 @@
 //
-//  TRVUserSnippetView.m
+//  TRVUserContactView.m
 //  Indigenous
 //
 //  Created by Leo Kwan on 8/4/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "TRVUserSnippetView.h"
+#import "TRVUserContactView.h"
 
-@interface TRVUserSnippetView ()
+@implementation TRVUserContactView
 
-@end
-
-@implementation TRVUserSnippetView
 
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -43,12 +39,12 @@
                                 options:nil];
     
     [self addSubview:self.userSnippetContentView];
-//    [self.userSnippetContentView addSubview:self.firstNameLabel];
-
+    //    [self.userSnippetContentView addSubview:self.firstNameLabel];
+    
 }
 
 -(void)setUserForThisSnippetView:(TRVUser *)userForThisSnippetView {
-   
+    
     _userForThisSnippetView = userForThisSnippetView;
     
     self.firstNameLabel.text = userForThisSnippetView.userBio.firstName;
@@ -56,7 +52,7 @@
     self.oneLinerLabel.text = userForThisSnippetView.userBio.bioDescription;
     NSLog(@"%@!!!!!!!!!!!", userForThisSnippetView.userBio.firstName);
     NSLog(@"%@!!!!!!!!!!!",  self.firstNameLabel.text);
-
+    
 }
 
 @end

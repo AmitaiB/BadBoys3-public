@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
+#import "TRVBio.h"
 
 @interface TRVUserSnippetView : UIView
 
 @property (nonatomic, strong) TRVUser *userForThisSnippetView;
-
 @property (strong, nonatomic) IBOutlet UIView *userSnippetContentView;
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *oneLinerLabel;
 
 @end

@@ -66,8 +66,8 @@
         return cell;
     }
     else if(indexPath.row == 1) {
-        TRVContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contact"];
-        cell.userForThisContactCell = self.user;
+        TRVUserSnippetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"snippet"];
+        cell.user = self.user;
         return cell;
     }
     
