@@ -9,10 +9,12 @@
 #import "TRVPickCityTableViewController.h"
 #import "TRVCity.h"
 #import "TRVCityTableViewCell.h"
+#import "TRVUserDataStore.h"
+#import <Parse.h>
 
 @interface TRVPickCityTableViewController ()
 
-
+@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (nonatomic, strong) NSMutableArray *cities;
 @end
 
@@ -20,8 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.tableView.estimatedRowHeight = 200;
-//    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+//    [PFUser logInWithUsername:@"joe@g.com" password:@"joe"];
+    self.sharedDataStore = [[TRVUserDataStore alloc] initWithCurrentUser:[PFUser currentUser]];
+    self.sharedDataStore.loggedInUser = [PFUser currentUser];
+    
+    
     
     TRVCity *newYork = [[TRVCity alloc] initWithName:@"New York City" image:[UIImage imageNamed:@"newyork"]];
     TRVCity *beijing = [[TRVCity alloc] initWithName:@"Beijing" image:[UIImage imageNamed:@"beijing"]];
@@ -56,6 +62,15 @@
     cell.cityNameLabel.text = cityForThisRow.nameOfCity;
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    TRVCityTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    // pass cell details into next vc...
+    
+    [self performSegueWithIdentifier:@"showCategoriesSegue" sender:self];
+    
 }
 
 

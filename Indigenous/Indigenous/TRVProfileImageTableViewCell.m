@@ -25,20 +25,7 @@
 -(void)setUserForThisImageCell:(TRVUser *)userForThisImageCell {
     _userForThisImageCell = userForThisImageCell;
     
-    
-    
-    //    PFUser *currentUser = [PFUser currentUser];
-    PFQuery *query = [PFQuery queryWithClassName:@"UserBio"];
-    //    [query whereKey:@"objectId" equalTo:@"mFwm7KX2TI"];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        } else {
-            NSLog(@"This is the response: %@", objects);
-        }
-    }];
-    
+       
     
     // Created the profile image view
     UIImageView *profilePictureImageView = [[UIImageView alloc] init];

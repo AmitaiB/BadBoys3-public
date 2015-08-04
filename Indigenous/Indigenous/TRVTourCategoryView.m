@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "TRVTourCategoryView.h"
+#import <Masonry/Masonry.h>
+
 
 
 @interface TRVTourCategoryView ()
 
-@property (strong, nonatomic) IBOutlet UIView *categoryContentView;
 
 @end
 
 @implementation TRVTourCategoryView
-
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -46,10 +46,27 @@
                                 options:nil];
     
     [self addSubview:self.categoryContentView];
+    
+    // This add subviews to show about root nib view
+    [self.categoryContentView addSubview:self.categoryImageView];
 
-    // set constraints for imageView to superview
+    [self.categoryContentView addSubview:self.iconImageView];
+    [self.categoryContentView addSubview:self.categoryNameLabel];
 
 }
 
+
+-(void)setCategoryForThisView:(TRVTourCategory *)categoryForThisView {
+    
+
+    _categoryForThisView = categoryForThisView;
+    
+    self.categoryImageView.image = categoryForThisView.categoryImage;
+
+    self.iconImageView.image = categoryForThisView.iconImage;
+    self.categoryNameLabel.text = categoryForThisView.categoryName;
+
+    
+}
 
 @end
