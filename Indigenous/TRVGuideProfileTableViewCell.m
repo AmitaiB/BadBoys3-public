@@ -7,15 +7,13 @@
 //
 
 #import "TRVGuideProfileTableViewCell.h"
-#import "TRVGuideProfileImageView.h"
-#import "TRVGuideDetailProfileView.h"
+
 #import <Masonry.h>
 
 @interface TRVGuideProfileTableViewCell ()
 
 @property (nonatomic, strong) NSArray *profileScrollViewItems;
-@property (nonatomic, strong) TRVGuideProfileImageView *profileImageNib;
-@property (nonatomic, strong) TRVGuideDetailProfileView *detailedProfileNib;
+
 
 @end
 
@@ -38,7 +36,6 @@
 
 
 -(void) layoutConstraintsForProfileSection {
-    
 
     // Set Profile Image View Constraints
     
@@ -61,7 +58,6 @@
     [self layoutProfileScrollView];
     
 }
-
 
 
 
@@ -97,13 +93,13 @@
     
     // ADD Profile Image View Nib
     
-    self.profileImageNib = [[TRVGuideProfileImageView alloc] init];
-    [self.guideProfileScrollContentView addSubview:self.profileImageNib];
+    self.profileImageViewNib = [[TRVGuideProfileImageView alloc] init];
+    [self.guideProfileScrollContentView addSubview:self.profileImageViewNib];
     
     // SET Profile View Nib Constraints
     
     
-    [self.profileImageNib mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.profileImageViewNib mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.guideProfileScrollView.mas_left);
         make.top.equalTo(self.guideProfileScrollView.mas_top);
         make.bottom.equalTo(self.guideProfileScrollView.mas_bottom);
@@ -123,7 +119,7 @@
     
     [self.detailedProfileNib mas_makeConstraints:^(MASConstraintMaker *make) {
         // set all edges to superview edges except right margin
-        make.left.equalTo(self.profileImageNib.mas_right);
+        make.left.equalTo(self.profileImageViewNib.mas_right);
         make.top.equalTo(self.guideProfileScrollContentView.mas_top);
         make.bottom.equalTo(self.guideProfileScrollContentView.mas_bottom);
         

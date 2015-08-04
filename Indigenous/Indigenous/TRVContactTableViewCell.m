@@ -29,9 +29,24 @@
 
 -(void)setUserForThisContactCell:(TRVUser *)userForThisContactCell {
     
-        // set logged in TRV User
+    
+    
+    // set logged in TRV User
     _userForThisContactCell = userForThisContactCell;
     self.contactCategoryLabel.text = @"Contact";
+
+    
+    
+    // EMAIL LABELS ARE PROGRAMATICALLY SET
+    UILabel *connectLabel = [[UILabel alloc] init];
+    connectLabel.text = @"Connect";
+    [self.contentView addSubview:connectLabel];
+    
+    [connectLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contactCategoryLabel.mas_bottom).with.offset(5);
+        make.left.equalTo(self.contactCategoryLabel.mas_left);
+    }];
+
     
     
     // add email label

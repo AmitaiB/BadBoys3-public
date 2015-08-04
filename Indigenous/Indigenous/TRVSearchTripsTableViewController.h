@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVUser.h"
 
 @interface TRVSearchTripsTableViewController : UITableViewController
+
+@property (nonatomic, strong) TRVUser *user;
+
 
 @end

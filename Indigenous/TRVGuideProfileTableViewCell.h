@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
 #import "TRVBio.h"
+#import "TRVGuideProfileTableViewCell.h"
+#import "TRVGuideProfileImageView.h"
+#import "TRVGuideDetailProfileView.h"
 
 @interface TRVGuideProfileTableViewCell : UITableViewCell
 
@@ -17,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *profileSectionContentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *guideProfileScrollView;  
 @property (weak, nonatomic) IBOutlet UIView *guideProfileScrollContentView;
-
+@property (nonatomic, strong) TRVGuideProfileImageView *profileImageViewNib;
+@property (nonatomic, strong) TRVGuideDetailProfileView *detailedProfileNib;
 
 @end

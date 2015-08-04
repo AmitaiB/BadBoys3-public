@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *homeCountryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userTaglineLabel;
 @property (nonatomic, strong) TRVUser *user;
-
-
+@property (nonatomic, strong) TRVBio *bioForThisUser;
 
 @end

@@ -23,9 +23,11 @@
 }
 
 -(void)setUserForThisImageCell:(TRVUser *)userForThisImageCell {
+    
     _userForThisImageCell = userForThisImageCell;
     
        
+    // ADDED IMAGE VIEW PROGRAMATICALLY
     
     // Created the profile image view
     UIImageView *profilePictureImageView = [[UIImageView alloc] init];
@@ -34,6 +36,7 @@
     // added imageview to superview
     [self.contentView addSubview:profilePictureImageView];
     
+    profilePictureImageView.backgroundColor = [UIColor purpleColor];
     
     // set imageview constraints
     [profilePictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {

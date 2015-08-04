@@ -11,7 +11,7 @@
 #import "TRVTourCategoryView.h"
 #import <Masonry.h>
 
-@interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
 @property (nonatomic, strong) NSMutableArray *tourCategories;

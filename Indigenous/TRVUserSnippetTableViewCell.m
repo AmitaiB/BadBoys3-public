@@ -11,7 +11,6 @@
 
 @interface TRVUserSnippetTableViewCell()
 
-@property (nonatomic, strong) TRVBio *bioForThisUser;
 
 @end
 
@@ -37,7 +36,7 @@
     self.userTaglineLabel.text = user.userBio.userTagline;
     
     
-    // set the top padding of cell to top labe
+    // set the top padding of cell to top label
     [self.firstNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView.mas_top).with.offset(8);
 

@@ -15,7 +15,7 @@
 
 @interface TRVSearchTripsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
-@property (nonatomic, strong) TRVSearchResultsDataSource *resultsDataSource;
+//@property (nonatomic, strong) TRVSearchResultsDataSource *resultsDataSource;
 
 
 
@@ -27,8 +27,8 @@
     [super viewDidLoad];
     
     // set datasource file
-    self.resultsDataSource = [[TRVSearchResultsDataSource alloc] init];
-    self.resultsTableView.dataSource = self.resultsDataSource;
+//    self.resultsDataSource = [[TRVSearchResultsDataSource alloc] init];
+//    self.resultsTableView.dataSource = self.resultsDataSource;
     
     }
 

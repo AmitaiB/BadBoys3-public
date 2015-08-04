@@ -27,7 +27,12 @@
 }
 
 -(void)setUserForThisConnectCell:(TRVUser *)userForThisConnectCell {
+    
+    
     _userForThisConnectCell = userForThisConnectCell;
+    
+    // EMAIL LABELS ARE PROGRAMATICALLY SET
+
     
     UIButton *socialMediaButton = [[UIButton alloc] init];
     [self.contentView addSubview:socialMediaButton];
