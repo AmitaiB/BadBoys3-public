@@ -31,7 +31,6 @@
     self.categoryCollectionView.delegate =self;
     self.categoryCollectionView.dataSource = self;
     
-    
     // Instantiate a category view and category
     
     TRVTourCategory *seeCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
@@ -41,8 +40,6 @@
     TRVTourCategory *eatCategory = [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];
     
     TRVTourCategory *drinkCategory = [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid"]];
-
-    
 
     self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
 

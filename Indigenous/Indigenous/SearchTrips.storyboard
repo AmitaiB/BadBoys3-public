@@ -117,11 +117,45 @@
                                     <action selector="doneButtonPressed:" destination="6Jb-06-Pvk" eventType="touchUpInside" id="UEP-4N-2AE"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rec-ZI-6f1">
+                                <rect key="frame" x="75" y="353" width="450" height="112"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vHa-04-36D">
+                                    <size key="itemSize" width="106" height="49"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="PBB-Hc-Iga" customClass="TRVSubCategoryCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="106" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRn-TR-Dq4">
+                                                    <rect key="frame" x="8" y="14" width="90" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="0.85098039219999999" green="0.20392156859999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.55456039820000003" green="0.84847716529999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="categoryLabel" destination="XRn-TR-Dq4" id="PfG-Dq-juf"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="aik-UJ-J53" secondAttribute="centerX" constant="-0.5" id="KK1-JK-j5V"/>
+                            <constraint firstItem="Rec-ZI-6f1" firstAttribute="width" secondItem="XFN-GJ-lhb" secondAttribute="width" id="dJ0-do-HZ1"/>
                             <constraint firstAttribute="centerX" secondItem="hQW-c8-sdc" secondAttribute="centerX" id="fIN-nz-8aQ"/>
+                            <constraint firstAttribute="centerX" secondItem="Rec-ZI-6f1" secondAttribute="centerX" id="kW1-40-oCT"/>
                             <constraint firstAttribute="centerX" secondItem="E83-3N-JcC" secondAttribute="centerX" id="wjq-WD-zKM"/>
                             <constraint firstAttribute="centerX" secondItem="pQP-LI-rMp" secondAttribute="centerX" id="ySN-83-WP8"/>
                             <constraint firstAttribute="centerX" secondItem="F91-Zv-dZV" secondAttribute="centerX" id="yhh-5c-tzP"/>
@@ -129,6 +163,7 @@
                     </view>
                     <connections>
                         <outlet property="pricePicker" destination="hQW-c8-sdc" id="GSo-hi-unx"/>
+                        <outlet property="subCategoryCollectionView" destination="Rec-ZI-6f1" id="ruf-24-icJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngb-iZ-DDU" userLabel="First Responder" sceneMemberID="firstResponder"/>

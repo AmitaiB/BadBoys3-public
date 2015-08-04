@@ -8,8 +8,11 @@
 
 #import "TRVFilterViewController.h"
 #import "TRVUserDataStore.h"
+#import "TRVSubCategoryCollectionView.h"
+#import "TRVSubCategoryCollectionViewCell.h"
 
-@interface TRVFilterViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface TRVFilterViewController () <UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
 @property (weak, nonatomic) IBOutlet UIPickerView *pricePicker;
 @property (nonatomic, strong) NSArray *prices;
 
@@ -18,6 +21,10 @@
 @property (nonatomic, strong) NSDictionary *filterChoices;
 
 @property (nonatomic, strong) TRVUserDataStore *dataStore;
+
+@property (weak, nonatomic) IBOutlet TRVSubCategoryCollectionView *subCategoryCollectionView;
+@property (nonatomic, strong) NSArray *subCategories;
+@property (nonatomic, strong) NSMutableArray *selectedSubCategories;
 @end
 
 @implementation TRVFilterViewController
@@ -25,11 +32,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataStore = [TRVUserDataStore sharedUserInfoDataStore];
-    
-    [self setUpPickerView];
     [self setUpSubCategories];
+    [self setUpSubCategoryCollectionView];
+    [self setUpPickerView];
 }
 
+-(void)setUpSubCategoryCollectionView {
+    
+    self.subCategoryCollectionView.delegate = self;
+    self.subCategoryCollectionView.dataSource = self;
+    self.subCategoryCollectionView.allowsMultipleSelection = YES;
+    self.selectedSubCategories = [[NSMutableArray alloc]init];
+}
 
 -(void)setUpPickerView {
     
@@ -49,26 +63,55 @@
     
     if ([self.dataStore.currentCategorySearching isEqualToString:@"Eat"]){
         
-        
+        self.subCategories = @[@"Restaurant", @"Street Food", @"Snack", @"Breakfast", @"Brunch", @"Lunch", @"Dinner", @"Dessert", @"Other"];
         
         
     } else if ([self.dataStore.currentCategorySearching isEqualToString:@"Drink"]){
        
-        
+        self.subCategories = @[@"Beer", @"Wine", @"Hard Liquor", @"Dive Bar", @"Upscale", @"Happy Hour"];
         
         
     } else if ([self.dataStore.currentCategorySearching isEqualToString:@"Play"]){
         
-        
+        self.subCategories = @[@"Sports", @"Outdoors", @"Hiking", @"Biking", @"Swimming"];
         
         
     } else if ([self.dataStore.currentCategorySearching isEqualToString:@"See"]){
         
-        
+        self.subCategories = @[@"Landmarks", @"Nature", @"History", @"Buildings"];
     }
     
     
 }
+
+
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.subCategories.count;
+}
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TRVSubCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    cell.categoryLabel.text = self.subCategories[indexPath.row];
+    
+    return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    [self.selectedSubCategories addObject:self.subCategories[indexPath.row]];
+}
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self.selectedSubCategories removeObject:self.subCategories[indexPath.row]];
+    
+}
+
+
 
 // The number of columns of data
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

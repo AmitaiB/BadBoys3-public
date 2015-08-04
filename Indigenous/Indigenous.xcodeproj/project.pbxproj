@@ -37,6 +37,8 @@
 		45E772E61B6A695F00003C7C /* TRVSignupWithEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772E51B6A695F00003C7C /* TRVSignupWithEmailViewController.m */; };
 		45E772E91B6A778200003C7C /* TRVFacebookLoginHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772E81B6A778200003C7C /* TRVFacebookLoginHandler.m */; };
 		45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */; };
+		45F925A91B712400009B2E98 /* TRVSubCategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F925A81B712400009B2E98 /* TRVSubCategoryCollectionView.m */; };
+		45F925AC1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F925AB1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m */; };
 		4B6F492C0CB58C8338A1B78F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D69FD457D9B6860BB4D3A8B4 /* libPods.a */; };
 		942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942424881B6DBAAF007BC642 /* TRVRootTabViewController.m */; };
 		942C18EE1B6BDD9300E1AC91 /* SearchTrips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */; };
@@ -148,6 +150,10 @@
 		45E772E81B6A778200003C7C /* TRVFacebookLoginHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVFacebookLoginHandler.m; sourceTree = "<group>"; };
 		45E772EA1B6AC4DA00003C7C /* TRVUserSignupHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVUserSignupHandler.h; sourceTree = "<group>"; };
 		45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVUserSignupHandler.m; sourceTree = "<group>"; };
+		45F925A71B712400009B2E98 /* TRVSubCategoryCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSubCategoryCollectionView.h; sourceTree = "<group>"; };
+		45F925A81B712400009B2E98 /* TRVSubCategoryCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSubCategoryCollectionView.m; sourceTree = "<group>"; };
+		45F925AA1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSubCategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		45F925AB1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSubCategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		942424871B6DBAAF007BC642 /* TRVRootTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRootTabViewController.h; sourceTree = "<group>"; };
 		942424881B6DBAAF007BC642 /* TRVRootTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVRootTabViewController.m; sourceTree = "<group>"; };
 		942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchTrips.storyboard; sourceTree = "<group>"; };
@@ -405,6 +411,19 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		45F925A31B71238C009B2E98 /* Filter View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				451859521B70FCBF008D7049 /* TRVFilterViewController.h */,
+				451859531B70FCBF008D7049 /* TRVFilterViewController.m */,
+				45F925A71B712400009B2E98 /* TRVSubCategoryCollectionView.h */,
+				45F925A81B712400009B2E98 /* TRVSubCategoryCollectionView.m */,
+				45F925AA1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.h */,
+				45F925AB1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m */,
+			);
+			name = "Filter View Controllers";
+			sourceTree = "<group>";
+		};
 		5C48CC399C45D8E89A305C19 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,8 +446,7 @@
 				94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */,
 				94BD69001B6EC18A000CDA65 /* TRVSearchTripsTableViewController.h */,
 				94BD69011B6EC18A000CDA65 /* TRVSearchTripsTableViewController.m */,
-				451859521B70FCBF008D7049 /* TRVFilterViewController.h */,
-				451859531B70FCBF008D7049 /* TRVFilterViewController.m */,
+				45F925A31B71238C009B2E98 /* Filter View Controllers */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -763,6 +781,7 @@
 				942C18F41B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m in Sources */,
 				FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */,
 				94C2EDA81B69662F00BC2F7C /* TRVProfileViewController.m in Sources */,
+				45F925A91B712400009B2E98 /* TRVSubCategoryCollectionView.m in Sources */,
 				94D8FCBC1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m in Sources */,
 				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,
 				389646421B6AB67B004FFDB7 /* TRVPickerMapLogic.m in Sources */,
@@ -770,6 +789,7 @@
 				384AFBBD1B696A9B00E169A9 /* TRVTourGuideTabBarVC.m in Sources */,
 				451859541B70FCC0008D7049 /* TRVFilterViewController.m in Sources */,
 				389646481B6ABF0D004FFDB7 /* TRVCoreLocator.m in Sources */,
+				45F925AC1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m in Sources */,
 				384AFBC61B696B3500E169A9 /* TRVTourGuideProfileVC.m in Sources */,
 				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
 				944AD0031B6DE0EB00404EDD /* TRVSearchResultsDataSource.m in Sources */,
