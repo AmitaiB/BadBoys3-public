@@ -2,6 +2,6 @@ LOGIN/SIGNUP FLOW
 
 [x] Upload photo from user signup
 [x] Login
-[ ] If logged in when app is started, go to home view
+[x] If logged in when app is started, go to home view
 [ ] Transition when isGuide = YES for sign up and log in (both email and facebook)
 [ ] When user logs out, it must be from facebook and parse

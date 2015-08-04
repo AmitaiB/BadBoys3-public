@@ -66,7 +66,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JGH-fn-oeP" userLabel="FacebookLoginButton" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="60" y="172" width="480" height="42"/>
+                                <rect key="frame" x="168" y="177" width="282" height="32"/>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.20392156859999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="facebookButtonTappedAndAlreadyLoggedIn:" destination="JfK-2x-kZL" eventType="valueChanged" id="eVi-a4-YY3"/>
