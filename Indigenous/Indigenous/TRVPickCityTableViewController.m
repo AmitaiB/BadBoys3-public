@@ -23,7 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [PFUser logInWithUsername:@"joe@g.com" password:@"joe"];
+    //FOR TESTING PURPOSES ONLY
+    //DELETE LATER ON
+    if (![PFUser currentUser]){
+       [PFUser logInWithUsername:@"joe@g.com" password:@"joe"];
+    }
+    //DELETE
+    //DELETE
+    
     self.sharedDataStore = [[TRVUserDataStore alloc] initWithCurrentUser:[PFUser currentUser]];
     self.sharedDataStore.loggedInUser = [PFUser currentUser];
     

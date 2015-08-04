@@ -60,11 +60,49 @@
                             <outlet property="delegate" destination="wXz-1k-x5p" id="KJT-Rh-EVn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="G0l-wk-nGG"/>
+                    <navigationItem key="navigationItem" id="G0l-wk-nGG">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="1gn-pX-4Nj">
+                            <connections>
+                                <segue destination="6Jb-06-Pvk" kind="presentation" id="6aA-Pr-9dP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZB-rz-tMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2629" y="1229"/>
+        </scene>
+        <!--Filter View Controller-->
+        <scene sceneID="Io0-hn-H2u">
+            <objects>
+                <viewController id="6Jb-06-Pvk" customClass="TRVFilterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7rw-dy-KVi"/>
+                        <viewControllerLayoutGuide type="bottom" id="jRC-UJ-wbq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XFN-GJ-lhb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F91-Zv-dZV">
+                                <rect key="frame" x="273" y="520" width="54" height="30"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonPressed:" destination="6Jb-06-Pvk" eventType="touchUpInside" id="cwa-OR-dFb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="F91-Zv-dZV" secondAttribute="centerX" id="yhh-5c-tzP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ngb-iZ-DDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2629" y="534"/>
         </scene>
         <!--Pick City Table View Controller-->
         <scene sceneID="efN-5l-52n">
