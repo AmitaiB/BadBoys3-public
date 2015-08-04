@@ -39,8 +39,9 @@
 
     // Set Profile Image View Constraints
     
-    [self.contentView addSubview:self.profileSectionContentView];
     
+    [self.contentView addSubview:self.profileSectionContentView];
+
     // Set constraints for ROOT PROFILE Content View
     [self.profileSectionContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);

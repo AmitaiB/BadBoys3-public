@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.profileTableView.estimatedRowHeight = 50;
+    self.profileTableView.estimatedRowHeight = 80;
     self.profileTableView.rowHeight = UITableViewAutomaticDimension;
     self.tableViewDataSource = [[TRVProfileViewDataSource alloc] init];
     self.profileTableView.dataSource = self.tableViewDataSource;

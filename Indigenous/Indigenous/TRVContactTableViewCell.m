@@ -10,7 +10,7 @@
 
 @interface TRVContactTableViewCell()
 
-@property (weak, nonatomic) IBOutlet UILabel *contactCategoryLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *contactCategoryLabel;
 //@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
@@ -29,25 +29,26 @@
 
 -(void)setUserForThisContactCell:(TRVUser *)userForThisContactCell {
     
-    
-    
     // set logged in TRV User
     _userForThisContactCell = userForThisContactCell;
-    self.contactCategoryLabel.text = @"Contact";
 
     
+    // Set height of content view
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@100);
+    }];
     
     // EMAIL LABELS ARE PROGRAMATICALLY SET
-    UILabel *connectLabel = [[UILabel alloc] init];
-    connectLabel.text = @"Connect";
-    [self.contentView addSubview:connectLabel];
+    UILabel *contactLabel = [[UILabel alloc] init];
+    contactLabel.text = @"Yo";
     
-    [connectLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contactCategoryLabel.mas_bottom).with.offset(5);
-        make.left.equalTo(self.contactCategoryLabel.mas_left);
+    [self.contentView addSubview:contactLabel];
+    
+    
+    [contactLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.contentView.mas_top).with.offset(20);
+        make.left.equalTo(self.contentView.mas_left);
     }];
-
-    
     
     // add email label
     UILabel *emailLabel = [[UILabel alloc] init];
@@ -55,9 +56,9 @@
     [self.contentView addSubview:emailLabel];
 
     [emailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contactCategoryLabel.mas_bottom).with.offset(5);
-        make.left.equalTo(self.contactCategoryLabel.mas_left);
-        make.bottom.equalTo(self.contentView.mas_bottomMargin);
+        make.top.equalTo(contactLabel.mas_bottom).with.offset(5);
+        make.left.equalTo(contactLabel.mas_left);
+        make.bottom.equalTo(self.contentView.mas_bottomMargin).with.offset(20);
     }];
     
     // add USER email label
@@ -67,7 +68,7 @@
     
     [userEmailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(emailLabel.mas_top);
-        make.right.equalTo(self.contentView.mas_right).with.offset(-10);
+        make.right.equalTo(self.contentView.mas_right);
         make.bottom.equalTo(self.contentView.mas_bottomMargin);
     }];
 

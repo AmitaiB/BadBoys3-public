@@ -24,27 +24,31 @@
 
 -(void)setUserForThisImageCell:(TRVUser *)userForThisImageCell {
     
+    
     _userForThisImageCell = userForThisImageCell;
     
-       
+        // Set Contact View Height
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
+
     // ADDED IMAGE VIEW PROGRAMATICALLY
     
     // Created the profile image view
     UIImageView *profilePictureImageView = [[UIImageView alloc] init];
+    
     profilePictureImageView.image = userForThisImageCell.userBio.profileImage;
     
     // added imageview to superview
     [self.contentView addSubview:profilePictureImageView];
     
     profilePictureImageView.backgroundColor = [UIColor purpleColor];
+    profilePictureImageView.contentMode = UIViewContentModeScaleToFill;
     
     // set imageview constraints
     [profilePictureImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
-        
-        // what should the image height be?
-        make.height.equalTo(@300);
-           }];
+    }];
     
 }
 
