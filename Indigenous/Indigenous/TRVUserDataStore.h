@@ -28,4 +28,8 @@
 @property (nonatomic) BOOL isGuide;
 
 
+// SET WHEN EAT/DRINK/PLAY/SEE IS SELECTED
+@property (nonatomic, strong) NSString *currentCategorySearching;
+
+
 @end
