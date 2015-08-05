@@ -14,7 +14,7 @@
 @interface TRVUserDataStore : NSObject
 
 +(instancetype)sharedUserInfoDataStore;
--(instancetype) initWithCurrentUser:(PFUser *)currentUser;
+- (void) setCurrentUser:(PFUser *)currentUser;
 
 @property (nonatomic, strong) TRVUser *loggedInUser;
 @property (nonatomic, strong) PFUser *parseUser;

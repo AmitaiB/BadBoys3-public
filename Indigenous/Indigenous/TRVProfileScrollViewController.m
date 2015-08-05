@@ -12,11 +12,13 @@
 #import "TRVUserSnippetView.h"
 #import "TRVUserContactView.h"
 #import "TRVUserProfileView.h"
+#import "TRVUserDataStore.h"
 
 
 @interface TRVProfileScrollViewController ()
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 //@property (weak, nonatomic) IBOutlet TRVUserSnippetView *profileSnippetView;
 
 
@@ -27,15 +29,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+//    self.sharedDataStore
+    self.user = self.sharedDataStore.loggedInUser;
     
-    self.user = [[TRVUser alloc] init];
-    
-    self.user.userBio = [[TRVBio alloc] initTouristWithUserName:@"Ashley" firstName:@"Ashley" lastName:@"Madison" email:@"ashleyfromthe6@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
-    self.user.userBio.homeCity = @"New York";
-    self.user.userBio.homeCountry = @"United States";
-    self.user.userBio.userTagline = @"Loves fried chicken and ramen. Super Spontaneous Person!";
-    self.user.userBio.profileImage = [UIImage imageNamed:@"leo.jpg"];
-
+//    self.user.userBio = [[TRVBio alloc] initTouristWithUserName:@"Ashley" firstName:@"Ashley" lastName:@"Madison" email:@"ashleyfromthe6@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
+//    self.user.userBio.homeCity = @"New York";
+//    self.user.userBio.homeCountry = @"United States";
+//    self.user.userBio.userTagline = @"Loves fried chicken and ramen. Super Spontaneous Person!";
+//    self.user.userBio.profileImage = [UIImage imageNamed:@"leo.jpg"];
+//
     
     
     // Do any additional setup after loading the view.
@@ -49,7 +52,11 @@
     //Instantiate a Image View Nib
     
     TRVUserProfileView *profileImageView = [[TRVUserProfileView alloc] init];
-    profileImageView.userForThisProfileView = self.user;
+    
+    NSLog(@"CURRENT LOGGED IN USER: %@", self.user);
+    
+    profileImageView.userForThisProfileView = self.sharedDataStore.loggedInUser;
+    //NSLog(@"%@ THIS IS THE USER IN PROFILE VC", self.sharedDataStore.loggedInUser.userBio.firstName);
     [self.containerView addSubview:profileImageView];
     
     [profileImageView mas_makeConstraints:^(MASConstraintMaker *make) {

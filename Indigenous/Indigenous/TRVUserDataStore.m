@@ -27,13 +27,13 @@
     return _sharedTasksDataStore;
 }
 
--(instancetype) initWithCurrentUser:(PFUser *)currentUser {
+- (void) setCurrentUser:(PFUser *)currentUser {
     
     
-    self = [super init];
-    
-    
-    if (self) {
+//    self = [super init];
+//    
+//    
+//    if (self) {
     
         _parseUser = currentUser;
         
@@ -48,7 +48,7 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         } else {
             
-        
+            
             TRVBio *bioForLoggedInUser = [[TRVBio alloc] init];
             bioForLoggedInUser.firstName = objects[0][@"first_name"];
             bioForLoggedInUser.lastName = objects[0][@"last_name"];
@@ -60,18 +60,22 @@
             bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
             bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
             bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
+            
+            //REVISIT
+            // DEPENDS ON IF FACEBOOK OR EMAIL LOGGED IN
             bioForLoggedInUser.profileImage = objects[0][@"picture"];
 
+            _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
             
             
-            
-            NSLog(@"Welcome %@. ", bioForLoggedInUser.firstName);
+            NSLog(@"Welcome %@. ", _loggedInUser);
+         //   NSLog(@"%@ THIS IS THE LOGGED IN", self.loggedInUser.userBio.firstName);
          
         }
     }];
-    }
-    
-    return self;
+//    }
+//    
+//    return self;
 }
 
 
