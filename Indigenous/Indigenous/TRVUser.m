@@ -10,4 +10,14 @@
 
 @implementation TRVUser
 
+-(instancetype)initWithBio:(TRVBio *)bio {
+    
+    self = [super init];
+    
+    if (self) {
+        _userBio = bio;
+    }
+    return self;
+}
+
 @end

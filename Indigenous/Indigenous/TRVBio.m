@@ -23,7 +23,6 @@
 {
     self = [super init];
     if (self){
-        _userName = username;
         _firstName = firstName;
         _lastName = lastName;
         _email = email;
@@ -53,7 +52,6 @@
     
     self = [super init];
     if (self){
-        _userName = username;
         _firstName = firstName;
         _lastName = lastName;
         _email = email;
@@ -65,8 +63,6 @@
         _age = age;
         _gender = gender;
         _region = region;
-        _oneLineSummary = oneLineSummary;
-        
     }
     return self;
     

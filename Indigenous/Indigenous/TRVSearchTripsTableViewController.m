@@ -12,12 +12,14 @@
 #import "TRVSearchTripsViewController.h"
 #import "TRVSearchResultsDataSource.h"
 #import <Masonry/Masonry.h>
+#import "TRVFilterViewController.h"
 
 
-@interface TRVSearchTripsTableViewController ()
+
+@interface TRVSearchTripsTableViewController () <FilterProtocol>
 
 @property (nonatomic, strong) TRVSearchResultsDataSource *resultsDataSource;
-
+@property (nonatomic, strong) NSDictionary *filterDictionary;
 
 @end
 
@@ -32,6 +34,52 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    
+    
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    TRVFilterViewController *filterModal = [segue destinationViewController];
+    
+    if (self.filterDictionary){
+        filterModal.filterDictionary = self.filterDictionary;
+    }
+    
+    filterModal.delegate = self;
+    
+}
+
+-(void)passFilterDictionary:(NSDictionary *)dictionary{
+    
+    self.filterDictionary = dictionary;
+    //THEN UPDATE SORTING
+    [self updateGuidesList];
+    NSLog(@"The dictionary: %@", self.filterDictionary);
+    
+}
 
 
+-(void)updateGuidesList {
+    // LEO
+    // THIS IS ALL YOU
+    // KILL IT
+    // OR MAYBE I CAN DO IT
+    // BUT WE SHALL SEE
+    
+    if (self.filterDictionary == nil){
+        NSLog(@"Filter is nil!");
+        
+        // SHOW ALL GUDES
+        
+    } else {
+        
+        // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
+        
+    }
+    
+}
 @end

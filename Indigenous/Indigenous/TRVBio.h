@@ -11,8 +11,10 @@
 
 @interface TRVBio : NSObject
 
-// Don't need a username really.  We go via Fist and Last name.
-@property (nonatomic, strong) NSString *userName;
+//// Don't need a username really.  We go via Fist and Last name.
+//@property (nonatomic, strong) NSString *userName;
+
+
 
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
@@ -27,12 +29,13 @@
 @property (nonatomic, strong) NSString *homeCity;
 @property (nonatomic, strong) NSString *homeCountry;
 @property (nonatomic, strong) NSString *userTagline;
+@property (nonatomic, strong) NSString *birthday;
+@property (nonatomic) BOOL isGuide;
 
 //GUIDE SPECIFIC PROPERTIES
 @property (nonatomic) NSUInteger age;
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *region;
-@property (nonatomic, strong) NSString *oneLineSummary;
 
 
 //INITIALIZERS
