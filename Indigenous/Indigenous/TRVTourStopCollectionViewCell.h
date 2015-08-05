@@ -13,5 +13,6 @@
 @interface TRVTourStopCollectionViewCell : UICollectionViewCell
 
 -(void)selectionAnimation;
+-(void)fixIt :(CGSize)size;
 
 @end

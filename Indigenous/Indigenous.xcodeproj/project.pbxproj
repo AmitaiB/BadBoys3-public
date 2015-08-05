@@ -75,6 +75,11 @@
 		FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */; };
 		FA57FA221B696F2A00CFBB89 /* TRVTouristTripDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */; };
 		FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA2C1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m */; };
+		FADB8F241B705731009F7C02 /* TRVTourStopCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FADB8F1F1B705731009F7C02 /* TRVTourStopCollectionViewCell.m */; };
+		FADB8F251B705731009F7C02 /* TRVTourStopCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FADB8F211B705731009F7C02 /* TRVTourStopCollectionViewDataSource.m */; };
+		FADB8F261B705731009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FADB8F231B705731009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m */; };
+		FADB8F291B711866009F7C02 /* TRVTourStopCollectionViewCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = FADB8F281B711866009F7C02 /* TRVTourStopCollectionViewCellView.m */; };
+		FADB8F2B1B714504009F7C02 /* Carmelo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FADB8F2A1B714504009F7C02 /* Carmelo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +225,15 @@
 		FA57FA291B6A715F00CFBB89 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		FA57FA2B1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTouristTripDetailViewController.h; sourceTree = "<group>"; };
 		FA57FA2C1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristTripDetailViewController.m; sourceTree = "<group>"; };
+		FADB8F1E1B705731009F7C02 /* TRVTourStopCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStopCollectionViewCell.h; sourceTree = "<group>"; };
+		FADB8F1F1B705731009F7C02 /* TRVTourStopCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStopCollectionViewCell.m; sourceTree = "<group>"; };
+		FADB8F201B705731009F7C02 /* TRVTourStopCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStopCollectionViewDataSource.h; sourceTree = "<group>"; };
+		FADB8F211B705731009F7C02 /* TRVTourStopCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStopCollectionViewDataSource.m; sourceTree = "<group>"; };
+		FADB8F221B705731009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStopCollectionViewDelegateFlowLayout.h; sourceTree = "<group>"; };
+		FADB8F231B705731009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStopCollectionViewDelegateFlowLayout.m; sourceTree = "<group>"; };
+		FADB8F271B711866009F7C02 /* TRVTourStopCollectionViewCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourStopCollectionViewCellView.h; sourceTree = "<group>"; };
+		FADB8F281B711866009F7C02 /* TRVTourStopCollectionViewCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourStopCollectionViewCellView.m; sourceTree = "<group>"; };
+		FADB8F2A1B714504009F7C02 /* Carmelo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Carmelo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,9 +343,7 @@
 				45E772CF1B68291300003C7C /* TRVBio.m */,
 				946AAA901B6C517E00778418 /* TRVConstants.m */,
 				45E772D11B682F7000003C7C /* TRVConstants.h */,
-
 				45E772D41B6961D700003C7C /* LoginSignup.storyboard */,
-
 				45E772D61B6962C700003C7C /* LoginSignup */,
 				4515651D1B68221B005A2871 /* Main.storyboard */,
 				451565201B68221B005A2871 /* Images.xcassets */,
@@ -344,6 +356,7 @@
 		451565131B68221B005A2871 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FADB8F2A1B714504009F7C02 /* Carmelo.jpg */,
 				451565141B68221B005A2871 /* Info.plist */,
 				451565151B68221B005A2871 /* main.m */,
 			);
@@ -422,8 +435,6 @@
 				9435DF651B6ED0200054A2F4 /* TRVPickCityTableViewController.m */,
 				942424871B6DBAAF007BC642 /* TRVRootTabViewController.h */,
 				942424881B6DBAAF007BC642 /* TRVRootTabViewController.m */,
-				94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */,
-				94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */,
 				94BD69001B6EC18A000CDA65 /* TRVSearchTripsTableViewController.h */,
 				94BD69011B6EC18A000CDA65 /* TRVSearchTripsTableViewController.m */,
 			);
@@ -586,8 +597,8 @@
 				FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */,
 				FA57FA2B1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.h */,
 				FA57FA2C1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m */,
-				FADB8F181B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.h */,
-				FADB8F191B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m */,
+				FADB8F271B711866009F7C02 /* TRVTourStopCollectionViewCellView.h */,
+				FADB8F281B711866009F7C02 /* TRVTourStopCollectionViewCellView.m */,
 			);
 			name = MyTrips;
 			sourceTree = "<group>";
@@ -595,23 +606,14 @@
 		FA57FA321B6AB21E00CFBB89 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				FADB8F201B705731009F7C02 /* TRVTourStopCollectionViewDataSource.h */,
+				FADB8F211B705731009F7C02 /* TRVTourStopCollectionViewDataSource.m */,
+				FADB8F221B705731009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.h */,
+				FADB8F231B705731009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m */,
 				FA57FA201B696F2A00CFBB89 /* TRVTouristTripDataSource.h */,
 				FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */,
-				FA57FA391B6BF0C600CFBB89 /* TRVTourStopCollectionViewDataSource.h */,
-				FA57FA3A1B6BF0C600CFBB89 /* TRVTourStopCollectionViewDataSource.m */,
 			);
 			name = DataSources;
-			sourceTree = "<group>";
-		};
-		FA57FA381B6BBE0400CFBB89 /* Add Tour Flow */ = {
-			isa = PBXGroup;
-			children = (
-				94C2EDA11B69637900BC2F7C /* addTour.Storyboard */,
-				94D8FCB51B6AA2B400B89C29 /* Profile Models */,
-				94D8FCC01B6AC52300B89C29 /* Custom Cells */,
-				94D8FCB61B6AA31D00B89C29 /* View */,
-			);
-			name = "Add Tour Flow";
 			sourceTree = "<group>";
 		};
 		FA57FA3F1B6C00E300CFBB89 /* Cells */ = {
@@ -619,8 +621,8 @@
 			children = (
 				FA57FA1D1B696AF800CFBB89 /* TRVTouristTripTableViewCell.h */,
 				FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */,
-				FA57FA3C1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.h */,
-				FA57FA3D1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.m */,
+				FADB8F1E1B705731009F7C02 /* TRVTourStopCollectionViewCell.h */,
+				FADB8F1F1B705731009F7C02 /* TRVTourStopCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -677,7 +679,7 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 98E8SVTQ29;
+						DevelopmentTeam = GLVDNMAVND;
 					};
 					451565281B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -718,6 +720,7 @@
 				94E9D05C1B6EB102007B42B7 /* TRVGuideDetailProfileView.xib in Resources */,
 				942C18EE1B6BDD9300E1AC91 /* SearchTrips.storyboard in Resources */,
 				451565241B68221B005A2871 /* LaunchScreen.xib in Resources */,
+				FADB8F2B1B714504009F7C02 /* Carmelo.jpg in Resources */,
 				451565211B68221B005A2871 /* Images.xcassets in Resources */,
 				384AFBB91B69623A00E169A9 /* TourGuideFlow.storyboard in Resources */,
 				9435DF731B6F1E670054A2F4 /* TRVTourCategoryView.xib in Resources */,
@@ -774,7 +777,9 @@
 				385C46FB1B6BCEA000D9091A /* AppDelegate.m in Sources */,
 				385C46FA1B6BCE7E00D9091A /* main.m in Sources */,
 				384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */,
+				FADB8F241B705731009F7C02 /* TRVTourStopCollectionViewCell.m in Sources */,
 				9435DF761B6F21280054A2F4 /* TRVTourCategoryViewController.m in Sources */,
+				FADB8F291B711866009F7C02 /* TRVTourStopCollectionViewCellView.m in Sources */,
 				4515651C1B68221B005A2871 /* ViewController.m in Sources */,
 				942C18F41B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m in Sources */,
 				FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */,
@@ -782,6 +787,7 @@
 				94D8FCBC1B6AAFE900B89C29 /* TRVProfileImageTableViewCell.m in Sources */,
 				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,
 				389646421B6AB67B004FFDB7 /* TRVPickerMapLogic.m in Sources */,
+				FADB8F261B705731009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m in Sources */,
 				9435DF661B6ED0200054A2F4 /* TRVPickCityTableViewController.m in Sources */,
 				384AFBBD1B696A9B00E169A9 /* TRVTourGuideTabBarVC.m in Sources */,
 				389646481B6ABF0D004FFDB7 /* TRVCoreLocator.m in Sources */,
@@ -798,7 +804,6 @@
 				94EA5F7E1B6FEEE1002244D8 /* TRVUserDataStore.m in Sources */,
 				94A5559F1B6AD22900076C99 /* TRVUser.m in Sources */,
 				45E772DC1B6A670100003C7C /* TRVLoginViewController.m in Sources */,
-				FADB8F1A1B6FDF42009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m in Sources */,
 				FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */,
 				9435DF6C1B6ED3350054A2F4 /* TRVCityTableViewCell.m in Sources */,
 				94E9D05F1B6EB11D007B42B7 /* TRVGuideDetailProfileView.m in Sources */,
@@ -806,7 +811,6 @@
 				949A6ADB1B6FBAC6006ED035 /* TRVTourCategory.m in Sources */,
 				FA57FA221B696F2A00CFBB89 /* TRVTouristTripDataSource.m in Sources */,
 				94D8FCB41B6A7B2B00B89C29 /* TRVProfileViewDataSource.m in Sources */,
-				FA57FA3E1B6C00DE00CFBB89 /* TRVTourStopCollectionViewCell.m in Sources */,
 				94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */,
 				946AAA911B6C517E00778418 /* TRVConstants.m in Sources */,
 				94D8FCBF1B6ABDD300B89C29 /* TRVContactTableViewCell.m in Sources */,
@@ -816,10 +820,10 @@
 				45E772E01B6A674800003C7C /* TRVSignupViewController.m in Sources */,
 				94BD69021B6EC18A000CDA65 /* TRVSearchTripsTableViewController.m in Sources */,
 				9435DF7C1B6F22630054A2F4 /* TRVTourCategoryCollectionViewCell.m in Sources */,
-				FA57FA3B1B6BF0C600CFBB89 /* TRVTourStopCollectionViewDataSource.m in Sources */,
 				45E772E61B6A695F00003C7C /* TRVSignupWithEmailViewController.m in Sources */,
 				3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */,
 				45E772D01B68291300003C7C /* TRVBio.m in Sources */,
+				FADB8F251B705731009F7C02 /* TRVTourStopCollectionViewDataSource.m in Sources */,
 				384AFBC01B696ADB00E169A9 /* TRVTourGuideMyToursVC.m in Sources */,
 				3859EDF01B694003001C5693 /* TRVTour.m in Sources */,
 				942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */,

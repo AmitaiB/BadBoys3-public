@@ -10,7 +10,7 @@
 
 @class TRVTour;
 
-@interface TRVTouristTripDetailViewController : UIViewController
+@interface TRVTouristTripDetailViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) TRVTour *tour;
 
