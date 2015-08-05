@@ -29,7 +29,9 @@
     return _sharedTasksDataStore;
 }
 
+
 - (void) setCurrentUser:(PFUser *)currentUser {
+  
     
         _parseUser = currentUser;
         

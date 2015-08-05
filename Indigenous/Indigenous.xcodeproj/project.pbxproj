@@ -280,7 +280,7 @@
 			name = TourGuideFlow;
 			sourceTree = "<group>";
 		};
-		3859EDF11B69400E001C5693 /* Business Logic/Models */ = {
+		3859EDF11B69400E001C5693 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				3859EDEE1B694003001C5693 /* TRVTour.h */,
@@ -290,7 +290,7 @@
 				94C77F831B68354E003836E3 /* TRVTourStop.h */,
 				94C77F841B68354E003836E3 /* TRVTourStop.m */,
 			);
-			name = "Business Logic/Models";
+			name = Model;
 			sourceTree = "<group>";
 		};
 		3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented */ = {
@@ -337,7 +337,7 @@
 				944ACFFE1B6DDE6D00404EDD /* Search Guide Flow */,
 				94B755E41B6BBB1D0017FFA9 /* Profile Flow */,
 				FA57FA191B6969EF00CFBB89 /* MyTrips */,
-				3859EDF11B69400E001C5693 /* Business Logic/Models */,
+				3859EDF11B69400E001C5693 /* Model */,
 				94C77F851B68354E003836E3 /* TRVRating.h */,
 				451565171B68221B005A2871 /* AppDelegate.h */,
 				451565181B68221B005A2871 /* AppDelegate.m */,
@@ -352,7 +352,6 @@
 				45E772CF1B68291300003C7C /* TRVBio.m */,
 				946AAA901B6C517E00778418 /* TRVConstants.m */,
 				45E772D11B682F7000003C7C /* TRVConstants.h */,
-				45E772D41B6961D700003C7C /* LoginSignup.storyboard */,
 				45E772D61B6962C700003C7C /* LoginSignup */,
 				4515651D1B68221B005A2871 /* Main.storyboard */,
 				451565201B68221B005A2871 /* Images.xcassets */,
@@ -422,6 +421,7 @@
 		45E772ED1B6BAF9300003C7C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				45E772D41B6961D700003C7C /* LoginSignup.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
