@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TRVTouristTripDetailViewController : UIViewController
+@class TRVTour;
+
+@interface TRVTouristTripDetailViewController : UIViewController <UIScrollViewDelegate>
+
+@property (nonatomic, strong) TRVTour *tour;
 
 @end

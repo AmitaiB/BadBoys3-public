@@ -8,6 +8,8 @@
 
 #import "TRVTouristMyTripsViewController.h"
 #import "TRVTouristTripDataSource.h"
+#import "TRVTouristTripTableViewCell.h"
+#import "TRVTouristTripDetailViewController.h"
 #import "TRVUser.h"
 #import "TRVTour.h"
 
@@ -39,14 +41,19 @@
     [self.tripTableView reloadData];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@""]) {
+        TRVTouristTripTableViewCell *cell = sender;
+        TRVTouristTripDetailViewController *vc = segue.destinationViewController;
+        vc.tour = cell.tour;
+    }
 }
-*/
+
 
 @end

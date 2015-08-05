@@ -30,7 +30,7 @@
 //@property (nonatomic, strong) NSString *locationOfEvent;
 //@property (nonatomic, strong) NSString *addressOfEvent;
 //@property (nonatomic, strong) NSString *descriptionOfEvent;
-//@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImage *image; // included in GMSMarker but uncommented for testing and to allow user provided images
 
 
 -initWithCoordinates:(CLLocationCoordinate2D)coordinates operatorCost:(CGFloat)oCost incidentalCost:(CGFloat)iCost;
