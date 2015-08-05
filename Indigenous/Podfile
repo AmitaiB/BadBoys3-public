@@ -10,3 +10,4 @@ pod "AFNetworking", "~> 2.0"
 pod "FBSDKShareKit"
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'APParallaxHeader'
+pod 'INTULocationManager', '~> 3.0'
