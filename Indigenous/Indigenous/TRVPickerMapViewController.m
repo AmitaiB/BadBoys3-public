@@ -27,20 +27,7 @@
     // Do any additional setup after loading the view.
     
     INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-    /**
-     *  CLLocation → 2Dcoords → camera position → gMap
-     */
-    
-    
-    
-//    [self safeRequestForWhenInUseAuth];
-//    [self.locationManager startMonitoringSignificantLocationChanges];
-    
-    CLLocationCoordinate2D mostRecentLoc = self.locationManager.location.coordinate;
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:mostRecentLoc zoom:18];
-    self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
-    self.mapView.myLocationEnabled = YES;
-    
+     
     CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
     
         //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
@@ -49,7 +36,27 @@
     self.mapView.myLocationEnabled = YES;
     [self.view addSubview:self.mapView];
     NSLog(@"CoreLocator says I'm here: %f, %f", mostRecentLoc.latitude, mostRecentLoc.longitude);
+=======
+    __block GMSCameraPosition *camera;
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
     
+    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:YES
+                                                  block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+//                                                      if (status == INTULocationStatusSuccess) {
+//                                                          NSLog(@"SUCCESS in the INTULocation request block!");
+//                                                      } else if (status == INTULocationStatusTimedOut) {
+//                                                          NSLog(@"TIMED OUT in the INTULocation request block!");
+//                                                      } else if (status == INTULocationStatusError) {
+//                                                          NSLog(@"ERROR in the INTULocation request block!");
+//                                                      }
+                                                      camera = [GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:18];
+                                                      self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
+                                                      self.mapView.myLocationEnabled = YES;
+                                                      
+                                                      [self.view addSubview:self.mapView];
+                                                      NSLog(@"CoreLocator says I'm here: %f, %f", camera.target.latitude, camera.target.longitude);
+                                                  }];
+        
 }
 
 -(void)requestAlwaysAuthorization
@@ -64,14 +71,15 @@
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Uh, OK" style:UIAlertActionStyleDefault handler:nil];
         UIAlertAction *goToSettingsAction = [UIAlertAction actionWithTitle:@"Take me to Settings! Schnell!!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSURL *
-        }]
+            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            [[UIApplication sharedApplication] openURL:settingsURL];
+        }];
         
         [self presentViewController:alert animated:YES completion:nil];
     }
 //  The user has not enabled any location services. Request background authorization.
     else if (status == kCLAuthorizationStatusNotDetermined) {
-        [self.locationManager requestAlwaysAuthorization];
+        NSLog(@"would have called... [locationManager requestAlwaysAuthorization];");
     }
 }
 
@@ -102,7 +110,7 @@
             [self presentViewController:settingsAlert animated:YES completion:nil];
         
     } else if (status == kCLAuthorizationStatusNotDetermined) {
-        [self.locationManager requestWhenInUseAuthorization];
+        NSLog(@"would have called... [self.locationManager requestWhenInUseAuthorization];");
     }
 }
 
