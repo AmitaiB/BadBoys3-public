@@ -40,11 +40,6 @@
                                 options:nil];
     
     [self addSubview:self.userContactContentView];
-//    self.userContactContentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    [self.userContactContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-    }];
     
 }
 

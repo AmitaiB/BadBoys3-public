@@ -1,10 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nUU-sq-eHD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q8H-jy-csn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Profile Scroll View Controller-->
+        <scene sceneID="2ar-kT-4eo">
+            <objects>
+                <viewController id="yKl-YB-kLw" customClass="TRVProfileScrollViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cgk-rP-8QG"/>
+                        <viewControllerLayoutGuide type="bottom" id="4C7-kK-5aI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zCH-mX-hgd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xiC-do-ong">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="blJ-f8-fSS" userLabel="Container View">
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cO5-ZT-fr8" userLabel="Profile Snippet View" customClass="TRVUserSnippetView">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.1715254477" green="0.47018381749999999" blue="0.62375710230000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="blJ-f8-fSS" firstAttribute="leading" secondItem="xiC-do-ong" secondAttribute="leading" id="JJ2-vg-sCs"/>
+                                    <constraint firstItem="blJ-f8-fSS" firstAttribute="trailing" secondItem="xiC-do-ong" secondAttribute="trailing" id="mTl-7W-EaA"/>
+                                    <constraint firstItem="blJ-f8-fSS" firstAttribute="top" secondItem="xiC-do-ong" secondAttribute="top" id="wep-bQ-ahq"/>
+                                    <constraint firstItem="blJ-f8-fSS" firstAttribute="bottom" secondItem="xiC-do-ong" secondAttribute="bottom" id="zVL-iq-HCk"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xiC-do-ong" firstAttribute="top" secondItem="Cgk-rP-8QG" secondAttribute="bottom" id="ERR-Ax-qjp"/>
+                            <constraint firstAttribute="trailing" secondItem="xiC-do-ong" secondAttribute="trailing" id="LIX-uO-ehV"/>
+                            <constraint firstAttribute="bottom" secondItem="xiC-do-ong" secondAttribute="bottom" id="cvd-wz-Ca4"/>
+                            <constraint firstItem="xiC-do-ong" firstAttribute="leading" secondItem="zCH-mX-hgd" secondAttribute="leading" id="miI-be-EZ3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KCx-Qd-1OU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="lPw-xw-zDU">
+                            <connections>
+                                <segue destination="7lv-tb-1Hf" kind="show" id="YlR-42-1SW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="blJ-f8-fSS" id="gww-Jb-dIC"/>
+                        <outlet property="profileSnippetView" destination="cO5-ZT-fr8" id="frV-ms-hST"/>
+                        <outlet property="scrollView" destination="xiC-do-ong" id="PsA-n9-WXU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dfv-Js-mid" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1980" y="817"/>
+        </scene>
         <!--My Profile-->
         <scene sceneID="Khm-vq-iwH">
             <objects>
@@ -108,9 +165,6 @@
                     <navigationItem key="navigationItem" title="My Profile" id="lK8-LX-BgL">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="jpT-Me-PI3">
                             <color key="tintColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="7lv-tb-1Hf" kind="show" id="nSJ-uT-p43"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -409,6 +463,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FGZ-1n-qDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="886" y="1511"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EPI-ek-vTn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q8H-jy-csn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Zjl-pc-Jn9"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2eP-mi-Zay">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yKl-YB-kLw" kind="relationship" relationship="rootViewController" id="wuQ-wy-qGu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6zc-F7-e9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1328" y="823"/>
         </scene>
     </scenes>
 </document>

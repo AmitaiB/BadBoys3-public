@@ -56,6 +56,7 @@
 		9482463F1B7152E100D64432 /* TRVUserSnippetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9482463E1B7152E100D64432 /* TRVUserSnippetView.m */; };
 		948246421B7162B400D64432 /* TRVUserContactView.m in Sources */ = {isa = PBXBuildFile; fileRef = 948246411B7162B400D64432 /* TRVUserContactView.m */; };
 		948246441B7162C300D64432 /* TRVUserContactView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 948246431B7162C300D64432 /* TRVUserContactView.xib */; };
+		948246471B719DA500D64432 /* TRVProfileScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948246461B719DA500D64432 /* TRVProfileScrollViewController.m */; };
 		948EFB781B71104400D572F7 /* TRVDetailTourGuideTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948EFB771B71104400D572F7 /* TRVDetailTourGuideTableViewController.m */; };
 		948EFB7B1B71182800D572F7 /* TRVTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 948EFB7A1B71182800D572F7 /* TRVTableViewController.m */; };
 		949081671B6C67B100B6D2FA /* TRVEditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949081661B6C67B100B6D2FA /* TRVEditProfileTableViewController.m */; };
@@ -182,6 +183,8 @@
 		948246401B7162B400D64432 /* TRVUserContactView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVUserContactView.h; sourceTree = "<group>"; };
 		948246411B7162B400D64432 /* TRVUserContactView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVUserContactView.m; sourceTree = "<group>"; };
 		948246431B7162C300D64432 /* TRVUserContactView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRVUserContactView.xib; sourceTree = "<group>"; };
+		948246451B719DA500D64432 /* TRVProfileScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVProfileScrollViewController.h; sourceTree = "<group>"; };
+		948246461B719DA500D64432 /* TRVProfileScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVProfileScrollViewController.m; sourceTree = "<group>"; };
 		948EFB761B71104400D572F7 /* TRVDetailTourGuideTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVDetailTourGuideTableViewController.h; sourceTree = "<group>"; };
 		948EFB771B71104400D572F7 /* TRVDetailTourGuideTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVDetailTourGuideTableViewController.m; sourceTree = "<group>"; };
 		948EFB791B71182800D572F7 /* TRVTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTableViewController.h; sourceTree = "<group>"; };
@@ -510,6 +513,8 @@
 			isa = PBXGroup;
 			children = (
 				94C2EDA11B69637900BC2F7C /* Profile.storyboard */,
+				948246451B719DA500D64432 /* TRVProfileScrollViewController.h */,
+				948246461B719DA500D64432 /* TRVProfileScrollViewController.m */,
 				948246401B7162B400D64432 /* TRVUserContactView.h */,
 				948246411B7162B400D64432 /* TRVUserContactView.m */,
 				948246431B7162C300D64432 /* TRVUserContactView.xib */,
@@ -814,6 +819,7 @@
 				942C18F11B6BE8B500E1AC91 /* TRVSocialMediaTableViewCell.m in Sources */,
 				949A6ADB1B6FBAC6006ED035 /* TRVTourCategory.m in Sources */,
 				FA57FA221B696F2A00CFBB89 /* TRVTouristTripDataSource.m in Sources */,
+				948246471B719DA500D64432 /* TRVProfileScrollViewController.m in Sources */,
 				94D8FCB41B6A7B2B00B89C29 /* TRVProfileViewDataSource.m in Sources */,
 				94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */,
 				946AAA911B6C517E00778418 /* TRVConstants.m in Sources */,
