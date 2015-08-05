@@ -19,19 +19,19 @@
             <rect key="frame" x="0.0" y="0.0" width="163" height="179"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9oP-n6-DnE" userLabel="Tour Category Image">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                    <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e29-dX-HUB" userLabel="Category Icon Image">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e29-dX-HUB" userLabel="Category Icon Image">
                     <rect key="frame" x="54" y="62" width="55" height="55"/>
                     <color key="backgroundColor" red="0.23243727519999999" green="0.25309738009999999" blue="0.10211165210000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="e29-dX-HUB" secondAttribute="height" multiplier="1:1" id="nyC-RC-Rtu"/>
                     </constraints>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9oP-n6-DnE" userLabel="Tour Category Image">
+                    <rect key="frame" x="0.0" y="0.0" width="163" height="179"/>
+                    <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="0.56000000000000005" colorSpace="calibratedRGB"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khX-5L-kQT">
-                    <rect key="frame" x="23" y="140" width="119" height="20"/>
+                    <rect key="frame" x="22" y="139" width="119" height="20"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>

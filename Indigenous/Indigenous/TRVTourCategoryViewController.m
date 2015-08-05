@@ -61,13 +61,10 @@
     TRVTourCategory *categoryForThisCell = [self.tourCategories objectAtIndex:indexPath.row];
     
     
+    //OVERRIDE SETTER THAT SETS LABELS TO NIB
+    
     [cell.categoryView setCategoryForThisView:categoryForThisCell];
-    [cell.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.and.width.equalTo(@10);
-        make.edges.equalTo(@0);
-    }];
-    
-    
+
     return cell;
 }
 
@@ -78,9 +75,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
     
     UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
-    datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
-    
-    NSLog(@"Are you in here?");
+    datasetCell.backgroundColor = [UIColor blueColor];
     [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
 }
 
