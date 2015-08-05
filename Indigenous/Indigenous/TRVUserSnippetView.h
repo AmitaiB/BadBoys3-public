@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
-#import "TRVBio.h"
+//#import "TRVBio.h"
 
 @interface TRVUserSnippetView : UIView
 

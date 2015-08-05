@@ -34,7 +34,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xiC-do-ong" firstAttribute="top" secondItem="Cgk-rP-8QG" secondAttribute="bottom" id="ERR-Ax-qjp"/>
+                            <constraint firstItem="xiC-do-ong" firstAttribute="top" secondItem="Cgk-rP-8QG" secondAttribute="top" id="ERR-Ax-qjp"/>
                             <constraint firstAttribute="trailing" secondItem="xiC-do-ong" secondAttribute="trailing" id="LIX-uO-ehV"/>
                             <constraint firstAttribute="bottom" secondItem="xiC-do-ong" secondAttribute="bottom" id="cvd-wz-Ca4"/>
                             <constraint firstItem="xiC-do-ong" firstAttribute="leading" secondItem="zCH-mX-hgd" secondAttribute="leading" id="miI-be-EZ3"/>
@@ -55,120 +55,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfv-Js-mid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1980" y="817"/>
-        </scene>
-        <!--My Profile-->
-        <scene sceneID="Khm-vq-iwH">
-            <objects>
-                <viewController id="QpX-Ew-DHY" customClass="TRVProfileViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="E6C-70-eEj"/>
-                        <viewControllerLayoutGuide type="bottom" id="wnb-Lt-Bsu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gxQ-kr-w1f">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="306" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fn6-e1-BUB">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileImageCell" rowHeight="77" id="ijk-zc-wM2" customClass="TRVProfileImageTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ijk-zc-wM2" id="8p5-gf-7Ge">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userInfoSnippetCell" rowHeight="133" id="W4l-zw-PBb" customClass="TRVUserSnippetTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W4l-zw-PBb" id="uXj-a3-dsT">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQm-BS-Ov5" customClass="TRVUserSnippetView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="133"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="vQm-BS-Ov5" firstAttribute="leading" secondItem="uXj-a3-dsT" secondAttribute="leading" id="PfD-em-edO"/>
-                                                <constraint firstAttribute="bottom" secondItem="vQm-BS-Ov5" secondAttribute="bottom" id="bjj-dw-L8h"/>
-                                                <constraint firstAttribute="trailing" secondItem="vQm-BS-Ov5" secondAttribute="trailing" id="nk0-FJ-ZX1"/>
-                                                <constraint firstItem="vQm-BS-Ov5" firstAttribute="top" secondItem="uXj-a3-dsT" secondAttribute="top" id="saF-UW-G0r"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="cellContentUIView" destination="vQm-BS-Ov5" id="za5-17-jdE"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userContactCell" rowHeight="52" id="72F-EU-Fre" customClass="TRVContactTableViewCell">
-                                        <rect key="frame" x="0.0" y="320" width="600" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="72F-EU-Fre" id="7nb-5Q-TM0">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoC-qk-ACb" customClass="TRVUserContactView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="41.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.32781942580000001" green="0.87879207329999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="VoC-qk-ACb" firstAttribute="leading" secondItem="7nb-5Q-TM0" secondAttribute="leading" id="7h8-xr-GaB"/>
-                                                <constraint firstItem="VoC-qk-ACb" firstAttribute="top" secondItem="7nb-5Q-TM0" secondAttribute="top" constant="1" id="CMB-Ug-Gcv"/>
-                                                <constraint firstAttribute="bottom" secondItem="VoC-qk-ACb" secondAttribute="bottom" id="PjY-uU-fSk"/>
-                                                <constraint firstItem="VoC-qk-ACb" firstAttribute="top" secondItem="7nb-5Q-TM0" secondAttribute="top" id="fyG-N3-Cq9"/>
-                                                <constraint firstAttribute="trailing" secondItem="VoC-qk-ACb" secondAttribute="trailing" id="g0D-An-yoz"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="CMB-Ug-Gcv"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.40000000596046448" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="cellContactContentView" destination="VoC-qk-ACb" id="FOk-PU-vdu"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="socialMediaReuseCell" rowHeight="76" id="gTt-1t-nUG" customClass="TRVSocialMediaTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gTt-1t-nUG" id="VL5-y9-PMB">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <outlet property="contentView" destination="VL5-y9-PMB" id="Mvs-hT-G1y"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="fn6-e1-BUB" firstAttribute="trailing" secondItem="gxQ-kr-w1f" secondAttribute="trailing" id="7Hw-KI-LFc"/>
-                            <constraint firstItem="fn6-e1-BUB" firstAttribute="leading" secondItem="gxQ-kr-w1f" secondAttribute="leading" id="EuB-vc-0Im"/>
-                            <constraint firstItem="fn6-e1-BUB" firstAttribute="top" secondItem="E6C-70-eEj" secondAttribute="top" id="URe-IW-5TM"/>
-                            <constraint firstItem="fn6-e1-BUB" firstAttribute="bottom" secondItem="wnb-Lt-Bsu" secondAttribute="bottom" id="lFA-yI-c81"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="My Profile" id="lK8-LX-BgL">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="jpT-Me-PI3">
-                            <color key="tintColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="profileTableView" destination="fn6-e1-BUB" id="ZB2-jZ-gq6"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qOc-H3-UTQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1628" y="1511"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="2ER-eE-Hax">
@@ -437,26 +323,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yma-bF-DdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2446" y="1520"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="VVK-gt-hbY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nUU-sq-eHD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="eGY-BT-5Yl"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GFf-u3-mPD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="QpX-Ew-DHY" kind="relationship" relationship="rootViewController" id="XX0-d4-V54"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FGZ-1n-qDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="886" y="1511"/>
+            <point key="canvasLocation" x="2632" y="817"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EPI-ek-vTn">

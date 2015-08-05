@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zrm-52-30Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cxt-RM-glU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -61,72 +61,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="G0l-wk-nGG"/>
-                    <connections>
-                        <segue destination="Zrm-52-30Q" kind="show" identifier="detailTourGuideSegue" id="d7O-yZ-GG9"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZB-rz-tMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2653" y="1241"/>
-        </scene>
-        <!--Detail Tour Guide Table View Controller-->
-        <scene sceneID="mjS-1e-Ma4">
-            <objects>
-                <tableViewController id="Zrm-52-30Q" customClass="TRVDetailTourGuideTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="22" sectionFooterHeight="22" id="oFI-BF-23n">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileImageCell" id="auW-fl-oVY" customClass="TRVProfileImageTableViewCell">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="auW-fl-oVY" id="2WE-zZ-G2L">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="snippet" rowHeight="300" id="38a-Oq-EVY" customClass="TRVUserSnippetTableViewCell">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="38a-Oq-EVY" id="7yi-No-OK4">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lj-yT-wbN" customClass="TRVUserSnippetView">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="280"/>
-                                            <color key="backgroundColor" red="0.72767724150000002" green="0.88638336490000003" blue="0.77900968790000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.34597932450000002" green="0.34597932450000002" blue="0.34597932450000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="centerY" secondItem="5lj-yT-wbN" secondAttribute="centerY" constant="9.75" id="AcW-Ey-oCp"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="5lj-yT-wbN" secondAttribute="trailing" constant="-8" id="C11-Ov-qpU"/>
-                                        <constraint firstItem="5lj-yT-wbN" firstAttribute="leading" secondItem="7yi-No-OK4" secondAttribute="leadingMargin" constant="-8" id="FZh-c5-tZh"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="5lj-yT-wbN" secondAttribute="bottom" constant="11.5" id="Zg3-LX-q0m"/>
-                                        <constraint firstItem="5lj-yT-wbN" firstAttribute="top" secondItem="7yi-No-OK4" secondAttribute="topMargin" constant="-8" id="jTm-75-UXQ"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="200" id="q2t-kG-5E5" customClass="TRVContactTableViewCell">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q2t-kG-5E5" id="k0H-H3-2qL">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-Zd-6N0" customClass="TRVUserContactView">
-                                            <rect key="frame" x="0.0" y="-48" width="600" height="296"/>
-                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Zrm-52-30Q" id="kDf-ki-jWf"/>
-                            <outlet property="delegate" destination="Zrm-52-30Q" id="I7K-dw-VmU"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fDl-00-W47" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3388" y="1255"/>
         </scene>
         <!--Pick City Table View Controller-->
         <scene sceneID="efN-5l-52n">

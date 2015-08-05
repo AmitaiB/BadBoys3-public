@@ -6,10 +6,12 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVProfileScrollViewController.h"
 #import <Masonry.h>
+
+#import "TRVProfileScrollViewController.h"
 #import "TRVUserSnippetView.h"
 #import "TRVUserContactView.h"
+#import "TRVUserProfileView.h"
 
 
 @interface TRVProfileScrollViewController ()
@@ -44,18 +46,33 @@
         make.height.equalTo(@2000);
     }];
     
+    //Instantiate a Image View Nib
     
+    TRVUserProfileView *profileImageView = [[TRVUserProfileView alloc] init];
+    profileImageView.userForThisProfileView = self.user;
+    [self.containerView addSubview:profileImageView];
+    
+    [profileImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.left.and.right.equalTo(self.containerView);
+        make.height.equalTo(self.containerView.mas_width);
+    }];
+    
+    
+    //Instantiate a Snippet View Nib
+
     TRVUserSnippetView *snippetView = [[TRVUserSnippetView alloc] init];
     snippetView.userForThisSnippetView = self.user;
     [self.containerView addSubview:snippetView];
 
     [snippetView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.and.left.and.right.equalTo(self.containerView);
+        make.top.equalTo(profileImageView.mas_bottom);
+        make.left.and.right.equalTo(self.containerView);
         make.height.equalTo(@100);
     }];
     
     
+    //Instantiate a Contact View Nib
+
     TRVUserContactView *contactView = [[TRVUserContactView alloc] init];
     contactView.userForThisContactView = self.user;
     [self.containerView addSubview:contactView];

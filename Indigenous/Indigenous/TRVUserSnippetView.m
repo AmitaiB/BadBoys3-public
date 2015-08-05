@@ -44,8 +44,7 @@
                                 options:nil];
     
     [self addSubview:self.userSnippetContentView];
-//    
-//    self.userSnippetContentView.translatesAutoresizingMaskIntoConstraints = NO;
+
 
     [self.userSnippetContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
