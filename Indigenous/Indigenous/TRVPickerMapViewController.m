@@ -8,12 +8,13 @@
 
 #import "TRVPickerMapViewController.h"
 #import "TRVPickerMapLogic.h" //includes GMapsSDK
-#import "TRVCoreLocator.h"
+//#import "TRVCoreLocator.h"
 
 
-@interface TRVPickerMapViewController ()
+@interface TRVPickerMapViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
@@ -26,14 +27,56 @@
     /**
      *  CLLocation → 2Dcoords → camera position → gMap
      */
-    TRVCoreLocator *locator = [TRVCoreLocator new];
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:[locator YouAreHere].coordinate zoom:18];
-    self.mapView = [GMSMapView mapWithFrame:self.view.bounds
-                                     camera:camera];
+    
+        _locationManager = [CLLocationManager new];
+    
+    self.locationManager.delegate = self;
+//    [self safeRequestForWhenInUseAuth];
+    [self.locationManager startMonitoringSignificantLocationChanges];
+    
+    CLLocationCoordinate2D mostRecentLoc = self.locationManager.location.coordinate;
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:mostRecentLoc zoom:18];
+    self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
     self.mapView.myLocationEnabled = YES;
     
     [self.view addSubview:self.mapView];
+    NSLog(@"CoreLocator says I'm here: %f, %f", mostRecentLoc.latitude, mostRecentLoc.longitude);
     
+}
+
+    //Thanks to Jordan Gugges for finding this snippet online
+-(void)safeRequestForWhenInUseAuth {
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    if (status == kCLAuthorizationStatusDenied ||
+        status == kCLAuthorizationStatusRestricted ||
+        status == kCLAuthorizationStatusRestricted ||
+        status == kCLAuthorizationStatusNotDetermined) {
+        
+        NSString *title;
+        
+        title = (status == kCLAuthorizationStatusDenied ||
+                 status == kCLAuthorizationStatusRestricted)? @"Location Services Are Off" : @"Background use is not enabled";
+        
+        NSString *message = @"Go to settings";
+        
+        UIAlertController *settingsAlert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *goToSettings = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction *action) {
+                                                                 NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                                           [[UIApplication sharedApplication]openURL:settingsURL];
+                                       }];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+        
+        [settingsAlert addAction:goToSettings];
+        [settingsAlert addAction:cancel];
+        [self presentViewController:settingsAlert animated:YES completion:nil];
+        
+    } else if (status == kCLAuthorizationStatusNotDetermined) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
