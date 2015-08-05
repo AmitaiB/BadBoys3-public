@@ -271,6 +271,7 @@
 		384AFBBA1B6969EE00E169A9 /* TourGuideFlow */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				384AFBBB1B696A9B00E169A9 /* TRVTourGuideTabBarVC.h */,
 				384AFBBC1B696A9B00E169A9 /* TRVTourGuideTabBarVC.m */,
 				3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */,
@@ -282,6 +283,13 @@
 				384AFBC81B696B8F00E169A9 /* TRVMapCreateItineraryVC.m */,
 				384AFBC41B696B3500E169A9 /* TRVTourGuideProfileVC.h */,
 				384AFBC51B696B3500E169A9 /* TRVTourGuideProfileVC.m */,
+=======
+				3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */,
+				389646401B6AB67B004FFDB7 /* TRVPickerMapLogic.h */,
+				389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */,
+				3856144B1B72688B00D6F7E7 /* TRVPickerMapViewController.h */,
+				3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */,
+>>>>>>> removes superfluous model files TRVCoreLocator.m&h
 				3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented */,
 			);
 			name = TourGuideFlow;
