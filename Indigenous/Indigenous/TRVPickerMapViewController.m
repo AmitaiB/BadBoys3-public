@@ -16,7 +16,7 @@
 @interface TRVPickerMapViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
-@property (nonatomic, strong) CLLocationManager *locationManager;
+//@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
@@ -26,40 +26,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.locationManager = [CLLocationManager new];
-    self.locationManager.delegate = self;
-    /**
-     ✓NSLocationAlwaysUsageDescription added to foo-Info.plist
-     *  If using Always Authorization...
-     */
-    [self requestAlwaysAuthorization];
-    /**
-     *  ...or this, if using WhenInUse Authorization...
-     
-//      Check for iOS 8. Without this safeguard, the code will crash with "unknown selector" on iOS 7-.
-//    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-//        [self.locationManager requestWhenInUseAuthorization];
-//    }
-    */
-    [self.locationManager startUpdatingLocation];
+    __block GMSCameraPosition *camera;
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
     
+    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:YES
+                                                  block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+//                                                      if (status == INTULocationStatusSuccess) {
+//                                                          NSLog(@"SUCCESS in the INTULocation request block!");
+//                                                      } else if (status == INTULocationStatusTimedOut) {
+//                                                          NSLog(@"TIMED OUT in the INTULocation request block!");
+//                                                      } else if (status == INTULocationStatusError) {
+//                                                          NSLog(@"ERROR in the INTULocation request block!");
+//                                                      }
+                                                      camera = [GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:18];
+                                                      self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
+                                                      self.mapView.myLocationEnabled = YES;
+                                                      
+                                                      [self.view addSubview:self.mapView];
+                                                      NSLog(@"CoreLocator says I'm here: %f, %f", camera.target.latitude, camera.target.longitude);
+                                                  }];
     
-    /**
-     *  CLLocation → 2Dcoords → camera position → gMap
-     */
-    
-    
-    
-//    [self safeRequestForWhenInUseAuth];
-//    [self.locationManager startMonitoringSignificantLocationChanges];
-    
-    CLLocationCoordinate2D mostRecentLoc = self.locationManager.location.coordinate;
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:mostRecentLoc zoom:18];
-    self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
-    self.mapView.myLocationEnabled = YES;
-    
-    [self.view addSubview:self.mapView];
-    NSLog(@"CoreLocator says I'm here: %f, %f", mostRecentLoc.latitude, mostRecentLoc.longitude);
     
 }
 
@@ -75,14 +61,15 @@
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Uh, OK" style:UIAlertActionStyleDefault handler:nil];
         UIAlertAction *goToSettingsAction = [UIAlertAction actionWithTitle:@"Take me to Settings! Schnell!!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSURL *
-        }]
+            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            [[UIApplication sharedApplication] openURL:settingsURL];
+        }];
         
         [self presentViewController:alert animated:YES completion:nil];
     }
 //  The user has not enabled any location services. Request background authorization.
     else if (status == kCLAuthorizationStatusNotDetermined) {
-        [self.locationManager requestAlwaysAuthorization];
+        NSLog(@"would have called... [locationManager requestAlwaysAuthorization];");
     }
 }
 
@@ -113,7 +100,7 @@
             [self presentViewController:settingsAlert animated:YES completion:nil];
         
     } else if (status == kCLAuthorizationStatusNotDetermined) {
-        [self.locationManager requestWhenInUseAuthorization];
+        NSLog(@"would have called... [self.locationManager requestWhenInUseAuthorization];");
     }
 }
 
