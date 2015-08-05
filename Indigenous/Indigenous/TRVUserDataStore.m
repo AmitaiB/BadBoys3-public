@@ -7,7 +7,9 @@
 //
 
 #import "TRVUserDataStore.h"
+#import <AFNetworking/UIKit+AFNetworking.h>
 #import <Parse.h>
+#import "TRVAFNetwokingAPIClient.h"
 
 @interface TRVUserDataStore()
 @property (nonatomic, strong) NSDictionary *parseUserInfo;
@@ -27,13 +29,9 @@
     return _sharedTasksDataStore;
 }
 
--(instancetype) initWithCurrentUser:(PFUser *)currentUser {
-   
-    self = [super init];
-    
-    
-    
-    if (self) {
+
+- (void) setCurrentUser:(PFUser *)currentUser {
+  
     
         _parseUser = currentUser;
         
@@ -48,7 +46,7 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         } else {
             
-        
+            
             TRVBio *bioForLoggedInUser = [[TRVBio alloc] init];
             bioForLoggedInUser.firstName = objects[0][@"first_name"];
             bioForLoggedInUser.lastName = objects[0][@"last_name"];
@@ -60,18 +58,51 @@
             bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
             bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
             bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
-            bioForLoggedInUser.profileImage = objects[0][@"picture"];
+            
+            
+            //REVISIT
+            // DEPENDS ON IF FACEBOOK OR EMAIL LOGGED IN
+            if (objects[0][@"picture"]){
+                
+                
+                [TRVAFNetwokingAPIClient getImagesWithURL:objects[0][@"picture"] withCompletionBlock:^(UIImage *response) {
+                
+                    NSLog(@"%@-----------------------------", response);
+                    
+                    // Setting profile Image with AFNetworking request
+                    bioForLoggedInUser.profileImage = response;
+                
+                }];
+                 
 
+            } else {
+                
+                PFFile *pictureFile = objects[0][@"emailPicture"];
+                [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error) {
+                        bioForLoggedInUser.profileImage = [UIImage imageWithData:data];
+                        
+                    } else {
+                        // error block
+                        
+                    }
+                }];
+                
+                
+                NSLog(@"%@", pictureFile.url);
+                            }
+
+            _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
             
             
-            
-            NSLog(@"Welcome %@. ", bioForLoggedInUser.firstName);
+            NSLog(@"Welcome %@. ", _loggedInUser);
+         //   NSLog(@"%@ THIS IS THE LOGGED IN", self.loggedInUser.userBio.firstName);
          
         }
     }];
-    }
-    
-    return self;
+//    }
+//    
+//    return self;
 }
 
 

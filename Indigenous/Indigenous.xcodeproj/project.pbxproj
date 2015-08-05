@@ -531,8 +531,6 @@
 			isa = PBXGroup;
 			children = (
 				94C2EDA11B69637900BC2F7C /* Profile.storyboard */,
-				948246451B719DA500D64432 /* TRVProfileScrollViewController.h */,
-				948246461B719DA500D64432 /* TRVProfileScrollViewController.m */,
 				948246401B7162B400D64432 /* TRVUserContactView.h */,
 				948246411B7162B400D64432 /* TRVUserContactView.m */,
 				948246431B7162C300D64432 /* TRVUserContactView.xib */,
@@ -569,6 +567,8 @@
 		94D8FCB61B6AA31D00B89C29 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				948246451B719DA500D64432 /* TRVProfileScrollViewController.h */,
+				948246461B719DA500D64432 /* TRVProfileScrollViewController.m */,
 				949081651B6C67B100B6D2FA /* TRVEditProfileTableViewController.h */,
 				949081661B6C67B100B6D2FA /* TRVEditProfileTableViewController.m */,
 				94C2EDA91B69664400BC2F7C /* TRVSearchViewController.h */,

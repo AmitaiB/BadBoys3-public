@@ -27,7 +27,7 @@
     [FBSDKAccessToken setCurrentAccessToken:nil];
     [FBSDKProfile setCurrentProfile:nil];
 
-    
+
     NSLog(@"PFUSER: %@", [PFUser currentUser]);
     NSLog(@"FACEBOOK USER: %@", [FBSDKAccessToken currentAccessToken]);
     
@@ -68,23 +68,21 @@
     PFObject *userBio = [PFUser currentUser][@"userBio"];
     
     
-        [userBio fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
-            
-            NSNumber *isGuide = userBio[@"isGuide"];
-            if ([isGuide isEqualToNumber:@(NO)]){
-                [self presentTouristHomeView];
-            } else {
-                
-                //TRANSITION TO GUIDE HOME VIEW
-                
-            }
-
-        }];
+    [userBio fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
         
+        NSNumber *isGuide = userBio[@"isGuide"];
+        if ([isGuide isEqualToNumber:@(NO)]){
+            [self presentTouristHomeView];
+        } else {
+            
+            //TRANSITION TO GUIDE HOME VIEW
+            
+        }
+        
+    }];
     
-    
-}
 
+}
 
 
 -(void)transitionToHomeStoryboardWithEmail:(NSString*)email andPassword:(NSString*)password{

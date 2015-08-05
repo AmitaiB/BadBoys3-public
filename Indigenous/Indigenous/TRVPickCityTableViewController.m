@@ -31,7 +31,8 @@
     //DELETE
     //DELETE
     
-    self.sharedDataStore = [[TRVUserDataStore alloc] initWithCurrentUser:[PFUser currentUser]];
+    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+    [self.sharedDataStore setCurrentUser: [PFUser currentUser]];
     self.sharedDataStore.parseUser = [PFUser currentUser];
     
     
