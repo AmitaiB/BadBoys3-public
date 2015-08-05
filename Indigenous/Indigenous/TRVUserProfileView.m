@@ -51,7 +51,7 @@
     _userForThisProfileView = userForThisProfileView;
     
     // TURN INTO AN IMAGE
-  //  self.profileImageView.image = userForThisProfileView.userBio.profileImage;
+    self.profileImageView.image = userForThisProfileView.userBio.profileImage;
 }
 
 

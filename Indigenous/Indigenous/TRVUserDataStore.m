@@ -7,7 +7,9 @@
 //
 
 #import "TRVUserDataStore.h"
+#import <AFNetworking/UIKit+AFNetworking.h>
 #import <Parse.h>
+#import "TRVAFNetwokingAPIClient.h"
 
 @interface TRVUserDataStore()
 @property (nonatomic, strong) NSDictionary *parseUserInfo;
@@ -28,12 +30,6 @@
 }
 
 - (void) setCurrentUser:(PFUser *)currentUser {
-    
-    
-//    self = [super init];
-//    
-//    
-//    if (self) {
     
         _parseUser = currentUser;
         
@@ -61,9 +57,38 @@
             bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
             bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
             
+            
             //REVISIT
             // DEPENDS ON IF FACEBOOK OR EMAIL LOGGED IN
-            bioForLoggedInUser.profileImage = objects[0][@"picture"];
+            if (objects[0][@"picture"]){
+                
+                
+                [TRVAFNetwokingAPIClient getImagesWithURL:objects[0][@"picture"] withCompletionBlock:^(UIImage *response) {
+                
+                    NSLog(@"%@-----------------------------", response);
+                    
+                    // Setting profile Image with AFNetworking request
+                    bioForLoggedInUser.profileImage = response;
+                
+                }];
+                 
+
+            } else {
+                
+                PFFile *pictureFile = objects[0][@"emailPicture"];
+                [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error) {
+                        bioForLoggedInUser.profileImage = [UIImage imageWithData:data];
+                        
+                    } else {
+                        // error block
+                        
+                    }
+                }];
+                
+                
+                NSLog(@"%@", pictureFile.url);
+                            }
 
             _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
             

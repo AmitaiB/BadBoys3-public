@@ -85,7 +85,7 @@
     [self.containerView addSubview:contactView];
 //    self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
     [contactView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@600);
+//        make.height.equalTo(@600);
         make.top.equalTo(snippetView.mas_bottom);
         make.left.and.right.equalTo(self.containerView);
     }];

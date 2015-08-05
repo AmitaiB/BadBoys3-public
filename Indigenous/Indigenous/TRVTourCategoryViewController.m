@@ -39,7 +39,7 @@
     
     TRVTourCategory *eatCategory = [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];
     
-    TRVTourCategory *drinkCategory = [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid"]];
+    TRVTourCategory *drinkCategory = [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid.jpg"]];
 
     self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
 
