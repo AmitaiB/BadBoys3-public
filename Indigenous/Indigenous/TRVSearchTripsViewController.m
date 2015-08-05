@@ -9,12 +9,11 @@
 #import "TRVUser.h"
 #import "TRVBio.h"
 #import "TRVSearchTripsViewController.h"
-#import "TRVSearchResultsDataSource.h"
 #import <Masonry/Masonry.h>
 
 
 @interface TRVSearchTripsViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
+//@property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
 //@property (nonatomic, strong) TRVSearchResultsDataSource *resultsDataSource;
 
 

@@ -78,20 +78,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileImageCell" rowHeight="136" id="auW-fl-oVY" customClass="TRVProfileImageTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileImageCell" id="auW-fl-oVY" customClass="TRVProfileImageTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="auW-fl-oVY" id="2WE-zZ-G2L">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="snippet" rowHeight="245" id="38a-Oq-EVY" customClass="TRVUserSnippetTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="snippet" rowHeight="300" id="38a-Oq-EVY" customClass="TRVUserSnippetTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="38a-Oq-EVY" id="7yi-No-OK4">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lj-yT-wbN" customClass="TRVUserSnippetView">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="245"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lj-yT-wbN" customClass="TRVUserSnippetView">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="280"/>
+                                            <color key="backgroundColor" red="0.72767724150000002" green="0.88638336490000003" blue="0.77900968790000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.34597932450000002" green="0.34597932450000002" blue="0.34597932450000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="5lj-yT-wbN" secondAttribute="centerY" constant="9.75" id="AcW-Ey-oCp"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5lj-yT-wbN" secondAttribute="trailing" constant="-8" id="C11-Ov-qpU"/>
+                                        <constraint firstItem="5lj-yT-wbN" firstAttribute="leading" secondItem="7yi-No-OK4" secondAttribute="leadingMargin" constant="-8" id="FZh-c5-tZh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5lj-yT-wbN" secondAttribute="bottom" constant="11.5" id="Zg3-LX-q0m"/>
+                                        <constraint firstItem="5lj-yT-wbN" firstAttribute="top" secondItem="7yi-No-OK4" secondAttribute="topMargin" constant="-8" id="jTm-75-UXQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="200" id="q2t-kG-5E5" customClass="TRVContactTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q2t-kG-5E5" id="k0H-H3-2qL">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-Zd-6N0" customClass="TRVUserContactView">
+                                            <rect key="frame" x="0.0" y="-48" width="600" height="296"/>
+                                            <color key="backgroundColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                     </subviews>
                                 </tableViewCellContentView>

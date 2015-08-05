@@ -13,5 +13,8 @@
 @interface TRVUserContactView : UIView
 
 @property (nonatomic, strong) TRVUser *userForThisContactView;
+@property (strong, nonatomic) IBOutlet UIView *userContactContentView;
+@property (weak, nonatomic) IBOutlet UILabel *userLanguagesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userEmailLabel;
 
 @end

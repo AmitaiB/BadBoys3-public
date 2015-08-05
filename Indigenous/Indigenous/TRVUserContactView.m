@@ -7,6 +7,7 @@
 //
 
 #import "TRVUserContactView.h"
+#import <Masonry.h>
 
 @implementation TRVUserContactView
 
@@ -38,21 +39,21 @@
                                   owner:self
                                 options:nil];
     
-    [self addSubview:self.userSnippetContentView];
-    //    [self.userSnippetContentView addSubview:self.firstNameLabel];
+    [self addSubview:self.userContactContentView];
+//    self.userContactContentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.userContactContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
     
 }
 
--(void)setUserForThisSnippetView:(TRVUser *)userForThisSnippetView {
+-(void)setUserForThisContactView:(TRVUser *)userForThisContactView {
     
-    _userForThisSnippetView = userForThisSnippetView;
-    
-    self.firstNameLabel.text = userForThisSnippetView.userBio.firstName;
-    self.lastNameLabel.text = userForThisSnippetView.userBio.lastName;
-    self.oneLinerLabel.text = userForThisSnippetView.userBio.bioDescription;
-    NSLog(@"%@!!!!!!!!!!!", userForThisSnippetView.userBio.firstName);
-    NSLog(@"%@!!!!!!!!!!!",  self.firstNameLabel.text);
-    
+    _userForThisContactView = userForThisContactView;
+    self.userEmailLabel.text = userForThisContactView.userBio.email;
+    self.userLanguagesLabel.text = userForThisContactView.userBio.language;
 }
+
 
 @end

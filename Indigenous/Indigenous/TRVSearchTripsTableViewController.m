@@ -10,7 +10,6 @@
 #import "TRVUser.h"
 #import "TRVBio.h"
 #import "TRVSearchTripsViewController.h"
-#import "TRVSearchResultsDataSource.h"
 #import "TRVGuideProfileTableViewCell.h"
 #import <Masonry/Masonry.h>
 

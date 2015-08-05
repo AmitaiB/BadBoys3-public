@@ -52,14 +52,35 @@
                                             <outlet property="cellContentUIView" destination="vQm-BS-Ov5" id="za5-17-jdE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userContactCell" rowHeight="42" id="72F-EU-Fre" customClass="TRVContactTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userContactCell" rowHeight="52" id="72F-EU-Fre" customClass="TRVContactTableViewCell">
                                         <rect key="frame" x="0.0" y="320" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="72F-EU-Fre" id="7nb-5Q-TM0">
+                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="72F-EU-Fre" id="7nb-5Q-TM0">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VoC-qk-ACb" customClass="TRVUserContactView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="41.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.32781942580000001" green="0.87879207329999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="VoC-qk-ACb" firstAttribute="leading" secondItem="7nb-5Q-TM0" secondAttribute="leading" id="7h8-xr-GaB"/>
+                                                <constraint firstItem="VoC-qk-ACb" firstAttribute="top" secondItem="7nb-5Q-TM0" secondAttribute="top" constant="1" id="CMB-Ug-Gcv"/>
+                                                <constraint firstAttribute="bottom" secondItem="VoC-qk-ACb" secondAttribute="bottom" id="PjY-uU-fSk"/>
+                                                <constraint firstItem="VoC-qk-ACb" firstAttribute="top" secondItem="7nb-5Q-TM0" secondAttribute="top" id="fyG-N3-Cq9"/>
+                                                <constraint firstAttribute="trailing" secondItem="VoC-qk-ACb" secondAttribute="trailing" id="g0D-An-yoz"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="CMB-Ug-Gcv"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.40000000596046448" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="cellContactContentView" destination="VoC-qk-ACb" id="FOk-PU-vdu"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="socialMediaReuseCell" rowHeight="76" id="gTt-1t-nUG" customClass="TRVSocialMediaTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -100,6 +121,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOc-H3-UTQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1628" y="1511"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="2ER-eE-Hax">
+            <objects>
+                <tableViewController id="be3-1f-Vbu" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Keg-e7-GCW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="226" id="1qN-YT-geo">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1qN-YT-geo" id="zcV-xu-5Ja">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="226" id="3C5-IS-LxG">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3C5-IS-LxG" id="IQ9-Zk-fXy">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="be3-1f-Vbu" id="nPC-LC-dYO"/>
+                            <outlet property="delegate" destination="be3-1f-Vbu" id="gOu-Bo-aDG"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdZ-PE-d2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1817" y="2265"/>
         </scene>
         <!--Edit Profile Table View Controller-->
         <scene sceneID="Xjb-EJ-rLU">

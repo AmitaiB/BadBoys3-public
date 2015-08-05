@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
     // this makes custom cell masonry height properties work
-    self.tableView.estimatedRowHeight = 100;
+    self.tableView.estimatedRowHeight = 300;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
     
@@ -44,7 +44,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 2;
+    return 3;
 }
 
 
@@ -70,6 +70,12 @@
         cell.user = self.user;
         return cell;
     }
+    else if(indexPath.row == 2) {
+        TRVContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"contactCell"];
+        cell.userForThisContactCell = self.user;
+        return cell;
+    }
+
     
     return nil;
    }

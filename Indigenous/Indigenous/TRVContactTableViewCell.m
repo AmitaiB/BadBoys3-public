@@ -7,11 +7,13 @@
 //
 
 #import "TRVContactTableViewCell.h"
+#import "TRVUserContactView.h"
+#import <Masonry/Masonry.h>
 
 @interface TRVContactTableViewCell()
 
-//@property (weak, nonatomic) IBOutlet UILabel *contactCategoryLabel;
-//@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet TRVUserContactView *cellContactContentView;
+
 
 @end
 
@@ -31,46 +33,12 @@
     
     // set logged in TRV User
     _userForThisContactCell = userForThisContactCell;
-
-    
-    // Set height of content view
-    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@100);
-    }];
-    
-    // EMAIL LABELS ARE PROGRAMATICALLY SET
-    UILabel *contactLabel = [[UILabel alloc] init];
-    contactLabel.text = @"Yo";
-    
-    [self.contentView addSubview:contactLabel];
-    
-    
-    [contactLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_top).with.offset(20);
-        make.left.equalTo(self.contentView.mas_left);
-    }];
-    
-    // add email label
-    UILabel *emailLabel = [[UILabel alloc] init];
-    emailLabel.text = @"email";
-    [self.contentView addSubview:emailLabel];
-
-    [emailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(contactLabel.mas_bottom).with.offset(5);
-        make.left.equalTo(contactLabel.mas_left);
-        make.bottom.equalTo(self.contentView.mas_bottomMargin).with.offset(20);
-    }];
-    
-    // add USER email label
-    UILabel *userEmailLabel = [[UILabel alloc] init];
-    userEmailLabel.text = self.userForThisContactCell.userBio.email;
-    [self.contentView addSubview:userEmailLabel];
-    
-    [userEmailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(emailLabel.mas_top);
-        make.right.equalTo(self.contentView.mas_right);
-        make.bottom.equalTo(self.contentView.mas_bottomMargin);
-    }];
+    self.cellContactContentView.userForThisContactView = userForThisContactCell;
+//    
+//    [self.cellContactContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(@0);
+//    }];
+//    
 
     
     

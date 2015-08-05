@@ -43,7 +43,6 @@
                                 options:nil];
     
     [self addSubview:self.userSnippetContentView];
-//    [self.userSnippetContentView addSubview:self.firstNameLabel];
 
 }
 
