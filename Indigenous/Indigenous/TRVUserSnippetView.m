@@ -46,11 +46,11 @@
     [self addSubview:self.userSnippetContentView];
 //    
 //    self.userSnippetContentView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [self.userSnippetContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
 //
-//    [self.userSnippetContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(@0);
-//    }];
-//    
 
 }
 
@@ -61,9 +61,7 @@
     self.firstNameLabel.text = userForThisSnippetView.userBio.firstName;
     self.lastNameLabel.text = userForThisSnippetView.userBio.lastName;
     self.oneLinerLabel.text = userForThisSnippetView.userBio.bioDescription;
-    NSLog(@"%@!!!!!!!!!!!", userForThisSnippetView.userBio.firstName);
-    NSLog(@"%@!!!!!!!!!!!",  self.firstNameLabel.text);
-
+   
 }
 
 @end

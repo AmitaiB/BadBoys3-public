@@ -15,7 +15,7 @@
 @interface TRVProfileScrollViewController ()
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet TRVUserSnippetView *profileSnippetView;
+//@property (weak, nonatomic) IBOutlet TRVUserSnippetView *profileSnippetView;
 
 
 
@@ -40,19 +40,20 @@
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.scrollView.mas_width);
-        
+
         make.height.equalTo(@2000);
     }];
     
     
-    
-    [self.profileSnippetView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.containerView.mas_right);
+    TRVUserSnippetView *snippetView = [[TRVUserSnippetView alloc] init];
+    snippetView.userForThisSnippetView = self.user;
+    [self.containerView addSubview:snippetView];
+
+    [snippetView mas_makeConstraints:^(MASConstraintMaker *make) {
         
+        make.top.and.left.and.right.equalTo(self.containerView);
         make.height.equalTo(@100);
-        NSLog(@"are you in here?? masonry");
     }];
-    self.profileSnippetView.userForThisSnippetView = self.user;
     
     
     TRVUserContactView *contactView = [[TRVUserContactView alloc] init];
@@ -60,8 +61,8 @@
     [self.containerView addSubview:contactView];
 //    self.containerView.translatesAutoresizingMaskIntoConstraints = NO;
     [contactView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(@806);
-        make.top.equalTo(self.profileSnippetView.mas_bottom);
+        make.height.equalTo(@600);
+        make.top.equalTo(snippetView.mas_bottom);
         make.left.and.right.equalTo(self.containerView);
     }];
     
