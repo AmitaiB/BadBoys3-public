@@ -44,11 +44,14 @@
 
     // Set constraints for ROOT PROFILE Content View
     [self.profileSectionContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-        make.rightMargin.equalTo(self.contentView.mas_rightMargin);
+//        make.edges.equalTo(@0);
+        make.top.and.left.and.right.equalTo(self.contentView);
+        make.right.equalTo(self.contentView.mas_right);
         
-        // SET the height of Profile scroll view to 2/3 of entire cell height
+//         SET the height of Profile scroll view to 2/3 of entire cell height
         make.height.equalTo(self.contentView.mas_height).dividedBy(1.5);
+        
+        
     }];
     
     
@@ -66,7 +69,7 @@
     
     // SET constraints for SCROLL VIEW
     [self.guideProfileScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
+//        make.edges.equalTo(@0);
         // Lock Scroll View Height
         self.guideProfileScrollView.backgroundColor = [UIColor greenColor];
     }];
@@ -79,7 +82,7 @@
     [self.guideProfileScrollContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         // Lock Scroll Content Height
-        make.height.equalTo(self.guideProfileScrollView.mas_height);
+//        make.height.equalTo(self.guideProfileScrollView.mas_height);
         
         // SET right margin of Scroll Content View To last item in items array
         

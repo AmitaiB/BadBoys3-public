@@ -89,8 +89,7 @@
 }
 
 // set vertical seperation of cell
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 8.0;
 }
 
@@ -102,9 +101,7 @@
     if([segue.identifier isEqualToString:@"entrySegue"]) {
         
        /// pass over filters..
-        
     }
-         
 }
 
 @end

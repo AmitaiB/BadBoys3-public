@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVSearchTripsTableViewController.h"
+#import "TRVGuideResultsTableViewController.h"
 #import "TRVUser.h"
 #import "TRVBio.h"
 #import "TRVSearchTripsViewController.h"
@@ -14,20 +14,18 @@
 #import <Masonry/Masonry.h>
 
 
-@interface TRVSearchTripsTableViewController ()<UIGestureRecognizerDelegate>
+@interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) TRVGuideProfileTableViewCell *cell;
 
 
 @end
 
-@implementation TRVSearchTripsTableViewController
+@implementation TRVGuideResultsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self addTapToProfileImageView];
     
-
 
 }
 
@@ -42,6 +40,7 @@
     
     
     self.user.userBio = [[TRVBio alloc] initTouristWithUserName:@"Ashley" firstName:@"Ashley" lastName:@"Madison" email:@"ashleyfromthe6@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
+  
     self.user.userBio.homeCity = @"New York";
     self.user.userBio.homeCountry = @"United States";
     self.user.userBio.userTagline = @"Loves fried chicken and ramen. Super Spontaneous Person!";
@@ -55,21 +54,6 @@
     return self.cell;
     
 }
-
-//
-//-(void)addTapToProfileImageView {
-//    NSLog(@"Are yoe in here?");
-//    [self.cell.profileImageViewNib setUserInteractionEnabled:YES];
-//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-//    [self.cell addGestureRecognizer:singleTap];
-//    singleTap.delegate = self;
-//}
-//
-//- (void)handleTap:(UITapGestureRecognizer *)tapGestureRecognizer {
-//    
-//[self.navigationController performSegueWithIdentifier:@"detailTourGuideSegue" sender:nil];
-//    
-//}
 
 
 
