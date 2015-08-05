@@ -62,7 +62,6 @@
     _categoryForThisView = categoryForThisView;
     
     self.categoryImageView.image = categoryForThisView.categoryImage;
-
     self.iconImageView.image = categoryForThisView.iconImage;
     self.categoryNameLabel.text = categoryForThisView.categoryName;
 

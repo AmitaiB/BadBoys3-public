@@ -7,15 +7,13 @@
 //
 
 #import "TRVGuideProfileTableViewCell.h"
-#import "TRVGuideProfileImageView.h"
-#import "TRVGuideDetailProfileView.h"
+
 #import <Masonry.h>
 
 @interface TRVGuideProfileTableViewCell ()
 
 @property (nonatomic, strong) NSArray *profileScrollViewItems;
-@property (nonatomic, strong) TRVGuideProfileImageView *profileImageNib;
-@property (nonatomic, strong) TRVGuideDetailProfileView *detailedProfileNib;
+
 
 @end
 
@@ -38,19 +36,22 @@
 
 
 -(void) layoutConstraintsForProfileSection {
-    
 
     // Set Profile Image View Constraints
     
-    [self.contentView addSubview:self.profileSectionContentView];
     
+    [self.contentView addSubview:self.profileSectionContentView];
+
     // Set constraints for ROOT PROFILE Content View
     [self.profileSectionContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
-        make.rightMargin.equalTo(self.contentView.mas_rightMargin);
+//        make.edges.equalTo(@0);x`
+        make.top.and.left.and.right.equalTo(self.contentView);
+        make.right.equalTo(self.contentView.mas_right);
         
-        // SET the height of Profile scroll view to 2/3 of entire cell height
+//         SET the height of Profile scroll view to 2/3 of entire cell height
         make.height.equalTo(self.contentView.mas_height).dividedBy(1.5);
+        
+        
     }];
     
     
@@ -64,12 +65,11 @@
 
 
 
-
 -(void) layoutProfileScrollView {
     
     // SET constraints for SCROLL VIEW
     [self.guideProfileScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(@0);
+//        make.edges.equalTo(@0);
         // Lock Scroll View Height
         self.guideProfileScrollView.backgroundColor = [UIColor greenColor];
     }];
@@ -82,7 +82,7 @@
     [self.guideProfileScrollContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         // Lock Scroll Content Height
-        make.height.equalTo(self.guideProfileScrollView.mas_height);
+//        make.height.equalTo(self.guideProfileScrollView.mas_height);
         
         // SET right margin of Scroll Content View To last item in items array
         
@@ -97,13 +97,13 @@
     
     // ADD Profile Image View Nib
     
-    self.profileImageNib = [[TRVGuideProfileImageView alloc] init];
-    [self.guideProfileScrollContentView addSubview:self.profileImageNib];
+    self.profileImageViewNib = [[TRVGuideProfileImageView alloc] init];
+    [self.guideProfileScrollContentView addSubview:self.profileImageViewNib];
     
     // SET Profile View Nib Constraints
     
     
-    [self.profileImageNib mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.profileImageViewNib mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.guideProfileScrollView.mas_left);
         make.top.equalTo(self.guideProfileScrollView.mas_top);
         make.bottom.equalTo(self.guideProfileScrollView.mas_bottom);
@@ -123,7 +123,7 @@
     
     [self.detailedProfileNib mas_makeConstraints:^(MASConstraintMaker *make) {
         // set all edges to superview edges except right margin
-        make.left.equalTo(self.profileImageNib.mas_right);
+        make.left.equalTo(self.profileImageViewNib.mas_right);
         make.top.equalTo(self.guideProfileScrollContentView.mas_top);
         make.bottom.equalTo(self.guideProfileScrollContentView.mas_bottom);
         
