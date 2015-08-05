@@ -11,6 +11,7 @@
 
 #import "TRVPickerMapViewController.h"
 #import "TRVPickerMapLogic.h" //includes GMapsSDK
+#import <INTULocationManager.h>
 
 @interface TRVPickerMapViewController () <CLLocationManagerDelegate>
 
@@ -31,14 +32,15 @@
      ✓NSLocationAlwaysUsageDescription added to foo-Info.plist
      *  If using Always Authorization...
      */
-    [self.locationManager requestAlwaysAuthorization];
+    [self requestAlwaysAuthorization];
     /**
      *  ...or this, if using WhenInUse Authorization...
-     */
+     
 //      Check for iOS 8. Without this safeguard, the code will crash with "unknown selector" on iOS 7-.
 //    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
 //        [self.locationManager requestWhenInUseAuthorization];
 //    }
+    */
     [self.locationManager startUpdatingLocation];
     
     
@@ -59,6 +61,29 @@
     [self.view addSubview:self.mapView];
     NSLog(@"CoreLocator says I'm here: %f, %f", mostRecentLoc.latitude, mostRecentLoc.longitude);
     
+}
+
+-(void)requestAlwaysAuthorization
+{
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+//  If the status is denied, or only granted for when in use, display an alert.
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied) {
+        NSString *title          = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location services are not enabled";
+        NSString *message        = @"To use background location services, you must select 'Always' in Settings → Location Services.";
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Uh, OK" style:UIAlertActionStyleDefault handler:nil];
+        UIAlertAction *goToSettingsAction = [UIAlertAction actionWithTitle:@"Take me to Settings! Schnell!!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSURL *
+        }]
+        
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+//  The user has not enabled any location services. Request background authorization.
+    else if (status == kCLAuthorizationStatusNotDetermined) {
+        [self.locationManager requestAlwaysAuthorization];
+    }
 }
 
 -(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
