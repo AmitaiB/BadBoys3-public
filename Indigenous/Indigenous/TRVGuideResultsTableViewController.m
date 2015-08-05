@@ -12,11 +12,11 @@
 #import "TRVSearchTripsViewController.h"
 #import "TRVGuideProfileTableViewCell.h"
 #import <Masonry/Masonry.h>
+#import "TRVDetailGuideViewController.h"
 
 
 @interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) TRVGuideProfileTableViewCell *cell;
 
 
 @end
@@ -26,7 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
 }
 
 
@@ -47,15 +46,32 @@
     self.user.userBio.profileImage = [UIImage imageNamed:@"leo.jpg"];
     
     
-    self.cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
-    self.cell.guideForThisCell = self.user;
+    TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
     
+    cell.guideForThisCell = self.user;
     
-    return self.cell;
+    UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    [cell.profileImageViewNib addGestureRecognizer:singleTapOnImage];
+    cell.profileImageViewNib.userInteractionEnabled = YES;
+    
+    return cell;
     
 }
 
 
+-(void)singleTap:(TRVGuideProfileTableViewCell *)cell {
+    NSLog(@"In Single Tap Methood");
+
+    [self performSegueWithIdentifier:@"detailGuideSegue" sender:cell];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
+
+    TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
+    }
+}
 
 
 @end

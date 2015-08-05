@@ -77,10 +77,31 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="G0l-wk-nGG"/>
+                    <connections>
+                        <segue destination="EWM-o7-SUs" kind="show" identifier="detailGuideSegue" id="X7F-U6-Z4m"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZB-rz-tMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2654" y="1244"/>
+            <point key="canvasLocation" x="2638" y="1229"/>
+        </scene>
+        <!--Detail Guide View Controller-->
+        <scene sceneID="Fax-qm-bip">
+            <objects>
+                <viewController id="EWM-o7-SUs" customClass="TRVDetailGuideViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pEo-wY-TeR"/>
+                        <viewControllerLayoutGuide type="bottom" id="zM3-J4-Bab"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gvo-L9-N7r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5CY-XY-hZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3392" y="1251"/>
         </scene>
         <!--Pick City Table View Controller-->
         <scene sceneID="efN-5l-52n">

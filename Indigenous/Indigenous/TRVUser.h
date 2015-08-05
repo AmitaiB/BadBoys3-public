@@ -23,4 +23,6 @@
         //@property (nonatomic, strong) NSMutableArray *tripsTaking;
 
 
+-(instancetype)initWithBio:(TRVBio *)bio;
+
 @end

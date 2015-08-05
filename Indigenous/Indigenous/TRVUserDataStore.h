@@ -16,8 +16,8 @@
 +(instancetype)sharedUserInfoDataStore;
 -(instancetype) initWithCurrentUser:(PFUser *)currentUser;
 
-@property (nonatomic, strong) PFUser *loggedInUser;
-@property (nonatomic, strong) TRVUser *user;
+@property (nonatomic, strong) TRVUser *loggedInUser;
+@property (nonatomic, strong) PFUser *parseUser;
 @property (nonatomic, strong) TRVBio *bioForLoggedInUser;
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
