@@ -66,12 +66,11 @@
     // User is logged in, do work such as go to next view controller.
     NSLog(@"Facebook user logged in");
     PFObject *userBio = [PFUser currentUser][@"userBio"];
-    NSNumber *isGuide = userBio[@"isGuide"];
     
-    if (!isGuide){
-        
+    
         [userBio fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
             
+            NSNumber *isGuide = userBio[@"isGuide"];
             if ([isGuide isEqualToNumber:@(NO)]){
                 [self presentTouristHomeView];
             } else {
@@ -82,17 +81,7 @@
 
         }];
         
-    } else {
     
-        if ([isGuide isEqualToNumber:@(NO)]){
-            [self presentTouristHomeView];
-        } else {
-            
-            //TRANSITION TO GUIDE HOME VIEW
-            
-        }
-
-    }
     
 }
 
