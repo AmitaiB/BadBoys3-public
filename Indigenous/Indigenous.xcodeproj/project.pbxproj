@@ -457,8 +457,6 @@
 				9435DF651B6ED0200054A2F4 /* TRVPickCityTableViewController.m */,
 				942424871B6DBAAF007BC642 /* TRVRootTabViewController.h */,
 				942424881B6DBAAF007BC642 /* TRVRootTabViewController.m */,
-				94C2EDA31B69657B00BC2F7C /* TRVSearchTripsViewController.h */,
-				94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */,
 				94BD69001B6EC18A000CDA65 /* TRVGuideResultsTableViewController.h */,
 				94BD69011B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m */,
 				45F925A31B71238C009B2E98 /* Filter View Controllers */,
