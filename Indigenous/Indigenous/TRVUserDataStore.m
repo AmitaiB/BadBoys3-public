@@ -28,9 +28,9 @@
 }
 
 -(instancetype) initWithCurrentUser:(PFUser *)currentUser {
-    
-    
+   
     self = [super init];
+    
     
     
     if (self) {
