@@ -6,16 +6,16 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Search Trips Table View Controller-->
+        <!--Guide Results Table View Controller-->
         <scene sceneID="Jw8-m4-dck">
             <objects>
-                <tableViewController id="wXz-1k-x5p" customClass="TRVSearchTripsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="wXz-1k-x5p" customClass="TRVGuideResultsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="451" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dpb-E7-ix7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tourGuideReuseCell" rowHeight="451" id="dRx-Mb-Qfj" customClass="TRVGuideProfileTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tourGuideReuseCell" id="dRx-Mb-Qfj" customClass="TRVGuideProfileTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dRx-Mb-Qfj" id="5fd-oc-TVx">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -47,6 +47,22 @@
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" red="1" green="0.72243542640000002" blue="0.1259439467" alpha="0.33000000000000002" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="TwQ-Iv-Xvg" firstAttribute="leading" secondItem="5fd-oc-TVx" secondAttribute="leading" id="2Oa-pc-bQ5"/>
+                                        <constraint firstAttribute="bottom" secondItem="TwQ-Iv-Xvg" secondAttribute="bottom" id="2i4-ul-S49"/>
+                                        <constraint firstItem="TwQ-Iv-Xvg" firstAttribute="top" secondItem="5fd-oc-TVx" secondAttribute="top" id="DOl-op-BNx"/>
+                                        <constraint firstItem="TwQ-Iv-Xvg" firstAttribute="leading" secondItem="5fd-oc-TVx" secondAttribute="leading" id="Q92-58-xqo"/>
+                                        <constraint firstAttribute="trailing" secondItem="TwQ-Iv-Xvg" secondAttribute="trailing" id="aUY-OL-Jes"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="2Oa-pc-bQ5"/>
+                                            <exclude reference="2i4-ul-S49"/>
+                                            <exclude reference="DOl-op-BNx"/>
+                                            <exclude reference="Q92-58-xqo"/>
+                                            <exclude reference="aUY-OL-Jes"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="guideProfileScrollContentView" destination="hoZ-fN-91S" id="Blb-Zr-I64"/>
@@ -67,10 +83,31 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="EWM-o7-SUs" kind="show" identifier="detailGuideSegue" id="QcL-BZ-YFZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BZB-rz-tMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629" y="1229"/>
+            <point key="canvasLocation" x="2578" y="1263"/>
+        </scene>
+        <!--Detail Guide View Controller-->
+        <scene sceneID="Fax-qm-bip">
+            <objects>
+                <viewController id="EWM-o7-SUs" customClass="TRVDetailGuideViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pEo-wY-TeR"/>
+                        <viewControllerLayoutGuide type="bottom" id="zM3-J4-Bab"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Gvo-L9-N7r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5CY-XY-hZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3392" y="1251"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="Io0-hn-H2u">
@@ -96,7 +133,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E83-3N-JcC">
                                 <rect key="frame" x="280" y="71" width="40" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQW-c8-sdc">
@@ -105,7 +142,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sub-Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQP-LI-rMp">
                                 <rect key="frame" x="246" y="318" width="108" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aik-UJ-J53">

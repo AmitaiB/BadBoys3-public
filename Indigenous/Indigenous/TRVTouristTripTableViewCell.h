@@ -14,6 +14,4 @@
 
 @property (nonatomic, strong) TRVTour *tour;
 
--(instancetype)initWithTour:(TRVTour*)tour reuseIdentifier:(NSString*)reuseIdentifier;
-
 @end

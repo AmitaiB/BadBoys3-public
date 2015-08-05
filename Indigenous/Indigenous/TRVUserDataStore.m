@@ -34,6 +34,8 @@
     
     
     if (self) {
+    
+        _parseUser = currentUser;
         
         PFQuery *query = [PFQuery queryWithClassName:@"UserBio"];
         PFObject *object = currentUser[@"userBio"];
@@ -45,19 +47,28 @@
         if (error) {
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         } else {
-            self.parseUserInfo = objects[0];
-            NSLog(@"%@????????", objects[0]);
-            NSLog(@"This is the response: %@", objects);
-            NSLog(@"%@!!!!!!!!",objects[0][@"bioTextField"]);
+            
+        
+            TRVBio *bioForLoggedInUser = [[TRVBio alloc] init];
+            bioForLoggedInUser.firstName = objects[0][@"first_name"];
+            bioForLoggedInUser.lastName = objects[0][@"last_name"];
+            bioForLoggedInUser.birthday = objects[0][@"birthday"];
+            bioForLoggedInUser.email = objects[0][@"email"];
+            bioForLoggedInUser.homeCity = @"";
+            bioForLoggedInUser.homeCountry = @"";
+            bioForLoggedInUser.isGuide = objects[0][@"isGuide"];
+            bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
+            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
+            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
+            bioForLoggedInUser.profileImage = objects[0][@"picture"];
+
+            
+            
+            
+            NSLog(@"Welcome %@. ", bioForLoggedInUser.firstName);
+         
         }
     }];
-
-        
-    // Set properties here
-        _firstName = self.parseUserInfo[@"firstName"];
-        NSLog(@"%@-----asrtnsktisrntsart",self.parseUserInfo);
-        
-        
     }
     
     return self;

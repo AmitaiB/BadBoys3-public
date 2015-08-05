@@ -13,7 +13,7 @@
 #import "TRVUserDataStore.h"
 
 
-@interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *categoryCollectionView;
 @property (nonatomic, strong) NSMutableArray *tourCategories;
@@ -62,13 +62,10 @@
     TRVTourCategory *categoryForThisCell = [self.tourCategories objectAtIndex:indexPath.row];
     
     
+    //OVERRIDE SETTER THAT SETS LABELS TO NIB
+    
     [cell.categoryView setCategoryForThisView:categoryForThisCell];
-    [cell.categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.and.width.equalTo(@10);
-        make.edges.equalTo(@0);
-    }];
-    
-    
+
     return cell;
 }
 
@@ -79,6 +76,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
     
     UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
+
     datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
     
     
@@ -100,8 +98,7 @@
 }
 
 // set vertical seperation of cell
--(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 8.0;
 }
 
@@ -113,9 +110,7 @@
     if([segue.identifier isEqualToString:@"entrySegue"]) {
         
        /// pass over filters..
-        
     }
-         
 }
 
 @end
