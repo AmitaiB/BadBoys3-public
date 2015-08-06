@@ -11,4 +11,6 @@ pod "FBSDKShareKit"
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'APParallaxHeader'
 pod 'INTULocationManager', '~> 3.0'
-pod 'FoldingTabBar', '~> 1.0.1'
+#pod 'FoldingTabBar', '~> 1.0.1'
+pod 'MTCardLayout', '~> 1.0'
+

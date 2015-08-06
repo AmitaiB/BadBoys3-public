@@ -40,12 +40,12 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.4.0):
     - FBSDKCoreKit
-  - FoldingTabBar (1.0.1)
   - GoogleMaps (1.10.1)
   - INTULocationManager (3.0.3)
   - Masonry (0.6.2)
   - MBProgressHUD (0.9.1)
   - MPSkewed (0.9.0)
+  - MTCardLayout (1.0.3)
   - Parse (1.7.5.3):
     - Bolts/Tasks (>= 1.2.0)
   - ParseUI (1.1.4):
@@ -57,12 +57,12 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
-  - FoldingTabBar (~> 1.0.1)
   - GoogleMaps
   - INTULocationManager (~> 3.0)
   - Masonry
   - MBProgressHUD (~> 0.9.1)
   - MPSkewed
+  - MTCardLayout (~> 1.0)
   - Parse
   - ParseUI (~> 1.1)
 
@@ -73,12 +73,12 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 75bdd75c980e811db218488d99dd93b7740f4474
   FBSDKLoginKit: 02a9254a4c132412fa03577b0d53e936d068a7fb
   FBSDKShareKit: a42865f20ba2d1cc548c4d0f73ad22cff6377ddb
-  FoldingTabBar: 3e04c49dbe2b02c529561a4182bf017b928d04d2
   GoogleMaps: ebf08677f181d9c2dcdbd1721d206f02beccc9b1
   INTULocationManager: e79327803a163f5fec28eb042bb124ed0c6e4876
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MPSkewed: 53d2f5ae0ce57c2ee475107cfb8899426f0b68fa
+  MTCardLayout: 3baf5ac3bd21e6149b561dd7bca708f1ceccf962
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
 

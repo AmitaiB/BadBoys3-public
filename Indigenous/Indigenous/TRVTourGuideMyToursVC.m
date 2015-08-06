@@ -7,45 +7,32 @@
 //
 
 #import "TRVTourGuideMyToursVC.h"
-
-#define debug 1
+#import <FBSDKProfile.h>
+#import <UIKit+AFNetworking.h>
+#import <UIImageView+AFNetworking.h>
 
 @interface TRVTourGuideMyToursVC ()
+    //The profile
+@property (weak, nonatomic) IBOutlet UIButton *profileImageButton;
+- (IBAction)profileImageButtonTapped:(id)sender;
 
 @end
 
 @implementation TRVTourGuideMyToursVC
 
-#pragma mark - YALTabBarInteracting MyTours VC
-
--(void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    /**
+     *  FBProfile → UserID → pic URL → setImageWithURL (ty UIImage+AFNetworking) = Profile Pic
+     **************************************************************************************/
+    FBSDKProfile *currentProfile_FB = [FBSDKProfile currentProfile];
+    NSURL *avatarURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture", currentProfile_FB.userID]];
+    UIImageView *profileImageView = [UIImageView new];
+    [profileImageView setImageWithURL:avatarURL placeholderImage:[UIImage imageNamed:@"laughingSalad"]];
+    self.profileImageButton.imageView.image = profileImageView.image;
+        ///************************************************************************
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,4 +50,7 @@
 }
 */
 
+- (IBAction)profileImageButtonTapped:(id)sender {
+    
+}
 @end
