@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
 
-@interface TRVUserProfileView : UIView
+@interface TRVUserProfileImageView : UIView
 @property (strong, nonatomic) IBOutlet UIView *profileView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
-@property (nonatomic, strong) TRVUser *userForThisProfileView;
+@property (nonatomic, strong) TRVUser *userForThisProfileImageView;
 
 @end

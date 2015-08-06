@@ -102,12 +102,37 @@
                     <view key="view" contentMode="scaleToFill" id="Gvo-L9-N7r">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ybv-5H-Q3q">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUg-YP-STo" userLabel="Profile View">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SUg-YP-STo" secondAttribute="trailing" id="6r7-e2-oaA"/>
+                                    <constraint firstItem="SUg-YP-STo" firstAttribute="leading" secondItem="ybv-5H-Q3q" secondAttribute="leading" id="YlR-o1-I8R"/>
+                                    <constraint firstAttribute="bottom" secondItem="SUg-YP-STo" secondAttribute="bottom" id="hl5-aa-3iD"/>
+                                    <constraint firstItem="SUg-YP-STo" firstAttribute="top" secondItem="ybv-5H-Q3q" secondAttribute="top" id="ipm-mQ-8yF"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zM3-J4-Bab" firstAttribute="top" secondItem="ybv-5H-Q3q" secondAttribute="bottom" id="CDi-fi-QQE"/>
+                            <constraint firstAttribute="trailing" secondItem="ybv-5H-Q3q" secondAttribute="trailing" id="IjS-3r-N5g"/>
+                            <constraint firstItem="ybv-5H-Q3q" firstAttribute="leading" secondItem="Gvo-L9-N7r" secondAttribute="leading" id="Yli-qT-Iof"/>
+                            <constraint firstItem="ybv-5H-Q3q" firstAttribute="top" secondItem="Gvo-L9-N7r" secondAttribute="top" id="esd-27-dp4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="profileView" destination="SUg-YP-STo" id="oas-fP-e0E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5CY-XY-hZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3338" y="1251"/>
+            <point key="canvasLocation" x="3304" y="1305"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="Io0-hn-H2u">

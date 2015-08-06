@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVUser.h"
 
 @interface TRVDetailGuideViewController : UIViewController
+
+@property (nonatomic, strong) TRVUser *selectedGuideUser;
+@property (weak, nonatomic) IBOutlet UIView *profileView;
 
 @end
