@@ -27,6 +27,8 @@
 
 - (IBAction)cancelButtonPressed:(id)sender {
     
+    [self.loginHandler removeObserver];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -54,35 +56,6 @@
     
 }
 
-
-//-(void)login:(void (^)(BOOL success, NSError *error))completionBlock {
-//    
-//    [PFUser logInWithUsernameInBackground:[self.usernameTextField.text lowercaseString]
-//                                 password:self.passwordTextField.text
-//                                    block:^(PFUser *user, NSError *error) {
-//                                        
-//                                        
-//                                        if (user) {
-//                                            // Do stuff after successful login.
-//                                            NSLog(@"Logged in successfully!");
-//                                            
-//                                            completionBlock(YES, nil);
-//                                            
-//                                            [self dismissViewControllerAnimated:YES completion:nil];
-//                                            
-//                                            
-//                                            
-//                                        } else {
-//                                            
-//                                            NSLog(@"Error logging in after signup: %@", error);
-//                                            completionBlock(YES, error);
-//                                            
-//                                        }
-//                                        
-//                                    }];
-//    
-//    
-//}
 
 -(void)transitionToCompleteProfileViewWithFacebookID:(NSString*)facebookID {
     

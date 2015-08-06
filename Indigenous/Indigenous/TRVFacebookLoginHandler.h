@@ -19,5 +19,6 @@
 -(instancetype)initSignupWithButton:(FBSDKLoginButton*)button;
 -(void)loginToFacebook:(void (^)(BOOL success, NSString *facebookID))completion;
 -(void)userLoginStatusChanged;
+-(void)removeObserver;
 
 @end

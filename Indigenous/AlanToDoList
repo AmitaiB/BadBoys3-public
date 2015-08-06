@@ -9,10 +9,23 @@ LOGIN/SIGNUP FLOW
 [ ] Create a "Skip for Now" Button
 [ ] Remove automatic sign out code
 
-[ ] Create log out button
-[x] Favorites?  Shouldn't it be Profile?  
+
+
+MY PROFILE
+[ ] Make the edit page come to life!
+[x] Create log out button
+[ ] Favorites should be called "My Profile"
 [x] Put Search tab in middle and start flow there
+
+
+SEARCH
+[ ]  Connect with Parse
 
 
 TOUR GUIDE FLOW
 [ ] Make it!
+
+BUGS
+[x] Username already taken
+----CLICK SIGN UP --- DISMISS --- LOG IN WITH FACEBOOK
+[ ] Dan can't sign up or log in with Facebook

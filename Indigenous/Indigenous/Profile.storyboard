@@ -5,6 +5,38 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="gVF-te-aTQ">
+            <objects>
+                <viewController id="Df2-TG-gk8" customClass="TRVSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fyE-Y2-uGZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="YaX-7b-4OC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KXD-Em-8LH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JI-Jn-hTc">
+                                <rect key="frame" x="272" y="510" width="56" height="30"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Iat-gr-lN3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="4JI-Jn-hTc" secondAttribute="centerX" id="Mpr-CF-XDi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbT-rX-ZcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1999" y="120"/>
+        </scene>
         <!--Profile Scroll View Controller-->
         <scene sceneID="2ar-kT-4eo">
             <objects>
@@ -41,6 +73,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KCx-Qd-1OU">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="gXB-WD-Ctr">
+                            <connections>
+                                <segue destination="Df2-TG-gk8" kind="presentation" id="rRO-1E-rdW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="lPw-xw-zDU">
                             <connections>
                                 <segue destination="7lv-tb-1Hf" kind="show" id="YlR-42-1SW"/>
