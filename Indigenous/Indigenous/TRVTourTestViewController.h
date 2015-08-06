@@ -1,5 +1,5 @@
 //
-//  TRVProfileAboutMeView.h
+//  TRVTourTestViewController.h
 //  Indigenous
 //
 //  Created by Leo Kwan on 8/6/15.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVTourView.h"
 
-@interface TRVProfileAboutMeView : UIView
+@interface TRVTourTestViewController : UIViewController
 
 @end

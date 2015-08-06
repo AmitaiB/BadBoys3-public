@@ -1,13 +1,14 @@
 //
-//  TRVUserContactView.m
+//  TRVTourView.m
 //  Indigenous
 //
+//  Created by Leo Kwan on 8/6/15.
+//  Copyright (c) 2015 Bad Boys 3. All rights reserved.
+//
 
+#import "TRVTourView.h"
 
-#import "TRVUserContactView.h"
-#import <Masonry.h>
-
-@implementation TRVUserContactView
+@implementation TRVTourView
 
 
 
@@ -37,23 +38,26 @@
                                   owner:self
                                 options:nil];
     
-    [self addSubview:self.userContactContentView];
-    self.userContactContentView.translatesAutoresizingMaskIntoConstraints = NO;
-
+    [self addSubview:self.contentView];
+    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    
     
     //Hey, were changes made"?
     
     //if changes made, then call on updateConstraints:
     
     //else dont do anything
+    
+    
 
-    [self setNeedsUpdateConstraints];
     
 }
 
 - (void)updateConstraints {
     
-    UIView *view = self.userContactContentView;
+    // THIS MAKES SURE WHATEVER VIEW THE NIB INHABITS, OUR SUBVIEWS HIT THE EDGES
+    UIView *view = self.contentView;
+
     NSDictionary *views = NSDictionaryOfVariableBindings(view);
     NSMutableArray *constraints = [[NSMutableArray alloc] init];
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
@@ -62,12 +66,19 @@
     [super updateConstraints];
 }
 
--(void)setUserForThisContactView:(TRVUser *)userForThisContactView {
+-(void)setTourForThisTourView:(TRVTour *)tourForThisTourView {
     
-    _userForThisContactView = userForThisContactView;
-    self.userEmailLabel.text = userForThisContactView.userBio.email;
-    self.userLanguagesLabel.text = userForThisContactView.userBio.language;
-}
+    _tourForThisTourView = tourForThisTourView;
+    
+    TRVItinerary *itineraryForThisView = tourForThisTourView.itineraryForThisTour;
+    
+    self.tourImageView.image = itineraryForThisView.tourImage;
+    self.nameOfTourLabel.text = itineraryForThisView.nameOfTour;
+    self.numberOfStopsLabel.text = [NSString stringWithFormat:@"%lu stops", itineraryForThisView.tourStops.count];;
+    self.tourRatingLabel.text = [NSString stringWithFormat:@"Average Rating - %f", tourForThisTourView.tourAverageRating];
+    
+    }
+
 
 
 @end

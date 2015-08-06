@@ -12,7 +12,7 @@
 @interface TRVEditProfileTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *aboutMeContentView;
-@property (weak, nonatomic) IBOutlet UITextView *content;
+@property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
 
 @end
 
@@ -20,6 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.estimatedRowHeight = 100;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    [self.taglineLabel sizeToFit];
+    
 
 }
 
