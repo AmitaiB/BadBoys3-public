@@ -26,7 +26,6 @@
 // Not sure if we need interests
 @property (nonatomic, strong) NSMutableArray *interests;
 @property (nonatomic, strong) NSString *language;
-@property (nonatomic, strong) NSString *homeCity;
 @property (nonatomic, strong) NSString *homeCountry;
 @property (nonatomic, strong) NSString *userTagline;
 @property (nonatomic, strong) NSString *birthday;
@@ -36,6 +35,8 @@
 @property (nonatomic) NSUInteger age;
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *region;
+@property (nonatomic, strong) NSString *homeCity;
+
 
 
 //INITIALIZERS

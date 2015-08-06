@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *bioTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *isGuide;
 @property (weak, nonatomic) IBOutlet UITextField *oneLineBio;
-
+@property (weak, nonatomic) IBOutlet UISegmentedControl *homeCitySegmentedControl;
+@property (nonatomic, strong) NSString *selectedHomeCity;
 @end
 
 @implementation TRVCompleteSignupWithFacebookViewController
@@ -30,6 +31,27 @@
 
 
 
+- (IBAction)segmentSelected:(id)sender {
+    
+    if (self.homeCitySegmentedControl.selectedSegmentIndex == 0){
+        
+        self.selectedHomeCity = @"New York";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 1){
+        
+        self.selectedHomeCity = @"Los Angeles";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 2){
+        
+        self.selectedHomeCity = @"Paris";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 3){
+        
+        self.selectedHomeCity = @"London";
+    } else {
+        
+        self.selectedHomeCity = @"Unknown";
+    }
+    
+    
+}
 
 
 
@@ -44,7 +66,7 @@
     currentUser[@"userBio"][@"bioTextField"] = self.bioTextField.text;
     currentUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
     currentUser[@"userBio"][@"oneLineBio"] = self.oneLineBio.text;
-    
+    currentUser[@"userBio"][@"homeCity"] = self.selectedHomeCity;
     
     
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){

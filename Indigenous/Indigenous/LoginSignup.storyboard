@@ -208,23 +208,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="A little bit about you..." translatesAutoresizingMaskIntoConstraints="NO" id="LAi-7h-M7j">
-                                <rect key="frame" x="172" y="236" width="240" height="128"/>
+                                <rect key="frame" x="172" y="207" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TJg-GR-cOh">
-                                <rect key="frame" x="244" y="157" width="97" height="30"/>
+                                <rect key="frame" x="244" y="128" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Language(s) Spoken" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T2U-TX-lJO">
-                                <rect key="frame" x="244" y="195" width="97" height="30"/>
+                                <rect key="frame" x="244" y="166" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Want to be a guide?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cu4-nE-RCN">
-                                <rect key="frame" x="223" y="386" width="155" height="21"/>
+                                <rect key="frame" x="223" y="357" width="155" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -244,8 +244,20 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yHa-bl-xqL">
-                                <rect key="frame" x="276" y="415" width="51" height="31"/>
+                                <rect key="frame" x="276" y="386" width="51" height="31"/>
                             </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="66L-kj-kgK">
+                                <rect key="frame" x="160" y="425" width="280" height="29"/>
+                                <segments>
+                                    <segment title="NY"/>
+                                    <segment title="LA"/>
+                                    <segment title="Paris"/>
+                                    <segment title="London"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentSelected:" destination="V4x-8x-2ZQ" eventType="valueChanged" id="C5v-IR-8id"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -261,6 +273,7 @@
                     </view>
                     <connections>
                         <outlet property="bioTextField" destination="LAi-7h-M7j" id="z4r-ha-9F6"/>
+                        <outlet property="homeCitySegmentedControl" destination="66L-kj-kgK" id="cik-Bh-RKz"/>
                         <outlet property="isGuide" destination="yHa-bl-xqL" id="lft-HQ-7iD"/>
                         <outlet property="languagesSpokenTextField" destination="T2U-TX-lJO" id="Jo1-6v-Bl3"/>
                         <outlet property="oneLineBio" destination="IYc-aB-PfB" id="pRg-83-Alg"/>
@@ -299,7 +312,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMM-H9-kzj">
-                                <rect key="frame" x="229" y="376" width="143" height="30"/>
+                                <rect key="frame" x="229" y="346" width="143" height="30"/>
                                 <state key="normal" title="Upload Profile Photo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -308,7 +321,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="A little bit about you..." translatesAutoresizingMaskIntoConstraints="NO" id="1Uc-v8-sa1">
-                                <rect key="frame" x="180" y="297" width="240" height="77"/>
+                                <rect key="frame" x="180" y="297" width="240" height="41"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -319,7 +332,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Want to be a guide?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuq-Ia-Ohr">
-                                <rect key="frame" x="223" y="409" width="155" height="21"/>
+                                <rect key="frame" x="223" y="379" width="155" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -349,7 +362,7 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Sg6-5j-i7C">
-                                <rect key="frame" x="276" y="428" width="51" height="31"/>
+                                <rect key="frame" x="276" y="398" width="51" height="31"/>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YNS-3h-0r2">
                                 <rect key="frame" x="252" y="180" width="97" height="30"/>
@@ -361,12 +374,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-sY-vNd">
+                                <rect key="frame" x="140" y="430" width="280" height="29"/>
+                                <segments>
+                                    <segment title="NY"/>
+                                    <segment title="LA"/>
+                                    <segment title="Paris"/>
+                                    <segment title="London"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentSelected:" destination="m7V-Cx-13c" eventType="valueChanged" id="pKd-XL-JaH"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Sg6-5j-i7C" secondAttribute="centerX" constant="-0.5" id="BVE-cz-BKi"/>
                             <constraint firstAttribute="centerX" secondItem="gCl-CV-2FB" secondAttribute="centerX" constant="-0.5" id="HJW-4L-D9j"/>
                             <constraint firstAttribute="centerX" secondItem="kuq-Ia-Ohr" secondAttribute="centerX" constant="-0.5" id="MXH-A9-wQU"/>
+                            <constraint firstAttribute="centerX" secondItem="pvM-sY-vNd" secondAttribute="centerX" constant="20" id="PGl-A9-I47"/>
                             <constraint firstAttribute="centerX" secondItem="zUg-C5-aK8" secondAttribute="centerX" constant="-0.5" id="ScS-Gp-FER"/>
                             <constraint firstAttribute="centerX" secondItem="XFh-j9-aYF" secondAttribute="centerX" constant="-0.5" id="U5l-5R-vQ6"/>
                             <constraint firstAttribute="centerX" secondItem="qma-ll-5i0" secondAttribute="centerX" constant="-0.5" id="Udt-fu-PDs"/>
@@ -388,6 +414,7 @@
                         <outlet property="emailTextField" destination="gCl-CV-2FB" id="7WP-UA-u1s"/>
                         <outlet property="firstNameTextField" destination="XFh-j9-aYF" id="WEA-q5-8BT"/>
                         <outlet property="genderTextField" destination="iLX-qH-Htx" id="uQS-AC-Pju"/>
+                        <outlet property="homeCitySegmentedControl" destination="pvM-sY-vNd" id="N8f-P5-us5"/>
                         <outlet property="isGuide" destination="Sg6-5j-i7C" id="gT2-SG-1ZB"/>
                         <outlet property="languageTextField" destination="vQQ-tw-N2W" id="5O8-Ne-0Wv"/>
                         <outlet property="lastNameTextField" destination="zUg-C5-aK8" id="jHS-li-LEx"/>

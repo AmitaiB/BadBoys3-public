@@ -11,11 +11,13 @@
 #import "TRVCityTableViewCell.h"
 #import "TRVUserDataStore.h"
 #import <Parse.h>
+#import "TRVTourCategoryViewController.h"
 
 @interface TRVPickCityTableViewController ()
 
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (nonatomic, strong) NSMutableArray *cities;
+@property (nonatomic, strong) NSString *selectedCity;
 @end
 
 @implementation TRVPickCityTableViewController
@@ -23,13 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //FOR TESTING PURPOSES ONLY
-    //DELETE LATER ON
-    if (![PFUser currentUser]){
-       [PFUser logInWithUsername:@"joe@g.com" password:@"joe"];
-    }
-    //DELETE
-    //DELETE
     
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     [self.sharedDataStore setCurrentUser: [PFUser currentUser]];
@@ -37,12 +32,12 @@
     
     
     
-    TRVCity *newYork = [[TRVCity alloc] initWithName:@"New York City" image:[UIImage imageNamed:@"newyork"]];
-    TRVCity *beijing = [[TRVCity alloc] initWithName:@"Beijing" image:[UIImage imageNamed:@"beijing"]];
-    TRVCity *london = [[TRVCity alloc] initWithName:@"London" image:[UIImage imageNamed:@"london"]];
-    TRVCity *madrid= [[TRVCity alloc] initWithName:@"Madrid" image:[UIImage imageNamed:@"madrid"]];
+    TRVCity *newYork = [[TRVCity alloc] initWithName:@"New York" image:[UIImage imageNamed:@"newyork"]];
+    TRVCity *losAngeles = [[TRVCity alloc] initWithName:@"Los Angeles" image:[UIImage imageNamed:@"beijing"]];
+    TRVCity *paris = [[TRVCity alloc] initWithName:@"Paris" image:[UIImage imageNamed:@"london"]];
+    TRVCity *london = [[TRVCity alloc] initWithName:@"London" image:[UIImage imageNamed:@"madrid"]];
     
-    self.cities = [[NSMutableArray alloc] initWithObjects:newYork, london, madrid, beijing, nil];
+    self.cities = [[NSMutableArray alloc] initWithObjects:newYork, losAngeles, paris, london, nil];
     
 }
 
@@ -77,9 +72,24 @@
 //    TRVCityTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     // pass cell details into next vc...
     
+    TRVCity *cityForThisRow = self.cities[indexPath.row];
+    self.selectedCity = cityForThisRow.nameOfCity;
+    
     [self performSegueWithIdentifier:@"showCategoriesSegue" sender:self];
     
 }
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    TRVTourCategoryViewController *destinationVC = [segue destinationViewController];
+    destinationVC.selectedCity = self.selectedCity;
+    
+    // Pass the selected object to the new view controller.
+}
+
+
 
 
 /*
@@ -116,14 +126,6 @@
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

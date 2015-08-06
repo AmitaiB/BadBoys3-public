@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TRVTourCategoryViewController : UIViewController
-
+@property (nonatomic, strong) NSString *selectedCity;
 @end

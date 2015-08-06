@@ -1,5 +1,4 @@
 //
-//  TRVSearchTripsTableViewController.m
 //  Indigenous
 //
 //  Created by Leo Kwan on 8/2/15.
@@ -13,11 +12,12 @@
 #import "TRVGuideProfileTableViewCell.h"
 #import <Masonry/Masonry.h>
 #import "TRVDetailGuideViewController.h"
+#import "TRVFilterViewController.h"
+
+@interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol>
 
 
-@interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate>
-
-
+@property (nonatomic, strong) NSDictionary *filterDictionary;
 
 @end
 
@@ -26,8 +26,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+  //  NSLog(@"City: %@,  Category: %@", self.selectedCity, self.dat)
+    
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+        [super viewWillAppear:animated];
+        [self updateGuidesList];
+
+    
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -67,10 +75,45 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+        TRVFilterViewController *filterModal = [segue destinationViewController];
+
+        if (self.filterDictionary){
+                filterModal.filterDictionary = self.filterDictionary;
+            }
+    
+        filterModal.delegate = self;
+    
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
 
-    TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
+//    TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
     }
+}
+
+-(void)passFilterDictionary:(NSDictionary *)dictionary{
+    
+    self.filterDictionary = dictionary;
+    NSLog(@"The dictionary: %@", self.filterDictionary);
+    
+}
+
+-(void)updateGuidesList {
+        // LEO
+        // THIS IS ALL YOU
+        // KILL IT
+        // OR MAYBE I CAN DO IT
+        // BUT WE SHALL SEE
+    
+        if (self.filterDictionary == nil){
+                NSLog(@"Filter is nil!");
+        
+                // SHOW ALL GUDES
+        
+            } else {
+            
+                // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
+            
+        }
+    
 }
 
 

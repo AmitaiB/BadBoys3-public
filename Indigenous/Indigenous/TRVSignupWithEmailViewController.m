@@ -27,6 +27,8 @@
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 @property (nonatomic, strong) UIImage *profilePhoto;
 @property (nonatomic, strong) PFFile *pfPhoto;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *homeCitySegmentedControl;
+@property (nonatomic, strong) NSString *selectedHomeCity;
 
 
 @end
@@ -78,6 +80,27 @@
 
 
 
+- (IBAction)segmentSelected:(id)sender {
+    
+    if (self.homeCitySegmentedControl.selectedSegmentIndex == 0){
+        
+        self.selectedHomeCity = @"New York";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 1){
+        
+        self.selectedHomeCity = @"Los Angeles";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 2){
+        
+        self.selectedHomeCity = @"Paris";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 3){
+        
+        self.selectedHomeCity = @"London";
+    } else {
+        
+        self.selectedHomeCity = @"Unknown";
+    }
+    
+    
+}
 
 
 - (IBAction)doneButtonPressed:(id)sender {
@@ -110,6 +133,7 @@
     newUser[@"userBio"][@"languagesSpoken"] = self.languageTextField.text;
     newUser[@"userBio"][@"oneLineBio"] = self.oneLineBioTextField.text;
     newUser[@"userBio"][@"phoneNumber"] = self.phoneNumberTextField.text;
+    newUser[@"userBio"][@"homeCity"] = self.selectedHomeCity;
     
     // NEED TO ADD PICTURE STUFF
     if (self.pfPhoto){

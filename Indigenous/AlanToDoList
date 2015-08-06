@@ -18,7 +18,7 @@ MY PROFILE
 [x] Put Search tab in middle and start flow there
 
 
-SEARCH
+SEARCH CITY
 [ ]  Connect with Parse
 
 
@@ -28,4 +28,4 @@ TOUR GUIDE FLOW
 BUGS
 [x] Username already taken
 ----CLICK SIGN UP --- DISMISS --- LOG IN WITH FACEBOOK
-[ ] Dan can't sign up or log in with Facebook
+[x] Dan can't sign up or log in with Facebook
