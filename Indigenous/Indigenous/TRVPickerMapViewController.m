@@ -48,7 +48,7 @@
     [self.view addSubview:self.mapView];
     
         //Now follows up with a slow loading, highly accurate location.
-    __block GMSCameraPosition *updatedCamera;
+//    __block GMSCameraPosition *updatedCamera;
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
                                                   block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
 //                                                      if (status == INTULocationStatusSuccess) {
@@ -58,11 +58,15 @@
 //                                                      } else if (status == INTULocationStatusError) {
 //                                                          NSLog(@"ERROR in the INTULocation request block!");
 //                                                      }
-                                                      updatedCamera = [GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:17];
-                                                      self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:updatedCamera];
-                                                      self.mapView.myLocationEnabled = YES;
-                                                      [self.view addSubview:self.mapView];
-                                                      NSLog(@"CoreLocator says I'm here: %f, %f", updatedCamera.target.latitude, updatedCamera.target.longitude);
+                                                      /**
+                                                       *  This method should work...
+                                                       */
+                                                      [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:17]];
+//                                                      updatedCamera = [GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:17];
+//                                                      self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:updatedCamera];
+//                                                      self.mapView.myLocationEnabled = YES;
+//                                                      [self.view addSubview:self.mapView];
+//                                                      NSLog(@"CoreLocator says I'm here: %f, %f", updatedCamera.target.latitude, updatedCamera.target.longitude);
                                                   }];
         
 }
