@@ -17,6 +17,7 @@
 @interface TRVPickerMapViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
+//@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
@@ -26,8 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-     
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];    
     CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
     
         //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
@@ -60,6 +60,37 @@
     
 }
 
+/**
+ *  This may be unnecessary...
+ */
+-(void)requestAlwaysAuthorization
+{
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+        //Now follows up with a slow loading, highly accurate location.
+//    __block GMSCameraPosition *updatedCamera;
+    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
+                                                  block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+//                                                      if (status == INTULocationStatusSuccess) {
+//                                                          NSLog(@"SUCCESS in the INTULocation request block!");
+//                                                      } else if (status == INTULocationStatusTimedOut) {
+//                                                          NSLog(@"TIMED OUT in the INTULocation request block!");
+//                                                      } else if (status == INTULocationStatusError) {
+//                                                          NSLog(@"ERROR in the INTULocation request block!");
+//                                                      }
+                                                      /**
+                                                       *  This method should work...
+                                                       */
+                                                      [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:17]];
+//                                                      updatedCamera = [GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:17];
+//                                                      self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:updatedCamera];
+//                                                      self.mapView.myLocationEnabled = YES;
+//                                                      [self.view addSubview:self.mapView];
+//                                                      NSLog(@"CoreLocator says I'm here: %f, %f", updatedCamera.target.latitude, updatedCamera.target.longitude);
+                                                  }];
+    
+    
+}
 /**
  *  This may be unnecessary...
  */

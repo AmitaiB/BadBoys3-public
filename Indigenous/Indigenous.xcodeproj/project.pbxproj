@@ -282,9 +282,6 @@
 				384AFBC81B696B8F00E169A9 /* TRVMapCreateItineraryVC.m */,
 				384AFBC41B696B3500E169A9 /* TRVTourGuideProfileVC.h */,
 				384AFBC51B696B3500E169A9 /* TRVTourGuideProfileVC.m */,
-				3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */,
-				3856144B1B72688B00D6F7E7 /* TRVPickerMapViewController.h */,
-				3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */,
 				3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented */,
 			);
 			name = TourGuideFlow;
