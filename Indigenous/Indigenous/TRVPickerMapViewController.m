@@ -6,14 +6,18 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+//#define requestWhateverAuthorization requestAlwaysAuthorization
+//#define requestWhateverAuthorization requestWhenInUseAuthorization
+
 #import "TRVPickerMapViewController.h"
 #import "TRVPickerMapLogic.h" //includes GMapsSDK
-#import "TRVCoreLocator.h"
+#import <INTULocationManager.h>
+#import "INTULocationManager+CurrentLocation.h"
 
-
-@interface TRVPickerMapViewController ()
+@interface TRVPickerMapViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
+//@property (nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
@@ -23,19 +27,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    /**
-     *  CLLocation → 2Dcoords → camera position → gMap
-     */
-    TRVCoreLocator *locator = [TRVCoreLocator new];
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:[locator YouAreHere].coordinate zoom:18];
-    self.mapView = [GMSMapView mapWithFrame:self.view.bounds
-                                     camera:camera];
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];    
+    CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
+    
+        //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
+    GMSCameraPosition *defaultCamera = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:16];
+    self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:defaultCamera];
     self.mapView.myLocationEnabled = YES;
-    
     [self.view addSubview:self.mapView];
+    NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
     
+        //Now follows up with a slow loading, highly accurate location.
+//    __block GMSCameraPosition *updatedCamera;
+    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
+                                                  block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+                                
+                                                      [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:17]];
+                                                  }];
 }
 
+
+-(void)reportINTUstatus:(INTULocationStatus*)status fromMethod:(NSString *)methodName {
+    if (status == INTULocationStatusSuccess)         {
+        NSLog(@"SUCCESS in the INTULocation %@!", methodName);
+    } else if (status == INTULocationStatusTimedOut) {
+        NSLog(@"TIMED OUT in the INTULocation %@!", methodName);
+    } else if (status == INTULocationStatusError)    {
+        NSLog(@"ERROR in the INTULocation %@!", methodName);
+    } else {
+        NSLog(@"SOME STATUS in the INTULocation %@!", methodName);
+    }
+}
+
+    
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
