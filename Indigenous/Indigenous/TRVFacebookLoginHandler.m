@@ -22,6 +22,12 @@
 @implementation TRVFacebookLoginHandler
 
 
+-(void)removeObserver{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    
+}
 
 -(instancetype)initLoginWithButton:(FBSDKLoginButton*)button {
     
@@ -30,6 +36,8 @@
         _facebookLoginButton = button;
         
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginStatusChanged) name:FBSDKProfileDidChangeNotification object:nil];
     
@@ -45,6 +53,8 @@
         _facebookLoginButton = button;
         
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userSignupStatusChanged) name:FBSDKProfileDidChangeNotification object:nil];
     
@@ -68,7 +78,7 @@
 -(void)userSignupStatusChanged{
     
     self.currentFacebookProfile = [FBSDKProfile currentProfile];
-    NSLog(@"Current Profile %@", self.currentFacebookProfile);
+    NSLog(@"Current Sign up Profile %@", self.currentFacebookProfile);
     
     if (self.currentFacebookProfile){
         
@@ -109,7 +119,7 @@
 -(void)userLoginStatusChanged{
     
     self.currentFacebookProfile = [FBSDKProfile currentProfile];
-    NSLog(@"Current Profile %@", self.currentFacebookProfile);
+    NSLog(@"Current Log in Profile %@", self.currentFacebookProfile);
     
     if (self.currentFacebookProfile){
         

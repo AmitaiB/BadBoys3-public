@@ -179,6 +179,8 @@
 
 - (IBAction)cancelButtonPressed:(id)sender {
     
+    [self.loginHandler removeObserver];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
