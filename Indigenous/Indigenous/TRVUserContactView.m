@@ -40,7 +40,28 @@
                                 options:nil];
     
     [self addSubview:self.userContactContentView];
+    self.userContactContentView.translatesAutoresizingMaskIntoConstraints = NO;
+
     
+    //Hey, were changes made"?
+    
+    //if changes made, then call on updateConstraints:
+    
+    //else dont do anything
+
+    [self setNeedsUpdateConstraints];
+    
+}
+
+- (void)updateConstraints {
+    
+    UIView *view = self.userContactContentView;
+    NSDictionary *views = NSDictionaryOfVariableBindings(view);
+    NSMutableArray *constraints = [[NSMutableArray alloc] init];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
+    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
+    [self addConstraints:constraints];
+    [super updateConstraints];
 }
 
 -(void)setUserForThisContactView:(TRVUser *)userForThisContactView {
