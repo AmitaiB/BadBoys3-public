@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Profile Scroll View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="2ar-kT-4eo">
             <objects>
-                <viewController id="yKl-YB-kLw" customClass="TRVProfileScrollViewController" sceneMemberID="viewController">
+                <viewController id="yKl-YB-kLw" customClass="TRVProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cgk-rP-8QG"/>
                         <viewControllerLayoutGuide type="bottom" id="4C7-kK-5aI"/>

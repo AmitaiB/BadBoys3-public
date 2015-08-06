@@ -59,7 +59,7 @@
     
     self.firstNameLabel.text = userForThisSnippetView.userBio.firstName;
     self.lastNameLabel.text = userForThisSnippetView.userBio.lastName;
-    self.oneLinerLabel.text = userForThisSnippetView.userBio.bioDescription;
+    self.oneLinerLabel.text = userForThisSnippetView.userBio.userTagline;
    
 }
 

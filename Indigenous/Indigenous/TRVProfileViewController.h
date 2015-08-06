@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
 
-@interface TRVProfileScrollViewController : UIViewController
+@interface TRVProfileViewController : UIViewController
 
 @property (nonatomic, strong) TRVUser *user;
 
