@@ -8,7 +8,7 @@
         <!--My Tours-->
         <scene sceneID="C3W-Fk-jxS">
             <objects>
-                <viewController id="SXL-dl-CXS" sceneMemberID="viewController">
+                <viewController id="SXL-dl-CXS" customClass="TRVTourGuideMyToursVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0vN-KU-Iia"/>
                         <viewControllerLayoutGuide type="bottom" id="wmB-4L-nqB"/>
@@ -88,7 +88,7 @@
         <!--Add Tours-->
         <scene sceneID="gob-t4-kC7">
             <objects>
-                <viewController id="Umb-bZ-KvD" customClass="TRVCreateTourVC" sceneMemberID="viewController">
+                <viewController id="Umb-bZ-KvD" customClass="TRVMapCreateItineraryVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pfV-MW-TU2"/>
                         <viewControllerLayoutGuide type="bottom" id="RBA-jQ-alk"/>
@@ -137,12 +137,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
                                                 <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SWParallax.. here?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0b-xv-Mf2">
-                                                <rect key="frame" x="87" y="8" width="146" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTl-tn-agS">
                                                 <rect key="frame" x="41" y="139" width="108" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -344,7 +338,7 @@
         <!--My Profile-->
         <scene sceneID="a17-iP-gjk">
             <objects>
-                <viewController id="JNL-N1-uIT" sceneMemberID="viewController">
+                <viewController id="JNL-N1-uIT" customClass="TRVTourGuideProfileVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0jE-ii-kbZ"/>
                         <viewControllerLayoutGuide type="bottom" id="98l-x9-fg5"/>
@@ -429,10 +423,10 @@
             </objects>
             <point key="canvasLocation" x="1298" y="920"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tour Guide Tab BarVC-->
         <scene sceneID="ODl-36-TMn">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TAU-Cj-Q2B" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TAU-Cj-Q2B" customClass="TRVTourGuideTabBarVC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="BKl-gB-Vg3">
