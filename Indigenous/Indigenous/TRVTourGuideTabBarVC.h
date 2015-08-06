@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YALFoldingTabBarController.h>
 
-@interface TRVTourGuideTabBarVC : UITabBarController
+@interface TRVTourGuideTabBarVC : YALFoldingTabBarController
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YALTabBarInteracting.h>
 
-@interface TRVMapCreateItineraryVC : UIViewController
+@interface TRVMapCreateItineraryVC : UIViewController <YALTabBarInteracting>
 
 @end

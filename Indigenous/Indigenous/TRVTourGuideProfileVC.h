@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <YALTabBarInteracting.h>
 
-@interface TRVTourGuideProfileVC : UIViewController
+@interface TRVTourGuideProfileVC : UIViewController <YALTabBarInteracting>
 
 @end
