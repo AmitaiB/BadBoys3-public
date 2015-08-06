@@ -27,11 +27,7 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     self.user = self.sharedDataStore.loggedInUser;
     
-    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.scrollView.mas_width);
 
-        make.height.equalTo(@2000);
-    }];
     
     //Instantiate a Image View Nib
     
@@ -80,6 +76,14 @@
             make.top.equalTo(aboutMeView.mas_bottom);
             make.left.and.right.equalTo(self.containerView);
         }];
+    
+    // Set Container View Constraints
+    
+    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.scrollView.mas_width);
+        make.bottom.equalTo(contactView.mas_bottom);
+//        make.height.equalTo(@2000);
+    }];
     
     
     
