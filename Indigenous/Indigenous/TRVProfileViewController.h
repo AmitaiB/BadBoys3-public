@@ -1,5 +1,5 @@
 //
-//  TRVProfileScrollViewController.h
+//  TRVProfileViewController.h
 //  Indigenous
 //
 //  Created by Leo Kwan on 8/4/15.

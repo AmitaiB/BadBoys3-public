@@ -1,5 +1,5 @@
 //
-//  TRVProfileScrollViewController.m
+//  TRVProfileViewController.m
 //  Indigenous
 
 #import <Masonry.h>
@@ -8,7 +8,7 @@
 #import "TRVUserSnippetView.h"
 #import "TRVUserAboutMeView.h"
 #import "TRVUserContactView.h"
-#import "TRVUserProfileView.h"
+#import "TRVUserProfileImageView.h"
 #import "TRVUserDataStore.h"
 
 
@@ -31,10 +31,10 @@
     
     //Instantiate a Image View Nib
     
-        TRVUserProfileView *profileImageView = [[TRVUserProfileView alloc] init];
+        TRVUserProfileImageView *profileImageView = [[TRVUserProfileImageView alloc] init];
         
     
-        profileImageView.userForThisProfileView = self.sharedDataStore.loggedInUser;
+        profileImageView.userForThisProfileImageView = self.sharedDataStore.loggedInUser;
         [self.containerView addSubview:profileImageView];
         
         [profileImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -80,9 +80,8 @@
     // Set Container View Constraints
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.scrollView.mas_width);
+        make.width.equalTo(self.view.mas_width);
         make.bottom.equalTo(contactView.mas_bottom);
-//        make.height.equalTo(@2000);
     }];
     
     
