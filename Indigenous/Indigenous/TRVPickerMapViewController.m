@@ -36,124 +36,30 @@
     self.mapView.myLocationEnabled = YES;
     [self.view addSubview:self.mapView];
     NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
-    __block GMSCameraPosition *camera;
     
         //Now follows up with a slow loading, highly accurate location.
 //    __block GMSCameraPosition *updatedCamera;
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
                                                   block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
-                                                      
-                                                      /**
-                                                       *  This method should work...
-                                                       */
+                                
                                                       [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:17]];
-//                                                      updatedCamera = [GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:17];
-//                                                      self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:updatedCamera];
-//                                                      self.mapView.myLocationEnabled = YES;
-//                                                      [self.view addSubview:self.mapView];
-//                                                      NSLog(@"CoreLocator says I'm here: %f, %f", updatedCamera.target.latitude, updatedCamera.target.longitude);
                                                   }];
-        
 }
 
--(void)reportINTUstatus:(INTULocationStatus*)status {
-    
-}
 
-/**
- *  This may be unnecessary...
- */
--(void)requestAlwaysAuthorization
-{
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    
-        //Now follows up with a slow loading, highly accurate location.
-//    __block GMSCameraPosition *updatedCamera;
-    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
-                                                  block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
-//                                                      if (status == INTULocationStatusSuccess) {
-//                                                          NSLog(@"SUCCESS in the INTULocation request block!");
-//                                                      } else if (status == INTULocationStatusTimedOut) {
-//                                                          NSLog(@"TIMED OUT in the INTULocation request block!");
-//                                                      } else if (status == INTULocationStatusError) {
-//                                                          NSLog(@"ERROR in the INTULocation request block!");
-//                                                      }
-                                                      /**
-                                                       *  This method should work...
-                                                       */
-                                                      [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:17]];
-//                                                      updatedCamera = [GMSCameraPosition cameraWithTarget:currentLocation.coordinate zoom:17];
-//                                                      self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:updatedCamera];
-//                                                      self.mapView.myLocationEnabled = YES;
-//                                                      [self.view addSubview:self.mapView];
-//                                                      NSLog(@"CoreLocator says I'm here: %f, %f", updatedCamera.target.latitude, updatedCamera.target.longitude);
-                                                  }];
-    
-    
-}
-/**
- *  This may be unnecessary...
- */
--(void)requestAlwaysAuthorization
-{
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    
-//  If the status is denied, or only granted for when in use, display an alert.
-    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied) {
-        NSString *title          = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location services are not enabled";
-        NSString *message        = @"To use background location services, you must select 'Always' in Settings → Location Services.";
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Uh, OK" style:UIAlertActionStyleDefault handler:nil];
-        UIAlertAction *goToSettingsAction = [UIAlertAction actionWithTitle:@"Take me to Settings! Schnell!!" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-            [[UIApplication sharedApplication] openURL:settingsURL];
-        }];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-//  The user has not enabled any location services. Request background authorization.
-    else if (status == kCLAuthorizationStatusNotDetermined) {
-        NSLog(@"would have called... [locationManager requestAlwaysAuthorization];");
-    }
-}
-/**
- *  Ditto.
- *
- *  @param manager <#manager description#>
- *  @param status  <#status description#>
- */
--(void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    if (status == kCLAuthorizationStatusDenied ||
-        status == kCLAuthorizationStatusRestricted ||
-        status == kCLAuthorizationStatusNotDetermined) {
-
-            NSString *title;
-            
-            title = (status == kCLAuthorizationStatusDenied ||
-                     status == kCLAuthorizationStatusRestricted)? @"Location Services Are Off" : @"Background use is not enabled";
-            
-            NSString *message = @"Go to settings";
-            
-            UIAlertController *settingsAlert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction *goToSettings = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault
-                                                                 handler:^(UIAlertAction *action) {
-                                                                     NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-                                               [[UIApplication sharedApplication]openURL:settingsURL];
-                                           }];
-            
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
-            
-            [settingsAlert addAction:goToSettings];
-            [settingsAlert addAction:cancel];
-            [self presentViewController:settingsAlert animated:YES completion:nil];
-        
-    } else if (status == kCLAuthorizationStatusNotDetermined) {
-        NSLog(@"would have called... [self.locationManager requestWhenInUseAuthorization];");
+-(void)reportINTUstatus:(INTULocationStatus*)status fromMethod:(NSString *)methodName {
+    if (status == INTULocationStatusSuccess)         {
+        NSLog(@"SUCCESS in the INTULocation %@!", methodName);
+    } else if (status == INTULocationStatusTimedOut) {
+        NSLog(@"TIMED OUT in the INTULocation %@!", methodName);
+    } else if (status == INTULocationStatusError)    {
+        NSLog(@"ERROR in the INTULocation %@!", methodName);
+    } else {
+        NSLog(@"SOME STATUS in the INTULocation %@!", methodName);
     }
 }
 
+    
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
