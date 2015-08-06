@@ -1,7 +1,18 @@
-LOGIN/SIGNUP FLOW
 
+
+LOGIN/SIGNUP FLOW
 [x] Upload photo from user signup
 [x] Login
 [x] If logged in when app is started, go to home view
 [ ] Transition when isGuide = YES for sign up and log in (both email and facebook)
 [ ] When user logs out, it must be from facebook and parse
+[ ] Create a "Skip for Now" Button
+[ ] Remove automatic sign out code
+
+[ ] Create log out button
+[x] Favorites?  Shouldn't it be Profile?  
+[x] Put Search tab in middle and start flow there
+
+
+TOUR GUIDE FLOW
+[ ] Make it!
