@@ -271,18 +271,17 @@
 		384AFBBA1B6969EE00E169A9 /* TourGuideFlow */ = {
 			isa = PBXGroup;
 			children = (
-				384AFBBB1B696A9B00E169A9 /* TRVTourGuideTabBarVC.h */,
-				384AFBBC1B696A9B00E169A9 /* TRVTourGuideTabBarVC.m */,
 				3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */,
-				3856144B1B72688B00D6F7E7 /* TRVPickerMapViewController.h */,
-				3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */,
 				384AFBBE1B696ADB00E169A9 /* TRVTourGuideMyToursVC.h */,
 				384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */,
+				384AFBC11B696B1900E169A9 /* TRVCreateTourVC.h */,
+				384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */,
 				384AFBC71B696B8F00E169A9 /* TRVMapCreateItineraryVC.h */,
 				384AFBC81B696B8F00E169A9 /* TRVMapCreateItineraryVC.m */,
-				384AFBC41B696B3500E169A9 /* TRVTourGuideProfileVC.h */,
-				384AFBC51B696B3500E169A9 /* TRVTourGuideProfileVC.m */,
+				3856144B1B72688B00D6F7E7 /* TRVPickerMapViewController.h */,
+				3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */,
 				3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented */,
+				38E2ED591B73D4A00051F53D /* Cutting Floor */,
 			);
 			name = TourGuideFlow;
 			sourceTree = "<group>";
@@ -296,6 +295,13 @@
 				3859EDF31B694031001C5693 /* TRVItinerary.m */,
 				94C77F831B68354E003836E3 /* TRVTourStop.h */,
 				94C77F841B68354E003836E3 /* TRVTourStop.m */,
+				45E772CB1B6824C400003C7C /* TRVUser.h */,
+				45E772CC1B6824C400003C7C /* TRVUser.m */,
+				45E772CE1B68291300003C7C /* TRVBio.h */,
+				45E772CF1B68291300003C7C /* TRVBio.m */,
+				946AAA901B6C517E00778418 /* TRVConstants.m */,
+				45E772D11B682F7000003C7C /* TRVConstants.h */,
+				94C77F851B68354E003836E3 /* TRVRating.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -305,10 +311,19 @@
 			children = (
 				389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */,
 				389646401B6AB67B004FFDB7 /* TRVPickerMapLogic.h */,
-				384AFBC11B696B1900E169A9 /* TRVCreateTourVC.h */,
-				384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */,
 			);
 			name = "Not Yet Implemented";
+			sourceTree = "<group>";
+		};
+		38E2ED591B73D4A00051F53D /* Cutting Floor */ = {
+			isa = PBXGroup;
+			children = (
+				384AFBBB1B696A9B00E169A9 /* TRVTourGuideTabBarVC.h */,
+				384AFBBC1B696A9B00E169A9 /* TRVTourGuideTabBarVC.m */,
+				384AFBC41B696B3500E169A9 /* TRVTourGuideProfileVC.h */,
+				384AFBC51B696B3500E169A9 /* TRVTourGuideProfileVC.m */,
+			);
+			name = "Cutting Floor";
 			sourceTree = "<group>";
 		};
 		451565071B68221B005A2871 = {
@@ -334,25 +349,18 @@
 		451565121B68221B005A2871 /* Indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				451565171B68221B005A2871 /* AppDelegate.h */,
+				451565181B68221B005A2871 /* AppDelegate.m */,
+				4515651B1B68221B005A2871 /* ViewController.m */,
+				4515651A1B68221B005A2871 /* ViewController.h */,
 				94EA5F7B1B6FEECC002244D8 /* DataStore */,
 				944ACFFE1B6DDE6D00404EDD /* Search Guide Flow */,
 				94B755E41B6BBB1D0017FFA9 /* Profile Flow */,
 				FA57FA191B6969EF00CFBB89 /* MyTrips */,
 				3859EDF11B69400E001C5693 /* Model */,
-				94C77F851B68354E003836E3 /* TRVRating.h */,
-				451565171B68221B005A2871 /* AppDelegate.h */,
-				451565181B68221B005A2871 /* AppDelegate.m */,
-				4515651B1B68221B005A2871 /* ViewController.m */,
-				4515651A1B68221B005A2871 /* ViewController.h */,
 				384AFBBA1B6969EE00E169A9 /* TourGuideFlow */,
 				38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */,
 				38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */,
-				45E772CB1B6824C400003C7C /* TRVUser.h */,
-				45E772CC1B6824C400003C7C /* TRVUser.m */,
-				45E772CE1B68291300003C7C /* TRVBio.h */,
-				45E772CF1B68291300003C7C /* TRVBio.m */,
-				946AAA901B6C517E00778418 /* TRVConstants.m */,
-				45E772D11B682F7000003C7C /* TRVConstants.h */,
 				45E772D61B6962C700003C7C /* LoginSignup */,
 				4515651D1B68221B005A2871 /* Main.storyboard */,
 				451565201B68221B005A2871 /* Images.xcassets */,
