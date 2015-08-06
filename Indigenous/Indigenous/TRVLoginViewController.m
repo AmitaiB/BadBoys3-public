@@ -149,16 +149,22 @@
 -(void)presentTouristHomeView {
     
     
-    UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
-    
-    UIViewController *destination = [tourist instantiateInitialViewController];
-    
-    UIViewController *presentingViewController = self.presentingViewController;
-    
-    [presentingViewController dismissViewControllerAnimated:NO completion:^{
-        [presentingViewController presentViewController:destination animated:NO completion:nil];
-    }];
+    [self dismissViewControllerAnimated:NO completion:nil];
+   
+   
 
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    
+    UIStoryboard  *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+    
+    UIViewController  *destination = [tourist instantiateInitialViewController];
+    
+    [self.presentingViewController presentViewController:destination animated:NO completion:nil];
+   
+    [super viewDidDisappear:animated];
+ 
 }
 
 
