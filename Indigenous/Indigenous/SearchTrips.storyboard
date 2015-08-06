@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" id="G0l-wk-nGG">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="1gn-pX-4Nj">
                             <connections>
-                                <segue destination="6Jb-06-Pvk" kind="presentation" id="6aA-Pr-9dP"/>
+                                <segue destination="6Jb-06-Pvk" kind="presentation" identifier="showFIlter" id="6aA-Pr-9dP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

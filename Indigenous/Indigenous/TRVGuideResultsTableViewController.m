@@ -13,25 +13,27 @@
 #import <Masonry/Masonry.h>
 #import "TRVDetailGuideViewController.h"
 #import "TRVFilterViewController.h"
+#import "TRVUserDataStore.h"
 
 @interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol>
 
 
 @property (nonatomic, strong) NSDictionary *filterDictionary;
-
+@property (nonatomic, strong) TRVUserDataStore *sharedData;
 @end
 
 @implementation TRVGuideResultsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-  //  NSLog(@"City: %@,  Category: %@", self.selectedCity, self.dat)
+    self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
+   
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
         [super viewWillAppear:animated];
+        NSLog(@"City: %@,  Category: %@", self.selectedCity, self.sharedData.currentCategorySearching);
         [self updateGuidesList];
 
     
@@ -75,6 +77,8 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if([segue.identifier isEqualToString:@"showFilter"]) {
+
         TRVFilterViewController *filterModal = [segue destinationViewController];
 
         if (self.filterDictionary){
@@ -82,7 +86,7 @@
             }
     
         filterModal.delegate = self;
-    
+    }
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
 
 //    TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
@@ -102,6 +106,8 @@
         // KILL IT
         // OR MAYBE I CAN DO IT
         // BUT WE SHALL SEE
+    
+        // ADD LOADING HUD HERE BEFORE PARSE REQUEST GOES DOWN
     
         if (self.filterDictionary == nil){
                 NSLog(@"Filter is nil!");
