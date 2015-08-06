@@ -23,9 +23,9 @@
     [super viewDidLoad];
 
     
-    [PFUser logOut];
-    [FBSDKAccessToken setCurrentAccessToken:nil];
-    [FBSDKProfile setCurrentProfile:nil];
+//    [PFUser logOut];
+//    [FBSDKAccessToken setCurrentAccessToken:nil];
+//    [FBSDKProfile setCurrentProfile:nil];
 
 
     NSLog(@"PFUSER: %@", [PFUser currentUser]);
