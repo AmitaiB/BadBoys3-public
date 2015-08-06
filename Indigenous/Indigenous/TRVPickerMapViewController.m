@@ -35,29 +35,14 @@
     self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:defaultCamera];
     self.mapView.myLocationEnabled = YES;
     [self.view addSubview:self.mapView];
-    NSLog(@"CoreLocator says I'm here: %f, %f", mostRecentLoc.latitude, mostRecentLoc.longitude);
+    NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
     __block GMSCameraPosition *camera;
-    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-    
-    CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
-    
-        //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
-    GMSCameraPosition *defaultCamera = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:16];
-    self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:defaultCamera];
-    self.mapView.myLocationEnabled = YES;
-    [self.view addSubview:self.mapView];
     
         //Now follows up with a slow loading, highly accurate location.
 //    __block GMSCameraPosition *updatedCamera;
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
                                                   block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
-//                                                      if (status == INTULocationStatusSuccess) {
-//                                                          NSLog(@"SUCCESS in the INTULocation request block!");
-//                                                      } else if (status == INTULocationStatusTimedOut) {
-//                                                          NSLog(@"TIMED OUT in the INTULocation request block!");
-//                                                      } else if (status == INTULocationStatusError) {
-//                                                          NSLog(@"ERROR in the INTULocation request block!");
-//                                                      }
+                                                      
                                                       /**
                                                        *  This method should work...
                                                        */
@@ -70,6 +55,11 @@
                                                   }];
         
 }
+
+-(void)reportINTUstatus:(INTULocationStatus*)status {
+    
+}
+
 /**
  *  This may be unnecessary...
  */
