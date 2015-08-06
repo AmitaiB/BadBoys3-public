@@ -10,14 +10,13 @@
 
 @interface TRVItinerary : NSObject
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSArray *stops;       //...of TRVTourStops
-@property (nonatomic, strong) NSArray *legs;        //Portion of a journey between two scheduled stops. Not certain if this is necessary.
+@property (nonatomic, strong, nonnull) NSString *nameOfTour;
+@property (nonatomic, strong, nonnull) UIImage* tourImage;
+@property (nonatomic) NSInteger numberOfStops;
+@property (nonatomic, strong, nonnull) NSMutableArray *tourStops;
 @property (nonatomic, strong) NSArray *attractions; //Attractions: Item of specific interest to travelers, such as natural wonders, manmade facilities and structures, entertainment, and activities.
 
 
--(instancetype)initWithItinerary:(TRVItinerary *)anItinerary;
-
--(instancetype)initWithStops:(NSArray *)arrayOfStops;
+-(instancetype)initNameOfTour:(NSString *)name tourImage:(UIImage *)tourImage tourStops:(NSMutableArray *)tourStops;
 
 @end

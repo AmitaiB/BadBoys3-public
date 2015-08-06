@@ -48,6 +48,9 @@
     
     //else dont do anything
     
+    
+    // DO I NEED BELOW??
+//    [self setNeedsUpdateConstraints];
 
 
     

@@ -26,7 +26,7 @@
 
 - (void)setTour:(TRVTour *)tour {
     _tour = tour;
-    self.textLabel.text = tour.tourItinerary.name;
+    self.textLabel.text = tour.itineraryForThisTour.nameOfTour;
 }
 
 @end
