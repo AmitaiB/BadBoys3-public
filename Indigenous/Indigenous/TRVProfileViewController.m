@@ -50,8 +50,12 @@
         [self.containerView addSubview:snippetView];
 
         [snippetView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            
             make.top.equalTo(profileImageView.mas_bottom);
             make.left.and.right.equalTo(self.containerView);
+            
+
         }];
     
     //Instantiate an ABOUT ME  Nib
@@ -81,7 +85,8 @@
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
-        make.bottom.equalTo(contactView.mas_bottom);
+//        make.bottom.equalTo(contactView.mas_bottom);
+        make.height.equalTo(@1000);
     }];
     
     
