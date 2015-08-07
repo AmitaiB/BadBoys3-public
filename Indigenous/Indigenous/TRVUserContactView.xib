@@ -16,39 +16,39 @@
             <rect key="frame" x="0.0" y="0.0" width="428" height="229"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkL-vf-Mvb">
-                    <rect key="frame" x="20" y="15" width="65" height="28"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PkL-vf-Mvb">
+                    <rect key="frame" x="20" y="15" width="64.5" height="65"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Languages" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIf-x6-vKm">
-                    <rect key="frame" x="276" y="126" width="133" height="25"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages Spoken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRH-wx-c21">
-                    <rect key="frame" x="20" y="126" width="158" height="25"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                    <rect key="frame" x="289" y="151.5" width="118.5" height="22"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8j-7k-Hc3">
-                    <rect key="frame" x="323" y="73" width="85" height="25"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                    <rect key="frame" x="331.5" y="123" width="76.5" height="22"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages Spoken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRH-wx-c21">
+                    <rect key="frame" x="20" y="152" width="132.5" height="20.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrA-cs-Pth">
-                    <rect key="frame" x="20" y="176" width="70" height="25"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                    <rect key="frame" x="20" y="180" width="58" height="20.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJP-u4-RWk">
-                    <rect key="frame" x="20" y="73" width="46" height="25"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                    <rect key="frame" x="20" y="123" width="39" height="20.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -63,8 +63,8 @@
                 <constraint firstItem="PkL-vf-Mvb" firstAttribute="top" secondItem="w4M-jM-ZmE" secondAttribute="top" constant="15" id="DQs-FV-WAI"/>
                 <constraint firstItem="j8j-7k-Hc3" firstAttribute="trailing" secondItem="jIf-x6-vKm" secondAttribute="trailing" id="DtD-jY-3wb"/>
                 <constraint firstItem="jIf-x6-vKm" firstAttribute="trailing" secondItem="j8j-7k-Hc3" secondAttribute="trailing" constant="5" id="FMb-tj-erw"/>
-                <constraint firstItem="pRH-wx-c21" firstAttribute="top" secondItem="rJP-u4-RWk" secondAttribute="bottom" constant="28" id="Xdb-yS-VfJ"/>
-                <constraint firstItem="zrA-cs-Pth" firstAttribute="top" secondItem="pRH-wx-c21" secondAttribute="bottom" constant="25" id="Zts-yb-8Ea"/>
+                <constraint firstItem="pRH-wx-c21" firstAttribute="top" secondItem="rJP-u4-RWk" secondAttribute="bottom" constant="8" id="Xdb-yS-VfJ"/>
+                <constraint firstItem="zrA-cs-Pth" firstAttribute="top" secondItem="pRH-wx-c21" secondAttribute="bottom" constant="8" id="Zts-yb-8Ea"/>
                 <constraint firstItem="j8j-7k-Hc3" firstAttribute="centerY" secondItem="rJP-u4-RWk" secondAttribute="centerY" id="ait-YM-eHi"/>
                 <constraint firstItem="zrA-cs-Pth" firstAttribute="leading" secondItem="pRH-wx-c21" secondAttribute="leading" id="fJy-6a-kmi"/>
                 <constraint firstAttribute="bottom" secondItem="zrA-cs-Pth" secondAttribute="bottom" constant="28" id="gw4-yG-m9v"/>

@@ -55,10 +55,14 @@
             bioForLoggedInUser.homeCity = @"";
             bioForLoggedInUser.homeCountry = @"";
             bioForLoggedInUser.isGuide = objects[0][@"isGuide"];
-            bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
-            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
+//            bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
+            bioForLoggedInUser.language = @"English, Chinese, French";
+
+//            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
+            bioForLoggedInUser.userTagline = @"I'm the damn best guide you ever done seen.";
+            
 //            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
-            bioForLoggedInUser.bioDescription = @"10 Bands, 50 bands, 100 bands, fuck it, man Lets just not even discuss it, man OMG, niggas sleep, I aint trippin, Imma let em sleep     I aint trippin, let em rest";
+            bioForLoggedInUser.bioDescription = @"Hi, my name is Leo and I like to take people on tours. I am such a good tour that New York Times Magazine rated me best tour of all time.";
 
             
             //REVISIT
