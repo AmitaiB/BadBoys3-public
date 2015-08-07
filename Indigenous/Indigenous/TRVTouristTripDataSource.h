@@ -12,6 +12,7 @@
 @interface TRVTouristTripDataSource : NSObject <UITableViewDataSource>
 
 -(instancetype)initWithTrips:(NSArray*)trips configuration:(void (^)())configureCell;
+
 - (void) changeTripsDisplayed;
 
 @end
