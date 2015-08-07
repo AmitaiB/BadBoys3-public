@@ -24,6 +24,8 @@
     
     [Parse setApplicationId:PARSE_APPLICATION_ID
                   clientKey:PARSE_CLIENT_KEY];
+//!!!: This is purely for debugging ↓
+    [PFUser enableAutomaticUser];
     
     [GMSServices provideAPIKey:GOOGLE_API_KEY];
     

@@ -60,7 +60,10 @@ PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
                         [tourQuery fromPinWithName:@"AddTourVC_Pins"];
     TRVItinerary *itineraryUnderConstruction_TRV;
     PFObject *itineraryUnderConstruction_PF;
-    if ([tourQuery countObjects] < 1) {
+        //!!!Amitai, you know what to do!
+    NSError
+    [tourQuery findObjects:(NSError * __nullable __autoreleasing * __nullable)]
+    if () {
 //...then initializeNewTourConstruct....
         itineraryUnderConstruction_PF = [PFObject objectWithClassName:@"ItineraryUnderConstruction"];
         itineraryUnderConstruction_TRV = [TRVItinerary new];
