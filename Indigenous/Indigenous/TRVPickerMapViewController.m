@@ -45,6 +45,7 @@
     [self.mapView setMinZoom:10 maxZoom:18];
     [self.view addSubview:self.mapView];
     NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
+    [self setupMarkerData];
     
         //Now follows up with a slow loading, highly accurate location.
 //    __block GMSCameraPosition *updatedCamera;
@@ -52,7 +53,6 @@
                                                   block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
                                 
                                                       [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:15]];
-                                                      [self setupMarkerData];
                                                   }];
 }
 
@@ -63,8 +63,8 @@
     marker1.title = @"First marker!!";
     marker1.snippet = @"First Snippet!";
     marker1.appearAnimation = kGMSMarkerAnimationPop;
-    marker1.map = self.mapView;
     marker1.draggable = YES;
+    marker1.map = self.mapView;
 }
 
 
