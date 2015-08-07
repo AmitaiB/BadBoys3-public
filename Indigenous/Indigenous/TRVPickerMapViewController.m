@@ -13,8 +13,9 @@
 #import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <INTULocationManager.h>
 #import "INTULocationManager+CurrentLocation.h"
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface TRVPickerMapViewController () <CLLocationManagerDelegate>
+@interface TRVPickerMapViewController () <CLLocationManagerDelegate, GMSMapViewDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 //@property (nonatomic, strong) CLLocationManager *locationManager;
@@ -50,10 +51,19 @@
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
                                                   block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
                                 
-                                                      [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:17]];
+                                                      [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:15]];
+                                                      [self initializeMarkers];
                                                   }];
 }
 
+-(void)initializeMarkers {
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate];
+    marker1.title = @"First marker!!";
+    marker1.snippet = @"First Snippet!";
+    marker1.appearAnimation = kGMSMarkerAnimationPop;
+    marker1.map = self.mapView;
+}
 
 -(void)reportINTUstatus:(INTULocationStatus*)status fromMethod:(NSString *)methodName {
     if (status == INTULocationStatusSuccess)         {
