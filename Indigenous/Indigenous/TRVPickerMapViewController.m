@@ -31,9 +31,17 @@
     CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
     
         //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
-    GMSCameraPosition *defaultCamera = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:16];
-    self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:defaultCamera];
-    self.mapView.myLocationEnabled = YES;
+
+#pragma mark - MapView Initialization
+
+        //Opens the map to the user's current location.
+    GMSCameraPosition *defaultCamera       = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:14];
+    self.mapView                           = [GMSMapView mapWithFrame:self.view.bounds camera:defaultCamera];
+    self.mapView.mapType                   = kGMSTypeNormal;
+    self.mapView.myLocationEnabled         = YES;
+    self.mapView.settings.compassButton    = YES;
+    self.mapView.settings.myLocationButton = YES;
+    [self.mapView setMinZoom:10 maxZoom:18];
     [self.view addSubview:self.mapView];
     NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
     
@@ -57,6 +65,15 @@
     } else {
         NSLog(@"SOME STATUS in the INTULocation %@!", methodName);
     }
+}
+
+-(void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    self.mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 5,
+                                            0,
+                                            self.bottomLayoutGuide.length + 5,
+                                            0);
 }
 
     
