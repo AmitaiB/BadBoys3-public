@@ -42,7 +42,11 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
+<<<<<<< HEAD
 	<string>LoginSignup</string>
+=======
+	<string>TRVTabBar</string>
+>>>>>>> master
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

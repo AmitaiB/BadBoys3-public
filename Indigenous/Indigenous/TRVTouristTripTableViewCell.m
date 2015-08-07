@@ -25,8 +25,15 @@
 }
 
 - (void)setTour:(TRVTour *)tour {
+    
     _tour = tour;
-    self.textLabel.text = tour.tourItinerary.name;
+
+
+    
+    // setting tour this this view
+    self.tourNib.tourForThisTourView = tour;
+
+//    self.textLabel.text = tour.itineraryForThisTour.nameOfTour;
 }
 
 @end
