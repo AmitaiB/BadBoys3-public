@@ -8,6 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface TRVMapCreateItineraryVC : UIViewController
+@interface TRVAddToursVC : UIViewController
 
 @end

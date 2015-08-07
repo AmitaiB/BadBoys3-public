@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVMapCreateItineraryVC.h"
+#import "TRVAddToursVC.h"
 
-@interface TRVMapCreateItineraryVC ()
+@interface TRVAddToursVC ()
 
 @end
 
-@implementation TRVMapCreateItineraryVC
+@implementation TRVAddToursVC
 
 
 - (void)viewDidLoad {

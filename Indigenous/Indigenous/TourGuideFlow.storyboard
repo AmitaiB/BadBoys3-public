@@ -82,7 +82,7 @@
         <!--Add Tours-->
         <scene sceneID="gob-t4-kC7">
             <objects>
-                <viewController id="Umb-bZ-KvD" customClass="TRVMapCreateItineraryVC" sceneMemberID="viewController">
+                <viewController id="Umb-bZ-KvD" customClass="TRVAddToursVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pfV-MW-TU2"/>
                         <viewControllerLayoutGuide type="bottom" id="RBA-jQ-alk"/>

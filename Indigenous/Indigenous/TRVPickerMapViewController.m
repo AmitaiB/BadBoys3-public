@@ -26,15 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.mapView.delegate = self;
-    INTULocationManager *locationManager = [INTULocationManager sharedInstance];    
-    CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
-    
+
         //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
-
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+    CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
 #pragma mark - MapView Initialization
-
         //Opens the map to the user's current location.
     GMSCameraPosition *defaultCamera       = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:14];
     self.mapView                           = [GMSMapView mapWithFrame:self.view.bounds camera:defaultCamera];
@@ -43,7 +39,11 @@
     self.mapView.settings.compassButton    = YES;
     self.mapView.settings.myLocationButton = YES;
     [self.mapView setMinZoom:10 maxZoom:18];
-    [self.view addSubview:self.mapView];
+   
+        //Codeschool said to add this line `[self.view addSubview:self.mapView];` but it turns out that broke the delegation.
+    self.view = self.mapView;
+    self.mapView.delegate = self;
+
     NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
     [self setupMarkerData];
     
