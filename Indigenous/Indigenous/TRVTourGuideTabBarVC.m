@@ -8,9 +8,7 @@
 
     //Pre-load current location in the background.
 #import <INTULocationManager.h>
-#import "INTULocationManager+CurrentLocation.h"
 #import <CoreLocation/CoreLocation.h>
-
 #import "TRVTourGuideTabBarVC.h"
 
 @interface TRVTourGuideTabBarVC () <UITabBarControllerDelegate>

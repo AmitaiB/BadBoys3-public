@@ -13,6 +13,9 @@
 #import "TRVTourStop.h"
 #import <Parse.h>
 
+#define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+
+
 @interface TRVAddToursVC () <TRVPickerMapDelegate>
 
 @end
@@ -51,16 +54,27 @@
  */
 - (void)userSelectedTourStopLocation:(CLLocation*)location
 {
+    DBLG
 PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
                         [tourQuery whereKeyExists:@"Itinerary"];
                         [tourQuery fromPinWithName:@"AddTourVC_Pins"];
+    TRVItinerary *itineraryUnderConstruction_TRV;
+    PFObject *itineraryUnderConstruction_PF;
     if ([tourQuery countObjects] < 1) {
-//        [self initializeNewTourConstruct];
-        TRVItinerary *itineraryUnderConstruction = 
-        = [PFObject objectWithClassName:@"TourUnderConstruction"];
-        itineraryUnderConstruction addObject:<#(id __nonnull)#> forKey:<#(NSString * __nonnull)#>
-    };
-        //TODO:implement the method
+//...then initializeNewTourConstruct....
+        itineraryUnderConstruction_PF = [PFObject objectWithClassName:@"ItineraryUnderConstruction"];
+        itineraryUnderConstruction_TRV = [TRVItinerary new];
+        [itineraryUnderConstruction_PF addObject:itineraryUnderConstruction_TRV forKey:@"Itinerary"];
+    } else {
+        itineraryUnderConstruction_PF = [tourQuery getFirstObject];
+        itineraryUnderConstruction_TRV = (TRVItinerary*)itineraryUnderConstruction_PF[@"Itinerary"];
+    }
+        //Either way, we now have a/our TRVItinerary...
+    TRVTourStop *newStop = [[TRVTourStop alloc] initWithCoordinates:location.coordinate];
+    [itineraryUnderConstruction_TRV.tourStops addObject:newStop];
+    itineraryUnderConstruction_PF[@"Itinerary"] = itineraryUnderConstruction_TRV;
+    NSLog(@"The itinerary under construction now has %lu tour stops", itineraryUnderConstruction_TRV.tourStops.count);
+    [itineraryUnderConstruction_PF pinWithName:@"AddTourVC_Pins"];
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  TRVEvent.h
+//  TRVTourStop.h
 //  Indigenous
 //
 //  Created by Leo Kwan on 7/28/15.

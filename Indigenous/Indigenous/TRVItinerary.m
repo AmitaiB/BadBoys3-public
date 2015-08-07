@@ -23,11 +23,10 @@
     
     return self;
 }
-
+    //Added under the advice of the TA's...
 -(instancetype)init {
     return [self initNameOfTour:@""
-                      tourImage:
-            [UIImage imageNamed:@"button_my_location"]
+                      tourImage:[UIImage imageNamed:@"button_my_location"]
                       tourStops:[NSMutableArray new]];
 }
 

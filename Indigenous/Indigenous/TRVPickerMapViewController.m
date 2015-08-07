@@ -21,7 +21,6 @@ B will notify A through the delegate methods.
 
 //#import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <INTULocationManager.h>
-#import "INTULocationManager+CurrentLocation.h"
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "TRVAddToursVC.h"
@@ -55,7 +54,9 @@ B will notify A through the delegate methods.
 
         //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
     INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-    CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
+        //FIXME: same broken INTU+ fix needed -->
+    CLLocation *dummyLocation = [CLLocation new];
+            CLLocationCoordinate2D defaultLocation = dummyLocation.coordinate;
 #pragma mark - MapView Initialization
         //Opens the map to the user's current location.
     GMSCameraPosition *defaultCamera       = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:14];
