@@ -11,7 +11,10 @@
 #import "TRVTourStopCollectionViewDataSource.h"
 #import "TRVTourStopCollectionViewDelegateFlowLayout.h"
 #import "UIScrollView+APParallaxHeader.h"
+#import "TRVParallaxHeaderImageView.h"
 //#import "TRVTourStop.h"
+
+#import "Masonry/Masonry.h"
 
 @interface TRVTouristTripDetailViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarTitle;
@@ -20,6 +23,7 @@
 @property (nonatomic, strong) TRVTourStopCollectionViewDataSource *dataSource;
 @property (weak, nonatomic) IBOutlet UIScrollView *theScrollViewThatHoldsAllTheOtherViews;
 @property (nonatomic, strong) TRVTourStopCollectionViewDelegateFlowLayout *collectionViewDelegate;
+@property (nonatomic, strong) UILabel *parallaxHeaderTourNameLabel;
 @end
 
 @implementation TRVTouristTripDetailViewController
@@ -35,21 +39,27 @@
     self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init];
     self.tourStopCollectionView.delegate = self.collectionViewDelegate;
     self.tourStopCollectionView.scrollsToTop = NO;
-    self.theScrollViewThatHoldsAllTheOtherViews.delegate = self;
-    //[self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithImage:[UIImage imageNamed:@"Carmelo.jpg"] andHeight:160];
-    //[self.theScrollViewThatHoldsAllTheOtherViews setContentOffset:CGPointMake(0, self.theScrollViewThatHoldsAllTheOtherViews.contentInset.top)];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Carmelo.jpg"]];
+
+    //UIImageView *imageView = [[UIImageView alloc] initWithImage:self.tour.image];
     CGFloat width = self.theScrollViewThatHoldsAllTheOtherViews.bounds.size.width;
-    [imageView setFrame:CGRectMake(0, 0, width, width/2)];
-    [imageView setContentMode:UIViewContentModeScaleAspectFill];
+    TRVParallaxHeaderImageView *imageView = [[TRVParallaxHeaderImageView alloc] initWithFrame:CGRectMake(0, 0, width, width/2) andTour:self.tour];
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedParrallaxImage)];
     [imageView addGestureRecognizer:tap];
     imageView.userInteractionEnabled = YES;
-    [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:imageView andHeight:imageView.bounds.size.height];
-    
+//    self.parallaxHeaderTourNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 1)]; //doesn't matter
+//    [imageView addSubview:self.parallaxHeaderTourNameLabel];
+//    self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor magentaColor];
+//    [self.parallaxHeaderTourNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(imageView.mas_bottom);
+//        make.left.equalTo(@0);
+//        make.height.equalTo(imageView.mas_height).dividedBy(10);
+//        make.width.equalTo(imageView.mas_width);
+//    }];
 
-    
+    [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:imageView andHeight:imageView.bounds.size.height];
     [self makeContentInsetFullScreen:self.theScrollViewThatHoldsAllTheOtherViews];
+    
     // Do any additional setup after loading the view.
 }
 

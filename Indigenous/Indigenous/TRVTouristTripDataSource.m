@@ -63,10 +63,10 @@
 }
 
 - (NSArray*)filterTripsWithComparisonResult:(NSComparisonResult)comparisonResult {
-    NSPredicate *pastPred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [[evaluatedObject valueForKey:@"tourDeparture"] compare:[NSDate date]] == comparisonResult;
     }];
-    return [self.trips filteredArrayUsingPredicate:pastPred];
+    return [self.trips filteredArrayUsingPredicate:pred];
 }
 
 - (NSArray*)futureTrips {

@@ -27,6 +27,8 @@
     aTour.tourItinerary = [[TRVItinerary alloc] init];
     aTour.tourItinerary.name = @"PBBBBBBBBT";
     aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
+    aTour.image = [UIImage imageNamed:@"Carmelo.jpg"];
+    
     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:@[aTour] configuration:nil];
     self.tripTableView.dataSource = self.tableViewDataSource;
 }
@@ -48,7 +50,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@""]) {
+    if ([segue.identifier isEqualToString:@"tripDetailSegue"]) {
         TRVTouristTripTableViewCell *cell = sender;
         TRVTouristTripDetailViewController *vc = segue.destinationViewController;
         vc.tour = cell.tour;
