@@ -8,9 +8,13 @@
 
 #import "TRVAddToursVC.h"
 #import "TRVPickerMapViewController.h"
+#import "TRVTour.h"
+#import "TRVItinerary.h"
+#import "TRVTourStop.h"
 #import <Parse.h>
 
 @interface TRVAddToursVC () <TRVPickerMapDelegate>
+
 @end
 
 @implementation TRVAddToursVC
@@ -37,14 +41,25 @@
     // Pass the selected object to the new view controller.
 }
 
-- (void)initializeNewItineraryConstruct {
-    PFObject *itineraryUnderConstruction = [PFObject objectWithClassName:@"ItineraryUnderConstruction"];
-        //TODO: store the growing itinerary in a PFObject to the local datastore
-}
+//- (void)initializeNewTourConstruct {
+//    PFObject *itineraryUnderConstruction = [PFObject objectWithClassName:@"TourUnderConstruction"];
+//        //TODO: store the growing itinerary in a PFObject to the local datastore
+//}
 
-
+/**
+ *  Make sure that a PFObject[@"TourUnderConstruction"][@"ItineraryUnderConstruction"] exists, and save it to @"AddTourPins"...
+ */
 - (void)userSelectedTourStopLocation:(CLLocation*)location
 {
+PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
+                        [tourQuery whereKeyExists:@"Itinerary"];
+                        [tourQuery fromPinWithName:@"AddTourVC_Pins"];
+    if ([tourQuery countObjects] < 1) {
+//        [self initializeNewTourConstruct];
+        TRVItinerary *itineraryUnderConstruction = 
+        = [PFObject objectWithClassName:@"TourUnderConstruction"];
+        itineraryUnderConstruction addObject:<#(id __nonnull)#> forKey:<#(NSString * __nonnull)#>
+    };
         //TODO:implement the method
 }
 

@@ -24,4 +24,11 @@
     return self;
 }
 
+-(instancetype)init {
+    return [self initNameOfTour:@""
+                      tourImage:
+            [UIImage imageNamed:@"button_my_location"]
+                      tourStops:[NSMutableArray new]];
+}
+
 @end
