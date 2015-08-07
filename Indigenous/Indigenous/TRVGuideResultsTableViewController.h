@@ -12,6 +12,6 @@
 @interface TRVGuideResultsTableViewController : UITableViewController
 
 @property (nonatomic, strong) TRVUser *user;
-
+@property (nonatomic, strong) NSString *selectedCity;
 
 @end

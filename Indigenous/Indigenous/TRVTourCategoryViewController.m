@@ -11,6 +11,7 @@
 #import "TRVTourCategoryView.h"
 #import <Masonry.h>
 #import "TRVUserDataStore.h"
+#import "TRVGuideResultsTableViewController.h"
 
 
 @interface TRVTourCategoryViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -42,6 +43,9 @@
     TRVTourCategory *drinkCategory = [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid.jpg"]];
 
     self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
+    
+    
+    NSLog(@"Selected city is: %@", self.selectedCity);
 
 }
 
@@ -106,6 +110,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
 //    NSArray *ip = [self.categoryCollectionView indexPathsForSelectedItems];
+    TRVGuideResultsTableViewController *destination = [segue destinationViewController];
+    destination.selectedCity = self.selectedCity;
     
     if([segue.identifier isEqualToString:@"entrySegue"]) {
         
