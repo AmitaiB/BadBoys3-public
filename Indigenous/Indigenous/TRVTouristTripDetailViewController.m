@@ -16,13 +16,14 @@
 
 #import "Masonry/Masonry.h"
 
-@interface TRVTouristTripDetailViewController ()
+@interface TRVTouristTripDetailViewController () <APParallaxViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarTitle;
 @property (weak, nonatomic) IBOutlet UICollectionView *tourStopCollectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *tourStopImageView;
 @property (nonatomic, strong) TRVTourStopCollectionViewDataSource *dataSource;
 @property (weak, nonatomic) IBOutlet UIScrollView *theScrollViewThatHoldsAllTheOtherViews;
 @property (nonatomic, strong) TRVTourStopCollectionViewDelegateFlowLayout *collectionViewDelegate;
+@property (nonatomic, strong) TRVParallaxHeaderImageView *imageView;
 @property (nonatomic, strong) UILabel *parallaxHeaderTourNameLabel;
 @end
 
@@ -42,25 +43,34 @@
 
     //UIImageView *imageView = [[UIImageView alloc] initWithImage:self.tour.image];
     CGFloat width = self.theScrollViewThatHoldsAllTheOtherViews.bounds.size.width;
-    TRVParallaxHeaderImageView *imageView = [[TRVParallaxHeaderImageView alloc] initWithFrame:CGRectMake(0, 0, width, width/2) andTour:self.tour];
+    self.imageView = [[TRVParallaxHeaderImageView alloc] initWithFrame:CGRectMake(0, 0, width, width/2) andTour:self.tour];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedParrallaxImage)];
-    [imageView addGestureRecognizer:tap];
-    imageView.userInteractionEnabled = YES;
-//    self.parallaxHeaderTourNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 1)]; //doesn't matter
-//    [imageView addSubview:self.parallaxHeaderTourNameLabel];
-//    self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor magentaColor];
-//    [self.parallaxHeaderTourNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(imageView.mas_bottom);
-//        make.left.equalTo(@0);
-//        make.height.equalTo(imageView.mas_height).dividedBy(10);
-//        make.width.equalTo(imageView.mas_width);
-//    }];
+    [self.imageView addGestureRecognizer:tap];
+    self.imageView.userInteractionEnabled = YES;
+    self.parallaxHeaderTourNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 1)]; //doesn't matter
+    [self.theScrollViewThatHoldsAllTheOtherViews addSubview:self.parallaxHeaderTourNameLabel];
+    self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor magentaColor];
 
-    [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:imageView andHeight:imageView.bounds.size.height];
-    [self makeContentInsetFullScreen:self.theScrollViewThatHoldsAllTheOtherViews];
+    [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:self.imageView andHeight:self.imageView.bounds.size.height];
+    //[self.parallaxHeaderTourNameLabel setFrame:CGRectMake(0, self.imageView.bounds.size.height - self.view.bounds.size.height / 10, self.view.bounds.size.width, self.view.bounds.size.height / 10)];
+//    [self.parallaxHeaderTourNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        //make.bottom.equalTo(self.imageView.mas_bottom);
+//        make.bottom.equalTo(@0);
+//        make.left.equalTo(@0);
+//        make.height.equalTo(@([UIScreen mainScreen].bounds.size.height / 10));
+//        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+//    }];
+    [self.theScrollViewThatHoldsAllTheOtherViews bringSubviewToFront:self.parallaxHeaderTourNameLabel];
+
     
+    [self makeContentInsetFullScreen:self.theScrollViewThatHoldsAllTheOtherViews];
+    [self setTitleLabelFrame:self.imageView.frame];
+    
+    //self.theScrollViewThatHoldsAllTheOtherViews.delegate = self;
+    self.theScrollViewThatHoldsAllTheOtherViews.parallaxView.delegate = self;
     // Do any additional setup after loading the view.
+    NSLog(@"The difference: %f", self.imageView.frame.size.height + self.navigationController.navigationBar.bounds.size.height - [UIScreen mainScreen].bounds.size.height);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,9 +79,16 @@
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    NSLog(@"%@", NSStringFromCGPoint(*targetContentOffset));
+    //NSLog(@"content offset: %f", targetContentOffset->y);
     if ((*targetContentOffset).y == -224)
         [self makeContentInsetFullScreen:scrollView];
+    [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(0, self.imageView.bounds.size.height - self.view.bounds.size.height / 10, self.view.bounds.size.width, self.view.bounds.size.height / 10)];
+//    [self.parallaxHeaderTourNameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(@0).with.offset(-targetContentOffset->y);
+//        make.left.equalTo(@0);
+//        make.height.equalTo(@([UIScreen mainScreen].bounds.size.height / 10));
+//        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+//    }];
 }
 
 - (void)makeContentInsetFullScreen:(UIScrollView *)scrollView {
@@ -79,6 +96,17 @@
     UIEdgeInsets inset = scrollView.contentInset;
     inset.top = screen.bounds.size.height;
     scrollView.contentInset = inset;
+    scrollView.contentOffset = CGPointMake(0, -scrollView.contentInset.top);
+    //NSLog(@"content offset: %f", scrollView.contentOffset.y);
+//    for (CGFloat i = 0; i < self.imageView.frame.size.height; i+= self.imageView.frame.size.height / 10) {
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, i, self.view.frame.size.width, self.view.frame.size.height/10)];
+//        label.text = [NSString stringWithFormat:@"%f", i / self.imageView.frame.size.height * 10];
+//        label.textColor = [UIColor whiteColor];
+//        label.backgroundColor = [UIColor grayColor];
+//        label.layer.borderColor = [UIColor blackColor].CGColor;
+//        label.layer.borderWidth = 3.0;
+//        [self.imageView addSubview:label];
+//    }
 }
 
 - (void)tappedParrallaxImage {
@@ -91,6 +119,24 @@
         //self.theScrollViewThatHoldsAllTheOtherViews.isDragging = NO;
     }];
     //self.theScrollViewThatHoldsAllTheOtherViews.contentOffset = CGPointMake(0, 0);
+}
+
+- (void)setTitleLabelFrame:(CGRect)frame  {
+    CGFloat titleHeight = [UIScreen mainScreen].bounds.size.height / 10;
+    if (self.imageView.frame.size.height > [UIScreen mainScreen].bounds.size.height) {
+        [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y + [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.bounds.size.height - titleHeight, frame.size.width, titleHeight)];
+        NSLog(@"this one");
+    }
+    else {
+        [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y + frame.size.height - titleHeight, frame.size.width,  titleHeight)];
+    }
+    NSLog(@"label rect: %@", NSStringFromCGRect(self.parallaxHeaderTourNameLabel.frame));
+}
+
+- (void)parallaxView:(APParallaxView *)view didChangeFrame:(CGRect)frame {
+    // Do whatever you need to do to the parallaxView or your subview after its frame changed
+    //NSLog(@"parallaxView:didChangeFrame: %@", NSStringFromCGRect(frame));
+    [self setTitleLabelFrame:frame];
 }
 
 @end

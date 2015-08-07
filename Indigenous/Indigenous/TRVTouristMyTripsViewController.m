@@ -33,7 +33,7 @@
     aTour.itineraryForThisTour = [[TRVItinerary alloc] initNameOfTour:@"Canada 6 Tour" tourImage:[UIImage imageNamed:@"madrid.jpg"] tourStops:tourStops];
 
     aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
-    aTour.image = [UIImage imageNamed:@"Carmelo.jpg"];
+    aTour.itineraryForThisTour.tourImage = [UIImage imageNamed:@"Carmelo.jpg"];
     
     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:@[aTour] configuration:nil];
     self.tripTableView.dataSource = self.tableViewDataSource;

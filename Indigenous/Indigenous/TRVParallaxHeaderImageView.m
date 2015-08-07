@@ -23,12 +23,12 @@
     if (self = [super initWithFrame:frame]) {
         self.tour = tour;
         
-        self.image = tour.image;
+        self.image = tour.itineraryForThisTour.tourImage;
         
         [self setContentMode:UIViewContentModeScaleAspectFill];
         
         self.tourNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 10, 10)]; // these values don't matter
-        self.tourNameLabel.text = self.tour.tourItinerary.name;
+        self.tourNameLabel.text = self.tour.itineraryForThisTour.nameOfTour;
         self.tourNameLabel.textColor = [UIColor whiteColor];
         self.tourNameLabel.backgroundColor = [UIColor clearColor];
     }
