@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navBarTitle.title = self.tour.tourItinerary.name;
+    self.navBarTitle.title = self.tour.itineraryForThisTour.nameOfTour;
     
     self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:nil configuration:^(TRVTourStop * stop) {
         //self.tourStopImageView.image = stop.image;     stops do not yet have images

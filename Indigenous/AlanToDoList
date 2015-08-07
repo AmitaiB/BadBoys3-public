@@ -1,7 +1,31 @@
-LOGIN/SIGNUP FLOW
 
+
+LOGIN/SIGNUP FLOW
 [x] Upload photo from user signup
 [x] Login
 [x] If logged in when app is started, go to home view
 [ ] Transition when isGuide = YES for sign up and log in (both email and facebook)
 [ ] When user logs out, it must be from facebook and parse
+[ ] Create a "Skip for Now" Button
+[ ] Remove automatic sign out code
+
+
+
+MY PROFILE
+[ ] Make the edit page come to life!
+[x] Create log out button
+[ ] Favorites should be called "My Profile"
+[x] Put Search tab in middle and start flow there
+
+
+SEARCH
+[ ]  Connect with Parse
+
+
+TOUR GUIDE FLOW
+[ ] Make it!
+
+BUGS
+[x] Username already taken
+----CLICK SIGN UP --- DISMISS --- LOG IN WITH FACEBOOK
+[ ] Dan can't sign up or log in with Facebook

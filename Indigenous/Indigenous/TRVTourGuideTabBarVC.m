@@ -6,9 +6,14 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+    //Pre-load current location in the background.
+#import <INTULocationManager.h>
+#import "INTULocationManager+CurrentLocation.h"
+#import <CoreLocation/CoreLocation.h>
+
 #import "TRVTourGuideTabBarVC.h"
 
-@interface TRVTourGuideTabBarVC ()
+@interface TRVTourGuideTabBarVC () <UITabBarControllerDelegate>
 
 @end
 
@@ -17,6 +22,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+#pragma mark Pre-load current location
+    
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+    
+    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:NO block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+        NSLog(@"Inside the pre-loading location block. We have %@ succeeded!", (status == INTULocationStatusSuccess) ? @"INDEED" : @"NOT");
+        locationManager.currentLocation = currentLocation;
+    }];
+    
+    
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    NSLog(@"didUpdateLocations, manager: %@, locations: %@", [manager description], [locations description]);
 }
 
 - (void)didReceiveMemoryWarning {

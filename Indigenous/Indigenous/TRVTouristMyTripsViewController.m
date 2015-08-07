@@ -24,8 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     TRVTour *aTour = [[TRVTour alloc] init];
-    aTour.tourItinerary = [[TRVItinerary alloc] init];
-    aTour.tourItinerary.name = @"PBBBBBBBBT";
+    aTour.itineraryForThisTour = [[TRVItinerary alloc] init];
+    aTour.itineraryForThisTour.nameOfTour = @"PBBBBBBBBT";
     aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
     aTour.image = [UIImage imageNamed:@"Carmelo.jpg"];
     
