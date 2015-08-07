@@ -56,9 +56,17 @@
             bioForLoggedInUser.homeCountry = @"";
             bioForLoggedInUser.isGuide = objects[0][@"isGuide"];
             bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
-            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
-            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
             
+            
+            // HARDCODED USER TAGLINE, UNCOMMMENT LINE BELOW ONCE THERE IS PLACE TO INPUT TAGLINE
+            
+//            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
+            bioForLoggedInUser.userTagline = @"I'm the damn best guide you ever done seen.";
+
+            // HARDCODED USER BIO, UNCOMMMENT LINE BELOW ONCE THERE IS PLACE TO USER BIO
+//            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
+            bioForLoggedInUser.bioDescription = @"Hi, my name is X and I like to take people on tours. I am such a good tour that New York Times Magazine rated me best tour of all time.";
+
             
             //REVISIT
             // DEPENDS ON IF FACEBOOK OR EMAIL LOGGED IN
@@ -66,8 +74,6 @@
                 
                 
                 [TRVAFNetwokingAPIClient getImagesWithURL:objects[0][@"picture"] withCompletionBlock:^(UIImage *response) {
-                
-                    NSLog(@"%@-----------------------------", response);
                     
                     // Setting profile Image with AFNetworking request
                     bioForLoggedInUser.profileImage = response;
@@ -87,22 +93,15 @@
                         
                     }
                 }];
-                
-                
-                NSLog(@"%@", pictureFile.url);
-                            }
+              }
 
             _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
             
             
-            NSLog(@"Welcome %@. ", _loggedInUser);
-         //   NSLog(@"%@ THIS IS THE LOGGED IN", self.loggedInUser.userBio.firstName);
-         
+            NSLog(@"Welcome %@. ", _loggedInUser.userBio.firstName);
         }
     }];
-//    }
-//    
-//    return self;
+
 }
 
 

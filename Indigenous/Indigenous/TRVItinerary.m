@@ -10,27 +10,18 @@
 
 @implementation TRVItinerary
 
--(instancetype)initWithItinerary:(TRVItinerary *)anItinerary {
+-(instancetype)initNameOfTour:(NSString *)name tourImage:(UIImage *)tourImage tourStops:(NSMutableArray *)tourStops {
 
     self = [super init];
+    
     if (self) {
-        
-        _name        = anItinerary.name;
-        _stops       = anItinerary.stops;
-        _legs        = anItinerary.legs;
-        _attractions = anItinerary.attractions;
+        _nameOfTour = name;
+        _tourImage = tourImage;
+        _tourStops = tourStops;
+        _numberOfStops = tourStops.count;
     }
     
     return self;
 }
-
-
--(instancetype)initWithName:(NSString*)name Stops:(NSArray *)arrayOfStops {
-    _stops       = arrayOfStops;
-    _legs        = [NSArray new];
-    _attractions = [NSArray new];
-    return self;
-}
-
 
 @end

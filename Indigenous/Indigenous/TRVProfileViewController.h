@@ -1,5 +1,5 @@
 //
-//  TRVProfileScrollViewController.h
+//  TRVProfileViewController.h
 //  Indigenous
 //
 //  Created by Leo Kwan on 8/4/15.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
 
-@interface TRVProfileScrollViewController : UIViewController
+@interface TRVProfileViewController : UIViewController
 
 @property (nonatomic, strong) TRVUser *user;
 

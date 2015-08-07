@@ -47,9 +47,10 @@
 
 
     [self.userSnippetContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.equalTo(@500);
         make.edges.equalTo(@0);
     }];
-//
+
 
 }
 
@@ -59,7 +60,7 @@
     
     self.firstNameLabel.text = userForThisSnippetView.userBio.firstName;
     self.lastNameLabel.text = userForThisSnippetView.userBio.lastName;
-    self.oneLinerLabel.text = userForThisSnippetView.userBio.bioDescription;
+    self.oneLinerLabel.text = userForThisSnippetView.userBio.userTagline;
    
 }
 
