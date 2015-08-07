@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) TRVUser *selectedGuideUser;
 @property (weak, nonatomic) IBOutlet UIView *profileView;
+@property (weak, nonatomic) IBOutlet UIView *tripsSegmentedVC;
 
 @end
