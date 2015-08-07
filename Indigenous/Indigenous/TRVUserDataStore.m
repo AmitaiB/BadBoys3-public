@@ -85,6 +85,10 @@
 
             } else {
                 
+                
+                // CONVERT EMAIL PFFILE IMAGE TO UIIMAGE
+                
+                
                 PFFile *pictureFile = objects[0][@"emailPicture"];
                 [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                     if (!error) {

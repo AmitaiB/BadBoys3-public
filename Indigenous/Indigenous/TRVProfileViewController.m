@@ -85,8 +85,8 @@
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
-//        make.bottom.equalTo(contactView.mas_bottom);
-        make.height.equalTo(@1000);
+        make.bottom.equalTo(contactView.mas_bottom);
+//        make.height.equalTo(contactView.mas_c);
     }];
     
     
