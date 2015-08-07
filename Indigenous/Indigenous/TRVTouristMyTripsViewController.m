@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-        TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
+    TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
     
     NSMutableArray *tourStops = [[NSMutableArray alloc] initWithObjects:dummyTourStop,dummyTourStop, nil];
     
