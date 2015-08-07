@@ -22,6 +22,7 @@
 		389646421B6AB67B004FFDB7 /* TRVPickerMapLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */; };
 		38ACCB501B72ED8300A77917 /* INTULocationManager+CurrentLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ACCB4F1B72ED8300A77917 /* INTULocationManager+CurrentLocation.m */; };
 		38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */; };
+		38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */; };
 		4515651C1B68221B005A2871 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4515651B1B68221B005A2871 /* ViewController.m */; };
 		4515651F1B68221B005A2871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4515651D1B68221B005A2871 /* Main.storyboard */; };
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
@@ -130,6 +131,8 @@
 		38ACCB4F1B72ED8300A77917 /* INTULocationManager+CurrentLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "INTULocationManager+CurrentLocation.m"; sourceTree = "<group>"; };
 		38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTopLVLMenuViewController.h; sourceTree = "<group>"; };
 		38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTopLVLMenuViewController.m; sourceTree = "<group>"; };
+		38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGoogleAPIClient.h; sourceTree = "<group>"; };
+		38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGoogleAPIClient.m; sourceTree = "<group>"; };
 		451565101B68221B005A2871 /* Indigenous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indigenous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		451565141B68221B005A2871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		451565151B68221B005A2871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 				384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */,
 				384AFBC71B696B8F00E169A9 /* TRVMapCreateItineraryVC.h */,
 				384AFBC81B696B8F00E169A9 /* TRVMapCreateItineraryVC.m */,
+				38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */,
+				38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */,
 				384AFBC41B696B3500E169A9 /* TRVTourGuideProfileVC.h */,
 				384AFBC51B696B3500E169A9 /* TRVTourGuideProfileVC.m */,
 				3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented */,
@@ -855,6 +860,7 @@
 				942E0D4E1B7403D8002D9E90 /* TRVProfileView.m in Sources */,
 				384AFBBD1B696A9B00E169A9 /* TRVTourGuideTabBarVC.m in Sources */,
 				451859541B70FCC0008D7049 /* TRVFilterViewController.m in Sources */,
+				38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */,
 				45F925AC1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m in Sources */,
 				384AFBC61B696B3500E169A9 /* TRVTourGuideProfileVC.m in Sources */,
 				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
