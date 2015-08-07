@@ -1,22 +1,22 @@
 //
-//  TRVTourGuideMyToursVC.m
+//  TRVAddNewStopToItineraryVC.m
 //  Indigenous
 //
 //  Created by Amitai Blickstein on 7/29/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVTourGuideMyToursVC.h"
+#import "TRVAddToursVC.h"
 
-@interface TRVTourGuideMyToursVC ()
+@interface TRVAddToursVC ()
 
 @end
 
-@implementation TRVTourGuideMyToursVC
+@implementation TRVAddToursVC
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];    
     // Do any additional setup after loading the view.
 }
 

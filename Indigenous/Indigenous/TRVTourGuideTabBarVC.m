@@ -9,17 +9,11 @@
     //Pre-load current location in the background.
 #import <INTULocationManager.h>
 #import "INTULocationManager+CurrentLocation.h"
+#import <CoreLocation/CoreLocation.h>
 
-    //model
-#import <YALTabBarItem.h>
-
-    //controller (← includes YALFoldingTabBarController.h)
 #import "TRVTourGuideTabBarVC.h"
 
-    //helpers
-#import <YALAnimatingTabBarConstants.h>
-
-@interface TRVTourGuideTabBarVC () <CLLocationManagerDelegate>
+@interface TRVTourGuideTabBarVC () <UITabBarControllerDelegate>
 
 @end
 
@@ -29,46 +23,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-        //Preparing leftBarItems...
-    YALTabBarItem *item1 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"nearby_icon"]
-                                                      leftItemImage:nil
-                                                     rightItemImage:nil];
-    
-    YALTabBarItem *item2 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"profile_icon"]
-                                                      leftItemImage:[UIImage imageNamed:@"edit_icon"]
-                                                     rightItemImage:nil];
-    self.leftBarItems = @[item1, item2];
-    
-        //Preparing RightBarItems...
-    YALTabBarItem *item3 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"chats_icon"]
-                                                      leftItemImage:[UIImage imageNamed:@"search_icon"]
-                                                     rightItemImage:[UIImage imageNamed:@"new_chat_icon"]];
-    
-    YALTabBarItem *item4 = [[YALTabBarItem alloc] initWithItemImage:[UIImage imageNamed:@"settings_icon"]
-                                                      leftItemImage:nil
-                                                     rightItemImage:nil];
-    
-    self.rightBarItems = @[item3, item4];
-    
-    self.centerButtonImage = [UIImage imageNamed:@"plus_icon"];
-    
-//    self.selectedIndex = 2;
-
-        //customize tabBarView
-    self.tabBarView.extraTabBarItemHeight = YALExtraTabBarItemsDefaultHeight;
-    self.tabBarView.offsetForExtraTabBarItems = YALForExtraTabBarItemsDefaultOffset;
-    self.tabBarView.backgroundColor = [UIColor colorWithRed:94.0/255.0 green:91.0/255 blue:149.0/255 alpha:1];
-    self.tabBarView.tabBarColor = [UIColor colorWithRed:72.0/255 green:211.0/255 blue:178.0/255 alpha:1];
-    self.tabBarViewHeight = YALTabBarViewDefaultHeight;
-    self.tabBarView.tabBarViewEdgeInsets = YALTabBarViewHDefaultEdgeInsets;
-    self.tabBarView.tabBarItemsEdgeInsets   = YALTabBarViewItemsDefaultEdgeInsets;
-    
     
 #pragma mark Pre-load current location
     
     INTULocationManager *locationManager = [INTULocationManager sharedInstance];
     
-    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:60 delayUntilAuthorized:YES block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:NO block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
         NSLog(@"Inside the pre-loading location block. We have %@ succeeded!", (status == INTULocationStatusSuccess) ? @"INDEED" : @"NOT");
         locationManager.currentLocation = currentLocation;
     }];
