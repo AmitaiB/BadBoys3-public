@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *bioTextField;
 @property (weak, nonatomic) IBOutlet UISwitch *isGuide;
 @property (weak, nonatomic) IBOutlet UITextField *oneLineBio;
-
+@property (weak, nonatomic) IBOutlet UISegmentedControl *homeCitySegmentedControl;
+@property (nonatomic, strong) NSString *selectedHomeCity;
 @end
 
 @implementation TRVCompleteSignupWithFacebookViewController
@@ -30,6 +31,27 @@
 
 
 
+- (IBAction)segmentSelected:(id)sender {
+    
+    if (self.homeCitySegmentedControl.selectedSegmentIndex == 0){
+        
+        self.selectedHomeCity = @"New York";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 1){
+        
+        self.selectedHomeCity = @"Los Angeles";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 2){
+        
+        self.selectedHomeCity = @"Paris";
+    } else if (self.homeCitySegmentedControl.selectedSegmentIndex == 3){
+        
+        self.selectedHomeCity = @"London";
+    } else {
+        
+        self.selectedHomeCity = @"Unknown";
+    }
+    
+    
+}
 
 
 
@@ -44,30 +66,23 @@
     currentUser[@"userBio"][@"bioTextField"] = self.bioTextField.text;
     currentUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
     currentUser[@"userBio"][@"oneLineBio"] = self.oneLineBio.text;
-    
-    
+    currentUser[@"userBio"][@"homeCity"] = self.selectedHomeCity;
+    currentUser[@"userBio"][@"user"] = [PFUser currentUser];
+  
+
     
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         [hud hide:YES];
         if (succeeded){
             if (self.isGuide.on){
                 // TRANSITION TO GUIDE HOME PAGE
-            
+                // TODO This should presentToGuideTourView
+                [self presentTouristHomeView];
                 
-                
-            } else {
+            } else{
                 // TRANSITION TO TOURIST HOME PAGE
                 // trvtabbar
-                UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
-                
-                UIViewController *destination = [tourist instantiateInitialViewController];
-                
-                UIViewController *presentingViewController = self.presentingViewController;
-                
-               [presentingViewController dismissViewControllerAnimated:NO completion:^{
-                   [presentingViewController presentViewController:destination animated:NO completion:nil];
-               }];
-                
+                [self presentTouristHomeView];
             }
             
         } else {
@@ -95,7 +110,20 @@
 }
 
 
+-(void)presentTouristHomeView {
+    
+    UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+    
+    UIViewController *destination = [tourist instantiateInitialViewController];
+    
+    UIViewController *presentingViewController = self.presentingViewController;
+    
+    [presentingViewController dismissViewControllerAnimated:NO completion:^{
+        [presentingViewController presentViewController:destination animated:NO completion:nil];
+    }];
 
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

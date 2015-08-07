@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" id="G0l-wk-nGG">
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="1gn-pX-4Nj">
                             <connections>
-                                <segue destination="6Jb-06-Pvk" kind="presentation" id="6aA-Pr-9dP"/>
+                                <segue destination="6Jb-06-Pvk" kind="presentation" identifier="showFIlter" id="6aA-Pr-9dP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -147,8 +147,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F91-Zv-dZV">
-                                <rect key="frame" x="273" y="550" width="54" height="30"/>
-                                <state key="normal" title="Dismiss">
+                                <rect key="frame" x="276" y="550" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

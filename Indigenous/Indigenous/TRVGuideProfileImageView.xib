@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="333" height="208"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leo" translatesAutoresizingMaskIntoConstraints="NO" id="4cA-kF-8MY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4cA-kF-8MY">
                     <rect key="frame" x="41" y="43" width="263" height="137"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
@@ -31,7 +31,4 @@
             <point key="canvasLocation" x="227.5" y="295"/>
         </view>
     </objects>
-    <resources>
-        <image name="leo" width="259" height="194"/>
-    </resources>
 </document>

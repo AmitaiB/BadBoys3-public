@@ -535,9 +535,9 @@
 				948A22681B73CDC8006FC5BB /* TRVTourView.h */,
 				948A22691B73CDC8006FC5BB /* TRVTourView.m */,
 				9435DF721B6F1E670054A2F4 /* TRVTourCategoryView.xib */,
+				944AD00A1B6DF4C700404EDD /* TRVGuideProfileImageView.xib */,
 				944AD0071B6DF4B500404EDD /* TRVGuideProfileImageView.h */,
 				944AD0081B6DF4B500404EDD /* TRVGuideProfileImageView.m */,
-				944AD00A1B6DF4C700404EDD /* TRVGuideProfileImageView.xib */,
 				94C77F861B68354E003836E3 /* TRVRating.m */,
 				94E9D05D1B6EB11D007B42B7 /* TRVGuideDetailProfileView.h */,
 				94E9D05E1B6EB11D007B42B7 /* TRVGuideDetailProfileView.m */,
@@ -732,8 +732,8 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 98E8SVTQ29;
 
-						DevelopmentTeam = 8VC65F749H;
 					};
 					451565281B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;

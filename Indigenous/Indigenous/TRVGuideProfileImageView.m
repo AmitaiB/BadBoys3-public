@@ -39,6 +39,13 @@
     return self;
 }
 
+-(void)setUserForThisGuideProfileView:(TRVUser *)userForThisGuideProfileView {
+    _userForThisGuideProfileView = userForThisGuideProfileView;
+    
+    self.profileImageView.image = userForThisGuideProfileView.userBio.profileImage;
+}
+
+
 -(void)commonInit
 {
     [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class)
