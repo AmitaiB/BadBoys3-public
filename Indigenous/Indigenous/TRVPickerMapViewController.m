@@ -52,18 +52,21 @@
                                                   block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
                                 
                                                       [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:15]];
-                                                      [self initializeMarkers];
+                                                      [self setupMarkerData];
                                                   }];
 }
 
--(void)initializeMarkers {
-    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate];
+-(void)setupMarkerData {
+//    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+//    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate]
+    GMSMarker *marker1 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.70531680012648,-74.01396463558194)];
     marker1.title = @"First marker!!";
     marker1.snippet = @"First Snippet!";
     marker1.appearAnimation = kGMSMarkerAnimationPop;
     marker1.map = self.mapView;
+    marker1.draggable = YES;
 }
+
 
 -(void)reportINTUstatus:(INTULocationStatus*)status fromMethod:(NSString *)methodName {
     if (status == INTULocationStatusSuccess)         {
