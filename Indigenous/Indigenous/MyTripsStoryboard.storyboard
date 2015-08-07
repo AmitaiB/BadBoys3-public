@@ -92,17 +92,30 @@
                                     <action selector="segmentedControlChanged:" destination="U3t-qH-CFD" eventType="valueChanged" id="hLT-p5-SIM"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-SG-l7o">
-                                <rect key="frame" x="0.0" y="167" width="600" height="433"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="349" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-SG-l7o">
+                                <rect key="frame" x="0.0" y="167" width="600" height="384"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" id="iPL-Gz-GYw" customClass="TRVTouristTripTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="349" id="iPL-Gz-GYw" customClass="TRVTouristTripTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iPL-Gz-GYw" id="GO6-8U-1yi">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b16-N4-HTO" customClass="TRVTourView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="349"/>
+                                                    <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b16-N4-HTO" firstAttribute="top" secondItem="GO6-8U-1yi" secondAttribute="top" id="Q57-ym-4AZ"/>
+                                                <constraint firstItem="b16-N4-HTO" firstAttribute="leading" secondItem="GO6-8U-1yi" secondAttribute="leading" id="Zn5-C0-oev"/>
+                                                <constraint firstAttribute="trailing" secondItem="b16-N4-HTO" secondAttribute="trailing" id="mNc-Lo-xhl"/>
+                                                <constraint firstAttribute="bottom" secondItem="b16-N4-HTO" secondAttribute="bottom" id="s7r-v0-6px"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="tourNib" destination="b16-N4-HTO" id="oJb-QB-A2G"/>
                                             <segue destination="gqK-AQ-dGd" kind="show" identifier="tripDetailSegue" id="5PZ-xr-ZTA"/>
                                         </connections>
                                     </tableViewCell>
@@ -187,7 +200,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-55-svt">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" misplaced="YES" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-55-svt">
                                                 <rect key="frame" x="0.0" y="71" width="600" height="481"/>
                                             </imageView>
                                         </subviews>
