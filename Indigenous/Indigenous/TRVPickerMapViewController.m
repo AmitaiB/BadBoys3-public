@@ -19,13 +19,17 @@ B will notify A through the delegate methods.
  
  */
 
-#import "TRVPickerMapViewController.h"
-#import "TRVPickerMapLogic.h" //includes GMapsSDK
+//#import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <INTULocationManager.h>
 #import "INTULocationManager+CurrentLocation.h"
+#import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "TRVAddToursVC.h"
+#import "TRVPickerMapViewController.h"
+
 
 @interface TRVPickerMapViewController () <GMSMapViewDelegate>
+
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, copy) NSSet *markers;
@@ -35,6 +39,16 @@ B will notify A through the delegate methods.
 @implementation TRVPickerMapViewController {
     GMSMarker *userSelection_;
 }
+
+//- (id)delegate {
+//    return _delegate;
+//}
+//
+//- (void)setDelegate:(id)newDelegate {
+//    _delegate = newDelegate;
+//}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,7 +69,7 @@ B will notify A through the delegate methods.
         //Codeschool said to add this line `[self.view addSubview:self.mapView];` but it turns out that broke the delegation.
     self.view = self.mapView;
     self.mapView.delegate = self;
-
+    
     NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
 //    [self setupMarkerData];
     
@@ -174,12 +188,11 @@ B will notify A through the delegate methods.
 }
 
 -(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
-    userSelection_ = [GMSMarker markerWithPosition:coordinate];
-    
-    
-
+//    userSelection_ = [GMSMarker markerWithPosition:coordinate];
+    CLLocation *userSelection = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    [self.delegate userSelectedTourStopLocation:userSelection];
 }
-
+/*
 #pragma mark - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -187,7 +200,7 @@ B will notify A through the delegate methods.
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
 }
-
+*/
 /**
 ✓⃞– mapView:markerInfoContents:
 ⃞– mapView:didTapInfoWindowOfMarker:

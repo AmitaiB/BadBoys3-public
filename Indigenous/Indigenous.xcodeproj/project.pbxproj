@@ -18,7 +18,6 @@
 		3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDF31B694031001C5693 /* TRVItinerary.m */; };
 		385C46FA1B6BCE7E00D9091A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565151B68221B005A2871 /* main.m */; };
 		385C46FB1B6BCEA000D9091A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565181B68221B005A2871 /* AppDelegate.m */; };
-		386CAC281B74F74F0088781A /* TRVPickerMapProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 386CAC271B74F74F0088781A /* TRVPickerMapProtocol.m */; };
 		389646421B6AB67B004FFDB7 /* TRVPickerMapLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */; };
 		38ACCB501B72ED8300A77917 /* INTULocationManager+CurrentLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ACCB4F1B72ED8300A77917 /* INTULocationManager+CurrentLocation.m */; };
 		38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */; };
@@ -128,8 +127,6 @@
 		3859EDEF1B694003001C5693 /* TRVTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTour.m; sourceTree = "<group>"; };
 		3859EDF21B694031001C5693 /* TRVItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVItinerary.h; sourceTree = "<group>"; };
 		3859EDF31B694031001C5693 /* TRVItinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVItinerary.m; sourceTree = "<group>"; };
-		386CAC261B74F74F0088781A /* TRVPickerMapProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVPickerMapProtocol.h; sourceTree = "<group>"; };
-		386CAC271B74F74F0088781A /* TRVPickerMapProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVPickerMapProtocol.m; sourceTree = "<group>"; };
 		389646401B6AB67B004FFDB7 /* TRVPickerMapLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVPickerMapLogic.h; sourceTree = "<group>"; };
 		389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVPickerMapLogic.m; sourceTree = "<group>"; };
 		38ACCB4E1B72ED8300A77917 /* INTULocationManager+CurrentLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "INTULocationManager+CurrentLocation.h"; sourceTree = "<group>"; };
@@ -409,8 +406,6 @@
 				451565171B68221B005A2871 /* AppDelegate.h */,
 				451565181B68221B005A2871 /* AppDelegate.m */,
 				FADB8F2A1B714504009F7C02 /* Carmelo.jpg */,
-				386CAC261B74F74F0088781A /* TRVPickerMapProtocol.h */,
-				386CAC271B74F74F0088781A /* TRVPickerMapProtocol.m */,
 				38ACCB4E1B72ED8300A77917 /* INTULocationManager+CurrentLocation.h */,
 				38ACCB4F1B72ED8300A77917 /* INTULocationManager+CurrentLocation.m */,
 				451565141B68221B005A2871 /* Info.plist */,
@@ -900,7 +895,6 @@
 				942C18F41B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m in Sources */,
 				94E513981B739EBC002710AF /* TRVUserAboutMeView.m in Sources */,
 				FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */,
-				386CAC281B74F74F0088781A /* TRVPickerMapProtocol.m in Sources */,
 				45F925A91B712400009B2E98 /* TRVSubCategoryCollectionView.m in Sources */,
 				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,
 				389646421B6AB67B004FFDB7 /* TRVPickerMapLogic.m in Sources */,

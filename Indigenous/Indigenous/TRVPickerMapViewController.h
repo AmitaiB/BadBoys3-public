@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class CLLocation;
+
+@protocol TRVPickerMapDelegate <NSObject>
+
+-(void)userSelectedTourStopLocation:(CLLocation*)location;
+
+@end
+
+
 @interface TRVPickerMapViewController : UIViewController
+
+@property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
 
 @end

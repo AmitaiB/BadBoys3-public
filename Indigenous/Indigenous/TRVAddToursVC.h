@@ -1,5 +1,5 @@
 //
-//  TRVAddNewStopToItineraryVC.h
+//  TRVAddToursVC.h
 //  Indigenous
 //
 //  Created by Amitai Blickstein on 7/29/15.
@@ -8,6 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface TRVAddToursVC : UIViewController
+@interface TRVAddToursVC :  UIViewController
 
 @end
