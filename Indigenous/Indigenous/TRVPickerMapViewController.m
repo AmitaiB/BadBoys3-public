@@ -68,17 +68,17 @@
 }
 
 
--(void)reportINTUstatus:(INTULocationStatus*)status fromMethod:(NSString *)methodName {
-    if (status == INTULocationStatusSuccess)         {
-        NSLog(@"SUCCESS in the INTULocation %@!", methodName);
-    } else if (status == INTULocationStatusTimedOut) {
-        NSLog(@"TIMED OUT in the INTULocation %@!", methodName);
-    } else if (status == INTULocationStatusError)    {
-        NSLog(@"ERROR in the INTULocation %@!", methodName);
-    } else {
-        NSLog(@"SOME STATUS in the INTULocation %@!", methodName);
-    }
-}
+//-(void)reportINTUstatus:(INTULocationStatus*)status fromMethod:(NSString *)methodName {
+//    if (status == INTULocationStatusSuccess)         {
+//        NSLog(@"SUCCESS in the INTULocation %@!", methodName);
+//    } else if (status == INTULocationStatusTimedOut) {
+//        NSLog(@"TIMED OUT in the INTULocation %@!", methodName);
+//    } else if (status == INTULocationStatusError)    {
+//        NSLog(@"ERROR in the INTULocation %@!", methodName);
+//    } else {
+//        NSLog(@"SOME STATUS in the INTULocation %@!", methodName);
+//    }
+//}
 
 -(void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
