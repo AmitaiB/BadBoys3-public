@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.mapView.delegate = self;
     INTULocationManager *locationManager = [INTULocationManager sharedInstance];    
     CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
     
@@ -112,9 +112,9 @@
                                          self.bottomLayoutGuide.length + 5, 0);
 }
 
-#pragma mark GMSMapView Delegate Methods
+#pragma mark GMSMapViewDelegate
 
-#pragma mark - Info Window Methods
+#pragma mark - infoWindow Methods
 
 -(UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
         //infoWindow setup
@@ -134,8 +134,16 @@
     [iWindow addSubview:snippetLabel];
     snippetLabel.text = marker.snippet;
     
+        //custom background image style
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"london"]];
+    [iWindow addSubview:backgroundImage];
+    
+    marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
+    
     return iWindow;
 }
+
+#pragma mark - Events (delegate methods)
 
 -(void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
     NSString *message = [NSString stringWithFormat:@"You tapped the info window for the %@ marker", marker.title];
@@ -147,6 +155,9 @@
     [self presentViewController:windowTappedAlert animated:YES completion:nil];
 }
 
+-(void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    NSLog(@"You tapped at %f, %f", coordinate.latitude, coordinate.longitude);
+}
 
 /**
 ✓⃞– mapView:markerInfoContents:
