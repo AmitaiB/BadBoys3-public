@@ -7,6 +7,7 @@
 //
 
 #import "TRVTourView.h"
+#import <Masonry/Masonry.h>
 
 @implementation TRVTourView
 
@@ -40,7 +41,9 @@
     
     [self addSubview:self.contentView];
     self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
     
     //Hey, were changes made"?
     
@@ -53,18 +56,18 @@
     
 }
 
-- (void)updateConstraints {
-    
-    // THIS MAKES SURE WHATEVER VIEW THE NIB INHABITS, OUR SUBVIEWS HIT THE EDGES
-    UIView *view = self.contentView;
-
-    NSDictionary *views = NSDictionaryOfVariableBindings(view);
-    NSMutableArray *constraints = [[NSMutableArray alloc] init];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
-    [self addConstraints:constraints];
-    [super updateConstraints];
-}
+//- (void)updateConstraints {
+//    
+//    // THIS MAKES SURE WHATEVER VIEW THE NIB INHABITS, OUR SUBVIEWS HIT THE EDGES
+//    UIView *view = self.contentView;
+//
+//    NSDictionary *views = NSDictionaryOfVariableBindings(view);
+//    NSMutableArray *constraints = [[NSMutableArray alloc] init];
+//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
+//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
+//    [self addConstraints:constraints];
+//    [super updateConstraints];
+//}
 
 -(void)setTourForThisTourView:(TRVTour *)tourForThisTourView {
     

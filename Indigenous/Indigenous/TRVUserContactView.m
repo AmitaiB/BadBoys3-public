@@ -40,6 +40,9 @@
     [self addSubview:self.userContactContentView];
     self.userContactContentView.translatesAutoresizingMaskIntoConstraints = NO;
 
+    [self.userContactContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
     
     //Hey, were changes made"?
     
@@ -47,20 +50,20 @@
     
     //else dont do anything
 
-    [self setNeedsUpdateConstraints];
+//    [self setNeedsUpdateConstraints];
     
 }
 
-- (void)updateConstraints {
-    
-    UIView *view = self.userContactContentView;
-    NSDictionary *views = NSDictionaryOfVariableBindings(view);
-    NSMutableArray *constraints = [[NSMutableArray alloc] init];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
-    [self addConstraints:constraints];
-    [super updateConstraints];
-}
+//- (void)updateConstraints {
+//    
+//    UIView *view = self.userContactContentView;
+//    NSDictionary *views = NSDictionaryOfVariableBindings(view);
+//    NSMutableArray *constraints = [[NSMutableArray alloc] init];
+//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
+//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
+//    [self addConstraints:constraints];
+//    [super updateConstraints];
+//}
 
 -(void)setUserForThisContactView:(TRVUser *)userForThisContactView {
     

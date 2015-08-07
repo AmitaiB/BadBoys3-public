@@ -48,10 +48,6 @@
     self.guideTripDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:@[aTour] configuration:nil];
     
     
-    
-
-    
-    
     //Instantiate a Image View Nib
     
     TRVUserProfileImageView *profileImageView = [[TRVUserProfileImageView alloc] init];
@@ -116,7 +112,8 @@
     
     [segmentedControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contactView.mas_bottom).with.offset(10);
-        make.left.and.right.equalTo(self.profileView).with.offset(10);
+        make.left.equalTo(self.profileView).with.offset(10);
+        make.right.equalTo(self.profileView).with.offset(-10);
     }];
 
     

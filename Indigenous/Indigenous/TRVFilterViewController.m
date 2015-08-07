@@ -126,7 +126,6 @@
     
     TRVSubCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor grayColor];
     cell.categoryLabel.text = self.subCategories[indexPath.row];
     
     if ([self.filterDictionary[@"subCategories"] containsObject:self.subCategories[indexPath.row]]){
@@ -156,7 +155,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor grayColor];
 
     [self.selectedSubCategories removeObject:self.subCategories[indexPath.row]];
     

@@ -8,11 +8,15 @@
 
 #import "TRVGuideProfileImageView.h"
 #import <Masonry/Masonry.h>
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface TRVGuideProfileImageView ()
 
 @property (strong, nonatomic) IBOutlet UIView *guideProfileView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *guideTagLineLabel;
+
 
 @end
 
@@ -46,14 +50,25 @@
                                 options:nil];
     
     [self addSubview:self.guideProfileView];
-    
+    [self createCircleImageViewMask];
+
     
     // set constraints for imageView to superview
-    
     [self.guideProfileView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
     }];
     
+}
+
+-(void)createCircleImageViewMask {
+    CALayer *imageLayer = self.profileImageView.layer;
+
+    //convert uicolor to CGColor
+    imageLayer.borderColor = [[UIColor grayColor] CGColor];
+    [imageLayer setCornerRadius:self.profileImageView.frame.size.width/2];
+    [imageLayer setBorderWidth:2];
+    [imageLayer setMasksToBounds:YES];
+
 }
 
 @end

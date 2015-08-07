@@ -7,6 +7,7 @@
 //
 
 #import "TRVUserAboutMeView.h"
+#import <Masonry.h>
 
 @implementation TRVUserAboutMeView
 
@@ -39,6 +40,10 @@
                                 options:nil];
     
     [self addSubview:self.contentView];
+    
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
     self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
     
@@ -55,20 +60,20 @@
 
     
 }
-
-- (void)updateConstraints {
-    
-
-    UIView *view = self.contentView;
-
-    
-    NSDictionary *views = NSDictionaryOfVariableBindings(view);
-    NSMutableArray *constraints = [[NSMutableArray alloc] init];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
-    [self addConstraints:constraints];
-    [super updateConstraints];
-}
+//
+//- (void)updateConstraints {
+//    
+//
+//    UIView *view = self.contentView;
+//
+//    
+//    NSDictionary *views = NSDictionaryOfVariableBindings(view);
+//    NSMutableArray *constraints = [[NSMutableArray alloc] init];
+//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
+//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
+//    [self addConstraints:constraints];
+//    [super updateConstraints];
+//}
 
 -(void)setUserForThisAboutMeView:(TRVUser *)userForThisAboutMeView {
     

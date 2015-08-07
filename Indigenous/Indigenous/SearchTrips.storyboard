@@ -24,11 +24,8 @@
                                             <subviews>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TU0-H0-ykr">
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hoZ-fN-91S" userLabel="Profile Scroll Content">
-                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
+                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hoZ-fN-91S" userLabel="Profile Scroll Content"/>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="hoZ-fN-91S" firstAttribute="leading" secondItem="TU0-H0-ykr" secondAttribute="leading" id="0fi-dh-D2N"/>
                                                         <constraint firstItem="hoZ-fN-91S" firstAttribute="bottom" secondItem="TU0-H0-ykr" secondAttribute="bottom" id="h0w-cL-qrE"/>
@@ -46,7 +43,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="0.72243542640000002" blue="0.1259439467" alpha="0.33000000000000002" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="TwQ-Iv-Xvg" firstAttribute="leading" secondItem="5fd-oc-TVx" secondAttribute="leading" id="2Oa-pc-bQ5"/>
                                         <constraint firstAttribute="bottom" secondItem="TwQ-Iv-Xvg" secondAttribute="bottom" id="2i4-ul-S49"/>
@@ -118,7 +115,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zM3-J4-Bab" firstAttribute="top" secondItem="ybv-5H-Q3q" secondAttribute="bottom" id="CDi-fi-QQE"/>
                             <constraint firstAttribute="trailing" secondItem="ybv-5H-Q3q" secondAttribute="trailing" id="IjS-3r-N5g"/>

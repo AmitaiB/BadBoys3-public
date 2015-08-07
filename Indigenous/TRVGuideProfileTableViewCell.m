@@ -71,7 +71,7 @@
     [self.guideProfileScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.edges.equalTo(@0);
         // Lock Scroll View Height
-        self.guideProfileScrollView.backgroundColor = [UIColor greenColor];
+//        self.guideProfileScrollView.backgroundColor = [UIColor greenColor];
     }];
     
     
@@ -87,7 +87,6 @@
         // SET right margin of Scroll Content View To last item in items array
         
         make.right.equalTo(self.detailedProfileNib.mas_right);
-        self.guideProfileScrollContentView.backgroundColor = [UIColor blueColor];
     }];
 }
 
@@ -101,26 +100,24 @@
     [self.guideProfileScrollContentView addSubview:self.profileImageViewNib];
     
     // SET Profile View Nib Constraints
-    
-    
-    [self.profileImageViewNib mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.profileImageViewNib mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.guideProfileScrollView.mas_left);
         make.top.equalTo(self.guideProfileScrollView.mas_top);
         make.bottom.equalTo(self.guideProfileScrollView.mas_bottom);
         
+            
+        // Set aspect ratio of scroll view to be 1:1
         make.height.equalTo(self.guideProfileScrollView.mas_height);
         make.width.equalTo(self.guideProfileScrollView.mas_width);
     }];
     
     
     //SET DETAILED Profile View Nib Constraints
-    
     self.detailedProfileNib = [[TRVGuideDetailProfileView alloc] init];
-    
     [self.guideProfileScrollContentView addSubview:self.detailedProfileNib];
     
-    // SET constraints for Profile View Nib
     
+    // SET constraints for Profile View Nib
     [self.detailedProfileNib mas_makeConstraints:^(MASConstraintMaker *make) {
         // set all edges to superview edges except right margin
         make.left.equalTo(self.profileImageViewNib.mas_right);
