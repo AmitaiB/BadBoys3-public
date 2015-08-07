@@ -5,9 +5,11 @@ LOGIN/SIGNUP FLOW
 [x] Login
 [x] If logged in when app is started, go to home view
 [ ] Transition when isGuide = YES for sign up and log in (both email and facebook)
-[ ] When user logs out, it must be from facebook and parse
+[x] When user logs out, it must be from facebook and parse
 [ ] Create a "Skip for Now" Button
-[ ] Remove automatic sign out code
+[x] Remove automatic sign out code
+
+
 
 
 
@@ -23,6 +25,7 @@ SEARCH CITY
 
 
 TOUR GUIDE FLOW
+[ ] How do we decide if a guide is "play,eat,see,drink"?  We look at his tours?  If so, tours need that category too.
 [ ] Make it!
 
 BUGS

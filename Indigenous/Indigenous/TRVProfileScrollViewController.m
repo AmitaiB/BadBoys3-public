@@ -30,7 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
-//    self.sharedDataStore
     self.user = self.sharedDataStore.loggedInUser;
     
 //    self.user.userBio = [[TRVBio alloc] initTouristWithUserName:@"Ashley" firstName:@"Ashley" lastName:@"Madison" email:@"ashleyfromthe6@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];

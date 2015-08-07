@@ -144,7 +144,16 @@
         
         if (success){
             
-            [self goToNextStoryboard];
+            newUser[@"userBio"][@"user"] = [PFUser currentUser];
+            [newUser saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+                
+                if (success){
+                    [self goToNextStoryboard];
+                } else {
+                    NSLog(@"Error signing up....");
+                }
+                
+            }];
             
         } else {
             NSLog(@"Error signing up: %@", error);

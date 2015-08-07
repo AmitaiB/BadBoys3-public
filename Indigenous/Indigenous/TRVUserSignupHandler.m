@@ -31,11 +31,11 @@
     [newDetails setValue:profilePhotoURL forKey:@"picture"];
     [userBio setValuesForKeysWithDictionary:newDetails];
     newUser[@"userBio"] = userBio;
-   
+    
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         
         if (succeeded){
-
+         
           completion(YES, nil);
             
         } else {

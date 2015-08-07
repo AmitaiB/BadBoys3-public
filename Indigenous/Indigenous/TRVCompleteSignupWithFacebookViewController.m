@@ -67,7 +67,9 @@
     currentUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
     currentUser[@"userBio"][@"oneLineBio"] = self.oneLineBio.text;
     currentUser[@"userBio"][@"homeCity"] = self.selectedHomeCity;
-    
+    currentUser[@"userBio"][@"user"] = [PFUser currentUser];
+  
+
     
     [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         [hud hide:YES];

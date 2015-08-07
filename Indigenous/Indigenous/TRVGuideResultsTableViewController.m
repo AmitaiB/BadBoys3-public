@@ -101,20 +101,39 @@
 }
 
 -(void)updateGuidesList {
-        // LEO
-        // THIS IS ALL YOU
-        // KILL IT
-        // OR MAYBE I CAN DO IT
-        // BUT WE SHALL SEE
+    
+    NSMutableArray *availableGuides = [[NSMutableArray alloc]init];
     
         // ADD LOADING HUD HERE BEFORE PARSE REQUEST GOES DOWN
+    PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"UserBio"];
+    
+     [findGuidesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
+         
+         // WE NEED TO ADD A SEARCH BASED ON EAT,SEE,PLAY,DRINK
+         for (PFObject *guideBio in objects){
+             
+             if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
+                 
+                 
+                 NSLog(@"This is the parent: %@", guideBio[@"parent"]);
+                 [availableGuides addObject:guideBio[@"parent"]];
+                 
+             }
+             
+             
+         }
+         
+     }];
+    
     
         if (self.filterDictionary == nil){
                 NSLog(@"Filter is nil!");
         
                 // SHOW ALL GUDES
         
-            } else {
+            
+        
+                } else {
             
                 // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
             
