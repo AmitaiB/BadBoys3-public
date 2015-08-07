@@ -26,7 +26,7 @@
 -(instancetype)initWithTrips:(NSArray *)trips configuration:(void (^)())configureCell {
     if (self = [super init]) {
         _trips = trips;
-        _pastTrips = [self filterTripsWithComparisonResult:NSOrderedAscending];
+        _pastTrips = [self pastTrips];
         _futureTrips = [self futureTrips];
         _configureCell = configureCell;
         _past = NO;
@@ -62,18 +62,19 @@
     _past = !_past;
 }
 
-- (NSArray*)filterTripsWithComparisonResult:(NSComparisonResult)comparisonResult {
-    NSPredicate *pastPred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+- (NSArray*)filterTripsWithKey:(NSString*)key comparisonResult:(NSComparisonResult)comparisonResult {
+    NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         return [[evaluatedObject valueForKey:@"tourDeparture"] compare:[NSDate date]] == comparisonResult;
     }];
-    return [self.trips filteredArrayUsingPredicate:pastPred];
+    return [self.trips filteredArrayUsingPredicate:pred];
+}
+
+-(NSArray*)pastTrips {
+    return [self filterTripsWithKey:@"tourDeparture" comparisonResult:NSOrderedAscending];
 }
 
 - (NSArray*)futureTrips {
-    NSPredicate *futurePred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-        return [[evaluatedObject valueForKey:@"tourDeparture"] compare:[NSDate date]] == NSOrderedDescending;
-    }];
-    return [self.trips filteredArrayUsingPredicate:futurePred];
+    return [self filterTripsWithKey:@"tourDeparture" comparisonResult:NSOrderedDescending];
 }
 
 @end
