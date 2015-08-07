@@ -14,6 +14,4 @@
 @property (nonatomic, strong) NSNumber *touristRating;
 @property (nonatomic, strong) NSNumber *guideRating;
 
-
-
 @end

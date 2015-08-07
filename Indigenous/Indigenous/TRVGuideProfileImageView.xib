@@ -27,6 +27,7 @@
                             <exclude reference="dtR-N2-97b"/>
                         </mask>
                     </variation>
+
                 </imageView>
             </subviews>
             <constraints>
@@ -53,7 +54,4 @@
             <point key="canvasLocation" x="223.5" y="375"/>
         </view>
     </objects>
-    <resources>
-        <image name="leo" width="259" height="194"/>
-    </resources>
 </document>

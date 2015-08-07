@@ -15,7 +15,7 @@
                              firstName:(NSString*)firstName
                               lastName:(NSString*)lastName
                                  email:(NSString*)email
-                           phoneNumber:(NSUInteger)phoneNumber
+                           phoneNumber:(NSString*)phoneNumber
                           profileImage:(UIImage*)profileImage
                         bioDescription:(NSString*)bioDescription
                              interests:(NSMutableArray*)interests
@@ -39,7 +39,7 @@
                            firstName:(NSString*)firstName
                             lastName:(NSString*)lastName
                                email:(NSString*)email
-                         phoneNumber:(NSUInteger)phoneNumber
+                         phoneNumber:(NSString*)phoneNumber
                         profileImage:(UIImage*)profileImage
                       bioDescription:(NSString*)bioDescription
                            interests:(NSMutableArray*)interests
@@ -47,7 +47,8 @@
                                  age:(NSUInteger)age
                               gender:(NSString*)gender
                               region:(NSString*)region
-                      oneLineSummary:(NSString*)oneLineSummary;
+                      oneLineSummary:(NSString*)oneLineSummary
+                     profileImageURL:(NSString*)URL
 {
     
     self = [super init];
@@ -63,6 +64,7 @@
         _age = age;
         _gender = gender;
         _region = region;
+        _profileImageURL = URL;
     }
     return self;
     

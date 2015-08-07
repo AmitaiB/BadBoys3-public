@@ -19,14 +19,13 @@
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *email;
-@property (nonatomic) NSUInteger phoneNumber;
+@property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) UIImage *profileImage;
 @property (nonatomic, strong) NSString *bioDescription;
 
 // Not sure if we need interests
 @property (nonatomic, strong) NSMutableArray *interests;
 @property (nonatomic, strong) NSString *language;
-@property (nonatomic, strong) NSString *homeCity;
 @property (nonatomic, strong) NSString *homeCountry;
 @property (nonatomic, strong) NSString *userTagline;
 @property (nonatomic, strong) NSString *birthday;
@@ -36,7 +35,8 @@
 @property (nonatomic) NSUInteger age;
 @property (nonatomic, strong) NSString *gender;
 @property (nonatomic, strong) NSString *region;
-
+@property (nonatomic, strong) NSString *homeCity;
+@property (nonatomic, strong) NSString *profileImageURL;
 
 //INITIALIZERS
 -(instancetype)initTourist;
@@ -46,7 +46,7 @@
                       firstName:(NSString*)firstName
                        lastName:(NSString*)lastName
                           email:(NSString*)email
-                    phoneNumber:(NSUInteger)phoneNumber
+                    phoneNumber:(NSString*)phoneNumber
                    profileImage:(UIImage*)profileImage
                  bioDescription:(NSString*)bioDescription
                       interests:(NSMutableArray*)interests
@@ -56,7 +56,7 @@
                              firstName:(NSString*)firstName
                               lastName:(NSString*)lastName
                                  email:(NSString*)email
-                           phoneNumber:(NSUInteger)phoneNumber
+                           phoneNumber:(NSString*)phoneNumber
                           profileImage:(UIImage*)profileImage
                         bioDescription:(NSString*)bioDescription
                              interests:(NSMutableArray*)interests
@@ -64,7 +64,8 @@
                                  age:(NSUInteger)age
                               gender:(NSString*)gender
                               region:(NSString*)region
-                      oneLineSummary:(NSString*)oneLineSummary;
+                      oneLineSummary:(NSString*)oneLineSummary
+                     profileImageURL:(NSString*)URL;
 
 -(void)convertTouristToGuideWithAge:(NSUInteger)age
                              gender:(NSString*)gender
