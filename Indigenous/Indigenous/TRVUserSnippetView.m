@@ -47,9 +47,10 @@
 
 
     [self.userSnippetContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.height.equalTo(@500);
         make.edges.equalTo(@0);
     }];
-//
+
 
 }
 

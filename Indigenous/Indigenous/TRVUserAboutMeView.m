@@ -50,7 +50,7 @@
     
     
     // DO I NEED BELOW??
-//    [self setNeedsUpdateConstraints];
+    [self setNeedsUpdateConstraints];
 
 
     

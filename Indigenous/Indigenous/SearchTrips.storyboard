@@ -132,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5CY-XY-hZq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3304" y="1305"/>
+            <point key="canvasLocation" x="3239" y="1237"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="Io0-hn-H2u">
@@ -373,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kmM-xY-j26" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="1251"/>
+            <point key="canvasLocation" x="1870" y="1237"/>
         </scene>
         <!--Tour Test View Controller-->
         <scene sceneID="vvR-Vz-MpI">
@@ -451,6 +451,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o49-wp-byo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="712" y="52"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XEa-XG-k6O">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="pPC-Kv-3oZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c3R-wW-xR6"/>
+                        <viewControllerLayoutGuide type="bottom" id="B39-Om-Q20"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QZG-Sk-JZt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T6i-iD-qEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3859" y="1222"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZoY-gy-Y6X">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="tfz-HT-xMB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="piP-dZ-Z82"/>
+                        <viewControllerLayoutGuide type="bottom" id="tbZ-A1-bMC"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wzz-hr-lVe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fZN-Db-0qa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>
