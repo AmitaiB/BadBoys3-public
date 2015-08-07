@@ -15,7 +15,7 @@
 #import "INTULocationManager+CurrentLocation.h"
 #import <GoogleMaps/GoogleMaps.h>
 
-@interface TRVPickerMapViewController () <CLLocationManagerDelegate, GMSMapViewDelegate>
+@interface TRVPickerMapViewController () <GMSMapViewDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, copy) NSSet *markers;

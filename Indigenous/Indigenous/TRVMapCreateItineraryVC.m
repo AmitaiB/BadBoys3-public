@@ -8,57 +8,11 @@
 
 #import "TRVMapCreateItineraryVC.h"
 
-#define debug 1
-
 @interface TRVMapCreateItineraryVC ()
 
 @end
 
-#pragma mark - YALTabBarInteracting - Create Itinerary VC
-
 @implementation TRVMapCreateItineraryVC
-
-#pragma mark - Boilerplate methods
-
--(void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
-#pragma mark - Button Action methods
-
--(void)extraLeftItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)extraRightItemDidPress {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    [self performSegueWithIdentifier:@"toMapSegueID" sender:nil];
-}
 
 
 - (void)viewDidLoad {

@@ -11,6 +11,7 @@
 		384AFBBD1B696A9B00E169A9 /* TRVTourGuideTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBBC1B696A9B00E169A9 /* TRVTourGuideTabBarVC.m */; };
 		384AFBC01B696ADB00E169A9 /* TRVTourGuideMyToursVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */; };
 		384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */; };
+		384AFBC61B696B3500E169A9 /* TRVTourGuideProfileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBC51B696B3500E169A9 /* TRVTourGuideProfileVC.m */; };
 		384AFBC91B696B8F00E169A9 /* TRVMapCreateItineraryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBC81B696B8F00E169A9 /* TRVMapCreateItineraryVC.m */; };
 		3856144D1B72688B00D6F7E7 /* TourGuideFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */; };
 		3856144E1B72688B00D6F7E7 /* TRVPickerMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */; };
@@ -113,6 +114,8 @@
 		384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourGuideMyToursVC.m; sourceTree = "<group>"; };
 		384AFBC11B696B1900E169A9 /* TRVCreateTourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVCreateTourVC.h; sourceTree = "<group>"; };
 		384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVCreateTourVC.m; sourceTree = "<group>"; };
+		384AFBC41B696B3500E169A9 /* TRVTourGuideProfileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourGuideProfileVC.h; sourceTree = "<group>"; };
+		384AFBC51B696B3500E169A9 /* TRVTourGuideProfileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourGuideProfileVC.m; sourceTree = "<group>"; };
 		384AFBC71B696B8F00E169A9 /* TRVMapCreateItineraryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVMapCreateItineraryVC.h; sourceTree = "<group>"; };
 		384AFBC81B696B8F00E169A9 /* TRVMapCreateItineraryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVMapCreateItineraryVC.m; sourceTree = "<group>"; };
 		3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TourGuideFlow.storyboard; sourceTree = "<group>"; };
@@ -303,6 +306,8 @@
 				384AFBC81B696B8F00E169A9 /* TRVMapCreateItineraryVC.m */,
 				38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */,
 				38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */,
+				384AFBC41B696B3500E169A9 /* TRVTourGuideProfileVC.h */,
+				384AFBC51B696B3500E169A9 /* TRVTourGuideProfileVC.m */,
 				3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented */,
 			);
 			name = TourGuideFlow;
@@ -857,6 +862,7 @@
 				451859541B70FCC0008D7049 /* TRVFilterViewController.m in Sources */,
 				38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */,
 				45F925AC1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m in Sources */,
+				384AFBC61B696B3500E169A9 /* TRVTourGuideProfileVC.m in Sources */,
 				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
 				38ACCB501B72ED8300A77917 /* INTULocationManager+CurrentLocation.m in Sources */,
 				944AD0061B6DE4B300404EDD /* TRVGuideProfileTableViewCell.m in Sources */,

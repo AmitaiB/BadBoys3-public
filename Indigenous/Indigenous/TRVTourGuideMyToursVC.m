@@ -8,39 +8,11 @@
 
 #import "TRVTourGuideMyToursVC.h"
 
-#define debug 1
-
 @interface TRVTourGuideMyToursVC ()
 
 @end
 
 @implementation TRVTourGuideMyToursVC
-
-#pragma mark - YALTabBarInteracting MyTours VC
-
--(void)tabBarViewWillCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewWillExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewDidCollapse {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
-
--(void)tabBarViewDidExpand {
-    if (debug == 1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-}
 
 
 - (void)viewDidLoad {
