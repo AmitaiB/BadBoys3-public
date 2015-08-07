@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVUser.h"
 
 @interface TRVGuideProfileImageView : UIView
 
-
+@property (nonatomic, strong) TRVUser *userForThisGuideProfileView;
 
 
 @end

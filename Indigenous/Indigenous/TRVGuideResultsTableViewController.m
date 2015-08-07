@@ -14,12 +14,14 @@
 #import "TRVDetailGuideViewController.h"
 #import "TRVFilterViewController.h"
 #import "TRVUserDataStore.h"
+#import "TRVAFNetwokingAPIClient.h"
 
 @interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol>
 
 
 @property (nonatomic, strong) NSDictionary *filterDictionary;
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
+@property (nonatomic, strong) NSMutableArray *availableGuides;
 @end
 
 @implementation TRVGuideResultsTableViewController
@@ -45,27 +47,37 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    self.user = [[TRVUser alloc] init];
+    if (self.availableGuides.count > 0){
+        self.user = [[TRVUser alloc]initWithBio:[self.availableGuides[indexPath.row] userBio]];
+//        self.user.userBio.profileImage = self.user.userBio.profileImage;
+    //self.user = self.availableGuides[indexPath.row];
+    //self.user.userBio = [self.availableGuides[indexPath.row] userBio];
+        NSLog(@"Image is: %@", self.user.userBio.profileImage);
+//    self.user.userBio.homeCity = @"New York";
+//    self.user.userBio.homeCountry = @"United States";
+//    self.user.userBio.userTagline = @"Loves fried chicken and ramen. Super Spontaneous Person!";
     
-    
-    self.user.userBio = [[TRVBio alloc] initTouristWithUserName:@"Ashley" firstName:@"Ashley" lastName:@"Madison" email:@"ashleyfromthe6@gmail.com" phoneNumber:7188866958 profileImage:[UIImage imageNamed:@"leo.jpg"] bioDescription:@"great person" interests:[NSMutableArray arrayWithObjects:@"hi", @"hi", nil] language:@"English"];
-  
-    self.user.userBio.homeCity = @"New York";
-    self.user.userBio.homeCountry = @"United States";
-    self.user.userBio.userTagline = @"Loves fried chicken and ramen. Super Spontaneous Person!";
-    self.user.userBio.profileImage = [UIImage imageNamed:@"leo.jpg"];
+//    [TRVAFNetwokingAPIClient getImagesWithURL:self.user.userBio.profileImageURL withCompletionBlock:^(UIImage *response) {
+//        
+//        // Setting profile Image with AFNetworking request
+//        self.user.userBio.profileImage = response;
+//        
+//    }];
     
     
     TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
     
     cell.guideForThisCell = self.user;
-    
+    cell.profileImageViewNib.userForThisGuideProfileView = self.user;
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     [cell.profileImageViewNib addGestureRecognizer:singleTapOnImage];
     cell.profileImageViewNib.userInteractionEnabled = YES;
     
     return cell;
-    
+    } else {
+        TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
+        return cell;
+    }
 }
 
 
@@ -102,8 +114,7 @@
 
 -(void)updateGuidesList {
     
-    NSMutableArray *availableGuides = [[NSMutableArray alloc]init];
-    
+    self.availableGuides = [[NSMutableArray alloc]init];
         // ADD LOADING HUD HERE BEFORE PARSE REQUEST GOES DOWN
     PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"UserBio"];
     
@@ -114,15 +125,32 @@
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
                  
+                 PFUser *theParseGuide = guideBio[@"user"];
+                 [theParseGuide fetch];
+                 //NSLog(@"Bio: %@ \n Guide: %@", guideBio, theParseGuide);
                  
-                 NSLog(@"This is the parent: %@", guideBio[@"parent"]);
-                 [availableGuides addObject:guideBio[@"parent"]];
+                 [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
+                     
+TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"] firstName:guideBio[@"first_name"] lastName:guideBio[@"last_name"] email:guideBio[@"email"] phoneNumber:guideBio[@"phoneNumber"] profileImage:response bioDescription:guideBio[@"bioTextField"] interests:nil language:guideBio[@"languagesSpoken"] age:0 gender:guideBio[@"gender"] region:nil oneLineSummary:guideBio[@"oneLineBio"] profileImageURL:guideBio[@"picture"]];
+                     TRVUser *guide = [[TRVUser alloc]initWithBio:bio];
+                     if (theParseGuide[@"myTrips"]){
+                         guide.myTrips = theParseGuide[@"myTrips"];
+                     }
+                     
+                     [self.availableGuides addObject:guide];
+                     NSLog(@"My image is: %@", guide.userBio.profileImage);
+                     [self.tableView reloadData];
+                 }];
                  
+                 
+                
              }
              
              
          }
          
+         NSLog(@"Available Guides: %@", self.availableGuides);
+
      }];
     
     

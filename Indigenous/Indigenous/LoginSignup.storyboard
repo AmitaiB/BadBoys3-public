@@ -246,7 +246,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yHa-bl-xqL">
                                 <rect key="frame" x="276" y="386" width="51" height="31"/>
                             </switch>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="66L-kj-kgK">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="66L-kj-kgK">
                                 <rect key="frame" x="160" y="425" width="280" height="29"/>
                                 <segments>
                                     <segment title="NY"/>
@@ -261,6 +261,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="66L-kj-kgK" secondAttribute="centerX" id="2hx-Tl-G4a"/>
                             <constraint firstAttribute="centerX" secondItem="JeX-0Y-rCh" secondAttribute="centerX" id="A2e-BC-f74"/>
                             <constraint firstAttribute="centerX" secondItem="yHa-bl-xqL" secondAttribute="centerX" constant="-0.5" id="BRk-6d-eQQ"/>
                             <constraint firstAttribute="centerX" secondItem="LAi-7h-M7j" secondAttribute="centerX" constant="8" id="ED6-qx-MFu"/>

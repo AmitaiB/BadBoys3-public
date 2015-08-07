@@ -75,8 +75,8 @@
             [self presentTouristHomeView];
         } else {
             
-            //TRANSITION TO GUIDE HOME VIEW
-            
+            // TODO TRANSITION TO GUIDE HOMEVIEW
+            [self presentTouristHomeView];
         }
         
     }];

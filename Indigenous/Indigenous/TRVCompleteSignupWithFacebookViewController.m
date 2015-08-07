@@ -76,22 +76,13 @@
         if (succeeded){
             if (self.isGuide.on){
                 // TRANSITION TO GUIDE HOME PAGE
-            
+                // TODO This should presentToGuideTourView
+                [self presentTouristHomeView];
                 
-                
-            } else {
+            } else{
                 // TRANSITION TO TOURIST HOME PAGE
                 // trvtabbar
-                UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
-                
-                UIViewController *destination = [tourist instantiateInitialViewController];
-                
-                UIViewController *presentingViewController = self.presentingViewController;
-                
-               [presentingViewController dismissViewControllerAnimated:NO completion:^{
-                   [presentingViewController presentViewController:destination animated:NO completion:nil];
-               }];
-                
+                [self presentTouristHomeView];
             }
             
         } else {
@@ -119,7 +110,20 @@
 }
 
 
+-(void)presentTouristHomeView {
+    
+    UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+    
+    UIViewController *destination = [tourist instantiateInitialViewController];
+    
+    UIViewController *presentingViewController = self.presentingViewController;
+    
+    [presentingViewController dismissViewControllerAnimated:NO completion:^{
+        [presentingViewController presentViewController:destination animated:NO completion:nil];
+    }];
 
+    
+}
 
 
 - (void)didReceiveMemoryWarning {
