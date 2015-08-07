@@ -64,10 +64,10 @@
 //    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
 //    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate]
     GMSMarker *marker1 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.70531680012648,-74.01396463558194)];
-    marker1.title = @"First marker!!";
-    marker1.snippet = @"First Snippet!";
-    marker1.appearAnimation = kGMSMarkerAnimationPop;
-    marker1.draggable = YES;
+//    marker1.title = @"First marker!!";
+//    marker1.snippet = @"First Snippet!";
+//    marker1.appearAnimation = kGMSMarkerAnimationPop;
+//    marker1.draggable = YES;
     marker1.map = nil;
     
     
@@ -138,7 +138,13 @@
 }
 
 -(void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    NSString *message = [NSString stringWithFormat:@"You tapped the info window for the %@ marker", marker.title];
     
+    UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Info Window Tapped!"
+                                                                               message:message
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+    
+    [self presentViewController:windowTappedAlert animated:YES completion:nil];
 }
 
 
