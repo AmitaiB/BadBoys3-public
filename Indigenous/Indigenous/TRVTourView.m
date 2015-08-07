@@ -76,9 +76,8 @@
     self.nameOfTourLabel.text = itineraryForThisView.nameOfTour;
     self.numberOfStopsLabel.text = [NSString stringWithFormat:@"%lu stops", itineraryForThisView.tourStops.count];;
     self.tourRatingLabel.text = [NSString stringWithFormat:@"Average Rating - %f", tourForThisTourView.tourAverageRating];
-    
+    NSLog(@"heelllo from tour nib setter method");
     }
 
 
-
-@end
+;@end
