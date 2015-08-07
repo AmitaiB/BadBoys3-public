@@ -1,5 +1,5 @@
 //
-//  TRVProfileAboutMeView.h
+//  TRVProfileView.h
 //  Indigenous
 //
 //  Created by Leo Kwan on 8/6/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TRVProfileAboutMeView : UIView
+@interface TRVProfileView : UIView
 
 @end

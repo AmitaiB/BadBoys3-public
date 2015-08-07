@@ -57,8 +57,9 @@
             bioForLoggedInUser.isGuide = objects[0][@"isGuide"];
             bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
             bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
-            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
-            
+//            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
+            bioForLoggedInUser.bioDescription = @"10 Bands, 50 bands, 100 bands, fuck it, man Lets just not even discuss it, man OMG, niggas sleep, I aint trippin, Imma let em sleep     I aint trippin, let em rest";
+
             
             //REVISIT
             // DEPENDS ON IF FACEBOOK OR EMAIL LOGGED IN
@@ -66,8 +67,6 @@
                 
                 
                 [TRVAFNetwokingAPIClient getImagesWithURL:objects[0][@"picture"] withCompletionBlock:^(UIImage *response) {
-                
-                    NSLog(@"%@-----------------------------", response);
                     
                     // Setting profile Image with AFNetworking request
                     bioForLoggedInUser.profileImage = response;
@@ -87,22 +86,15 @@
                         
                     }
                 }];
-                
-                
-                NSLog(@"%@", pictureFile.url);
-                            }
+              }
 
             _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
             
             
-            NSLog(@"Welcome %@. ", _loggedInUser);
-         //   NSLog(@"%@ THIS IS THE LOGGED IN", self.loggedInUser.userBio.firstName);
-         
+            NSLog(@"Welcome %@. ", _loggedInUser.userBio.firstName);
         }
     }];
-//    }
-//    
-//    return self;
+
 }
 
 

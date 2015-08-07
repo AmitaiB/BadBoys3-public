@@ -70,6 +70,7 @@
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
 
     TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
+        destinationVC.selectedGuideUser = self.user;
     }
 }
 

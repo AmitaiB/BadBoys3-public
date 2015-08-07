@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVUserProfileView.h"
+#import "TRVUserProfileImageView.h"
 #import <Masonry/Masonry.h>
 
-@implementation TRVUserProfileView
+@implementation TRVUserProfileImageView
 
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -46,9 +46,9 @@
     
 }
 
--(void)setUserForThisProfileView:(TRVUser *)userForThisProfileView {
+-(void)setUserForThisProfileImageView:(TRVUser *)userForThisProfileView {
     
-    _userForThisProfileView = userForThisProfileView;
+    _userForThisProfileImageView = userForThisProfileView;
     
     // TURN INTO AN IMAGE
     self.profileImageView.image = userForThisProfileView.userBio.profileImage;
