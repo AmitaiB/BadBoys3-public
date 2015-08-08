@@ -158,18 +158,19 @@
                      
                      TRVUser *guideForThisRow = [[TRVUser alloc]initWithBio:bio];
                      
-                     if (theParseGuide[@"myTrips"]){
-                         
-                         
-                         // UNCOMMENT THIS WHEN WE CAN ACTUALLY ADD TRIPS UP TO PARSE
-//                         guideForThisRow.myTrips = theParseGuide[@"myTrips"];
-                         
+                     // UNCOMMENT THIS WHEN WE CAN ACTUALLY ADD TRIPS UP TO PARSE
+                     // guideForThisRow.myTrips = theParseGuide[@"myTrips"];
+                     //  if (theParseGuide[@"myTrips"]){
+                     
+                     //---------------------------------------------------------------------------------------------------
+
                          // ADDED DUMMY DATA STORED IN NSMUTABLE ARRAY CATEGORY
                          NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
                          NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
-                         guideForThisRow.myTrips = allTrips;
-                     }
-                     
+                         guideForThisRow.allTrips = allTrips;
+//                     }
+                     //---------------------------------------------------------------------------------------------------
+
                      // ADDING GUIDE WHO MET CONDITIONS AS YES
                      [self.availableGuides addObject: guideForThisRow];
                      NSLog(@"My name is: %@", guideForThisRow.userBio.firstName);
