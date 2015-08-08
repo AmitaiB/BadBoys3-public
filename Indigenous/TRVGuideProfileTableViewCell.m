@@ -29,7 +29,12 @@
 
 
 -(void) setGuideForThisCell:(TRVUser *)guideForThisCell {
+    // override guide setter for cell
     _guideForThisCell = guideForThisCell;
+    
+    //override guide setter for nib WITHIN CELL BY SETTING THIS CELL GUIDE. 
+    self.profileImageViewNib.userForThisGuideProfileView = guideForThisCell;
+    
     [self layoutConstraintsForProfileSection];
 }
 
@@ -39,17 +44,15 @@
 
     // Set Profile Image View Constraints
     
-    
     [self.contentView addSubview:self.profileSectionContentView];
 
     // Set constraints for ROOT PROFILE Content View
     [self.profileSectionContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(@0);x`
         make.top.and.left.and.right.equalTo(self.contentView);
         make.right.equalTo(self.contentView.mas_right);
         
 //         SET the height of Profile scroll view to 2/3 of entire cell height
-        make.height.equalTo(self.contentView.mas_height).dividedBy(1.5);
+        make.height.equalTo(self.contentView.mas_height).dividedBy(1.25);
         
         
     }];
@@ -99,15 +102,13 @@
     self.profileImageViewNib = [[TRVGuideProfileImageView alloc] init];
     [self.guideProfileScrollContentView addSubview:self.profileImageViewNib];
     
-    // SET Profile View Nib Constraints
+    // SET Profile Image View Nib Constraints
         [self.profileImageViewNib mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.guideProfileScrollView.mas_left);
         make.top.equalTo(self.guideProfileScrollView.mas_top);
         make.bottom.equalTo(self.guideProfileScrollView.mas_bottom);
         
-            
         // Set aspect ratio of scroll view to be 1:1
-        make.height.equalTo(self.guideProfileScrollView.mas_height);
         make.width.equalTo(self.guideProfileScrollView.mas_width);
     }];
     

@@ -66,9 +66,14 @@
     [aboutMeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(snippetView.mas_bottom);
         make.left.and.right.equalTo(self.containerView);
-
     }];
+    
+    //add IBAction programatically
+    UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    [aboutMeView.switchToGuideButton addGestureRecognizer:singleTapOnImage];
+    aboutMeView.switchToGuideButton.userInteractionEnabled = YES;
 
+    
     
     
     //Instantiate a Contact View Nib
@@ -88,10 +93,20 @@
         make.bottom.equalTo(contactView.mas_bottom);
 //        make.height.equalTo(contactView.mas_c);
     }];
+
+}
+
+-(void)singleTap:(TRVUserContactView *)view {
     
+    NSLog(@"In Single Tap Methood");
     
+    UIStoryboard *guide = [UIStoryboard storyboardWithName:@"TRVGuideTabBar" bundle:nil];
     
+    UIViewController *destination = [guide instantiateInitialViewController];
     
+    // Alan can you check if this is right
+    [self presentViewController:destination animated:NO completion:nil];
+
 }
 
 

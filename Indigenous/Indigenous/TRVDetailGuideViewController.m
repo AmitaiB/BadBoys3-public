@@ -13,7 +13,6 @@
 #import "TRVUserAboutMeView.h"
 #import "TRVUserContactView.h"
 #import "TRVUserProfileImageView.h"
-#import "TRVGuideTableView.h"
 #import "TRVTouristTripDataSource.h"
 #import "TRVUserDataStore.h"
 #import "TRVTouristTripTableViewCell.h"
