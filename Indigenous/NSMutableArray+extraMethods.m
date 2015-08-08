@@ -20,6 +20,8 @@
     
     
     TRVTourStop *dummyTourStop = [[TRVTourStop alloc] initWithCoordinates:CLLocationCoordinate2DMake(10.0, 10.0)];
+
+    
     
     //add 3 dummy stops
     [tourStopsArray addObjectsFromArray:@[dummyTourStop, dummyTourStop,dummyTourStop]];
@@ -28,14 +30,22 @@
     TRVItinerary *dummyItinerary = [[TRVItinerary alloc] initNameOfTour:@"Cool Tour" tourImage:[UIImage imageNamed:@"madrid"] tourStops:tourStopsArray];
     
     // create tour and add itinerary
-    TRVTour *dummyTour = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:dummyItinerary];
     
-    // make tour far in the future
-    dummyTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
+        // make tour far in the future
+    
+        TRVTour *dummyTourInTheFuture = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:dummyItinerary];
+        dummyTourInTheFuture.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
+    
+        // make tour far in the past
+
+    	TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:dummyItinerary];
+        dummyTourInTheFuture.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:-10];
+
+
         
     
-    //add three of these dummy trips into allTrips Array
-    [allTripsArray addObjectsFromArray:@[dummyTour,dummyTour,dummyTour]];
+    //add 4     of these dummy trips into allTrips Array
+    [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast]];
     
     return allTripsArray;
 }
