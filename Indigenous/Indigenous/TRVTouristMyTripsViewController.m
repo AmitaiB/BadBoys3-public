@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+#import "NSMutableArray+extraMethods.h"
+
 #import "TRVTouristMyTripsViewController.h"
 #import "TRVTouristTripDataSource.h"
 #import "TRVTouristTripTableViewCell.h"
 #import "TRVTouristTripDetailViewController.h"
+#import "TRVUserDataStore.h"
 #import "TRVUser.h"
 #import "TRVTour.h"
 #import "TRVTourStop.h"
@@ -18,14 +21,16 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UITableView *tripTableView;
 @property (nonatomic, strong) TRVTouristTripDataSource *tableViewDataSource;
+@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @end
 
 @implementation TRVTouristMyTripsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
-        TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
+    TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
     
     NSMutableArray *tourStops = [[NSMutableArray alloc] initWithObjects:dummyTourStop,dummyTourStop, nil];
     
@@ -33,9 +38,17 @@
     aTour.itineraryForThisTour = [[TRVItinerary alloc] initNameOfTour:@"Canada 6 Tour" tourImage:[UIImage imageNamed:@"madrid.jpg"] tourStops:tourStops];
 
     aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
-    aTour.itineraryForThisTour.tourImage = [UIImage imageNamed:@"Carmelo.jpg"];
+//    aTour.itineraryForThisTour.tourImage = [UIImage imageNamed:@"Carmelo.jpg"];
     
-    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:@[aTour] configuration:nil];
+    
+    
+        NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+    
+    
+    
+    
+    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
     self.tripTableView.dataSource = self.tableViewDataSource;
 }
 

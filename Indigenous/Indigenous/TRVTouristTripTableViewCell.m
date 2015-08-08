@@ -28,12 +28,8 @@
     
     _tour = tour;
 
-
-    
-    // setting tour this this view
     self.tourNib.tourForThisTourView = tour;
 
-//    self.textLabel.text = tour.itineraryForThisTour.nameOfTour;
 }
 
 @end

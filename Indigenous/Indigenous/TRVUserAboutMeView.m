@@ -7,6 +7,13 @@
 //
 
 #import "TRVUserAboutMeView.h"
+#import <Masonry.h>
+
+@interface TRVUserAboutMeView()
+
+
+
+@end
 
 @implementation TRVUserAboutMeView
 
@@ -39,35 +46,20 @@
                                 options:nil];
     
     [self addSubview:self.contentView];
-    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
+    [self checkIfuserForThisViewIsGuide];
     
-    //Hey, were changes made"?
-    
-    //if changes made, then call on updateConstraints:
-    
-    //else dont do anything
-    
-    
-    // DO I NEED BELOW??
-    [self setNeedsUpdateConstraints];
-
-
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
     
 }
 
-- (void)updateConstraints {
-    
-
-    UIView *view = self.contentView;
-
-    
-    NSDictionary *views = NSDictionaryOfVariableBindings(view);
-    NSMutableArray *constraints = [[NSMutableArray alloc] init];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
-    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
-    [self addConstraints:constraints];
-    [super updateConstraints];
+-(void)checkIfuserForThisViewIsGuide {
+    if (self.userForThisAboutMeView.userBio.isGuide) {
+        self.switchToGuideButton.hidden = YES;
+    }
+    self.switchToGuideButton.hidden = NO;
 }
 
 -(void)setUserForThisAboutMeView:(TRVUser *)userForThisAboutMeView {
@@ -75,6 +67,5 @@
     _userForThisAboutMeView = userForThisAboutMeView;
     self.userAboutMeLabel.text = userForThisAboutMeView.userBio.bioDescription;
 }
-
 
 @end

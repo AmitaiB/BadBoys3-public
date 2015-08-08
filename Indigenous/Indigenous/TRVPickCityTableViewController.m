@@ -74,6 +74,7 @@
     
     TRVCity *cityForThisRow = self.cities[indexPath.row];
     self.selectedCity = cityForThisRow.nameOfCity;
+    NSLog(@"%@", cityForThisRow.nameOfCity);
     
     [self performSegueWithIdentifier:@"showCategoriesSegue" sender:self];
     

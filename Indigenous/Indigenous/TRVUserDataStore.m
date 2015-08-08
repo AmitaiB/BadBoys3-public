@@ -55,19 +55,18 @@
             bioForLoggedInUser.homeCity = @"";
             bioForLoggedInUser.homeCountry = @"";
             bioForLoggedInUser.isGuide = objects[0][@"isGuide"];
-//            bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
-            bioForLoggedInUser.language = @"English, Chinese, French";
+            NSLog(@"I AM A GUIDE : %@----------",objects[0][@"isGuide"]);
+           bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
+           // bioForLoggedInUser.language = @"English, Chinese, French";
             
 
-            
             // HARDCODED USER TAGLINE, UNCOMMMENT LINE BELOW ONCE THERE IS PLACE TO INPUT TAGLINE
-            
-//            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
-            bioForLoggedInUser.userTagline = @"I'm the damn best guide you ever done seen.";
+            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
+//            bioForLoggedInUser.userTagline = @"I'm the damn best guide you ever done seen.";
 
             // HARDCODED USER BIO, UNCOMMMENT LINE BELOW ONCE THERE IS PLACE TO USER BIO
-//            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
-            bioForLoggedInUser.bioDescription = @"Hi, my name is X and I like to take people on tours. I am such a good tour that New York Times Magazine rated me best tour of all time.";
+            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
+   //         bioForLoggedInUser.bioDescription = @"Hi, my name is X and I like to take people on tours. I am such a good tour that New York Times Magazine rated me best tour of all time.";
 
             
             //REVISIT
@@ -81,9 +80,10 @@
                     bioForLoggedInUser.profileImage = response;
                 
                 }];
-                 
-
+                
             } else {
+
+                // CONVERT EMAIL PFFILE IMAGE TO UIIMAGE
                 
                 PFFile *pictureFile = objects[0][@"emailPicture"];
                 [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
@@ -98,8 +98,6 @@
               }
 
             _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
-            
-            
             NSLog(@"Welcome %@. ", _loggedInUser.userBio.firstName);
         }
     }];
