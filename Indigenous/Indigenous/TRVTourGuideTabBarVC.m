@@ -25,26 +25,21 @@
     
     
 #pragma mark Pre-load current location
-    
-    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-    
-    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:NO block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
-        NSLog(@"Inside the pre-loading location block. We have %@ succeeded!", (status == INTULocationStatusSuccess) ? @"INDEED" : @"NOT");
-        locationManager.currentLocation = currentLocation;
-    }];
-    
+//    
+//    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+//    
+//    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:NO block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+//        NSLog(@"Inside the pre-loading location block. We have %@ succeeded!", (status == INTULocationStatusSuccess) ? @"INDEED" : @"NOT");
+//        locationManager.currentLocation = currentLocation;
+//    }];
+//    
     
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    NSLog(@"didUpdateLocations, manager: %@, locations: %@", [manager description], [locations description]);
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+//    NSLog(@"didUpdateLocations, manager: %@, locations: %@", [manager description], [locations description]);
+//}
 
 /*
 #pragma mark - Navigation

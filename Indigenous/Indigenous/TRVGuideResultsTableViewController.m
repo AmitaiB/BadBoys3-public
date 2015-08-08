@@ -79,7 +79,7 @@
 
 
 
-
+// add function to image tag
 -(void)singleTap:(TRVGuideProfileTableViewCell *)cell {
     NSLog(@"In Single Tap Methood");
 
