@@ -53,19 +53,15 @@
     self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor magentaColor];
 
     [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:self.imageView andHeight:self.imageView.bounds.size.height];
-    //[self.parallaxHeaderTourNameLabel setFrame:CGRectMake(0, self.imageView.bounds.size.height - self.view.bounds.size.height / 10, self.view.bounds.size.width, self.view.bounds.size.height / 10)];
-//    [self.parallaxHeaderTourNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        //make.bottom.equalTo(self.imageView.mas_bottom);
-//        make.bottom.equalTo(@0);
-//        make.left.equalTo(@0);
-//        make.height.equalTo(@([UIScreen mainScreen].bounds.size.height / 10));
-//        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
-//    }];
+
     [self.theScrollViewThatHoldsAllTheOtherViews bringSubviewToFront:self.parallaxHeaderTourNameLabel];
 
     
     [self makeContentInsetFullScreen:self.theScrollViewThatHoldsAllTheOtherViews];
-    [self setTitleLabelFrame:self.imageView.frame];
+    CGFloat titleLabelHeight = self.imageView.bounds.size.height / 10;
+    [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(0, self.imageView.frame.origin.y - titleLabelHeight, self.view.frame.size.width, titleLabelHeight)];
+    
+    //[self setTitleLabelFrame:self.imageView.frame];
     
     //self.theScrollViewThatHoldsAllTheOtherViews.delegate = self;
     self.theScrollViewThatHoldsAllTheOtherViews.parallaxView.delegate = self;
@@ -123,20 +119,21 @@
 
 - (void)setTitleLabelFrame:(CGRect)frame  {
     CGFloat titleHeight = [UIScreen mainScreen].bounds.size.height / 10;
-    if (self.imageView.frame.size.height > [UIScreen mainScreen].bounds.size.height) {
-        [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y + [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.bounds.size.height - titleHeight, frame.size.width, titleHeight)];
-        NSLog(@"this one");
-    }
-    else {
-        [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y + frame.size.height - titleHeight, frame.size.width,  titleHeight)];
-    }
+//    if (self.imageView.frame.size.height > [UIScreen mainScreen].bounds.size.height) {
+//        //CGFloat deltaY = self.imageView.frame.origin.y - frame.origin.y;
+//        [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y + [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.bounds.size.height - titleHeight, frame.size.width, titleHeight)];
+//        NSLog(@"this one");
+//    }
+//    else {
+//        [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(frame.origin.x, frame.origin.y + frame.size.height - titleHeight, frame.size.width,  titleHeight)];
+//    }
     NSLog(@"label rect: %@", NSStringFromCGRect(self.parallaxHeaderTourNameLabel.frame));
 }
 
-- (void)parallaxView:(APParallaxView *)view didChangeFrame:(CGRect)frame {
+- (void)parallaxView:(APParallaxView *)view willChangeFrame:(CGRect)frame {
     // Do whatever you need to do to the parallaxView or your subview after its frame changed
     //NSLog(@"parallaxView:didChangeFrame: %@", NSStringFromCGRect(frame));
-    [self setTitleLabelFrame:frame];
+    //[self setTitleLabelFrame:frame];
 }
 
 @end
