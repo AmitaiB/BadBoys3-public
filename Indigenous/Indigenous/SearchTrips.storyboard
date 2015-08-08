@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cxt-RM-glU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cxt-RM-glU">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -252,7 +252,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lfH-ib-qa5" id="rMx-io-yep">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hwk-L6-IPk">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwk-L6-IPk">
                                             <rect key="frame" x="-11" y="8" width="622" height="253"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name of City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kY-5K-cvp">
@@ -371,45 +371,6 @@
             </objects>
             <point key="canvasLocation" x="1870" y="1237"/>
         </scene>
-        <!--Tour Test View Controller-->
-        <scene sceneID="vvR-Vz-MpI">
-            <objects>
-                <viewController id="fBA-Um-5FE" customClass="TRVTourTestViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rMB-D8-yDU"/>
-                        <viewControllerLayoutGuide type="bottom" id="bXC-8A-3qL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1ek-J7-th6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Wl-ke-NdO" customClass="TRVTourView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="bXC-8A-3qL" firstAttribute="top" secondItem="3Wl-ke-NdO" secondAttribute="bottom" id="4FO-1c-4nr"/>
-                            <constraint firstItem="3Wl-ke-NdO" firstAttribute="leading" secondItem="1ek-J7-th6" secondAttribute="leading" id="Nfa-E6-pjA"/>
-                            <constraint firstItem="3Wl-ke-NdO" firstAttribute="top" secondItem="1ek-J7-th6" secondAttribute="top" id="TKy-LF-UvG"/>
-                            <constraint firstAttribute="trailing" secondItem="3Wl-ke-NdO" secondAttribute="trailing" id="mBy-Gu-sQG"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="4FO-1c-4nr"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" id="DB6-iU-dKB"/>
-                    <connections>
-                        <outlet property="tourNibVIew" destination="3Wl-ke-NdO" id="VxB-Hi-Y9d"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dac-FR-ZH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1524" y="52"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Uzx-Un-udu">
             <objects>
@@ -430,24 +391,6 @@
             </objects>
             <point key="canvasLocation" x="518" y="1237"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="u1K-uY-9MI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XgJ-KM-Mlb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gW4-g4-I3A">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="fBA-Um-5FE" kind="relationship" relationship="rootViewController" id="vRM-Pl-t6z"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o49-wp-byo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="712" y="52"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="XEa-XG-k6O">
             <objects>
@@ -466,24 +409,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6i-iD-qEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3859" y="1222"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ZoY-gy-Y6X">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="tfz-HT-xMB" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="piP-dZ-Z82"/>
-                        <viewControllerLayoutGuide type="bottom" id="tbZ-A1-bMC"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wzz-hr-lVe">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fZN-Db-0qa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
 </document>
