@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "TRVUser.h"
+#import <Foundation/Foundation.h>
 
 
-@interface NSMutableArray (TRVMutableArray_extraMethods)
+@interface NSMutableArray (extraMethods)
 
 -(NSMutableArray *) returnDummyAllTripsArrayForGuide:(TRVUser *)guide;
 

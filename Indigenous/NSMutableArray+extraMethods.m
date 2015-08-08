@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "NSMutableArray+TRVMutableArray_extraMethods.h"
+#import "NSMutableArray+extraMethods.h"
 #import "TRVTour.h"
 #import "TRVTourStop.h"
 #import "TRVItinerary.h"

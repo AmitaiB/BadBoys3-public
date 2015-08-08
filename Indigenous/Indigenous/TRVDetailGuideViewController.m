@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+#import "NSMutableArray+extraMethods.h"
+
 #import "TRVDetailGuideViewController.h"
 #import "TRVUser.h"
 #import "TRVUserSnippetView.h"
@@ -42,6 +44,10 @@
     TRVTour *aTour = [[TRVTour alloc] init];
     aTour.itineraryForThisTour = [[TRVItinerary alloc] initNameOfTour:@"Canada 6 Tour" tourImage:[UIImage imageNamed:@"madrid.jpg"] tourStops:tourStops];
     aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
+    
+//    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+//    [dummyAllTrips returnDummyAllTripsArrayForGuide:self.selectedGuideUser];
+//    
     
     // instantiate data source
     self.guideTripDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:@[aTour] configuration:nil];
