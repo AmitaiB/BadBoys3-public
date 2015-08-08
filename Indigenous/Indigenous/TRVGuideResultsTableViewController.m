@@ -22,6 +22,7 @@
 
 
 @property (nonatomic, strong) NSDictionary *filterDictionary;
+@property (nonatomic, strong) TRVUser *guideForThisRow;
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
 @property (nonatomic, strong) NSMutableArray *availableGuides;
 @end
@@ -37,7 +38,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
         [super viewWillAppear:animated];
-        NSLog(@"City: %@,  Category: %@", self.selectedCity, self.sharedData.currentCategorySearching);
         [self updateGuidesList];
 
     
@@ -56,17 +56,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.availableGuides.count > 0){
-        self.user = [[TRVUser alloc]initWithBio:[self.availableGuides[indexPath.row] userBio]];
+        
+        TRVBio *bioForThisRow = [self.availableGuides[indexPath.row] userBio];
+        self.guideForThisRow = [[TRVUser alloc] initWithBio:bioForThisRow];
 
-        NSLog(@"Image is: %@", self.user.userBio.profileImage);
+        //disable switch to guide button
+//        self.guideForThisRow.userBio.isGuide = NO;
 
     
     TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
     
-    cell.guideForThisCell = self.user;
-    cell.profileImageViewNib.userForThisGuideProfileView = self.user;
+    cell.guideForThisCell = self.guideForThisRow;
+    cell.profileImageViewNib.userForThisGuideProfileView = self.guideForThisRow;
         
-        // add ibaction programaticcaly
+    // add ibaction programaticcaly
         
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     [cell.profileImageViewNib addGestureRecognizer:singleTapOnImage];
@@ -87,7 +90,7 @@
 // add function to image tag
 -(void)singleTap:(TRVGuideProfileTableViewCell *)cell {
     NSLog(@"In Single Tap Methood");
-
+    NSLog(@"CLICKING ON THIS USER!!!! : %@", self.guideForThisRow.userBio.firstName);
     [self performSegueWithIdentifier:@"detailGuideSegue" sender:cell];
 }
 
@@ -107,7 +110,7 @@
 
 
     TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
-        destinationVC.selectedGuideUser = self.user;
+        destinationVC.selectedGuideUser = self.guideForThisRow;
     }
 }
 
@@ -130,7 +133,7 @@
          
          // WE NEED TO ADD A SEARCH BASED ON EAT,SEE,PLAY,DRINK
          for (PFObject *guideBio in objects){
-             NSLog(@"%@", guideBio);
+             NSLog(@"HOW MANY OBJECTS WE GET BACK IN PARSE QUERY: %lu" , (unsigned long)objects.count);
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
                  

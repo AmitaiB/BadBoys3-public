@@ -24,7 +24,7 @@
 @interface TRVDetailGuideViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 
-@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
+//@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (nonatomic, strong) TRVTouristTripDataSource *guideTripDataSource;
 @property (nonatomic, strong) UITableView *guideTripsTableView;
 
@@ -34,7 +34,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+    NSLog(@"WHO AM IIIII? %@", self.selectedGuideUser.userBio.firstName);
+//    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
     
     
@@ -138,7 +139,7 @@
     [self.guideTripsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(segmentedControl.mas_bottom).with.offset(10);
         make.left.and.right.equalTo(self.profileView);
-        make.height.equalTo(@3000);
+        make.height.equalTo(@2000);
     }];
     
     
