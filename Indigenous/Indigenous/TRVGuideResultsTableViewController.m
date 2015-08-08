@@ -44,7 +44,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    NSLog(@" NUMBER OF USERS!!!! %lu" , (unsigned long)self.availableGuides.count);
+    return self.availableGuides.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,12 +65,16 @@
     
     cell.guideForThisCell = self.user;
     cell.profileImageViewNib.userForThisGuideProfileView = self.user;
+        
+        // add ibaction programaticcaly
+        
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     [cell.profileImageViewNib addGestureRecognizer:singleTapOnImage];
     cell.profileImageViewNib.userInteractionEnabled = YES;
     
     return cell;
-    } else {
+    }
+    else {
         TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         return cell;
     }
@@ -117,18 +122,20 @@
     
     self.availableGuides = [[NSMutableArray alloc]init];
         // ADD LOADING HUD HERE BEFORE PARSE REQUEST GOES DOWN
+    
+    
     PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"UserBio"];
     
      [findGuidesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
          
          // WE NEED TO ADD A SEARCH BASED ON EAT,SEE,PLAY,DRINK
          for (PFObject *guideBio in objects){
+             NSLog(@"%@", guideBio);
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
                  
                  PFUser *theParseGuide = guideBio[@"user"];
                  [theParseGuide fetch];
-                 //NSLog(@"Bio: %@ \n Guide: %@", guideBio, theParseGuide);
                  
                  [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                      
@@ -151,20 +158,19 @@ TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
                          guide.myTrips = theParseGuide[@"myTrips"];
                      }
                      
+                     
+                     // ADDING GUIDE WHO MET CONDITIONS AS YES
                      [self.availableGuides addObject:guide];
                      NSLog(@"My image is: %@", guide.userBio.profileImage);
                      [self.tableView reloadData];
                  }];
-                 
-                 
+                 NSLog(@"%@!!!!!", self.availableGuides);
                 
              }
              
              
          }
          
-         NSLog(@"Available Guides: %@", self.availableGuides);
-
      }];
     
     
@@ -178,9 +184,7 @@ TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
                 } else {
             
                 // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
-            
         }
-    
 }
 
 

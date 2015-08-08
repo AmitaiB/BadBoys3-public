@@ -73,6 +73,7 @@
 		948A226A1B73CDC8006FC5BB /* TRVTourView.m in Sources */ = {isa = PBXBuildFile; fileRef = 948A22691B73CDC8006FC5BB /* TRVTourView.m */; };
 		949081671B6C67B100B6D2FA /* TRVEditProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949081661B6C67B100B6D2FA /* TRVEditProfileTableViewController.m */; };
 		949A6ADB1B6FBAC6006ED035 /* TRVTourCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 949A6ADA1B6FBAC6006ED035 /* TRVTourCategory.m */; };
+		94A53C9A1B765E640029D2F7 /* NSMutableArray+extraMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */; };
 		94A5559F1B6AD22900076C99 /* TRVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CC1B6824C400003C7C /* TRVUser.m */; };
 		94B755E61B6BCD2A0017FFA9 /* TRVTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */; };
 		94BD69021B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD69011B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m */; };
@@ -226,6 +227,8 @@
 		949081661B6C67B100B6D2FA /* TRVEditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVEditProfileTableViewController.m; sourceTree = "<group>"; };
 		949A6AD91B6FBAC6006ED035 /* TRVTourCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourCategory.h; sourceTree = "<group>"; };
 		949A6ADA1B6FBAC6006ED035 /* TRVTourCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourCategory.m; sourceTree = "<group>"; };
+		94A53C981B765E640029D2F7 /* NSMutableArray+extraMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+extraMethods.h"; sourceTree = "<group>"; };
+		94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+extraMethods.m"; sourceTree = "<group>"; };
 		94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TRVTabBar.storyboard; sourceTree = "<group>"; };
 		94BD69001B6EC18A000CDA65 /* TRVGuideResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGuideResultsTableViewController.h; sourceTree = "<group>"; };
 		94BD69011B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGuideResultsTableViewController.m; sourceTree = "<group>"; };
@@ -349,6 +352,8 @@
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
+				94A53C981B765E640029D2F7 /* NSMutableArray+extraMethods.h */,
+				94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */,
 				94258ACC1B73F251006F24A8 /* Default-568h@2x.png */,
 				451565121B68221B005A2871 /* Indigenous */,
 				4515652C1B68221B005A2871 /* IndigenousTests */,
@@ -537,10 +542,10 @@
 			children = (
 				9435DF6F1B6F1E5C0054A2F4 /* TRVTourCategoryView.h */,
 				9435DF701B6F1E5C0054A2F4 /* TRVTourCategoryView.m */,
+				9435DF721B6F1E670054A2F4 /* TRVTourCategoryView.xib */,
 				948A22661B73CDB9006FC5BB /* TRVTourView.xib */,
 				948A22681B73CDC8006FC5BB /* TRVTourView.h */,
 				948A22691B73CDC8006FC5BB /* TRVTourView.m */,
-				9435DF721B6F1E670054A2F4 /* TRVTourCategoryView.xib */,
 				944AD00A1B6DF4C700404EDD /* TRVGuideProfileImageView.xib */,
 				944AD0071B6DF4B500404EDD /* TRVGuideProfileImageView.h */,
 				944AD0081B6DF4B500404EDD /* TRVGuideProfileImageView.m */,
@@ -748,7 +753,7 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 9RXLE5FXUN;
+						DevelopmentTeam = DWCYJ9H353;
 					};
 					451565281B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -855,6 +860,7 @@
 				385C46FA1B6BCE7E00D9091A /* main.m in Sources */,
 				384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */,
 				FADB8F241B705731009F7C02 /* TRVTourStopCollectionViewCell.m in Sources */,
+				94A53C9A1B765E640029D2F7 /* NSMutableArray+extraMethods.m in Sources */,
 				9435DF761B6F21280054A2F4 /* TRVTourCategoryViewController.m in Sources */,
 				FADB8F291B711866009F7C02 /* TRVTourStopCollectionViewCellView.m in Sources */,
 				45ADB90E1B73A7DE0056AF09 /* TRVSettingsViewController.m in Sources */,
