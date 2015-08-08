@@ -1,15 +1,15 @@
+////
+////  ViewController.h
+////  Indigenous
+////
+////  Created by Alan Scarpa on 7/28/15.
+////  Copyright (c) 2015 Bad Boys 3. All rights reserved.
+////
 //
-//  ViewController.h
-//  Indigenous
+//#import <UIKit/UIKit.h>
 //
-//  Created by Alan Scarpa on 7/28/15.
-//  Copyright (c) 2015 Bad Boys 3. All rights reserved.
+//@interface ViewController : UIViewController
 //
-
-#import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
-
-
-@end
-
+//
+//@end
+//

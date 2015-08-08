@@ -135,7 +135,20 @@
                  
                  [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                      
-TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"] firstName:guideBio[@"first_name"] lastName:guideBio[@"last_name"] email:guideBio[@"email"] phoneNumber:guideBio[@"phoneNumber"] profileImage:response bioDescription:guideBio[@"bioTextField"] interests:nil language:guideBio[@"languagesSpoken"] age:0 gender:guideBio[@"gender"] region:nil oneLineSummary:guideBio[@"oneLineBio"] profileImageURL:guideBio[@"picture"]];
+TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
+                                         firstName:guideBio[@"first_name"]
+                                          lastName:guideBio[@"last_name"]
+                                             email:guideBio[@"email"]
+                                       phoneNumber:guideBio[@"phoneNumber"]
+                                      profileImage:response
+                                    bioDescription:guideBio[@"bioTextField"]
+                                         interests:nil language:guideBio[@"languagesSpoken"]
+                                               age:0 gender:guideBio[@"gender"]
+                                            region:nil
+                                    oneLineSummary:guideBio[@"oneLineBio"]
+                                   profileImageURL:guideBio[@"picture"]];
+                     
+                     
                      TRVUser *guide = [[TRVUser alloc]initWithBio:bio];
                      if (theParseGuide[@"myTrips"]){
                          guide.myTrips = theParseGuide[@"myTrips"];
