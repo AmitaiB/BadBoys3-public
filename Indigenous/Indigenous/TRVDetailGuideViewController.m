@@ -34,9 +34,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"WHO AM IIIII? %@", self.selectedGuideUser.userBio.firstName);
-//    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
-    
     
     
     // dummy data for tour
@@ -82,6 +79,14 @@
     
     TRVUserAboutMeView *aboutMeView = [[TRVUserAboutMeView alloc] init];
     aboutMeView.userForThisAboutMeView = self.selectedGuideUser;
+
+    // hide send me to tourguidetab button
+        [aboutMeView.switchToGuideButton setHidden:YES];
+    //make button shrink
+        [aboutMeView.switchToGuideButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@0);
+    }];
+
     
     [self.profileView addSubview:aboutMeView];
     [aboutMeView mas_makeConstraints:^(MASConstraintMaker *make) {

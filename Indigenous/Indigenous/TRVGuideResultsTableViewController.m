@@ -22,7 +22,6 @@
 
 
 @property (nonatomic, strong) NSDictionary *filterDictionary;
-@property (nonatomic, strong) TRVUser *guideForThisRow;
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
 @property (nonatomic, strong) NSMutableArray *availableGuides;
 @end
@@ -39,8 +38,6 @@
 -(void)viewWillAppear:(BOOL)animated{
         [super viewWillAppear:animated];
         [self updateGuidesList];
-
-    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -57,17 +54,18 @@
     
     if (self.availableGuides.count > 0){
         
-        TRVBio *bioForThisRow = [self.availableGuides[indexPath.row] userBio];
-        self.guideForThisRow = [[TRVUser alloc] initWithBio:bioForThisRow];
-
-        //disable switch to guide button
-//        self.guideForThisRow.userBio.isGuide = NO;
+        
 
     
     TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
+        
+        cell.guideForThisCell = self.availableGuides[indexPath.row];
     
-    cell.guideForThisCell = self.guideForThisRow;
-    cell.profileImageViewNib.userForThisGuideProfileView = self.guideForThisRow;
+
+        
+        
+    // setting nib user will parse text labels
+        cell.profileImageViewNib.userForThisGuideProfileView = self.availableGuides[indexPath.row];
         
     // add ibaction programaticcaly
         
@@ -78,6 +76,7 @@
     return cell;
     }
     else {
+        NSLog(@"THERE ARE NO AVAILABLE GUIDES IN THIS SEARCH RESULT");
         TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         return cell;
     }
@@ -89,36 +88,16 @@
 
 // add function to image tag
 -(void)singleTap:(TRVGuideProfileTableViewCell *)cell {
-    NSLog(@"In Single Tap Methood");
-    NSLog(@"CLICKING ON THIS USER!!!! : %@", self.guideForThisRow.userBio.firstName);
-    [self performSegueWithIdentifier:@"detailGuideSegue" sender:cell];
+    NSLog(@"In Single Tap Methood %@", cell);
+    [self performSegueWithIdentifier:@"detailGuideSegue" sender:nil];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if([segue.identifier isEqualToString:@"showFilter"]) {
 
-        TRVFilterViewController *filterModal = [segue destinationViewController];
-
-        if (self.filterDictionary){
-                filterModal.filterDictionary = self.filterDictionary;
-            }
-    
-        filterModal.delegate = self;
-    }
-    if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
-
-
-    TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
-        destinationVC.selectedGuideUser = self.guideForThisRow;
-    }
-}
 
 -(void)passFilterDictionary:(NSDictionary *)dictionary{
     
     self.filterDictionary = dictionary;
     NSLog(@"The dictionary: %@", self.filterDictionary);
-    
 }
 
 -(void)updateGuidesList {
@@ -137,12 +116,14 @@
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
                  
+                 
                  PFUser *theParseGuide = guideBio[@"user"];
                  [theParseGuide fetch];
                  
                  [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                      
-TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
+                    
+                TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
                                          firstName:guideBio[@"first_name"]
                                           lastName:guideBio[@"last_name"]
                                              email:guideBio[@"email"]
@@ -153,27 +134,39 @@ TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
                                                age:0 gender:guideBio[@"gender"]
                                             region:nil
                                     oneLineSummary:guideBio[@"oneLineBio"]
-                                   profileImageURL:guideBio[@"picture"]];
+                                   profileImageURL:guideBio[@"picture"]
+                                    nonFacebookImage:guideBio[@"emailPicture" ]];
                      
+                     // Check to see if guide is signed up with email rather than FB
+                     // if there is no URL, then parse the PF file image
                      
-                     TRVUser *guide = [[TRVUser alloc]initWithBio:bio];
-                     if (theParseGuide[@"myTrips"]){
-                         guide.myTrips = theParseGuide[@"myTrips"];
+                     if (![guideBio objectForKey:@"picture"]) {
+                         NSLog(@"DO YOU EVER GET CALLED?");
+                         PFFile *pictureFile = objects[0][@"emailPicture"];
+                         [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                             if (!error) {
+                                 bio.nonFacebookImage = [UIImage imageWithData:data];
+                             } else {
+                                 // error block
+                             }
+                         }];
                      }
                      
+                     TRVUser *guideForThisRow = [[TRVUser alloc]initWithBio:bio];
+                     
+                     if (theParseGuide[@"myTrips"]){
+                         guideForThisRow.myTrips = theParseGuide[@"myTrips"];
+                     }
                      
                      // ADDING GUIDE WHO MET CONDITIONS AS YES
-                     [self.availableGuides addObject:guide];
-                     NSLog(@"My image is: %@", guide.userBio.profileImage);
+                     [self.availableGuides addObject: guideForThisRow];
+                     NSLog(@"My name is: %@", guideForThisRow.userBio.firstName);
                      [self.tableView reloadData];
                  }];
-                 NSLog(@"%@!!!!!", self.availableGuides);
+                 NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
                 
              }
-             
-             
-         }
-         
+                      }
      }];
     
     
@@ -181,13 +174,30 @@ TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
                 NSLog(@"Filter is nil!");
         
                 // SHOW ALL GUDES
-        
-            
-        
+
                 } else {
-            
                 // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
         }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"showFilter"]) {
+        TRVFilterViewController *filterModal = [segue destinationViewController];
+        if (self.filterDictionary){
+            filterModal.filterDictionary = self.filterDictionary;
+        }
+        filterModal.delegate = self;
+    }
+    
+    if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
+         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+        TRVUser *destinationGuideUser = self.availableGuides[ip.row];
+        TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
+        destinationVC.selectedGuideUser = self.availableGuides[ip.row];
+        NSLog(@"PERFORMING SEGUE WITH USER PASSING AS: %@", destinationGuideUser.userBio.firstName);
+    }
+    
 }
 
 
