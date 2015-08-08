@@ -47,25 +47,18 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        return 350;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.availableGuides.count > 0){
         self.user = [[TRVUser alloc]initWithBio:[self.availableGuides[indexPath.row] userBio]];
-//        self.user.userBio.profileImage = self.user.userBio.profileImage;
-    //self.user = self.availableGuides[indexPath.row];
-    //self.user.userBio = [self.availableGuides[indexPath.row] userBio];
+
         NSLog(@"Image is: %@", self.user.userBio.profileImage);
-//    self.user.userBio.homeCity = @"New York";
-//    self.user.userBio.homeCountry = @"United States";
-//    self.user.userBio.userTagline = @"Loves fried chicken and ramen. Super Spontaneous Person!";
-    
-//    [TRVAFNetwokingAPIClient getImagesWithURL:self.user.userBio.profileImageURL withCompletionBlock:^(UIImage *response) {
-//        
-//        // Setting profile Image with AFNetworking request
-//        self.user.userBio.profileImage = response;
-//        
-//    }];
-    
+
     
     TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
     
@@ -81,6 +74,10 @@
         return cell;
     }
 }
+
+
+
+
 
 
 -(void)singleTap:(TRVGuideProfileTableViewCell *)cell {
