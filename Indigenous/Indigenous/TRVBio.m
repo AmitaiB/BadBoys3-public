@@ -49,6 +49,7 @@
                               region:(NSString*)region
                       oneLineSummary:(NSString*)oneLineSummary
                      profileImageURL:(NSString*)URL
+                          nonFacebookImage:(UIImage *)nonFacebookImage
 {
     
     self = [super init];
@@ -65,6 +66,7 @@
         _gender = gender;
         _region = region;
         _profileImageURL = URL;
+        _nonFacebookImage = nonFacebookImage;
     }
     return self;
     

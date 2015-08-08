@@ -24,7 +24,7 @@
 @interface TRVDetailGuideViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 
-@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
+//@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (nonatomic, strong) TRVTouristTripDataSource *guideTripDataSource;
 @property (nonatomic, strong) UITableView *guideTripsTableView;
 
@@ -34,24 +34,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
-    
-    
-    
-    // dummy data for tour
-    TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
-    NSMutableArray *tourStops = [[NSMutableArray alloc] initWithObjects:dummyTourStop,dummyTourStop, nil];
-    TRVTour *aTour = [[TRVTour alloc] init];
-    aTour.itineraryForThisTour = [[TRVItinerary alloc] initNameOfTour:@"Canada 6 Tour" tourImage:[UIImage imageNamed:@"madrid.jpg"] tourStops:tourStops];
-    aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
-    
-//    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-//    [dummyAllTrips returnDummyAllTripsArrayForGuide:self.selectedGuideUser];
-//    
-    
-    // instantiate data source
-    self.guideTripDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:@[aTour] configuration:nil];
-    
+//    self.guideTripsTableView.estimatedRowHeight = 300;
+//    self.guideTripsTableView.rowHeight = UITableViewAutomaticDimension;
+
+    NSLog(@"%@", self.selectedGuideUser.allTrips);
     
     //Instantiate a Image View Nib
     
@@ -81,6 +67,14 @@
     
     TRVUserAboutMeView *aboutMeView = [[TRVUserAboutMeView alloc] init];
     aboutMeView.userForThisAboutMeView = self.selectedGuideUser;
+
+    // hide send me to tourguidetab button
+        [aboutMeView.switchToGuideButton setHidden:YES];
+    //make button shrink
+        [aboutMeView.switchToGuideButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@0);
+    }];
+
     
     [self.profileView addSubview:aboutMeView];
     [aboutMeView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -135,70 +129,60 @@
     
     self.guideTripsTableView.backgroundColor = [UIColor orangeColor];
     
+    // Set Table View Constraints
+
     [self.guideTripsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(segmentedControl.mas_bottom).with.offset(10);
         make.left.and.right.equalTo(self.profileView);
-        make.height.equalTo(@3000);
-    }];
+        NSUInteger numberOfCells = self.selectedGuideUser.allTrips.count;
+
+        // hacky way to make table view longer
+        NSNumber *cellHeight = @(300);
+        NSNumber *tableViewHeight = @([cellHeight floatValue] * numberOfCells);
+        make.height.equalTo(tableViewHeight);
+        }];
     
     
-    // Set Table View Constraints
+    // Set Content View Constraints
     
     [self.profileView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
         make.bottom.equalTo(self.guideTripsTableView.mas_bottom);
     }];
     
-    
-
-}
+    }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 6;
+    
+    return self.selectedGuideUser.allTrips.count;
 }
 
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
      
-     
-     
-     
  TRVTouristTripTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
      
-//      DUMMY DATA
-     TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
-     
-     NSMutableArray *tourStops = [[NSMutableArray alloc] initWithObjects:dummyTourStop,dummyTourStop, nil];
-     
-     TRVTour *aTour = [[TRVTour alloc] init];
-     aTour.itineraryForThisTour = [[TRVItinerary alloc] initNameOfTour:@"Canada 6 Tour" tourImage:[UIImage imageNamed:@"madrid.jpg"] tourStops:tourStops];
-     
-     aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
-
-     
+     NSMutableArray *allTripsForThisUser = self.selectedGuideUser.allTrips;
+     NSLog(@"%@", allTripsForThisUser[indexPath.row]);
+     // creating custom view of UITableView Cell
      TRVTourView *tourView = [[TRVTourView alloc] init];
      [cell addSubview:tourView];
 
-
+     // set constraints for tour nib
      [tourView mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.top.and.left.and.right.equalTo(cell).with.offset(5);
+         make.top.and.left.equalTo(cell).with.offset(5);
          make.right.equalTo(cell).with.offset(-5);
          make.bottom.equalTo(cell.mas_bottomMargin).with.offset(10);
      }];
      
-     tourView.tourForThisTourView = aTour;
+     tourView.tourForThisTourView = allTripsForThisUser[indexPath.row];
      tourView.backgroundColor = [UIColor redColor];
      
      
      self.guideTripsTableView.estimatedRowHeight = 300;
-//     self.guideTripsTableView.rowHeight = UITableViewAutomaticDimension;
-
      
-     NSLog(@"%@",cell.tour);
- 
- 
      return cell;
      
  }
@@ -206,7 +190,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-       return 300;
+
+    return 300;
 }
 
 /*

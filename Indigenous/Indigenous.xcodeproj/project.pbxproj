@@ -60,6 +60,7 @@
 		944AD0061B6DE4B300404EDD /* TRVGuideProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 944AD0051B6DE4B300404EDD /* TRVGuideProfileTableViewCell.m */; };
 		944AD0091B6DF4B500404EDD /* TRVGuideProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 944AD0081B6DF4B500404EDD /* TRVGuideProfileImageView.m */; };
 		944AD00B1B6DF4C700404EDD /* TRVGuideProfileImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944AD00A1B6DF4C700404EDD /* TRVGuideProfileImageView.xib */; };
+		944D312C1B76A92D004CF255 /* TRVGuideResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 944D312B1B76A92D004CF255 /* TRVGuideResultsDataSource.m */; };
 		946AAA911B6C517E00778418 /* TRVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 946AAA901B6C517E00778418 /* TRVConstants.m */; };
 		9473D1951B72375E00E73B4B /* TRVUserProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9473D1941B72375E00E73B4B /* TRVUserProfileImageView.m */; };
 		9473D1971B72376500E73B4B /* TRVUserProfileImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9473D1961B72376500E73B4B /* TRVUserProfileImageView.xib */; };
@@ -207,6 +208,8 @@
 		944AD0071B6DF4B500404EDD /* TRVGuideProfileImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGuideProfileImageView.h; sourceTree = "<group>"; };
 		944AD0081B6DF4B500404EDD /* TRVGuideProfileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGuideProfileImageView.m; sourceTree = "<group>"; };
 		944AD00A1B6DF4C700404EDD /* TRVGuideProfileImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRVGuideProfileImageView.xib; sourceTree = "<group>"; };
+		944D312A1B76A92D004CF255 /* TRVGuideResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGuideResultsDataSource.h; sourceTree = "<group>"; };
+		944D312B1B76A92D004CF255 /* TRVGuideResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGuideResultsDataSource.m; sourceTree = "<group>"; };
 		946AAA901B6C517E00778418 /* TRVConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVConstants.m; sourceTree = "<group>"; };
 		9473D1931B72375E00E73B4B /* TRVUserProfileImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVUserProfileImageView.h; sourceTree = "<group>"; };
 		9473D1941B72375E00E73B4B /* TRVUserProfileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVUserProfileImageView.m; sourceTree = "<group>"; };
@@ -499,6 +502,7 @@
 				942424881B6DBAAF007BC642 /* TRVRootTabViewController.m */,
 				94BD69001B6EC18A000CDA65 /* TRVGuideResultsTableViewController.h */,
 				94BD69011B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m */,
+				940911591B6E8BB70072C16B /* Models */,
 				45F925A31B71238C009B2E98 /* Filter View Controllers */,
 			);
 			name = "View Controller";
@@ -528,8 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				949A6AD81B6FBA5A006ED035 /* Custom Cells */,
+				944D31291B76A8C1004CF255 /* Table View Data Source */,
 				9435DF6E1B6F1E2C0054A2F4 /* Storyboards */,
-				940911591B6E8BB70072C16B /* Models */,
 				940911581B6E8B810072C16B /* View Controller */,
 				944ACFFF1B6DDEA100404EDD /* Views/Nibs */,
 				944AD0001B6DDEDB00404EDD /* API Clients */,
@@ -565,6 +569,15 @@
 				942C18F31B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m */,
 			);
 			name = "API Clients";
+			sourceTree = "<group>";
+		};
+		944D31291B76A8C1004CF255 /* Table View Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				944D312A1B76A92D004CF255 /* TRVGuideResultsDataSource.h */,
+				944D312B1B76A92D004CF255 /* TRVGuideResultsDataSource.m */,
+			);
+			name = "Table View Data Source";
 			sourceTree = "<group>";
 		};
 		9482463A1B71528100D64432 /* Views/Nibs  */ = {
@@ -900,6 +913,7 @@
 				94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */,
 				946AAA911B6C517E00778418 /* TRVConstants.m in Sources */,
 				94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */,
+				944D312C1B76A92D004CF255 /* TRVGuideResultsDataSource.m in Sources */,
 				45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */,
 				949081671B6C67B100B6D2FA /* TRVEditProfileTableViewController.m in Sources */,
 				45E772E01B6A674800003C7C /* TRVSignupViewController.m in Sources */,
