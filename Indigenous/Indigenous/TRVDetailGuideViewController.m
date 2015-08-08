@@ -155,21 +155,17 @@
         make.bottom.equalTo(self.guideTripsTableView.mas_bottom);
     }];
     
-    
-
-}
+    }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
+    
     return 6;
 }
 
 
  - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-     
-     
-     
      
  TRVTouristTripTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
      
@@ -183,11 +179,11 @@
      
      aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
 
-     
+     // creating custom view of UITableView Cell
      TRVTourView *tourView = [[TRVTourView alloc] init];
      [cell addSubview:tourView];
 
-
+     // set constraints for tour nib
      [tourView mas_makeConstraints:^(MASConstraintMaker *make) {
          make.top.and.left.and.right.equalTo(cell).with.offset(5);
          make.right.equalTo(cell).with.offset(-5);
@@ -199,12 +195,7 @@
      
      
      self.guideTripsTableView.estimatedRowHeight = 300;
-//     self.guideTripsTableView.rowHeight = UITableViewAutomaticDimension;
-
      
-     NSLog(@"%@",cell.tour);
- 
- 
      return cell;
      
  }

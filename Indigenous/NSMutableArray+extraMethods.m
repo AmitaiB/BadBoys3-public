@@ -13,6 +13,7 @@
 
 @implementation NSMutableArray (TRVMutableArray_extraMethods)
 
+
 -(NSMutableArray *) returnDummyAllTripsArrayForGuide:(TRVUser *)guide {
 
     NSMutableArray *allTripsArray = [[NSMutableArray alloc] init];
@@ -63,6 +64,7 @@
     
     return allTripsArray;
 }
+
 
 
 

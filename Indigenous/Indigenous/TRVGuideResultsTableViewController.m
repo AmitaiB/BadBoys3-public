@@ -7,10 +7,12 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+#import "NSMutableArray+extraMethods.h"
 #import "TRVGuideResultsTableViewController.h"
 #import "TRVUser.h"
 #import "TRVBio.h"
 #import "TRVSearchTripsViewController.h"
+#import "TRVGuideResultsDataSource.h"
 #import "TRVGuideProfileTableViewCell.h"
 #import <Masonry/Masonry.h>
 #import "TRVDetailGuideViewController.h"
@@ -24,6 +26,8 @@
 @property (nonatomic, strong) NSDictionary *filterDictionary;
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
 @property (nonatomic, strong) NSMutableArray *availableGuides;
+@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
+
 @end
 
 @implementation TRVGuideResultsTableViewController
@@ -31,8 +35,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
-   
-    
+//    self.tableViewDataSource = [[TRVGuideResultsDataSource alloc] initWithAvailableGuide:self.availableGuides];
+//    self.tableView.dataSource = self.tableViewDataSource;
+
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -53,18 +59,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.availableGuides.count > 0){
-        
-        
-
-    
+            
     TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         
+        
         cell.guideForThisCell = self.availableGuides[indexPath.row];
-    
-
         
-        
-    // setting nib user will parse text labels
+       // setting nib user will parse text labels
         cell.profileImageViewNib.userForThisGuideProfileView = self.availableGuides[indexPath.row];
         
     // add ibaction programaticcaly
@@ -115,10 +116,9 @@
              NSLog(@"HOW MANY OBJECTS WE GET BACK IN PARSE QUERY: %lu" , (unsigned long)objects.count);
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
-                 
-                 
-                 PFUser *theParseGuide = guideBio[@"user"];
-                 [theParseGuide fetch];
+                
+                     PFUser *theParseGuide = guideBio[@"user"];
+                     [theParseGuide fetch];
                  
                  [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                      
@@ -137,6 +137,8 @@
                                    profileImageURL:guideBio[@"picture"]
                                     nonFacebookImage:guideBio[@"emailPicture" ]];
                      
+                     //---------------------------------------------------------------------------------------------------
+                     
                      // Check to see if guide is signed up with email rather than FB
                      // if there is no URL, then parse the PF file image
                      
@@ -151,11 +153,21 @@
                              }
                          }];
                      }
+                     //---------------------------------------------------------------------------------------------------
+
                      
                      TRVUser *guideForThisRow = [[TRVUser alloc]initWithBio:bio];
                      
                      if (theParseGuide[@"myTrips"]){
-                         guideForThisRow.myTrips = theParseGuide[@"myTrips"];
+                         
+                         
+                         // UNCOMMENT THIS WHEN WE CAN ACTUALLY ADD TRIPS UP TO PARSE
+//                         guideForThisRow.myTrips = theParseGuide[@"myTrips"];
+                         
+                         // ADDED DUMMY DATA STORED IN NSMUTABLE ARRAY CATEGORY
+                         NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+                         NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
+                         guideForThisRow.myTrips = allTrips;
                      }
                      
                      // ADDING GUIDE WHO MET CONDITIONS AS YES
@@ -166,7 +178,7 @@
                  NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
                 
              }
-                      }
+        }
      }];
     
     
@@ -191,10 +203,13 @@
     }
     
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
-         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+        
+        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
         TRVUser *destinationGuideUser = self.availableGuides[ip.row];
+        
         TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
         destinationVC.selectedGuideUser = self.availableGuides[ip.row];
+        
         NSLog(@"PERFORMING SEGUE WITH USER PASSING AS: %@", destinationGuideUser.userBio.firstName);
     }
     
