@@ -26,18 +26,20 @@
 @implementation TRVTour
 
 
--(instancetype)initWithGuideUser:(TRVUser *)guideUser itineraryForThisTour:(TRVItinerary *)itinerary {
-    
+-(instancetype)initWithGuideUser:(TRVUser *)guideUser itineraryForThisTour:(TRVItinerary *)itinerary categoryForThisTour:(TRVTourCategory *)category {
+
     self = [super init];
     
     if (self) {
         _guideForThisTour = guideUser;
         _itineraryForThisTour = itinerary;
-        
+        _categoryForThisTour = category;
         [guideUser.allTrips addObject:self];
 
     }
     return self;
 }
+
+
 
 @end

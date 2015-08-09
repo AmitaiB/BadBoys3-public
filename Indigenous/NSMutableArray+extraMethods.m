@@ -9,6 +9,7 @@
 #import "NSMutableArray+extraMethods.h"
 #import "TRVTour.h"
 #import "TRVTourStop.h"
+#import "TRVTourCategory.h"
 #import "TRVItinerary.h"
 
 @implementation NSMutableArray (TRVMutableArray_extraMethods)
@@ -35,7 +36,7 @@
     
 
         // make tour far in the future
-        TRVTour *dummyTourInTheFuture = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:futureItinerary];
+        TRVTour *dummyTourInTheFuture = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:futureItinerary categoryForThisTour:[TRVTourCategory returnDrinkCategory]];
         dummyTourInTheFuture.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
 
         // make tour far in the past
@@ -55,7 +56,7 @@
     
     
         // set these Tours as 1 day old from start
-    	TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:pastItinerary];
+        TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:pastItinerary categoryForThisTour:[TRVTourCategory returnSeeCategory]];
         dummyTourInThePast.tourDeparture = yesterday;
 
     

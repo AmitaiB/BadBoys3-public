@@ -10,6 +10,7 @@
 #import "TRVUser.h"
 #import "TRVBio.h"
 #import <Parse.h>
+#import "TRVTourCategory.h"
 
 @interface TRVUserDataStore : NSObject
 
@@ -27,6 +28,12 @@
 @property (nonatomic, strong) NSMutableArray *languagesSpoken;
 @property (nonatomic) BOOL isGuide;
 
+//CATEGORIES
+@property (nonatomic, strong) TRVTourCategory *seeCategory;
+@property (nonatomic, strong) TRVTourCategory *playCategory;
+@property (nonatomic, strong) TRVTourCategory *eatCategory;
+@property (nonatomic, strong) TRVTourCategory *drinkCategory;
+
 
 // SET WHEN EAT/DRINK/PLAY/SEE IS SELECTED
 // NECESSARY FOR FILTER MODAL
@@ -34,3 +41,5 @@
 @property (nonatomic, strong) NSDictionary *filterChoices;
 
 @end
+
+

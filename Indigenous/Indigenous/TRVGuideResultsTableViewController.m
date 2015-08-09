@@ -176,7 +176,7 @@
                      [self.tableView reloadData];
                  }];
                  NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
-                
+                 
              }
         }
      }];
@@ -184,7 +184,7 @@
     
         if (self.filterDictionary == nil){
                 NSLog(@"Filter is nil!");
-        
+            
                 // SHOW ALL GUDES
 
                 } else {

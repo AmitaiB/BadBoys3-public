@@ -83,12 +83,11 @@
 
     datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
     
-    
     self.dataStore.currentCategorySearching = [self.tourCategories[indexPath.row] categoryName];
     
     
     
-    NSLog(@"Are you in here?");
+    NSLog(@"THIS IS THE CATEGORY : %@!!", [self.tourCategories[indexPath.row] categoryName]);
     [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
 }
 

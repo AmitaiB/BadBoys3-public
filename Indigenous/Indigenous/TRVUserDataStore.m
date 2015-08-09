@@ -95,9 +95,10 @@
                         
                     }
                 }];
-              }
+            }
 
             _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
+            
             NSLog(@"Welcome %@. ", _loggedInUser.userBio.firstName);
         }
     }];
