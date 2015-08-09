@@ -21,9 +21,6 @@
 
 - (void) changeTripsDisplayed;
 
--(instancetype)initWithTrips:(NSArray*)trips;
-
-@property (nonatomic, strong) NSMutableArray *toursOfSelectedCategory;
-@property (nonatomic, strong) NSMutableArray *otherTours;
+-(instancetype)initWithGuide:(TRVUser*)selectedGuide;
 
 @end
