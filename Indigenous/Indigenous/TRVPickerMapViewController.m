@@ -174,7 +174,7 @@ B will notify A through the delegate methods.
     UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Confirm Tour-Stop Selection"
                                                                                message:message
                                                                         preferredStyle:UIAlertControllerStyleActionSheet];
-        //TODO: Add action items (confirm selection; cancel; reverse/geocode it for me)
+        //TODO:AMITAI Add action items (confirm selection; cancel; reverse/geocode it for me)
     
     
     [self presentViewController:windowTappedAlert animated:YES completion:nil];
