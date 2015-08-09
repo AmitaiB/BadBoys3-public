@@ -230,8 +230,8 @@
 		949081661B6C67B100B6D2FA /* TRVEditProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVEditProfileTableViewController.m; sourceTree = "<group>"; };
 		949A6AD91B6FBAC6006ED035 /* TRVTourCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourCategory.h; sourceTree = "<group>"; };
 		949A6ADA1B6FBAC6006ED035 /* TRVTourCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourCategory.m; sourceTree = "<group>"; };
-		94A53C981B765E640029D2F7 /* NSMutableArray+extraMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+extraMethods.h"; sourceTree = "<group>"; };
-		94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+extraMethods.m"; sourceTree = "<group>"; };
+		94A53C981B765E640029D2F7 /* NSMutableArray+extraMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+extraMethods.h"; path = "../NSMutableArray+extraMethods.h"; sourceTree = "<group>"; };
+		94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+extraMethods.m"; path = "../NSMutableArray+extraMethods.m"; sourceTree = "<group>"; };
 		94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TRVTabBar.storyboard; sourceTree = "<group>"; };
 		94BD69001B6EC18A000CDA65 /* TRVGuideResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGuideResultsTableViewController.h; sourceTree = "<group>"; };
 		94BD69011B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGuideResultsTableViewController.m; sourceTree = "<group>"; };
@@ -355,8 +355,6 @@
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
-				94A53C981B765E640029D2F7 /* NSMutableArray+extraMethods.h */,
-				94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */,
 				94258ACC1B73F251006F24A8 /* Default-568h@2x.png */,
 				451565121B68221B005A2871 /* Indigenous */,
 				4515652C1B68221B005A2871 /* IndigenousTests */,
@@ -378,6 +376,7 @@
 		451565121B68221B005A2871 /* Indigenous */ = {
 			isa = PBXGroup;
 			children = (
+				944D312D1B76E126004CF255 /* Categories */,
 				94EA5F7B1B6FEECC002244D8 /* DataStore */,
 				944ACFFE1B6DDE6D00404EDD /* Search Guide Flow */,
 				94B755E41B6BBB1D0017FFA9 /* Profile Flow */,
@@ -578,6 +577,15 @@
 				944D312B1B76A92D004CF255 /* TRVGuideResultsDataSource.m */,
 			);
 			name = "Table View Data Source";
+			sourceTree = "<group>";
+		};
+		944D312D1B76E126004CF255 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				94A53C981B765E640029D2F7 /* NSMutableArray+extraMethods.h */,
+				94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		9482463A1B71528100D64432 /* Views/Nibs  */ = {

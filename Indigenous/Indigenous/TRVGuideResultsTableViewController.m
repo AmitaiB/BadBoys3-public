@@ -26,7 +26,7 @@
 @property (nonatomic, strong) NSDictionary *filterDictionary;
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
 @property (nonatomic, strong) NSMutableArray *availableGuides;
-@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
+//@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
 
 @end
 
@@ -70,13 +70,15 @@
         
     // add ibaction programaticcaly
         
-    UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
-    [cell.profileImageViewNib addGestureRecognizer:singleTapOnImage];
+    UITapGestureRecognizer *tapOnCellNib = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToDVC:)];
+    [cell.profileImageViewNib addGestureRecognizer:tapOnCellNib];
     cell.profileImageViewNib.userInteractionEnabled = YES;
     
     return cell;
     }
     else {
+        
+        // show a modal or something....
         NSLog(@"THERE ARE NO AVAILABLE GUIDES IN THIS SEARCH RESULT");
         TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         return cell;
@@ -88,7 +90,7 @@
 
 
 // add function to image tag
--(void)singleTap:(TRVGuideProfileTableViewCell *)cell {
+-(void)tapToDVC:(TRVGuideProfileTableViewCell *)cell {
     NSLog(@"In Single Tap Methood %@", cell);
     [self performSegueWithIdentifier:@"detailGuideSegue" sender:nil];
 }
@@ -206,10 +208,11 @@
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
         
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+        NSLog(@" WHICH INDEX ARE YOU????? :%ld", (long)ip.row);
         TRVUser *destinationGuideUser = self.availableGuides[ip.row];
-        
+        NSLog(@" WHO ARE YOU????? :%@", destinationGuideUser.userBio.firstName  );
         TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
-        destinationVC.selectedGuideUser = self.availableGuides[ip.row];
+        destinationVC.selectedGuideUser = destinationGuideUser;
         
         NSLog(@"PERFORMING SEGUE WITH USER PASSING AS: %@", destinationGuideUser.userBio.firstName);
     }
