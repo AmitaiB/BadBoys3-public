@@ -21,14 +21,12 @@ B will notify A through the delegate methods.
 
 //#import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <INTULocationManager.h>
-#import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "TRVAddToursVC.h"
 #import "TRVPickerMapViewController.h"
 
 
 @interface TRVPickerMapViewController () <GMSMapViewDelegate>
-
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, copy) NSSet *markers;
@@ -52,11 +50,8 @@ B will notify A through the delegate methods.
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-        //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
-    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-        //FIXME: same broken INTU+ fix needed -->
-    CLLocation *dummyLocation = [CLLocation new];
-            CLLocationCoordinate2D defaultLocation = dummyLocation.coordinate;
+        //Immediately draws a map with the pre-loaded initial location, carried over from the TabBarVC...
+            CLLocationCoordinate2D defaultLocation = self.initialLocation.coordinate;
 #pragma mark - MapView Initialization
         //Opens the map to the user's current location.
     GMSCameraPosition *defaultCamera       = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:14];
@@ -76,6 +71,7 @@ B will notify A through the delegate methods.
     
         //Now follows up with a slow loading, highly accurate location.
 //    __block GMSCameraPosition *updatedCamera;
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
                                                   block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
                                 

@@ -7,7 +7,10 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface TRVAddToursVC :  UIViewController
+
+@property (nonatomic, strong) CLLocation *initialLocation;
 
 @end

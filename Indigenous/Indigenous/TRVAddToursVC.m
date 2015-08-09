@@ -62,7 +62,7 @@ PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
     PFObject *itineraryUnderConstruction_PF;
         //!!!Amitai, you know what to do!
     NSError
-    [tourQuery findObjects:(NSError * __nullable __autoreleasing * __nullable)]
+    [tourQuery findObjects:(NSError * __nullable __autoreleasing * __nullable)];
     if () {
 //...then initializeNewTourConstruct....
         itineraryUnderConstruction_PF = [PFObject objectWithClassName:@"ItineraryUnderConstruction"];
