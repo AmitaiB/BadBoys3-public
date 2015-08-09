@@ -84,7 +84,7 @@
         [itineraryUnderConstruction_PF pinWithName:@"AddTourVC_Pins"];
     } else {
         DBLG
-        NSLog(@"Need to solve the bug (UIImage to NSData?)");
+        NSLog(@"Need to solve the bug (Invalid write to JSON(TVRItinerary))\nOh, and CLLocation is %@:", [location description]);
     }
 }
 
