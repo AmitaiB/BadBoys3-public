@@ -25,6 +25,7 @@
 @property (nonatomic, strong) TRVTourStopCollectionViewDelegateFlowLayout *collectionViewDelegate;
 @property (nonatomic, strong) TRVParallaxHeaderImageView *imageView;
 @property (nonatomic, strong) UILabel *parallaxHeaderTourNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
 @end
 
 @implementation TRVTouristTripDetailViewController
@@ -33,11 +34,14 @@
     [super viewDidLoad];
     self.navBarTitle.title = self.tour.itineraryForThisTour.nameOfTour;
     
-    self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:nil configuration:^(TRVTourStop * stop) {
+    self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:self.tour.itineraryForThisTour.tourStops configuration:^(TRVTourStop * stop) {
         //self.tourStopImageView.image = stop.image;     stops do not yet have images
     }];
     self.tourStopCollectionView.dataSource = self.dataSource;
-    self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init];
+    self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init]; // UILayoutContainerView
+    
+    self.collectionViewDelegate.imageView = self.tourStopImageView; // FIX THIS UGLY SHIT!!!
+    
     self.tourStopCollectionView.delegate = self.collectionViewDelegate;
     self.tourStopCollectionView.scrollsToTop = NO;
 
@@ -49,7 +53,7 @@
     [self.imageView addGestureRecognizer:tap];
     self.imageView.userInteractionEnabled = YES;
     self.parallaxHeaderTourNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 1)]; //doesn't matter
-    [self.theScrollViewThatHoldsAllTheOtherViews addSubview:self.parallaxHeaderTourNameLabel];
+    //[self.theScrollViewThatHoldsAllTheOtherViews addSubview:self.parallaxHeaderTourNameLabel];
     self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor magentaColor];
 
     [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:self.imageView andHeight:self.imageView.bounds.size.height];
@@ -67,6 +71,17 @@
     self.theScrollViewThatHoldsAllTheOtherViews.parallaxView.delegate = self;
     // Do any additional setup after loading the view.
     NSLog(@"The difference: %f", self.imageView.frame.size.height + self.navigationController.navigationBar.bounds.size.height - [UIScreen mainScreen].bounds.size.height);
+    
+    //NSLog(@"%@", [((UIView*)[((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])) subviews][0]) subviews]);
+    UIView *viewToAddTitleLabelTo = ((UIView*)[((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])) subviews][0]);
+    [viewToAddTitleLabelTo addSubview:self.parallaxHeaderTourNameLabel];
+    UITabBar *tabBar = [viewToAddTitleLabelTo subviews][1];
+    [self.parallaxHeaderTourNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(tabBar.mas_top);
+        make.width.equalTo(tabBar.mas_width);
+        make.left.equalTo(tabBar.mas_left);
+        make.height.equalTo(tabBar.mas_height);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -134,6 +149,20 @@
     // Do whatever you need to do to the parallaxView or your subview after its frame changed
     //NSLog(@"parallaxView:didChangeFrame: %@", NSStringFromCGRect(frame));
     //[self setTitleLabelFrame:frame];
+    NSLog(@"y value of title: %f", self.parallaxHeaderTourNameLabel.frame.origin.y);
+    NSLog(@"y value of other label: %f", self.tourInfoLabel.frame.origin.y);
+    
+    [self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil];
+    //[aView.superview convertPoint:aView.frame.origin toView:nil];
+    //[aView.superview convertPoint:aView.frame.origin toView:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.parallaxHeaderTourNameLabel.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.parallaxHeaderTourNameLabel.hidden = YES;
 }
 
 @end

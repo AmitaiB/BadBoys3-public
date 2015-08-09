@@ -39,7 +39,8 @@
         // make tour far in the past
 
     	TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:dummyItinerary];
-        dummyTourInTheFuture.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:-10];
+        NSDate *pastDate = [NSDate dateWithTimeIntervalSinceNow:-1000];
+        dummyTourInThePast.tourDeparture = pastDate; //[NSDate dateWithTimeIntervalSince1970:1000]; //[NSDate dateWithTimeIntervalSinceNow:-1000];
 
 
         
