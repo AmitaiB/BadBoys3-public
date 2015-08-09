@@ -55,20 +55,20 @@
 - (void)userSelectedTourStopLocation:(CLLocation*)location
 {
     DBLG
-PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
+    PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
                         [tourQuery whereKeyExists:@"Itinerary"];
                         [tourQuery fromPinWithName:@"AddTourVC_Pins"];
-    TRVItinerary *itineraryUnderConstruction_TRV;
-    PFObject *itineraryUnderConstruction_PF;
-        //!!!Amitai, you know what to do!
-    NSError
-    [tourQuery findObjects:(NSError * __nullable __autoreleasing * __nullable)];
-    if () {
-//...then initializeNewTourConstruct....
+    TRVItinerary * itineraryUnderConstruction_TRV;
+    PFObject     * itineraryUnderConstruction_PF;
+    NSError *queryError = nil;
+    NSArray *itineraryObjects = [tourQuery findObjects:&queryError];
+    if (!queryError) { //If PFObjectWithClassName: @"ItineraryUnderConstruction" does not exist...
+            //...then set our itinerary pointers to new objects....
         itineraryUnderConstruction_PF = [PFObject objectWithClassName:@"ItineraryUnderConstruction"];
         itineraryUnderConstruction_TRV = [TRVItinerary new];
         [itineraryUnderConstruction_PF addObject:itineraryUnderConstruction_TRV forKey:@"Itinerary"];
     } else {
+            //...if an itinerary object(s) already exist, then our pointers should let us build on them.
         itineraryUnderConstruction_PF = [tourQuery getFirstObject];
         itineraryUnderConstruction_TRV = (TRVItinerary*)itineraryUnderConstruction_PF[@"Itinerary"];
     }
