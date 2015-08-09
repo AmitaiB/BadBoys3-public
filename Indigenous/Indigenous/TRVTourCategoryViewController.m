@@ -77,7 +77,7 @@
 
     datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
     
-    self.dataStore.currentCategorySearching = [self.tourCategories[indexPath.row] categoryName];
+    self.dataStore.currentCategorySearching = self.tourCategories[indexPath.row];
     
     
     

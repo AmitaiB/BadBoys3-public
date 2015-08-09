@@ -32,7 +32,6 @@
 
 
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
-//@property (nonatomic, strong) TRVDetailGuideAllTripsDataSource *guideTripDataSource;
 @property (nonatomic, strong) UITableView *guideTripsTableView;
 @property (nonatomic, strong) TRVDetailGuideAllTripsDataSource *tableViewDataSource;
 
@@ -105,17 +104,17 @@
     
     
     // SET THE TAB BAR TO CATEGORY SEARCH
-    NSString *categorySearchTabName = self.sharedDataStore.currentCategorySearching;
+    TRVTourCategory *categoryForFirstTab = self.sharedDataStore.currentCategorySearching;
+    NSString *categorySearchTabName = categoryForFirstTab.categoryName;
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:categorySearchTabName, @"Other Tours", nil]];
     segmentedControl.frame = CGRectMake(35, 200, 250, 50);
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     segmentedControl.selectedSegmentIndex = 0;
-//    segmentedControl.tintColor = [UIColor blackColor];
-    [segmentedControl addTarget:self action:@selector(valueChanged:) forControlEvents: UIControlEventValueChanged];
+    [segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
     
     
     [self.profileView addSubview:segmentedControl];
-    
+
+    // Segmented Control Constraints
     [segmentedControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contactView.mas_bottom).with.offset(10);
         make.left.equalTo(self.profileView).with.offset(10);
@@ -126,15 +125,13 @@
 //    Instantiate a Table View
 
     self.guideTripsTableView = [[UITableView alloc] init];
-    self.guideTripsTableView.delegate = self;
-    self.guideTripsTableView.dataSource = self;
     [self.profileView addSubview:self.guideTripsTableView];
  
     
     // Register cell
-    [self.guideTripsTableView registerClass:[TRVTouristTripTableViewCell class] forCellReuseIdentifier:@"tripCell"];
-    
-    self.guideTripsTableView.backgroundColor = [UIColor orangeColor];
+        [self.guideTripsTableView registerClass:[TRVTouristTripTableViewCell class] forCellReuseIdentifier:@"tripCell"];
+        
+        self.guideTripsTableView.backgroundColor = [UIColor orangeColor];
     
     // Set Table View Constraints
     [self.guideTripsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -158,15 +155,36 @@
     }];
     
     
-    self.tableViewDataSource = [[TRVDetailGuideAllTripsDataSource alloc] initWithTrips:self.selectedGuideUser.allTrips];
-    self.guideTripsTableView.dataSource = self.tableViewDataSource;
+    // set delegate and datasource owner
+        self.guideTripsTableView.delegate = self;
+        self.tableViewDataSource = [[TRVDetailGuideAllTripsDataSource alloc] initWithTrips:self.selectedGuideUser.allTrips];
+        self.guideTripsTableView.dataSource = self.tableViewDataSource;
     }
+
+
+
+
+
+
+
+
+
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 320;
 }
+
+- (void)segmentedControlChanged:(UISegmentedControl *)segment
+{
+        NSLog(@"DO YOU GET CALLED SEGMENTED CONTROL?");
+        [self.tableViewDataSource changeTripsDisplayed];
+        [self.guideTripsTableView reloadData];
+
+}
+
 
 /*
 #pragma mark - Navigation

@@ -87,22 +87,22 @@
     
     NSLog(@"Category: %@", self.dataStore.currentCategorySearching);
     
-    if ([self.dataStore.currentCategorySearching isEqualToString:@"Eat"]){
+    if (self.dataStore.currentCategorySearching == [TRVTourCategory returnEatCategory]){
         
         self.subCategories = @[@"Restaurant", @"Street Food", @"Snack", @"Breakfast", @"Brunch", @"Lunch", @"Dinner", @"Dessert", @"Other"];
         
         
-    } else if ([self.dataStore.currentCategorySearching isEqualToString:@"Drink"]){
+    } else if (self.dataStore.currentCategorySearching == [TRVTourCategory returnDrinkCategory]){
        
         self.subCategories = @[@"Beer", @"Wine", @"Hard Liquor", @"Dive Bar", @"Upscale", @"Happy Hour"];
         
         
-    } else if ([self.dataStore.currentCategorySearching isEqualToString:@"Play"]){
+    } else if (self.dataStore.currentCategorySearching == [TRVTourCategory returnPlayCategory]){
         
         self.subCategories = @[@"Sports", @"Outdoors", @"Hiking", @"Biking", @"Swimming"];
         
         
-    } else if ([self.dataStore.currentCategorySearching isEqualToString:@"See"]){
+    } else if (self.dataStore.currentCategorySearching == [TRVTourCategory returnSeeCategory]){
         
         self.subCategories = @[@"Landmarks", @"Nature", @"History", @"Buildings"];
     }
