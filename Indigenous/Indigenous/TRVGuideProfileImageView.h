@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
 
+@protocol ImageTapProtocol
+
+- (void)returnUserForThisImageNib:(TRVUser *)guideUser;
+
+@end
+
+
 @interface TRVGuideProfileImageView : UIView
 
 @property (nonatomic, strong) TRVUser *userForThisGuideProfileView;
+@property (nonatomic, assign) id <ImageTapProtocol> delegate;
 
 
 @end

@@ -11,8 +11,6 @@
 
 @interface TRVUserAboutMeView()
 
-
-
 @end
 
 @implementation TRVUserAboutMeView
@@ -48,6 +46,7 @@
     [self addSubview:self.contentView];
     
     [self checkIfuserForThisViewIsGuide];
+    NSLog(@"are you checking if user is guide?");
     
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);

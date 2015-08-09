@@ -7,6 +7,7 @@
 //
 
 #import "TRVTourGuideMyToursVC.h"
+#import "TRVTourGuideTabBarVC.h"
 
 @interface TRVTourGuideMyToursVC ()
 

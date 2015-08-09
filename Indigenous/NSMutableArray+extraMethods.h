@@ -12,6 +12,8 @@
 
 @interface NSMutableArray (extraMethods)
 
+@property (nonatomic, strong) TRVUser *guide;
 -(NSMutableArray *) returnDummyAllTripsArrayForGuide:(TRVUser *)guide;
+
 
 @end

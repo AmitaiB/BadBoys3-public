@@ -5,15 +5,26 @@
 //  Created by Amitai Blickstein on 7/30/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
+/**
+A is a delegate object of B.
 
-//#define requestWhateverAuthorization requestAlwaysAuthorization
-//#define requestWhateverAuthorization requestWhenInUseAuthorization
+B will have a reference of A.
 
-#import "TRVPickerMapViewController.h"
-#import "TRVPickerMapLogic.h" //includes GMapsSDK
+A will implement the delegate methods of B.
+
+B will notify A through the delegate methods.
+
+ A = Add Tours
+ B = Map (this one)
+ 
+ */
+
+//#import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <INTULocationManager.h>
-#import "INTULocationManager+CurrentLocation.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "TRVAddToursVC.h"
+#import "TRVPickerMapViewController.h"
+
 
 @interface TRVPickerMapViewController () <GMSMapViewDelegate>
 
@@ -22,14 +33,25 @@
 
 @end
 
-@implementation TRVPickerMapViewController
+@implementation TRVPickerMapViewController {
+    GMSMarker *userSelection_;
+}
+
+//- (id)delegate {
+//    return _delegate;
+//}
+//
+//- (void)setDelegate:(id)newDelegate {
+//    _delegate = newDelegate;
+//}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-        //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
-    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-    CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
+        //Immediately draws a map with the pre-loaded initial location, carried over from the TabBarVC...
+            CLLocationCoordinate2D defaultLocation = self.initialLocation.coordinate;
 #pragma mark - MapView Initialization
         //Opens the map to the user's current location.
     GMSCameraPosition *defaultCamera       = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:14];
@@ -43,12 +65,13 @@
         //Codeschool said to add this line `[self.view addSubview:self.mapView];` but it turns out that broke the delegation.
     self.view = self.mapView;
     self.mapView.delegate = self;
-
+    
     NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
-    [self setupMarkerData];
+//    [self setupMarkerData];
     
         //Now follows up with a slow loading, highly accurate location.
 //    __block GMSCameraPosition *updatedCamera;
+    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
                                                   block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
                                 
@@ -135,8 +158,8 @@
     snippetLabel.text = marker.snippet;
     
         //custom background image style
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"london"]];
-    [iWindow addSubview:backgroundImage];
+//    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GMSSprites-0-1x"]];
+//    [iWindow addSubview:backgroundImage];
     
     marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
     
@@ -146,11 +169,13 @@
 #pragma mark - Events (delegate methods)
 
 -(void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
-    NSString *message = [NSString stringWithFormat:@"You tapped the info window for the %@ marker", marker.title];
+    NSString *message = [NSString stringWithFormat:@"You tapped selected (%.4f, %.4f). Confirm selection?", marker.position.latitude, marker.position.longitude];
     
-    UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Info Window Tapped!"
+    UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Confirm Tour-Stop Selection"
                                                                                message:message
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
+        //TODO: Add action items (confirm selection; cancel; reverse/geocode it for me)
+    
     
     [self presentViewController:windowTappedAlert animated:YES completion:nil];
 }
@@ -159,6 +184,20 @@
     NSLog(@"You tapped at %f, %f", coordinate.latitude, coordinate.longitude);
 }
 
+-(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
+//    userSelection_ = [GMSMarker markerWithPosition:coordinate];
+    CLLocation *userSelection = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    [self.delegate userSelectedTourStopLocation:userSelection];
+}
+/*
+#pragma mark - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+}
+*/
 /**
 ✓⃞– mapView:markerInfoContents:
 ⃞– mapView:didTapInfoWindowOfMarker:
@@ -181,14 +220,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

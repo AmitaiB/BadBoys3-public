@@ -19,4 +19,6 @@
 
 -(instancetype)initNameOfTour:(NSString *)name tourImage:(UIImage *)tourImage tourStops:(NSMutableArray *)tourStops;
 
+-(instancetype)init;
+
 @end

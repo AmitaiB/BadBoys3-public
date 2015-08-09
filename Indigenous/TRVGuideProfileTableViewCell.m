@@ -31,7 +31,6 @@
 -(void) setGuideForThisCell:(TRVUser *)guideForThisCell {
     // override guide setter for cell
     _guideForThisCell = guideForThisCell;
-    
     //override guide setter for nib WITHIN CELL BY SETTING THIS CELL GUIDE. 
     self.profileImageViewNib.userForThisGuideProfileView = guideForThisCell;
     

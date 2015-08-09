@@ -1,5 +1,5 @@
 //
-//  TRVAddNewStopToItineraryVC.h
+//  TRVAddToursVC.h
 //  Indigenous
 //
 //  Created by Amitai Blickstein on 7/29/15.
@@ -7,7 +7,10 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface TRVAddToursVC : UIViewController
+@interface TRVAddToursVC :  UIViewController
+
+@property (nonatomic, strong) CLLocation *initialLocation;
 
 @end

@@ -69,7 +69,7 @@
     }];
     
     //add IBAction programatically
-    UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToGuideTab:)];
     [aboutMeView.switchToGuideButton addGestureRecognizer:singleTapOnImage];
     aboutMeView.switchToGuideButton.userInteractionEnabled = YES;
 
@@ -96,7 +96,7 @@
 
 }
 
--(void)singleTap:(TRVUserContactView *)view {
+-(void)tapToGuideTab:(TRVUserContactView *)view {
     
     NSLog(@"In Single Tap Methood");
     
