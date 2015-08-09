@@ -30,9 +30,18 @@
 }
 
 
+//-(instancetype)init {
+//    self = [super init];
+//    if (self) {
+//        _currentCategorySearching = [[TRVTourCategory alloc] init];
+//    }
+//    return self;
+//}
+
+
+
 - (void) setCurrentUser:(PFUser *)currentUser {
-  
-    
+
         _parseUser = currentUser;
         
         PFQuery *query = [PFQuery queryWithClassName:@"UserBio"];
@@ -73,12 +82,10 @@
             // DEPENDS ON IF FACEBOOK OR EMAIL LOGGED IN
             if (objects[0][@"picture"]){
                 
-                
                 [TRVAFNetwokingAPIClient getImagesWithURL:objects[0][@"picture"] withCompletionBlock:^(UIImage *response) {
                     
                     // Setting profile Image with AFNetworking request
                     bioForLoggedInUser.profileImage = response;
-                
                 }];
                 
             } else {

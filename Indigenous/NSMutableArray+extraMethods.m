@@ -61,7 +61,7 @@
 
     
     //add 4     of these dummy trips into allTrips Array
-    [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast]];
+    [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture]];
     
     return allTripsArray;
 }

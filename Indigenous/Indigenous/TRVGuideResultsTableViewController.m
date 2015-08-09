@@ -12,7 +12,6 @@
 #import "TRVUser.h"
 #import "TRVBio.h"
 #import "TRVSearchTripsViewController.h"
-#import "TRVGuideResultsDataSource.h"
 #import "TRVGuideProfileTableViewCell.h"
 #import <Masonry/Masonry.h>
 #import "TRVDetailGuideViewController.h"
