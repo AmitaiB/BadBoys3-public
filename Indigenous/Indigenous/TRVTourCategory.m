@@ -23,4 +23,18 @@
 }
 
 
++(TRVTourCategory *)returnSeeCategory {
+    return [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
+}
++(TRVTourCategory *)returnPlayCategory{
+    return  [[TRVTourCategory alloc] initWithName:@"Play" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"beijing.jpg"]];
+}
++(TRVTourCategory *)returnEatCategory {
+    return  [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];
+}
+
++(TRVTourCategory *)returnDrinkCategory {
+    return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid.jpg"]];
+}
+
 @end

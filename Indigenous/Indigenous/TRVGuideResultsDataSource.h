@@ -1,18 +1,18 @@
+////
+////  TRVGuideResultsDataSource.h
+////  Indigenous
+////
+////  Created by Leo Kwan on 8/8/15.
+////  Copyright (c) 2015 Bad Boys 3. All rights reserved.
+////
 //
-//  TRVGuideResultsDataSource.h
-//  Indigenous
+//#import <UIKit/UIKit.h>
+//#import <Foundation/Foundation.h>
 //
-//  Created by Leo Kwan on 8/8/15.
-//  Copyright (c) 2015 Bad Boys 3. All rights reserved.
+//@interface TRVGuideResultsDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 //
-
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-
-@interface TRVGuideResultsDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
-
-@property (nonatomic, strong) NSMutableArray *availableGuides;
-
--(instancetype)initWithAvailableGuide:(NSMutableArray *)guides;
-
-@end
+//@property (nonatomic, strong) NSMutableArray *availableGuides;
+//
+//-(instancetype)initWithAvailableGuide:(NSMutableArray *)guides;
+//
+//@end

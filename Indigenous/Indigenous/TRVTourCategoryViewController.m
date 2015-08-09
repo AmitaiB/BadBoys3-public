@@ -31,19 +31,13 @@
     // make self as datasource and delegate
     self.categoryCollectionView.delegate =self;
     self.categoryCollectionView.dataSource = self;
-    
-    // Instantiate a category view and category
-    
-    TRVTourCategory *seeCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
-    
-    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"Play" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"beijing.jpg"]];
-    
-    TRVTourCategory *eatCategory = [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];
-    
-    TRVTourCategory *drinkCategory = [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid.jpg"]];
 
-    self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
-    
+
+//    self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
+    self.tourCategories = [[NSMutableArray alloc] initWithObjects:[TRVTourCategory returnSeeCategory],
+                                                                                                                [TRVTourCategory returnPlayCategory],
+                                                                                                                [TRVTourCategory returnEatCategory],
+                                                                                                                [TRVTourCategory returnDrinkCategory], nil];
     
     NSLog(@"Selected city is: %@", self.selectedCity);
 
@@ -83,12 +77,11 @@
 
     datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
     
-    
     self.dataStore.currentCategorySearching = [self.tourCategories[indexPath.row] categoryName];
     
     
     
-    NSLog(@"Are you in here?");
+    NSLog(@"THIS IS THE CATEGORY : %@!!", [self.tourCategories[indexPath.row] categoryName]);
     [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
 }
 
