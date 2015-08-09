@@ -45,6 +45,12 @@
         make.edges.equalTo(@0);
     }];
 
+    [self.categoryIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(self.contentView.mas_height).dividedBy(8);
+        make.width.equalTo(self.categoryIconImageView.mas_height);
+        make.right.equalTo(self.contentView).with.offset(-10);
+        make.bottom.equalTo(self.contentView);
+    }];
     
 }
 
@@ -56,8 +62,11 @@
     
     self.tourImageView.image = itineraryForThisView.tourImage;
     self.nameOfTourLabel.text = itineraryForThisView.nameOfTour;
+    self.categoryIconImageView.image = tourForThisTourView.categoryForThisTour.iconImage;
     self.numberOfStopsLabel.text = [NSString stringWithFormat:@"%lu stops", itineraryForThisView.tourStops.count];;
-    self.tourRatingLabel.text = [NSString stringWithFormat:@"Average Rating - %f", tourForThisTourView.tourAverageRating];
+    
+    // Sets the decimal to 1 significant figure
+    self.tourRatingLabel.text = [NSString stringWithFormat:@"Average Rating - %.1f", tourForThisTourView.tourAverageRating];
     }
 
 
