@@ -62,6 +62,7 @@
     PFObject     * itineraryUnderConstruction_PF;
     NSError *queryError = nil;
     NSArray *itineraryObjects = [tourQuery findObjects:&queryError];
+    NSLog(@"NSArray <PFObjects> itineraryObjects: %@", [itineraryObjects description]);
     if (!queryError) { //If PFObjectWithClassName: @"ItineraryUnderConstruction" does not exist...
             //...then set our itinerary pointers to new objects....
         itineraryUnderConstruction_PF = [PFObject objectWithClassName:@"ItineraryUnderConstruction"];
