@@ -329,10 +329,10 @@
             </objects>
             <point key="canvasLocation" x="2041.5" y="-4"/>
         </scene>
-        <!--Tour Guide Tab BarVC-->
+        <!--Tab Bar Controller-->
         <scene sceneID="ODl-36-TMn">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TAU-Cj-Q2B" customClass="TRVTourGuideTabBarVC" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TAU-Cj-Q2B" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="BKl-gB-Vg3">

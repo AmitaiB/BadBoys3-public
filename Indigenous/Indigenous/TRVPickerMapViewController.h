@@ -21,7 +21,6 @@
 
 @interface TRVPickerMapViewController : UIViewController
 
-@property (nonatomic, strong) CLLocation *initialLocation;
 @property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
 
 @end
