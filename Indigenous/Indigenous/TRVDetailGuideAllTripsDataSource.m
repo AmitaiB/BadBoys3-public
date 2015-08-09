@@ -49,7 +49,6 @@
     if (self) {
         _allTours = allTours;
         _sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
-        // sets tab as results with category specified
         _categoryTab = YES;
     }
     return self;
@@ -61,18 +60,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //     Return the number of rows in the section.
-    
-    
-    
+        [self filterTripsByCategory];
+
+
     if (_categoryTab) {
         NSLog(@"NUMBER OF TOURS IN CATEGORY ARRAY!  %lu",(unsigned long)self.toursOfSelectedCategory.count);
-        NSLog(@"NUMBER OF TOURS IN CATEGORY ARRAY!  %lu",(unsigned long)self.allTours.count);
-        return self.toursOfSelectedCategory.count;
+        return [_toursOfSelectedCategory count];
     }
     NSLog(@"NUMBER OF TOURS IN THIS OTHER TOURS ARRAY! %lu",(unsigned long)self.otherTours.count);
-    return self.otherTours.count;
-    
-    return self.allTours.count;
+    return [_otherTours count];
     
 }
 
@@ -81,17 +77,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"ARE YOU IN THIS CELL FOR ROW??");
-//
-//    TRVTour *tourForCell = nil;
+
+    TRVTour *tourForCell = nil;
 //    [self filterTripsByCategory];
-//    
-//    if(_categoryTab) {
-//    tourForCell = _toursOfSelectedCategory[indexPath.row];
-//    }
-//        tourForCell = _otherTours[indexPath.row];
     
-    NSMutableArray *allTripsForThisUser = [self.allTours mutableCopy];;
-    NSLog(@"%@", allTripsForThisUser[indexPath.row]);
+    if(_categoryTab) {
+    tourForCell = _toursOfSelectedCategory[indexPath.row];
+    }
+    else {
+        tourForCell = _otherTours[indexPath.row];
+    }
     
     
     // creating custom view of UITableView Cell
@@ -108,15 +103,14 @@
         make.bottom.equalTo(cell.mas_bottomMargin).with.offset(10);
     }];
     
-    tourView.tourForThisTourView = allTripsForThisUser[indexPath.row];
     
-//    tourView.tourForThisTourView = tourForCell;
+        tourView.tourForThisTourView = tourForCell;
 
     tourView.backgroundColor = [UIColor redColor];
     
     //     self.guideTripsTableView.estimatedRowHeight = 300;
     
-//    cell.tour = tourForCell;
+    cell.tour = tourForCell;
     return cell;
     
 }
@@ -126,16 +120,21 @@
 }
 
 -(void)filterTripsByCategory {
-    self.toursOfSelectedCategory = [[NSMutableArray alloc] init];
-    self.otherTours = [[NSMutableArray alloc] init];
+    _toursOfSelectedCategory = [[NSMutableArray alloc] init];
+    _otherTours =  [[NSMutableArray alloc] init];
     
     for (TRVTour *tour in self.allTours) {
-        NSLog(@"ARE YOU IN THIS FOR LOOP?");
-//        if (tour.categoryForThisTour == self.sharedDataStore.currentCategorySearching) {
+        
+        NSString *categoryInSearch = self.sharedDataStore.currentCategorySearching.categoryName;
+        NSString *categoryForTourIndex = tour.categoryForThisTour.categoryName;
+        
+        if ([categoryInSearch isEqualToString: categoryForTourIndex]) {
             [self.toursOfSelectedCategory addObject:tour];
-//        } else{
-//            [self.otherTours addObject:tour];
-//        }
+        } else{
+            [self.otherTours addObject:tour];
+        }
+        NSLog(@"NUMBER OF OBJECTS IN CATEGORY TAB: %lu", self.toursOfSelectedCategory.count);
+        NSLog(@"NUMBER OF OBJECTS IN OTHER TAB: %lu", self.otherTours.count);
     }
 }
 
