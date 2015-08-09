@@ -35,8 +35,7 @@
 
 @property (nonatomic, weak) NSArray *allTours;
 
-@property (nonatomic, strong) NSMutableArray *toursOfSelectedCategory;
-@property (nonatomic, strong) NSMutableArray *otherTours;
+
 @property (nonatomic) BOOL categoryTab;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @end
@@ -76,13 +75,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"ARE YOU IN THIS CELL FOR ROW??");
 
     TRVTour *tourForCell = nil;
 //    [self filterTripsByCategory];
     
     if(_categoryTab) {
-    tourForCell = _toursOfSelectedCategory[indexPath.row];
+        tourForCell = _toursOfSelectedCategory[indexPath.row];
     }
     else {
         tourForCell = _otherTours[indexPath.row];
@@ -92,7 +90,6 @@
     // creating custom view of UITableView Cell
     TRVTourView *tourView = [[TRVTourView alloc] init];
     TRVTouristTripTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tripCell" forIndexPath:indexPath];
-    NSLog(@"ARE YOU IN THIS CELL FOR ROW??");
 
     [cell addSubview:tourView];
     // set constraints for tour nib
