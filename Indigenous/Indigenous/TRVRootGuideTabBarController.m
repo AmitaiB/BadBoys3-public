@@ -10,7 +10,7 @@
 
 //Pre-load current location in the background.
 #import <INTULocationManager.h>
-#import "INTULocationManager+CurrentLocation.h"
+//#import "INTULocationManager+CurrentLocation.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface TRVRootGuideTabBarController ()
@@ -27,7 +27,7 @@
     
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:NO block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
         NSLog(@"Inside the pre-loading location block. We have %@ succeeded!", (status == INTULocationStatusSuccess) ? @"INDEED" : @"NOT");
-        locationManager.currentLocation = currentLocation;
+//        locationManager.currentLocation = currentLocation;
     }];
     
     
