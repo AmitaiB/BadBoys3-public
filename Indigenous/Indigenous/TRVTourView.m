@@ -44,30 +44,9 @@
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
     }];
-    
-    //Hey, were changes made"?
-    
-    //if changes made, then call on updateConstraints:
-    
-    //else dont do anything
-    
-    
 
     
 }
-
-//- (void)updateConstraints {
-//    
-//    // THIS MAKES SURE WHATEVER VIEW THE NIB INHABITS, OUR SUBVIEWS HIT THE EDGES
-//    UIView *view = self.contentView;
-//
-//    NSDictionary *views = NSDictionaryOfVariableBindings(view);
-//    NSMutableArray *constraints = [[NSMutableArray alloc] init];
-//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"H:|[view]|" options:0 metrics:nil views:views]];
-//    [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat: @"V:|[view]|" options:0 metrics:nil views:views]];
-//    [self addConstraints:constraints];
-//    [super updateConstraints];
-//}
 
 -(void)setTourForThisTourView:(TRVTour *)tourForThisTourView {
     
@@ -79,7 +58,6 @@
     self.nameOfTourLabel.text = itineraryForThisView.nameOfTour;
     self.numberOfStopsLabel.text = [NSString stringWithFormat:@"%lu stops", itineraryForThisView.tourStops.count];;
     self.tourRatingLabel.text = [NSString stringWithFormat:@"Average Rating - %f", tourForThisTourView.tourAverageRating];
-    NSLog(@"heelllo from tour nib setter method");
     }
 
 
