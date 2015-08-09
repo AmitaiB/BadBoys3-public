@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+    //TODO: Acc. to this doc, https://parse.com/docs/ios/guide#geopoints
+    //parse can handle all of this, no need for INTU...
     //Pre-load current location in the background.
 #import <INTULocationManager.h>
 #import <CoreLocation/CoreLocation.h>
