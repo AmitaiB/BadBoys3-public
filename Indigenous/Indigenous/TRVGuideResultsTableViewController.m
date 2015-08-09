@@ -20,12 +20,13 @@
 #import "TRVUserDataStore.h"
 #import "TRVAFNetwokingAPIClient.h"
 
-@interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol>
+@interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol, ImageTapProtocol>
 
 
 @property (nonatomic, strong) NSDictionary *filterDictionary;
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
 @property (nonatomic, strong) NSMutableArray *availableGuides;
+@property (nonatomic, strong) TRVUser *destinationGuideUser;
 //@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
 
 @end
@@ -34,16 +35,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self updateGuidesList];
+
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
-//    self.tableViewDataSource = [[TRVGuideResultsDataSource alloc] initWithAvailableGuide:self.availableGuides];
-//    self.tableView.dataSource = self.tableViewDataSource;
 
 
 }
 
 -(void)viewWillAppear:(BOOL)animated{
         [super viewWillAppear:animated];
-        [self updateGuidesList];
+        [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -62,18 +63,16 @@
             
     TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         
-        
         cell.guideForThisCell = self.availableGuides[indexPath.row];
         
        // setting nib user will parse text labels
         cell.profileImageViewNib.userForThisGuideProfileView = self.availableGuides[indexPath.row];
         
+        // I CONFORM TO THE PROFILE IMAGE TAPPED PROTOCOL
+        cell.profileImageViewNib.delegate = self;
+        
     // add ibaction programaticcaly
         
-    UITapGestureRecognizer *tapOnCellNib = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToDVC:)];
-    [cell.profileImageViewNib addGestureRecognizer:tapOnCellNib];
-    cell.profileImageViewNib.userInteractionEnabled = YES;
-    
     return cell;
     }
     else {
@@ -86,14 +85,12 @@
 }
 
 
-
-
-
-// add function to image tag
--(void)tapToDVC:(TRVGuideProfileTableViewCell *)cell {
-    NSLog(@"In Single Tap Methood %@", cell);
+- (void)returnUserForThisImageNib:(TRVUser *)guideUser {
+    self.destinationGuideUser = guideUser;
     [self performSegueWithIdentifier:@"detailGuideSegue" sender:nil];
+    NSLog(@"DOES THIS WORK????? THIS IS THE DELEGATE METHOD FOR NIB: %@", guideUser.userBio.firstName);
 }
+
 
 
 
@@ -207,14 +204,13 @@
     
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
         
-        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        NSLog(@" WHICH INDEX ARE YOU????? :%ld", (long)ip.row);
-        TRVUser *destinationGuideUser = self.availableGuides[ip.row];
-        NSLog(@" WHO ARE YOU????? :%@", destinationGuideUser.userBio.firstName  );
-        TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
-        destinationVC.selectedGuideUser = destinationGuideUser;
+//        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
         
-        NSLog(@"PERFORMING SEGUE WITH USER PASSING AS: %@", destinationGuideUser.userBio.firstName);
+//        TRVUser *destinationGuideUser = self.availableGuides[ip.row];
+        
+        TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
+        destinationVC.selectedGuideUser = self.destinationGuideUser;
+        
     }
     
 }
