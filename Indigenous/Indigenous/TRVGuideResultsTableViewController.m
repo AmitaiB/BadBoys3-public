@@ -20,13 +20,14 @@
 #import "TRVUserDataStore.h"
 #import "TRVAFNetwokingAPIClient.h"
 
-@interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol>
+@interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol, ImageTapProtocol>
 
 
 @property (nonatomic, strong) NSDictionary *filterDictionary;
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
 @property (nonatomic, strong) NSMutableArray *availableGuides;
-@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
+@property (nonatomic, strong) TRVUser *destinationGuideUser;
+//@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
 
 @end
 
@@ -34,16 +35,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self updateGuidesList];
+
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
-//    self.tableViewDataSource = [[TRVGuideResultsDataSource alloc] initWithAvailableGuide:self.availableGuides];
-//    self.tableView.dataSource = self.tableViewDataSource;
 
 
 }
 
 -(void)viewWillAppear:(BOOL)animated{
         [super viewWillAppear:animated];
-        [self updateGuidesList];
+        [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -62,21 +63,21 @@
             
     TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         
-        
         cell.guideForThisCell = self.availableGuides[indexPath.row];
         
        // setting nib user will parse text labels
         cell.profileImageViewNib.userForThisGuideProfileView = self.availableGuides[indexPath.row];
         
+        // I CONFORM TO THE PROFILE IMAGE TAPPED PROTOCOL
+        cell.profileImageViewNib.delegate = self;
+        
     // add ibaction programaticcaly
         
-    UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
-    [cell.profileImageViewNib addGestureRecognizer:singleTapOnImage];
-    cell.profileImageViewNib.userInteractionEnabled = YES;
-    
     return cell;
     }
     else {
+        
+        // show a modal or something....
         NSLog(@"THERE ARE NO AVAILABLE GUIDES IN THIS SEARCH RESULT");
         TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         return cell;
@@ -84,14 +85,12 @@
 }
 
 
-
-
-
-// add function to image tag
--(void)singleTap:(TRVGuideProfileTableViewCell *)cell {
-    NSLog(@"In Single Tap Methood %@", cell);
+- (void)returnUserForThisImageNib:(TRVUser *)guideUser {
+    self.destinationGuideUser = guideUser;
     [self performSegueWithIdentifier:@"detailGuideSegue" sender:nil];
+    NSLog(@"DOES THIS WORK????? THIS IS THE DELEGATE METHOD FOR NIB: %@", guideUser.userBio.firstName);
 }
+
 
 
 
@@ -177,7 +176,7 @@
                      [self.tableView reloadData];
                  }];
                  NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
-                
+                 
              }
         }
      }];
@@ -185,7 +184,7 @@
     
         if (self.filterDictionary == nil){
                 NSLog(@"Filter is nil!");
-        
+            
                 // SHOW ALL GUDES
 
                 } else {
@@ -205,13 +204,13 @@
     
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
         
-        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        TRVUser *destinationGuideUser = self.availableGuides[ip.row];
+//        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
+        
+//        TRVUser *destinationGuideUser = self.availableGuides[ip.row];
         
         TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
-        destinationVC.selectedGuideUser = self.availableGuides[ip.row];
+        destinationVC.selectedGuideUser = self.destinationGuideUser;
         
-        NSLog(@"PERFORMING SEGUE WITH USER PASSING AS: %@", destinationGuideUser.userBio.firstName);
     }
     
 }

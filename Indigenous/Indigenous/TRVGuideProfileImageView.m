@@ -48,6 +48,9 @@
     
     self.profileImageView.image = userForThisGuideProfileView.userBio.profileImage;
     
+    
+    
+    
     // SET TAGLINE LABEL AS BIO DESCRIPTION FOR NOW, 
     self.guideTagLineLabel.text = userForThisGuideProfileView.userBio.bioDescription;
 }
@@ -60,6 +63,13 @@
                                 options:nil];
     
     [self addSubview:self.guideProfileView];
+    
+    // add TAP RECOGNIZER for image tap
+    UITapGestureRecognizer *profileImageTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+    [self.guideProfileView addGestureRecognizer:profileImageTap];
+    self.guideProfileView.userInteractionEnabled = YES;
+
+    
 
     // set constraints for imageView to superview
     [self.guideProfileView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,10 +77,15 @@
     }];
     
     [self createCircleImageViewMask];
-
-
-
 }
+
+- (void)imageTapped:(id)sender {
+    //RETURN USER FOR THIS IMAGE
+    NSLog(@"%@",self.userForThisGuideProfileView.userBio.firstName);
+    TRVUser *userForThisNib = self.userForThisGuideProfileView;
+    [self.delegate returnUserForThisImageNib:userForThisNib];
+}
+
 
 -(void)createCircleImageViewMask {
     
