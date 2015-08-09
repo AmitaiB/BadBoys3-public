@@ -130,14 +130,13 @@
     self.guideTripsTableView.backgroundColor = [UIColor orangeColor];
     
     // Set Table View Constraints
-
     [self.guideTripsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(segmentedControl.mas_bottom).with.offset(10);
         make.left.and.right.equalTo(self.profileView);
         NSUInteger numberOfCells = self.selectedGuideUser.allTrips.count;
 
         // hacky way to make table view longer
-        NSNumber *cellHeight = @(300);
+        NSNumber *cellHeight = @(320);
         NSNumber *tableViewHeight = @([cellHeight floatValue] * numberOfCells);
         make.height.equalTo(tableViewHeight);
         }];
@@ -147,7 +146,8 @@
     
     [self.profileView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
-        make.bottom.equalTo(self.guideTripsTableView.mas_bottom);
+        //Add padding to bottom of VC
+        make.bottom.equalTo(self.guideTripsTableView.mas_bottom).with.offset(10);
     }];
     
     }
@@ -172,7 +172,8 @@
 
      // set constraints for tour nib
      [tourView mas_makeConstraints:^(MASConstraintMaker *make) {
-         make.top.and.left.equalTo(cell).with.offset(5);
+         make.top.equalTo(cell).with.offset(10);
+         make.left.equalTo(cell).with.offset(5);
          make.right.equalTo(cell).with.offset(-5);
          make.bottom.equalTo(cell.mas_bottomMargin).with.offset(10);
      }];
@@ -181,7 +182,7 @@
      tourView.backgroundColor = [UIColor redColor];
      
      
-     self.guideTripsTableView.estimatedRowHeight = 300;
+//     self.guideTripsTableView.estimatedRowHeight = 300;
      
      return cell;
      
@@ -191,7 +192,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    return 300;
+    return 320;
 }
 
 /*
