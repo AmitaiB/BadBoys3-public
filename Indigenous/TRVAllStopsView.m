@@ -91,17 +91,25 @@
     }];
     
 
-//    for (int i = 0; i < self.stopsForThisTour.count; i++) {
-//        UIImageView *tourImage = [[UIImageView alloc] initWithImage:self.stopsForThisTour[i]];
-//        
-//    }
+    id currentLeft = self.contentView.mas_left;
     
-    [self.stopImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.bottom.and.left.equalTo(self.contentView);
-        make.height.equalTo(self.scrollView.mas_height);
-        make.width.equalTo(self.scrollView.mas_width);
-    }];
+    for (int i = 0; i < self.stopsForThisTour.count; i++) {
+        UIImageView *tourImageView = [[UIImageView alloc] init];
+        TRVTourStop *stopForThisTour = self.stopsForThisTour[i];
+        UIImage *stopImage = stopForThisTour.image;
+        tourImageView.image = stopImage;
+        
+        [self.contentView addSubview:tourImageView];
+        [tourImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(self.scrollView.mas_width);
+            make.height.equalTo(self.contentView.mas_height);
+            make.left.equalTo(currentLeft);
+            make.top.equalTo(self.scrollView.mas_left);
+        }];
+        currentLeft = tourImageView.mas_right;
+    }
     
+
 
     for (TRVTourStop *stop in self.itineraryForThisTour.tourStops) {
         NSLog(@"%f", stop.tourStopLocation.latitude);
