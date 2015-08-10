@@ -149,12 +149,12 @@ B will notify A through the delegate methods.
     
     marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
 
-        ///    return iWindow;
+//           return iWindow;
 //==========================
 //Alternative uiview:
 // ==========================
     
-    CustomInfoWindowView *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"CustomInfoWindow" owner:self options:nil] objectAtIndex:0];
+    CustomInfoWindowView *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"CustomInfoWindow" owner:nil options:nil] objectAtIndex:0];
   infoWindow.placeName.text = @"Your location here!";
   infoWindow.address.text   = @"123 Sesame Street";
   infoWindow.photo.image    = [UIImage imageNamed:@"GMSSprites-0-1x"];
