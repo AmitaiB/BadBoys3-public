@@ -11,6 +11,7 @@
 #import "TRVTourStop.h"
 #import "TRVTourCategory.h"
 #import "TRVItinerary.h"
+#import <Parse/Parse.h>
 
 @implementation NSMutableArray (TRVMutableArray_extraMethods)
 
@@ -62,6 +63,13 @@
     
     //add 4     of these dummy trips into allTrips Array
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture]];
+    
+    
+    PFUser *currentUser = [PFUser currentUser];
+    currentUser[@"myTrips"] = allTripsArray;
+    [currentUser save];
+    
+    
     
     return allTripsArray;
 }

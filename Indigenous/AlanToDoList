@@ -29,6 +29,7 @@ TOUR GUIDE FLOW
 [ ] Make it!
 
 BUGS
+[ ] On successful email signup, hierarchy issue
 [x] Username already taken
 ----CLICK SIGN UP --- DISMISS --- LOG IN WITH FACEBOOK
 [x] Dan can't sign up or log in with Facebook
