@@ -20,6 +20,8 @@
 		386CAC2A1B7531A30088781A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 386CAC291B7531A30088781A /* libsqlite3.dylib */; };
 		388EBC551B781DE300D60297 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388EBC521B781DE300D60297 /* SearchViewController.m */; };
 		388EBC561B781DE300D60297 /* SelectedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 388EBC541B781DE300D60297 /* SelectedLocation.m */; };
+		388EBC5E1B783AE400D60297 /* CustomInfoWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */; };
+		388EBC5F1B783AE400D60297 /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */; };
 		389646421B6AB67B004FFDB7 /* TRVPickerMapLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */; };
 		38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */; };
 		38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */; };
@@ -135,6 +137,9 @@
 		388EBC521B781DE300D60297 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		388EBC531B781DE300D60297 /* SelectedLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedLocation.h; sourceTree = "<group>"; };
 		388EBC541B781DE300D60297 /* SelectedLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedLocation.m; sourceTree = "<group>"; };
+		388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomInfoWindowView.h; sourceTree = "<group>"; };
+		388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomInfoWindowView.m; sourceTree = "<group>"; };
+		388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
 		389646401B6AB67B004FFDB7 /* TRVPickerMapLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVPickerMapLogic.h; sourceTree = "<group>"; };
 		389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVPickerMapLogic.m; sourceTree = "<group>"; };
 		38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTopLVLMenuViewController.h; sourceTree = "<group>"; };
@@ -321,6 +326,9 @@
 			isa = PBXGroup;
 			children = (
 				3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */,
+				388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */,
+				388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */,
+				388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */,
 				3856144B1B72688B00D6F7E7 /* TRVPickerMapViewController.h */,
 				3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */,
 				384AFBBE1B696ADB00E169A9 /* TRVTourGuideMyToursVC.h */,
@@ -841,6 +849,7 @@
 				94EB295D1B7845DE00CAB1A5 /* TRVNoNetworkModalView.xib in Resources */,
 				45E772D51B6961D700003C7C /* LoginSignup.storyboard in Resources */,
 				948A22671B73CDB9006FC5BB /* TRVTourView.xib in Resources */,
+				388EBC5F1B783AE400D60297 /* CustomInfoWindow.xib in Resources */,
 				94B755E61B6BCD2A0017FFA9 /* TRVTabBar.storyboard in Resources */,
 				FA57FA181B69663200CFBB89 /* MyTripsStoryboard.storyboard in Resources */,
 				4515651F1B68221B005A2871 /* Main.storyboard in Resources */,
@@ -953,6 +962,7 @@
 				946AAA911B6C517E00778418 /* TRVConstants.m in Sources */,
 				94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */,
 				45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */,
+				388EBC5E1B783AE400D60297 /* CustomInfoWindowView.m in Sources */,
 				949081671B6C67B100B6D2FA /* TRVEditProfileTableViewController.m in Sources */,
 				45E772E01B6A674800003C7C /* TRVSignupViewController.m in Sources */,
 				9473D1951B72375E00E73B4B /* TRVUserProfileImageView.m in Sources */,
