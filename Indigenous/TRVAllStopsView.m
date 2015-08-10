@@ -91,10 +91,10 @@
     }];
     
 
-    for (int i = 0; i < self.stopsForThisTour.count; i++) {
-        UIImageView *tourImage = [[UIImageView alloc] initWithImage:self.stopsForThisTour[i]];
-        
-    }
+//    for (int i = 0; i < self.stopsForThisTour.count; i++) {
+//        UIImageView *tourImage = [[UIImageView alloc] initWithImage:self.stopsForThisTour[i]];
+//        
+//    }
     
     [self.stopImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.bottom.and.left.equalTo(self.contentView);
