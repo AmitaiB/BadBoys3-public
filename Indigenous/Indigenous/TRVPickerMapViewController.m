@@ -39,6 +39,7 @@ B will notify A through the delegate methods.
 @implementation TRVPickerMapViewController {
     GMSMapView *mapView_;
     GMSMarker *userSelection_;
+    GMSMarker *previousSelection_;
 }
 
 - (void)viewDidLoad {
@@ -213,6 +214,9 @@ B will notify A through the delegate methods.
 
 -(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
 //    userSelection_ = [GMSMarker markerWithPosition:coordinate];
+    
+    userSelection_.map = nil;
+    
     CLLocation *userSelection = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     
     NSLog(@"You long-pressed at coordinate: (%f, %f)", coordinate.latitude, coordinate.longitude);
