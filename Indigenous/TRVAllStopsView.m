@@ -104,7 +104,7 @@
             make.width.equalTo(self.scrollView.mas_width);
             make.height.equalTo(self.contentView.mas_height);
             make.left.equalTo(currentLeft);
-            make.top.equalTo(self.scrollView.mas_left);
+            make.top.equalTo(self.scrollView.mas_top);
         }];
         currentLeft = tourImageView.mas_right;
     }
