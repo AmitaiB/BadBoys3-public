@@ -80,6 +80,9 @@
 		94A53C9A1B765E640029D2F7 /* NSMutableArray+extraMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */; };
 		94A5559F1B6AD22900076C99 /* TRVUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CC1B6824C400003C7C /* TRVUser.m */; };
 		94B755E61B6BCD2A0017FFA9 /* TRVTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */; };
+		94BB588F1B78F44B0056D46F /* TRVAllStopsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB588E1B78F44B0056D46F /* TRVAllStopsView.m */; };
+		94BB58911B78F4670056D46F /* TRVAllStopsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94BB58901B78F4670056D46F /* TRVAllStopsView.xib */; };
+		94BB58941B78F7E10056D46F /* TRVTourDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BB58931B78F7E10056D46F /* TRVTourDetailViewController.m */; };
 		94BD69021B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94BD69011B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m */; };
 		94C2EDA21B69637900BC2F7C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94C2EDA11B69637900BC2F7C /* Profile.storyboard */; };
 		94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94C2EDA41B69657B00BC2F7C /* TRVSearchTripsViewController.m */; };
@@ -244,6 +247,11 @@
 		94A53C981B765E640029D2F7 /* NSMutableArray+extraMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+extraMethods.h"; path = "../NSMutableArray+extraMethods.h"; sourceTree = "<group>"; };
 		94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+extraMethods.m"; path = "../NSMutableArray+extraMethods.m"; sourceTree = "<group>"; };
 		94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TRVTabBar.storyboard; sourceTree = "<group>"; };
+		94BB588D1B78F44B0056D46F /* TRVAllStopsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVAllStopsView.h; path = ../TRVAllStopsView.h; sourceTree = "<group>"; };
+		94BB588E1B78F44B0056D46F /* TRVAllStopsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRVAllStopsView.m; path = ../TRVAllStopsView.m; sourceTree = "<group>"; };
+		94BB58901B78F4670056D46F /* TRVAllStopsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRVAllStopsView.xib; sourceTree = "<group>"; };
+		94BB58921B78F7E10056D46F /* TRVTourDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourDetailViewController.h; sourceTree = "<group>"; };
+		94BB58931B78F7E10056D46F /* TRVTourDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourDetailViewController.m; sourceTree = "<group>"; };
 		94BD69001B6EC18A000CDA65 /* TRVGuideResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGuideResultsTableViewController.h; sourceTree = "<group>"; };
 		94BD69011B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGuideResultsTableViewController.m; sourceTree = "<group>"; };
 		94C2EDA11B69637900BC2F7C /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -544,6 +552,8 @@
 			children = (
 				94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */,
 				942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */,
+				94BB58921B78F7E10056D46F /* TRVTourDetailViewController.h */,
+				94BB58931B78F7E10056D46F /* TRVTourDetailViewController.m */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -562,6 +572,9 @@
 		944ACFFF1B6DDEA100404EDD /* Views/Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				94BB588D1B78F44B0056D46F /* TRVAllStopsView.h */,
+				94BB588E1B78F44B0056D46F /* TRVAllStopsView.m */,
+				94BB58901B78F4670056D46F /* TRVAllStopsView.xib */,
 				9435DF6F1B6F1E5C0054A2F4 /* TRVTourCategoryView.h */,
 				9435DF701B6F1E5C0054A2F4 /* TRVTourCategoryView.m */,
 				9435DF721B6F1E670054A2F4 /* TRVTourCategoryView.xib */,
@@ -834,6 +847,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9473D1971B72376500E73B4B /* TRVUserProfileImageView.xib in Resources */,
+				94BB58911B78F4670056D46F /* TRVAllStopsView.xib in Resources */,
 				944AD00B1B6DF4C700404EDD /* TRVGuideProfileImageView.xib in Resources */,
 				9482463C1B71529D00D64432 /* TRVUserSnippetView.xib in Resources */,
 				94C2EDA21B69637900BC2F7C /* Profile.storyboard in Resources */,
@@ -909,6 +923,7 @@
 				385C46FA1B6BCE7E00D9091A /* main.m in Sources */,
 				384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */,
 				FADB8F241B705731009F7C02 /* TRVTourStopCollectionViewCell.m in Sources */,
+				94BB588F1B78F44B0056D46F /* TRVAllStopsView.m in Sources */,
 				94A53C9A1B765E640029D2F7 /* NSMutableArray+extraMethods.m in Sources */,
 				9435DF761B6F21280054A2F4 /* TRVTourCategoryViewController.m in Sources */,
 				FADB8F291B711866009F7C02 /* TRVTourStopCollectionViewCellView.m in Sources */,
@@ -963,6 +978,7 @@
 				388EBC551B781DE300D60297 /* SearchViewController.m in Sources */,
 				948246421B7162B400D64432 /* TRVUserContactView.m in Sources */,
 				948A226A1B73CDC8006FC5BB /* TRVTourView.m in Sources */,
+				94BB58941B78F7E10056D46F /* TRVTourDetailViewController.m in Sources */,
 				45E772D01B68291300003C7C /* TRVBio.m in Sources */,
 				FADB8F251B705731009F7C02 /* TRVTourStopCollectionViewDataSource.m in Sources */,
 				384AFBC01B696ADB00E169A9 /* TRVTourGuideMyToursVC.m in Sources */,
