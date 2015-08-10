@@ -8,6 +8,7 @@
 
 #import "TRVTourStopCollectionViewDelegateFlowLayout.h"
 #import "TRVTourStopCollectionViewCell.h"
+#import "TRVTourStop.h"
 
 @implementation TRVTourStopCollectionViewDelegateFlowLayout
 
@@ -31,6 +32,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     TRVTourStopCollectionViewCell *cell = (TRVTourStopCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
     [cell selectionAnimation];
+    self.imageView.image = cell.stop.image;
     NSLog(@"Selected cell's bounds: %@", NSStringFromCGRect(cell.bounds));
 }
 

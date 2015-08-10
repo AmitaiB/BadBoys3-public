@@ -12,6 +12,8 @@
 
 @interface TRVTourStopCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, strong) TRVTourStop *stop;
+
 -(void)selectionAnimation;
 -(void)fixIt :(CGSize)size;
 
