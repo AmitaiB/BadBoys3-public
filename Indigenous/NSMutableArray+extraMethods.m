@@ -25,7 +25,7 @@
 
     
     
-    //add 3 dummy stops
+    //add 4 dummy stops
     [tourStopsArray addObjectsFromArray:@[dummyTourStop, dummyTourStop,dummyTourStop]];
     
     //add array to itinerary
@@ -67,7 +67,7 @@
         
     
     //add 4     of these dummy trips into allTrips Array
-    [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast]];
+    [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
     return allTripsArray;
 }

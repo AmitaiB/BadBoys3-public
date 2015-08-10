@@ -246,6 +246,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="KrO-1h-eU1" customClass="TRVNoNetworkModalView">
+                            <rect key="frame" x="0.0" y="64" width="600" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityReuseCell" rowHeight="269" id="lfH-ib-qa5" customClass="TRVCityTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -285,6 +290,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="wc5-Jt-TTk"/>
                     <connections>
+                        <outlet property="modalView" destination="KrO-1h-eU1" id="56R-Yf-wzC"/>
                         <segue destination="r2b-cj-qr0" kind="show" identifier="showCategoriesSegue" id="h6D-pM-dzD"/>
                     </connections>
                 </tableViewController>

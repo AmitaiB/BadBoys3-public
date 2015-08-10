@@ -11,11 +11,14 @@
 #import "TRVBio.h"
 #import <Parse.h>
 #import "TRVTourCategory.h"
+#import <AFNetworkReachabilityManager.h>
 
 @interface TRVUserDataStore : NSObject
 
 +(instancetype)sharedUserInfoDataStore;
 - (void) setCurrentUser:(PFUser *)currentUser;
+
+@property (nonatomic) NSString *currentInternetStatus;
 
 @property (nonatomic, strong) TRVUser *loggedInUser;
 @property (nonatomic, strong) PFUser *parseUser;
@@ -28,18 +31,13 @@
 @property (nonatomic, strong) NSMutableArray *languagesSpoken;
 @property (nonatomic) BOOL isGuide;
 
-//CATEGORIES
-@property (nonatomic, strong) TRVTourCategory *seeCategory;
-@property (nonatomic, strong) TRVTourCategory *playCategory;
-@property (nonatomic, strong) TRVTourCategory *eatCategory;
-@property (nonatomic, strong) TRVTourCategory *drinkCategory;
-
 
 // SET WHEN EAT/DRINK/PLAY/SEE IS SELECTED
 // NECESSARY FOR FILTER MODAL
-@property (nonatomic, strong) NSString *currentCategorySearching;
+@property (nonatomic, strong) TRVTourCategory *currentCategorySearching;
 @property (nonatomic, strong) NSDictionary *filterChoices;
 
 @end
 
 
+//zMLdzw2Lh0

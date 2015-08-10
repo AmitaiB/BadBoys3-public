@@ -27,13 +27,12 @@
     
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:NO block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
         NSLog(@"Inside the pre-loading location block. We have %@ succeeded!", (status == INTULocationStatusSuccess) ? @"INDEED" : @"NOT");
-        //locationManager.currentLocation = currentLocation;
     }];
     
     
-    NSArray *tabbarVCs = @[[[UIStoryboard storyboardWithName:@"TourGuideFlow" bundle:nil] instantiateInitialViewController],
+    NSArray *tabbarVCs = @[[[UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil] instantiateInitialViewController],
                            [[UIStoryboard storyboardWithName:@"TourGuideFlow" bundle:nil] instantiateInitialViewController],
-                           [[UIStoryboard storyboardWithName:@"TourGuideFlow" bundle:nil] instantiateInitialViewController]];
+                           [[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController]];
     
     
     self.viewControllers = tabbarVCs;

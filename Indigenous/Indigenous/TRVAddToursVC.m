@@ -46,7 +46,7 @@
 
 //- (void)initializeNewTourConstruct {
 //    PFObject *itineraryUnderConstruction = [PFObject objectWithClassName:@"TourUnderConstruction"];
-//        //TODO: store the growing itinerary in a PFObject to the local datastore
+//        //TODO:AMITAI store the growing itinerary in a PFObject to the local datastore
 //}
 
 /**
@@ -55,7 +55,7 @@
 - (void)userSelectedTourStopLocation:(CLLocation*)location
 {
     DBLG
-    BOOL didBadBoys3SolveThePFObjectBug = NO;
+    BOOL didBadBoys3SolveThePFObjectBug = YES;
     if (didBadBoys3SolveThePFObjectBug) {
     
         PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
@@ -66,7 +66,7 @@
         NSError *queryError = nil;
         NSArray *itineraryObjects = [tourQuery findObjects:&queryError];
         NSLog(@"NSArray <PFObjects> itineraryObjects: %@", [itineraryObjects description]);
-        if (!queryError) { //If PFObjectWithClassName: @"ItineraryUnderConstruction" does not exist...
+        if (queryError) { //If PFObjectWithClassName: @"ItineraryUnderConstruction" does not exist...
                 //...then set our itinerary pointers to new objects....
             itineraryUnderConstruction_PF = [PFObject objectWithClassName:@"ItineraryUnderConstruction"];
             itineraryUnderConstruction_TRV = [TRVItinerary new];
@@ -84,7 +84,7 @@
         [itineraryUnderConstruction_PF pinWithName:@"AddTourVC_Pins"];
     } else {
         DBLG
-        NSLog(@"Need to solve the bug (UIImage to NSData?)");
+        NSLog(@"Need to solve the bug (Invalid write to JSON(TVRItinerary))\nOh, and CLLocation is %@:", [location description]);
     }
 }
 

@@ -19,9 +19,8 @@
 
 @interface TRVDetailGuideAllTripsDataSource : NSObject <UITableViewDataSource>
 
-
 - (void) changeTripsDisplayed;
 
--(instancetype)initWithTrips:(NSArray*)trips;
+-(instancetype)initWithGuide:(TRVUser*)selectedGuide;
 
 @end

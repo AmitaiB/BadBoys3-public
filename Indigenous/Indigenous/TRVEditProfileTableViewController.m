@@ -6,28 +6,30 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+
 #import "TRVEditProfileTableViewController.h"
+#import "TRVUserDataStore.h"
 #import <Masonry.h>
 
-@interface TRVEditProfileTableViewController ()
+@interface TRVEditProfileTableViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *aboutMeContentView;
+@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
-
+@property (weak, nonatomic) IBOutlet UITableViewCell *testCell;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @end
 
 @implementation TRVEditProfileTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
-    // Test 2 lines below.. Do I need this?
-    self.tableView.estimatedRowHeight = 100;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    [self.taglineLabel sizeToFit];
-    
-
-}
+//    [self.taglineLabel sizeToFit];
+    self.firstNameTextField.text = self.sharedDataStore.loggedInUser.userBio.firstName;
+    NSLog(@"%@", self.sharedDataStore.loggedInUser.userBio.firstName);
+ }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

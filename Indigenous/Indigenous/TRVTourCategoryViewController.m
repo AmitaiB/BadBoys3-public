@@ -55,10 +55,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     TRVTourCategoryCollectionViewCell *cell = (TRVTourCategoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"tourCategoryCollectionCell" forIndexPath:indexPath];
- 
-
     TRVTourCategory *categoryForThisCell = [self.tourCategories objectAtIndex:indexPath.row];
-    
     
     //OVERRIDE SETTER THAT SETS LABELS TO NIB
     
@@ -74,14 +71,9 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
     
     UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
-
     datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
     
-    self.dataStore.currentCategorySearching = [self.tourCategories[indexPath.row] categoryName];
-    
-    
-    
-    NSLog(@"THIS IS THE CATEGORY : %@!!", [self.tourCategories[indexPath.row] categoryName]);
+    self.dataStore.currentCategorySearching = self.tourCategories[indexPath.row];
     [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
 }
 

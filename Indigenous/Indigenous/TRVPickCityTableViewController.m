@@ -11,12 +11,17 @@
 #import "TRVCityTableViewCell.h"
 #import "TRVUserDataStore.h"
 #import <Parse.h>
+#import <Masonry.h>
+#import "TRVNoNetworkModalView.h"
 #import "TRVTourCategoryViewController.h"
+#import "TRVNetworkRechabilityMonitor.h"
 
 @interface TRVPickCityTableViewController ()
 
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (nonatomic, strong) NSMutableArray *cities;
+//@property (weak, nonatomic) IBOutlet TRVNoNetworkModalView *modalView;
+@property (nonatomic, strong) IBOutlet TRVNoNetworkModalView *modalView;
 @property (nonatomic, strong) NSString *selectedCity;
 @end
 
@@ -24,9 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+
+    
     [self.sharedDataStore setCurrentUser: [PFUser currentUser]];
     self.sharedDataStore.parseUser = [PFUser currentUser];
     
@@ -39,6 +44,25 @@
     
     self.cities = [[NSMutableArray alloc] initWithObjects:newYork, losAngeles, paris, london, nil];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated  {
+    
+    [self.modalView setHidden:YES];
+    self.tableView.scrollEnabled = YES;
+
+    NSString *datastoreNetworkStatus = self.sharedDataStore.currentInternetStatus;
+      if ([datastoreNetworkStatus isEqualToString:@"Not Reachable"]) {
+        NSLog(@"OFFLINE !! ");
+          [self.modalView setHidden:NO];
+        [self.modalView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(self.view);
+            make.height.equalTo(self.view);
+            make.center.equalTo(self.view);
+            self.modalView.backgroundColor = [UIColor orangeColor];
+            self.tableView.scrollEnabled = NO;
+        }];
+      }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,44 +113,6 @@
     
     // Pass the selected object to the new view controller.
 }
-
-
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 
 @end
