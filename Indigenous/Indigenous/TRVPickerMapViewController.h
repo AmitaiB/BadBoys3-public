@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-    //???:redundant now that we need CoreLocation.h for the initialLocation...
+    //???:AMITAI redundant now that we need CoreLocation.h for the initialLocation...
 //@class CLLocation;
 
 @protocol TRVPickerMapDelegate <NSObject>
@@ -21,7 +21,6 @@
 
 @interface TRVPickerMapViewController : UIViewController
 
-@property (nonatomic, strong) CLLocation *initialLocation;
 @property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
 
 @end

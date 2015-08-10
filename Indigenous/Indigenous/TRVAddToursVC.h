@@ -11,6 +11,4 @@
 
 @interface TRVAddToursVC :  UIViewController
 
-@property (nonatomic, strong) CLLocation *initialLocation;
-
 @end
