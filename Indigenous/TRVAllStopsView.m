@@ -10,14 +10,19 @@
 
 #import "TRVAllStopsView.h"
 #import <Masonry/Masonry.h>
+#import "TRVTourStop.h"
+#import "NSMutableArray+extraMethods.h"
+#import "TRVUserDataStore.h"
 
 @interface TRVAllStopsView()
 
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIImageView *stopImageView;
-
+@property (weak, nonatomic)  UIImageView *stopImageView;
+@property (nonatomic, strong) NSArray *stopsForThisTour;
+@property (nonatomic, strong) TRVItinerary *itineraryForThisTour;
+@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @end
 
 @implementation TRVAllStopsView
@@ -38,12 +43,20 @@
     self = [super initWithFrame:frame];
     if(self) {
         [self commonInit];
+        self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     }
-    
+
     return self;
 }
 
 -(void)setTourForThisScrollNib:(TRVTour *)tourForThisScrollNib {
+
+    // set info to nib
+    _tourForThisScrollNib = tourForThisScrollNib;
+    _itineraryForThisTour = tourForThisScrollNib.itineraryForThisTour;
+    _stopsForThisTour = tourForThisScrollNib.itineraryForThisTour.tourStops;
+    TRVTourStop *stop = self.stopsForThisTour[0];
+    _stopImageView.image = stop.image;
 
 }
 
@@ -56,18 +69,32 @@
     
     [self addSubview:self.containerView];
     
+    
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSMutableArray *tours = [array returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+    
+    // OVERRIDE SETTER
+    self.tourForThisScrollNib = tours[0];
+    
+    
     // This add subviews to show about root nib view
-
+    
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
     }];
-//    [self.containerView addSubview:self.contentView];
 
+    
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.bottom.equalTo(self.scrollView);
         make.height.equalTo(self.scrollView.mas_height);
         make.width.equalTo(@1000);
     }];
+    
+
+    for (int i = 0; i < self.stopsForThisTour.count; i++) {
+        UIImageView *tourImage = [[UIImageView alloc] initWithImage:self.stopsForThisTour[i]];
+        
+    }
     
     [self.stopImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.bottom.and.left.equalTo(self.contentView);
@@ -75,7 +102,14 @@
         make.width.equalTo(self.scrollView.mas_width);
     }];
     
+
+    for (TRVTourStop *stop in self.itineraryForThisTour.tourStops) {
+        NSLog(@"%f", stop.tourStopLocation.latitude);
+        NSLog(@"ARE YOU IN HERE??");
+    }
     
+
+
     
 }
 

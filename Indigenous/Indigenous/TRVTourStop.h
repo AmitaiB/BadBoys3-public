@@ -13,6 +13,7 @@
 
 @interface TRVTourStop : NSObject
 
+
 @property (nonatomic) CGFloat operatorCost;
 @property (nonatomic) CGFloat incidentalCost;
 @property (nonatomic) CLLocationDegrees lat;
@@ -33,7 +34,7 @@
 @property (nonatomic, strong) UIImage *image; // included in GMSMarker but uncommented for testing and to allow user provided images
 
 
--initWithCoordinates:(CLLocationCoordinate2D)coordinates operatorCost:(CGFloat)oCost incidentalCost:(CGFloat)iCost;
+-initWithCoordinates:(CLLocationCoordinate2D)coordinates operatorCost:(CGFloat)oCost incidentalCost:(CGFloat)iCost image:(UIImage *)image;
 
 -initWithCoordinates:(CLLocationCoordinate2D)coordinates;
 

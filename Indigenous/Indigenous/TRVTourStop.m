@@ -13,7 +13,9 @@
 
 -initWithCoordinates:(CLLocationCoordinate2D)coordinates
         operatorCost:(CGFloat)oCost
-      incidentalCost:(CGFloat)iCost {
+      incidentalCost:(CGFloat)iCost
+               image:(UIImage *)image
+{
     
     if (!self) {
         return nil;
@@ -31,7 +33,8 @@
 -(id)initWithCoordinates:(CLLocationCoordinate2D)coordinates {
     return [self initWithCoordinates:coordinates
                         operatorCost:0
-                      incidentalCost:0];
+                      incidentalCost:0
+                               image:[UIImage imageNamed:@"madrid.jpg"]];
 }
 
 -(id)initWithMapMarker:(GMSMarker *)marker {

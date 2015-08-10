@@ -11,4 +11,6 @@
 
 @interface TRVTourStopCollectionViewDelegateFlowLayout : NSObject <UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, strong) UIImageView *imageView;
+
 @end
