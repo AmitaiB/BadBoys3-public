@@ -20,24 +20,27 @@
 +(void)getCategoryToursForGuide:(TRVUser * )user withCompletionBlock:(void (^) (NSArray *response)) completionBlock {
 
    TRVUserDataStore *sharedUserDataStore = [TRVUserDataStore sharedUserInfoDataStore];
-    NSInteger _numberOfCategoryTours = 0;
-    NSInteger _numberOfOtherTours = 0;
-    
+//    NSInteger _numberOfCategoryTours = 0;
+//    NSInteger _numberOfOtherTours = 0;
+    NSMutableArray  *categoryTours = [[NSMutableArray alloc] init];
+    NSMutableArray  *otherTours = [[NSMutableArray alloc] init];
+
     for (TRVTour *tour in user.allTrips) {
         
         NSString *categoryInSearch = sharedUserDataStore.currentCategorySearching.categoryName;
         NSString *categoryForTourIndex = tour.categoryForThisTour.categoryName;
         
         if ([categoryInSearch isEqualToString: categoryForTourIndex]) {
-            _numberOfCategoryTours ++;
+            [categoryTours addObject:tour];
+//            _numberOfCategoryTours ++;
         }
         else{
-            _numberOfOtherTours ++;
+            [otherTours addObject:tour];
         }
     }
     
-    NSArray *tourCount = @[@(_numberOfCategoryTours),@( _numberOfOtherTours)];
-    completionBlock(tourCount);
+    NSArray *toursFiltered = @[categoryTours, otherTours];
+    completionBlock(toursFiltered);
 }
 
 @end

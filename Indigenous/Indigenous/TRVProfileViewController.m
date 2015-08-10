@@ -10,13 +10,14 @@
 #import "TRVUserContactView.h"
 #import "TRVUserProfileImageView.h"
 #import "TRVUserDataStore.h"
+#import "TRVNetworkRechabilityMonitor.h"
+#import <AFNetworkReachabilityManager.h>
 
 
 @interface TRVProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
-
 
 @end
 
@@ -26,6 +27,15 @@
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     self.user = self.sharedDataStore.loggedInUser;
+//    [TRVNetworkRechabilityMonitor startNetworkReachabilityMonitoring];
+//
+//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+//        if (status == 2) {
+//            NSLog(@"Connected to Wifi!! ");
+//        }
+//    }];
+
     
 
     

@@ -17,6 +17,7 @@
 #import "NSMutableArray+extraMethods.h"
 #import "TRVUser.h"
 #import "TRVTour.h"
+#import "TRVAllToursFilter.h"
 #import "TRVTourStop.h"
 
 // COCOAPODS
@@ -34,19 +35,21 @@
 @interface TRVDetailGuideAllTripsDataSource()
 
 @property (nonatomic, weak) NSArray *allTours;
-
-
+@property (nonatomic, strong) TRVUser *selectedGuide;
+@property (nonatomic, strong) NSMutableArray *toursOfSelectedCategory;
+@property (nonatomic, strong) NSMutableArray *otherTours;
 @property (nonatomic) BOOL categoryTab;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @end
 
 @implementation TRVDetailGuideAllTripsDataSource
 
--(instancetype)initWithTrips:(NSArray*)allTours {
+-(instancetype)initWithGuide:(TRVUser*)selectedGuide {
     self = [super init];
     
     if (self) {
-        _allTours = allTours;
+        _selectedGuide = selectedGuide;
+        _allTours = selectedGuide.allTrips;
         _sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
         _categoryTab = YES;
     }
@@ -59,15 +62,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //     Return the number of rows in the section.
-        [self filterTripsByCategory];
+    [TRVAllToursFilter getCategoryToursForGuide:self.selectedGuide withCompletionBlock:^(NSArray *response) {
+        
+        // SET CLASS PROPERTY WITH BLOCK RESPONSE FROM TABLE VIEW DATASOURCE
+        self.toursOfSelectedCategory = (NSMutableArray *) response[0];
+        self.otherTours = (NSMutableArray *) response[1];
+    }];
+//        [self filterTripsByCategory];
 
 
     if (_categoryTab) {
         NSLog(@"NUMBER OF TOURS IN CATEGORY ARRAY!  %lu",(unsigned long)self.toursOfSelectedCategory.count);
-        return [_toursOfSelectedCategory count];
+        return self.toursOfSelectedCategory.count;
     }
     NSLog(@"NUMBER OF TOURS IN THIS OTHER TOURS ARRAY! %lu",(unsigned long)self.otherTours.count);
-    return [_otherTours count];
+    return self.otherTours.count;
     
 }
 
@@ -76,14 +85,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    TRVTour *tourForCell = nil;
-//    [self filterTripsByCategory];
+    
+
+        TRVTour *tourForCell = nil;
     
     if(_categoryTab) {
-        tourForCell = _toursOfSelectedCategory[indexPath.row];
+        tourForCell = self.toursOfSelectedCategory[indexPath.row];
     }
     else {
-        tourForCell = _otherTours[indexPath.row];
+        tourForCell = self.otherTours[indexPath.row];
     }
     
     
@@ -116,24 +126,7 @@
     _categoryTab = !_categoryTab;
 }
 
--(void)filterTripsByCategory {
-    _toursOfSelectedCategory = [[NSMutableArray alloc] init];
-    _otherTours =  [[NSMutableArray alloc] init];
-    
-    for (TRVTour *tour in self.allTours) {
-        
-        NSString *categoryInSearch = self.sharedDataStore.currentCategorySearching.categoryName;
-        NSString *categoryForTourIndex = tour.categoryForThisTour.categoryName;
-        
-        if ([categoryInSearch isEqualToString: categoryForTourIndex]) {
-            [self.toursOfSelectedCategory addObject:tour];
-        } else{
-            [self.otherTours addObject:tour];
-        }
-        NSLog(@"NUMBER OF OBJECTS IN CATEGORY TAB: %lu", self.toursOfSelectedCategory.count);
-        NSLog(@"NUMBER OF OBJECTS IN OTHER TAB: %lu", self.otherTours.count);
-    }
-}
 
 
 @end
+

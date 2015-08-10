@@ -37,8 +37,8 @@
 @property (nonatomic, strong) TRVDetailGuideAllTripsDataSource *tableViewDataSource;
 
 //Number Of Tours In Segmented Tab
-@property (nonatomic, strong) NSNumber *numberOfCategoryTours;
-@property (nonatomic, strong) NSNumber *numberOfOtherTours;
+@property (nonatomic, strong) NSArray *guideCategoryTours;
+@property (nonatomic, strong) NSArray *guideOtherTours;
 
 @end
 
@@ -144,18 +144,17 @@
         
     // set delegate and datasource owner
         self.guideTripsTableView.delegate = self;
-        self.tableViewDataSource = [[TRVDetailGuideAllTripsDataSource alloc] initWithTrips:self.selectedGuideUser.allTrips];
+        self.tableViewDataSource = [[TRVDetailGuideAllTripsDataSource alloc] initWithGuide:self.selectedGuideUser];
         self.guideTripsTableView.dataSource = self.tableViewDataSource;
         
         
         
 //         FIND NUMBER OF CELLS TO DISPLAY AFTER DATASOURCE FILTER
         [TRVAllToursFilter getCategoryToursForGuide:self.selectedGuideUser withCompletionBlock:^(NSArray *response) {
-            NSLog(@"THIS IS THE COMPLETION BLOCK WITH GUIDE'S CATEGORY TRIPS COUNT: %@!", response);
             
                 // SET CLASS PROPERTY WITH BLOCK RESPONSE FROM TABLE VIEW DATASOURCE
-                self.numberOfCategoryTours = (NSNumber *) response[0];
-                self.numberOfOtherTours = (NSNumber *) response[1];
+                self.guideCategoryTours = (NSMutableArray *) response[0];
+                self.guideOtherTours = (NSMutableArray *) response[1];
 
             
             // Set Table View Constraints
@@ -165,8 +164,7 @@
                 
             // hacky way to make table view longer
             NSNumber *cellHeight = @(320);
-            NSNumber *tableViewHeight = @([cellHeight floatValue] * [self.numberOfCategoryTours floatValue]);
-                NSLog(@"NUMBER OF OTHER TOURS FLOAT VALUE %f", [self.numberOfCategoryTours floatValue]);
+            NSNumber *tableViewHeight = @([cellHeight floatValue] * self.guideCategoryTours.count);
                 
             make.height.equalTo(tableViewHeight);
             }];
@@ -203,10 +201,10 @@
         NSNumber *cellHeight = @(320);
 
         if (segment.selectedSegmentIndex == 0) {
-            tableViewHeight = @([cellHeight floatValue] * [self.numberOfCategoryTours integerValue]);
+            tableViewHeight = @([cellHeight floatValue] * self.guideCategoryTours.count);
         } else {
-            tableViewHeight = @([cellHeight floatValue] * [self.numberOfOtherTours integerValue]);
-            NSLog(@"NUMBER OF OTHER TOURS%lu",  [self.numberOfOtherTours integerValue]);
+            tableViewHeight = @([cellHeight floatValue] * self.guideOtherTours.count);
+            NSLog(@"NUMBER OF OTHER TOURS%lu",  self.guideOtherTours.count);
         }
         make.height.equalTo(tableViewHeight);
         NSLog(@"THIS IS THE HEIGHT OF UPDATED ROW%@", tableViewHeight);
