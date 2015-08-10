@@ -326,9 +326,6 @@
 			isa = PBXGroup;
 			children = (
 				3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */,
-				388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */,
-				388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */,
-				388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */,
 				3856144B1B72688B00D6F7E7 /* TRVPickerMapViewController.h */,
 				3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */,
 				384AFBBE1B696ADB00E169A9 /* TRVTourGuideMyToursVC.h */,
@@ -422,6 +419,9 @@
 		451565131B68221B005A2871 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */,
+				388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */,
+				388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */,
 				388EBC511B781DE300D60297 /* SearchViewController.h */,
 				388EBC521B781DE300D60297 /* SearchViewController.m */,
 				388EBC531B781DE300D60297 /* SelectedLocation.h */,

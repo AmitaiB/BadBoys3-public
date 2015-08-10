@@ -26,6 +26,7 @@ B will notify A through the delegate methods.
 #import "TRVPickerMapViewController.h"
 #import <Parse.h>
 #import "CustomInfoWindowView.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 @interface TRVPickerMapViewController () <GMSMapViewDelegate, UISearchBarDelegate>
@@ -147,14 +148,15 @@ B will notify A through the delegate methods.
     
     marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
 
+        ///    return iWindow;
 //==========================
 //Alternative uiview:
 // ==========================
     
     CustomInfoWindowView *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"CustomInfoWindow" owner:self options:nil] objectAtIndex:0];
   infoWindow.placeName.text = @"Your location here!";
-    infoWindow.address.text = @"123 Sesame Street";
-    infoWindow.photo.image = [UIImage imageNamed:@"GMSSprites-0-1x"];
+  infoWindow.address.text   = @"123 Sesame Street";
+  infoWindow.photo.image    = [UIImage imageNamed:@"GMSSprites-0-1x"];
     
     return infoWindow;
 }
@@ -164,16 +166,46 @@ B will notify A through the delegate methods.
 #pragma mark - Events (delegate methods)
 
 -(void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
-    NSString *message = [NSString stringWithFormat:@"You tapped selected (%.4f, %.4f). Confirm selection?", marker.position.latitude, marker.position.longitude];
+    BOOL lovesMe = YES;
+    BOOL lovesMeNot = !lovesMe;
     
-    UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Confirm Tour-Stop Selection"
-                                                                               message:message
-                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
-        //TODO:AMITAI Add action items (confirm selection; cancel; reverse/geocode it for me)
+    if (lovesMe) {
+        NSString *message = [NSString stringWithFormat:@"You tapped selected (%.04f, %.04f). Confirm selection?", marker.position.latitude, marker.position.longitude];
+        
+        UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Confirm Tour-Stop Selection"
+                                                                                   message:message
+                                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+            //TODO:AMITAI Add action items (confirm selection; cancel; reverse/geocode it for me)
+        
+        
+        [self presentViewController:windowTappedAlert animated:YES completion:nil];
+    } else {
+        //Make an alertcontroller to confirm selection.
+        NSString *title = [NSString stringWithFormat:@"Add this location to your itinerary?"];
+        NSString *message = [NSString stringWithFormat:@"Click \"Add Location\" to add this stop to your itinerary. Click \"Cancel\" to anonymously order a pizza to your ex\'s place...possibly."];
+        UIAlertController *confirmSelection = [UIAlertController alertControllerWithTitle:title
+                                                                                  message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Add Location" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self.delegate userSelectedTourStopLocation:
+             [[CLLocation alloc]initWithLatitude:marker.position.latitude longitude:marker.position.longitude]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel Me"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction *action) {
+                                                                 NSLog(@"You cancelled me! ARGH!");
+                                                             }];
+        [confirmSelection addAction:defaultAction];
+        [confirmSelection addAction:cancelAction];
+        
+        [self presentViewController:confirmSelection animated:YES completion:^{
+            NSLog(@"Now what?");
+        }];
+    }
     
-    
-    [self presentViewController:windowTappedAlert animated:YES completion:nil];
 }
+
+
+
 
 -(void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     NSLog(@"You tapped at %f, %f", coordinate.latitude, coordinate.longitude);
