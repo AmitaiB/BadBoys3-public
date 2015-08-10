@@ -23,6 +23,7 @@
     [super viewDidLoad];
     
     TRVTourView *selectedTourView = [[TRVTourView alloc] init];
+    selectedTourView.tourForThisTourView = self.destinationTour;
     [self.VCContentView addSubview:selectedTourView];
     [self.VCContentView removeConstraints:self.VCContentView.constraints];
     [selectedTourView mas_makeConstraints:^(MASConstraintMaker *make) {
