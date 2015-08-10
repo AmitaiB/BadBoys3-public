@@ -26,7 +26,7 @@ B will notify A through the delegate methods.
 #import "TRVPickerMapViewController.h"
 
 
-@interface TRVPickerMapViewController () <GMSMapViewDelegate>
+@interface TRVPickerMapViewController () <GMSMapViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, copy) NSSet *markers;
@@ -187,7 +187,41 @@ B will notify A through the delegate methods.
 -(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
 //    userSelection_ = [GMSMarker markerWithPosition:coordinate];
     CLLocation *userSelection = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
-    [self.delegate userSelectedTourStopLocation:userSelection];
+    
+    NSLog(@"You long-pressed at coordinate: (%f, %f)", coordinate.latitude, coordinate.longitude);
+    
+        // Create the marker and add it to the map
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.map = self.mapView;
+    
+        // Zoom into the current location
+    GMSCameraPosition *cameraPosition = [GMSCameraPosition cameraWithTarget:position zoom:15.0];
+    [self.mapView animateToCameraPosition:cameraPosition];
+    
+        //Make an alertcontroller to confirm selection.
+    NSString *title = [NSString stringWithFormat:@"Add this location to your itinerary?"];
+    NSString *message = [NSString stringWithFormat:@"Click \"Add Location\" to add this stop to your itinerary. Click \"Cancel\" to anonymously order a pizza to your ex\'s place...possibly."];
+    UIAlertController *confirmSelection = [UIAlertController alertControllerWithTitle:title
+                                                                              message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Add Location" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self.delegate userSelectedTourStopLocation:userSelection];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel Me"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             NSLog(@"You cancelled me! ARGH!");
+                                                         }];
+    [confirmSelection addAction:defaultAction];
+    [confirmSelection addAction:cancelAction];
+    
+    [self presentViewController:confirmSelection animated:YES completion:^{
+        NSLog(@"Now what?");
+    }];
+    
+    
+    
 }
 /*
 #pragma mark - Navigation
