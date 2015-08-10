@@ -7,7 +7,6 @@
 //
 
 #import "TRVEditProfileViewController.h"
-#import "TRVEditProfileView.h"
 #import <Masonry.h>
 
 @interface TRVEditProfileViewController ()
@@ -15,7 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (nonatomic, strong) TRVEditProfileView *editProfileNib;
 @end
 
 @implementation TRVEditProfileViewController
@@ -29,23 +27,7 @@
         make.width.equalTo(self.scrollView.mas_width);
     }];
     
-    
-    self.editProfileNib = [[TRVEditProfileView alloc] init];
-    [self.contentView addSubview:self.editProfileNib];
-    
-
-    [self.editProfileNib mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(@0);
-        make.width.equalTo(self.contentView.mas_width);
-        make.left.and.right.and.top.equalTo(self.contentView);
-        make.height.equalTo(@1000);
-    }];
-    
-    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.editProfileNib.mas_bottom);
-        make.width.equalTo(self.scrollView.mas_width);
-    }];
-    
+          
 //    // Do any additional setup after loading the view.
 }
 
