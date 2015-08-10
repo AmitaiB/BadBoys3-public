@@ -8,7 +8,6 @@
 
 
 #import "TRVEditProfileTableViewController.h"
-#import "TRVEditProfileView.h"
 #import "TRVUserDataStore.h"
 #import <Masonry.h>
 
@@ -18,7 +17,6 @@
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
 @property (weak, nonatomic) IBOutlet UITableViewCell *testCell;
-@property (nonatomic, strong) TRVEditProfileView *editProfileNib;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @end
 
@@ -31,16 +29,7 @@
 //    [self.taglineLabel sizeToFit];
     self.firstNameTextField.text = self.sharedDataStore.loggedInUser.userBio.firstName;
     NSLog(@"%@", self.sharedDataStore.loggedInUser.userBio.firstName);
-    [self.testCell.contentView addSubview:self.editProfileNib];
-    // set constraints for tour nib
-    [self.editProfileNib mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.testCell).with.offset(10);
-        make.left.equalTo(self.testCell).with.offset(5);
-        make.right.equalTo(self.testCell).with.offset(-5);
-        make.bottom.equalTo(self.testCell.mas_bottomMargin).with.offset(10);
-    }];
-
-}
+ }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
