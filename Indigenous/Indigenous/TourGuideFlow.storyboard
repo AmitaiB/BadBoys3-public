@@ -314,20 +314,48 @@
         <!--Picker Map View Controller-->
         <scene sceneID="prb-77-kfP">
             <objects>
-                <viewController id="4S8-5O-z5P" customClass="TRVPickerMapViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xir-HN-hWs"/>
-                        <viewControllerLayoutGuide type="bottom" id="Pht-Dh-0cK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="R4h-8B-Mdb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
+                <viewController id="4S8-5O-z5P" customClass="TRVPickerMapViewController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCz-k2-dBf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2041.5" y="-4"/>
+        </scene>
+        <!--Test Map With SearchVC-->
+        <scene sceneID="jOv-tk-EBE">
+            <objects>
+                <viewController id="nwu-A0-ona" customClass="TestMapWithSearchVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iPh-52-Gic"/>
+                        <viewControllerLayoutGuide type="bottom" id="TGT-Yh-u5H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yv7-ja-Jgg">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lx7-yq-jFJ">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="0.0" width="400" height="600"/>
+                                </variation>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Lx7-yq-jFJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Lx7-yq-jFJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Lx7-yq-jFJ" id="jjK-bc-hQU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Vx-2k-1bL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2694" y="-4"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ODl-36-TMn">

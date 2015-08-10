@@ -26,7 +26,8 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
 @property (nonatomic, assign) BOOL shouldBeginEditing;
     //Attach to an MKMapView on Storyboard
 @property (nonatomic, weak) IBOutlet MKMapView *mapView;
-    //!Added by Amitai to update the code to iOS 8
+//    iOS 8 added LOC; This is a UISearchController(ViewController) with a TableView property,
+//     but it could easily have been a UITableView with a Searchcontroller property.
 @property (nonatomic, strong) UITableView *searchResultsTableView;
     //Attach to a UIView on Storyboard??
 
@@ -39,6 +40,18 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
 
     self.searchQuery = [HNKGooglePlacesAutocompleteQuery sharedQuery];
     self.shouldBeginEditing = YES;
+    
+//        iOS 8 added LOC:
+    self.searchResultsUpdater = self;
+    self.dimsBackgroundDuringPresentation = NO;
+    self.searchBar.scopeButtonTitles = @[NSLocalizedString(@"This is key1", @"comment1"),
+                                         NSLocalizedString(@"This is key2", @"comment2")];
+    self.searchBar.delegate = self;
+//        Add the search bar view to the table view header:
+    self.searchResultsTableView.tableHeaderView = self.searchBar;
+    self.definesPresentationContext;
+//???Amitai  Only if necessary...
+//    [self.searchBar sizeToFit];
 
 }
 
@@ -87,7 +100,6 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
 
 
 #pragma mark UISearchControllerDelegate
-
 - (void)handleSearchForSearchString:(NSString *)searchString
 {
     if ([searchString isEqualToString:@""]) {
@@ -110,14 +122,11 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
     }
     
 }
-
-    //!f Not sure if this is still necessary
-- (BOOL)shouldReloadTableForSearchString:(NSString *)searchString {
+//      Replaces - (BOOL)shouldReloadTableForSearchString:(NSString *)searchString [deprecated]
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchString = searchController.searchBar.text;
     [self handleSearchForSearchString:searchString];
-    
-    return YES;
 }
-
 
 #pragma mark - UISearchBar Delegate
 
@@ -128,11 +137,6 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
         [self.mapView removeAnnotation:self.selectedPlaceAnnotation];
     }
 }
-
-
-
-
-#pragma mark - UISearchResultsUpdating Delegate
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     if (self.shouldBeginEditing) {
@@ -150,11 +154,38 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
     self.shouldBeginEditing = YES;
     return boolToReturn;
 }
+//      Reloads the search results when the user changes the search scope:
+-(void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    [self updateSearchResultsForSearchController:self];
+}
+
+#pragma mark UITableViewDataSource
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.searchResults count];
+}
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kHNKDemoSearchResultsCellIdentifier];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kHNKDemoSearchResultsCellIdentifier];
+    }
+    
+        //places array holds query results, see helper method(s)
+    cell.textLabel.font = [UIFont fontWithName:@"GillSans" size:16.0];
+    cell.textLabel.text = [self placeAtIndexPath:indexPath].name;
+    
+    return cell;
+}
+
+
+#pragma mark - Helpers
+#pragma mark DataSource Helper
+
+- (HNKGooglePlacesAutocompletePlace *)placeAtIndexPath:(NSIndexPath *)indexPath {
+    return self.searchResults[indexPath.row];
 }
 
 #pragma mark Search Helpers
@@ -167,6 +198,7 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
 {
     NSLog(@"ERROR = %@! WHY AM I YELLING??", error);
 }
+
 
 /*
 #pragma mark - Navigation
