@@ -87,7 +87,6 @@
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.bottom.equalTo(self.scrollView);
         make.height.equalTo(self.scrollView.mas_height);
-        make.width.equalTo(@1000);
     }];
     
 
@@ -106,15 +105,79 @@
             make.left.equalTo(currentLeft);
             make.top.equalTo(self.scrollView.mas_top);
         }];
+        
+        
+        // ADD BLUR PROGRAMATICALLY TO CURRENT TOUR IMAGE VIEW ITERATION
+        UIVisualEffectView *blur = [[UIVisualEffectView alloc] init];
+        [tourImageView addSubview:blur];
+        blur.alpha = .6;
+        blur.backgroundColor = [UIColor blackColor];
+        [blur mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(tourImageView).with.offset(10);
+            make.right.and.bottom.equalTo(tourImageView).with.offset(-10);
+            make.height.equalTo(tourImageView.mas_height).dividedBy(2);
+        }];
+        
+        
+        // Create Name Label
+        UILabel *nameOfStop = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+        nameOfStop.textColor = [UIColor whiteColor];
+        nameOfStop.text = stopForThisTour.nameOfPlace;
+        [blur addSubview:nameOfStop];
+        [nameOfStop mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.and.left.equalTo(blur).with.offset(10);
+        }];
+        
+        // Create Address Label
+        UILabel *addressOfStop = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+        addressOfStop.textColor = [UIColor whiteColor];
+        addressOfStop.text = stopForThisTour.addressOfEvent;
+        [blur addSubview:addressOfStop];
+        [addressOfStop mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(nameOfStop.mas_bottom).with.offset(10);
+            make.left.equalTo(blur).with.offset(10);
+        }];
+        
+        
+        // Create City Label
+        UILabel *cityOfStop = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+        cityOfStop.textColor = [UIColor whiteColor];
+        cityOfStop.text = stopForThisTour.cityOfEvent;
+        [blur addSubview:cityOfStop];
+        [cityOfStop mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(addressOfStop.mas_bottom).with.offset(10);
+            make.left.equalTo(blur).with.offset(10);
+        }];
+        
+        // Create Name Label
+        UILabel *descriptionOfStop = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 50)];
+        descriptionOfStop.textColor = [UIColor whiteColor];
+        descriptionOfStop.text = stopForThisTour.descriptionOfEvent;
+        [blur addSubview:descriptionOfStop];
+        [descriptionOfStop mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(cityOfStop.mas_bottom).with.offset(10);
+            make.left.equalTo(blur).with.offset(10);
+            make.right.equalTo(blur).with.offset(-10);
+        }];
+        
+        
+        
+        
+        // UPDATES CURRENT LEFT SO NEXT IMAGE VIEW KNOWS WHERE TO APPEND TO
         currentLeft = tourImageView.mas_right;
+
     }
     
-
-
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(currentLeft);
+    }];
+    
+    
     for (TRVTourStop *stop in self.itineraryForThisTour.tourStops) {
         NSLog(@"%f", stop.tourStopLocation.latitude);
         NSLog(@"ARE YOU IN HERE??");
     }
+    
     
 
 

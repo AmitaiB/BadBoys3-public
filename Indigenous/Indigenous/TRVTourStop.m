@@ -26,6 +26,8 @@
     _lat              = coordinates.latitude;
     _lng              = coordinates.longitude;
     _tourStopMarker   = [GMSMarker markerWithPosition:coordinates];
+    _nameOfPlace = @"Flatiron School";
+    _descriptionOfEvent = @"best school ever";
     
     return self;
 };
@@ -35,6 +37,7 @@
                         operatorCost:0
                       incidentalCost:0
                                image:[UIImage imageNamed:@"madrid.jpg"]];
+    
 }
 
 -(id)initWithMapMarker:(GMSMarker *)marker {

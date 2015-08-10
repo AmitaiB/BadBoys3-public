@@ -20,17 +20,10 @@
 @property (nonatomic) CLLocationDegrees lng;
 @property (nonatomic) CLLocationCoordinate2D tourStopLocation;
 @property (nonatomic, strong) GMSMarker *tourStopMarker;
-
-//@property (nonatomic) BOOL isDeparturePoint;
-//@property (nonatomic) BOOL isFinalPoint;
-
-    //deprecated:
-//@property (nonatomic) CGFloat costOfEvent;
-
-    //Included in GMSMarker
-//@property (nonatomic, strong) NSString *locationOfEvent;
-//@property (nonatomic, strong) NSString *addressOfEvent;
-//@property (nonatomic, strong) NSString *descriptionOfEvent;
+@property (nonatomic, strong) NSString *nameOfPlace;
+@property (nonatomic, strong) NSString *addressOfEvent;
+@property (nonatomic, strong) NSString *cityOfEvent;
+@property (nonatomic, strong) NSString *descriptionOfEvent;
 @property (nonatomic, strong) UIImage *image; // included in GMSMarker but uncommented for testing and to allow user provided images
 
 
