@@ -55,7 +55,7 @@
 - (void)userSelectedTourStopLocation:(CLLocation*)location
 {
     DBLG
-    BOOL didBadBoys3SolveThePFObjectBug = NO;
+    BOOL didBadBoys3SolveThePFObjectBug = YES;
     if (didBadBoys3SolveThePFObjectBug) {
     
         PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
@@ -66,7 +66,7 @@
         NSError *queryError = nil;
         NSArray *itineraryObjects = [tourQuery findObjects:&queryError];
         NSLog(@"NSArray <PFObjects> itineraryObjects: %@", [itineraryObjects description]);
-        if (!queryError) { //If PFObjectWithClassName: @"ItineraryUnderConstruction" does not exist...
+        if (queryError) { //If PFObjectWithClassName: @"ItineraryUnderConstruction" does not exist...
                 //...then set our itinerary pointers to new objects....
             itineraryUnderConstruction_PF = [PFObject objectWithClassName:@"ItineraryUnderConstruction"];
             itineraryUnderConstruction_TRV = [TRVItinerary new];

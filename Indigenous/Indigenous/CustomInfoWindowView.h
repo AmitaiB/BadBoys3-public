@@ -13,5 +13,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *placeName;
 @property (nonatomic, weak) IBOutlet UILabel *address;
 @property (nonatomic, weak) IBOutlet UIImageView *photo;
+- (IBAction)closeButtonTapped:(id)sender;
 
 @end

@@ -170,7 +170,7 @@ B will notify A through the delegate methods.
     BOOL lovesMe = YES;
     BOOL lovesMeNot = !lovesMe;
     
-    if (lovesMe) {
+    if (lovesMeNot) {
         NSString *message = [NSString stringWithFormat:@"You tapped selected (%.04f, %.04f). Confirm selection?", marker.position.latitude, marker.position.longitude];
         
         UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Confirm Tour-Stop Selection"
@@ -218,6 +218,10 @@ B will notify A through the delegate methods.
     userSelection_.map = nil;
     
     CLLocation *userSelection = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    
+        //!!! Temporary short-circuit
+    [self.delegate userSelectedTourStopLocation:userSelection];
+
     
     NSLog(@"You long-pressed at coordinate: (%f, %f)", coordinate.latitude, coordinate.longitude);
     

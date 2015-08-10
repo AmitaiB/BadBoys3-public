@@ -10,9 +10,13 @@
 
 @interface CustomInfoWindowView ()
 
+
 @end
 
 @implementation CustomInfoWindowView
 
 
+- (IBAction)closeButtonTapped:(id)sender {
+        //TODO: AMITAI dissmiss itself
+}
 @end
