@@ -11,6 +11,7 @@
 #import "TRVTourStop.h"
 #import "TRVTourCategory.h"
 #import "TRVItinerary.h"
+#import <Parse/Parse.h>
 
 @implementation NSMutableArray (TRVMutableArray_extraMethods)
 
@@ -63,10 +64,65 @@
     //add 4     of these dummy trips into allTrips Array
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
+    
+    [self createParseDummyTour];
+   
+    
     return allTripsArray;
 }
 
 
+-(void)createParseDummyTour {
+    
+    PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
+    theTour[@"guideForThisTour"]= [PFUser currentUser];
+    
+    
+    PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
+    theTour[@"categoryForThisTour"] = @"Drink";
+    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:1000];
+    //  theTour[@"tourAverageRating"] = CGFLOAT;
+    
+    
+    PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
+    theTour[@"itineraryForThisTour"] = theItinerary;
+    theItinerary[@"nameOfTour"] = @"Some name of tour";
+    NSString *str= [[NSBundle mainBundle] pathForResource:@"Carmelo" ofType:@"jpg"];
+    NSData *tourImageData = [NSData dataWithContentsOfFile:str];
+    PFFile *tourImage = [PFFile fileWithName:@"tourImage" data:tourImageData];
+    [tourImage save];
+    theItinerary[@"tourImage"] = tourImage;
+    theItinerary[@"numberOfStops"] = @1;
+    theItinerary[@"tourStops"] = @[theStop];
+    
+    // theItinerary[@"attractions"] = ARRAY OF ATTRACTIONS;
+    
+    theStop[@"operatorCost"] = @0;
+    theStop[@"incidentalCost"] = @0;
+    theStop[@"lat"] = @10;
+    theStop[@"lng"] = @10;
+    //  theStop[@"tourStopLocation"] = pfgeopoint;
+    
+    //    PFObject *theMarker = [PFObject objectWithClassName:@"GMSMarker"];
+    //    theMarker[@"position"] = PFGEOPOINT;
+    //    theMarker[@"snippet"] = NSSTring;
+    //    theMarker[@"icon"] = UIImage;
+    //    theMarker[@"groundAnchor"] = cgpoint;
+    //    theMarker[@"infoWindowAnchor"] = cgpoint;
+    //
+    //    theStop[@"tourStopMarker"] = theMarker;
+    //
+    
+    
+    [theTour saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+        
+        if (error){
+            NSLog(@"The error saving tour is: %@", error);
+        }
+        
+    }];
+    
+}
 
 
 @end
