@@ -24,6 +24,7 @@
     
     TRVTourView *selectedTourView = [[TRVTourView alloc] init];
     [self.VCContentView addSubview:selectedTourView];
+    [self.VCContentView removeConstraints:self.VCContentView.constraints];
     [selectedTourView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.and.right.equalTo(self.VCContentView);
     }];
@@ -37,17 +38,14 @@
   }];
     
     [self.VCContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.VCScrollView.mas_width);
+//        make.width.equalTo(self.VCScrollView.mas_width);
         make.bottom.equalTo(allStopsScrollNib.mas_bottom);
     }];
    
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 /*
 #pragma mark - Navigation

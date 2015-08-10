@@ -187,7 +187,6 @@
                              NSLog(@"THIS IS THE OBJECT ID OF THE TOUR STOP %@", tourStop);
                              NSLog(@"%lu", objects.count);
                              NSLog(@"THIS IS THE LAT   =========  %@", tourStop[@"lat"]);
-
                          }
                      }];
                      
