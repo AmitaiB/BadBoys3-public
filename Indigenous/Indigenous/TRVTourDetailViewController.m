@@ -32,7 +32,7 @@
     [self.VCContentView addSubview:allStopsScrollNib];
   [allStopsScrollNib mas_makeConstraints:^(MASConstraintMaker *make) {
       make.top.equalTo(selectedTourView.mas_bottom);
-      make.n
+      make.height.equalTo(@400);
       make.left.and.right.equalTo(self.VCContentView);
   }];
     

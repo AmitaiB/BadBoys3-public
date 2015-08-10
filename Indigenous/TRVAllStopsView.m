@@ -43,6 +43,9 @@
     return self;
 }
 
+-(void)setTourForThisScrollNib:(TRVTour *)tourForThisScrollNib {
+
+}
 
 
 -(void)commonInit

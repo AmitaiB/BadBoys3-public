@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVTour.h"
 
 @interface TRVAllStopsView : UIView
+
+@property (nonatomic, strong) TRVTour *tourForThisScrollNib;
 
 @end
