@@ -120,7 +120,9 @@
     newUser.username = self.emailTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.password = self.passwordTextField.text;
+    newUser[@"isGuide"] = @(self.isGuide.on);
     
+    newUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
     newUser[@"userBio"] = [PFObject objectWithClassName:@"UserBio"];
     newUser[@"userBio"][@"first_name"] = self.firstNameTextField.text;
     newUser[@"userBio"][@"last_name"] = self.lastNameTextField.text;
@@ -129,7 +131,6 @@
     newUser[@"userBio"][@"birthday"] = self.birthdayTextField.text;
     newUser[@"userBio"][@"name"] = [NSString stringWithFormat:@"%@ %@", self.firstNameTextField.text, self.lastNameTextField.text];
     newUser[@"userBio"][@"bioTextField"] = self.bioTextField.text;
-    newUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
     newUser[@"userBio"][@"languagesSpoken"] = self.languageTextField.text;
     newUser[@"userBio"][@"oneLineBio"] = self.oneLineBioTextField.text;
     newUser[@"userBio"][@"phoneNumber"] = self.phoneNumberTextField.text;
@@ -172,10 +173,17 @@
     
     if (self.isGuide.on){
         // TRANSITION TO GUIDE HOME PAGE
-        UIStoryboard *myTrips = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
-        UIViewController *myTripsVC = [myTrips instantiateInitialViewController];
+        // TODO THIS NEEDS TO GO TO GUIDE HOME PAGE
+        UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
         
+        UIViewController *destination = [tourist instantiateInitialViewController];
         
+        UIViewController *presentingViewController = self.presentingViewController;
+        
+        [presentingViewController dismissViewControllerAnimated:NO completion:^{
+            [presentingViewController presentViewController:destination animated:NO completion:nil];
+        }];
+
         
     } else {
         // TRANSITION TO TOURIST HOME PAGE

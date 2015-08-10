@@ -61,6 +61,7 @@
         [hud show:YES];
     
     PFUser *currentUser = [PFUser currentUser];
+    currentUser[@"isGuide"] = @(self.isGuide.on);
     currentUser[@"userBio"][@"phoneNumber"] = self.phoneNumberTextField.text;
     currentUser[@"userBio"][@"languagesSpoken"] = self.languagesSpokenTextField.text;
     currentUser[@"userBio"][@"bioTextField"] = self.bioTextField.text;
