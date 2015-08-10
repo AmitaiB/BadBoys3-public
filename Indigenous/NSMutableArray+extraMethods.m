@@ -59,10 +59,10 @@
         TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:pastItinerary categoryForThisTour:[TRVTourCategory returnSeeCategory]];
         dummyTourInThePast.tourDeparture = yesterday;
 
-    	TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:dummyItinerary];
-        NSDate *pastDate = [NSDate dateWithTimeIntervalSinceNow:-1000];
-        dummyTourInThePast.tourDeparture = pastDate; //[NSDate dateWithTimeIntervalSince1970:1000]; //[NSDate dateWithTimeIntervalSinceNow:-1000];
-
+//    	TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:dummyItinerary];
+//        NSDate *pastDate = [NSDate dateWithTimeIntervalSinceNow:-1000];
+//        dummyTourInThePast.tourDeparture = pastDate; //[NSDate dateWithTimeIntervalSince1970:1000]; //[NSDate dateWithTimeIntervalSinceNow:-1000];
+//
 
         
     
