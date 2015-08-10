@@ -28,8 +28,10 @@ B will notify A through the delegate methods.
 #import "CustomInfoWindowView.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import <HNKGooglePlacesAutocomplete.h>
 
-@interface TRVPickerMapViewController () <GMSMapViewDelegate, UISearchBarDelegate>
+
+@interface TRVPickerMapViewController () <GMSMapViewDelegate>
 
 //@property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, copy) NSSet *markers;
@@ -64,44 +66,15 @@ B will notify A through the delegate methods.
         //Optional: Zoom in once we get a lock-on, actual current location
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (error) {
-            NSLog(@"Danger Wil Robinson! Danger! Error: %@", error);
+            NSLog(@"Danger Wil Robinson! Danger (PFGeoPoint couldn't get our current location! Error: %@", error);
         } else {
             CLLocationCoordinate2D currentPosition = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
             GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:currentPosition zoom:15];
             GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
             [mapView_ animateWithCameraUpdate:update];
+            NSLog(@"PFGeoPoint says I'm here: %.04f, %.04f", geoPoint.latitude, geoPoint.longitude);
         }
     }];
-    
-    
-    NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
-//    [self setupMarkerData];
-}
-/**
- *  Marker1 = FIS
- *  Marker2 = Statue of Liberty
- *  Marker3 = Amitai's Apartment growing up on the UWS (Deprecated 😦; it was a rental)
- */
--(void)setupMarkerData {
-//    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-//    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate]
-    GMSMarker *marker1 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.70531680012648,-74.01396463558194)];
-//    marker1.title = @"First marker!!";
-//    marker1.snippet = @"First Snippet!";
-//    marker1.appearAnimation = kGMSMarkerAnimationPop;
-//    marker1.draggable = YES;
-    marker1.map = nil;
-    
-    
-    GMSMarker *marker2 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.6892750, -74.0445560)];
-    marker2.map = nil;
-    
-    GMSMarker *marker3 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.7907300,-73.9723580)];
-    marker3.map = nil;
-    
-    self.markers = [NSSet setWithObjects:marker1, marker2, marker3, nil];
-    
-    [self drawMarkers];
 }
 
     //Only draw markers that are not already On...
@@ -270,6 +243,37 @@ B will notify A through the delegate methods.
         // Pass the selected object to the new view controller.
 }
 */
+    
+#pragma mark - leftover code (delete when this class works)
+        //    [self setupMarkerData];
+//}
+/**
+ *  Marker1 = FIS
+ *  Marker2 = Statue of Liberty
+ *  Marker3 = Amitai's Apartment growing up on the UWS (Deprecated 😦; it was a rental)
+ */
+-(void)setupMarkerData {
+        //    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+        //    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate]
+    GMSMarker *marker1 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.70531680012648,-74.01396463558194)];
+        //    marker1.title = @"First marker!!";
+        //    marker1.snippet = @"First Snippet!";
+        //    marker1.appearAnimation = kGMSMarkerAnimationPop;
+        //    marker1.draggable = YES;
+    marker1.map = nil;
+    
+    
+    GMSMarker *marker2 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.6892750, -74.0445560)];
+    marker2.map = nil;
+    
+    GMSMarker *marker3 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.7907300,-73.9723580)];
+    marker3.map = nil;
+    
+    self.markers = [NSSet setWithObjects:marker1, marker2, marker3, nil];
+    
+    [self drawMarkers];
+}
+    
 /**
 ✓⃞– mapView:markerInfoContents:
 ⃞– mapView:didTapInfoWindowOfMarker:
