@@ -21,12 +21,25 @@
     NSMutableArray *tourStopsArray = [[NSMutableArray alloc] init];
     
     
-    TRVTourStop *dummyTourStop = [[TRVTourStop alloc] initWithCoordinates:CLLocationCoordinate2DMake(10.0, 10.0)];
+    TRVTourStop *dummyTourStop1 = [[TRVTourStop alloc] initWithCoordinates:CLLocationCoordinate2DMake(10.0, 10.0)];
+    dummyTourStop1.image = [UIImage imageNamed:@"madrid.jpg"];
+    dummyTourStop1.nameOfPlace = @"Ippudo";
+    dummyTourStop1.addressOfEvent = @"65 4th Ave";
+    dummyTourStop1.cityOfEvent = @"New York";
+    dummyTourStop1.descriptionOfEvent = @"Best Ramen in the city";
 
     
     
+    TRVTourStop *dummyTourStop2 = [[TRVTourStop alloc] initWithCoordinates:CLLocationCoordinate2DMake(10.0, 10.0)];
+    dummyTourStop2.image = [UIImage imageNamed:@"london.jpg"];
+    dummyTourStop2.nameOfPlace = @"Totto Ramen";
+    dummyTourStop2.addressOfEvent = @"248 E 52nd St";
+    dummyTourStop2.cityOfEvent = @"New York";
+    dummyTourStop2.descriptionOfEvent = @"The 2nd Best Ramen in the city";
+
+    
     //add 4 dummy stops
-    [tourStopsArray addObjectsFromArray:@[dummyTourStop, dummyTourStop,dummyTourStop]];
+    [tourStopsArray addObjectsFromArray:@[dummyTourStop1, dummyTourStop2,dummyTourStop2, dummyTourStop1]];
     
     //add array to itinerary
     TRVItinerary *futureItinerary = [[TRVItinerary alloc] initNameOfTour:@"Future Tour" tourImage:[UIImage imageNamed:@"madrid"] tourStops:tourStopsArray];
@@ -67,7 +80,7 @@
         
     
     //add 4     of these dummy trips into allTrips Array
-    [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
+    [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
     return allTripsArray;
 }

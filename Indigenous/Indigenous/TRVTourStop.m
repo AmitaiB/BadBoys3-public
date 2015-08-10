@@ -13,7 +13,9 @@
 
 -initWithCoordinates:(CLLocationCoordinate2D)coordinates
         operatorCost:(CGFloat)oCost
-      incidentalCost:(CGFloat)iCost {
+      incidentalCost:(CGFloat)iCost
+               image:(UIImage *)image
+{
     
     if (!self) {
         return nil;
@@ -24,6 +26,8 @@
     _lat              = coordinates.latitude;
     _lng              = coordinates.longitude;
     _tourStopMarker   = [GMSMarker markerWithPosition:coordinates];
+    _nameOfPlace = @"Flatiron School";
+    _descriptionOfEvent = @"best school ever";
     
     return self;
 };
@@ -31,7 +35,9 @@
 -(id)initWithCoordinates:(CLLocationCoordinate2D)coordinates {
     return [self initWithCoordinates:coordinates
                         operatorCost:0
-                      incidentalCost:0];
+                      incidentalCost:0
+                               image:[UIImage imageNamed:@"madrid.jpg"]];
+    
 }
 
 -(id)initWithMapMarker:(GMSMarker *)marker {

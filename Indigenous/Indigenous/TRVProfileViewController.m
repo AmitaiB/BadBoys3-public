@@ -110,7 +110,7 @@
     
     NSLog(@"In Single Tap Methood");
     
-    UIStoryboard *guide = [UIStoryboard storyboardWithName:@"TRVGuideTabBar" bundle:nil];
+    UIStoryboard *guide = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
     
     UIViewController *destination = [guide instantiateInitialViewController];
     
