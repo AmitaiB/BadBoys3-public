@@ -1,38 +1,43 @@
 //
-//  TRVTourGuideTabBarVC.m
+//  TRVRootGuideTabBarController.m
 //  Indigenous
 //
-//  Created by Amitai Blickstein on 7/29/15.
+//  Created by Leo Kwan on 8/8/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-    //Pre-load current location in the background.
+#import "TRVRootGuideTabBarController.h"
+
+//Pre-load current location in the background.
 #import <INTULocationManager.h>
-#import "INTULocationManager+CurrentLocation.h"
+//#import "INTULocationManager+CurrentLocation.h"
 #import <CoreLocation/CoreLocation.h>
 
-#import "TRVTourGuideTabBarVC.h"
-
-@interface TRVTourGuideTabBarVC () <UITabBarControllerDelegate>
+@interface TRVRootGuideTabBarController ()
 
 @end
 
-@implementation TRVTourGuideTabBarVC
+@implementation TRVRootGuideTabBarController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    
-#pragma mark Pre-load current location
     
     INTULocationManager *locationManager = [INTULocationManager sharedInstance];
     
     [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood timeout:10 delayUntilAuthorized:NO block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
         NSLog(@"Inside the pre-loading location block. We have %@ succeeded!", (status == INTULocationStatusSuccess) ? @"INDEED" : @"NOT");
-        locationManager.currentLocation = currentLocation;
+//        locationManager.currentLocation = currentLocation;
     }];
     
+    
+    NSArray *tabbarVCs = @[[[UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil] instantiateInitialViewController],
+                           [[UIStoryboard storyboardWithName:@"TourGuideFlow" bundle:nil] instantiateInitialViewController],
+                           [[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController]];
+    
+    
+    self.viewControllers = tabbarVCs;
+    self.selectedIndex = 1;
     
 }
 
@@ -41,19 +46,6 @@
     NSLog(@"didUpdateLocations, manager: %@, locations: %@", [manager description], [locations description]);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

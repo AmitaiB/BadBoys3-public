@@ -18,4 +18,12 @@
 -(instancetype)initWithName:(NSString *)name cateogoryImage:(UIImage *)cateogoryImage iconImage:(UIImage *)iconImage;
 
 
++(TRVTourCategory *)returnSeeCategory;
++(TRVTourCategory *)returnPlayCategory;
++(TRVTourCategory *)returnEatCategory;
++(TRVTourCategory *)returnDrinkCategory;
+
+
+
+
 @end

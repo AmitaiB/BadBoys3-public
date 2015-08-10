@@ -52,7 +52,10 @@
 
     [self.categoryContentView addSubview:self.iconImageView];
     [self.categoryContentView addSubview:self.categoryNameLabel];
-
+    [self.categoryContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(@0);
+    }];
+    
 }
 
 

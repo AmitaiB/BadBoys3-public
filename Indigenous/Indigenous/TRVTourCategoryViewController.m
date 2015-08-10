@@ -31,19 +31,13 @@
     // make self as datasource and delegate
     self.categoryCollectionView.delegate =self;
     self.categoryCollectionView.dataSource = self;
-    
-    // Instantiate a category view and category
-    
-    TRVTourCategory *seeCategory = [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"seeCategory.jpg"]];
-    
-    TRVTourCategory *playCategory = [[TRVTourCategory alloc] initWithName:@"Play" cateogoryImage:[UIImage imageNamed:@"seeCategory.jpg"] iconImage:[UIImage imageNamed:@"beijing.jpg"]];
-    
-    TRVTourCategory *eatCategory = [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];
-    
-    TRVTourCategory *drinkCategory = [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid.jpg"]];
 
-    self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
-    
+
+//    self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
+    self.tourCategories = [[NSMutableArray alloc] initWithObjects:[TRVTourCategory returnSeeCategory],
+                                                                                                                [TRVTourCategory returnPlayCategory],
+                                                                                                                [TRVTourCategory returnEatCategory],
+                                                                                                                [TRVTourCategory returnDrinkCategory], nil];
     
     NSLog(@"Selected city is: %@", self.selectedCity);
 
@@ -61,10 +55,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     TRVTourCategoryCollectionViewCell *cell = (TRVTourCategoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"tourCategoryCollectionCell" forIndexPath:indexPath];
- 
-
     TRVTourCategory *categoryForThisCell = [self.tourCategories objectAtIndex:indexPath.row];
-    
     
     //OVERRIDE SETTER THAT SETS LABELS TO NIB
     
@@ -80,15 +71,9 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
     
     UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
-
     datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
     
-    
-    self.dataStore.currentCategorySearching = [self.tourCategories[indexPath.row] categoryName];
-    
-    
-    
-    NSLog(@"Are you in here?");
+    self.dataStore.currentCategorySearching = self.tourCategories[indexPath.row];
     [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
 }
 

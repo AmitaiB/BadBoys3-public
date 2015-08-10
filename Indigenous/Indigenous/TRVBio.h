@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) UIImage *profileImage;
+@property (nonatomic, strong) UIImage *nonFacebookImage;
 @property (nonatomic, strong) NSString *bioDescription;
 
 // Not sure if we need interests
@@ -39,8 +40,8 @@
 @property (nonatomic, strong) NSString *profileImageURL;
 
 //INITIALIZERS
--(instancetype)initTourist;
--(instancetype)initGuide;
+//-(instancetype)initTourist;
+//-(instancetype)initGuide;
 
 -(instancetype)initTouristWithUserName:(NSString*)username
                       firstName:(NSString*)firstName
@@ -65,12 +66,13 @@
                               gender:(NSString*)gender
                               region:(NSString*)region
                       oneLineSummary:(NSString*)oneLineSummary
-                     profileImageURL:(NSString*)URL;
+                     profileImageURL:(NSString*)URL
+ nonFacebookImage:(UIImage *)nonFacebookImage;
 
--(void)convertTouristToGuideWithAge:(NSUInteger)age
-                             gender:(NSString*)gender
-                             region:(NSString*)region
-                     oneLineSummary:(NSString*)oneLineSummary;
+//-(void)convertTouristToGuideWithAge:(NSUInteger)age
+//                             gender:(NSString*)gender
+//                             region:(NSString*)region
+//                     oneLineSummary:(NSString*)oneLineSummary;
 
 
 

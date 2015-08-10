@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UILabel *userAboutMeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *switchToGuideButton;
 @property (nonatomic, strong) TRVUser *userForThisAboutMeView;
 
 

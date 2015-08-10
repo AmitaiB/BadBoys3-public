@@ -21,8 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    
+//
+//    
 //    [PFUser logOut];
 //    [FBSDKAccessToken setCurrentAccessToken:nil];
 //    [FBSDKProfile setCurrentProfile:nil];

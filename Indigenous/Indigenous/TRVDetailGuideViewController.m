@@ -2,25 +2,43 @@
 //  TRVDetailGuideViewController.m
 //  Indigenous
 //
-//  Created by Leo Kwan on 8/5/15.
-//  Copyright (c) 2015 Bad Boys 3. All rights reserved.
-//
+
+
 
 #import "TRVDetailGuideViewController.h"
+
+#import "TRVDetailGuideAllTripsDataSource.h"
+
+#import "TRVUserDataStore.h"
+#import "TRVTouristTripTableViewCell.h"
+#import "NSMutableArray+extraMethods.h"
 #import "TRVUser.h"
+#import "TRVTourStop.h"
+#import "TRVAllToursFilter.h"
+
+// COCOAPODS
+#import <Masonry.h>
+
+// NIBS
 #import "TRVUserSnippetView.h"
+#import "TRVTourView.h"
 #import "TRVUserAboutMeView.h"
 #import "TRVUserContactView.h"
 #import "TRVUserProfileImageView.h"
 
-#import "TRVUserDataStore.h"
-#import <Masonry.h>
 
-@interface TRVDetailGuideViewController ()
+
+
+@interface TRVDetailGuideViewController ()<UITableViewDelegate>
 
 
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
+@property (nonatomic, strong) UITableView *guideTripsTableView;
+@property (nonatomic, strong) TRVDetailGuideAllTripsDataSource *tableViewDataSource;
 
+//Number Of Tours In Segmented Tab
+@property (nonatomic, strong) NSArray *guideCategoryTours;
+@property (nonatomic, strong) NSArray *guideOtherTours;
 
 @end
 
@@ -29,8 +47,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
-    
-    
+
+
+
+    NSLog(@"%@", self.selectedGuideUser.allTrips);
     
     //Instantiate a Image View Nib
     
@@ -60,6 +80,14 @@
     
     TRVUserAboutMeView *aboutMeView = [[TRVUserAboutMeView alloc] init];
     aboutMeView.userForThisAboutMeView = self.selectedGuideUser;
+
+    // hide send me to tourguidetab button
+        [aboutMeView.switchToGuideButton setHidden:YES];
+    //make button shrink
+        [aboutMeView.switchToGuideButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@0);
+    }];
+
     
     [self.profileView addSubview:aboutMeView];
     [aboutMeView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -67,8 +95,6 @@
         make.left.and.right.equalTo(self.profileView);
         
     }];
-    
-    
     
     //Instantiate a Contact View Nib
     
@@ -81,21 +107,118 @@
         make.left.and.right.equalTo(self.profileView);
     }];
     
-    // Set Container View Constraints
+    //    Instantiate a Segmented Control View
     
+    
+    // SET THE TAB BAR TO CATEGORY SEARCH
+    TRVTourCategory *categoryForFirstTab = self.sharedDataStore.currentCategorySearching;
+    NSString *categorySearchTabName = [NSString stringWithFormat:@"%@ Tours" ,categoryForFirstTab.categoryName];
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:categorySearchTabName, @"Other Tours", nil]];
+    segmentedControl.frame = CGRectMake(35, 200, 250, 50);
+    segmentedControl.selectedSegmentIndex = 0;
+    [segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
+    
+    
+    [self.profileView addSubview:segmentedControl];
+
+    // Segmented Control Constraints
+    [segmentedControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(contactView.mas_bottom).with.offset(10);
+        make.left.equalTo(self.profileView).with.offset(10);
+        make.right.equalTo(self.profileView).with.offset(-10);
+    }];
+
+    
+//    Instantiate a Table View
+
+    self.guideTripsTableView = [[UITableView alloc] init];
+    [self.profileView addSubview:self.guideTripsTableView];
+ 
+    
+    // Register cell
+        [self.guideTripsTableView registerClass:[TRVTouristTripTableViewCell class] forCellReuseIdentifier:@"tripCell"];
+        
+        self.guideTripsTableView.backgroundColor = [UIColor orangeColor];
+    
+
+        
+    // set delegate and datasource owner
+        self.guideTripsTableView.delegate = self;
+        self.tableViewDataSource = [[TRVDetailGuideAllTripsDataSource alloc] initWithGuide:self.selectedGuideUser];
+        self.guideTripsTableView.dataSource = self.tableViewDataSource;
+        
+        
+        
+//         FIND NUMBER OF CELLS TO DISPLAY AFTER DATASOURCE FILTER
+        [TRVAllToursFilter getCategoryToursForGuide:self.selectedGuideUser withCompletionBlock:^(NSArray *response) {
+            
+                // SET CLASS PROPERTY WITH BLOCK RESPONSE FROM TABLE VIEW DATASOURCE
+                self.guideCategoryTours = (NSMutableArray *) response[0];
+                self.guideOtherTours = (NSMutableArray *) response[1];
+
+            
+            // Set Table View Constraints
+            [self.guideTripsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(segmentedControl.mas_bottom).with.offset(10);
+                make.left.and.right.equalTo(self.profileView);
+                
+            // hacky way to make table view longer
+            NSNumber *cellHeight = @(320);
+            NSNumber *tableViewHeight = @([cellHeight floatValue] * self.guideCategoryTours.count);
+                
+            make.height.equalTo(tableViewHeight);
+            }];
+        }];
+        
+    
+    // Set Content View Constraints
     [self.profileView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
-        make.bottom.equalTo(contactView.mas_bottom);
+        //Add padding to bottom of VC
+        make.bottom.equalTo(self.guideTripsTableView.mas_bottom).with.offset(10);
     }];
-    
-    
-
     }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 320;
 }
+
+
+- (void)segmentedControlChanged:(UISegmentedControl *)segment
+{
+    [self.tableViewDataSource changeTripsDisplayed];
+    
+    // hacky way to make table view longer
+
+    // Set Table View Constraints
+    [self.guideTripsTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        
+        // NUMBER OF TOURS X CELL HEIGHT (320) = TABLEVIEW HEIGHT
+        NSNumber *tableViewHeight = nil;
+        NSNumber *cellHeight = @(320);
+
+        if (segment.selectedSegmentIndex == 0) {
+            tableViewHeight = @([cellHeight floatValue] * self.guideCategoryTours.count);
+        } else {
+            tableViewHeight = @([cellHeight floatValue] * self.guideOtherTours.count);
+            NSLog(@"NUMBER OF OTHER TOURS%lu",  self.guideOtherTours.count);
+        }
+        make.height.equalTo(tableViewHeight);
+        NSLog(@"THIS IS THE HEIGHT OF UPDATED ROW%@", tableViewHeight);
+    }];
+    
+    [self.profileView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(self.view.mas_width);
+        make.bottom.equalTo(self.guideTripsTableView.mas_bottom).with.offset(10);
+    }];
+
+    self.guideTripsTableView.scrollEnabled = NO;
+    [self.guideTripsTableView reloadData];
+}
+
 
 /*
 #pragma mark - Navigation
@@ -106,5 +229,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

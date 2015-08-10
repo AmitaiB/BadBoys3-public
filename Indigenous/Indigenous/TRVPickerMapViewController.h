@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+
+    //???:AMITAI redundant now that we need CoreLocation.h for the initialLocation...
+//@class CLLocation;
+
+@protocol TRVPickerMapDelegate <NSObject>
+
+-(void)userSelectedTourStopLocation:(CLLocation*)location;
+
+@end
+
 
 @interface TRVPickerMapViewController : UIViewController
+
+@property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
 
 @end

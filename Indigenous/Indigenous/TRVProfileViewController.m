@@ -10,13 +10,14 @@
 #import "TRVUserContactView.h"
 #import "TRVUserProfileImageView.h"
 #import "TRVUserDataStore.h"
+#import "TRVNetworkRechabilityMonitor.h"
+#import <AFNetworkReachabilityManager.h>
 
 
 @interface TRVProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
-
 
 @end
 
@@ -26,6 +27,15 @@
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     self.user = self.sharedDataStore.loggedInUser;
+//    [TRVNetworkRechabilityMonitor startNetworkReachabilityMonitoring];
+//
+//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+//        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+//        if (status == 2) {
+//            NSLog(@"Connected to Wifi!! ");
+//        }
+//    }];
+
     
 
     
@@ -66,9 +76,14 @@
     [aboutMeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(snippetView.mas_bottom);
         make.left.and.right.equalTo(self.containerView);
-
     }];
+    
+    //add IBAction programatically
+    UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToGuideTab:)];
+    [aboutMeView.switchToGuideButton addGestureRecognizer:singleTapOnImage];
+    aboutMeView.switchToGuideButton.userInteractionEnabled = YES;
 
+    
     
     
     //Instantiate a Contact View Nib
@@ -85,13 +100,23 @@
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
-//        make.bottom.equalTo(contactView.mas_bottom);
-        make.height.equalTo(@1000);
+        make.bottom.equalTo(contactView.mas_bottom);
+//        make.height.equalTo(contactView.mas_c);
     }];
+
+}
+
+-(void)tapToGuideTab:(TRVUserContactView *)view {
     
+    NSLog(@"In Single Tap Methood");
     
+    UIStoryboard *guide = [UIStoryboard storyboardWithName:@"TRVGuideTabBar" bundle:nil];
     
+    UIViewController *destination = [guide instantiateInitialViewController];
     
+    // Alan can you check if this is right
+    [self presentViewController:destination animated:NO completion:nil];
+
 }
 
 

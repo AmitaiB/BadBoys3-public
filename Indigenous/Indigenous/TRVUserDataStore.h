@@ -10,11 +10,15 @@
 #import "TRVUser.h"
 #import "TRVBio.h"
 #import <Parse.h>
+#import "TRVTourCategory.h"
+#import <AFNetworkReachabilityManager.h>
 
 @interface TRVUserDataStore : NSObject
 
 +(instancetype)sharedUserInfoDataStore;
 - (void) setCurrentUser:(PFUser *)currentUser;
+
+@property (nonatomic) NSString *currentInternetStatus;
 
 @property (nonatomic, strong) TRVUser *loggedInUser;
 @property (nonatomic, strong) PFUser *parseUser;
@@ -30,7 +34,10 @@
 
 // SET WHEN EAT/DRINK/PLAY/SEE IS SELECTED
 // NECESSARY FOR FILTER MODAL
-@property (nonatomic, strong) NSString *currentCategorySearching;
+@property (nonatomic, strong) TRVTourCategory *currentCategorySearching;
 @property (nonatomic, strong) NSDictionary *filterChoices;
 
 @end
+
+
+//zMLdzw2Lh0

@@ -5,55 +5,77 @@
 //  Created by Amitai Blickstein on 7/30/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
+/**
+A is a delegate object of B.
 
-//#define requestWhateverAuthorization requestAlwaysAuthorization
-//#define requestWhateverAuthorization requestWhenInUseAuthorization
+B will have a reference of A.
 
-#import "TRVPickerMapViewController.h"
-#import "TRVPickerMapLogic.h" //includes GMapsSDK
+A will implement the delegate methods of B.
+
+B will notify A through the delegate methods.
+
+ A = Add Tours
+ B = Map (this one)
+ 
+ */
+
+//#import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <INTULocationManager.h>
-#import "INTULocationManager+CurrentLocation.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "TRVAddToursVC.h"
+#import "TRVPickerMapViewController.h"
+#import <Parse.h>
+#import "CustomInfoWindowView.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface TRVPickerMapViewController () <GMSMapViewDelegate>
 
-@property (nonatomic, strong) GMSMapView *mapView;
+@interface TRVPickerMapViewController () <GMSMapViewDelegate, UISearchBarDelegate>
+
+//@property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, copy) NSSet *markers;
 
 @end
 
-@implementation TRVPickerMapViewController
+@implementation TRVPickerMapViewController {
+    GMSMapView *mapView_;
+    GMSMarker *userSelection_;
+    GMSMarker *previousSelection_;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-        //Immediately draws a map with the pre-loaded user location, carried over by the singleton locationManager from the TabBarVC...
-    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-    CLLocationCoordinate2D defaultLocation = locationManager.currentLocation.coordinate;
+        //Immediately draws a map with the pre-loaded initial location, carried over from the TabBarVC...
+    CLLocationCoordinate2D defaultLocation = CLLocationCoordinate2DMake(40, -75);
 #pragma mark - MapView Initialization
         //Opens the map to the user's current location.
     GMSCameraPosition *defaultCamera       = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:14];
-    self.mapView                           = [GMSMapView mapWithFrame:self.view.bounds camera:defaultCamera];
-    self.mapView.mapType                   = kGMSTypeNormal;
-    self.mapView.myLocationEnabled         = YES;
-    self.mapView.settings.compassButton    = YES;
-    self.mapView.settings.myLocationButton = YES;
-    [self.mapView setMinZoom:10 maxZoom:18];
+    mapView_                           = [GMSMapView mapWithFrame:self.view.bounds camera:defaultCamera];
+    mapView_.mapType                   = kGMSTypeNormal;
+    mapView_.myLocationEnabled         = YES;
+    mapView_.settings.compassButton    = YES;
+    mapView_.settings.myLocationButton = YES;
+    [mapView_ setMinZoom:10 maxZoom:18];
    
-        //Codeschool said to add this line `[self.view addSubview:self.mapView];` but it turns out that broke the delegation.
-    self.view = self.mapView;
-    self.mapView.delegate = self;
+        //Codeschool said to add this line `[self.view addSubview:self.mapView];` but that breaks the code.
+    self.view = mapView_;
+    mapView_.delegate = self;
 
-    NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
-    [self setupMarkerData];
+        //Optional: Zoom in once we get a lock-on, actual current location
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (error) {
+            NSLog(@"Danger Wil Robinson! Danger! Error: %@", error);
+        } else {
+            CLLocationCoordinate2D currentPosition = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+            GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:currentPosition zoom:15];
+            GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
+            [mapView_ animateWithCameraUpdate:update];
+        }
+    }];
     
-        //Now follows up with a slow loading, highly accurate location.
-//    __block GMSCameraPosition *updatedCamera;
-    [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyRoom timeout:10 delayUntilAuthorized:YES
-                                                  block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
-                                
-                                                      [self.mapView animateWithCameraUpdate:[GMSCameraUpdate setTarget:currentLocation.coordinate zoom:15]];
-                                                  }];
+    
+    NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
+//    [self setupMarkerData];
 }
 /**
  *  Marker1 = FIS
@@ -86,29 +108,16 @@
 -(void)drawMarkers {
     for (GMSMarker *marker in self.markers) {
         if (marker.map == nil) {
-            marker.map = self.mapView;
+            marker.map = mapView_;
         }
     }
 }
 
-//Probably not necessary any longer
-//==================
-//-(void)reportINTUstatus:(INTULocationStatus*)status fromMethod:(NSString *)methodName {
-//    if (status == INTULocationStatusSuccess)         {
-//        NSLog(@"SUCCESS in the INTULocation %@!", methodName);
-//    } else if (status == INTULocationStatusTimedOut) {
-//        NSLog(@"TIMED OUT in the INTULocation %@!", methodName);
-//    } else if (status == INTULocationStatusError)    {
-//        NSLog(@"ERROR in the INTULocation %@!", methodName);
-//    } else {
-//        NSLog(@"SOME STATUS in the INTULocation %@!", methodName);
-//    }
-//}
 
 -(void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
         //This will ensure the compass and myLocation button are not covered up by the NavigationBar etc.
-    self.mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length    + 5, 0,
+    mapView_.padding = UIEdgeInsetsMake(self.topLayoutGuide.length    + 5, 0,
                                          self.bottomLayoutGuide.length + 5, 0);
 }
 
@@ -135,30 +144,132 @@
     snippetLabel.text = marker.snippet;
     
         //custom background image style
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"london"]];
-    [iWindow addSubview:backgroundImage];
+//    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GMSSprites-0-1x"]];
+//    [iWindow addSubview:backgroundImage];
     
     marker.infoWindowAnchor = CGPointMake(0.44f, 0.45f);
+
+//           return iWindow;
+//==========================
+//Alternative uiview:
+// ==========================
     
-    return iWindow;
+    CustomInfoWindowView *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"CustomInfoWindow" owner:nil options:nil] objectAtIndex:0];
+  infoWindow.placeName.text = @"Your location here!";
+  infoWindow.address.text   = @"123 Sesame Street";
+  infoWindow.photo.image    = [UIImage imageNamed:@"GMSSprites-0-1x"];
+    
+    return infoWindow;
 }
+
+
 
 #pragma mark - Events (delegate methods)
 
 -(void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
-    NSString *message = [NSString stringWithFormat:@"You tapped the info window for the %@ marker", marker.title];
+    BOOL lovesMe = YES;
+    BOOL lovesMeNot = !lovesMe;
     
-    UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Info Window Tapped!"
-                                                                               message:message
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
+    if (lovesMeNot) {
+        NSString *message = [NSString stringWithFormat:@"You tapped selected (%.04f, %.04f). Confirm selection?", marker.position.latitude, marker.position.longitude];
+        
+        UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Confirm Tour-Stop Selection"
+                                                                                   message:message
+                                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+            //TODO:AMITAI Add action items (confirm selection; cancel; reverse/geocode it for me)
+        
+        
+        [self presentViewController:windowTappedAlert animated:YES completion:nil];
+    } else {
+        //Make an alertcontroller to confirm selection.
+        NSString *title = [NSString stringWithFormat:@"Add this location to your itinerary?"];
+        NSString *message = [NSString stringWithFormat:@"Click \"Add Location\" to add this stop to your itinerary. Click \"Cancel\" to anonymously order a pizza to your ex\'s place...possibly."];
+        UIAlertController *confirmSelection = [UIAlertController alertControllerWithTitle:title
+                                                                                  message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Add Location" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [self.delegate userSelectedTourStopLocation:
+             [[CLLocation alloc]initWithLatitude:marker.position.latitude longitude:marker.position.longitude]];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel Me"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction *action) {
+                                                                 NSLog(@"You cancelled me! ARGH!");
+                                                             }];
+        [confirmSelection addAction:defaultAction];
+        [confirmSelection addAction:cancelAction];
+        
+        [self presentViewController:confirmSelection animated:YES completion:^{
+            NSLog(@"Now what?");
+        }];
+    }
     
-    [self presentViewController:windowTappedAlert animated:YES completion:nil];
 }
+
+
+
 
 -(void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     NSLog(@"You tapped at %f, %f", coordinate.latitude, coordinate.longitude);
 }
 
+-(void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate {
+//    userSelection_ = [GMSMarker markerWithPosition:coordinate];
+    
+    userSelection_.map = nil;
+    
+    CLLocation *userSelection = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+    
+        //!!! Temporary short-circuit
+    [self.delegate userSelectedTourStopLocation:userSelection];
+
+    
+    NSLog(@"You long-pressed at coordinate: (%f, %f)", coordinate.latitude, coordinate.longitude);
+    
+        // Create the marker and add it to the map
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(coordinate.latitude, coordinate.longitude);
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.appearAnimation = kGMSMarkerAnimationPop;
+    marker.map = mapView_;
+    userSelection_ = marker;
+        // Zoom into the current location
+    GMSCameraPosition *cameraPosition = [GMSCameraPosition cameraWithTarget:position zoom:15.0];
+    [mapView_ animateToCameraPosition:cameraPosition];
+    
+}
+
+-(UIAlertController*)confirmSelectionAlert:(CLLocation *)userSelectedLocation {
+        //Make an alertcontroller to confirm selection.
+    NSString *title = [NSString stringWithFormat:@"Add this location to your itinerary?"];
+    NSString *message = [NSString stringWithFormat:@"Click \"Add Location\" to add this stop to your itinerary. Click \"Cancel\" to anonymously order a pizza to your ex\'s place...possibly."];
+    UIAlertController *confirmSelection = [UIAlertController alertControllerWithTitle:title
+                                                                              message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Add Location" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self.delegate userSelectedTourStopLocation:userSelectedLocation];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel Me"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                             NSLog(@"You cancelled me! ARGH!");
+                                                         }];
+    [confirmSelection addAction:defaultAction];
+    [confirmSelection addAction:cancelAction];
+
+    [self presentViewController:confirmSelection animated:YES completion:^{
+        NSLog(@"Now what?");
+    }];
+    return confirmSelection;
+
+}
+
+/*
+#pragma mark - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+}
+*/
 /**
 ✓⃞– mapView:markerInfoContents:
 ⃞– mapView:didTapInfoWindowOfMarker:
@@ -181,14 +292,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
