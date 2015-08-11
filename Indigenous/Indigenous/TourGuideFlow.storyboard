@@ -321,7 +321,7 @@
                         <viewControllerLayoutGuide type="bottom" id="zjl-IQ-bk5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fWo-di-C6Y" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gA-x4-89A">
@@ -366,6 +366,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TGT-Yh-u5H"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Yv7-ja-Jgg" userLabel="UIView (SuperView)">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lx7-yq-jFJ" userLabel="MKMap View">
@@ -393,14 +394,14 @@
                                 <exclude reference="ZnP-e3-x74"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="XmH-UR-t3w"/>
-                                <exclude reference="a5V-PN-f7W"/>
+                                <exclude reference="eNp-RH-akw"/>
                                 <exclude reference="CjX-fr-rA4"/>
                                 <exclude reference="Pye-7y-7rl"/>
                                 <exclude reference="Sv4-A6-UAd"/>
                                 <exclude reference="ZnN-j7-6T2"/>
                                 <exclude reference="upP-lN-DbH"/>
-                                <exclude reference="eNp-RH-akw"/>
+                                <exclude reference="XmH-UR-t3w"/>
+                                <exclude reference="a5V-PN-f7W"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -409,14 +410,14 @@
                                 <include reference="ZnP-e3-x74"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="XmH-UR-t3w"/>
-                                <include reference="a5V-PN-f7W"/>
+                                <include reference="eNp-RH-akw"/>
                                 <include reference="CjX-fr-rA4"/>
                                 <include reference="Pye-7y-7rl"/>
                                 <include reference="Sv4-A6-UAd"/>
                                 <include reference="ZnN-j7-6T2"/>
                                 <include reference="upP-lN-DbH"/>
-                                <include reference="eNp-RH-akw"/>
+                                <include reference="XmH-UR-t3w"/>
+                                <include reference="a5V-PN-f7W"/>
                             </mask>
                         </variation>
                     </view>

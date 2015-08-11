@@ -48,6 +48,7 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     self.searchBarPlaceholder = self.searchController.searchBar;
     [self.view addSubview:self.mapView];
     [self.view addSubview:self.searchBarPlaceholder];
+    [self.searchController.searchBar sizeToFit];
 //    self.searchController.active = YES;
 //    self.view = self.searchController.searchBar;
     self.definesPresentationContext = YES;
