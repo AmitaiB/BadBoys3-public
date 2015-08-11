@@ -5,19 +5,6 @@
 //  Created by Amitai Blickstein on 7/30/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
-/**
-A is a delegate object of B.
-
-B will have a reference of A.
-
-A will implement the delegate methods of B.
-
-B will notify A through the delegate methods.
-
- A = Add Tours
- B = Map (this one)
- 
- */
 
 //#import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <INTULocationManager.h>
@@ -28,8 +15,10 @@ B will notify A through the delegate methods.
 #import "CustomInfoWindowView.h"
 #import <CoreLocation/CoreLocation.h>
 
+#import <HNKGooglePlacesAutocomplete.h>
 
-@interface TRVPickerMapViewController () <GMSMapViewDelegate, UISearchBarDelegate>
+
+@interface TRVPickerMapViewController () <GMSMapViewDelegate>
 
 //@property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, copy) NSSet *markers;
@@ -44,6 +33,14 @@ B will notify A through the delegate methods.
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        //FIXME: need a way to cancel the map.
+//    UINavigationBar *mapNavBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
+//    [mapNavBar sizeToFit];
+//    mapNavBar.barStyle = UIBarStyleBlackTranslucent;
+//    NSArray *navBarItems = @[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelTapped:)];
+//    [mapNavBar setItems:navBarItems animated:YES];
+//    
+//    UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(<#selector#>)];
 
         //Immediately draws a map with the pre-loaded initial location, carried over from the TabBarVC...
     CLLocationCoordinate2D defaultLocation = CLLocationCoordinate2DMake(40, -75);
@@ -56,53 +53,30 @@ B will notify A through the delegate methods.
     mapView_.settings.compassButton    = YES;
     mapView_.settings.myLocationButton = YES;
     [mapView_ setMinZoom:10 maxZoom:18];
+    
+//    UITapGestureRecognizer *doubleTap = [UITapGestureRecognizer new];
+//    doubleTap.numberOfTapsRequired = 2;
+//    
+//    [mapView_ addGestureRecognizer:doubleTap];
    
-        //Codeschool said to add this line `[self.view addSubview:self.mapView];` but that breaks the code.
     self.view = mapView_;
     mapView_.delegate = self;
 
         //Optional: Zoom in once we get a lock-on, actual current location
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (error) {
-            NSLog(@"Danger Wil Robinson! Danger! Error: %@", error);
+            NSLog(@"Danger Wil Robinson! Danger (PFGeoPoint couldn't get our current location! Error: %@", error);
         } else {
             CLLocationCoordinate2D currentPosition = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
             GMSCameraPosition *camera = [GMSCameraPosition cameraWithTarget:currentPosition zoom:15];
             GMSCameraUpdate *update = [GMSCameraUpdate setCamera:camera];
             [mapView_ animateWithCameraUpdate:update];
+            NSLog(@"PFGeoPoint says I'm here: %.04f, %.04f", geoPoint.latitude, geoPoint.longitude);
         }
     }];
-    
-    
-    NSLog(@"CoreLocator says I'm here: %f, %f", defaultLocation.latitude, defaultLocation.longitude);
-//    [self setupMarkerData];
 }
-/**
- *  Marker1 = FIS
- *  Marker2 = Statue of Liberty
- *  Marker3 = Amitai's Apartment growing up on the UWS (Deprecated 😦; it was a rental)
- */
--(void)setupMarkerData {
-//    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-//    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate]
-    GMSMarker *marker1 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.70531680012648,-74.01396463558194)];
-//    marker1.title = @"First marker!!";
-//    marker1.snippet = @"First Snippet!";
-//    marker1.appearAnimation = kGMSMarkerAnimationPop;
-//    marker1.draggable = YES;
-    marker1.map = nil;
-    
-    
-    GMSMarker *marker2 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.6892750, -74.0445560)];
-    marker2.map = nil;
-    
-    GMSMarker *marker3 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.7907300,-73.9723580)];
-    marker3.map = nil;
-    
-    self.markers = [NSSet setWithObjects:marker1, marker2, marker3, nil];
-    
-    [self drawMarkers];
-}
+
+
 
     //Only draw markers that are not already On...
 -(void)drawMarkers {
@@ -237,6 +211,7 @@ B will notify A through the delegate methods.
     
 }
 
+
 -(UIAlertController*)confirmSelectionAlert:(CLLocation *)userSelectedLocation {
         //Make an alertcontroller to confirm selection.
     NSString *title = [NSString stringWithFormat:@"Add this location to your itinerary?"];
@@ -270,27 +245,37 @@ B will notify A through the delegate methods.
         // Pass the selected object to the new view controller.
 }
 */
+    
+#pragma mark - leftover code (delete when this class works)
+        //    [self setupMarkerData];
+//}
 /**
-✓⃞– mapView:markerInfoContents:
-⃞– mapView:didTapInfoWindowOfMarker:
-⃞✓–mapView:markerInfoWindow:
-⃞– mapView:willMove:
-⃞– mapView:didChangeCameraPosition:
-⃞– mapView:idleAtCameraPosition:
-⃞– mapView:didTapAtCoordinate:
-⃞– mapView:didLongPressAtCoordinate:
-⃞– mapView:didTapMarker:
-⃞– mapView:didTapOverlay:
-⃞– mapView:didBeginDraggingMarker:
-⃞– mapView:didEndDraggingMarker:
-⃞– mapView:didDragMarker:
-⃞– didTapMyLocationButtonForMapView:
-*/
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+ *  Marker1 = FIS
+ *  Marker2 = Statue of Liberty
+ *  Marker3 = Amitai's Apartment growing up on the UWS (Deprecated 😦; it was a rental)
+ */
+-(void)setupMarkerData {
+        //    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+        //    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate]
+    GMSMarker *marker1 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.70531680012648,-74.01396463558194)];
+        //    marker1.title = @"First marker!!";
+        //    marker1.snippet = @"First Snippet!";
+        //    marker1.appearAnimation = kGMSMarkerAnimationPop;
+        //    marker1.draggable = YES;
+    marker1.map = nil;
+    
+    
+    GMSMarker *marker2 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.6892750, -74.0445560)];
+    marker2.map = nil;
+    
+    GMSMarker *marker3 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.7907300,-73.9723580)];
+    marker3.map = nil;
+    
+    self.markers = [NSSet setWithObjects:marker1, marker2, marker3, nil];
+    
+    [self drawMarkers];
 }
+
 
 
 @end
