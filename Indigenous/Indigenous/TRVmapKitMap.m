@@ -11,6 +11,8 @@
 @interface TRVmapKitMap ()
 
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic) BOOL userLocationUpdated;
+
 
 @end
 
@@ -21,7 +23,11 @@
     self.mapView.delegate = self;
     
     [self centerMapOnNYC];
-    
+//    self.mapView.showsUserLocation = YES;
+    if (self.userLocationUpdated != TRUE) {
+        [self centerMapOnUserLocation];
+    }
+
 }
 
 
@@ -37,10 +43,26 @@
     [self.mapView setRegion:startNYCRegion animated:YES];
 }
 
+-(void)centerMapOnUserLocation {
+    self.mapView.showsUserLocation = YES;
+    if (self.mapView.userLocation.location.coordinate.latitude != (double)0)
+        {
+            [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate];
+        } else {
+            INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+            [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyBlock timeout:15 delayUntilAuthorized:YES block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+                [self.mapView setCenterCoordinate:currentLocation.coordinate
+                                         animated:YES];
+                self.userLocationUpdated = YES;
+            }];
+        }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
