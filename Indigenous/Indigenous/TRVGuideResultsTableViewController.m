@@ -107,19 +107,26 @@
         // ADD LOADING HUD HERE BEFORE PARSE REQUEST GOES DOWN
     
     
-    PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"UserBio"];
+//    PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"UserBio"];
+//      PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"Itinerary"];
+    PFQuery *query = [PFUser query];
+    
+
     
     
-     [findGuidesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
-         
+     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
          // WE NEED TO ADD A SEARCH BASED ON EAT,SEE,PLAY,DRINK
-         for (PFObject *guideBio in objects){
+//         NSLog(@"%@" ,objects);
+
+         for (PFUser *user in objects){
+             
+        PFObject *guideBio = user[@"userBio"];
+             [guideBio fetch];
+             
+
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
-                
-                     PFUser *theParseGuide = guideBio[@"user"];
-                     [theParseGuide fetch];
-                 
+
                  TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
                                                           firstName:guideBio[@"first_name"]
                                                            lastName:guideBio[@"last_name"]
@@ -127,13 +134,34 @@
                                                         phoneNumber:guideBio[@"phoneNumber"]
                                                        profileImage:nil
                                                      bioDescription:guideBio[@"bioTextField"]
-                                                          interests:nil language:guideBio[@"languagesSpoken"]
+                                                          interests:nil
+                                                           language:guideBio[@"languagesSpoken"]
                                                                 age:0 gender:guideBio[@"gender"]
                                                              region:nil
                                                      oneLineSummary:guideBio[@"oneLineBio"]
                                                     profileImageURL:guideBio[@"picture"]
-                                                   nonFacebookImage:guideBio[@"emailPicture" ]];
+                                                   nonFacebookImage:guideBio[@"emailPicture"]];
                  
+                 
+                 TRVUser *guideForThisRow = [[TRVUser alloc]initWithBio:bio];
+                 
+                 NSArray *allTripsArray = user[@"myTrips"];
+                 NSLog(@"THIS IS THE ALL TRIPS ARRAY %@", allTripsArray);
+                 
+                 for (PFObject *PFtour in allTripsArray) {
+                     [PFtour fetch];
+                     TRVTour *tour = [[TRVTour alloc] init];
+                     tour.guideForThisTour = guideForThisRow;
+                     tour.itineraryForThisTour = PFtour[@"itineraryForThisTour"];
+                     tour.categoryForThisTour = PFtour[@"categoryForThisTour"];
+                     NSLog(@"%@ THIS IS THE CATEGORY NAME OF TOUR", tour.categoryForThisTour.categoryName);
+
+                     
+                 }
+
+                 
+                 
+                 // IMAGE PARSING ON PARSE
                  [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                      
                      bio.profileImage = response;
@@ -156,24 +184,14 @@
                      
                      
                      
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-                     
 
                      
-                     TRVUser *guideForThisRow = [[TRVUser alloc]initWithBio:bio];
                      
                      // UNCOMMENT THIS WHEN WE CAN ACTUALLY ADD TRIPS UP TO PARSE
                      // guideForThisRow.myTrips = theParseGuide[@"myTrips"];
                      //  if (theParseGuide[@"myTrips"]){
                      
-
+                     
                          // ADDED DUMMY DATA STORED IN NSMUTABLE ARRAY CATEGORY
                          NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
                      
