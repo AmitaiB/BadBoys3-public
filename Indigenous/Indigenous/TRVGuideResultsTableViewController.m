@@ -12,6 +12,7 @@
 #import "TRVTour.h"
 #import "TRVUser.h"
 #import "TRVTourStop.h"
+#import "TRVTourCategory.h"
 #import "TRVBio.h"
 #import "TRVSearchTripsViewController.h"
 #import "TRVGuideProfileTableViewCell.h"
@@ -154,9 +155,9 @@
                  for (PFObject *PFtour in allTripsFromParse) {
                      [PFtour fetch];
                      TRVTour *tourForThisIteration = [[TRVTour alloc] init];
-                     tourForThisIteration.guideForThisTour = guideForThisRow;
-//                     tourForThisIteration.itineraryForThisTour = nil;
-                     tourForThisIteration.categoryForThisTour.categoryName = PFtour[@"categoryForThisTour"];
+                     tourForThisIteration.guideForThisTour = guideForThisRow;                     
+                     NSString *categoryForThisTour = PFtour[@"categoryForThisTour"];
+                     tourForThisIteration.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:categoryForThisTour];
                      tourForThisIteration.tourDeparture = PFtour[@"tourDeparture"];
                      NSLog(@"%@ THIS IS THE CATEGORY NAME OF TOUR", tourForThisIteration.categoryForThisTour);
                      [TRVallTrips addObject:tourForThisIteration];

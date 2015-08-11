@@ -67,9 +67,9 @@
         [components setSecond:0];
         NSDate *yesterday = [cal dateByAddingComponents:components toDate: today options:0];
     
-    
+
         // set these Tours as 1 day old from start
-        TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:pastItinerary categoryForThisTour:[TRVTourCategory returnSeeCategory]];
+        TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:pastItinerary categoryForThisTour:[TRVTourCategory returnCategoryWithTitle:@"See"]];
         dummyTourInThePast.tourDeparture = yesterday;
 
 //    	TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:dummyItinerary];
