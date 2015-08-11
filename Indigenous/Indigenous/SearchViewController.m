@@ -11,27 +11,28 @@
 #import <CoreLocation/CoreLocation.h>
 
 #define apiKey GOOGLE_API_KEY
-
-@interface SearchViewController () <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) UISearchController *searchController;
+//
+@interface SearchViewController ()
+//<UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+//@property (nonatomic, strong) UISearchController *searchController;
 //@property (weak, nonatomic) IBOutlet UISearchBar *searchTextField;
-@property NSMutableArray *pastSearchResults;
-@property NSMutableArray *pastSearchWords;
-@property NSMutableArray *localSearchQueries;
-@property NSTimer *autoCompleteTimer;
-@property NSString *substring;
-@property CLLocationManager *locationManager;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@end
-
-
-typedef NS_ENUM(NSUInteger, TableViewSection){
-    TableViewSectionMain,
-    TableViewSectionCount
-};
-
-@implementation SearchViewController
+//@property NSMutableArray *pastSearchResults;
+//@property NSMutableArray *pastSearchWords;
+//@property NSMutableArray *localSearchQueries;
+//@property NSTimer *autoCompleteTimer;
+//@property NSString *substring;
+//@property CLLocationManager *locationManager;
+//@property (weak, nonatomic) IBOutlet UITableView *tableView;
+//
+//@end
+//
+//
+//typedef NS_ENUM(NSUInteger, TableViewSection){
+//    TableViewSectionMain,
+//    TableViewSectionCount
+//};
+//
+//@implementation SearchViewController
 
 //- (void)viewDidLoad {
 //    [super viewDidLoad];
@@ -298,3 +299,5 @@ typedef NS_ENUM(NSUInteger, TableViewSection){
 //
 //
 @end
+
+

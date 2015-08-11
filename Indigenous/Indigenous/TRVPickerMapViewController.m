@@ -5,19 +5,6 @@
 //  Created by Amitai Blickstein on 7/30/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
-/**
-A is a delegate object of B.
-
-B will have a reference of A.
-
-A will implement the delegate methods of B.
-
-B will notify A through the delegate methods.
-
- A = Add Tours
- B = Map (this one)
- 
- */
 
 //#import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <INTULocationManager.h>
@@ -46,6 +33,14 @@ B will notify A through the delegate methods.
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+        //FIXME: need a way to cancel the map.
+//    UINavigationBar *mapNavBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
+//    [mapNavBar sizeToFit];
+//    mapNavBar.barStyle = UIBarStyleBlackTranslucent;
+//    NSArray *navBarItems = @[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelTapped:)];
+//    [mapNavBar setItems:navBarItems animated:YES];
+//    
+//    UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(<#selector#>)];
 
         //Immediately draws a map with the pre-loaded initial location, carried over from the TabBarVC...
     CLLocationCoordinate2D defaultLocation = CLLocationCoordinate2DMake(40, -75);
@@ -58,8 +53,12 @@ B will notify A through the delegate methods.
     mapView_.settings.compassButton    = YES;
     mapView_.settings.myLocationButton = YES;
     [mapView_ setMinZoom:10 maxZoom:18];
+    
+//    UITapGestureRecognizer *doubleTap = [UITapGestureRecognizer new];
+//    doubleTap.numberOfTapsRequired = 2;
+//    
+//    [mapView_ addGestureRecognizer:doubleTap];
    
-        //Codeschool said to add this line `[self.view addSubview:self.mapView];` but that breaks the code.
     self.view = mapView_;
     mapView_.delegate = self;
 
@@ -76,6 +75,8 @@ B will notify A through the delegate methods.
         }
     }];
 }
+
+
 
     //Only draw markers that are not already On...
 -(void)drawMarkers {
@@ -210,6 +211,7 @@ B will notify A through the delegate methods.
     
 }
 
+
 -(UIAlertController*)confirmSelectionAlert:(CLLocation *)userSelectedLocation {
         //Make an alertcontroller to confirm selection.
     NSString *title = [NSString stringWithFormat:@"Add this location to your itinerary?"];
@@ -273,28 +275,7 @@ B will notify A through the delegate methods.
     
     [self drawMarkers];
 }
-    
-/**
-✓⃞– mapView:markerInfoContents:
-⃞– mapView:didTapInfoWindowOfMarker:
-⃞✓–mapView:markerInfoWindow:
-⃞– mapView:willMove:
-⃞– mapView:didChangeCameraPosition:
-⃞– mapView:idleAtCameraPosition:
-⃞– mapView:didTapAtCoordinate:
-⃞– mapView:didLongPressAtCoordinate:
-⃞– mapView:didTapMarker:
-⃞– mapView:didTapOverlay:
-⃞– mapView:didBeginDraggingMarker:
-⃞– mapView:didEndDraggingMarker:
-⃞– mapView:didDragMarker:
-⃞– didTapMyLocationButtonForMapView:
-*/
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end

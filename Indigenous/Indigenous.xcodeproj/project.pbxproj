@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		016992894F7DEF19D9F69221 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D69FD457D9B6860BB4D3A8B4 /* libPods.a */; };
-		384A9C461B79282D00F4C1E0 /* TRVRating_PF.m in Sources */ = {isa = PBXBuildFile; fileRef = 384A9C451B79282D00F4C1E0 /* TRVRating_PF.m */; };
-		384A9C4A1B7929FE00F4C1E0 /* TRVBio_PF.m in Sources */ = {isa = PBXBuildFile; fileRef = 384A9C491B7929FE00F4C1E0 /* TRVBio_PF.m */; };
 		384A9C4D1B79377C00F4C1E0 /* TRVSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384A9C4C1B79377C00F4C1E0 /* TRVSearchController.m */; };
 		384A9C501B7944E100F4C1E0 /* TestMapWithSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384A9C4F1B7944E100F4C1E0 /* TestMapWithSearchVC.m */; };
-		384A9C531B79480C00F4C1E0 /* TestGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 384A9C521B79480C00F4C1E0 /* TestGMapViewController.m */; };
 		384AFBC01B696ADB00E169A9 /* TRVTourGuideMyToursVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */; };
 		384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */; };
 		384AFBC91B696B8F00E169A9 /* TRVAddToursVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBC81B696B8F00E169A9 /* TRVAddToursVC.m */; };
@@ -131,16 +128,10 @@
 
 /* Begin PBXFileReference section */
 		2A091188074B9C927FC5D79C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		384A9C441B79282D00F4C1E0 /* TRVRating_PF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRating_PF.h; sourceTree = "<group>"; };
-		384A9C451B79282D00F4C1E0 /* TRVRating_PF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVRating_PF.m; sourceTree = "<group>"; };
-		384A9C481B7929FE00F4C1E0 /* TRVBio_PF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVBio_PF.h; sourceTree = "<group>"; };
-		384A9C491B7929FE00F4C1E0 /* TRVBio_PF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVBio_PF.m; sourceTree = "<group>"; };
 		384A9C4B1B79377C00F4C1E0 /* TRVSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSearchController.h; sourceTree = "<group>"; };
 		384A9C4C1B79377C00F4C1E0 /* TRVSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSearchController.m; sourceTree = "<group>"; };
 		384A9C4E1B7944E100F4C1E0 /* TestMapWithSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMapWithSearchVC.h; sourceTree = "<group>"; };
 		384A9C4F1B7944E100F4C1E0 /* TestMapWithSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMapWithSearchVC.m; sourceTree = "<group>"; };
-		384A9C511B79480C00F4C1E0 /* TestGMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestGMapViewController.h; sourceTree = "<group>"; };
-		384A9C521B79480C00F4C1E0 /* TestGMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestGMapViewController.m; sourceTree = "<group>"; };
 		384AFBBE1B696ADB00E169A9 /* TRVTourGuideMyToursVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourGuideMyToursVC.h; sourceTree = "<group>"; };
 		384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourGuideMyToursVC.m; sourceTree = "<group>"; };
 		384AFBC11B696B1900E169A9 /* TRVCreateTourVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVCreateTourVC.h; sourceTree = "<group>"; };
@@ -356,17 +347,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		384A9C471B79283500F4C1E0 /* Model_PF Alternatives (don't take too seriously) */ = {
-			isa = PBXGroup;
-			children = (
-				384A9C441B79282D00F4C1E0 /* TRVRating_PF.h */,
-				384A9C451B79282D00F4C1E0 /* TRVRating_PF.m */,
-				384A9C481B7929FE00F4C1E0 /* TRVBio_PF.h */,
-				384A9C491B7929FE00F4C1E0 /* TRVBio_PF.m */,
-			);
-			name = "Model_PF Alternatives (don't take too seriously)";
-			sourceTree = "<group>";
-		};
 		384A9C541B79482600F4C1E0 /* Experimental */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,8 +354,6 @@
 				384A9C4C1B79377C00F4C1E0 /* TRVSearchController.m */,
 				384A9C4E1B7944E100F4C1E0 /* TestMapWithSearchVC.h */,
 				384A9C4F1B7944E100F4C1E0 /* TestMapWithSearchVC.m */,
-				384A9C511B79480C00F4C1E0 /* TestGMapViewController.h */,
-				384A9C521B79480C00F4C1E0 /* TestGMapViewController.m */,
 			);
 			name = Experimental;
 			sourceTree = "<group>";
@@ -404,7 +382,6 @@
 			children = (
 				94C77F851B68354E003836E3 /* TRVRating.h */,
 				94C77F861B68354E003836E3 /* TRVRating.m */,
-				384A9C471B79283500F4C1E0 /* Model_PF Alternatives (don't take too seriously) */,
 				45E772CB1B6824C400003C7C /* TRVUser.h */,
 				45E772CC1B6824C400003C7C /* TRVUser.m */,
 				45E772CE1B68291300003C7C /* TRVBio.h */,
@@ -1003,7 +980,6 @@
 				FADB8F241B705731009F7C02 /* TRVTourStopCollectionViewCell.m in Sources */,
 				94BB588F1B78F44B0056D46F /* TRVAllStopsView.m in Sources */,
 				94A53C9A1B765E640029D2F7 /* NSMutableArray+extraMethods.m in Sources */,
-				384A9C531B79480C00F4C1E0 /* TestGMapViewController.m in Sources */,
 				9435DF761B6F21280054A2F4 /* TRVTourCategoryViewController.m in Sources */,
 				FADB8F291B711866009F7C02 /* TRVTourStopCollectionViewCellView.m in Sources */,
 				45ADB90E1B73A7DE0056AF09 /* TRVSettingsViewController.m in Sources */,
@@ -1037,7 +1013,6 @@
 				94EA5F7E1B6FEEE1002244D8 /* TRVUserDataStore.m in Sources */,
 				94A5559F1B6AD22900076C99 /* TRVUser.m in Sources */,
 				45E772DC1B6A670100003C7C /* TRVLoginViewController.m in Sources */,
-				384A9C461B79282D00F4C1E0 /* TRVRating_PF.m in Sources */,
 				FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */,
 				9435DF6C1B6ED3350054A2F4 /* TRVCityTableViewCell.m in Sources */,
 				94E9D05F1B6EB11D007B42B7 /* TRVGuideDetailProfileView.m in Sources */,
@@ -1072,7 +1047,6 @@
 				3859EDF01B694003001C5693 /* TRVTour.m in Sources */,
 				3856144E1B72688B00D6F7E7 /* TRVPickerMapViewController.m in Sources */,
 				942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */,
-				384A9C4A1B7929FE00F4C1E0 /* TRVBio_PF.m in Sources */,
 				384AFBC91B696B8F00E169A9 /* TRVAddToursVC.m in Sources */,
 				45E772D91B6962E700003C7C /* TRVLoginSignupHomeViewController.m in Sources */,
 				45E772E31B6A68FC00003C7C /* TRVCompleteSignupWithFacebookViewController.m in Sources */,

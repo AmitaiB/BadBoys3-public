@@ -5,6 +5,10 @@
 //  Created by Amitai Blickstein on 8/10/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
+// Made via HNKGooglePlacesAutocomplete's example project, and
+// UseYourLoaf blog's suggest iOS 8 updates:
+//http://useyourloaf.com/blog/2015/02/16/updating-to-the-ios-8-search-controller.html
+
 
 #import "TestMapWithSearchVC.h"
 #import <HNKGooglePlacesAutocomplete.h>
@@ -12,8 +16,6 @@
 #import <MapKit/MapKit.h>
 #import <CLPlacemark+HNKAdditions.h>
 
-
-    //???
 static NSString *const kHNKDemoMapAnnotiationIdentifier = @"kHNKDemoMapAnnotiationIdentifier";
 static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnotiationIdentifier";
 
@@ -33,11 +35,15 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
 
 @end
 
-@implementation TestMapWithSearchVC
+@implementation TestMapWithSearchVC {
+    NSUInteger errorCount_;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+        //for later, by fetch request...
+    errorCount_ = 0;
+    
     self.searchQuery = [HNKGooglePlacesAutocompleteQuery sharedQuery];
     self.shouldBeginEditing = YES;
     
@@ -51,7 +57,8 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
     self.searchResultsTableView.tableHeaderView = self.searchBar;
     self.definesPresentationContext;
 //???Amitai  Only if necessary...
-//    [self.searchBar sizeToFit];
+    [self.searchBar sizeToFit];
+    [self reloadInputViews];
 
 }
 
@@ -108,7 +115,11 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
         [self.searchQuery fetchPlacesForSearchQuery:searchString
                                          completion:^(NSArray *places, NSError *error) {
                                              if (error) {
-                                                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Could not fetch any Places"
+                                                 if (errorCount_ >= 10) {
+                                                     return;
+                                                 }
+                                                 errorCount_ ++;
+                                                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Error %lux: Could not fetch any Places", (unsigned long)errorCount_]
                                                                                                                 message:error.localizedDescription
                                                                                                          preferredStyle:UIAlertControllerStyleAlert];
                                                  UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -188,6 +199,31 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
     return self.searchResults[indexPath.row];
 }
 
+#pragma mark Map Helpers
+
+-(void)addPlacemarkAnnotationToMap:(CLPlacemark *)placemark addressString:(NSString *)address {
+    [self.mapView removeAnnotation:self.selectedPlaceAnnotation];
+    
+    self.selectedPlaceAnnotation = [MKPointAnnotation new];
+    self.selectedPlaceAnnotation.coordinate = placemark.location.coordinate;
+    self.selectedPlaceAnnotation.title = address;
+    
+    [self.mapView addAnnotation:self.selectedPlaceAnnotation];
+}
+
+- (void)recenterMapToPlacemark:(CLPlacemark *)placemark {
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    
+    span.latitudeDelta = 0.02;
+    span.longitudeDelta = 0.02;
+    
+    region.span = span;
+    region.center = placemark.location.coordinate;
+    
+    [self.mapView setRegion:region];
+}
+
 #pragma mark Search Helpers
 
 - (void)clearSearchResults {
@@ -199,15 +235,5 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
     NSLog(@"ERROR = %@! WHY AM I YELLING??", error);
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
