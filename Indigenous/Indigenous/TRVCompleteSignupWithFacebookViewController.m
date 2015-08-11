@@ -77,8 +77,7 @@
         if (succeeded){
             if (self.isGuide.on){
                 // TRANSITION TO GUIDE HOME PAGE
-                // TODO This should presentToGuideTourView
-                [self presentTouristHomeView];
+                [self presentGuideHomeView];
                 
             } else{
                 // TRANSITION TO TOURIST HOME PAGE
@@ -126,6 +125,20 @@
     
 }
 
+-(void)presentGuideHomeView {
+    
+    UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
+    
+    UIViewController *destination = [tourist instantiateInitialViewController];
+    
+    UIViewController *presentingViewController = self.presentingViewController;
+    
+    [presentingViewController dismissViewControllerAnimated:NO completion:^{
+        [presentingViewController presentViewController:destination animated:NO completion:nil];
+    }];
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

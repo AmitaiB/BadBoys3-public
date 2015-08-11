@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "TRVUser.h"
 
+@protocol SwitchUserProtocol <NSObject>
+@required
+-(void)switchUserType;
+@end
+
 @interface TRVProfileViewController : UIViewController
 
 @property (nonatomic, strong) TRVUser *user;
-
+@property (nonatomic, weak) id<SwitchUserProtocol> delegate;
 @end

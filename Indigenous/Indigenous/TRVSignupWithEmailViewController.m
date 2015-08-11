@@ -122,8 +122,8 @@
     newUser.password = self.passwordTextField.text;
     newUser[@"isGuide"] = @(self.isGuide.on);
     
-    newUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
     newUser[@"userBio"] = [PFObject objectWithClassName:@"UserBio"];
+    newUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
     newUser[@"userBio"][@"first_name"] = self.firstNameTextField.text;
     newUser[@"userBio"][@"last_name"] = self.lastNameTextField.text;
     newUser[@"userBio"][@"email"] = self.emailTextField.text;
@@ -172,9 +172,7 @@
 -(void)goToNextStoryboard {
     
     if (self.isGuide.on){
-        // TRANSITION TO GUIDE HOME PAGE
-        // TODO THIS NEEDS TO GO TO GUIDE HOME PAGE
-        UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+        UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
         
         UIViewController *destination = [tourist instantiateInitialViewController];
         

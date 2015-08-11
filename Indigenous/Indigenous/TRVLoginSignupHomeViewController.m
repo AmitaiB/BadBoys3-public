@@ -11,7 +11,7 @@
 #import <Parse/Parse.h>
 #import <MBProgressHUD.h>
 
-@interface TRVLoginSignupHomeViewController ()
+@interface TRVLoginSignupHomeViewController () 
 
 
 
@@ -45,7 +45,11 @@
 
 -(void)checkToSeeIfUserIsLoggedIn {
     
-    if (([FBSDKAccessToken currentAccessToken] && [PFUser currentUser]) || [PFUser currentUser]) {
+    if (self.isPerformingASwitch){
+        self.isPerformingASwitch = NO;
+        NSLog(@"Switching!");
+        
+    } else if (([FBSDKAccessToken currentAccessToken] && [PFUser currentUser]) || [PFUser currentUser]) {
         
         [self transitionToHome];
         
@@ -59,6 +63,9 @@
     
 }
 
+-(void)switchUserType {
+    self.isPerformingASwitch = YES;
+}
 
 
 -(void)transitionToHome{
@@ -75,8 +82,7 @@
             [self presentTouristHomeView];
         } else {
             
-            // TODO TRANSITION TO GUIDE HOMEVIEW
-            [self presentTouristHomeView];
+            [self presentGuideHomeView];
         }
         
     }];
@@ -106,10 +112,9 @@
                     if ([user[@"userBio"][@"isGuide"] isEqualToNumber:@(YES)]){
                         // present guide home
                         // NEEDS TO GET DONE
-                        
+                        [self presentGuideHomeView];
                         
                     } else {
-                        // present guide home
                         [self presentTouristHomeView];
                         
                     }
@@ -149,6 +154,16 @@
     
 }
 
+-(void)presentGuideHomeView {
+    
+    
+    UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
+    
+    UIViewController *destination = [tourist instantiateInitialViewController];
+    
+    [self presentViewController:destination animated:YES completion:nil];
+    
+}
 
 
 

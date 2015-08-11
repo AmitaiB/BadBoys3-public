@@ -18,7 +18,7 @@
 
 @end
 
-@implementation TRVUserDataStore
+@implementation TRVUserDataStore 
 
 
 + (instancetype)sharedUserInfoDataStore {
@@ -54,13 +54,7 @@
          PFObject *object = currentUser[@"userBio"];
          [object pinInBackground];
 
-//        // IF WE ARE OFFLINE
-//        if (_currentInternetStatus == 0) {
-//            [query fromLocalDatastore];
-//            [query getObjectInBackgroundWithId:object.objectId];
-//            NSLog(@"ARE YOU EVER IN HERE? IF SO WHAT IS YOUR OBJECT ID?: %@", object.objectId);
-//            }
-//    
+
     
     
     // SET EQUAL TO AS LOGGED IN USER
@@ -84,12 +78,12 @@
             
 
             // HARDCODED USER TAGLINE, UNCOMMMENT LINE BELOW ONCE THERE IS PLACE TO INPUT TAGLINE
-//            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
-            bioForLoggedInUser.userTagline = @"I'm the damn best guide you ever done seen.";
+            bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
+           // bioForLoggedInUser.userTagline = @"I'm the damn best guide you ever done seen.";
 
             // HARDCODED USER BIO, UNCOMMMENT LINE BELOW ONCE THERE IS PLACE TO USER BIO
-//            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
-            bioForLoggedInUser.bioDescription = @"Hi, my name is X and I like to take people on tours. I am such a good tour that New York Times Magazine rated me best tour of all time.";
+            bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
+          //  bioForLoggedInUser.bioDescription = @"Hi, my name is X and I like to take people on tours. I am such a good tour that New York Times Magazine rated me best tour of all time.";
             
             
             // DEPENDS ON IF FACEBOOK OR EMAIL LOGGED IN
@@ -119,6 +113,8 @@
             // set logged in user to Parse query
     
             _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
+            
+            //
             NSLog(@"Welcome %@. ", _loggedInUser.userBio.firstName);
         }
     }];

@@ -24,12 +24,12 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 50;
+    return [_stops count];
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TRVTourStopCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"tourStopCell" forIndexPath:indexPath];
-    //cell.stop = _stops[indexPath.row];
+    cell.stop = _stops[indexPath.row];
     return cell;
 }
 
