@@ -15,6 +15,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import <CLPlacemark+HNKAdditions.h>
+#import <Masonry.h>
 
 static NSString *const kHNKDemoMapAnnotiationIdentifier = @"kHNKDemoMapAnnotiationIdentifier";
 static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnotiationIdentifier";
@@ -46,6 +47,13 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
     
     self.searchQuery = [HNKGooglePlacesAutocompleteQuery sharedQuery];
     self.shouldBeginEditing = YES;
+    
+//    self.mapView = [MKMapView new];
+//    Masonry!!!
+    [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.mapView.superview);
+    }];
+    self.mapView.delegate = self;
     
 //        iOS 8 added LOC:
     self.searchResultsUpdater = self;

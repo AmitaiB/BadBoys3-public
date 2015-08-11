@@ -1,43 +1,28 @@
 //
-//  TRVSearchController.m
+//  TRVmapKitMap.m
 //  Indigenous
 //
-//  Created by Amitai Blickstein on 8/10/15.
+//  Created by Amitai Blickstein on 8/11/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVSearchController.h"
-#define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+#import "TRVmapKitMap.h"
 
-
-@interface TRVSearchController () <UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating>
+@interface TRVmapKitMap ()
 
 @end
 
-
-
-@implementation TRVSearchController
+@implementation TRVmapKitMap
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    self.searchBar;
-    self.active = YES;
-    
-//    = searchController.searchBar;
-//    searchBar.delegate = self;
-//    searchController.delegate = self;
-//    [self.navigationController addChildViewController:searchController];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 /*
 #pragma mark - Navigation
@@ -48,10 +33,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
-{
-    DBLG
-}
 
 @end
