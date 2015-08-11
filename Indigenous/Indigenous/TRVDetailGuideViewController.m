@@ -15,6 +15,7 @@
 #import "TRVUser.h"
 #import "TRVTourStop.h"
 #import "TRVAllToursFilter.h"
+#import "TRVTourDetailViewController.h"
 
 // COCOAPODS
 #import <Masonry.h>
@@ -39,7 +40,7 @@
 //Number Of Tours In Segmented Tab
 @property (nonatomic, strong) NSArray *guideCategoryTours;
 @property (nonatomic, strong) NSArray *guideOtherTours;
-
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
 @end
 
 @implementation TRVDetailGuideViewController
@@ -113,16 +114,16 @@
     // SET THE TAB BAR TO CATEGORY SEARCH
     TRVTourCategory *categoryForFirstTab = self.sharedDataStore.currentCategorySearching;
     NSString *categorySearchTabName = [NSString stringWithFormat:@"%@ Tours" ,categoryForFirstTab.categoryName];
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:categorySearchTabName, @"Other Tours", nil]];
-    segmentedControl.frame = CGRectMake(35, 200, 250, 50);
-    segmentedControl.selectedSegmentIndex = 0;
-    [segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:categorySearchTabName, @"Other Tours", nil]];
+    self.segmentedControl.frame = CGRectMake(35, 200, 250, 50);
+    self.segmentedControl.selectedSegmentIndex = 0;
+    [self.segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
     
     
-    [self.profileView addSubview:segmentedControl];
+    [self.profileView addSubview:self.segmentedControl];
 
     // Segmented Control Constraints
-    [segmentedControl mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.segmentedControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contactView.mas_bottom).with.offset(10);
         make.left.equalTo(self.profileView).with.offset(10);
         make.right.equalTo(self.profileView).with.offset(-10);
@@ -143,12 +144,12 @@
 
         
     // set delegate and datasource owner
-        self.guideTripsTableView.delegate = self;
         self.tableViewDataSource = [[TRVDetailGuideAllTripsDataSource alloc] initWithGuide:self.selectedGuideUser];
         self.guideTripsTableView.dataSource = self.tableViewDataSource;
-        
-        
-        
+        self.guideTripsTableView.delegate = self;
+    
+    
+    
 //         FIND NUMBER OF CELLS TO DISPLAY AFTER DATASOURCE FILTER
         [TRVAllToursFilter getCategoryToursForGuide:self.selectedGuideUser withCompletionBlock:^(NSArray *response) {
             
@@ -159,7 +160,7 @@
             
             // Set Table View Constraints
             [self.guideTripsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(segmentedControl.mas_bottom).with.offset(10);
+                make.top.equalTo(self.segmentedControl.mas_bottom).with.offset(10);
                 make.left.and.right.equalTo(self.profileView);
                 
             // hacky way to make table view longer
@@ -189,6 +190,7 @@
 
 - (void)segmentedControlChanged:(UISegmentedControl *)segment
 {
+    
     [self.tableViewDataSource changeTripsDisplayed];
     
     // hacky way to make table view longer
@@ -220,15 +222,42 @@
 }
 
 
-/*
+
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"showTourDetailSegue" sender:self];
+    
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
+    
+    
+    if ([segue.identifier isEqualToString:@"showTourDetailSegue"]) {
+        
+        NSIndexPath *ip = [self.guideTripsTableView indexPathForSelectedRow];
+        NSLog(@"THIS IS THE IP%ld", (long)ip.row);
+        TRVTour *tourForThisRow = [[TRVTour alloc] init];
+        
+        if (self.segmentedControl.selectedSegmentIndex == 0) {
+            tourForThisRow = self.guideCategoryTours[ip.row];
+        } else {
+            tourForThisRow = self.guideOtherTours[ip.row];
+        }
+
+        TRVTourDetailViewController *destinationVC = [segue destinationViewController];
+        destinationVC.destinationTour = tourForThisRow;
+        NSLog(@"THE DVC TOUR IS %@", tourForThisRow.itineraryForThisTour.nameOfTour);
+    }
+    
     // Pass the selected object to the new view controller.
 }
-*/
+
+
 
 
 @end

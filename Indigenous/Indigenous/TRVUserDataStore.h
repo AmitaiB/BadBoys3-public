@@ -32,6 +32,7 @@
 @property (nonatomic) BOOL isGuide;
 
 
+
 // SET WHEN EAT/DRINK/PLAY/SEE IS SELECTED
 // NECESSARY FOR FILTER MODAL
 @property (nonatomic, strong) TRVTourCategory *currentCategorySearching;

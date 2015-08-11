@@ -138,6 +138,8 @@
 - (void)setAlphaForParallaxTitleLabel {
     self.parallaxHeaderTourNameLabel.alpha = ([self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y + self.parallaxHeaderTourNameLabel.frame.size.height)) / _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
     NSLog(@"tour name label new alpha: %f", self.parallaxHeaderTourNameLabel.alpha);
+//    self.parallaxHeaderTourNameLabel.alpha = 1;
+//    self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor orangeColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

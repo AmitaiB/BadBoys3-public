@@ -18,7 +18,7 @@
 
 @end
 
-@implementation TRVUserDataStore
+@implementation TRVUserDataStore 
 
 
 + (instancetype)sharedUserInfoDataStore {
@@ -54,13 +54,7 @@
          PFObject *object = currentUser[@"userBio"];
          [object pinInBackground];
 
-//        // IF WE ARE OFFLINE
-//        if (_currentInternetStatus == 0) {
-//            [query fromLocalDatastore];
-//            [query getObjectInBackgroundWithId:object.objectId];
-//            NSLog(@"ARE YOU EVER IN HERE? IF SO WHAT IS YOUR OBJECT ID?: %@", object.objectId);
-//            }
-//    
+
     
     
     // SET EQUAL TO AS LOGGED IN USER
@@ -119,6 +113,8 @@
             // set logged in user to Parse query
     
             _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
+            
+            //
             NSLog(@"Welcome %@. ", _loggedInUser.userBio.firstName);
         }
     }];
