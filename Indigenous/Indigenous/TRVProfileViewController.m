@@ -18,28 +18,15 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
-
 @end
 
-@implementation TRVProfileViewController
+@implementation TRVProfileViewController {
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     self.user = self.sharedDataStore.loggedInUser;
-//    [TRVNetworkRechabilityMonitor startNetworkReachabilityMonitoring];
-//
-//    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-//        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
-//        if (status == 2) {
-//            NSLog(@"Connected to Wifi!! ");
-//        }
-//    }];
-
-    
-
-    
-    //Instantiate a Image View Nib
     
         TRVUserProfileImageView *profileImageView = [[TRVUserProfileImageView alloc] init];
         
@@ -108,15 +95,24 @@
 
 -(void)tapToGuideTab:(TRVUserContactView *)view {
     
-    NSLog(@"In Single Tap Methood");
-    
-    UIStoryboard *guide = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
-    
-    UIViewController *destination = [guide instantiateInitialViewController];
-    
-    // Alan can you check if this is right
-    [self presentViewController:destination animated:NO completion:nil];
-
+//    
+//    NSLog(@"In Single Tap Methood");
+//    UIStoryboard *destinationStoryboard = nil;
+//    if (self) {
+//        NSLog(@"in if");
+//        destinationStoryboard = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
+//        guideTab = true;
+//    } else {
+//        NSLog(@"in else");
+//        destinationStoryboard = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
+//        _guideTab = false;
+//    }
+//    
+//    UIViewController *destination = [destinationStoryboard instantiateInitialViewController];
+//    
+//    // Alan can you check if this is right
+//    [self presentViewController:destination animated:NO completion:nil];
+//
 }
 
 

@@ -42,8 +42,14 @@
 //        make.width.equalTo(self.VCScrollView.mas_width);
         make.bottom.equalTo(allStopsScrollNib.mas_bottom);
     }];
-   
-    // Do any additional setup after loading the view.
+    
+    
+    
+   // Button Constraints
+//    [self.testButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(self.VCContentView.mas_bottom);
+//    }];
+
 }
 
 
