@@ -29,32 +29,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+//    
+//    TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
+//    
+//    NSMutableArray *tourStops = [[NSMutableArray alloc] initWithObjects:dummyTourStop,dummyTourStop, nil];
+//    
+//    TRVTour *aTour = [[TRVTour alloc] init];
+//    aTour.itineraryForThisTour = [[TRVItinerary alloc] initNameOfTour:@"Canada 6 Tour" tourImage:[UIImage imageNamed:@"madrid.jpg"] tourStops:tourStops];
+//
+//    aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
+////    aTour.itineraryForThisTour.tourImage = [UIImage imageNamed:@"Carmelo.jpg"];
+//    
+//    
+//    
+//        NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+//        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+//    
+//    
+//    
+//    
+//    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
+//    self.tripTableView.dataSource = self.tableViewDataSource;
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+
     
     TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
-    
+
     NSMutableArray *tourStops = [[NSMutableArray alloc] initWithObjects:dummyTourStop,dummyTourStop, nil];
     
     TRVTour *aTour = [[TRVTour alloc] init];
     aTour.itineraryForThisTour = [[TRVItinerary alloc] initNameOfTour:@"Canada 6 Tour" tourImage:[UIImage imageNamed:@"madrid.jpg"] tourStops:tourStops];
-
+    
     aTour.tourDeparture = [NSDate dateWithTimeIntervalSinceNow:1000];
-//    aTour.itineraryForThisTour.tourImage = [UIImage imageNamed:@"Carmelo.jpg"];
+    //    aTour.itineraryForThisTour.tourImage = [UIImage imageNamed:@"Carmelo.jpg"];
     
     
     
-        NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
     
     
     
     
     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
     self.tripTableView.dataSource = self.tableViewDataSource;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)segmentedControlChanged:(id)sender {
