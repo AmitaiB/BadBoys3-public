@@ -97,21 +97,21 @@
     
 //    
 //    NSLog(@"In Single Tap Methood");
-//    UIStoryboard *destinationStoryboard = nil;
+    UIStoryboard *destinationStoryboard = nil;
 //    if (self) {
 //        NSLog(@"in if");
-//        destinationStoryboard = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
+        destinationStoryboard = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
 //        guideTab = true;
 //    } else {
 //        NSLog(@"in else");
 //        destinationStoryboard = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
 //        _guideTab = false;
 //    }
-//    
-//    UIViewController *destination = [destinationStoryboard instantiateInitialViewController];
-//    
-//    // Alan can you check if this is right
-//    [self presentViewController:destination animated:NO completion:nil];
+    
+    UIViewController *destination = [destinationStoryboard instantiateInitialViewController];
+    
+    // Alan can you check if this is right
+    [self presentViewController:destination animated:NO completion:nil];
 //
 }
 
