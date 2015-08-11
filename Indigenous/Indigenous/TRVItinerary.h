@@ -17,7 +17,7 @@
 @property (nonatomic, strong, nonnull) NSArray *attractions; //Attractions: Item of specific interest to travelers, such as natural wonders, manmade facilities and structures, entertainment, and activities.
 
 
--(instancetype)initNameOfTour:(NSString *)name tourImage:(UIImage *)tourImage tourStops:(NSMutableArray *)tourStops;
+-(instancetype)initNameOfTour:(NSString * __nonnull)name tourImage:(UIImage * __nullable)tourImage tourStops:(NSMutableArray * __nonnull)tourStops;
 
 -(instancetype)init;
 
