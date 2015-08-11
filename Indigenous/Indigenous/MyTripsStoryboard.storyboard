@@ -82,18 +82,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NPq-bg-Wa6">
-                                <rect key="frame" x="16" y="121" width="568" height="29"/>
-                                <segments>
-                                    <segment title="Upcoming"/>
-                                    <segment title="Past Tours"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentedControlChanged:" destination="U3t-qH-CFD" eventType="valueChanged" id="hLT-p5-SIM"/>
-                                </connections>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="349" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-SG-l7o">
-                                <rect key="frame" x="0.0" y="167" width="600" height="384"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="349" id="iPL-Gz-GYw" customClass="TRVTouristTripTableViewCell">
@@ -127,11 +117,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ZGd-SG-l7o" secondAttribute="trailing" id="4ij-hE-z4f"/>
                             <constraint firstItem="ZGd-SG-l7o" firstAttribute="leading" secondItem="Pw5-2F-Iqf" secondAttribute="leadingMargin" id="5Qo-5C-T9A"/>
                             <constraint firstItem="DCu-9p-mn0" firstAttribute="top" secondItem="ZGd-SG-l7o" secondAttribute="bottom" id="Fr6-7v-e08"/>
-                            <constraint firstItem="NPq-bg-Wa6" firstAttribute="top" secondItem="BUq-44-NdC" secondAttribute="bottom" constant="57" id="Grz-4u-HVO"/>
-                            <constraint firstItem="NPq-bg-Wa6" firstAttribute="trailing" secondItem="Pw5-2F-Iqf" secondAttribute="trailingMargin" constant="-16" id="k05-wW-pAA"/>
-                            <constraint firstItem="NPq-bg-Wa6" firstAttribute="leading" secondItem="Pw5-2F-Iqf" secondAttribute="leadingMargin" constant="16" id="oFo-m6-got"/>
+                            <constraint firstItem="ZGd-SG-l7o" firstAttribute="top" secondItem="BUq-44-NdC" secondAttribute="top" id="GpW-48-BHX"/>
                             <constraint firstItem="ZGd-SG-l7o" firstAttribute="width" secondItem="Pw5-2F-Iqf" secondAttribute="width" id="qCj-Qh-AbR"/>
-                            <constraint firstItem="ZGd-SG-l7o" firstAttribute="top" secondItem="NPq-bg-Wa6" secondAttribute="bottom" constant="18" id="r5A-qV-0aZ"/>
                             <constraint firstAttribute="centerX" secondItem="ZGd-SG-l7o" secondAttribute="centerX" id="uk6-02-iw4"/>
                         </constraints>
                         <variation key="default">
@@ -141,7 +128,20 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="6S6-zR-HLz"/>
+                    <navigationItem key="navigationItem" id="6S6-zR-HLz">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="NPq-bg-Wa6">
+                            <rect key="frame" x="16" y="7.5" width="568" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Upcoming"/>
+                                <segment title="Past Tours"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentedControlChanged:" destination="U3t-qH-CFD" eventType="valueChanged" id="hLT-p5-SIM"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="NPq-bg-Wa6" id="JFC-fz-iEU"/>
                         <outlet property="tripTableView" destination="ZGd-SG-l7o" id="Z2d-6H-YNI"/>
@@ -200,10 +200,8 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-55-svt">
                                                 <rect key="frame" x="0.0" y="70" width="600" height="481"/>
-
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
