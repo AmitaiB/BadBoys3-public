@@ -3,7 +3,6 @@
 
 //  Indigenous
 //
-//  Created by Leo Kwan on 8/2/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
@@ -79,7 +78,7 @@
     }
     else {
         
-        // show a modal or something....
+        // TODO show a modal or something....
         NSLog(@"THERE ARE NO AVAILABLE GUIDES IN THIS SEARCH RESULT");
         TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         return cell;
@@ -125,6 +124,7 @@
         PFObject *guideBio = user[@"userBio"];
              [guideBio fetch];
              
+
 
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){

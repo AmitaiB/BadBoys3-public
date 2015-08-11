@@ -75,4 +75,79 @@
 
 
 
+//@property (nonatomic, strong) NSString *firstName;
+//@property (nonatomic, strong) NSString *lastName;
+//@property (nonatomic, strong) NSString *email;
+//@property (nonatomic, strong) NSString *phoneNumber;
+//@property (nonatomic, strong) UIImage *profileImage;
+//@property (nonatomic, strong) UIImage *nonFacebookImage;
+//@property (nonatomic, strong) NSString *bioDescription;
+//
+//// Not sure if we need interests
+//@property (nonatomic, strong) NSMutableArray *interests;
+//@property (nonatomic, strong) NSString *language;
+//@property (nonatomic, strong) NSString *homeCountry;
+//@property (nonatomic, strong) NSString *userTagline;
+//@property (nonatomic, strong) NSString *birthday;
+//@property (nonatomic) BOOL isGuide;
+//
+////GUIDE SPECIFIC PROPERTIES
+//@property (nonatomic) NSUInteger age;
+//@property (nonatomic, strong) NSString *gender;
+//@property (nonatomic, strong) NSString *region;
+//@property (nonatomic, strong) NSString *homeCity;
+//@property (nonatomic, strong) NSString *profileImageURL;
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.firstName forKey:@"firstName"];
+    [encoder encodeObject:self.lastName forKey:@"lastName"];
+    [encoder encodeObject:self.email forKey:@"email"];
+    [encoder encodeObject:self.phoneNumber forKey:@"phoneNumber"];
+    [encoder encodeObject:self.profileImage forKey:@"profileImage"];
+    [encoder encodeObject:self.nonFacebookImage forKey:@"nonFacebookImage"];
+    [encoder encodeObject:self.bioDescription forKey:@"bioDescription"];
+    [encoder encodeObject:self.interests forKey:@"interests"];
+    [encoder encodeObject:self.language forKey:@"language"];
+    [encoder encodeObject:self.homeCountry forKey:@"homeCountry"];
+    [encoder encodeObject:self.userTagline forKey:@"userTagline"];
+    [encoder encodeObject:self.birthday forKey:@"birthday"];
+    [encoder encodeBool:self.isGuide forKey:@"isGuide"];
+    [encoder encodeInt64:self.age forKey:@"age"];
+    [encoder encodeObject:self.gender forKey:@"gender"];
+    [encoder encodeObject:self.region forKey:@"region"];
+    [encoder encodeObject:self.homeCity forKey:@"homeCity"];
+    [encoder encodeObject:self.profileImageURL forKey:@"profileImageURL"];
+
+    
+    
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.firstName = [decoder decodeObjectOfClass:[NSString class] forKey:@"firstName"];
+        self.lastName = [decoder decodeObjectOfClass:[NSString class] forKey:@"lastName"];
+        self.email =[decoder decodeObjectOfClass:[NSString class] forKey:@"email"];
+        self.phoneNumber =[decoder decodeObjectOfClass:[NSString class] forKey:@"phoneNumber"];
+        self.profileImage =[decoder decodeObjectOfClass:[UIImage class] forKey:@"profileImage"];
+        self.bioDescription =[decoder decodeObjectOfClass:[NSString class] forKey:@"bioDescription"];
+        self.interests = [decoder decodeObjectOfClass:[NSMutableArray class] forKey:@"interests"];
+        self.language = [decoder decodeObjectOfClass:[NSString class] forKey:@"language"];
+        self.homeCountry = [decoder decodeObjectOfClass:[NSString class] forKey:@"homeCountry"];
+        self.userTagline = [decoder decodeObjectOfClass:[NSString class] forKey:@"userTagline"];
+        self.birthday = [decoder decodeObjectOfClass:[NSString class] forKey:@"birthday"];
+        self.homeCity = [decoder decodeObjectOfClass:[NSString class] forKey:@"homeCity"];
+        self.age = [decoder decodeInt64ForKey:@"age"];
+        self.isGuide = [decoder decodeBoolForKey:@"isGuide"];
+        self.gender = [decoder decodeObjectOfClass:[NSString class] forKey:@"gender"];
+        self.region = [decoder decodeObjectOfClass:[NSString class] forKey:@"region"];
+        self.profileImageURL = [decoder decodeObjectOfClass:[NSString class] forKey:@"profileImageURL"];
+        self.nonFacebookImage = [decoder decodeObjectOfClass:[UIImage class] forKey:@"nonFacebookImage"];
+    }
+    return self;
+}
+
+
+
+
+
 @end

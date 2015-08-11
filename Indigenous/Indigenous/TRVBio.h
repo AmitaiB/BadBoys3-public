@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface TRVBio : NSObject
+@interface TRVBio : NSObject <NSCoding>
 
 //// Don't need a username really.  We go via Fist and Last name.
 //@property (nonatomic, strong) NSString *userName;

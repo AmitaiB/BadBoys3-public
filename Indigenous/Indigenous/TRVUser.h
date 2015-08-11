@@ -11,7 +11,7 @@
 #import "TRVBio.h"
 #import "TRVRating.h"
 
-@interface TRVUser : NSObject
+@interface TRVUser : NSObject <NSCoding>
 
     //@property (nonatomic) BOOL isGuide;
 @property (nonatomic, strong) NSString *parseObjectID; //Is this a string?

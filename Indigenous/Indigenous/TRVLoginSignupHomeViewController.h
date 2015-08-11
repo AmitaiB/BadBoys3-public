@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVProfileViewController.h"
 
-@interface TRVLoginSignupHomeViewController : UIViewController
 
+
+
+
+@interface TRVLoginSignupHomeViewController : UIViewController <SwitchUserProtocol>
+@property (nonatomic) BOOL isPerformingASwitch;
 @end
