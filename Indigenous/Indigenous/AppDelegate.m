@@ -28,7 +28,7 @@
     [Parse setApplicationId:PARSE_APPLICATION_ID
                   clientKey:PARSE_CLIENT_KEY];
 //!!!:AMITAI This is purely for debugging ↓
-    [PFUser enableAutomaticUser];
+   // [PFUser enableAutomaticUser];
     
     
     
