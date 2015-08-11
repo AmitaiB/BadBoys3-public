@@ -13,7 +13,7 @@
 #import "TRVNetworkRechabilityMonitor.h"
 #import <AFNetworkReachabilityManager.h>
 #import "TRVLoginSignupHomeViewController.h"
-
+#import "TRVUserDataStore.h"
 
 @interface TRVProfileViewController () 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
@@ -97,13 +97,26 @@
 
 -(void)tapToGuideTab:(TRVUserContactView *)view {
     
+    TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
+
+    if (user.isOnGuideTabBar) {
+        user.isOnGuideTabBar = NO;
+        [self goToTouristHome];
+    } else {
+        user.isOnGuideTabBar = YES;
+        [self goToGuideHome];
+    }
+
     
+}
+
+-(void)goToTouristHome {
     UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
     
     UIViewController *destination = [tourist instantiateInitialViewController];
     
     TRVLoginSignupHomeViewController *homeView = (TRVLoginSignupHomeViewController *)self.presentingViewController;
-
+    
     self.delegate = homeView;
     
     [self.delegate switchUserType];
@@ -113,35 +126,26 @@
         [homeView presentViewController:destination animated:NO completion:nil];
         
     }];
-
-    
-    //[self presentViewController:destination animated:YES completion:nil];
-
-    
-  //  NSLog(@"Is i a guide: %i", self.user.userBio.isGuide);
-    
-//    NSLog(@"In Single Tap Methood");
-//    UIStoryboard *destinationStoryboard = nil;
-//    if (self) {
-//        NSLog(@"in if");
-//        destinationStoryboard = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
-//        guideTab = true;
-//    } else {
-//        NSLog(@"in else");
-//        destinationStoryboard = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];
-//        _guideTab = false;
-//    }
-//    
-//    UIViewController *destination = [destinationStoryboard instantiateInitialViewController];
-//    
-//    // Alan can you check if this is right
-//    [self presentViewController:destination animated:NO completion:nil];
-//
-    
-    
 }
 
 
+-(void)goToGuideHome {
+    UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
+    
+    UIViewController *destination = [tourist instantiateInitialViewController];
+    
+    TRVLoginSignupHomeViewController *homeView = (TRVLoginSignupHomeViewController *)self.presentingViewController;
+    
+    self.delegate = homeView;
+    
+    [self.delegate switchUserType];
+    
+    [self dismissViewControllerAnimated:NO completion:^{
+        
+        [homeView presentViewController:destination animated:NO completion:nil];
+        
+    }];
+}
 
 #pragma mark - Navigation
 
@@ -149,8 +153,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    TRVLoginSignupHomeViewController *destination = [segue destinationViewController];
-    destination.isPerformingASwitch = YES;
+    
+    
 }
 
 

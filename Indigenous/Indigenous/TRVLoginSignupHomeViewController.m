@@ -10,6 +10,7 @@
 #import "TRVFacebookLoginHandler.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD.h>
+#import "TRVUserDataStore.h"
 
 @interface TRVLoginSignupHomeViewController () 
 
@@ -70,6 +71,8 @@
 
 -(void)transitionToHome{
     
+    TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
+    
     // User is logged in, do work such as go to next view controller.
     NSLog(@"Facebook user logged in");
     PFObject *userBio = [PFUser currentUser][@"userBio"];
@@ -79,9 +82,10 @@
         
         NSNumber *isGuide = userBio[@"isGuide"];
         if ([isGuide isEqualToNumber:@(NO)]){
+            user.isOnGuideTabBar = NO;
             [self presentTouristHomeView];
         } else {
-            
+            user.isOnGuideTabBar = YES;
             [self presentGuideHomeView];
         }
         

@@ -8,6 +8,7 @@
 
 #import "TRVUserAboutMeView.h"
 #import <Masonry.h>
+#import "TRVUserDataStore.h"
 
 @interface TRVUserAboutMeView()
 
@@ -53,9 +54,13 @@
 }
 
 -(void)checkIfuserForThisViewIsGuide {
-    NSLog(@"Is i guide: %i", self.userForThisAboutMeView.userBio.isGuide);
-    if (self.userForThisAboutMeView.userBio.isGuide) {
+
+    TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
+
+    if (self.userForThisAboutMeView.userBio.isGuide && user.isOnGuideTabBar) {
         [self.switchToGuideButton setTitle:@"Switch to Tourist" forState:UIControlStateNormal];
+    } else if (self.userForThisAboutMeView.userBio.isGuide && (user.isOnGuideTabBar == NO)) {
+        [self.switchToGuideButton setTitle:@"Switch to Guide" forState:UIControlStateNormal];
     } else {
 //        [self.switchToGuideButton setTitle:@"Switch to Guide" forState:UIControlStateNormal];
         self.switchToGuideButton.hidden = YES;
