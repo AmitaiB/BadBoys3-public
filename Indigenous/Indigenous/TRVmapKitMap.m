@@ -8,10 +8,18 @@
 
 #import "TRVmapKitMap.h"
 
+#define AVG(A,B) (A+B)/2
+
+
+static NSString *const kTRVMapAnnotationIdentifier     = @"kTRVMapAnnotationIdentifier";
+static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCellIdentifier";
+
+
 @interface TRVmapKitMap ()
 
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
 @property (nonatomic) BOOL userLocationUpdated;
+@property (nonatomic, strong) NSArray *mapLocations;
 
 
 @end
@@ -27,6 +35,9 @@
     if (self.userLocationUpdated != TRUE) {
         [self centerMapOnUserLocation];
     }
+    
+    HNKGooglePlacesAutocompleteQuery *searchQuery = [HNKGooglePlacesAutocompleteQuery sharedQuery];
+    
 
 }
 
@@ -56,6 +67,57 @@
                 self.userLocationUpdated = YES;
             }];
         }
+}
+
+    //Need to reset the region to a box that will contain all your annotations...
+-(void)addAndCenterOnLocations:(NSArray *)locations {
+        //annotations have already been added here
+        //declare the far corners of the world...of annotations:
+    CLLocationDegrees minLat = 0;
+    CLLocationDegrees minLng = 0;
+    CLLocationDegrees maxLat = 0;
+    CLLocationDegrees maxLng = 0;
+    
+        //choose the extremes of lat and long...
+    for (CLLocation *location in locations) {
+        minLat = MIN(minLat, location.coordinate.latitude);
+        minLng = MIN(minLng, location.coordinate.longitude);
+        maxLat = MAX(maxLat, location.coordinate.latitude);
+        maxLng = MAX(maxLng, location.coordinate.longitude);
+    }
+    
+    CLLocation *centerPoint = [[CLLocation alloc] initWithLatitude:AVG(minLat, maxLat)
+                                                  longitude:AVG(minLng, maxLng)];
+        //...to obtain the center.
+    CLLocationCoordinate2D annotationsCenter = centerPoint.coordinate;
+    
+        //Determine how big your map must be to display them all.
+    MKCoordinateSpan annotationsSpan = MKCoordinateSpanMake(ABS(maxLat - minLat),
+                                                          ABS(maxLng - minLng));
+    
+    MKCoordinateRegion region = MKCoordinateRegionMake(annotationsCenter, annotationsSpan);
+    
+        //With all that as preparation, set the map to the new region.
+    [self.mapView setRegion:region];
+}
+
+
+#pragma mark MapView Delegate
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil; //because we want our pulsing blue dot!
+    }
+    MKAnnotationView *view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:kTRVMapAnnotationIdentifier];
+    
+    if (!view) {
+        view = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:kTRVMapAnnotationIdentifier];
+    }
+    
+    return view;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
