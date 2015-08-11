@@ -11,6 +11,7 @@
 #import "TRVGuideResultsTableViewController.h"
 #import "TRVTour.h"
 #import "TRVUser.h"
+#import "TRVTourStop.h"
 #import "TRVBio.h"
 #import "TRVSearchTripsViewController.h"
 #import "TRVGuideProfileTableViewCell.h"
@@ -112,7 +113,8 @@
     PFQuery *query = [PFUser query];
     
 
-    
+    NSMutableArray *TRVallTrips = [[NSMutableArray alloc] init];
+
     
      [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
          // WE NEED TO ADD A SEARCH BASED ON EAT,SEE,PLAY,DRINK
@@ -145,20 +147,58 @@
                  
                  TRVUser *guideForThisRow = [[TRVUser alloc]initWithBio:bio];
                  
-                 NSArray *allTripsArray = user[@"myTrips"];
-                 NSLog(@"THIS IS THE ALL TRIPS ARRAY %@", allTripsArray);
+                 NSArray *allTripsFromParse = user[@"myTrips"];
+                 NSLog(@"THIS IS THE ALL TRIPS ARRAY %@", allTripsFromParse);
                  
-                 for (PFObject *PFtour in allTripsArray) {
+//                 NSMutableArray *TRVallTrips = [[NSMutableArray alloc] init];
+                 for (PFObject *PFtour in allTripsFromParse) {
                      [PFtour fetch];
-                     TRVTour *tour = [[TRVTour alloc] init];
-                     tour.guideForThisTour = guideForThisRow;
-                     tour.itineraryForThisTour = PFtour[@"itineraryForThisTour"];
-                     tour.categoryForThisTour = PFtour[@"categoryForThisTour"];
-                     NSLog(@"%@ THIS IS THE CATEGORY NAME OF TOUR", tour.categoryForThisTour.categoryName);
+                     TRVTour *tourForThisIteration = [[TRVTour alloc] init];
+                     tourForThisIteration.guideForThisTour = guideForThisRow;
+//                     tourForThisIteration.itineraryForThisTour = nil;
+                     tourForThisIteration.categoryForThisTour.categoryName = PFtour[@"categoryForThisTour"];
+                     tourForThisIteration.tourDeparture = PFtour[@"tourDeparture"];
+                     NSLog(@"%@ THIS IS THE CATEGORY NAME OF TOUR", tourForThisIteration.categoryForThisTour);
+                     [TRVallTrips addObject:tourForThisIteration];
+                     
+                     
+
+                     // GET ITINERARY IN QUERY
+                     
+                     PFObject *PFItinerary = PFtour[@"itineraryForThisTour"];
+                     
+//                     for (PFObject *PFItinerary in allTripsFromParse) {
+                         [PFItinerary fetch];
+                         TRVItinerary *itineraryForTour = [[TRVItinerary alloc] initNameOfTour:PFItinerary[@"nameOfTour"] tourImage:nil tourStops:nil];
+                         
+                         NSArray *allTripsArray = PFItinerary[@"tourStops"];
+
+                         // GET TOUR STOPS IN QUERY
+                         NSMutableArray *TRVallStops = [[NSMutableArray alloc] init];
+                         
+                         for (PFObject *PFtourStop in allTripsArray) {
+                             [PFtourStop fetch];
+                             TRVTourStop *TRVstop = [[TRVTourStop alloc] init];
+                             // uncomment when the parse column is PFGeopoint
+//                             tourStop.lng = PFtourStop[@"lng"];
+//                             tourStop.lat = PFtourStop[@"lat"];
+                             TRVstop.nameOfPlace = @"Tour Stop Place";
+                             [TRVallStops addObject:TRVstop];
+                         }
+                         
+                         itineraryForTour.tourStops = TRVallStops;
+                         tourForThisIteration.itineraryForThisTour = itineraryForTour;
+                         tourForThisIteration.guideForThisTour = guideForThisRow;
+                         // THIS IS THE MAGIC LINE
+                         [TRVallTrips addObject:tourForThisIteration];
+//                     }
 
                      
+                     
+                     
                  }
-
+                 
+                 
                  
                  
                  // IMAGE PARSING ON PARSE
@@ -193,7 +233,7 @@
                      
                      
                          // ADDED DUMMY DATA STORED IN NSMUTABLE ARRAY CATEGORY
-                         NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+//                         NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
                      
                      
                      PFQuery *query = [PFQuery queryWithClassName:@"Tour"];
@@ -252,9 +292,15 @@
             
                      
                      
+//                     NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
+
+//                         NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
+//                         guideForThisRow.allTrips = allTrips;
                      
-                         NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
-                         guideForThisRow.allTrips = allTrips;
+                     
+                     
+                     guideForThisRow.allTrips = TRVallTrips;
+                     self.sharedData.loggedInUser.allTrips = TRVallTrips;
 
                      // ADDING GUIDE WHO MET CONDITIONS AS YES
                      [self.availableGuides addObject: guideForThisRow];

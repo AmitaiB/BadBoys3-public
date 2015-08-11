@@ -70,8 +70,9 @@
     [self addSubview:self.containerView];
     
     
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    NSMutableArray *tours = [array returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+//    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSMutableArray *tours = self.sharedDataStore.loggedInUser.allTrips;
+//    NSMutableArray *tours = [array returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
     
     // OVERRIDE SETTER
     self.tourForThisScrollNib = tours[0];
