@@ -155,12 +155,11 @@
                  for (PFObject *PFtour in allTripsFromParse) {
                      [PFtour fetch];
                      TRVTour *tourForThisIteration = [[TRVTour alloc] init];
-                     tourForThisIteration.guideForThisTour = guideForThisRow;                     
+                     tourForThisIteration.guideForThisTour = guideForThisRow;
                      NSString *categoryForThisTour = PFtour[@"categoryForThisTour"];
                      tourForThisIteration.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:categoryForThisTour];
                      tourForThisIteration.tourDeparture = PFtour[@"tourDeparture"];
                      NSLog(@"%@ THIS IS THE CATEGORY NAME OF TOUR", tourForThisIteration.categoryForThisTour);
-                     [TRVallTrips addObject:tourForThisIteration];
                      
                      
 
