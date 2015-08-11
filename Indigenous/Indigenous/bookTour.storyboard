@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HGB-YT-ESO">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Book Tour View Controller-->
         <scene sceneID="hOw-FG-2p0">
             <objects>
-                <viewController id="HGB-YT-ESO" customClass="TRVBookTourViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bookTour" id="HGB-YT-ESO" customClass="TRVBookTourViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9r2-qT-xOb"/>
                         <viewControllerLayoutGuide type="bottom" id="l4i-3f-VAR"/>
@@ -16,23 +17,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dh2-hN-jXf">
-                                <rect key="frame" x="241" y="270" width="120" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Of Tour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dh2-hN-jXf">
+                                <rect key="frame" x="148" y="270" width="303" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zox-BX-CgE">
+                                <rect key="frame" x="46" y="92" width="145" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <state key="normal" title="Go Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBackButtonPressed:" destination="HGB-YT-ESO" eventType="touchUpInside" id="BSB-Hl-Dhi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-ra-47U">
+                                <rect key="frame" x="166" y="508" width="268" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="confirm Purchase">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="15a-bS-8Yv" kind="presentation" id="h08-Ew-JOt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GMB-ra-47U" firstAttribute="top" secondItem="Dh2-hN-jXf" secondAttribute="bottom" constant="178" id="2uT-ri-KNr"/>
+                            <constraint firstItem="zox-BX-CgE" firstAttribute="top" secondItem="Dh2-hN-jXf" secondAttribute="bottom" constant="10" id="FyV-yT-6Cl"/>
+                            <constraint firstAttribute="centerX" secondItem="GMB-ra-47U" secondAttribute="centerX" id="Gu0-Lr-3tN"/>
+                            <constraint firstAttribute="centerX" secondItem="zox-BX-CgE" secondAttribute="centerX" id="IWq-F9-AwC"/>
                             <constraint firstAttribute="centerY" secondItem="Dh2-hN-jXf" secondAttribute="centerY" id="UZc-xs-tC6"/>
+                            <constraint firstItem="zox-BX-CgE" firstAttribute="leading" secondItem="foa-4f-BF4" secondAttribute="leadingMargin" constant="30" id="jl7-n0-j56"/>
+                            <constraint firstItem="zox-BX-CgE" firstAttribute="top" secondItem="9r2-qT-xOb" secondAttribute="bottom" constant="28" id="nUv-sC-WZ2"/>
                             <constraint firstAttribute="centerX" secondItem="Dh2-hN-jXf" secondAttribute="centerX" id="vb1-jy-Onc"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FyV-yT-6Cl"/>
+                                <exclude reference="IWq-F9-AwC"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="Efv-H8-I81"/>
+                    <connections>
+                        <outlet property="nameOfTourLabel" destination="Dh2-hN-jXf" id="Nbh-d0-zka"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oo0-dq-gv6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="373"/>
+            <point key="canvasLocation" x="1940" y="373"/>
+        </scene>
+        <!--Tour Receipt View Controller-->
+        <scene sceneID="Mju-lY-wCb">
+            <objects>
+                <viewController id="15a-bS-8Yv" customClass="TRVTourReceiptViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Md-H3-yt6"/>
+                        <viewControllerLayoutGuide type="bottom" id="EFn-ap-Aee"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6DP-fG-9xt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PURCHASED CONFIRMED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee0-sY-Ge0">
+                                <rect key="frame" x="59" y="276" width="483" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wt9-FY-OMt">
+                                <rect key="frame" x="197" y="413" width="206" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Back Home">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToHomeButtonPressed:" destination="15a-bS-8Yv" eventType="touchUpInside" id="8az-fU-pym"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="wt9-FY-OMt" secondAttribute="centerX" id="5Ht-x5-qIb"/>
+                            <constraint firstAttribute="centerY" secondItem="ee0-sY-Ge0" secondAttribute="centerY" id="NMk-GY-eAc"/>
+                            <constraint firstItem="wt9-FY-OMt" firstAttribute="top" secondItem="ee0-sY-Ge0" secondAttribute="bottom" constant="89" id="VQ1-fo-xrT"/>
+                            <constraint firstAttribute="centerX" secondItem="ee0-sY-Ge0" secondAttribute="centerX" id="tyM-rX-Xdt"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qcf-Cj-J6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2632" y="373"/>
         </scene>
     </scenes>
 </document>
