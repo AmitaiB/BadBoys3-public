@@ -109,6 +109,7 @@
     
     PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"UserBio"];
     
+    
      [findGuidesQuery findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
          
          // WE NEED TO ADD A SEARCH BASED ON EAT,SEE,PLAY,DRINK
@@ -136,20 +137,7 @@
                  [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                      
                      bio.profileImage = response;
-//                TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
-//                                         firstName:guideBio[@"first_name"]
-//                                          lastName:guideBio[@"last_name"]
-//                                             email:guideBio[@"email"]
-//                                       phoneNumber:guideBio[@"phoneNumber"]
-//                                      profileImage:response
-//                                    bioDescription:guideBio[@"bioTextField"]
-//                                         interests:nil language:guideBio[@"languagesSpoken"]
-//                                               age:0 gender:guideBio[@"gender"]
-//                                            region:nil
-//                                    oneLineSummary:guideBio[@"oneLineBio"]
-//                                   profileImageURL:guideBio[@"picture"]
-//                                    nonFacebookImage:guideBio[@"emailPicture" ]];
-                     
+
                      
                      // Check to see if guide is signed up with email rather than FB
                      // if there is no URL, then parse the PF file image
@@ -165,6 +153,15 @@
                              }
                          }];
                      }// END OF TRVAFNetwokingAPIClient GET IMAGE METHOD
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
                      
                      
                      
