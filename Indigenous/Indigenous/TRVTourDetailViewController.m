@@ -7,6 +7,9 @@
 //
 
 #import "TRVTourDetailViewController.h"
+#import "TRVBookTourViewController.h"
+#import "TRVDetailGuideViewController.h"
+#import "TRVTourReceiptViewController.h"
 #import "TRVAllStopsView.h"
 #import "TRVTourView.h"
 #import <Masonry.h>
@@ -38,21 +41,56 @@
       make.left.and.right.equalTo(self.VCContentView);
   }];
     
-    [self.VCContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.width.equalTo(self.VCScrollView.mas_width);
-        make.bottom.equalTo(allStopsScrollNib.mas_bottom);
+    // Add Tour Button
+    UIButton *bookTourButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    bookTourButton.backgroundColor = [UIColor magentaColor];
+    [bookTourButton setTitle:@"Book Tour" forState:UIControlStateNormal];
+    [bookTourButton addTarget:self action:@selector(bookTourButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.VCContentView addSubview:bookTourButton];
+    [bookTourButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.VCContentView.mas_centerX);
+        make.height.equalTo(@100);
+        make.width.equalTo(self.VCContentView.mas_width).dividedBy(1.5);
+        
+        //add top padding
+        make.top.equalTo(allStopsScrollNib.mas_bottom).with.offset(50);
     }];
     
     
     
-   // Button Constraints
-//    [self.testButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.VCContentView.mas_bottom);
-//    }];
+    [self.VCContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        // add bottom padding
+        make.bottom.equalTo(bookTourButton.mas_bottom).with.offset(50);
+    }];
 
 }
+-(void)viewWillAppear:(BOOL)animated {
+    
+//    if ([self.presentedViewController isKindOfClass:[TRVBookTourViewController class]]) {
+//        NSLog(@"WHY");
+//        UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];;
+    
+//        UIViewController *destination = [destinationStoryboard instantiateInitialViewController];
+//        [self presentViewController:destination animated:YES completion:nil];
+//    }
+  
+}
 
-
+-(void)bookTourButtonPressed:(id)sender {
+    
+    
+        UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
+    
+        TRVBookTourViewController *destination = [destinationStoryboard instantiateInitialViewController];
+    
+    // pass it into confirm purchase Storyboard
+    destination.destinationTour = self.destinationTour;
+    
+        // Alan can you check if this is right
+        [self presentViewController:destination animated:NO completion:nil];
+    
+}
 
 /*
 #pragma mark - Navigation
