@@ -85,7 +85,7 @@
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
     
-    [self createParseDummyTour];
+    //[self createParseDummyTour];
    
     
     return allTripsArray;
@@ -116,7 +116,7 @@
     theItinerary[@"tourStops"] = @[theStop];
 //
 ////    // theItinerary[@"attractions"] = ARRAY OF ATTRACTIONS;
-//    
+//
     theStop[@"operatorCost"] = @0;
     theStop[@"incidentalCost"] = @0;
     theStop[@"lat"] = @10;
@@ -138,7 +138,7 @@
         NSLog(@"THE TOUR ID IS: %@", theTour.objectId);
        
         
-        [currentUser addObject:theTour.objectId forKey:@"myTrips"];
+        [currentUser addObject:theTour forKey:@"myTrips"];
         [currentUser saveInBackgroundWithBlock:^(BOOL success, NSError *error){
             if (error){
                 NSLog(@"Cant save to array because: %@", error);
