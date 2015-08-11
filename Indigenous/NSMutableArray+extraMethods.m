@@ -85,7 +85,7 @@
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
     
-    //[self createParseDummyTour];
+   // [self createParseDummyTour];
    
     
     return allTripsArray;
@@ -121,6 +121,8 @@
     theStop[@"incidentalCost"] = @0;
     theStop[@"lat"] = @10;
     theStop[@"lng"] = @10;
+    theStop[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+
 ////    //  theStop[@"tourStopLocation"] = pfgeopoint;
 ////    
 ////    //    PFObject *theMarker = [PFObject objectWithClassName:@"GMSMarker"];
