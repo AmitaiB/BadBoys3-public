@@ -15,7 +15,7 @@
 #import <HNKGooglePlacesAutocomplete.h>
 #import <AFNetworking.h>
 
-@interface TRVmapKitMap : UIViewController <MKMapViewDelegate>
+@interface TRVmapKitMap : UIViewController <MKMapViewDelegate, UISearchBarDelegate, UISearchResultsUpdating>
 
 @property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
 

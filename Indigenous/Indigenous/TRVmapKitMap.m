@@ -18,8 +18,10 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 @interface TRVmapKitMap ()
 
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
-@property (nonatomic) BOOL userLocationUpdated;
+@property (nonatomic, strong) UISearchController *searchController;
+@property (weak, nonatomic) IBOutlet UIView *searchBarPlaceholder;
 @property (nonatomic, strong) NSArray *mapLocations;
+@property (nonatomic) BOOL userLocationUpdated;
 
 
 @end
@@ -38,6 +40,17 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     
     HNKGooglePlacesAutocompleteQuery *searchQuery = [HNKGooglePlacesAutocompleteQuery sharedQuery];
     
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil]; //nil for now, but I could see a Searchresults controller being helpful.
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    
+    self.searchBarPlaceholder = self.searchController.searchBar;
+    [self.view addSubview:self.mapView];
+    [self.view addSubview:self.searchBarPlaceholder];
+//    self.searchController.active = YES;
+//    self.view = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
 
 }
 
@@ -135,5 +148,10 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    
+}
 
 @end
