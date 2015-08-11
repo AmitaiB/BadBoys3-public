@@ -9,6 +9,7 @@
 
 #import "NSMutableArray+extraMethods.h"
 #import "TRVGuideResultsTableViewController.h"
+#import "TRVTour.h"
 #import "TRVUser.h"
 #import "TRVBio.h"
 #import "TRVSearchTripsViewController.h"
@@ -112,31 +113,43 @@
          
          // WE NEED TO ADD A SEARCH BASED ON EAT,SEE,PLAY,DRINK
          for (PFObject *guideBio in objects){
-             NSLog(@"HOW MANY OBJECTS WE GET BACK IN PARSE QUERY: %lu" , (unsigned long)objects.count);
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
                 
                      PFUser *theParseGuide = guideBio[@"user"];
                      [theParseGuide fetch];
                  
+                 TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
+                                                          firstName:guideBio[@"first_name"]
+                                                           lastName:guideBio[@"last_name"]
+                                                              email:guideBio[@"email"]
+                                                        phoneNumber:guideBio[@"phoneNumber"]
+                                                       profileImage:nil
+                                                     bioDescription:guideBio[@"bioTextField"]
+                                                          interests:nil language:guideBio[@"languagesSpoken"]
+                                                                age:0 gender:guideBio[@"gender"]
+                                                             region:nil
+                                                     oneLineSummary:guideBio[@"oneLineBio"]
+                                                    profileImageURL:guideBio[@"picture"]
+                                                   nonFacebookImage:guideBio[@"emailPicture" ]];
+                 
                  [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                      
-                    
-                TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
-                                         firstName:guideBio[@"first_name"]
-                                          lastName:guideBio[@"last_name"]
-                                             email:guideBio[@"email"]
-                                       phoneNumber:guideBio[@"phoneNumber"]
-                                      profileImage:response
-                                    bioDescription:guideBio[@"bioTextField"]
-                                         interests:nil language:guideBio[@"languagesSpoken"]
-                                               age:0 gender:guideBio[@"gender"]
-                                            region:nil
-                                    oneLineSummary:guideBio[@"oneLineBio"]
-                                   profileImageURL:guideBio[@"picture"]
-                                    nonFacebookImage:guideBio[@"emailPicture" ]];
+                     bio.profileImage = response;
+//                TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
+//                                         firstName:guideBio[@"first_name"]
+//                                          lastName:guideBio[@"last_name"]
+//                                             email:guideBio[@"email"]
+//                                       phoneNumber:guideBio[@"phoneNumber"]
+//                                      profileImage:response
+//                                    bioDescription:guideBio[@"bioTextField"]
+//                                         interests:nil language:guideBio[@"languagesSpoken"]
+//                                               age:0 gender:guideBio[@"gender"]
+//                                            region:nil
+//                                    oneLineSummary:guideBio[@"oneLineBio"]
+//                                   profileImageURL:guideBio[@"picture"]
+//                                    nonFacebookImage:guideBio[@"emailPicture" ]];
                      
-                     //---------------------------------------------------------------------------------------------------
                      
                      // Check to see if guide is signed up with email rather than FB
                      // if there is no URL, then parse the PF file image
@@ -151,8 +164,10 @@
                                  // error block
                              }
                          }];
-                     }
-                     //---------------------------------------------------------------------------------------------------
+                     }// END OF TRVAFNetwokingAPIClient GET IMAGE METHOD
+                     
+                     
+                     
 
                      
                      TRVUser *guideForThisRow = [[TRVUser alloc]initWithBio:bio];
@@ -161,7 +176,6 @@
                      // guideForThisRow.myTrips = theParseGuide[@"myTrips"];
                      //  if (theParseGuide[@"myTrips"]){
                      
-                     //---------------------------------------------------------------------------------------------------
 
                          // ADDED DUMMY DATA STORED IN NSMUTABLE ARRAY CATEGORY
                          NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
@@ -170,14 +184,22 @@
                      PFQuery *query = [PFQuery queryWithClassName:@"Tour"];
                      
                      // THIS ONE LINE MAKES SURE YOU ARE GETTING YOUR ENTRY AND NOT ANOTHER USERS
-                     [query whereKey:@"categoryForThisTour" equalTo:@"Drink"];
+                     [query whereKey:@"guideForThisTour" equalTo:@"Drink"];
                      
                      [query orderByDescending:@"createdAt"];
+                     
+                     
+
                      
                      [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
                          if (error) {
                              NSLog(@" THIS IS THE ERRORRR -------%@", error);
                          } else {
+                             //---------------------------------------------------------------------------------------------------
+
+                             // WE ARE GETTING AN  THE PFTOURS
+                    
+                             //------------------~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                              PFObject *currentItinerary = objects[0][@"itineraryForThisTour"];
                              [currentItinerary fetch];
                              NSLog(@"THIS IS NAME OF TOUR AT INDEX %@--------------- ", currentItinerary[@"nameOfTour"]);
@@ -187,18 +209,37 @@
                              NSLog(@"THIS IS THE OBJECT ID OF THE TOUR STOP %@", tourStop);
                              NSLog(@"%lu", objects.count);
                              NSLog(@"THIS IS THE LAT   =========  %@", tourStop[@"lat"]);
+                             
+//                             for (PFObject *PFTour in objects) {
+//                                 TRVTO
+//                             }
+//                             
+//                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             //---------------------------------------------------------------------------------------------------
+
                          }
                      }];
                      
-                 
-
+            
                      
                      
                      
                          NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
                          guideForThisRow.allTrips = allTrips;
-//                     }
-                     //---------------------------------------------------------------------------------------------------
 
                      // ADDING GUIDE WHO MET CONDITIONS AS YES
                      [self.availableGuides addObject: guideForThisRow];
@@ -221,6 +262,14 @@
                 // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
         }
 }
+
+
+
+
+
+
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
