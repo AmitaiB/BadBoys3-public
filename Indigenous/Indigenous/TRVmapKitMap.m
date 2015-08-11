@@ -18,8 +18,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mapView.delegate = self;
     
+    [self centerMapOnNYC];
     
+}
+
+
+#pragma mark Setup Helpers
+
+-(void)centerMapOnNYC {
+    CLLocationCoordinate2D centerNYC  = CLLocationCoordinate2DMake(40.7053,-74.0139);
+
+    CLLocationDistance regionWidth    = 1500;//in meters, mind you.
+    CLLocationDistance regionHeight   = 1500;
+
+    MKCoordinateRegion startNYCRegion = MKCoordinateRegionMakeWithDistance(centerNYC, regionWidth, regionHeight);
+    [self.mapView setRegion:startNYCRegion animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
