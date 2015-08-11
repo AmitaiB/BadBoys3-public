@@ -76,7 +76,7 @@
     }
     else {
         
-        // show a modal or something....
+        // TODO show a modal or something....
         NSLog(@"THERE ARE NO AVAILABLE GUIDES IN THIS SEARCH RESULT");
         TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         return cell;
