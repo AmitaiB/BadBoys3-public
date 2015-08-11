@@ -26,6 +26,9 @@
 		388EBC5F1B783AE400D60297 /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */; };
 		389646421B6AB67B004FFDB7 /* TRVPickerMapLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */; };
 		38A255391B7A292E00257F6F /* TRVmapKitMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255381B7A292E00257F6F /* TRVmapKitMap.m */; };
+		38A255401B7A380600257F6F /* TRVCustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2553F1B7A380600257F6F /* TRVCustomAnnotationView.m */; };
+		38A255431B7A383900257F6F /* TRVCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255421B7A383900257F6F /* TRVCustomAnnotation.m */; };
+		38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */; };
 		38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */; };
 		38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */; };
 		4515651F1B68221B005A2871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4515651D1B68221B005A2871 /* Main.storyboard */; };
@@ -157,6 +160,12 @@
 		389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVPickerMapLogic.m; sourceTree = "<group>"; };
 		38A255371B7A292E00257F6F /* TRVmapKitMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVmapKitMap.h; sourceTree = "<group>"; };
 		38A255381B7A292E00257F6F /* TRVmapKitMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVmapKitMap.m; sourceTree = "<group>"; };
+		38A2553E1B7A380600257F6F /* TRVCustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVCustomAnnotationView.h; sourceTree = "<group>"; };
+		38A2553F1B7A380600257F6F /* TRVCustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVCustomAnnotationView.m; sourceTree = "<group>"; };
+		38A255411B7A383900257F6F /* TRVCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVCustomAnnotation.h; sourceTree = "<group>"; };
+		38A255421B7A383900257F6F /* TRVCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVCustomAnnotation.m; sourceTree = "<group>"; };
+		38A255441B7A3A2900257F6F /* CLLocation+initWith2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+initWith2D.h"; sourceTree = "<group>"; };
+		38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+initWith2D.m"; sourceTree = "<group>"; };
 		38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTopLVLMenuViewController.h; sourceTree = "<group>"; };
 		38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTopLVLMenuViewController.m; sourceTree = "<group>"; };
 		38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGoogleAPIClient.h; sourceTree = "<group>"; };
@@ -353,6 +362,10 @@
 			children = (
 				38A255371B7A292E00257F6F /* TRVmapKitMap.h */,
 				38A255381B7A292E00257F6F /* TRVmapKitMap.m */,
+				38A2553E1B7A380600257F6F /* TRVCustomAnnotationView.h */,
+				38A2553F1B7A380600257F6F /* TRVCustomAnnotationView.m */,
+				38A255411B7A383900257F6F /* TRVCustomAnnotation.h */,
+				38A255421B7A383900257F6F /* TRVCustomAnnotation.m */,
 				384A9C4E1B7944E100F4C1E0 /* TestMapWithSearchVC.h */,
 				384A9C4F1B7944E100F4C1E0 /* TestMapWithSearchVC.m */,
 			);
@@ -458,6 +471,8 @@
 			isa = PBXGroup;
 			children = (
 				388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */,
+				38A255441B7A3A2900257F6F /* CLLocation+initWith2D.h */,
+				38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */,
 				388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */,
 				388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */,
 				388EBC511B781DE300D60297 /* SearchViewController.h */,
@@ -976,6 +991,7 @@
 			files = (
 				385C46FB1B6BCEA000D9091A /* AppDelegate.m in Sources */,
 				942E0D4B1B740143002D9E90 /* TRVProfileViews.m in Sources */,
+				38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */,
 				385C46FA1B6BCE7E00D9091A /* main.m in Sources */,
 				384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */,
 				FADB8F241B705731009F7C02 /* TRVTourStopCollectionViewCell.m in Sources */,
@@ -1009,6 +1025,7 @@
 				944AD0091B6DF4B500404EDD /* TRVGuideProfileImageView.m in Sources */,
 				94EB295A1B7835EF00CAB1A5 /* TRVNetworkRechabilityMonitor.m in Sources */,
 				94E7B1E31B7A3B71001AB1EE /* TRVBookTourViewController.m in Sources */,
+				38A255431B7A383900257F6F /* TRVCustomAnnotation.m in Sources */,
 				9435DF711B6F1E5C0054A2F4 /* TRVTourCategoryView.m in Sources */,
 				45E772E91B6A778200003C7C /* TRVFacebookLoginHandler.m in Sources */,
 				94EA5F7E1B6FEEE1002244D8 /* TRVUserDataStore.m in Sources */,
@@ -1029,6 +1046,7 @@
 				94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */,
 				45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */,
 				388EBC5E1B783AE400D60297 /* CustomInfoWindowView.m in Sources */,
+				38A255401B7A380600257F6F /* TRVCustomAnnotationView.m in Sources */,
 				949081671B6C67B100B6D2FA /* TRVEditProfileTableViewController.m in Sources */,
 				45E772E01B6A674800003C7C /* TRVSignupViewController.m in Sources */,
 				9473D1951B72375E00E73B4B /* TRVUserProfileImageView.m in Sources */,
