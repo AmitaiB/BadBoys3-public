@@ -51,7 +51,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@" NUMBER OF USERS!!!! %lu" , (unsigned long)self.availableGuides.count);
     return self.availableGuides.count;
 }
 
@@ -167,7 +166,6 @@
                      
                      PFObject *PFItinerary = PFtour[@"itineraryForThisTour"];
                      
-//                     for (PFObject *PFItinerary in allTripsFromParse) {
                          [PFItinerary fetch];
                          TRVItinerary *itineraryForTour = [[TRVItinerary alloc] initNameOfTour:PFItinerary[@"nameOfTour"] tourImage:nil tourStops:nil];
                          
@@ -189,10 +187,10 @@
                          itineraryForTour.tourStops = TRVallStops;
                          tourForThisIteration.itineraryForThisTour = itineraryForTour;
                          tourForThisIteration.guideForThisTour = guideForThisRow;
+                     
                          // THIS IS THE MAGIC LINE
                          [TRVallTrips addObject:tourForThisIteration];
-//                     }
-
+                     NSLog(@"NUMBER OF LINES, %@", TRVallTrips);
                      
                      
                      
