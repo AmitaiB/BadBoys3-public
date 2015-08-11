@@ -8,6 +8,7 @@
 
 #import "TRVUserAboutMeView.h"
 #import <Masonry.h>
+#import "TRVUserDataStore.h"
 
 @interface TRVUserAboutMeView()
 
@@ -45,9 +46,7 @@
     
     [self addSubview:self.contentView];
     
-    [self checkIfuserForThisViewIsGuide];
-    NSLog(@"are you checking if user is guide?");
-    
+   
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
     }];
@@ -55,16 +54,25 @@
 }
 
 -(void)checkIfuserForThisViewIsGuide {
-    if (self.userForThisAboutMeView.userBio.isGuide) {
+
+    TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
+
+    if (self.userForThisAboutMeView.userBio.isGuide && user.isOnGuideTabBar) {
+        [self.switchToGuideButton setTitle:@"Switch to Tourist" forState:UIControlStateNormal];
+    } else if (self.userForThisAboutMeView.userBio.isGuide && (user.isOnGuideTabBar == NO)) {
+        [self.switchToGuideButton setTitle:@"Switch to Guide" forState:UIControlStateNormal];
+    } else {
+//        [self.switchToGuideButton setTitle:@"Switch to Guide" forState:UIControlStateNormal];
         self.switchToGuideButton.hidden = YES;
     }
-    self.switchToGuideButton.hidden = NO;
 }
 
 -(void)setUserForThisAboutMeView:(TRVUser *)userForThisAboutMeView {
     
     _userForThisAboutMeView = userForThisAboutMeView;
     self.userAboutMeLabel.text = userForThisAboutMeView.userBio.bioDescription;
+    [self checkIfuserForThisViewIsGuide];
+
 }
 
 @end

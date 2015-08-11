@@ -8,7 +8,7 @@
 
 #import "TRVTourStop.h"
 
-@implementation TRVTourStop
+@implementation TRVTourStop 
 
 
 -initWithCoordinates:(CLLocationCoordinate2D)coordinates
@@ -44,6 +44,7 @@
     _tourStopMarker = marker;
     return [self initWithCoordinates:marker.position];
 }
+
 
 
 @end

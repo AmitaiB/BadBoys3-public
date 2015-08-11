@@ -30,7 +30,7 @@
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) NSMutableArray *languagesSpoken;
 @property (nonatomic) BOOL isGuide;
-
+@property (nonatomic) BOOL isOnGuideTabBar;
 
 
 // SET WHEN EAT/DRINK/PLAY/SEE IS SELECTED
