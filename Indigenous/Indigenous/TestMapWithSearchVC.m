@@ -28,7 +28,7 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
 @property (nonatomic, strong) HNKGooglePlacesAutocompleteQuery *searchQuery;
 @property (nonatomic, assign) BOOL shouldBeginEditing;
     //Attach to an MKMapView on Storyboard
-@property (nonatomic, weak) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) IBOutlet MKMapView *mapView;
 //    iOS 8 added LOC; This is a UISearchController(ViewController) with a TableView property,
 //     but it could easily have been a UITableView with a Searchcontroller property.
 @property (nonatomic, strong) UITableView *searchResultsTableView;

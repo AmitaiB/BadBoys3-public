@@ -357,10 +357,10 @@
             </objects>
             <point key="canvasLocation" x="2146.5" y="356"/>
         </scene>
-        <!--Test Map With SearchVC-->
+        <!--Vmap Kit Map-->
         <scene sceneID="jOv-tk-EBE">
             <objects>
-                <viewController id="nwu-A0-ona" customClass="TestMapWithSearchVC" sceneMemberID="viewController">
+                <viewController id="nwu-A0-ona" customClass="TRVmapKitMap" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iPh-52-Gic"/>
                         <viewControllerLayoutGuide type="bottom" id="TGT-Yh-u5H"/>

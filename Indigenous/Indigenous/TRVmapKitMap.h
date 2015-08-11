@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "TRVPickerMapViewController.h"
 
-@interface TRVmapKitMap : UIViewController
+@interface TRVmapKitMap : UIViewController <MKMapViewDelegate>
+
+@property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
 
 @end
