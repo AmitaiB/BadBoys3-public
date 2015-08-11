@@ -30,6 +30,7 @@
 
 @implementation TRVTouristTripDetailViewController {
     CGFloat _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
+    CGFloat _savedAlphaValue;
 }
 
 - (void)viewDidLoad {
@@ -49,7 +50,7 @@
 
     [self setupParallaxImage:self.theScrollViewThatHoldsAllTheOtherViews];
     
-
+    _savedAlphaValue = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +82,7 @@
     
     [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:self.parallaxImageView andHeight:self.parallaxImageView.bounds.size.height];
     [self setupParallaxImageTitle];
-    [self.theScrollViewThatHoldsAllTheOtherViews bringSubviewToFront:self.parallaxHeaderTourNameLabel];
+    //[self.theScrollViewThatHoldsAllTheOtherViews bringSubviewToFront:self.parallaxHeaderTourNameLabel];
     [self makeContentInsetFullScreen:self.theScrollViewThatHoldsAllTheOtherViews];
 }
 
@@ -99,7 +100,7 @@
     // Do any additional setup after loading the view.
     NSLog(@"The difference: %f", self.parallaxImageView.frame.size.height + self.navigationController.navigationBar.bounds.size.height - [UIScreen mainScreen].bounds.size.height);
     
-    UIView *viewToAddTitleLabelTo = ((UIView*)[((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])) subviews][0]);
+    UIView *viewToAddTitleLabelTo = (((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])));
     [viewToAddTitleLabelTo addSubview:self.parallaxHeaderTourNameLabel];
     UITabBar *tabBar = [viewToAddTitleLabelTo subviews][1];
     [self.parallaxHeaderTourNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,6 +109,8 @@
         make.left.equalTo(tabBar.mas_left);
         make.height.equalTo(tabBar.mas_height);
     }];
+    
+    [viewToAddTitleLabelTo bringSubviewToFront:self.parallaxHeaderTourNameLabel];
     
     _originalDistanceFromBottomOfScreenToBottomOfParallaxImage =  [self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y);
 }
@@ -144,10 +147,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     self.parallaxHeaderTourNameLabel.hidden = NO;
+    UIView *viewToAddTitleLabelTo = ((UIView*)[((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])) subviews][0]);
+    [viewToAddTitleLabelTo bringSubviewToFront:self.parallaxHeaderTourNameLabel];
+    self.parallaxHeaderTourNameLabel.alpha = _savedAlphaValue;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     self.parallaxHeaderTourNameLabel.hidden = YES;
+    _savedAlphaValue = self.parallaxHeaderTourNameLabel.alpha;
 }
 
 @end
