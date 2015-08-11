@@ -372,58 +372,58 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lx7-yq-jFJ" userLabel="MKMap View">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZnP-e3-x74">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="25k-lZ-4AC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="29" width="400" height="44"/>
+                                </variation>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Lx7-yq-jFJ" firstAttribute="bottom" secondItem="TGT-Yh-u5H" secondAttribute="top" id="CjX-fr-rA4"/>
+                            <constraint firstItem="Lx7-yq-jFJ" firstAttribute="leading" secondItem="Yv7-ja-Jgg" secondAttribute="leading" id="GwP-5j-2e5"/>
                             <constraint firstAttribute="trailing" secondItem="Lx7-yq-jFJ" secondAttribute="trailing" id="Pye-7y-7rl"/>
-                            <constraint firstItem="Lx7-yq-jFJ" firstAttribute="leading" secondItem="ZnP-e3-x74" secondAttribute="leading" id="Sv4-A6-UAd"/>
-                            <constraint firstItem="ZnP-e3-x74" firstAttribute="leading" secondItem="Yv7-ja-Jgg" secondAttribute="leading" id="XmH-UR-t3w"/>
-                            <constraint firstItem="Lx7-yq-jFJ" firstAttribute="trailing" secondItem="ZnP-e3-x74" secondAttribute="trailing" id="ZnN-j7-6T2"/>
-                            <constraint firstItem="ZnP-e3-x74" firstAttribute="top" secondItem="iPh-52-Gic" secondAttribute="bottom" id="a5V-PN-f7W"/>
-                            <constraint firstItem="TGT-Yh-u5H" firstAttribute="top" secondItem="ZnP-e3-x74" secondAttribute="bottom" constant="399" id="eNp-RH-akw"/>
-                            <constraint firstItem="Lx7-yq-jFJ" firstAttribute="top" secondItem="iPh-52-Gic" secondAttribute="bottom" constant="131" id="upP-lN-DbH"/>
+                            <constraint firstItem="25k-lZ-4AC" firstAttribute="leading" secondItem="Lx7-yq-jFJ" secondAttribute="leading" id="hSk-Zc-kOP"/>
+                            <constraint firstItem="Lx7-yq-jFJ" firstAttribute="top" secondItem="25k-lZ-4AC" secondAttribute="bottom" id="ied-jz-6kK"/>
+                            <constraint firstItem="25k-lZ-4AC" firstAttribute="top" secondItem="iPh-52-Gic" secondAttribute="bottom" constant="8" id="nBv-sn-TbH"/>
+                            <constraint firstItem="Lx7-yq-jFJ" firstAttribute="trailing" secondItem="25k-lZ-4AC" secondAttribute="trailing" id="zxN-wz-cNa"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Lx7-yq-jFJ"/>
-                                <exclude reference="ZnP-e3-x74"/>
+                                <exclude reference="25k-lZ-4AC"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="eNp-RH-akw"/>
+                                <exclude reference="hSk-Zc-kOP"/>
+                                <exclude reference="nBv-sn-TbH"/>
                                 <exclude reference="CjX-fr-rA4"/>
+                                <exclude reference="GwP-5j-2e5"/>
                                 <exclude reference="Pye-7y-7rl"/>
-                                <exclude reference="Sv4-A6-UAd"/>
-                                <exclude reference="ZnN-j7-6T2"/>
-                                <exclude reference="upP-lN-DbH"/>
-                                <exclude reference="XmH-UR-t3w"/>
-                                <exclude reference="a5V-PN-f7W"/>
+                                <exclude reference="ied-jz-6kK"/>
+                                <exclude reference="zxN-wz-cNa"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Lx7-yq-jFJ"/>
-                                <include reference="ZnP-e3-x74"/>
+                                <include reference="25k-lZ-4AC"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="eNp-RH-akw"/>
+                                <include reference="hSk-Zc-kOP"/>
+                                <include reference="nBv-sn-TbH"/>
                                 <include reference="CjX-fr-rA4"/>
+                                <include reference="GwP-5j-2e5"/>
                                 <include reference="Pye-7y-7rl"/>
-                                <include reference="Sv4-A6-UAd"/>
-                                <include reference="ZnN-j7-6T2"/>
-                                <include reference="upP-lN-DbH"/>
-                                <include reference="XmH-UR-t3w"/>
-                                <include reference="a5V-PN-f7W"/>
+                                <include reference="ied-jz-6kK"/>
+                                <include reference="zxN-wz-cNa"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Lx7-yq-jFJ" id="jjK-bc-hQU"/>
-                        <outlet property="searchBarPlaceholder" destination="ZnP-e3-x74" id="uLD-98-EZD"/>
+                        <outlet property="searchBar" destination="25k-lZ-4AC" id="FU9-dS-EEC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vx-2k-1bL" userLabel="First Responder" sceneMemberID="firstResponder"/>

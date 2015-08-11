@@ -19,7 +19,7 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) UISearchController *searchController;
-@property (weak, nonatomic) IBOutlet UIView *searchBarPlaceholder;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *mapLocations;
 @property (nonatomic) BOOL userLocationUpdated;
 
@@ -39,22 +39,25 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     }
     
     HNKGooglePlacesAutocompleteQuery *searchQuery = [HNKGooglePlacesAutocompleteQuery sharedQuery];
-    
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil]; //nil for now, but I could see a Searchresults controller being helpful.
     self.searchController.searchResultsUpdater = self;
-    self.searchController.dimsBackgroundDuringPresentation = NO;
     self.searchController.searchBar.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
     
-    self.searchBarPlaceholder = self.searchController.searchBar;
+    self.navigationItem.titleView = self.searchController.searchBar;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    
     [self.view addSubview:self.mapView];
-    [self.view addSubview:self.searchBarPlaceholder];
+//    [self.view addSubview:self.searchBarPlaceholder];
     [self.searchController.searchBar sizeToFit];
-//    self.searchController.active = YES;
-//    self.view = self.searchController.searchBar;
     self.definesPresentationContext = YES;
+    self.modalPresentationCapturesStatusBarAppearance = YES;
 
 }
 
+-(BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
 #pragma mark Setup Helpers
 
