@@ -64,6 +64,9 @@
 
 - (NSArray*)filterTripsWithKey:(NSString*)key comparisonResult:(NSComparisonResult)comparisonResult {
     NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+//        NSComparisonResult result = [[evaluatedObject valueForKey:key] compare:[NSDate date]];
+//        NSLog(@"%ld", (long)result);
+//        //return YES;
         return [[evaluatedObject valueForKey:key] compare:[NSDate date]] == comparisonResult;
     }];
     return [self.trips filteredArrayUsingPredicate:pred];

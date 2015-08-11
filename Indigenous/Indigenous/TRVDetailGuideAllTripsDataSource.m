@@ -11,7 +11,7 @@
 #import "TRVDetailGuideViewController.h"
 
 #import "TRVDetailGuideAllTripsDataSource.h"
-
+#import "TRVTourDetailViewController.h"
 #import "TRVUserDataStore.h"
 #import "TRVTouristTripTableViewCell.h"
 #import "NSMutableArray+extraMethods.h"
@@ -127,6 +127,6 @@
 }
 
 
-
 @end
 
+//showTourDetailSegue

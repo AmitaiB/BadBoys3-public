@@ -18,6 +18,7 @@
 #import "TRVFilterViewController.h"
 #import "TRVUserDataStore.h"
 #import "TRVAFNetwokingAPIClient.h"
+#import <Parse.h>
 
 @interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol, ImageTapProtocol>
 
@@ -164,6 +165,36 @@
 
                          // ADDED DUMMY DATA STORED IN NSMUTABLE ARRAY CATEGORY
                          NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+                     
+                     
+                     PFQuery *query = [PFQuery queryWithClassName:@"Tour"];
+                     
+                     // THIS ONE LINE MAKES SURE YOU ARE GETTING YOUR ENTRY AND NOT ANOTHER USERS
+                     [query whereKey:@"categoryForThisTour" equalTo:@"Drink"];
+                     
+                     [query orderByDescending:@"createdAt"];
+                     
+                     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
+                         if (error) {
+                             NSLog(@" THIS IS THE ERRORRR -------%@", error);
+                         } else {
+                             PFObject *currentItinerary = objects[0][@"itineraryForThisTour"];
+                             [currentItinerary fetch];
+                             NSLog(@"THIS IS NAME OF TOUR AT INDEX %@--------------- ", currentItinerary[@"nameOfTour"]);
+                             NSArray *currentTourStops = currentItinerary[@"tourStops"];
+                             PFObject *tourStop = currentTourStops[0];
+                             [tourStop fetch];
+                             NSLog(@"THIS IS THE OBJECT ID OF THE TOUR STOP %@", tourStop);
+                             NSLog(@"%lu", objects.count);
+                             NSLog(@"THIS IS THE LAT   =========  %@", tourStop[@"lat"]);
+                         }
+                     }];
+                     
+                 
+
+                     
+                     
+                     
                          NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
                          guideForThisRow.allTrips = allTrips;
 //                     }
