@@ -150,7 +150,8 @@
                  NSArray *allTripsFromParse = user[@"myTrips"];
                  NSLog(@"THIS IS THE ALL TRIPS ARRAY %@", allTripsFromParse);
                  
-//                 NSMutableArray *TRVallTrips = [[NSMutableArray alloc] init];
+                 // GET Tours IN QUERY
+                 
                  for (PFObject *PFtour in allTripsFromParse) {
                      [PFtour fetch];
                      TRVTour *tourForThisIteration = [[TRVTour alloc] init];
@@ -168,12 +169,29 @@
                      
                          [PFItinerary fetch];
                          TRVItinerary *itineraryForTour = [[TRVItinerary alloc] initNameOfTour:PFItinerary[@"nameOfTour"] tourImage:nil tourStops:nil];
+                     
+                        // PULL TOUR IMAGE DOWN (IN ITINERARY CLASS)
+                     PFFile *imageForThisTour = PFItinerary[@"tourImage"];
+                     
+                     [imageForThisTour getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                         if (!error) {
+                             itineraryForTour.tourImage = [UIImage imageWithData:data];
+                                                          
+                         } else {
+                             // error block
+                             
+                         }
+                     }];
+
+                     
                          
                          NSArray *allTripsArray = PFItinerary[@"tourStops"];
 
                          // GET TOUR STOPS IN QUERY
                          NSMutableArray *TRVallStops = [[NSMutableArray alloc] init];
-                         
+                     
+                     // GET Tour Stop IN QUERY
+
                          for (PFObject *PFtourStop in allTripsArray) {
                              [PFtourStop fetch];
                              TRVTourStop *TRVstop = [[TRVTourStop alloc] init];
