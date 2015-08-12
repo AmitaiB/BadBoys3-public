@@ -91,218 +91,171 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4k-jl-TpZ" userLabel="ScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLn-Ne-bhd" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tts-zb-b3L" userLabel="placeholderImage">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
-                                                <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTl-tn-agS">
-                                                <rect key="frame" x="41" y="139" width="108" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="31" y="198" width="108" height="21"/>
-                                                </variation>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49h-VA-vj4">
-                                                <rect key="frame" x="41" y="168" width="108" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="31" y="227" width="108" height="21"/>
-                                                </variation>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tour Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GV3-DQ-Zox">
-                                                <rect key="frame" x="8" y="58" width="97" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="25" y="130" width="97" height="30"/>
-                                                </variation>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0D-kz-Gnb">
-                                                <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="25" y="269" width="57" height="30"/>
-                                                </variation>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="est. duration" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qFc-af-ZcJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="102" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="25" y="326" width="102" height="30"/>
-                                                </variation>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="est. incidental cost (per person)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWL-oH-3Mi">
-                                                <rect key="frame" x="0.0" y="0.0" width="225" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="95" y="262" width="225" height="30"/>
-                                                </variation>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="estimated cost (per person)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-al-KY6">
-                                                <rect key="frame" x="0.0" y="0.0" width="198" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="95" y="294" width="198" height="30"/>
-                                                </variation>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3e-ru-COp">
-                                                <rect key="frame" x="20" y="101" width="99" height="30"/>
-                                                <state key="normal" title="Add Tour Stop">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="87" y="104" width="99" height="30"/>
-                                                </variation>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voi-qx-XMk" userLabel="Open Gmaps Button">
-                                                <rect key="frame" x="127" y="105" width="22" height="22"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="288" y="141" width="22" height="22"/>
-                                                </variation>
-                                                <connections>
-                                                    <segue destination="4S8-5O-z5P" kind="show" identifier="toMapSegueID" id="hJ7-YN-exu"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkf-E1-Tvw" userLabel="open MapKit Button">
-                                                <rect key="frame" x="127" y="105" width="22" height="22"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="288" y="88" width="22" height="22"/>
-                                                </variation>
-                                                <connections>
-                                                    <segue destination="nwu-A0-ona" kind="show" identifier="toAppleMapSegueID" id="WMF-7q-I29"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open in Maps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ml-2r-iaC" userLabel="Open in Maps label">
-                                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="172" y="88" width="108" height="21"/>
-                                                </variation>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open in Google Maps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbd-A4-V2Z" userLabel="Open in Google Maps label">
-                                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="112" y="142" width="168" height="21"/>
-                                                </variation>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leg Time/Total Walking Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMC-Ux-RqH">
-                                                <rect key="frame" x="36" y="214" width="221" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="widthClass=compact" fixedFrame="YES">
-                                                    <rect key="frame" x="72" y="197" width="221" height="21"/>
-                                                </variation>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="centerX" secondItem="tts-zb-b3L" secondAttribute="centerX" id="3GQ-Kz-0Fk"/>
-                                            <constraint firstAttribute="trailing" secondItem="tts-zb-b3L" secondAttribute="trailing" id="AJW-XW-H1w"/>
-                                            <constraint firstAttribute="width" constant="320" id="Lci-oa-jHS"/>
-                                            <constraint firstItem="tts-zb-b3L" firstAttribute="top" secondItem="YLn-Ne-bhd" secondAttribute="top" id="cNC-al-pvc"/>
-                                            <constraint firstItem="tts-zb-b3L" firstAttribute="leading" secondItem="YLn-Ne-bhd" secondAttribute="leading" id="gsL-CO-Los"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="800" id="wBv-HD-HpM"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="eTl-tn-agS"/>
-                                                <exclude reference="49h-VA-vj4"/>
-                                                <exclude reference="GV3-DQ-Zox"/>
-                                                <exclude reference="x0D-kz-Gnb"/>
-                                                <exclude reference="qFc-af-ZcJ"/>
-                                                <exclude reference="eWL-oH-3Mi"/>
-                                                <exclude reference="MyA-al-KY6"/>
-                                                <exclude reference="C3e-ru-COp"/>
-                                                <exclude reference="voi-qx-XMk"/>
-                                                <exclude reference="lkf-E1-Tvw"/>
-                                                <exclude reference="0ml-2r-iaC"/>
-                                                <exclude reference="dbd-A4-V2Z"/>
-                                                <exclude reference="zMC-Ux-RqH"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <exclude reference="3GQ-Kz-0Fk"/>
-                                                <exclude reference="AJW-XW-H1w"/>
-                                                <exclude reference="cNC-al-pvc"/>
-                                                <exclude reference="gsL-CO-Los"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                            <mask key="subviews">
-                                                <include reference="eTl-tn-agS"/>
-                                                <include reference="49h-VA-vj4"/>
-                                                <include reference="GV3-DQ-Zox"/>
-                                                <include reference="x0D-kz-Gnb"/>
-                                                <include reference="qFc-af-ZcJ"/>
-                                                <include reference="eWL-oH-3Mi"/>
-                                                <include reference="MyA-al-KY6"/>
-                                                <include reference="C3e-ru-COp"/>
-                                                <include reference="voi-qx-XMk"/>
-                                                <include reference="lkf-E1-Tvw"/>
-                                                <include reference="0ml-2r-iaC"/>
-                                                <include reference="dbd-A4-V2Z"/>
-                                                <include reference="zMC-Ux-RqH"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <include reference="3GQ-Kz-0Fk"/>
-                                                <include reference="AJW-XW-H1w"/>
-                                                <include reference="cNC-al-pvc"/>
-                                                <include reference="gsL-CO-Los"/>
-                                            </mask>
-                                        </variation>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.79607843137254897" green="0.077853351854949793" blue="0.14606379920300785" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="YLn-Ne-bhd" secondAttribute="trailing" id="0Dm-zd-PRh"/>
-                                    <constraint firstItem="YLn-Ne-bhd" firstAttribute="leading" secondItem="p4k-jl-TpZ" secondAttribute="leading" id="EgE-Yr-vYd"/>
-                                    <constraint firstItem="YLn-Ne-bhd" firstAttribute="top" secondItem="p4k-jl-TpZ" secondAttribute="top" id="HFk-79-jgr"/>
-                                    <constraint firstAttribute="bottom" secondItem="YLn-Ne-bhd" secondAttribute="bottom" constant="-200" id="Nth-c4-aHG"/>
-                                </constraints>
-                                <variation key="widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tts-zb-b3L" userLabel="placeholderImage">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
+                                <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="28" width="400" height="122"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="800" height="800"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49h-VA-vj4">
+                                <rect key="frame" x="41" y="168" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="64" y="6" width="195" height="51"/>
                                 </variation>
-                            </scrollView>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add Tour Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GV3-DQ-Zox">
+                                <rect key="frame" x="8" y="58" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="179" width="169" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0D-kz-Gnb">
+                                <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="159" y="364" width="57" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="est. duration" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qFc-af-ZcJ">
+                                <rect key="frame" x="0.0" y="0.0" width="102" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="29" y="364" width="102" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="est. incidental cost (per person)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWL-oH-3Mi">
+                                <rect key="frame" x="0.0" y="0.0" width="225" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="29" y="402" width="225" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="estimated cost (per person)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-al-KY6">
+                                <rect key="frame" x="0.0" y="0.0" width="198" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="30" y="440" width="198" height="30"/>
+                                </variation>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3e-ru-COp">
+                                <rect key="frame" x="20" y="101" width="99" height="30"/>
+                                <state key="normal" title="Add Tour Stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="43" y="153" width="99" height="30"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voi-qx-XMk" userLabel="Open Gmaps Button">
+                                <rect key="frame" x="127" y="105" width="22" height="22"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="348" y="221" width="22" height="22"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="4S8-5O-z5P" kind="show" identifier="toMapSegueID" id="hJ7-YN-exu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkf-E1-Tvw" userLabel="open MapKit Button">
+                                <rect key="frame" x="127" y="105" width="22" height="22"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="348" y="191" width="22" height="22"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="nwu-A0-ona" kind="show" identifier="toAppleMapSegueID" id="WMF-7q-I29"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open in Maps " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ml-2r-iaC" userLabel="Open in Maps label">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="201" y="191" width="126" height="21"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NOc-aE-u9a">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="217" width="169" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open in gMaps" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbd-A4-V2Z" userLabel="Open in Google Maps label">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="205" y="220" width="118" height="21"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFP-35-9WF">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="255" width="169" height="30"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaH-0S-0qh">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Save Tour Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="261" y="317" width="118" height="30"/>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.85555930993585816" blue="0.47972394716405409" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="p4k-jl-TpZ" secondAttribute="trailing" constant="-16" id="5TU-eN-Z2B"/>
-                            <constraint firstAttribute="height" secondItem="tts-zb-b3L" secondAttribute="height" id="DYp-NN-5Jd"/>
-                            <constraint firstItem="p4k-jl-TpZ" firstAttribute="leading" secondItem="Icj-UJ-YxM" secondAttribute="leadingMargin" constant="-16" id="Vzu-FX-v0k"/>
-                            <constraint firstItem="p4k-jl-TpZ" firstAttribute="top" secondItem="Icj-UJ-YxM" secondAttribute="topMargin" id="iwT-uf-gTh"/>
-                            <constraint firstItem="p4k-jl-TpZ" firstAttribute="bottom" secondItem="Icj-UJ-YxM" secondAttribute="bottomMargin" id="s0o-jf-Pg2"/>
-                        </constraints>
                         <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="DYp-NN-5Jd"/>
+                            <mask key="subviews">
+                                <exclude reference="tts-zb-b3L"/>
+                                <exclude reference="49h-VA-vj4"/>
+                                <exclude reference="GV3-DQ-Zox"/>
+                                <exclude reference="x0D-kz-Gnb"/>
+                                <exclude reference="qFc-af-ZcJ"/>
+                                <exclude reference="eWL-oH-3Mi"/>
+                                <exclude reference="MyA-al-KY6"/>
+                                <exclude reference="C3e-ru-COp"/>
+                                <exclude reference="voi-qx-XMk"/>
+                                <exclude reference="lkf-E1-Tvw"/>
+                                <exclude reference="0ml-2r-iaC"/>
+                                <exclude reference="NOc-aE-u9a"/>
+                                <exclude reference="dbd-A4-V2Z"/>
+                                <exclude reference="mFP-35-9WF"/>
+                                <exclude reference="LaH-0S-0qh"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="DYp-NN-5Jd"/>
+                            <mask key="subviews">
+                                <include reference="tts-zb-b3L"/>
+                                <include reference="49h-VA-vj4"/>
+                                <include reference="GV3-DQ-Zox"/>
+                                <include reference="x0D-kz-Gnb"/>
+                                <include reference="qFc-af-ZcJ"/>
+                                <include reference="eWL-oH-3Mi"/>
+                                <include reference="MyA-al-KY6"/>
+                                <include reference="C3e-ru-COp"/>
+                                <include reference="voi-qx-XMk"/>
+                                <include reference="lkf-E1-Tvw"/>
+                                <include reference="0ml-2r-iaC"/>
+                                <include reference="NOc-aE-u9a"/>
+                                <include reference="dbd-A4-V2Z"/>
+                                <include reference="mFP-35-9WF"/>
+                                <include reference="LaH-0S-0qh"/>
                             </mask>
                         </variation>
                     </view>
@@ -310,12 +263,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njw-Ck-Vef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1298" y="253"/>
+            <point key="canvasLocation" x="1297.5" y="248"/>
         </scene>
-        <!--Picker Map View Controller-->
+        <!--Google Map View Controller-->
         <scene sceneID="prb-77-kfP">
             <objects>
-                <viewController id="4S8-5O-z5P" customClass="TRVPickerMapViewController" sceneMemberID="viewController">
+                <viewController id="4S8-5O-z5P" userLabel="Google Map View Controller" customClass="TRVPickerMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uOc-CD-QWe"/>
                         <viewControllerLayoutGuide type="bottom" id="zjl-IQ-bk5"/>
@@ -375,9 +328,6 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="25k-lZ-4AC">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="29" width="400" height="44"/>
-                                </variation>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

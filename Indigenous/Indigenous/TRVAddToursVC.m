@@ -14,11 +14,13 @@
 #import "TRVTourStop.h"
 #import <Parse.h>
 #import <MapKit/MapKit.h>
+#import <RMSaveButton.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 
 @interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate>
+@property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
 
 @end
 
