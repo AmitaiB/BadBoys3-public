@@ -17,6 +17,7 @@
 #import <RMSaveButton.h>
 #import "TRVUserDataStore.h"
 #import <CZPicker.h>
+#import <SSFlatDatePicker.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
@@ -28,8 +29,8 @@
 @property (nonatomic, strong) TRVTourCategory *tourCategory;
 @property (weak, nonatomic) IBOutlet UILabel *tourCategoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
+@property (weak, nonatomic) IBOutlet SSFlatDatePicker *datePicker;
 
-- (IBAction)saveTourButton1:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *addTourNameTF;
 - (IBAction)chooseCategoryButtonTapped:(id)sender;
 
