@@ -32,7 +32,7 @@
 //
 //
 //- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    NSLog(@" NUMBER OF USERS NO BLEEPING WAY!!!! %lu" , (unsigned long)self.availableGuides.count);
+//    NSLog(@" NUMBER OF USERS NO BLEEPING WAY!! %lu" , (unsigned long)self.availableGuides.count);
 //    return self.availableGuides.count;
 //}
 //

@@ -33,7 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        //FIXME: need a way to cancel the map.
+        //FIXME: need a way to dismiss the map.
+        //update: Still relevant??
 //    UINavigationBar *mapNavBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
 //    [mapNavBar sizeToFit];
 //    mapNavBar.barStyle = UIBarStyleBlackTranslucent;
@@ -150,7 +151,7 @@
         UIAlertController *windowTappedAlert = [UIAlertController alertControllerWithTitle:@"Confirm Tour-Stop Selection"
                                                                                    message:message
                                                                             preferredStyle:UIAlertControllerStyleActionSheet];
-            //TODO:AMITAI Add action items (confirm selection; cancel; reverse/geocode it for me)
+            //TODO:[Amitai]: Add action items (confirm selection; cancel; reverse/geocode it for me)
         
         
         [self presentViewController:windowTappedAlert animated:YES completion:nil];
@@ -193,7 +194,7 @@
     
     CLLocation *userSelection = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
     
-        //!!! Temporary short-circuit
+        //!!![AMITAI]:Temporary short-circuit
     [self.delegate userSelectedTourStopLocation:userSelection];
 
     

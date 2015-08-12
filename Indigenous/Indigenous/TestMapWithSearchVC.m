@@ -49,7 +49,7 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
     self.shouldBeginEditing = YES;
     
 //    self.mapView = [MKMapView new];
-//    Masonry!!!
+//    Masonry!!
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.mapView.superview);
     }];
@@ -64,7 +64,7 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
 //        Add the search bar view to the table view header:
     self.searchResultsTableView.tableHeaderView = self.searchBar;
     self.definesPresentationContext;
-//???Amitai  Only if necessary...
+//???[AMITAI] Only if necessary...
     [self.searchBar sizeToFit];
     [self reloadInputViews];
 
@@ -159,7 +159,7 @@ static NSString *const kHNKDemoSearchResultsCellIdentifier = @"kHNKDemoMapAnnoti
 
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
     if (self.shouldBeginEditing) {
-            //???Animate in a table view...?
+            //???[Amitai]: Animate in a table view...?
         NSTimeInterval animateDuration = 0.3;
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:animateDuration];
