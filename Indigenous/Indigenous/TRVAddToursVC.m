@@ -24,26 +24,27 @@
 
 @interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
+@property (nonatomic, strong) TRVUserDataStore          *sharedDataStore;
 
-@property (nonatomic, strong) TRVTour            *tour;
-@property (weak, nonatomic) IBOutlet UITextField *addTourNameTxF;
-@property (nonatomic, strong) TRVUser            *user;
-@property (nonatomic, strong) TRVBio             *bio;
-@property (nonatomic, strong) TRVTourCategory    *tourCategory;
-@property (nonatomic, strong) TRVItinerary       *itinerary;
-@property (nonatomic, strong) NSMutableArray     *listOfStops;
-@property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
-@property (weak, nonatomic) IBOutlet UITextField *dateTxF;
-@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (nonatomic, strong) NSDate             *tourDate;
+@property (nonatomic, strong) TRVTour                   *tour;
+@property (weak, nonatomic) IBOutlet UITextField        *addTourNameTxF;
+@property (nonatomic, strong) TRVUser                   *user;
+@property (nonatomic, strong) TRVBio                    *bio;
+@property (nonatomic, strong) TRVTourCategory           *tourCategory;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tourCategorySegControl;
+@property (nonatomic, strong) TRVItinerary              *itinerary;
+@property (nonatomic, strong) NSMutableArray            *listOfStops;
+@property (weak, nonatomic) IBOutlet UITableView        *itineraryTableView;
+@property (weak, nonatomic) IBOutlet UITextField        *dateTxF;
+@property (weak, nonatomic) IBOutlet UIDatePicker       *datePicker;
+@property (nonatomic, strong) NSDate                    *tourDate;
 
-@property (weak, nonatomic) IBOutlet UILabel     *currentUserLabel;
-@property (weak, nonatomic) IBOutlet UILabel     *tourCategoryLabel;
-@property (weak, nonatomic) IBOutlet UILabel     *tourNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *tourImage;
+@property (weak, nonatomic) IBOutlet UILabel            *currentUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel            *tourCategoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel            *tourNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView        *tourImage;
 
-- (IBAction)tourCategoryUIControl:(id)sender;
+
 
 
 
@@ -63,17 +64,22 @@
     [super viewDidLoad];
     
         //Setup protocols, initialize singletons, etc.
-    self.itineraryTableView.delegate = self;
+    self.itineraryTableView.delegate   = self;
     self.itineraryTableView.dataSource = self;
-    self.dateTxF.delegate = self;
-    [self.datePicker addTarget:self
-                        action:@selector(setNewDate)
-              forControlEvents:UIControlEventValueChanged];
-    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+    self.dateTxF.delegate              = self;
     
-    TRVBio *userBio = self.sharedDataStore.loggedInUser.userBio;
+    [self.datePicker            addTarget:self
+                                   action:@selector(changeTourDate)
+                         forControlEvents:UIControlEventValueChanged];
     
-    self.currentUserLabel.text = [NSString stringWithFormat:@"Hi, %@!", userBio.firstName];
+    [self.tourCategorySegControl addTarget:self
+                                    action:@selector(changeTourCategory)
+                          forControlEvents:UIControlEventValueChanged];
+    
+    
+    self.sharedDataStore               = [TRVUserDataStore sharedUserInfoDataStore];
+    TRVBio *userBio                    = self.sharedDataStore.loggedInUser.userBio;
+    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", userBio.firstName];
 
     
         //    self.saveButtonLabel.hidden = YES;
@@ -84,17 +90,21 @@
 //    self.saveTourButton.completionHandler = ^void() {DBLG};
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - UITextfield Delegate
 
--(void)textFieldDidBeginEditing:(UITextField *)textField {
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     if ([textField isEqual:self.dateTxF]) {
-        self
+        self.itineraryTableView.hidden = YES;
+        self.datePicker.hidden = NO;
+        [self.datePicker becomeFirstResponder];
+        return NO;
+    } else {
+        return YES;
     }
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -107,16 +117,23 @@
     
 }
 
+#pragma mark - Category Control helper
+
+-(void)changeTourCategory {
+    NSUInteger idx = self.tourCategorySegControl.selectedSegmentIndex;
+    NSString *chosenCategory = [self.tourCategorySegControl titleForSegmentAtIndex:idx];
+    self.tourCategory.categoryName = chosenCategory;
+    self.tourCategoryLabel.text = chosenCategory;
+}
+
 
 #pragma mark - DatePicker helper
 
-
-
--(void)setNewDate {
+-(void)changeTourDate {
     DBLG
     NSLog(@"tourdate is set for: %@", self.datePicker.date);
     self.tourDate = self.datePicker.date;
-    self.tourDateLabel.text = [self.datePicker.date description];
+    self.dateTxF.text = [self.datePicker.date description];
 }
 
 #pragma mark - Navigation
@@ -207,16 +224,16 @@
     return categoryTitles[row];
 }
 
-#pragma mark - CZPickerViewDelegate
-
--(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
-    DBLG
-
-    /**
-     *  FIXME: Get Tim/Joe's help on the syntax...
-     */
-    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
-    NSString *chosenCategory = categoryTitles[row];
+//#pragma mark - CZPickerViewDelegate
+//
+//-(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
+//    DBLG
+//
+//    /**
+//     *  FIXME: Get Tim/Joe's help on the syntax...
+//     */
+//    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
+//    NSString *chosenCategory = categoryTitles[row];
 //
 //    NSMethodSignature *categoryInitSignature = [TRVTourCategory instanceMethodSignatureForSelector:@selector(initWithName:)];
 //    NSInvocation *createChosenCategoryObject = [NSInvocation invocationWithMethodSignature:categoryInitSignature];
@@ -224,14 +241,14 @@
 //    createChosenCategoryObject.selector = @selector(initWithName:);
 //    [createChosenCategoryObject setArgument:&chosenCategory atIndex:2];
 //    NSUInteger length = [[createChosenCategoryObject methodSignature] methodReturnLength];
-////    buffer = (void *)malloc(length);
+//    buffer = (void *)malloc(length);
 //    
 //    [createChosenCategoryObject invoke];
-////    createChosenCategoryObject getReturnValue:<#(void *)#>
+//    createChosenCategoryObject getReturnValue:<#(void *)#>
 //    self.tourCategory = //whatever the returnObject is.
-    self.tourCategory = [[TRVTourCategory alloc] initWithName:categoryTitles[row]];
-    self.tourCategoryLabel.text = self.tourCategory.categoryName;
-}
+//    self.tourCategory = [[TRVTourCategory alloc] initWithName:categoryTitles[row]];
+//    self.tourCategoryLabel.text = self.tourCategory.categoryName;
+//}
 
 -(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
     [pickerView resignFirstResponder];
@@ -317,9 +334,4 @@
     
 }
 
-
-- (IBAction)tourCategoryUIControl:(id)sender {
-}
-- (IBAction)datePicker:(id)sender {
-}
 @end
