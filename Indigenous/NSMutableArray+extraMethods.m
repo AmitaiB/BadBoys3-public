@@ -80,8 +80,8 @@
     //add 4     of these dummy trips into allTrips Array
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
-    
-    //[self createParseDummyTour];
+    //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
+    [self createParseDummyTour];
    
     
     return allTripsArray;
@@ -103,11 +103,22 @@
     PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
     theTour[@"itineraryForThisTour"] = theItinerary;
     theItinerary[@"nameOfTour"] = @"Some name of tour";
-    NSString *str= [[NSBundle mainBundle] pathForResource:@"Carmelo" ofType:@"jpg"];
-    NSData *tourImageData = [NSData dataWithContentsOfFile:str];
-    PFFile *tourImage = [PFFile fileWithName:@"tourImage" data:tourImageData];
-    [tourImage save];
-    //theItinerary[@"tourImage"] = tourImage;
+    
+//    NSString *str= [[NSBundle mainBundle] pathForResource:@"Carmelo" ofType:@"jpg"];
+//    NSData *tourImageData = [NSData dataWithContentsOfFile:str];
+//    PFFile *tourImage = [PFFile fileWithName:@"tourImage" data:tourImageData];
+//   [tourImage save];
+    
+    UIImage *tourImage = [UIImage imageNamed:@"madrid.jpg"];
+    
+    
+    // converts tour image to 1/5 quality
+    NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
+    PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+    
+    theItinerary[@"tourImage"] = PFImage;
+    
+//    theItinerary[@"tourImage"] = tourImage;
     theItinerary[@"numberOfStops"] = @1;
     theItinerary[@"tourStops"] = @[theStop];
 //

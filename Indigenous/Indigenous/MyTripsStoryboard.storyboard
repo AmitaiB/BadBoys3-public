@@ -130,7 +130,7 @@
                     </view>
                     <navigationItem key="navigationItem" prompt="My Trips" id="6S6-zR-HLz">
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="NPq-bg-Wa6">
-                            <rect key="frame" x="16" y="38" width="568" height="29"/>
+                            <rect key="frame" x="16" y="37.5" width="568" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Upcoming"/>
