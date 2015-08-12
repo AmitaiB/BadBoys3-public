@@ -25,7 +25,7 @@
     NSMutableArray  *categoryTours = [[NSMutableArray alloc] init];
     NSMutableArray  *otherTours = [[NSMutableArray alloc] init];
 
-    for (TRVTour *tour in user.allTrips) {
+    for (TRVTour *tour in user.myTrips) {
         
         NSString *categoryInSearch = sharedUserDataStore.currentCategorySearching.categoryName;
         NSString *categoryForTourIndex = tour.categoryForThisTour.categoryName;

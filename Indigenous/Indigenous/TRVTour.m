@@ -34,7 +34,7 @@
         _guideForThisTour = guideUser;
         _itineraryForThisTour = itinerary;
         _categoryForThisTour = category;
-        [guideUser.allTrips addObject:self];
+        [guideUser.myTrips addObject:self];
 
     }
     return self;

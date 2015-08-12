@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-
 #import "TRVEditProfileTableViewController.h"
+#import "TRVEditTextViewController.h"
 #import "TRVUserDataStore.h"
 #import <Masonry.h>
 
@@ -15,9 +15,17 @@
 
 @property (weak, nonatomic) IBOutlet UIView *aboutMeContentView;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
-@property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
 @property (weak, nonatomic) IBOutlet UITableViewCell *testCell;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+- (IBAction)taglineEditButtonPressed:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *taglineCell;
+@property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *aboutMeCell;
+@property (weak, nonatomic) IBOutlet UILabel *aboutMeLabel;
+
+
 @end
 
 @implementation TRVEditProfileTableViewController
@@ -48,68 +56,46 @@
     return 6;
 }
 
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // set height of first row
-//    if (indexPath.row == 0) {
-//        return 300;
-//    }
-//    return 50;
-//}
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    // Configure the cell...
     
-    return cell;
-}
-*/
+    
+    UITableViewCell *theCellClicked = [tableView cellForRowAtIndexPath:indexPath];
+   
+    if (theCellClicked == self.taglineCell) {
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+        [self presentEditViewControllerWithText:self.taglineLabel.text];
+        
+    } else if (theCellClicked == self.aboutMeCell) {
+        NSLog(@"are you in here?");
+        [self presentEditViewControllerWithText:self.aboutMeLabel.text];
+        
+    }
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+-(void)presentEditViewControllerWithText:(NSString *)text {
+    NSLog(@"are you in this segue...");
+
+    UIStoryboard *editText = [UIStoryboard storyboardWithName:@"TRVEditText" bundle:nil];
+    
+    TRVEditTextViewController *destination = [editText instantiateInitialViewController];
+    
+    destination.destinationTextToEdit = text;
+
+    
+    [self presentViewController:destination animated:YES completion:nil];
+    
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (IBAction)taglineEditButtonPressed:(id)sender {
+    
+    
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

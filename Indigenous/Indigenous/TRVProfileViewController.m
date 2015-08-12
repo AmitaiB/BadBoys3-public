@@ -96,7 +96,7 @@
 
 
 -(void)tapToGuideTab:(TRVUserContactView *)view {
-    
+
     TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
 
     if (user.isOnGuideTabBar) {
