@@ -189,11 +189,14 @@
                                     <action selector="datePicker:" destination="Umb-bZ-KvD" eventType="valueChanged" id="16h-vi-psB"/>
                                 </connections>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-EZ-mmP">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-EZ-mmP">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Select This Date">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmDateSelectionButtonTapped:" destination="Umb-bZ-KvD" eventType="touchUpInside" id="aBP-sT-vc0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkf-E1-Tvw" userLabel="open MapKit Button">
                                 <rect key="frame" x="127" y="105" width="22" height="22"/>
@@ -447,7 +450,9 @@
                     <tabBarItem key="tabBarItem" title="Add Tours" id="Q74-JT-KTx"/>
                     <connections>
                         <outlet property="addTourNameTxF" destination="GV3-DQ-Zox" id="0Yy-aS-aDq"/>
+                        <outlet property="confirmDateSelectionButton" destination="Mgf-EZ-mmP" id="CPn-7k-StJ"/>
                         <outlet property="currentUserLabel" destination="49h-VA-vj4" id="g19-SO-6Qb"/>
+                        <outlet property="datePicker" destination="LsU-Fn-08t" id="VTS-vX-eVx"/>
                         <outlet property="dateTxF" destination="nFL-I0-sLL" id="JPe-O7-44O"/>
                         <outlet property="itineraryTableView" destination="cdu-jv-L2q" id="Xav-ES-21x"/>
                         <outlet property="saveButtonLabel" destination="4pj-ff-QgM" id="wkV-DV-Esg"/>

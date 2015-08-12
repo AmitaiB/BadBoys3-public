@@ -18,6 +18,7 @@
 #import "TRVUserDataStore.h"
 #import <CZPicker.h>
 #import <SSFlatDatePicker.h>
+#import <DateTools.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
@@ -38,6 +39,8 @@
 @property (weak, nonatomic) IBOutlet UITextField        *dateTxF;
 @property (weak, nonatomic) IBOutlet UIDatePicker       *datePicker;
 @property (nonatomic, strong) NSDate                    *tourDate;
+@property (weak, nonatomic) IBOutlet UIButton *confirmDateSelectionButton;
+- (IBAction)confirmDateSelectionButtonTapped:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UILabel            *currentUserLabel;
 @property (weak, nonatomic) IBOutlet UILabel            *tourCategoryLabel;
@@ -68,9 +71,9 @@
     self.itineraryTableView.dataSource = self;
     self.dateTxF.delegate              = self;
     
-    [self.datePicker            addTarget:self
-                                   action:@selector(changeTourDate)
-                         forControlEvents:UIControlEventValueChanged];
+//    [self.datePicker            addTarget:self
+//                                   action:@selector(changeTourDate)
+//                         forControlEvents:UIControlEventValueChanged];
     
     [self.tourCategorySegControl addTarget:self
                                     action:@selector(changeTourCategory)
@@ -96,6 +99,8 @@
     if ([textField isEqual:self.dateTxF]) {
         self.itineraryTableView.hidden = YES;
         self.datePicker.hidden = NO;
+        self.confirmDateSelectionButton.hidden = NO;
+        self.confirmDateSelectionButton.enabled = YES;
         [self.datePicker becomeFirstResponder];
         return NO;
     } else {
@@ -114,7 +119,7 @@
         textField.text = @"";
         [textField resignFirstResponder];
     }
-    
+    return YES;
 }
 
 #pragma mark - Category Control helper
@@ -129,12 +134,22 @@
 
 #pragma mark - DatePicker helper
 
--(void)changeTourDate {
+//-(void)changeTourDate {
+//    
+//}
+
+- (IBAction)confirmDateSelectionButtonTapped:(id)sender {
     DBLG
     NSLog(@"tourdate is set for: %@", self.datePicker.date);
     self.tourDate = self.datePicker.date;
-    self.dateTxF.text = [self.datePicker.date description];
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateStyle = NSDateFormatterShortStyle;
+    NSString *formattedDateString = [dateFormatter stringFromDate:self.datePicker.date];
+    
+    self.dateTxF.text = formattedDateString;
 }
+
 
 #pragma mark - Navigation
 
