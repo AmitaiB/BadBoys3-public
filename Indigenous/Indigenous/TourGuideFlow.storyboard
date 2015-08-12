@@ -101,11 +101,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add Tour Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GV3-DQ-Zox">
-                                <rect key="frame" x="8" y="58" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0D-kz-Gnb">
                                 <rect key="frame" x="0.0" y="0.0" width="57" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -126,12 +121,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3e-ru-COp">
-                                <rect key="frame" x="20" y="101" width="99" height="30"/>
-                                <state key="normal" title="Add Tour Stop">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="voi-qx-XMk" userLabel="Open Gmaps Button">
                                 <rect key="frame" x="127" y="105" width="22" height="22"/>
                                 <connections>
@@ -207,16 +196,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GU-Ci-MSP" customClass="SSFlatDatePicker">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tour Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xg-wn-xBe">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add Tour Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GV3-DQ-Zox">
+                                <rect key="frame" x="8" y="58" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.85555930993585816" blue="0.47972394716405409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -227,12 +217,10 @@
                             <mask key="subviews">
                                 <exclude reference="tts-zb-b3L"/>
                                 <exclude reference="49h-VA-vj4"/>
-                                <exclude reference="GV3-DQ-Zox"/>
                                 <exclude reference="x0D-kz-Gnb"/>
                                 <exclude reference="qFc-af-ZcJ"/>
                                 <exclude reference="eWL-oH-3Mi"/>
                                 <exclude reference="MyA-al-KY6"/>
-                                <exclude reference="C3e-ru-COp"/>
                                 <exclude reference="voi-qx-XMk"/>
                                 <exclude reference="lkf-E1-Tvw"/>
                                 <exclude reference="0ml-2r-iaC"/>
@@ -240,24 +228,22 @@
                                 <exclude reference="V8x-Oi-iPZ"/>
                                 <exclude reference="7S9-Gw-LUw"/>
                                 <exclude reference="lok-hC-Ho6"/>
-                                <exclude reference="5GU-Ci-MSP"/>
                                 <exclude reference="5Xg-wn-xBe"/>
+                                <exclude reference="GV3-DQ-Zox"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Ks0-sw-p9s"/>
                                 <exclude reference="k3Y-sy-4qs"/>
+                                <exclude reference="Ks0-sw-p9s"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="tts-zb-b3L"/>
                                 <include reference="49h-VA-vj4"/>
-                                <include reference="GV3-DQ-Zox"/>
                                 <include reference="x0D-kz-Gnb"/>
                                 <include reference="qFc-af-ZcJ"/>
                                 <include reference="eWL-oH-3Mi"/>
                                 <include reference="MyA-al-KY6"/>
-                                <include reference="C3e-ru-COp"/>
                                 <include reference="voi-qx-XMk"/>
                                 <include reference="lkf-E1-Tvw"/>
                                 <include reference="0ml-2r-iaC"/>
@@ -265,12 +251,12 @@
                                 <include reference="V8x-Oi-iPZ"/>
                                 <include reference="7S9-Gw-LUw"/>
                                 <include reference="lok-hC-Ho6"/>
-                                <include reference="5GU-Ci-MSP"/>
                                 <include reference="5Xg-wn-xBe"/>
+                                <include reference="GV3-DQ-Zox"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Ks0-sw-p9s"/>
                                 <include reference="k3Y-sy-4qs"/>
+                                <include reference="Ks0-sw-p9s"/>
                             </mask>
                         </variation>
                     </view>
@@ -278,7 +264,6 @@
                     <connections>
                         <outlet property="addTourNameTF" destination="GV3-DQ-Zox" id="rIy-Sr-ujG"/>
                         <outlet property="currentUserLabel" destination="49h-VA-vj4" id="g19-SO-6Qb"/>
-                        <outlet property="datePicker" destination="5GU-Ci-MSP" id="eeT-7Q-CSh"/>
                         <outlet property="saveButtonLabel" destination="4pj-ff-QgM" id="wkV-DV-Esg"/>
                         <outlet property="saveTourButton" destination="V8x-Oi-iPZ" id="jMF-aX-Bc1"/>
                         <outlet property="tourCategoryLabel" destination="lok-hC-Ho6" id="r74-pf-TRH"/>
@@ -287,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njw-Ck-Vef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1297.5" y="248"/>
+            <point key="canvasLocation" x="1297.5" y="265"/>
         </scene>
         <!--Google Map View Controller-->
         <scene sceneID="prb-77-kfP">
