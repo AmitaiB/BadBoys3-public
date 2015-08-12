@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <RMSaveButton.h>
+#import <CZPickerView.h>
 
 
-@interface TRVAddToursVC :  UIViewController
+@interface TRVAddToursVC :  UIViewController <CZPickerViewDelegate, CZPickerViewDataSource>
 
 @end

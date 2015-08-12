@@ -15,7 +15,12 @@
 @property (nonatomic, strong) UIImage *categoryImage;
 @property (nonatomic, strong) UIImage *iconImage;
 
+<<<<<<< HEAD
 
+=======
+-(instancetype)initWithName:(NSString *)name cateogoryImage:(UIImage *)cateogoryImage iconImage:(UIImage *)iconImage;
+-(instancetype)initWithName:(NSString *)name;
+>>>>>>> category picker almost complete
 
 -(instancetype)initWithName:(NSString *)name cateogoryImage:(UIImage *)cateogoryImage iconImage:(UIImage *)iconImage;
 

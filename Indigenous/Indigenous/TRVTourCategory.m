@@ -22,6 +22,11 @@
     return self;
 }
 
+-(instancetype)initWithName:(NSString *)name {
+    UIImage *emptyImage = [UIImage imageWithCIImage:[CIImage emptyImage]];
+    return [self initWithName:name cateogoryImage:emptyImage iconImage:[emptyImage copy]];
+}
+
 
 +(TRVTourCategory *)returnCategoryWithTitle:(NSString *)title {
     if ([title isEqualToString:@"See"]) {

@@ -15,12 +15,24 @@
 #import <Parse.h>
 #import <MapKit/MapKit.h>
 #import <RMSaveButton.h>
+#import "TRVUserDataStore.h"
+#import <CZPicker.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 
 @interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate>
 @property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
+@property (weak, nonatomic) IBOutlet UILabel *currentUserLabel;
+@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
+@property (nonatomic, strong) TRVTourCategory *tourCategory;
+
+- (IBAction)saveTourButton1:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *addTourNameTF;
+- (IBAction)chooseCategoryButtonTapped:(id)sender;
+
+
+
 
 @end
 
@@ -28,8 +40,20 @@
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
-    // Do any additional setup after loading the view.
+    [super viewDidLoad];
+    
+    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+    
+    TRVBio *userBio = self.sharedDataStore.loggedInUser.userBio;
+        //TODO: [Amitai]: Make attributed string?
+    self.currentUserLabel.text = [NSString stringWithFormat:@"Hi, %@!", userBio.firstName];
+    
+    
+    
+    
+    self.saveTourButton.startHandler      = ^void() {DBLG};
+    self.saveTourButton.interruptHandler  = ^void() {DBLG};
+    self.saveTourButton.completionHandler = ^void() {DBLG};
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,5 +123,45 @@
         NSLog(@"Need to solve the bug (Invalid write to JSON(TVRItinerary))\nOh, and CLLocation is %@:", [location description]);
     }
 }
+
+    //!!!
+- (IBAction)saveTourButton1:(id)sender {
+        //Save Tour as TRVTourObject to Parse:TRVUser
+}
+
+- (IBAction)chooseCategoryButtonTapped:(id)sender {
+    CZPickerView *categoryPicker = [[CZPickerView alloc] initWithHeaderTitle:@"Tour Category"
+                                                           cancelButtonTitle:@"Still Can't Decide"
+                                                          confirmButtonTitle:@"Yup, that's it!"];
+    categoryPicker.delegate = self;
+    categoryPicker.dataSource = self;
+    categoryPicker.needFooterView = YES;
+    [categoryPicker show];
+}
+
+#pragma mark - CZPickerViewDataSource
+
+-(NSInteger)numberOfRowsInPickerView:(CZPickerView *)pickerView {
+    return 4;
+}
+
+-(NSAttributedString *)czpickerView:(CZPickerView *)pickerView attributedTitleForRow:(NSInteger)row {
+    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
+    return categoryTitles[row];
+}
+
+#pragma mark - CZPickerVieewDelegate
+
+-(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
+    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
+    NSString *chosenCategory = categoryTitles[row];
+    SEL createTRVCategoryObject = NSSelectorFromString([NSString stringWithFormat:@"return%@Category", chosenCategory]);
+    self.tourCategory = [self.tourCategory performSelector:@selector(new)];
+}
+
+-(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
+    [pickerView resignFirstResponder];
+}
+
 
 @end
