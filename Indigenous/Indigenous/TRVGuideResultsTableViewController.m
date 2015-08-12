@@ -250,7 +250,6 @@
                      // ADDING GUIDE WHO MET CONDITIONS AS YES
                      [self.availableGuides addObject: guideForThisRow];
                      NSLog(@"My name is: %@", guideForThisRow.userBio.firstName);
-                     [self.tableView reloadData];
                  }]; //  END OF GET IMAGES BLOCK
                  
                  
