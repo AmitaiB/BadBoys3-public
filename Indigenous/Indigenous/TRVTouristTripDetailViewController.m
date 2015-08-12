@@ -30,7 +30,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tourStopImageViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
