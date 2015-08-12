@@ -52,7 +52,6 @@
 		942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942424881B6DBAAF007BC642 /* TRVRootTabViewController.m */; };
 		94258ACD1B73F251006F24A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94258ACC1B73F251006F24A8 /* Default-568h@2x.png */; };
 		9425FA871B72565500689011 /* TRVDetailGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425FA861B72565500689011 /* TRVDetailGuideViewController.m */; };
-		942C18EE1B6BDD9300E1AC91 /* SearchTrips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */; };
 		942C18F41B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 942C18F31B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m */; };
 		942E0D4B1B740143002D9E90 /* TRVProfileViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 942E0D4A1B740143002D9E90 /* TRVProfileViews.m */; };
 		942E0D4E1B7403D8002D9E90 /* TRVProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 942E0D4D1B7403D8002D9E90 /* TRVProfileView.m */; };
@@ -106,7 +105,6 @@
 		94EB295A1B7835EF00CAB1A5 /* TRVNetworkRechabilityMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EB29591B7835EF00CAB1A5 /* TRVNetworkRechabilityMonitor.m */; };
 		94EB295D1B7845DE00CAB1A5 /* TRVNoNetworkModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94EB295C1B7845DE00CAB1A5 /* TRVNoNetworkModalView.xib */; };
 		94EB29601B78464300CAB1A5 /* TRVNoNetworkModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 94EB295F1B78464300CAB1A5 /* TRVNoNetworkModalView.m */; };
-		FA57FA181B69663200CFBB89 /* MyTripsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA57FA171B69663200CFBB89 /* MyTripsStoryboard.storyboard */; };
 		FA57FA1C1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */; };
 		FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */; };
 		FA57FA221B696F2A00CFBB89 /* TRVTouristTripDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */; };
@@ -215,7 +213,6 @@
 		94258ACC1B73F251006F24A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9425FA851B72565500689011 /* TRVDetailGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVDetailGuideViewController.h; sourceTree = "<group>"; };
 		9425FA861B72565500689011 /* TRVDetailGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVDetailGuideViewController.m; sourceTree = "<group>"; };
-		942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchTrips.storyboard; sourceTree = "<group>"; };
 		942C18F21B6C016800E1AC91 /* TRVAFNetwokingAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVAFNetwokingAPIClient.h; sourceTree = "<group>"; };
 		942C18F31B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVAFNetwokingAPIClient.m; sourceTree = "<group>"; };
 		942E0D491B740143002D9E90 /* TRVProfileViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVProfileViews.h; sourceTree = "<group>"; };
@@ -309,7 +306,6 @@
 		978AD411918DBD4335023B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EB2D729CE63AF68C9FEE85FC /* libPods-Indigenous.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Indigenous.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA47A9601B79072B00F8E11D /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
-		FA57FA171B69663200CFBB89 /* MyTripsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyTripsStoryboard.storyboard; sourceTree = "<group>"; };
 		FA57FA1A1B696A9100CFBB89 /* TRVTouristMyTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTouristMyTripsViewController.h; sourceTree = "<group>"; };
 		FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristMyTripsViewController.m; sourceTree = "<group>"; };
 		FA57FA1D1B696AF800CFBB89 /* TRVTouristTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTouristTripTableViewCell.h; sourceTree = "<group>"; };
@@ -606,7 +602,6 @@
 			isa = PBXGroup;
 			children = (
 				94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */,
-				942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */,
 				94BB58921B78F7E10056D46F /* TRVTourDetailViewController.h */,
 				94BB58931B78F7E10056D46F /* TRVTourDetailViewController.m */,
 			);
@@ -823,7 +818,6 @@
 			children = (
 				FA31AE301B73AC0C001DCBF1 /* TourDetails */,
 				FA31AE2F1B73ABE7001DCBF1 /* TourList */,
-				FA57FA171B69663200CFBB89 /* MyTripsStoryboard.storyboard */,
 				FA47A9601B79072B00F8E11D /* View.xib */,
 			);
 			name = MyTrips;
@@ -923,14 +917,12 @@
 				948A22671B73CDB9006FC5BB /* TRVTourView.xib in Resources */,
 				388EBC5F1B783AE400D60297 /* CustomInfoWindow.xib in Resources */,
 				94B755E61B6BCD2A0017FFA9 /* TRVTabBar.storyboard in Resources */,
-				FA57FA181B69663200CFBB89 /* MyTripsStoryboard.storyboard in Resources */,
 				4515651F1B68221B005A2871 /* Main.storyboard in Resources */,
 				94E9D05C1B6EB102007B42B7 /* TRVGuideDetailProfileView.xib in Resources */,
 				948A22651B73A00D006FC5BB /* TRVUserAboutMeView.xib in Resources */,
 				3856144D1B72688B00D6F7E7 /* TourGuideFlow.storyboard in Resources */,
 				94E7B1E01B7A3B28001AB1EE /* bookTour.storyboard in Resources */,
 				94258ACD1B73F251006F24A8 /* Default-568h@2x.png in Resources */,
-				942C18EE1B6BDD9300E1AC91 /* SearchTrips.storyboard in Resources */,
 				451565241B68221B005A2871 /* LaunchScreen.xib in Resources */,
 				9488A6081B7B6D4D0020476B /* TRVEditText.storyboard in Resources */,
 				FADB8F2B1B714504009F7C02 /* Carmelo.jpg in Resources */,
