@@ -80,8 +80,10 @@
     //add 4  of these dummy trips into allTrips Array
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
+
     //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
  //   [self createParseDummyTour];
+
    
     
     return allTripsArray;
@@ -114,21 +116,25 @@
     theItinerary[@"tourImage"] = PFImage;
     
 //    theItinerary[@"tourImage"] = tourImage;
-    theItinerary[@"numberOfStops"] = @1;
-    theItinerary[@"tourStops"] = @[theStop];
-//
+   //
 ////    // theItinerary[@"attractions"] = ARRAY OF ATTRACTIONS;
 //
     theStop[@"operatorCost"] = @0;
     theStop[@"incidentalCost"] = @0;
     theStop[@"lat"] = @10;
     theStop[@"lng"] = @10;
+    theStop[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
     theStop[@"nameOfPlace"] = @"The Flatiron School";
     theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
     theStop[@"addressOfEvent"] = @"123 Nobody St.";
     
     //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
     theStop[@"image"] = PFImage;
+    
+    NSArray *tourStopsArray = @[theStop, theStop, theStop, theStop];
+    theItinerary[@"tourStops"] = tourStopsArray;
+    theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
+
     
 ////    //  theStop[@"tourStopLocation"] = pfgeopoint;
 ////    

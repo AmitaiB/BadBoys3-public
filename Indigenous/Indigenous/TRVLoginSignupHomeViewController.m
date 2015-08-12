@@ -23,8 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//
-//    
+  
 //    [PFUser logOut];
 //    [FBSDKAccessToken setCurrentAccessToken:nil];
 //    [FBSDKProfile setCurrentProfile:nil];
@@ -99,58 +98,6 @@
 
 }
 
-//
-//
-//-(void)transitionToHomeStoryboardWithEmail:(NSString*)email andPassword:(NSString*)password{
-//    
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES]; // start progres hud
-//    hud.labelText = @"Logging In";
-//    
-//    [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error){
-//        
-//        
-//        if (user){
-//            
-//            NSLog(@"User: %@", user);
-//            NSLog(@"bio: %@", user[@"userBio"]);
-//            PFObject *bioObject = user[@"userBio"];
-//            
-//            [bioObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
-//                [hud hide:YES];
-//                
-//                if (object){
-//                    if ([user[@"userBio"][@"isGuide"] isEqualToNumber:@(YES)]){
-//                        // present guide home
-//                        // NEEDS TO GET DONE
-//                        [self presentGuideHomeView];
-//                        
-//                    } else {
-//                        [self presentTouristHomeView];
-//                        
-//                    }
-//                } else {
-//                    
-//                    NSLog(@"Unable to log in: %@", error);
-//                    UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Logging In" message:@"Please check your username and password.  Then try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//                    [alertBox show];
-//                }
-//                
-//                
-//            }];
-//            
-//        } else {
-//            
-//            NSLog(@"Unable to log in: %@", error);
-//            UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Logging In" message:@"Please check your username and password.  Then try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-//            [alertBox show];
-//            
-//        }
-//        
-//        
-//    }];
-//    
-//    
-//}
 
 
 -(void)presentTouristHomeView {
