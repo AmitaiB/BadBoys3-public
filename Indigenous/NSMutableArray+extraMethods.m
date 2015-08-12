@@ -69,23 +69,21 @@
         [components setSecond:0];
         NSDate *yesterday = [cal dateByAddingComponents:components toDate: today options:0];
     
-    
+
         // set these Tours as 1 day old from start
-        TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:pastItinerary categoryForThisTour:[TRVTourCategory returnSeeCategory]];
+        TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:pastItinerary categoryForThisTour:[TRVTourCategory returnCategoryWithTitle:@"See"]];
         dummyTourInThePast.tourDeparture = yesterday;
 
-//    	TRVTour *dummyTourInThePast = [[TRVTour alloc] initWithGuideUser:guide itineraryForThisTour:dummyItinerary];
-//        NSDate *pastDate = [NSDate dateWithTimeIntervalSinceNow:-1000];
-//        dummyTourInThePast.tourDeparture = pastDate; //[NSDate dateWithTimeIntervalSince1970:1000]; //[NSDate dateWithTimeIntervalSinceNow:-1000];
-//
 
         
     
-    //add 4     of these dummy trips into allTrips Array
+    //add 4  of these dummy trips into allTrips Array
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
-    
-    //[self createParseDummyTour];
+
+    //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
+ //   [self createParseDummyTour];
+
    
     
     return allTripsArray;
@@ -107,20 +105,37 @@
     PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
     theTour[@"itineraryForThisTour"] = theItinerary;
     theItinerary[@"nameOfTour"] = @"Some name of tour";
-    NSString *str= [[NSBundle mainBundle] pathForResource:@"Carmelo" ofType:@"jpg"];
-    NSData *tourImageData = [NSData dataWithContentsOfFile:str];
-    PFFile *tourImage = [PFFile fileWithName:@"tourImage" data:tourImageData];
-    [tourImage save];
-    //theItinerary[@"tourImage"] = tourImage;
-    theItinerary[@"numberOfStops"] = @1;
-    theItinerary[@"tourStops"] = @[theStop];
-//
+    
+    UIImage *tourImage = [UIImage imageNamed:@"madrid.jpg"];
+    
+    
+    // converts tour image to 1/5 quality
+    NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
+    PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+    
+    theItinerary[@"tourImage"] = PFImage;
+    
+//    theItinerary[@"tourImage"] = tourImage;
+   //
 ////    // theItinerary[@"attractions"] = ARRAY OF ATTRACTIONS;
 //
     theStop[@"operatorCost"] = @0;
     theStop[@"incidentalCost"] = @0;
     theStop[@"lat"] = @10;
     theStop[@"lng"] = @10;
+    theStop[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop[@"nameOfPlace"] = @"The Flatiron School";
+    theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
+    theStop[@"addressOfEvent"] = @"123 Nobody St.";
+    
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop[@"image"] = PFImage;
+    
+    NSArray *tourStopsArray = @[theStop, theStop, theStop, theStop];
+    theItinerary[@"tourStops"] = tourStopsArray;
+    theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
+
+    
 ////    //  theStop[@"tourStopLocation"] = pfgeopoint;
 ////    
 ////    //    PFObject *theMarker = [PFObject objectWithClassName:@"GMSMarker"];

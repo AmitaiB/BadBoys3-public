@@ -34,6 +34,7 @@
     }];
     
     TRVAllStopsView *allStopsScrollNib = [[TRVAllStopsView alloc] init];
+    allStopsScrollNib.tourForThisScrollNib = self.destinationTour;
     [self.VCContentView addSubview:allStopsScrollNib];
   [allStopsScrollNib mas_makeConstraints:^(MASConstraintMaker *make) {
       make.top.equalTo(selectedTourView.mas_bottom);
@@ -65,17 +66,7 @@
     }];
 
 }
--(void)viewWillAppear:(BOOL)animated {
     
-//    if ([self.presentedViewController isKindOfClass:[TRVBookTourViewController class]]) {
-//        NSLog(@"WHY");
-//        UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];;
-    
-//        UIViewController *destination = [destinationStoryboard instantiateInitialViewController];
-//        [self presentViewController:destination animated:YES completion:nil];
-//    }
-  
-}
 
 -(void)bookTourButtonPressed:(id)sender {
     

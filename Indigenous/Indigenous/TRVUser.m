@@ -29,28 +29,5 @@
 ////@property (nonatomic, strong) NSMutableArray *tripsLeading;
 ////@property (nonatomic, strong) NSMutableArray *tripsTaking;
 
-- (id)initWithCoder:(NSCoder *)decoder {
-    if (self = [super init]) {
-        self.parseObjectID = [decoder decodeObjectForKey:@"parseObjectID"];
-        self.userBio = [decoder decodeObjectOfClass:[TRVBio class] forKey:@"userBio"];
-        self.myTrips = [decoder decodeObjectOfClass:[NSMutableArray class] forKey:@"myTrips"];
-        self.allTrips = [decoder decodeObjectOfClass:[NSMutableArray class] forKey:@"allTrips"];
-        self.tourCatalog = [decoder decodeObjectOfClass:[NSMutableArray class] forKey:@"tourCatalog"];
-        
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:self.parseObjectID forKey:@"parseObjectID"];
-    [encoder encodeObject:self.userBio forKey:@"userBio"];
-    [encoder encodeObject:self.myTrips forKey:@"myTrips"];
-    [encoder encodeObject:self.allTrips forKey:@"allTrips"];
-    [encoder encodeObject:self.tourCatalog forKey:@"tourCatalog"];
-
-    
-    
-}
-
 
 @end
