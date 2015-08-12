@@ -16,6 +16,8 @@
 @property (nonatomic, strong) UIImage *iconImage;
 
 
+-(instancetype)initWithName:(NSString *)name cateogoryImage:(UIImage *)cateogoryImage iconImage:(UIImage *)iconImage;
+-(instancetype)initWithName:(NSString *)name;
 
 -(instancetype)initWithName:(NSString *)name cateogoryImage:(UIImage *)cateogoryImage iconImage:(UIImage *)iconImage;
 

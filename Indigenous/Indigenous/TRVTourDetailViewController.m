@@ -13,6 +13,7 @@
 #import "TRVAllStopsView.h"
 #import "TRVTourView.h"
 #import <Masonry.h>
+#import "TRVTouristTripDetailViewController.h"
 
 @interface TRVTourDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *VCScrollView;
@@ -25,45 +26,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    TRVTourView *selectedTourView = [[TRVTourView alloc] init];
-    selectedTourView.tourForThisTourView = self.destinationTour;
-    [self.VCContentView addSubview:selectedTourView];
-    [self.VCContentView removeConstraints:self.VCContentView.constraints];
-    [selectedTourView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.and.left.and.right.equalTo(self.VCContentView);
-    }];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
+    TRVTouristTripDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"tourDetailVC"];
+    viewController.tour = self.destinationTour;
+   // self.view = viewController.view;
+    [viewController isTourGuideTripViewController];
+    [self.navigationController pushViewController:viewController animated:nil];
     
-    TRVAllStopsView *allStopsScrollNib = [[TRVAllStopsView alloc] init];
-    allStopsScrollNib.tourForThisScrollNib = self.destinationTour;
-    [self.VCContentView addSubview:allStopsScrollNib];
-  [allStopsScrollNib mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.top.equalTo(selectedTourView.mas_bottom);
-      make.height.equalTo(@400);
-      make.left.and.right.equalTo(self.VCContentView);
-  }];
-    
-    // Add Tour Button
-    UIButton *bookTourButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    bookTourButton.backgroundColor = [UIColor magentaColor];
-    [bookTourButton setTitle:@"Book Tour" forState:UIControlStateNormal];
-    [bookTourButton addTarget:self action:@selector(bookTourButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.VCContentView addSubview:bookTourButton];
-    [bookTourButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.VCContentView.mas_centerX);
-        make.height.equalTo(@100);
-        make.width.equalTo(self.VCContentView.mas_width).dividedBy(1.5);
-        
-        //add top padding
-        make.top.equalTo(allStopsScrollNib.mas_bottom).with.offset(50);
-    }];
-    
-    
-    
-    [self.VCContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        // add bottom padding
-        make.bottom.equalTo(bookTourButton.mas_bottom).with.offset(50);
-    }];
+//    TRVTourView *selectedTourView = [[TRVTourView alloc] init];
+//    selectedTourView.tourForThisTourView = self.destinationTour;
+//    [self.VCContentView addSubview:selectedTourView];
+//    [self.VCContentView removeConstraints:self.VCContentView.constraints];
+//    [selectedTourView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.and.left.and.right.equalTo(self.VCContentView);
+//    }];
+//    
+//    TRVAllStopsView *allStopsScrollNib = [[TRVAllStopsView alloc] init];
+//    allStopsScrollNib.tourForThisScrollNib = self.destinationTour;
+//    [self.VCContentView addSubview:allStopsScrollNib];
+//  [allStopsScrollNib mas_makeConstraints:^(MASConstraintMaker *make) {
+//      make.top.equalTo(selectedTourView.mas_bottom);
+//      make.height.equalTo(@400);
+//      make.left.and.right.equalTo(self.VCContentView);
+//  }];
+//    
+//    // Add Tour Button
+//    UIButton *bookTourButton  = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    bookTourButton.backgroundColor = [UIColor magentaColor];
+//    [bookTourButton setTitle:@"Book Tour" forState:UIControlStateNormal];
+//    [bookTourButton addTarget:self action:@selector(bookTourButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [self.VCContentView addSubview:bookTourButton];
+//    [bookTourButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerX.equalTo(self.VCContentView.mas_centerX);
+//        make.height.equalTo(@100);
+//        make.width.equalTo(self.VCContentView.mas_width).dividedBy(1.5);
+//        
+//        //add top padding
+//        make.top.equalTo(allStopsScrollNib.mas_bottom).with.offset(50);
+//    }];
+//    
+//    
+//    
+//    [self.VCContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        // add bottom padding
+//        make.bottom.equalTo(bookTourButton.mas_bottom).with.offset(50);
+//    }];
 
 }
     

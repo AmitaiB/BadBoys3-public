@@ -148,6 +148,7 @@
 
 
 -(void)goToGuideHome {
+    
     UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
     
     UIViewController *destination = [tourist instantiateInitialViewController];
