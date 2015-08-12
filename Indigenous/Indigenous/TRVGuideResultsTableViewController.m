@@ -21,6 +21,7 @@
 #import "TRVAFNetwokingAPIClient.h"
 #import <Parse.h>
 #import "TRVTourStop.h"
+#import <MBProgressHUD.h>
 
 @interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol, ImageTapProtocol>
 
@@ -29,6 +30,9 @@
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
 @property (nonatomic, strong) NSMutableArray *availableGuides;
 @property (nonatomic, strong) TRVUser *destinationGuideUser;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic) NSUInteger userCount;
+@property (nonatomic, strong) NSMutableArray *PFGuides;
 //@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
 
 @end
@@ -40,7 +44,8 @@
     [self updateGuidesList];
     
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
-    
+    self.PFGuides = [@[] mutableCopy];
+
     
 }
 
@@ -105,134 +110,140 @@
 -(void)updateGuidesList {
     
     self.availableGuides = [[NSMutableArray alloc]init];
-    // ADD LOADING HUD HERE BEFORE PARSE REQUEST GOES DOWN
-    
-    
-    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.labelText = @"Loading Guides";
     
     PFQuery *query = [PFUser query];
     [query includeKey:@"userBio"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error){
+    
+        self.userCount = 0;
+        [self findAppropriateGuides:objects];
+        [self createGuides];
         
-        for (PFUser *user in objects){
-            PFObject *guideBio = user[@"userBio"];
-           // [guideBio fetch];
-            
-            if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
-                
-                TRVUser *guideForThisRow = [[TRVUser alloc]init];
-                guideForThisRow.myTrips = [[NSMutableArray alloc]init];
-
-                
-                
-                TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
-                                                         firstName:guideBio[@"first_name"]
-                                                          lastName:guideBio[@"last_name"]
-                                                             email:guideBio[@"email"]
-                                                       phoneNumber:guideBio[@"phoneNumber"]
-                                                      profileImage:nil
-                                                    bioDescription:guideBio[@"bioTextField"]
-                                                         interests:nil language:guideBio[@"languagesSpoken"]
-                                                               age:0 gender:guideBio[@"gender"]
-                                                            region:nil
-                                                    oneLineSummary:guideBio[@"oneLineBio"]
-                                                   profileImageURL:guideBio[@"picture"]
-                                                  nonFacebookImage:guideBio[@"emailPicture" ]];
-                
-                
-                
-                [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
-                    bio.profileImage = response;
-                    if (![guideBio objectForKey:@"picture"]) {
-                        NSLog(@"DO YOU EVER GET CALLED?");
-                        PFFile *pictureFile = objects[0][@"emailPicture"];
-                        [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                            if (!error) {
-                                bio.nonFacebookImage = [UIImage imageWithData:data];
-                            } else {
-                                // error block
-                            }
-                        }];
-                    }
-                    guideForThisRow.userBio = bio;
-
-                    
-                    
-                    
-                    NSArray *allTours = user[@"myTrips"];
-                    for (PFObject *PFTour in allTours){
-                        [PFTour fetch];
-                        TRVTour *tour = [[TRVTour alloc]init];
-                        tour.guideForThisTour = guideForThisRow;
-                        tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
-                        tour.tourDeparture = PFTour[@"tourDeparture"];
-                        
-                        PFObject *PFItinerary = PFTour[@"itineraryForThisTour"];
-                        [PFItinerary fetch];
-                        
-                        TRVItinerary *itinerary = [[TRVItinerary alloc] init];
-                        itinerary.nameOfTour = PFItinerary[@"nameOfTour"];
-                        itinerary.numberOfStops =  [PFItinerary[@"numberOfStops"] integerValue];
-                        PFFile *imageForThisTour = PFItinerary[@"tourImage"];
-                        NSData *imageData = [imageForThisTour getData];
-                        itinerary.tourImage = [UIImage imageWithData:imageData];
-                        
-                        NSArray *tourStops = PFItinerary[@"tourStops"];
-                        NSMutableArray *TRVAllStops = [[NSMutableArray alloc] init];
-                        for (PFObject *PFStop in tourStops){
-                            [PFStop fetch];
-                            TRVTourStop *stop = [[TRVTourStop alloc] init];
-                            stop.lng = [PFStop[@"lng"] floatValue];
-                            stop.lat = [PFStop[@"lat"] floatValue];
-                            stop.nameOfPlace = PFStop[@"nameOfPlace"];
-                            stop.addressOfEvent = PFStop[@"addressOfEvent"];
-                            stop.descriptionOfEvent = PFStop[@"descriptionOfEvent"];
-                            PFFile *imageForStop = PFStop[@"image"];
-                            NSData *stopImageData = [imageForStop getData];
-                            stop.image = [UIImage imageWithData:stopImageData];
-                            [TRVAllStops addObject:stop];
-
-                        }
-                        
-                        itinerary.tourStops = TRVAllStops;
-                        tour.itineraryForThisTour = itinerary;
-                        [guideForThisRow.myTrips addObject:tour];
-                        
-                        
-                    } // END OF TOUR FOR LOOP
-
-                    [self.availableGuides addObject: guideForThisRow];
-                    NSLog(@"My name is: %@", guideForThisRow.userBio.firstName);
-                    [self.tableView reloadData];
-                    
-                }]; // END OF GET GUIDE IMAGE BLOCK
-                
-                
-//                
-//                // override parse for now
-//                NSMutableArray *dummy = [[NSMutableArray alloc] init];
-//                NSMutableArray *dummyTours = [dummy returnDummyAllTripsArrayForGuide:guideForThisRow];
-//                guideForThisRow.myTrips = dummyTours;
-
-                
-                NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
-                
-            }
-
-        }
     }];
     
-    
     if (self.filterDictionary == nil){
-        NSLog(@"Filter is nil!");
-        
         // SHOW ALL GUDES
-        
     } else {
         // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
     }
+    
+    
+    
 }
 
+-(void)findAppropriateGuides:(NSArray*)objects {
+    for (PFUser *user in objects){
+        PFObject *guideBio = user[@"userBio"];
+        if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
+            [self.PFGuides addObject:user];
+        }
+    }
+}
+
+-(void)createGuides {
+    
+    for (PFUser *user in self.PFGuides) {
+        PFObject *guideBio = user[@"userBio"];
+        TRVUser *guideForThisRow = [[TRVUser alloc]init];
+        guideForThisRow.myTrips = [[NSMutableArray alloc]init];
+        
+        TRVBio *bio = [[TRVBio alloc]initGuideWithUserName:guideBio[@"name"]
+                                                 firstName:guideBio[@"first_name"]
+                                                  lastName:guideBio[@"last_name"]
+                                                     email:guideBio[@"email"]
+                                               phoneNumber:guideBio[@"phoneNumber"]
+                                              profileImage:nil
+                                            bioDescription:guideBio[@"bioTextField"]
+                                                 interests:nil language:guideBio[@"languagesSpoken"]
+                                                       age:0 gender:guideBio[@"gender"]
+                                                    region:nil
+                                            oneLineSummary:guideBio[@"oneLineBio"]
+                                           profileImageURL:guideBio[@"picture"]
+                                          nonFacebookImage:guideBio[@"emailPicture"]];
+        
+        if (guideBio[@"picture"]){
+            [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
+                bio.profileImage = response;
+                guideForThisRow.userBio = bio;
+                [self completeUser:guideForThisRow bio:bio parseUser:user];
+            }];
+            
+        } else {
+            
+            PFFile *pictureFile = guideBio[@"emailPicture"];
+            [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (!error) {
+                    bio.profileImage = [UIImage imageWithData:data];
+                    bio.nonFacebookImage = [UIImage imageWithData:data];
+                    guideForThisRow.userBio = bio;
+                    
+                    [self completeUser:guideForThisRow bio:bio parseUser:user];
+                    
+                } else {
+                    // error block
+                }
+            }];
+        }
+    } // END OF FOR LOOP
+    
+}
+
+-(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user {
+    
+    
+    NSArray *allTours = user[@"myTrips"];
+    
+    for (PFObject *PFTour in allTours){
+        [PFTour fetch];
+        TRVTour *tour = [[TRVTour alloc]init];
+        tour.guideForThisTour = guideForThisRow;
+        tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
+        tour.tourDeparture = PFTour[@"tourDeparture"];
+        
+        PFObject *PFItinerary = PFTour[@"itineraryForThisTour"];
+        [PFItinerary fetch];
+        
+        TRVItinerary *itinerary = [[TRVItinerary alloc] init];
+        itinerary.nameOfTour = PFItinerary[@"nameOfTour"];
+        itinerary.numberOfStops =  [PFItinerary[@"numberOfStops"] integerValue];
+        PFFile *imageForThisTour = PFItinerary[@"tourImage"];
+        NSData *imageData = [imageForThisTour getData];
+        itinerary.tourImage = [UIImage imageWithData:imageData];
+        
+        NSArray *tourStops = PFItinerary[@"tourStops"];
+        NSMutableArray *TRVAllStops = [[NSMutableArray alloc] init];
+        for (PFObject *PFStop in tourStops){
+            [PFStop fetch];
+            TRVTourStop *stop = [[TRVTourStop alloc] init];
+            stop.lng = [PFStop[@"lng"] floatValue];
+            stop.lat = [PFStop[@"lat"] floatValue];
+            stop.nameOfPlace = PFStop[@"nameOfPlace"];
+            stop.addressOfEvent = PFStop[@"addressOfEvent"];
+            stop.descriptionOfEvent = PFStop[@"descriptionOfEvent"];
+            PFFile *imageForStop = PFStop[@"image"];
+            NSData *stopImageData = [imageForStop getData];
+            stop.image = [UIImage imageWithData:stopImageData];
+            [TRVAllStops addObject:stop];
+            
+        }
+        
+        itinerary.tourStops = TRVAllStops;
+        tour.itineraryForThisTour = itinerary;
+        [guideForThisRow.myTrips addObject:tour];
+        
+    } // END OF TOUR FOR LOOP
+    
+    [self.availableGuides addObject:guideForThisRow];
+    
+    self.userCount++;
+    if (self.userCount == self.PFGuides.count){
+        [self.tableView reloadData];
+        [self.hud hide:YES];
+    }
+    
+}
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
