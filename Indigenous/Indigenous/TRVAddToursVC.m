@@ -56,7 +56,7 @@
 
 //- (void)initializeNewTourConstruct {
 //    PFObject *itineraryUnderConstruction = [PFObject objectWithClassName:@"TourUnderConstruction"];
-//        //TODO:AMITAI store the growing itinerary in a PFObject to the local datastore
+//        //TODO:[Amitai] store the growing itinerary in a PFObject to the local datastore
 //}
 
 /**

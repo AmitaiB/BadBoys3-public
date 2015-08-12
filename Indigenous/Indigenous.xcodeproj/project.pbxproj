@@ -49,7 +49,6 @@
 		45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */; };
 		45F925A91B712400009B2E98 /* TRVSubCategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F925A81B712400009B2E98 /* TRVSubCategoryCollectionView.m */; };
 		45F925AC1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F925AB1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m */; };
-		4B6F492C0CB58C8338A1B78F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D69FD457D9B6860BB4D3A8B4 /* libPods.a */; };
 		940446781B7A3F12003B8CBC /* TRVBookTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 940446771B7A3F12003B8CBC /* TRVBookTour.m */; };
 		9404467A1B7A3F1B003B8CBC /* TRVBookTour.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940446791B7A3F1B003B8CBC /* TRVBookTour.xib */; };
 		942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942424881B6DBAAF007BC642 /* TRVRootTabViewController.m */; };
@@ -887,7 +886,7 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 9RXLE5FXUN;
+						DevelopmentTeam = 8VC65F749H;
 					};
 					451565281B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;

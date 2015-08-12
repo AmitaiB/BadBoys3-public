@@ -47,7 +47,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@" NUMBER OF USERS!!!! %lu" , (unsigned long)self.availableGuides.count);
+    NSLog(@" NUMBER OF USERS!! %lu" , (unsigned long)self.availableGuides.count);
     return self.availableGuides.count;
 }
 
@@ -87,7 +87,7 @@
 - (void)returnUserForThisImageNib:(TRVUser *)guideUser {
     self.destinationGuideUser = guideUser;
     [self performSegueWithIdentifier:@"detailGuideSegue" sender:nil];
-    NSLog(@"DOES THIS WORK????? THIS IS THE DELEGATE METHOD FOR NIB: %@", guideUser.userBio.firstName);
+    NSLog(@"DOES THIS WORK?? THIS IS THE DELEGATE METHOD FOR NIB: %@", guideUser.userBio.firstName);
 }
 
 
@@ -204,7 +204,7 @@
                      NSLog(@"My name is: %@", guideForThisRow.userBio.firstName);
                      [self.tableView reloadData];
                  }];
-                 NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
+                 NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!", (unsigned long)self.availableGuides.count);
                  
              }
         }

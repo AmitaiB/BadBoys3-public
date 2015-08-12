@@ -43,7 +43,7 @@
     self.tourStopCollectionView.dataSource = self.dataSource;
     self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init]; // UILayoutContainerView
     
-    self.collectionViewDelegate.imageView = self.tourStopImageView; // FIX THIS UGLY SHIT!!!
+    self.collectionViewDelegate.imageView = self.tourStopImageView; // FIXME: FIX THIS UGLY SHIT!!
     
     self.tourStopCollectionView.delegate = self.collectionViewDelegate;
     self.tourStopCollectionView.scrollsToTop = NO;
