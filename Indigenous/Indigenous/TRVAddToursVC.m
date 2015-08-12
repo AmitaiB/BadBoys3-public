@@ -22,23 +22,38 @@
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 
-@interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate>
-@property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
-@property (weak, nonatomic) IBOutlet UILabel *currentUserLabel;
+@interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
-@property (nonatomic, strong) TRVTourCategory *tourCategory;
-@property (weak, nonatomic) IBOutlet UILabel *tourCategoryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
-@property (weak, nonatomic) IBOutlet SSFlatDatePicker *datePicker;
-@property (nonatomic, strong) NSDate *tourDate;
-@property (weak, nonatomic) IBOutlet UILabel *tourDateLabel;
 
-@property (weak, nonatomic) IBOutlet UITextField *addTourNameTF;
-- (IBAction)chooseCategoryButtonTapped:(id)sender;
+@property (nonatomic, strong) TRVTour            *tour;
+@property (weak, nonatomic) IBOutlet UITextField *addTourNameTxF;
+@property (nonatomic, strong) TRVUser            *user;
+@property (nonatomic, strong) TRVBio             *bio;
+@property (nonatomic, strong) TRVTourCategory    *tourCategory;
+@property (nonatomic, strong) TRVItinerary       *itinerary;
+@property (nonatomic, strong) NSMutableArray     *listOfStops;
+@property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
+@property (weak, nonatomic) IBOutlet UITextField *dateTxF;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (nonatomic, strong) NSDate             *tourDate;
+
+@property (weak, nonatomic) IBOutlet UILabel     *currentUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *tourCategoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel     *tourNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *tourImage;
+
+- (IBAction)tourCategoryUIControl:(id)sender;
 
 
 
 
+    //- (IBAction)chooseCategoryButtonTapped:(id)sender;
+
+    //@property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
+    //@property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
+
+    //@property (weak, nonatomic) IBOutlet SSFlatDatePicker *datePicker;
 @end
 
 @implementation TRVAddToursVC
@@ -46,24 +61,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.saveButtonLabel.hidden = YES;
     
+        //Setup protocols, initialize singletons, etc.
+    self.itineraryTableView.delegate = self;
+    self.itineraryTableView.dataSource = self;
+    self.dateTxF.delegate = self;
     [self.datePicker addTarget:self
                         action:@selector(setNewDate)
               forControlEvents:UIControlEventValueChanged];
-    
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
     TRVBio *userBio = self.sharedDataStore.loggedInUser.userBio;
-        //TODO: [Amitai]: Make attributed string?
+    
     self.currentUserLabel.text = [NSString stringWithFormat:@"Hi, %@!", userBio.firstName];
+
     
-    
+        //    self.saveButtonLabel.hidden = YES;
     
         //Wire this up to the save functionality
-    self.saveTourButton.startHandler      = ^void() {DBLG};
-    self.saveTourButton.interruptHandler  = ^void() {DBLG};
-    self.saveTourButton.completionHandler = ^void() {DBLG};
+//    self.saveTourButton.startHandler      = ^void() {DBLG};
+//    self.saveTourButton.interruptHandler  = ^void() {DBLG};
+//    self.saveTourButton.completionHandler = ^void() {DBLG};
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,12 +89,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UITextfield Delegate
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    if ([textField isEqual:self.dateTxF]) {
+        self
+    }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if ([textField isEqual:self.addTourNameTxF]) {
+        self.tourNameLabel.text = textField.text;
+        self.itinerary.nameOfTour = textField.text;
+        textField.text = @"";
+        [textField resignFirstResponder];
+    }
+    
+}
+
 
 #pragma mark - DatePicker helper
 
+
+
 -(void)setNewDate {
     DBLG
-    NSLog(@"tourdate is: %@", self.datePicker.date);
+    NSLog(@"tourdate is set for: %@", self.datePicker.date);
     self.tourDate = self.datePicker.date;
     self.tourDateLabel.text = [self.datePicker.date description];
 }
@@ -280,4 +318,8 @@
 }
 
 
+- (IBAction)tourCategoryUIControl:(id)sender {
+}
+- (IBAction)datePicker:(id)sender {
+}
 @end
