@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVUser.h"
+
 
 @interface TRVGuideDetailProfileView : UIView
+
+
+@property (nonatomic, strong) TRVUser *guideForThisDetailXib;
 
 @end
