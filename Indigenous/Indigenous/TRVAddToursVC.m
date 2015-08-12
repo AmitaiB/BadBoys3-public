@@ -16,6 +16,7 @@
 #import <MapKit/MapKit.h>
 #import <RMSaveButton.h>
 #import "TRVUserDataStore.h"
+#import "NSInvocation(ForwardedConstruction).h"
 #import <CZPicker.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentUserLabel;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (nonatomic, strong) TRVTourCategory *tourCategory;
+@property (weak, nonatomic) IBOutlet UILabel *tourCategoryLabel;
 
 - (IBAction)saveTourButton1:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *addTourNameTF;
@@ -153,10 +155,16 @@
 #pragma mark - CZPickerVieewDelegate
 
 -(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
+    DBLG
     NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
-    NSString *chosenCategory = categoryTitles[row];
-    SEL createTRVCategoryObject = NSSelectorFromString([NSString stringWithFormat:@"return%@Category", chosenCategory]);
-    self.tourCategory = [self.tourCategory performSelector:@selector(new)];
+
+    /**
+     *  FIXME: Get Tim/Joe's help on the syntax...
+     */
+    NSInvocation *createChosenCategoryObject;
+    [[NSInvocation retainedInvocationWithTarget:self.tourCategory invocationOut:&createChosenCategoryObject]initWithName:categoryTitles[row]];
+    [createChosenCategoryObject invoke];
+    self.tourCategoryLabel.text = self.tourCategory.categoryName;
 }
 
 -(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {

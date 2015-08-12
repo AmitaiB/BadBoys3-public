@@ -234,6 +234,7 @@
                         <outlet property="addTourNameTF" destination="GV3-DQ-Zox" id="rIy-Sr-ujG"/>
                         <outlet property="currentUserLabel" destination="49h-VA-vj4" id="g19-SO-6Qb"/>
                         <outlet property="saveTourButton" destination="V8x-Oi-iPZ" id="jMF-aX-Bc1"/>
+                        <outlet property="tourCategoryLabel" destination="lok-hC-Ho6" id="r74-pf-TRH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njw-Ck-Vef" userLabel="First Responder" sceneMemberID="firstResponder"/>
