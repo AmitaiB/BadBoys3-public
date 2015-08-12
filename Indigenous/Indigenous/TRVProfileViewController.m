@@ -96,7 +96,7 @@
 
 
 -(void)tapToGuideTab:(TRVUserContactView *)view {
-    
+
     TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
 
     if (user.isOnGuideTabBar) {
@@ -130,6 +130,7 @@
 
 
 -(void)goToGuideHome {
+    
     UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
     
     UIViewController *destination = [tourist instantiateInitialViewController];

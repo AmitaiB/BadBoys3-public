@@ -17,6 +17,6 @@
 
 
 - (IBAction)closeButtonTapped:(id)sender {
-        //TODO: AMITAI dissmiss itself
+        //TODO:[Amitai]: dissmiss itself
 }
 @end
