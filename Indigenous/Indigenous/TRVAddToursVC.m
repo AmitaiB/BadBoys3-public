@@ -16,7 +16,6 @@
 #import <MapKit/MapKit.h>
 #import <RMSaveButton.h>
 #import "TRVUserDataStore.h"
-#import "NSInvocation(ForwardedConstruction).h"
 #import <CZPicker.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
@@ -152,18 +151,29 @@
     return categoryTitles[row];
 }
 
-#pragma mark - CZPickerVieewDelegate
+#pragma mark - CZPickerViewDelegate
 
 -(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
     DBLG
-    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
 
     /**
      *  FIXME: Get Tim/Joe's help on the syntax...
      */
-    NSInvocation *createChosenCategoryObject;
-    [[NSInvocation retainedInvocationWithTarget:self.tourCategory invocationOut:&createChosenCategoryObject]initWithName:categoryTitles[row]];
-    [createChosenCategoryObject invoke];
+    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
+    NSString *chosenCategory = categoryTitles[row];
+//
+//    NSMethodSignature *categoryInitSignature = [TRVTourCategory instanceMethodSignatureForSelector:@selector(initWithName:)];
+//    NSInvocation *createChosenCategoryObject = [NSInvocation invocationWithMethodSignature:categoryInitSignature];
+//    createChosenCategoryObject.target = self.tourCategory;
+//    createChosenCategoryObject.selector = @selector(initWithName:);
+//    [createChosenCategoryObject setArgument:&chosenCategory atIndex:2];
+//    NSUInteger length = [[createChosenCategoryObject methodSignature] methodReturnLength];
+////    buffer = (void *)malloc(length);
+//    
+//    [createChosenCategoryObject invoke];
+////    createChosenCategoryObject getReturnValue:<#(void *)#>
+//    self.tourCategory = //whatever the returnObject is.
+    self.tourCategory = [[TRVTourCategory alloc] initWithName:categoryTitles[row]];
     self.tourCategoryLabel.text = self.tourCategory.categoryName;
 }
 

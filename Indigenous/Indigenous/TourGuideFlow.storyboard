@@ -156,11 +156,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8x-Oi-iPZ" userLabel="RMSaveTourButton" customClass="RMSaveButton">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration" label=""/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFP-35-9WF">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="(temp) Save Tour">
@@ -186,6 +181,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8x-Oi-iPZ" userLabel="RMSaveTourButton" customClass="RMSaveButton">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label=""/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.85555930993585816" blue="0.47972394716405409" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -202,10 +202,10 @@
                                 <exclude reference="lkf-E1-Tvw"/>
                                 <exclude reference="0ml-2r-iaC"/>
                                 <exclude reference="dbd-A4-V2Z"/>
-                                <exclude reference="V8x-Oi-iPZ"/>
                                 <exclude reference="mFP-35-9WF"/>
                                 <exclude reference="7S9-Gw-LUw"/>
                                 <exclude reference="lok-hC-Ho6"/>
+                                <exclude reference="V8x-Oi-iPZ"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -222,10 +222,10 @@
                                 <include reference="lkf-E1-Tvw"/>
                                 <include reference="0ml-2r-iaC"/>
                                 <include reference="dbd-A4-V2Z"/>
-                                <include reference="V8x-Oi-iPZ"/>
                                 <include reference="mFP-35-9WF"/>
                                 <include reference="7S9-Gw-LUw"/>
                                 <include reference="lok-hC-Ho6"/>
+                                <include reference="V8x-Oi-iPZ"/>
                             </mask>
                         </variation>
                     </view>

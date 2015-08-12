@@ -13,3 +13,5 @@ pod 'APParallaxHeader'
 pod 'INTULocationManager', '~> 3.0'
 pod 'FoldingTabBar', '~> 1.0.1'
 pod 'HNKGooglePlacesAutocomplete', '~> 1.1.0'
+pod 'RMSaveButton'
+pod "CZPicker"
