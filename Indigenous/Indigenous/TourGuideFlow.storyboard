@@ -156,15 +156,41 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFP-35-9WF">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="(temp) Save Tour">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveTourButton1:" destination="Umb-bZ-KvD" eventType="touchUpInside" id="LEL-Xd-HfC"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8x-Oi-iPZ" userLabel="RMSaveTourButton" customClass="RMSaveButton">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save Button" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pj-ff-QgM">
+                                        <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label=""/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="N1r-LZ-oUh"/>
+                                    <constraint firstAttribute="height" constant="44" id="O7I-br-IFp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="4pj-ff-QgM"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="N1r-LZ-oUh"/>
+                                        <exclude reference="O7I-br-IFp"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="4pj-ff-QgM"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="N1r-LZ-oUh"/>
+                                        <include reference="O7I-br-IFp"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7S9-Gw-LUw">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Choose Category">
@@ -181,13 +207,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8x-Oi-iPZ" userLabel="RMSaveTourButton" customClass="RMSaveButton">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration" label=""/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.85555930993585816" blue="0.47972394716405409" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="V8x-Oi-iPZ" secondAttribute="centerX" id="Ks0-sw-p9s"/>
+                            <constraint firstItem="RBA-jQ-alk" firstAttribute="top" secondItem="V8x-Oi-iPZ" secondAttribute="bottom" constant="34" id="k3Y-sy-4qs"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="tts-zb-b3L"/>
@@ -202,10 +227,13 @@
                                 <exclude reference="lkf-E1-Tvw"/>
                                 <exclude reference="0ml-2r-iaC"/>
                                 <exclude reference="dbd-A4-V2Z"/>
-                                <exclude reference="mFP-35-9WF"/>
+                                <exclude reference="V8x-Oi-iPZ"/>
                                 <exclude reference="7S9-Gw-LUw"/>
                                 <exclude reference="lok-hC-Ho6"/>
-                                <exclude reference="V8x-Oi-iPZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Ks0-sw-p9s"/>
+                                <exclude reference="k3Y-sy-4qs"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -222,10 +250,13 @@
                                 <include reference="lkf-E1-Tvw"/>
                                 <include reference="0ml-2r-iaC"/>
                                 <include reference="dbd-A4-V2Z"/>
-                                <include reference="mFP-35-9WF"/>
+                                <include reference="V8x-Oi-iPZ"/>
                                 <include reference="7S9-Gw-LUw"/>
                                 <include reference="lok-hC-Ho6"/>
-                                <include reference="V8x-Oi-iPZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Ks0-sw-p9s"/>
+                                <include reference="k3Y-sy-4qs"/>
                             </mask>
                         </variation>
                     </view>
@@ -233,6 +264,7 @@
                     <connections>
                         <outlet property="addTourNameTF" destination="GV3-DQ-Zox" id="rIy-Sr-ujG"/>
                         <outlet property="currentUserLabel" destination="49h-VA-vj4" id="g19-SO-6Qb"/>
+                        <outlet property="saveButtonLabel" destination="4pj-ff-QgM" id="wkV-DV-Esg"/>
                         <outlet property="saveTourButton" destination="V8x-Oi-iPZ" id="jMF-aX-Bc1"/>
                         <outlet property="tourCategoryLabel" destination="lok-hC-Ho6" id="r74-pf-TRH"/>
                     </connections>

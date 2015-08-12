@@ -27,6 +27,7 @@
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (nonatomic, strong) TRVTourCategory *tourCategory;
 @property (weak, nonatomic) IBOutlet UILabel *tourCategoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
 
 - (IBAction)saveTourButton1:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *addTourNameTF;
@@ -42,6 +43,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.saveButtonLabel.hidden = YES;
+    
     
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
@@ -51,7 +54,7 @@
     
     
     
-    
+        //Wire this up to the save functionality
     self.saveTourButton.startHandler      = ^void() {DBLG};
     self.saveTourButton.interruptHandler  = ^void() {DBLG};
     self.saveTourButton.completionHandler = ^void() {DBLG};
@@ -179,6 +182,86 @@
 
 -(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
     [pickerView resignFirstResponder];
+}
+
+#pragma mark - Parse functionality
+
+    //FIXME Make it "createParseTourandsave"
+-(void)createParseDummyTour {
+    
+    PFUser *currentUser = [PFUser currentUser];
+    PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
+    [theTour setObject:currentUser forKey:@"guideForThisTour"];
+    
+    PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
+    theTour[@"categoryForThisTour"] = @"Drink";
+    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:1000];
+        //    //  theTour[@"tourAverageRating"] = CGFLOAT;
+        //
+        //
+    PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
+    theTour[@"itineraryForThisTour"] = theItinerary;
+    theItinerary[@"nameOfTour"] = @"Some name of tour";
+    
+    UIImage *tourImage = [UIImage imageNamed:@"madrid.jpg"];
+    
+    
+        // converts tour image to 1/5 quality
+    NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
+    PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+    
+    theItinerary[@"tourImage"] = PFImage;
+    
+        //    theItinerary[@"tourImage"] = tourImage;
+        //
+        ////    // theItinerary[@"attractions"] = ARRAY OF ATTRACTIONS;
+        //
+    theStop[@"operatorCost"] = @0;
+    theStop[@"incidentalCost"] = @0;
+    theStop[@"lat"] = @10;
+    theStop[@"lng"] = @10;
+    theStop[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop[@"nameOfPlace"] = @"The Flatiron School";
+    theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
+    theStop[@"addressOfEvent"] = @"123 Nobody St.";
+    
+        //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop[@"image"] = PFImage;
+    
+    NSArray *tourStopsArray = @[theStop, theStop, theStop, theStop];
+    theItinerary[@"tourStops"] = tourStopsArray;
+    theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
+    
+    
+        ////    //  theStop[@"tourStopLocation"] = pfgeopoint;
+        ////
+        ////    //    PFObject *theMarker = [PFObject objectWithClassName:@"GMSMarker"];
+        ////    //    theMarker[@"position"] = PFGEOPOINT;
+        ////    //    theMarker[@"snippet"] = NSSTring;
+        ////    //    theMarker[@"icon"] = UIImage;
+        ////    //    theMarker[@"groundAnchor"] = cgpoint;
+        ////    //    theMarker[@"infoWindowAnchor"] = cgpoint;
+        ////    //
+        ////    //    theStop[@"tourStopMarker"] = theMarker;
+        ////    //
+        ////
+    
+    [theTour saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+        NSLog(@"THE TOUR ID IS: %@", theTour.objectId);
+        
+        
+        [currentUser addObject:theTour forKey:@"myTrips"];
+        [currentUser saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+            if (error){
+                NSLog(@"Cant save to array because: %@", error);
+            } else {
+                NSLog(@"Successfully added stuff to array.");
+            }
+        }];
+        
+        
+    }];
+    
 }
 
 
