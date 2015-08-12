@@ -38,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateGuidesList];
+    [self.tableView reloadData];
 
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
 
@@ -89,7 +90,6 @@
 - (void)returnUserForThisImageNib:(TRVUser *)guideUser {
     self.destinationGuideUser = guideUser;
     [self performSegueWithIdentifier:@"detailGuideSegue" sender:nil];
-    NSLog(@"DOES THIS WORK????? THIS IS THE DELEGATE METHOD FOR NIB: %@", guideUser.userBio.firstName);
 }
 
 
@@ -106,9 +106,7 @@
     self.availableGuides = [[NSMutableArray alloc]init];
         // ADD LOADING HUD HERE BEFORE PARSE REQUEST GOES DOWN
     
-    
-//    PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"UserBio"];
-//      PFQuery *findGuidesQuery = [PFQuery queryWithClassName:@"Itinerary"];
+
     PFQuery *query = [PFUser query];
     
 
@@ -123,9 +121,6 @@
              
         PFObject *guideBio = user[@"userBio"];
              [guideBio fetch];
-             
-
-
              
              if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
 
@@ -176,7 +171,7 @@
                      [imageForThisTour getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                          if (!error) {
                              itineraryForTour.tourImage = [UIImage imageWithData:data];
-                                                          
+                             
                          } else {
                              // error block
                              
@@ -186,7 +181,6 @@
                      
                          
                          NSArray *allTripsArray = PFItinerary[@"tourStops"];
-
                          // GET TOUR STOPS IN QUERY
                          NSMutableArray *TRVallStops = [[NSMutableArray alloc] init];
                      
@@ -212,22 +206,20 @@
                      
                      
                      
-                 }
-                 
-                 
-                 
+                 } // end of PFTOUR IN ALLTRIPS FOR LOOP
+                 NSLog(@"NUMBER OF AVAILABLE GUIDES %ld", self.availableGuides.count);
                  
                  // IMAGE PARSING ON PARSE
                  [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                      
                      bio.profileImage = response;
+                     [self.tableView reloadData];
 
                      
                      // Check to see if guide is signed up with email rather than FB
                      // if there is no URL, then parse the PF file image
                      
                      if (![guideBio objectForKey:@"picture"]) {
-                         NSLog(@"DO YOU EVER GET CALLED?");
                          PFFile *pictureFile = objects[0][@"emailPicture"];
                          [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                              if (!error) {
@@ -236,78 +228,15 @@
                                  // error block
                              }
                          }];
+                         
+                         
+                         
+                         
                      }// END OF TRVAFNetwokingAPIClient GET IMAGE METHOD
                      
                      
-                     
-
-                     
-                     
-                     // UNCOMMENT THIS WHEN WE CAN ACTUALLY ADD TRIPS UP TO PARSE
-                     // guideForThisRow.myTrips = theParseGuide[@"myTrips"];
-                     //  if (theParseGuide[@"myTrips"]){
-                     
-                     
-                         // ADDED DUMMY DATA STORED IN NSMUTABLE ARRAY CATEGORY
-//                         NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-                     
-                     
-                     PFQuery *query = [PFQuery queryWithClassName:@"Tour"];
-                     
-                     // THIS ONE LINE MAKES SURE YOU ARE GETTING YOUR ENTRY AND NOT ANOTHER USERS
-                     [query whereKey:@"guideForThisTour" equalTo:@"Drink"];
-                     
-                     [query orderByDescending:@"createdAt"];
-                     
-                     
-
-                     
-                     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error) {
-                         if (error) {
-                             NSLog(@" THIS IS THE ERRORRR -------%@", error);
-                         } else {
-                             //---------------------------------------------------------------------------------------------------
-
-                             // WE ARE GETTING AN  THE PFTOURS
-                    
-                             //------------------~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                             PFObject *currentItinerary = objects[0][@"itineraryForThisTour"];
-                             [currentItinerary fetch];
-                             NSLog(@"THIS IS NAME OF TOUR AT INDEX %@--------------- ", currentItinerary[@"nameOfTour"]);
-                             NSArray *currentTourStops = currentItinerary[@"tourStops"];
-                             PFObject *tourStop = currentTourStops[0];
-                             [tourStop fetch];
-                             NSLog(@"THIS IS THE OBJECT ID OF THE TOUR STOP %@", tourStop);
-                             NSLog(@"%lu", objects.count);
-                             NSLog(@"THIS IS THE LAT   =========  %@", tourStop[@"lat"]);
-                             
-//                             for (PFObject *PFTour in objects) {
-//                                 TRVTO
-//                             }
-//                             
-//                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             
-                             //---------------------------------------------------------------------------------------------------
-
-                         }
-                     }];
-                     
-            
-                     
-                     
+//                     
+//                     
 //                     NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
 
 //                         NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:guideForThisRow];
@@ -322,7 +251,10 @@
                      [self.availableGuides addObject: guideForThisRow];
                      NSLog(@"My name is: %@", guideForThisRow.userBio.firstName);
                      [self.tableView reloadData];
-                 }];
+                 }]; //  END OF GET IMAGES BLOCK
+                 
+                 
+                 
                  NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
                  
              }
@@ -338,6 +270,9 @@
                 } else {
                 // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
         }
+    [self.tableView reloadData];
+
+    
 }
 
 

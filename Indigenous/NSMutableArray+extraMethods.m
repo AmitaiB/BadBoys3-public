@@ -81,7 +81,7 @@
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
     //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
-    [self createParseDummyTour];
+//    [self createParseDummyTour];
    
     
     return allTripsArray;
