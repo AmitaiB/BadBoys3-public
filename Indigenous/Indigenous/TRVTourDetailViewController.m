@@ -70,7 +70,6 @@
 
 -(void)bookTourButtonPressed:(id)sender {
     
-    
         UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
     
         TRVBookTourViewController *destination = [destinationStoryboard instantiateInitialViewController];

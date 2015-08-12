@@ -19,6 +19,12 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
+
+@property (nonatomic, strong) TRVUserSnippetView *snippetView;
+@property (nonatomic, strong) TRVUserContactView *contactView;
+@property (nonatomic, strong) TRVUserAboutMeView *aboutMeView;
+
+
 @end
 
 @implementation TRVProfileViewController {
@@ -43,11 +49,11 @@
     
     //Instantiate a Snippet View Nib
 
-        TRVUserSnippetView *snippetView = [[TRVUserSnippetView alloc] init];
-        snippetView.userForThisSnippetView = self.user;
-        [self.containerView addSubview:snippetView];
+        self.snippetView = [[TRVUserSnippetView alloc] init];
+        self.snippetView.userForThisSnippetView = self.user;
+        [self.containerView addSubview:self.snippetView];
 
-        [snippetView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.snippetView mas_makeConstraints:^(MASConstraintMaker *make) {
             
             
             make.top.equalTo(profileImageView.mas_bottom);
@@ -58,29 +64,29 @@
     
     //Instantiate an ABOUT ME  Nib
     
-    TRVUserAboutMeView *aboutMeView = [[TRVUserAboutMeView alloc] init];
-    aboutMeView.userForThisAboutMeView = self.user;
-    [self.containerView addSubview:aboutMeView];
-    [aboutMeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(snippetView.mas_bottom);
+    self.aboutMeView = [[TRVUserAboutMeView alloc] init];
+    self.aboutMeView.userForThisAboutMeView = self.user;
+    [self.containerView addSubview:self.aboutMeView];
+    [self.aboutMeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.snippetView.mas_bottom);
         make.left.and.right.equalTo(self.containerView);
     }];
     
     //add IBAction programatically
     UITapGestureRecognizer *singleTapOnImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToGuideTab:)];
-    [aboutMeView.switchToGuideButton addGestureRecognizer:singleTapOnImage];
-    aboutMeView.switchToGuideButton.userInteractionEnabled = YES;
+    [self.aboutMeView.switchToGuideButton addGestureRecognizer:singleTapOnImage];
+    self.aboutMeView.switchToGuideButton.userInteractionEnabled = YES;
 
     
     
     
     //Instantiate a Contact View Nib
 
-        TRVUserContactView *contactView = [[TRVUserContactView alloc] init];
-        contactView.userForThisContactView = self.user;
-        [self.containerView addSubview:contactView];
-        [contactView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(aboutMeView.mas_bottom);
+        self.contactView = [[TRVUserContactView alloc] init];
+        self.contactView.userForThisContactView = self.user;
+        [self.containerView addSubview:self.contactView];
+        [self.contactView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.aboutMeView.mas_bottom);
             make.left.and.right.equalTo(self.containerView);
         }];
     
@@ -88,11 +94,23 @@
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
-        make.bottom.equalTo(contactView.mas_bottom);
+        make.bottom.equalTo(self.contactView.mas_bottom);
 //        make.height.equalTo(contactView.mas_c);
     }];
 
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+
+//
+//    
+//    profileImageView.userForThisProfileImageView = self.sharedDataStore.loggedInUser;
+    self.snippetView.userForThisSnippetView = self.user;
+//
+//    aboutMeView.userForThisAboutMeView = self.user;
+//   
+    self.contactView.userForThisContactView = self.user;
+    }
 
 
 -(void)tapToGuideTab:(TRVUserContactView *)view {

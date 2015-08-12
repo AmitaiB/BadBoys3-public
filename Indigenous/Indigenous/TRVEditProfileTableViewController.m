@@ -17,13 +17,18 @@
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 @property (weak, nonatomic) IBOutlet UITableViewCell *testCell;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
-- (IBAction)taglineEditButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *languagesTextField;
+
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *taglineCell;
 @property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *aboutMeCell;
 @property (weak, nonatomic) IBOutlet UILabel *aboutMeLabel;
+@property (weak, nonatomic) IBOutlet UITextField *homeCityLabel;
+@property (weak, nonatomic) IBOutlet UITextField *homeCountryLabel;
 
 
 @end
@@ -34,16 +39,55 @@
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
-//    [self.taglineLabel sizeToFit];
+    UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonPressed)];
+    self.navigationItem.rightBarButtonItem = editBarButtonItem;
+    
+    
+    
+    // set labels
     self.firstNameTextField.text = self.sharedDataStore.loggedInUser.userBio.firstName;
-    NSLog(@"%@", self.sharedDataStore.loggedInUser.userBio.firstName);
+    self.lastNameTextField.text = self.sharedDataStore.loggedInUser.userBio.lastName;
+    self.emailTextField.text = self.sharedDataStore.loggedInUser.userBio.email;
+    self.languagesTextField.text = self.sharedDataStore.loggedInUser.userBio.language;
  }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+-(void)viewWillAppear:(BOOL)animated {
 
+    [self.tableView reloadData];
+}
+    
+    
+-(void)saveButtonPressed {
+    NSLog(@"SAVED");
+    
+    PFUser *currentUser = [PFUser currentUser];
+    
+    PFObject *userBio = currentUser[@"userBio"];
+    
+    
+    userBio[@"email"] = self.emailTextField.text;
+    currentUser[@"email"] = self.emailTextField.text;
+    userBio[@"languagesSpoken"] = self.languagesTextField.text;
+    
+    //save locally
+    self.sharedDataStore.loggedInUser.userBio.email = self.emailTextField.text;
+    self.sharedDataStore.loggedInUser.userBio.language = self.languagesTextField.text;
+    self.sharedDataStore.loggedInUser.userBio.firstName = self.firstNameTextField.text;
+    self.sharedDataStore.loggedInUser.userBio.lastName = self.lastNameTextField.text;
+
+    
+    // save on parse
+    [currentUser saveEventually];
+    
+    
+    
+    // save things to parse
+    [self.navigationController popViewControllerAnimated:YES];
+}
+    
+    
+    
+    
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -53,7 +97,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 6;
+    return 5;
 }
 
 
@@ -92,10 +136,6 @@
     
 }
 
-- (IBAction)taglineEditButtonPressed:(id)sender {
-    
-    
-}
 
 
 @end
