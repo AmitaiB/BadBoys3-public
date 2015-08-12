@@ -18,7 +18,6 @@
 #import "TRVUserDataStore.h"
 #import <CZPicker.h>
 #import <SSFlatDatePicker.h>
-#import <DateTools.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
@@ -100,7 +99,6 @@
         self.itineraryTableView.hidden = YES;
         self.datePicker.hidden = NO;
         self.confirmDateSelectionButton.hidden = NO;
-        self.confirmDateSelectionButton.enabled = YES;
         [self.datePicker becomeFirstResponder];
         return NO;
     } else {
@@ -121,6 +119,61 @@
     }
     return YES;
 }
+
+#pragma mark - TableView DataSource
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.listOfStops.count;
+}
+
+/* //TODO: Configure the itinerary Cells...
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *tourStopCell = [tableView dequeueReusableCellWithIdentifier:@"reuseID" forIndexPath:indexPath];
+    
+        //blah blah
+    return cell;
+} */
+
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+
 
 #pragma mark - Category Control helper
 
@@ -148,6 +201,11 @@
     NSString *formattedDateString = [dateFormatter stringFromDate:self.datePicker.date];
     
     self.dateTxF.text = formattedDateString;
+    
+        //return control and state to previously...
+    self.itineraryTableView.hidden         = NO;
+    self.confirmDateSelectionButton.hidden = YES;
+    self.datePicker.hidden                 = YES;
 }
 
 
