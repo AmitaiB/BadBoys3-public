@@ -77,7 +77,7 @@
 
         
     
-    //add 4     of these dummy trips into allTrips Array
+    //add 4  of these dummy trips into allTrips Array
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
     //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA

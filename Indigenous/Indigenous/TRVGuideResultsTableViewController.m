@@ -207,6 +207,12 @@
                     
                 }]; // END OF GET GUIDE IMAGE BLOCK
                 
+                
+//                
+//                // override parse for now
+//                NSMutableArray *dummy = [[NSMutableArray alloc] init];
+//                NSMutableArray *dummyTours = [dummy returnDummyAllTripsArrayForGuide:guideForThisRow];
+//                guideForThisRow.myTrips = dummyTours;
 
                 
                 NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
@@ -228,12 +234,6 @@
 
 
 
-
-
-
-
-
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if([segue.identifier isEqualToString:@"showFilter"]) {
@@ -246,10 +246,7 @@
     
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
         
-        //        NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
-        
-        //        TRVUser *destinationGuideUser = self.availableGuides[ip.row];
-        
+
         TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
         destinationVC.selectedGuideUser = self.destinationGuideUser;
         
