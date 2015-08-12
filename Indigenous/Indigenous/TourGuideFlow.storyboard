@@ -211,6 +211,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tour Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Xg-wn-xBe">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.85555930993585816" blue="0.47972394716405409" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -235,6 +241,7 @@
                                 <exclude reference="7S9-Gw-LUw"/>
                                 <exclude reference="lok-hC-Ho6"/>
                                 <exclude reference="5GU-Ci-MSP"/>
+                                <exclude reference="5Xg-wn-xBe"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Ks0-sw-p9s"/>
@@ -259,6 +266,7 @@
                                 <include reference="7S9-Gw-LUw"/>
                                 <include reference="lok-hC-Ho6"/>
                                 <include reference="5GU-Ci-MSP"/>
+                                <include reference="5Xg-wn-xBe"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Ks0-sw-p9s"/>
@@ -274,6 +282,7 @@
                         <outlet property="saveButtonLabel" destination="4pj-ff-QgM" id="wkV-DV-Esg"/>
                         <outlet property="saveTourButton" destination="V8x-Oi-iPZ" id="jMF-aX-Bc1"/>
                         <outlet property="tourCategoryLabel" destination="lok-hC-Ho6" id="r74-pf-TRH"/>
+                        <outlet property="tourDateLabel" destination="5Xg-wn-xBe" id="QAG-4H-D0N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njw-Ck-Vef" userLabel="First Responder" sceneMemberID="firstResponder"/>

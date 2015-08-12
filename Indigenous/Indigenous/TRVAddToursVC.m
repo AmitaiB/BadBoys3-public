@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tourCategoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
 @property (weak, nonatomic) IBOutlet SSFlatDatePicker *datePicker;
+@property (nonatomic, strong) NSDate *tourDate;
+@property (weak, nonatomic) IBOutlet UILabel *tourDateLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *addTourNameTF;
 - (IBAction)chooseCategoryButtonTapped:(id)sender;
@@ -46,6 +48,9 @@
     [super viewDidLoad];
     self.saveButtonLabel.hidden = YES;
     
+    [self.datePicker addTarget:self
+                        action:@selector(setNewDate)
+              forControlEvents:UIControlEventValueChanged];
     
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
@@ -66,6 +71,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark - DatePicker helper
+
+-(void)setNewDate {
+    DBLG
+    NSLog(@"tourdate is: %@", self.datePicker.date);
+    self.tourDate = self.datePicker.date;
+    self.tourDateLabel.text = [self.datePicker.date description];
+}
 
 #pragma mark - Navigation
 
