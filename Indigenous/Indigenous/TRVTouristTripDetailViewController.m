@@ -25,12 +25,25 @@
 @property (nonatomic, strong) TRVTourStopCollectionViewDelegateFlowLayout *collectionViewDelegate;
 @property (nonatomic, strong) TRVParallaxHeaderImageView *parallaxImageView;
 @property (nonatomic, strong) UILabel *parallaxHeaderTourNameLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBookTourButtonConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *bookTourButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tourStopImageViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (nonatomic) BOOL isTourGuide;
 @end
 
 @implementation TRVTouristTripDetailViewController {
     CGFloat _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
     CGFloat _savedAlphaValue;
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]){
+        _isTourGuide = NO;
+    }
+    return self;
+    
 }
 
 - (void)viewDidLoad {
@@ -51,11 +64,28 @@
     [self setupParallaxImage:self.theScrollViewThatHoldsAllTheOtherViews];
     
     _savedAlphaValue = 1;
+    
+    if (_isTourGuide == YES){
+        [self setUpTourGuideViewController];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)isTourGuideTripViewController {
+    _isTourGuide = YES;
+   
+}
+
+-(void)setUpTourGuideViewController {
+    self.bookTourButton.hidden = NO;
+    self.topBookTourButtonConstraint.active = YES;
+    self.tourStopImageViewBottomConstraint.active = NO;
+    [self.contentView layoutIfNeeded];
+    
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
@@ -144,6 +174,17 @@
 //    self.parallaxHeaderTourNameLabel.alpha = 1;
 //    self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor orangeColor];
 }
+
+
+- (IBAction)bookTourButtonTapped:(id)sender {
+    
+    
+    
+    
+}
+
+
+
 
 - (void)viewWillAppear:(BOOL)animated {
     self.parallaxHeaderTourNameLabel.hidden = NO;
