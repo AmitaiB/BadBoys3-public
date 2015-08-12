@@ -49,7 +49,7 @@
     
     if (self) {
         _selectedGuide = selectedGuide;
-        _allTours = selectedGuide.allTrips;
+        _allTours = selectedGuide.myTrips;
         _sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
         _categoryTab = YES;
     }

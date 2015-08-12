@@ -81,7 +81,7 @@
     [allTripsArray addObjectsFromArray:@[dummyTourInTheFuture,dummyTourInThePast,dummyTourInThePast, dummyTourInTheFuture,dummyTourInTheFuture,dummyTourInTheFuture]];
     
     //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
-//    [self createParseDummyTour];
+ //   [self createParseDummyTour];
    
     
     return allTripsArray;
@@ -104,11 +104,6 @@
     theTour[@"itineraryForThisTour"] = theItinerary;
     theItinerary[@"nameOfTour"] = @"Some name of tour";
     
-//    NSString *str= [[NSBundle mainBundle] pathForResource:@"Carmelo" ofType:@"jpg"];
-//    NSData *tourImageData = [NSData dataWithContentsOfFile:str];
-//    PFFile *tourImage = [PFFile fileWithName:@"tourImage" data:tourImageData];
-//   [tourImage save];
-    
     UIImage *tourImage = [UIImage imageNamed:@"madrid.jpg"];
     
     
@@ -128,6 +123,13 @@
     theStop[@"incidentalCost"] = @0;
     theStop[@"lat"] = @10;
     theStop[@"lng"] = @10;
+    theStop[@"nameOfPlace"] = @"The Flatiron School";
+    theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
+    theStop[@"addressOfEvent"] = @"123 Nobody St.";
+    
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop[@"image"] = PFImage;
+    
 ////    //  theStop[@"tourStopLocation"] = pfgeopoint;
 ////    
 ////    //    PFObject *theMarker = [PFObject objectWithClassName:@"GMSMarker"];

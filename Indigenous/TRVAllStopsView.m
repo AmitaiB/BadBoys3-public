@@ -71,7 +71,7 @@
     
     
 //    NSMutableArray *array = [[NSMutableArray alloc] init];
-    NSMutableArray *tours = self.sharedDataStore.loggedInUser.allTrips;
+    NSMutableArray *tours = self.sharedDataStore.loggedInUser.myTrips;
 //    NSMutableArray *tours = [array returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
     
     // OVERRIDE SETTER
