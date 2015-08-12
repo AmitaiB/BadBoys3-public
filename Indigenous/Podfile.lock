@@ -27,6 +27,7 @@ PODS:
   - Bolts/AppLinks (1.2.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.2.0)
+  - CZPicker (0.3.5)
   - FBSDKCoreKit (4.5.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc (= 4.5.0)
@@ -66,10 +67,13 @@ PODS:
     - Bolts/Tasks (>= 1.2.0)
   - ParseUI (1.1.4):
     - Parse (~> 1.7)
+  - RMSaveButton (0.1.0)
+  - SSFlatDatePicker (0.9.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - APParallaxHeader
+  - CZPicker
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -82,11 +86,14 @@ DEPENDENCIES:
   - MPSkewed
   - Parse
   - ParseUI (~> 1.1)
+  - RMSaveButton
+  - SSFlatDatePicker
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   APParallaxHeader: 854bc48a2487ca12c702f8a236fec0d89cdac5c3
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  CZPicker: ce4f352d65ef5ccb8d7378afe3ee4e5bdbead15a
   FBSDKCoreKit: ba4ca18ecae56af01e1b8c4faa889ef21d68bea2
   FBSDKLoginKit: 8327c9aa7c6afd13cdcd0a6f9aebe585ed39c82a
   FBSDKShareKit: 06f569e09f2b99c23df17da129ec3aa01d9c2fb4
@@ -101,5 +108,7 @@ SPEC CHECKSUMS:
   MPSkewed: 53d2f5ae0ce57c2ee475107cfb8899426f0b68fa
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
+  RMSaveButton: 0e3059ab2b7c06b362d9257876fec34f7fc12745
+  SSFlatDatePicker: b0ecc541d4deb4ac1ad80b120bcc325c910ad12e
 
 COCOAPODS: 0.37.2
