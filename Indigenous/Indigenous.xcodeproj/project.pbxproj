@@ -569,6 +569,9 @@
 		940911581B6E8B810072C16B /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				94BB58921B78F7E10056D46F /* TRVTourDetailViewController.h */,
+				94BB58931B78F7E10056D46F /* TRVTourDetailViewController.m */,
+				FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */,
 				9488A6031B7B6BF90020476B /* TRVEditTextViewController.h */,
 				9488A6041B7B6BF90020476B /* TRVEditTextViewController.m */,
 				94BD69001B6EC18A000CDA65 /* TRVGuideResultsTableViewController.h */,
@@ -607,8 +610,6 @@
 			children = (
 				94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */,
 				942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */,
-				94BB58921B78F7E10056D46F /* TRVTourDetailViewController.h */,
-				94BB58931B78F7E10056D46F /* TRVTourDetailViewController.m */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -794,7 +795,6 @@
 				FA57FA1D1B696AF800CFBB89 /* TRVTouristTripTableViewCell.h */,
 				FA57FA1E1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m */,
 				FA57FA201B696F2A00CFBB89 /* TRVTouristTripDataSource.h */,
-				FA57FA211B696F2A00CFBB89 /* TRVTouristTripDataSource.m */,
 			);
 			name = TourList;
 			sourceTree = "<group>";

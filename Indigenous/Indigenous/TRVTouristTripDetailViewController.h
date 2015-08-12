@@ -13,5 +13,5 @@
 @interface TRVTouristTripDetailViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) TRVTour *tour;
-
+-(void)isTourGuideTripViewController;
 @end
