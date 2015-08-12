@@ -164,7 +164,6 @@
                                           nonFacebookImage:guideBio[@"emailPicture"]];
         
         if (guideBio[@"picture"]){
-            
             [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                 bio.profileImage = response;
                 guideForThisRow.userBio = bio;
@@ -192,8 +191,10 @@
 }
 
 -(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user {
-
+    
+    
     NSArray *allTours = user[@"myTrips"];
+    
     for (PFObject *PFTour in allTours){
         [PFTour fetch];
         TRVTour *tour = [[TRVTour alloc]init];
