@@ -102,7 +102,7 @@
         self.subCategories = @[@"Sports", @"Outdoors", @"Hiking", @"Biking", @"Swimming"];
         
         
-    } else if (self.dataStore.currentCategorySearching == [TRVTourCategory returnSeeCategory]){
+    } else if (self.dataStore.currentCategorySearching == [TRVTourCategory returnCategoryWithTitle:@"See"]){
         
         self.subCategories = @[@"Landmarks", @"Nature", @"History", @"Buildings"];
     }

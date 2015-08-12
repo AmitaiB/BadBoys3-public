@@ -15,9 +15,11 @@
 @property (nonatomic, strong) UIImage *categoryImage;
 @property (nonatomic, strong) UIImage *iconImage;
 
+
+
 -(instancetype)initWithName:(NSString *)name cateogoryImage:(UIImage *)cateogoryImage iconImage:(UIImage *)iconImage;
 
-
++(TRVTourCategory *)returnCategoryWithTitle:(NSString *)title;
 +(TRVTourCategory *)returnSeeCategory;
 +(TRVTourCategory *)returnPlayCategory;
 +(TRVTourCategory *)returnEatCategory;

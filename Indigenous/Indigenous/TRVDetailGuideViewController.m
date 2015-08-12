@@ -51,7 +51,7 @@
 
 
 
-    NSLog(@"%@", self.selectedGuideUser.allTrips);
+    NSLog(@"%@", self.selectedGuideUser.myTrips);
     
     //Instantiate a Image View Nib
     
