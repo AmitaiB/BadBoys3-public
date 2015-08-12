@@ -116,9 +116,7 @@
     theItinerary[@"tourImage"] = PFImage;
     
 //    theItinerary[@"tourImage"] = tourImage;
-    theItinerary[@"numberOfStops"] = @1;
-    theItinerary[@"tourStops"] = @[theStop];
-//
+   //
 ////    // theItinerary[@"attractions"] = ARRAY OF ATTRACTIONS;
 //
     theStop[@"operatorCost"] = @0;
@@ -132,6 +130,11 @@
     
     //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
     theStop[@"image"] = PFImage;
+    
+    NSArray *tourStopsArray = @[theStop, theStop, theStop, theStop];
+    theItinerary[@"tourStops"] = tourStopsArray;
+    theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
+
     
 ////    //  theStop[@"tourStopLocation"] = pfgeopoint;
 ////    

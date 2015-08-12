@@ -21,6 +21,7 @@
 #import "TRVAFNetwokingAPIClient.h"
 #import <Parse.h>
 #import "TRVTourStop.h"
+#import <MBProgressHUD.h>
 
 @interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol, ImageTapProtocol>
 
@@ -29,6 +30,8 @@
 @property (nonatomic, strong) TRVUserDataStore *sharedData;
 @property (nonatomic, strong) NSMutableArray *availableGuides;
 @property (nonatomic, strong) TRVUser *destinationGuideUser;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic) NSUInteger userCount;
 //@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
 
 @end
@@ -106,17 +109,16 @@
     
     self.availableGuides = [[NSMutableArray alloc]init];
     // ADD LOADING HUD HERE BEFORE PARSE REQUEST GOES DOWN
-    
-    
-    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     
     PFQuery *query = [PFUser query];
     [query includeKey:@"userBio"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error){
-        
+        self.userCount = 0;
+
         for (PFUser *user in objects){
             PFObject *guideBio = user[@"userBio"];
-           // [guideBio fetch];
             
             if ([guideBio[@"isGuide"] isEqualToNumber:@(YES)] && [guideBio[@"homeCity"] isEqualToString:self.selectedCity]){
                 
@@ -201,25 +203,26 @@
                         
                     } // END OF TOUR FOR LOOP
 
-                    [self.availableGuides addObject: guideForThisRow];
+                    [self.availableGuides addObject:guideForThisRow];
                     NSLog(@"My name is: %@", guideForThisRow.userBio.firstName);
                     [self.tableView reloadData];
                     
+                    self.userCount++;
+                    
+                    if (self.userCount == objects.count){
+                        [self.hud hide:YES];
+                    }
                 }]; // END OF GET GUIDE IMAGE BLOCK
                 
-                
-//                
-//                // override parse for now
-//                NSMutableArray *dummy = [[NSMutableArray alloc] init];
-//                NSMutableArray *dummyTours = [dummy returnDummyAllTripsArrayForGuide:guideForThisRow];
-//                guideForThisRow.myTrips = dummyTours;
 
                 
                 NSLog(@"NUMBER OF GUIDES AVAILABLE AFTER CONDITION: %lu!!!!!", (unsigned long)self.availableGuides.count);
                 
-            }
+            } // END OF IF STATEMENT
 
-        }
+        } // END OF USER FOR LOOP
+        
+        
     }];
     
     
@@ -231,6 +234,9 @@
     } else {
         // USE SELF.FILTERDICTIONARY TO FILTER THE GUIDES
     }
+    
+    
+    
 }
 
 
