@@ -8,15 +8,17 @@
 
 #import "TRVAddToursVC.h"
 #import "TRVPickerMapViewController.h"
+#import "TestMapWithSearchVC.h"
 #import "TRVTour.h"
 #import "TRVItinerary.h"
 #import "TRVTourStop.h"
 #import <Parse.h>
+#import <MapKit/MapKit.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 
-@interface TRVAddToursVC () <TRVPickerMapDelegate>
+@interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate>
 
 @end
 
@@ -38,15 +40,23 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toMapSegueID"]) {
     TRVPickerMapViewController *destinationVC = segue.destinationViewController;
-    destinationVC.delegate = self;
+        destinationVC.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"toAppleMapSegueID"]) {
+        TestMapWithSearchVC *destinationVC = segue.destinationViewController;
+        destinationVC.delegate = self;
+    }
+    
+    
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 
 //- (void)initializeNewTourConstruct {
 //    PFObject *itineraryUnderConstruction = [PFObject objectWithClassName:@"TourUnderConstruction"];
-//        //TODO:AMITAI store the growing itinerary in a PFObject to the local datastore
+//        //TODO:[Amitai] store the growing itinerary in a PFObject to the local datastore
 //}
 
 /**

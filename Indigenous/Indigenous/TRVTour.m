@@ -42,4 +42,34 @@
 
 
 
+//@property (nonatomic, strong) TRVUser *guideForThisTour;
+//@property (nonatomic, strong) TRVItinerary *itineraryForThisTour;
+//@property (nonatomic, strong) TRVTourCategory *categoryForThisTour;
+//@property (nonatomic, strong) NSDate *tourDeparture;        //The date of the start of a tour program.
+//@property (nonatomic) CGFloat *tourAverageRating;
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    if (self = [super init]) {
+        self.guideForThisTour = [decoder decodeObjectOfClass:[TRVUser class] forKey:@"guideForThisTour"];
+        self.itineraryForThisTour = [decoder decodeObjectOfClass:[TRVItinerary class] forKey:@"itineraryForThisTour"];
+        self.categoryForThisTour = [decoder decodeObjectOfClass:[TRVTourCategory class] forKey:@"categoryForThisTour"];
+        self.tourDeparture = [decoder decodeObjectOfClass:[NSDate class] forKey:@"tourDeparture"];
+        self.tourAverageRating = [decoder decodeDoubleForKey:@"tourAverageRating"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.guideForThisTour forKey:@"guideForThisTour"];
+//  [encoder encodeObject:self.itineraryForThisTour forKey:@"itineraryForThisTour"];
+ //   [encoder encodeObject:self.categoryForThisTour forKey:@"categoryForThisTour"];
+    [encoder encodeObject:self.tourDeparture forKey:@"tourDeparture"];
+    [encoder encodeDouble:self.tourAverageRating forKey:@"tourAverageRating"];
+
+
+
+
+}
+
+
 @end

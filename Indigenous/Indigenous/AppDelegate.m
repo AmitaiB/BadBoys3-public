@@ -13,6 +13,8 @@
 #import <Parse.h>
 #import <AFNetworkReachabilityManager.h>
 
+#import <HNKGooglePlacesAutocomplete.h>
+
 
 @interface AppDelegate ()
 
@@ -27,13 +29,15 @@
     
     [Parse setApplicationId:PARSE_APPLICATION_ID
                   clientKey:PARSE_CLIENT_KEY];
-//!!!:AMITAI This is purely for debugging ↓
-    [PFUser enableAutomaticUser];
+//!!![AMITAI]: This is purely for debugging ↓
+   // [PFUser enableAutomaticUser];
     
     
     
     
     [GMSServices provideAPIKey:GOOGLE_API_KEY];
+        //TODO: [Amitai] Check for redundancy:
+    [HNKGooglePlacesAutocompleteQuery setupSharedQueryWithAPIKey:GOOGLE_API_KEY];
     
 
     return [[FBSDKApplicationDelegate sharedInstance] application:application

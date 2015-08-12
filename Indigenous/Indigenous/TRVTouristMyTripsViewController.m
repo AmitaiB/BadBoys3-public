@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+    [self.sharedDataStore setCurrentUser: [PFUser currentUser]];
+    self.sharedDataStore.parseUser = [PFUser currentUser];
 //    
 //    TRVTourStop *dummyTourStop = [[TRVTourStop alloc] init];
 //    

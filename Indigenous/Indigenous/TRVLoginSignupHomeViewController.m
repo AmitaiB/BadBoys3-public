@@ -10,11 +10,13 @@
 #import "TRVFacebookLoginHandler.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD.h>
+#import "TRVUserDataStore.h"
+#import <Masonry.h>
 
-@interface TRVLoginSignupHomeViewController ()
+@interface TRVLoginSignupHomeViewController () 
 
-
-
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIView *loadingView;
 @end
 
 @implementation TRVLoginSignupHomeViewController
@@ -28,16 +30,16 @@
 //    [FBSDKProfile setCurrentProfile:nil];
 
 
-    NSLog(@"PFUSER: %@", [PFUser currentUser]);
-    NSLog(@"FACEBOOK USER: %@", [FBSDKAccessToken currentAccessToken]);
-    
-    
+   
   
     
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    NSLog(@"PFUSER: %@", [PFUser currentUser]);
+    NSLog(@"FACEBOOK USER: %@", [FBSDKAccessToken currentAccessToken]);
+    
     [self checkToSeeIfUserIsLoggedIn];
 
     
@@ -45,38 +47,51 @@
 
 -(void)checkToSeeIfUserIsLoggedIn {
     
-    if (([FBSDKAccessToken currentAccessToken] && [PFUser currentUser]) || [PFUser currentUser]) {
+
+    
+    if (self.isPerformingASwitch){
+        self.isPerformingASwitch = NO;
+        NSLog(@"Switching!");
+        
+        [self showLoadingView];
+
+    } else if (([FBSDKAccessToken currentAccessToken] && [PFUser currentUser]) || [PFUser currentUser]) {
+        
+        [self showLoadingView];
         
         [self transitionToHome];
         
     } else {
-        
+
         NSLog(@"No one logged in.");
 
     }
 
-    
+
     
 }
 
+-(void)switchUserType {
+    self.isPerformingASwitch = YES;
+}
 
 
 -(void)transitionToHome{
     
+    TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
+    
     // User is logged in, do work such as go to next view controller.
-    NSLog(@"Facebook user logged in");
     PFObject *userBio = [PFUser currentUser][@"userBio"];
     
     
     [userBio fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
-        
         NSNumber *isGuide = userBio[@"isGuide"];
         if ([isGuide isEqualToNumber:@(NO)]){
+            user.isOnGuideTabBar = NO;
             [self presentTouristHomeView];
         } else {
-            
-            // TODO TRANSITION TO GUIDE HOMEVIEW
-            [self presentTouristHomeView];
+            user.isOnGuideTabBar = YES;
+            [self presentGuideHomeView];
         }
         
     }];
@@ -84,58 +99,58 @@
 
 }
 
-
--(void)transitionToHomeStoryboardWithEmail:(NSString*)email andPassword:(NSString*)password{
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES]; // start progres hud
-    hud.labelText = @"Logging In";
-    
-    [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error){
-        
-        
-        if (user){
-            
-            NSLog(@"User: %@", user);
-            NSLog(@"bio: %@", user[@"userBio"]);
-            PFObject *bioObject = user[@"userBio"];
-            
-            [bioObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
-                [hud hide:YES];
-                
-                if (object){
-                    if ([user[@"userBio"][@"isGuide"] isEqualToNumber:@(YES)]){
-                        // present guide home
-                        // NEEDS TO GET DONE
-                        
-                        
-                    } else {
-                        // present guide home
-                        [self presentTouristHomeView];
-                        
-                    }
-                } else {
-                    
-                    NSLog(@"Unable to log in: %@", error);
-                    UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Logging In" message:@"Please check your username and password.  Then try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                    [alertBox show];
-                }
-                
-                
-            }];
-            
-        } else {
-            
-            NSLog(@"Unable to log in: %@", error);
-            UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Logging In" message:@"Please check your username and password.  Then try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alertBox show];
-            
-        }
-        
-        
-    }];
-    
-    
-}
+//
+//
+//-(void)transitionToHomeStoryboardWithEmail:(NSString*)email andPassword:(NSString*)password{
+//    
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES]; // start progres hud
+//    hud.labelText = @"Logging In";
+//    
+//    [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error){
+//        
+//        
+//        if (user){
+//            
+//            NSLog(@"User: %@", user);
+//            NSLog(@"bio: %@", user[@"userBio"]);
+//            PFObject *bioObject = user[@"userBio"];
+//            
+//            [bioObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error){
+//                [hud hide:YES];
+//                
+//                if (object){
+//                    if ([user[@"userBio"][@"isGuide"] isEqualToNumber:@(YES)]){
+//                        // present guide home
+//                        // NEEDS TO GET DONE
+//                        [self presentGuideHomeView];
+//                        
+//                    } else {
+//                        [self presentTouristHomeView];
+//                        
+//                    }
+//                } else {
+//                    
+//                    NSLog(@"Unable to log in: %@", error);
+//                    UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Logging In" message:@"Please check your username and password.  Then try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+//                    [alertBox show];
+//                }
+//                
+//                
+//            }];
+//            
+//        } else {
+//            
+//            NSLog(@"Unable to log in: %@", error);
+//            UIAlertView *alertBox = [[UIAlertView alloc]initWithTitle:@"Error Logging In" message:@"Please check your username and password.  Then try again." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+//            [alertBox show];
+//            
+//        }
+//        
+//        
+//    }];
+//    
+//    
+//}
 
 
 -(void)presentTouristHomeView {
@@ -149,8 +164,34 @@
     
 }
 
+-(void)presentGuideHomeView {
+    
+    
+    UIStoryboard *tourist = [UIStoryboard storyboardWithName:@"RootGuideTabController" bundle:nil];
+    
+    UIViewController *destination = [tourist instantiateInitialViewController];
+    
+    [self presentViewController:destination animated:YES completion:nil];
+    
+}
 
+-(void)showLoadingView {
+    
+    self.loadingView = [[UIView alloc]init];
+    
+    self.loadingView.backgroundColor = [UIColor greenColor];
+    
+    [self.view addSubview:self.loadingView];
 
+    
+    [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(self.view);
+    }];
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.loadingView animated:YES];
+
+    
+}
 
 
 
@@ -159,6 +200,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    [self.hud hide:YES];
+    [self.loadingView removeFromSuperview];
+    [super viewDidDisappear:animated];
+    
+}
 /*
  #pragma mark - Navigation
  
