@@ -12,9 +12,11 @@
 #import "TRVTourStopCollectionViewDelegateFlowLayout.h"
 #import "UIScrollView+APParallaxHeader.h"
 #import "TRVParallaxHeaderImageView.h"
-//#import "TRVTourStop.h"
-
 #import "Masonry/Masonry.h"
+
+
+
+
 
 @interface TRVTouristTripDetailViewController () <APParallaxViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarTitle;
@@ -26,6 +28,24 @@
 @property (nonatomic, strong) TRVParallaxHeaderImageView *parallaxImageView;
 @property (nonatomic, strong) UILabel *parallaxHeaderTourNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
+
+@property (weak, nonatomic) IBOutlet UIView *contactGuideXib;
+
+
+
+
+
+
+
+
+
+
+
 @end
 
 @implementation TRVTouristTripDetailViewController {
@@ -49,6 +69,21 @@
     self.tourStopCollectionView.scrollsToTop = NO;
 
     [self setupParallaxImage:self.theScrollViewThatHoldsAllTheOtherViews];
+    
+    
+    [self.contentView addSubview:self.contactGuideXib];
+    [self.contactGuideXib mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.and.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.tourStopImageView.mas_bottom);
+        make.height.equalTo(@200);
+    }];
+    
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contactGuideXib.mas_bottom);
+    }];
+                                                  
+     
+    
     
     _savedAlphaValue = 1;
 }
