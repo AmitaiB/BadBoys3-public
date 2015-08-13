@@ -49,7 +49,10 @@
 
 - (void) setCurrentUser:(PFUser *)currentUser {
 
+
         _parseUser = currentUser;
+    
+    
         PFQuery *query = [PFQuery queryWithClassName:@"UserBio"];
          PFObject *object = currentUser[@"userBio"];
          [object pinInBackground];
