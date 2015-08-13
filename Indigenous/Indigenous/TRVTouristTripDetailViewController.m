@@ -130,7 +130,7 @@
     // Do any additional setup after loading the view.
     NSLog(@"The difference: %f", self.parallaxImageView.frame.size.height + self.navigationController.navigationBar.bounds.size.height - [UIScreen mainScreen].bounds.size.height);
     
-    UIView *viewToAddTitleLabelTo = (((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])));
+    UIView *viewToAddTitleLabelTo = (UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0]);
     [viewToAddTitleLabelTo addSubview:self.parallaxHeaderTourNameLabel];
     UITabBar *tabBar = [viewToAddTitleLabelTo subviews][1];
     [self.parallaxHeaderTourNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -191,6 +191,10 @@
     UIView *viewToAddTitleLabelTo = ((UIView*)[((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])) subviews][0]);
     [viewToAddTitleLabelTo bringSubviewToFront:self.parallaxHeaderTourNameLabel];
     self.parallaxHeaderTourNameLabel.alpha = _savedAlphaValue;
+}
+
+-(UIView*)viewWithTabBarAsSubview {
+    return nil;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
