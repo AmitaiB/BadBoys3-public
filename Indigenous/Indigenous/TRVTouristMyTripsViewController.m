@@ -77,6 +77,10 @@
     
     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
     self.tripTableView.dataSource = self.tableViewDataSource;
+    if (self.segmentedControl.selectedSegmentIndex == 1) {
+        [self.tableViewDataSource changeTripsDisplayed];
+        [self.tripTableView reloadData];
+    }
 }
 
 - (IBAction)segmentedControlChanged:(id)sender {
