@@ -68,7 +68,6 @@ PODS:
   - ParseUI (1.1.4):
     - Parse (~> 1.7)
   - RMSaveButton (0.1.0)
-  - SSFlatDatePicker (0.9.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -87,7 +86,6 @@ DEPENDENCIES:
   - Parse
   - ParseUI (~> 1.1)
   - RMSaveButton
-  - SSFlatDatePicker
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -109,6 +107,5 @@ SPEC CHECKSUMS:
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
   RMSaveButton: 0e3059ab2b7c06b362d9257876fec34f7fc12745
-  SSFlatDatePicker: b0ecc541d4deb4ac1ad80b120bcc325c910ad12e
 
 COCOAPODS: 0.38.2
