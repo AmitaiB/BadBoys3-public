@@ -53,7 +53,8 @@
     
     
     // SET TAGLINE LABEL AS BIO DESCRIPTION FOR NOW, 
-    self.guideTagLineLabel.text = userForThisGuideProfileView.userBio.bioDescription;
+    self.guideTagLineLabel.text = userForThisGuideProfileView.userBio.userTagline;
+    NSLog(@"THIS IS THE TAG LINE %@" ,userForThisGuideProfileView.userBio.userTagline);
     self.nameLabel.text = userForThisGuideProfileView.userBio.firstName;
 }
 
@@ -83,7 +84,6 @@
 
 - (void)imageTapped:(id)sender {
     //RETURN USER FOR THIS IMAGE
-    NSLog(@"%@",self.userForThisGuideProfileView.userBio.firstName);
     TRVUser *userForThisNib = self.userForThisGuideProfileView;
     [self.delegate returnUserForThisImageNib:userForThisNib];
 }

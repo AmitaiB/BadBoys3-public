@@ -71,6 +71,7 @@
     
     _userForThisAboutMeView = userForThisAboutMeView;
     self.userAboutMeLabel.text = userForThisAboutMeView.userBio.bioDescription;
+    NSLog(@"%@", userForThisAboutMeView.userBio.bioDescription);
     [self checkIfuserForThisViewIsGuide];
 
 }

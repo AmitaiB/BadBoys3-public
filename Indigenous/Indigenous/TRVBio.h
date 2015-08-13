@@ -39,9 +39,6 @@
 @property (nonatomic, strong) NSString *homeCity;
 @property (nonatomic, strong) NSString *profileImageURL;
 
-//INITIALIZERS
-//-(instancetype)initTourist;
-//-(instancetype)initGuide;
 
 -(instancetype)initTouristWithUserName:(NSString*)username
                       firstName:(NSString*)firstName
@@ -68,12 +65,6 @@
                       oneLineSummary:(NSString*)oneLineSummary
                      profileImageURL:(NSString*)URL
  nonFacebookImage:(UIImage *)nonFacebookImage;
-
-//-(void)convertTouristToGuideWithAge:(NSUInteger)age
-//                             gender:(NSString*)gender
-//                             region:(NSString*)region
-//                     oneLineSummary:(NSString*)oneLineSummary;
-
 
 
 @end
