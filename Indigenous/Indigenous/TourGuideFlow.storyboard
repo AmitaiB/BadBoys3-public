@@ -102,7 +102,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="232" id="mUT-8o-mq7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -176,9 +176,6 @@
                                     <segment title="Eat"/>
                                     <segment title="Drink"/>
                                 </segments>
-                                <connections>
-                                    <action selector="tourCategoryUIControl:" destination="Umb-bZ-KvD" eventType="valueChanged" id="JQW-JT-CCJ"/>
-                                </connections>
                             </segmentedControl>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="LsU-Fn-08t">
                                 <rect key="frame" x="-160" y="-81" width="320" height="162"/>
@@ -574,10 +571,10 @@
             </objects>
             <point key="canvasLocation" x="2146.5" y="356"/>
         </scene>
-        <!--Vmap Kit Map-->
+        <!--map Kit Map-->
         <scene sceneID="jOv-tk-EBE">
             <objects>
-                <viewController id="nwu-A0-ona" customClass="TRVmapKitMap" sceneMemberID="viewController">
+                <viewController id="nwu-A0-ona" userLabel="map Kit Map" customClass="TRVmapKitMap" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iPh-52-Gic"/>
                         <viewControllerLayoutGuide type="bottom" id="TGT-Yh-u5H"/>

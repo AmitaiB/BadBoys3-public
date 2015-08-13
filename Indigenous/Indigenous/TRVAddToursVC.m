@@ -186,10 +186,12 @@
 #pragma mark - Category Control helper
 
 -(void)changeTourCategory {
+    DBLG
     NSUInteger idx                 = self.tourCategorySegControl.selectedSegmentIndex;
     NSString *chosenCategory       = [self.tourCategorySegControl titleForSegmentAtIndex:idx];
     self.tourCategory.categoryName = chosenCategory;
     self.tourCategoryLabel.text    = chosenCategory;
+    self.tourCategoryLabel.text = [NSString stringWithFormat:@"A \"%@\" kind of Tour! 😃", self.tourCategory.categoryName];
 }
 
 
