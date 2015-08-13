@@ -69,6 +69,7 @@
     self.itineraryTableView.delegate   = self;
     self.itineraryTableView.dataSource = self;
     self.dateTxF.delegate              = self;
+    self.addTourNameTxF.delegate       = self;
 
     
         //method commented out
@@ -97,6 +98,7 @@
 #pragma mark - UITextfield Delegate
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    DBLG
     if ([textField isEqual:self.dateTxF]) {
         self.itineraryTableView.hidden = YES;
         self.datePicker.hidden = NO;
@@ -108,18 +110,19 @@
     }
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)textField {
 
-}
-
--(void)textFieldDidEndEditing:(UITextField *)textField {
+//-(void)textFieldDidEndEditing:(UITextField *)textField
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    DBLG
     if ([textField isEqual:self.addTourNameTxF]) {
-//        self.tourNameLabel.text = textField.text;
+        self.tourNameLabel.text = textField.text;
         self.itinerary.nameOfTour = textField.text;
         textField.text = @"";
         [textField resignFirstResponder];
     }
+    return YES;
 }
+
 
 #pragma mark - TableView DataSource
 
