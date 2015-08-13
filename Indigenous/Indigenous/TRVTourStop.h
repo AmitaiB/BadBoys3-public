@@ -30,12 +30,12 @@
 @property (nonatomic, strong) UIImage *image; // included in GMSMarker but uncommented for testing and to allow user provided images
 
 
--initWithCoordinates:(CLLocationCoordinate2D)coordinates operatorCost:(CGFloat)oCost incidentalCost:(CGFloat)iCost image:(UIImage *)image;
+-(instancetype)initWithCoordinates:(CLLocationCoordinate2D)coordinates operatorCost:(CGFloat)oCost incidentalCost:(CGFloat)iCost image:(UIImage *)image;
 
--initWithCoordinates:(CLLocationCoordinate2D)coordinates;
+-(instancetype)initWithCoordinates:(CLLocationCoordinate2D)coordinates;
 
--initWithMapMarker:(GMSMarker *)marker;
+-(instancetype)initWithMapMarker:(GMSMarker *)marker;
 
--initWithAnnotation:(id<MKAnnotation>)originalAnnotation;
+-(instancetype)initWithAnnotation:(id<MKAnnotation>)originalAnnotation;
 
 @end
