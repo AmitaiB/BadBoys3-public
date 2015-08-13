@@ -31,8 +31,10 @@
 
     
     viewController.tour = self.destinationTour;
-   // self.view = viewController.view;
+    NSLog(@"%@", viewController.tour.itineraryForThisTour.nameOfTour);
     [viewController isTourGuideTripViewController];
+  //  [self.view addSubview:viewController.view];
+
     [self.navigationController pushViewController:viewController animated:nil];
     
 //    TRVTourView *selectedTourView = [[TRVTourView alloc] init];
