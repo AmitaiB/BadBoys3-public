@@ -16,3 +16,4 @@ pod 'RMSaveButton'
 pod "CZPicker"
 
 pod 'INTULocationManager'
+pod 'SCNumberKeyBoard'

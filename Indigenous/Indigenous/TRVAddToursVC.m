@@ -8,6 +8,7 @@
 
 #import <INTULocationManager.h>
 
+#import <SCNumberKeyBoard.h>
 #import "TRVTour.h"
 #import "TRVTourStop.h"
 #import "TRVmapKitMap.h"
@@ -50,12 +51,19 @@
 @property (weak, nonatomic) IBOutlet UILabel            *tourNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView        *tourImage;
 
+@property (nonatomic, strong) NSString *inputAddress;
 
 @property (weak, nonatomic) IBOutlet UITextField *placeNameTxF;
 @property (weak, nonatomic) IBOutlet UITextField *placeAddressTxF;
 @property (weak, nonatomic) IBOutlet UITextField *latTxF;
 @property (weak, nonatomic) IBOutlet UITextField *lngTxF;
 
+@property (nonatomic) CLLocationDegrees inputLatitude;
+@property (nonatomic) CLLocationDegrees inputLongitude;
+
+@property (weak, nonatomic) IBOutlet UIButton *geoConfirmButton;
+
+- (IBAction)geoConfirmButtonTapped:(id)sender;
 
 
 
@@ -95,6 +103,14 @@
     self.placeNameTxF.delegate         = self;
     self.placeAddressTxF.delegate      = self;
     
+    [SCNumberKeyBoard showWithTextField:self.latTxF block:^(UITextField *textField, NSString *number) {
+        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
+    }];
+    [SCNumberKeyBoard showWithTextField:self.lngTxF block:^(UITextField *textField, NSString *number) {
+        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
+    }];
+    
+    
         //method commented out
 //    [self.datePicker            addTarget:self
 //                                   action:@selector(changeTourDate)
@@ -123,11 +139,11 @@
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     DBLG
     if ([textField isEqual:self.dateTxF]) {
-        self.itineraryTableView.hidden = YES;
-        self.datePicker.hidden = NO;
+        self.datePicker.hidden                 = NO;
         self.confirmDateSelectionButton.hidden = NO;
-        self.latTxF.hidden = YES;
-        self.lngTxF.hidden = YES;
+        self.itineraryTableView.hidden         = YES;
+        self.latTxF.hidden                     = YES;
+        self.lngTxF.hidden                     = YES;
         [self.datePicker becomeFirstResponder];
         return NO;
     } else {
@@ -149,7 +165,11 @@
         }
         
     } else if ([textField isEqual:self.latTxF]) {
-        self.
+        self.inputLatitude = [textField.text integerValue];
+    } else if ([textField isEqual:self.lngTxF]) {
+        self.inputLongitude = [textField.text integerValue];
+    } else if ([textField isEqual:self.placeAddressTxF]) {
+        self.inputAddress = textField.text;
     }
     [textField resignFirstResponder];
     return YES;
@@ -170,9 +190,6 @@
  //TODO: Configure the itinerary Cells...
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *tourStopCell = [tableView dequeueReusableCellWithIdentifier:@"tourStopCell" forIndexPath:indexPath];
-    
-    
-    
         //blah blah
     return tourStopCell;
 }
@@ -457,4 +474,6 @@
     
 }
 
+- (IBAction)geoConfirmButtonTapped:(id)sender {
+}
 @end
