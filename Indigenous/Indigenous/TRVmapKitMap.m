@@ -50,6 +50,7 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapView.delegate = self;
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -189,7 +190,7 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     dropPinView.draggable = YES;
     [self.mapView addAnnotation:dropPin];
     DBLG
-    [TRVLocationManager logLocationToConsole:[[CLLocation alloc] initWithCoordinate:dropPin.coordinate]];
+    [TRVLocationManager logLocationToConsole:dropPin.tourStopCLLocation];
 }
 
 

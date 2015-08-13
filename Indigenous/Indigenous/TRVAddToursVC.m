@@ -6,17 +6,18 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVAddToursVC.h"
-#import "TRVPickerMapViewController.h"
-#import "TestMapWithSearchVC.h"
 #import "TRVTour.h"
-#import "TRVItinerary.h"
 #import "TRVTourStop.h"
-#import <Parse.h>
-#import <MapKit/MapKit.h>
-#import <RMSaveButton.h>
+#import "TRVItinerary.h"
+#import "TRVAddToursVC.h"
 #import "TRVUserDataStore.h"
+#import "TRVLocationManager.h"
+#import "TestMapWithSearchVC.h"
+#import "TRVGoogleMapViewController.h"
+#import <Parse.h>
 #import <CZPicker.h>
+#import <RMSaveButton.h>
+#import <MapKit/MapKit.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 #define kBB3DefaultTourName @"Tour Name"
@@ -223,8 +224,12 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    TRVLocationManager *locationManager = [TRVLocationManager sharedLocationManager];
+    [locationManager conditionalRequestForAuthorizationOfType:kCLAuthorizationStatusAuthorizedAlways inView:self];
+    
+    
     if ([segue.identifier isEqualToString:@"toMapSegueID"]) {
-    TRVPickerMapViewController *destinationVC = segue.destinationViewController;
+    TRVGoogleMapViewController *destinationVC = segue.destinationViewController;
         destinationVC.delegate = self;
     } else if ([segue.identifier isEqualToString:@"toAppleMapSegueID"]) {
         TestMapWithSearchVC *destinationVC = segue.destinationViewController;

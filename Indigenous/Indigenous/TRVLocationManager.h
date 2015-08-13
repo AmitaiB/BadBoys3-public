@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import <UIKit/UIKit.h>
 
     //This lets us change the block-syntax into s/t more familiar...
 typedef void (^TRVLocationUpdateCompletionBlock)(CLLocation *location, NSError *error);
@@ -24,5 +25,6 @@ typedef void (^TRVLocationUpdateCompletionBlock)(CLLocation *location, NSError *
 @property (nonatomic, strong) CLGeocoder *geocoder;
 
 - (void)getLocationWithCompletionBlock:(TRVLocationUpdateCompletionBlock)block;
+- (void)conditionalRequestForAuthorizationOfType:(CLAuthorizationStatus)desiredAuthorizationStatus inView:(UIViewController*)vc;
 
 @end

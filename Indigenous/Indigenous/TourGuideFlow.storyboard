@@ -237,7 +237,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SFt-WW-Rbr">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tourStopCell" id="SFt-WW-Rbr">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SFt-WW-Rbr" id="3v3-us-kzp">
@@ -533,7 +533,7 @@
         <!--Google Map View Controller-->
         <scene sceneID="prb-77-kfP">
             <objects>
-                <viewController id="4S8-5O-z5P" userLabel="Google Map View Controller" customClass="TRVPickerMapViewController" sceneMemberID="viewController">
+                <viewController id="4S8-5O-z5P" userLabel="Google Map View Controller" customClass="TRVGoogleMapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uOc-CD-QWe"/>
                         <viewControllerLayoutGuide type="bottom" id="zjl-IQ-bk5"/>

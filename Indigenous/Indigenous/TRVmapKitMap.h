@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CLLocation+Utils.h"
-#import "TRVPickerMapViewController.h"
+#import "TRVGoogleMapViewController.h"
 #import "TRVTourStop.h"
 #import <HNKGooglePlacesAutocomplete.h>
 #import <AFNetworking.h>

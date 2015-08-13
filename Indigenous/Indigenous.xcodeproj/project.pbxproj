@@ -14,7 +14,7 @@
 		384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */; };
 		384AFBC91B696B8F00E169A9 /* TRVAddToursVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBC81B696B8F00E169A9 /* TRVAddToursVC.m */; };
 		3856144D1B72688B00D6F7E7 /* TourGuideFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */; };
-		3856144E1B72688B00D6F7E7 /* TRVPickerMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */; };
+		3856144E1B72688B00D6F7E7 /* TRVGoogleMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3856144C1B72688B00D6F7E7 /* TRVGoogleMapViewController.m */; };
 		3859EDF01B694003001C5693 /* TRVTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDEF1B694003001C5693 /* TRVTour.m */; };
 		3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDF31B694031001C5693 /* TRVItinerary.m */; };
 		385C46FA1B6BCE7E00D9091A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565151B68221B005A2871 /* main.m */; };
@@ -129,8 +129,8 @@
 		384AFBC71B696B8F00E169A9 /* TRVAddToursVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVAddToursVC.h; sourceTree = "<group>"; };
 		384AFBC81B696B8F00E169A9 /* TRVAddToursVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVAddToursVC.m; sourceTree = "<group>"; };
 		3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TourGuideFlow.storyboard; sourceTree = "<group>"; };
-		3856144B1B72688B00D6F7E7 /* TRVPickerMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVPickerMapViewController.h; sourceTree = "<group>"; };
-		3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVPickerMapViewController.m; sourceTree = "<group>"; };
+		3856144B1B72688B00D6F7E7 /* TRVGoogleMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGoogleMapViewController.h; sourceTree = "<group>"; };
+		3856144C1B72688B00D6F7E7 /* TRVGoogleMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGoogleMapViewController.m; sourceTree = "<group>"; };
 		3859EDEE1B694003001C5693 /* TRVTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTour.h; sourceTree = "<group>"; };
 		3859EDEF1B694003001C5693 /* TRVTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTour.m; sourceTree = "<group>"; };
 		3859EDF21B694031001C5693 /* TRVItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVItinerary.h; sourceTree = "<group>"; };
@@ -338,12 +338,6 @@
 			children = (
 				38A255371B7A292E00257F6F /* TRVmapKitMap.h */,
 				38A255381B7A292E00257F6F /* TRVmapKitMap.m */,
-				38A2553E1B7A380600257F6F /* TRVCustomAnnotationView.h */,
-				38A2553F1B7A380600257F6F /* TRVCustomAnnotationView.m */,
-				38A255411B7A383900257F6F /* TRVCustomAnnotation.h */,
-				38A255421B7A383900257F6F /* TRVCustomAnnotation.m */,
-				384A9C4E1B7944E100F4C1E0 /* TestMapWithSearchVC.h */,
-				384A9C4F1B7944E100F4C1E0 /* TestMapWithSearchVC.m */,
 				38B1665A1B7CC135005DA926 /* TRVLocationManager.h */,
 				38B1665B1B7CC135005DA926 /* TRVLocationManager.m */,
 			);
@@ -355,16 +349,12 @@
 			children = (
 				3856144A1B72688B00D6F7E7 /* TourGuideFlow.storyboard */,
 				946624121B79555000CA365B /* RootGuideTabController.storyboard */,
-				3856144B1B72688B00D6F7E7 /* TRVPickerMapViewController.h */,
-				3856144C1B72688B00D6F7E7 /* TRVPickerMapViewController.m */,
+				3856144B1B72688B00D6F7E7 /* TRVGoogleMapViewController.h */,
+				3856144C1B72688B00D6F7E7 /* TRVGoogleMapViewController.m */,
 				384A9C541B79482600F4C1E0 /* MapKit map */,
-				384AFBBE1B696ADB00E169A9 /* TRVTourGuideMyToursVC.h */,
-				384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */,
 				384AFBC71B696B8F00E169A9 /* TRVAddToursVC.h */,
 				384AFBC81B696B8F00E169A9 /* TRVAddToursVC.m */,
-				38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */,
-				38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */,
-				3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented */,
+				3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented/Cutting Floor */,
 			);
 			name = TourGuideFlow;
 			sourceTree = "<group>";
@@ -388,15 +378,25 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented */ = {
+		3873494F1B6A3AA900E4C8F3 /* Not Yet Implemented/Cutting Floor */ = {
 			isa = PBXGroup;
 			children = (
+				384AFBBE1B696ADB00E169A9 /* TRVTourGuideMyToursVC.h */,
+				384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */,
+				38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */,
+				38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */,
+				38A2553E1B7A380600257F6F /* TRVCustomAnnotationView.h */,
+				38A2553F1B7A380600257F6F /* TRVCustomAnnotationView.m */,
+				38A255411B7A383900257F6F /* TRVCustomAnnotation.h */,
+				38A255421B7A383900257F6F /* TRVCustomAnnotation.m */,
+				384A9C4E1B7944E100F4C1E0 /* TestMapWithSearchVC.h */,
+				384A9C4F1B7944E100F4C1E0 /* TestMapWithSearchVC.m */,
 				389646411B6AB67B004FFDB7 /* TRVPickerMapLogic.m */,
 				389646401B6AB67B004FFDB7 /* TRVPickerMapLogic.h */,
 				384AFBC11B696B1900E169A9 /* TRVCreateTourVC.h */,
 				384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */,
 			);
-			name = "Not Yet Implemented";
+			name = "Not Yet Implemented/Cutting Floor";
 			sourceTree = "<group>";
 		};
 		451565071B68221B005A2871 = {
@@ -820,7 +820,8 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = DWCYJ9H353;
+/* possible value...						DevelopmentTeam = DWCYJ9H353; */
+						DevelopmentTeam = 8VC65F749H;
 					};
 				};
 			};
@@ -989,7 +990,7 @@
 				38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */,
 				9482463F1B7152E100D64432 /* TRVUserSnippetView.m in Sources */,
 				3859EDF01B694003001C5693 /* TRVTour.m in Sources */,
-				3856144E1B72688B00D6F7E7 /* TRVPickerMapViewController.m in Sources */,
+				3856144E1B72688B00D6F7E7 /* TRVGoogleMapViewController.m in Sources */,
 				942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */,
 				384AFBC91B696B8F00E169A9 /* TRVAddToursVC.m in Sources */,
 				45E772D91B6962E700003C7C /* TRVLoginSignupHomeViewController.m in Sources */,
