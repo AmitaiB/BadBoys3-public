@@ -168,8 +168,7 @@
 		4515651E1B68221B005A2871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		451565201B68221B005A2871 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		451565231B68221B005A2871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4515652E1B68221B005A2871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4515652F1B68221B005A2871 /* IndigenousTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndigenousTests.m; sourceTree = "<group>"; };
+
 		451859521B70FCBF008D7049 /* TRVFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVFilterViewController.h; sourceTree = "<group>"; };
 		451859531B70FCBF008D7049 /* TRVFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVFilterViewController.m; sourceTree = "<group>"; };
 		45ADB90C1B73A7DE0056AF09 /* TRVSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSettingsViewController.h; sourceTree = "<group>"; };
@@ -296,7 +295,6 @@
 		94EB295F1B78464300CAB1A5 /* TRVNoNetworkModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVNoNetworkModalView.m; sourceTree = "<group>"; };
 		978AD411918DBD4335023B25 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EB2D729CE63AF68C9FEE85FC /* libPods-Indigenous.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Indigenous.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA47A9601B79072B00F8E11D /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		FA57FA171B69663200CFBB89 /* MyTripsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyTripsStoryboard.storyboard; sourceTree = "<group>"; };
 		FA57FA1A1B696A9100CFBB89 /* TRVTouristMyTripsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTouristMyTripsViewController.h; sourceTree = "<group>"; };
 		FA57FA1B1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTouristMyTripsViewController.m; sourceTree = "<group>"; };
@@ -406,7 +404,6 @@
 			children = (
 				94258ACC1B73F251006F24A8 /* Default-568h@2x.png */,
 				451565121B68221B005A2871 /* Indigenous */,
-				4515652C1B68221B005A2871 /* IndigenousTests */,
 				451565111B68221B005A2871 /* Products */,
 				5C48CC399C45D8E89A305C19 /* Pods */,
 				E016E9421874380702EDBE50 /* Frameworks */,
@@ -465,23 +462,6 @@
 				FADB8F2A1B714504009F7C02 /* Carmelo.jpg */,
 				451565141B68221B005A2871 /* Info.plist */,
 				451565151B68221B005A2871 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4515652C1B68221B005A2871 /* IndigenousTests */ = {
-			isa = PBXGroup;
-			children = (
-				4515652F1B68221B005A2871 /* IndigenousTests.m */,
-				4515652D1B68221B005A2871 /* Supporting Files */,
-			);
-			path = IndigenousTests;
-			sourceTree = "<group>";
-		};
-		4515652D1B68221B005A2871 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				4515652E1B68221B005A2871 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -551,6 +531,7 @@
 			children = (
 				94BB58921B78F7E10056D46F /* TRVTourDetailViewController.h */,
 				94BB58931B78F7E10056D46F /* TRVTourDetailViewController.m */,
+
 				9488A6031B7B6BF90020476B /* TRVEditTextViewController.h */,
 				9488A6041B7B6BF90020476B /* TRVEditTextViewController.m */,
 				94BD69001B6EC18A000CDA65 /* TRVGuideResultsTableViewController.h */,
@@ -589,6 +570,8 @@
 			children = (
 				94B755E51B6BCD2A0017FFA9 /* TRVTabBar.storyboard */,
 				942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */,
+				94BB58921B78F7E10056D46F /* TRVTourDetailViewController.h */,
+				94BB58931B78F7E10056D46F /* TRVTourDetailViewController.m */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -804,7 +787,6 @@
 				FA31AE301B73AC0C001DCBF1 /* TourDetails */,
 				FA31AE2F1B73ABE7001DCBF1 /* TourList */,
 				FA57FA171B69663200CFBB89 /* MyTripsStoryboard.storyboard */,
-				FA47A9601B79072B00F8E11D /* View.xib */,
 			);
 			name = MyTrips;
 			sourceTree = "<group>";
@@ -843,7 +825,8 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = DWCYJ9H353;
+
+						DevelopmentTeam = 9RXLE5FXUN;
 					};
 				};
 			};
