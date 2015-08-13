@@ -112,14 +112,13 @@
 
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
+-(void)textFieldDidEndEditing:(UITextField *)textField {
     if ([textField isEqual:self.addTourNameTxF]) {
-        self.tourNameLabel.text = textField.text;
+//        self.tourNameLabel.text = textField.text;
         self.itinerary.nameOfTour = textField.text;
         textField.text = @"";
         [textField resignFirstResponder];
     }
-    return YES;
 }
 
 #pragma mark - TableView DataSource
@@ -180,10 +179,10 @@
 #pragma mark - Category Control helper
 
 -(void)changeTourCategory {
-    NSUInteger idx = self.tourCategorySegControl.selectedSegmentIndex;
-    NSString *chosenCategory = [self.tourCategorySegControl titleForSegmentAtIndex:idx];
+    NSUInteger idx                 = self.tourCategorySegControl.selectedSegmentIndex;
+    NSString *chosenCategory       = [self.tourCategorySegControl titleForSegmentAtIndex:idx];
     self.tourCategory.categoryName = chosenCategory;
-    self.tourCategoryLabel.text = chosenCategory;
+    self.tourCategoryLabel.text    = chosenCategory;
 }
 
 
@@ -199,8 +198,8 @@
     self.tourDate = self.datePicker.date;
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = NSDateFormatterShortStyle;
-    NSString *formattedDateString = [dateFormatter stringFromDate:self.datePicker.date];
+    dateFormatter.dateStyle        = NSDateFormatterShortStyle;
+    NSString *formattedDateString  = [dateFormatter stringFromDate:self.datePicker.date];
     
     self.dateTxF.text = formattedDateString;
     
