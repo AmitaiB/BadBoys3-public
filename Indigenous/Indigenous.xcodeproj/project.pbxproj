@@ -30,6 +30,7 @@
 		38A255431B7A383900257F6F /* TRVCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255421B7A383900257F6F /* TRVCustomAnnotation.m */; };
 		38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */; };
 		38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */; };
+		38B166591B7CB70B005DA926 /* deleteMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B166581B7CB70B005DA926 /* deleteMe.m */; };
 		38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */; };
 		38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */; };
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
@@ -155,6 +156,8 @@
 		38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+initWith2D.m"; sourceTree = "<group>"; };
 		38A2554A1B7A50B600257F6F /* CLLocation+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+Utils.h"; sourceTree = "<group>"; };
 		38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Utils.m"; sourceTree = "<group>"; };
+		38B166571B7CB70B005DA926 /* deleteMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deleteMe.h; sourceTree = "<group>"; };
+		38B166581B7CB70B005DA926 /* deleteMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = deleteMe.m; sourceTree = "<group>"; };
 		38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTopLVLMenuViewController.h; sourceTree = "<group>"; };
 		38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTopLVLMenuViewController.m; sourceTree = "<group>"; };
 		38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGoogleAPIClient.h; sourceTree = "<group>"; };
@@ -381,6 +384,8 @@
 				3859EDF31B694031001C5693 /* TRVItinerary.m */,
 				94C77F831B68354E003836E3 /* TRVTourStop.h */,
 				94C77F841B68354E003836E3 /* TRVTourStop.m */,
+				38B166571B7CB70B005DA926 /* deleteMe.h */,
+				38B166581B7CB70B005DA926 /* deleteMe.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -442,11 +447,7 @@
 		451565131B68221B005A2871 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				38A2554A1B7A50B600257F6F /* CLLocation+Utils.h */,
-				38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */,
 				388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */,
-				38A255441B7A3A2900257F6F /* CLLocation+initWith2D.h */,
-				38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */,
 				388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */,
 				388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */,
 				388EBC511B781DE300D60297 /* SearchViewController.h */,
@@ -620,6 +621,10 @@
 			children = (
 				94A53C981B765E640029D2F7 /* NSMutableArray+extraMethods.h */,
 				94A53C991B765E640029D2F7 /* NSMutableArray+extraMethods.m */,
+				38A2554A1B7A50B600257F6F /* CLLocation+Utils.h */,
+				38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */,
+				38A255441B7A3A2900257F6F /* CLLocation+initWith2D.h */,
+				38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -978,6 +983,7 @@
 				3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */,
 				388EBC551B781DE300D60297 /* SearchViewController.m in Sources */,
 				948246421B7162B400D64432 /* TRVUserContactView.m in Sources */,
+				38B166591B7CB70B005DA926 /* deleteMe.m in Sources */,
 				948A226A1B73CDC8006FC5BB /* TRVTourView.m in Sources */,
 				94BB58941B78F7E10056D46F /* TRVTourDetailViewController.m in Sources */,
 				45E772D01B68291300003C7C /* TRVBio.m in Sources */,

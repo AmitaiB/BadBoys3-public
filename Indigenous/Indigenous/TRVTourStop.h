@@ -10,8 +10,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <MapKit/MapKit.h>
 
-@interface TRVTourStop : NSObject
+    //To work with MapKit and MKMapViews, tourStops are now MKAnnotations (e.g., map pins)
+    //Among other things, this gives them (invisibly) extra properties: title, subtitle, coordinate.
+@interface TRVTourStop : NSObject <MKAnnotation>
 
 
 @property (nonatomic) CGFloat operatorCost;
@@ -32,5 +35,7 @@
 -initWithCoordinates:(CLLocationCoordinate2D)coordinates;
 
 -initWithMapMarker:(GMSMarker *)marker;
+
+-initWithAnnotation:(id<MKAnnotation>)originalAnnotation;
 
 @end

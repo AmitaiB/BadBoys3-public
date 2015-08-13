@@ -37,6 +37,9 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 @property (nonatomic, strong) NSArray *mapLocations;
 @property (nonatomic) BOOL userLocationUpdated;
 
+@property (nonatomic, strong) CLPlacemark *place;
+@property (nonatomic, strong) CLLocation *location;
+
 
 @end
 
@@ -132,11 +135,35 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     [self.mapView setRegion:region];
 }
 
+    //TODO: Make sure that something uses this method.
+/**
+ *
+ * CLPlacemark properties:
+ name
+ ISOcountryCode
+ country
+ postal code
+ administrativeArea (state)
+ subAdministrativeArea (county)
+ locality (city)
+ subLocality (neighborhood, 'common name')
+ thoroughfare (street address)
+ subThoroughfare (building number)
+ region (CLRegion the placemark appears in)
+ *
+ *  @param location A location defined by lat and lng.
+ *  @returns in the completion block, sets the VC's 'place' propertty
+ */
 -(void)geocode:(CLLocation*)location {
     CLGeocoder *geocoder = [CLGeocoder new];
 
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         DBLG
+        if (!error) {
+            self.place = [placemarks firstObject];
+        } else {
+            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
+        }
     }];
 }
                                        
