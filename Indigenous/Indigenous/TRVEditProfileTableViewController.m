@@ -85,7 +85,6 @@
     
     // set on parse
     currentUser[@"email"] = self.emailTextField.text;
-
     userBio[@"first_name"] = self.firstNameTextField.text;
     userBio[@"last_name"] = self.lastNameTextField.text;
     userBio[@"email"] = self.emailTextField.text;
