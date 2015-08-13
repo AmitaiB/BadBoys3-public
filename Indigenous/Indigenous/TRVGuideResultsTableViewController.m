@@ -41,6 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateGuidesList];
+//    self.tableView.estimatedRowHeight = 300;
     
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
     self.PFGuides = [@[] mutableCopy];
