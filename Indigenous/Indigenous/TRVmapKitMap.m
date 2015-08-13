@@ -97,11 +97,7 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 //    if (self.mapView.userLocation.location.coordinate.latitude != (double)0)
 //        {
             [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate];
-//        } else {
-//            INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-//            [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyBlock timeout:15 delayUntilAuthorized:YES block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
-//                [self.mapView setCenterCoordinate:currentLocation.coordinate
-//                                         animated:YES];
+//        } else {???
                 self.userLocationUpdated = YES;
 //            }];
 //        }

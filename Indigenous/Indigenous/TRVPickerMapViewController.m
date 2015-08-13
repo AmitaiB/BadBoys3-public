@@ -7,7 +7,6 @@
 //
 
 //#import "TRVPickerMapLogic.h" //includes GMapsSDK
-#import <INTULocationManager.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import "TRVAddToursVC.h"
 #import "TRVPickerMapViewController.h"
@@ -256,8 +255,6 @@
  *  Marker3 = Amitai's Apartment growing up on the UWS (Deprecated 😦; it was a rental)
  */
 -(void)setupMarkerData {
-        //    INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-        //    GMSMarker *marker1 = [GMSMarker markerWithPosition:locationManager.currentLocation.coordinate]
     GMSMarker *marker1 = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake(40.70531680012648,-74.01396463558194)];
         //    marker1.title = @"First marker!!";
         //    marker1.snippet = @"First Snippet!";
