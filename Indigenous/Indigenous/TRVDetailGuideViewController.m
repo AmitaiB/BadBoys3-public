@@ -32,7 +32,7 @@
 
 
 
-@interface TRVDetailGuideViewController ()<UITableViewDelegate>
+@interface TRVDetailGuideViewController () <UITableViewDelegate>
 
 
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
