@@ -33,7 +33,6 @@
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic) NSUInteger userCount;
 @property (nonatomic, strong) NSMutableArray *PFGuides;
-//@property (nonatomic, strong) TRVGuideResultsDataSource *tableViewDataSource;
 
 @end
 
@@ -46,7 +45,6 @@
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
     self.PFGuides = [@[] mutableCopy];
 
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -72,8 +70,9 @@
         
         cell.guideForThisCell = self.availableGuides[indexPath.row];
         
-        // setting nib user will parse text labels
+        // setting nib user will parse text labels for these nibs
         cell.profileImageViewNib.userForThisGuideProfileView = self.availableGuides[indexPath.row];
+        cell.detailedProfileNib.guideForThisDetailXib = self.availableGuides[indexPath.row];
         
         // I CONFORM TO THE PROFILE IMAGE TAPPED PROTOCOL
         cell.profileImageViewNib.delegate = self;
@@ -85,7 +84,6 @@
     else {
         
         // show a modal or something....
-        NSLog(@"THERE ARE NO AVAILABLE GUIDES IN THIS SEARCH RESULT");
         TRVGuideProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourGuideReuseCell"];
         return cell;
     }
@@ -95,7 +93,6 @@
 - (void)returnUserForThisImageNib:(TRVUser *)guideUser {
     self.destinationGuideUser = guideUser;
     [self performSegueWithIdentifier:@"detailGuideSegue" sender:nil];
-    NSLog(@"DOES THIS WORK?? THIS IS THE DELEGATE METHOD FOR NIB: %@", guideUser.userBio.firstName);
 }
 
 
@@ -104,7 +101,6 @@
 -(void)passFilterDictionary:(NSDictionary *)dictionary{
     
     self.filterDictionary = dictionary;
-    NSLog(@"The dictionary: %@", self.filterDictionary);
 }
 
 -(void)updateGuidesList {

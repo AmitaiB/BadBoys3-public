@@ -6,9 +6,23 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+/**
+ *  This map is intended to be presented to the user in order to add locations, based upon
+ * interests, etc., to choose and add locations (Tour Stops) to the itinerary being constructed
+ * on the previous VC's view.
+ *
+ *  @param A
+ *  @param B
+ *
+ *  @return CLLocation via delegate
+ */
+
 #import "TRVmapKitMap.h"
 
 #define AVG(A,B) (A+B)/2
+
+#define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+
 
 
 static NSString *const kTRVMapAnnotationIdentifier     = @"kTRVMapAnnotationIdentifier";
@@ -59,7 +73,7 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     return YES;
 }
 
-#pragma mark Setup Helpers
+#pragma mark Helpers
 
 -(void)centerMapOnNYC {
     CLLocationCoordinate2D centerNYC  = CLLocationCoordinate2DMake(40.7053,-74.0139);
@@ -73,17 +87,17 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 
 -(void)centerMapOnUserLocation {
     self.mapView.showsUserLocation = YES;
-    if (self.mapView.userLocation.location.coordinate.latitude != (double)0)
-        {
+//    if (self.mapView.userLocation.location.coordinate.latitude != (double)0)
+//        {
             [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate];
-        } else {
-            INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-            [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyBlock timeout:15 delayUntilAuthorized:YES block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
-                [self.mapView setCenterCoordinate:currentLocation.coordinate
-                                         animated:YES];
+//        } else {
+//            INTULocationManager *locationManager = [INTULocationManager sharedInstance];
+//            [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyBlock timeout:15 delayUntilAuthorized:YES block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+//                [self.mapView setCenterCoordinate:currentLocation.coordinate
+//                                         animated:YES];
                 self.userLocationUpdated = YES;
-            }];
-        }
+//            }];
+//        }
 }
 
     //Need to reset the region to a box that will contain all your annotations...
@@ -118,6 +132,20 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     [self.mapView setRegion:region];
 }
 
+-(void)geocode:(CLLocation*)location {
+    CLGeocoder *geocoder = [CLGeocoder new];
+
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        DBLG
+    }];
+}
+                                       
+
+#pragma mark SearchBar Delegate
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    DBLG
+}
 
 #pragma mark MapView Delegate
 
@@ -137,12 +165,6 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 /*
 #pragma mark - Navigation
 
@@ -155,7 +177,7 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController
 {
-    
+    DBLG
 }
 
 @end

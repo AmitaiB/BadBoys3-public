@@ -15,9 +15,8 @@
 @property (nonatomic, strong) UIImage *categoryImage;
 @property (nonatomic, strong) UIImage *iconImage;
 
-
-
 -(instancetype)initWithName:(NSString *)name cateogoryImage:(UIImage *)cateogoryImage iconImage:(UIImage *)iconImage;
+-(instancetype)initWithName:(NSString *)name;
 
 +(TRVTourCategory *)returnCategoryWithTitle:(NSString *)title;
 +(TRVTourCategory *)returnSeeCategory;

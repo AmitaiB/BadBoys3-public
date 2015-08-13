@@ -9,7 +9,6 @@
 #import "TRVEditTextViewController.h"
 
 @interface TRVEditTextViewController ()<UITextViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *editTextView;
 
 @end
 
@@ -18,18 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.editTextView.text = self.destinationTextToEdit;
+    
 }
 
 
-- (IBAction)saveButtonPressed:(id)sender {
-    [self.delegate returnEditedText:self.editTextView.text];
+- (IBAction)savebuttonPressed:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"being dismissed");
+             [self.delegate returnEditedText:self.editTextView.text];
+            NSLog(@" IN The done button pressed %@", self.editTextView.text);
+        }];
 }
-
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
-
-}
-
 
 
 @end

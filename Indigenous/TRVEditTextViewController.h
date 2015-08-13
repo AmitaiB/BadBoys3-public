@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-
-@protocol editTextProtocol <NSObject>
+@protocol editTextProtocol
 @required
 -(void)returnEditedText:(NSString*)text;
-
 @end
 
 
 @interface TRVEditTextViewController : UIViewController
+
 @property (nonatomic, weak) id <editTextProtocol> delegate;
 @property (nonatomic, strong) NSString *destinationTextToEdit;
+@property (weak, nonatomic) IBOutlet UITextView *editTextView;
 
 @end

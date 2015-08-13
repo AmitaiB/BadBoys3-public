@@ -14,25 +14,208 @@
 #import "TRVTourStop.h"
 #import <Parse.h>
 #import <MapKit/MapKit.h>
+#import <RMSaveButton.h>
+#import "TRVUserDataStore.h"
+#import <CZPicker.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+#define kBB3DefaultTourName @"Tour Name"
+
+@interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) TRVUserDataStore          *sharedDataStore;
+
+@property (nonatomic, strong) TRVTour                   *tour;
+@property (weak, nonatomic) IBOutlet UITextField        *addTourNameTxF;
+@property (nonatomic, strong) TRVUser                   *user;
+@property (nonatomic, strong) TRVBio                    *bio;
+@property (nonatomic, strong) TRVTourCategory           *tourCategory;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tourCategorySegControl;
+@property (nonatomic, strong) TRVItinerary              *itinerary;
+@property (nonatomic, strong) NSMutableArray            *listOfStops;
+@property (weak, nonatomic) IBOutlet UITableView        *itineraryTableView;
+@property (weak, nonatomic) IBOutlet UITextField        *dateTxF;
+@property (weak, nonatomic) IBOutlet UIDatePicker       *datePicker;
+@property (nonatomic, strong) NSDate                    *tourDate;
+@property (weak, nonatomic) IBOutlet UIButton *confirmDateSelectionButton;
+- (IBAction)confirmDateSelectionButtonTapped:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel            *currentUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel            *tourCategoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel            *tourNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView        *tourImage;
 
 
-@interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate>
 
+
+
+
+    //- (IBAction)chooseCategoryButtonTapped:(id)sender;
+
+    //@property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
+    //@property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
+
+    //@property (weak, nonatomic) IBOutlet SSFlatDatePicker *datePicker;
 @end
 
 @implementation TRVAddToursVC
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
-    // Do any additional setup after loading the view.
+    [super viewDidLoad];
+    
+        //Setup protocols, initialize singletons, etc.
+    self.itineraryTableView.delegate   = self;
+    self.itineraryTableView.dataSource = self;
+    self.dateTxF.delegate              = self;
+    self.addTourNameTxF.delegate       = self;
+
+    
+        //method commented out
+//    [self.datePicker            addTarget:self
+//                                   action:@selector(changeTourDate)
+//                         forControlEvents:UIControlEventValueChanged];
+    
+    [self.tourCategorySegControl addTarget:self
+                                    action:@selector(changeTourCategory)
+                          forControlEvents:UIControlEventValueChanged];
+    
+    
+    self.sharedDataStore               = [TRVUserDataStore sharedUserInfoDataStore];
+    TRVBio *userBio                    = self.sharedDataStore.loggedInUser.userBio;
+    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", userBio.firstName];
+
+    
+        //    self.saveButtonLabel.hidden = YES;
+    
+        //Wire this up to the save functionality
+//    self.saveTourButton.startHandler      = ^void() {DBLG};
+//    self.saveTourButton.interruptHandler  = ^void() {DBLG};
+//    self.saveTourButton.completionHandler = ^void() {DBLG};
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UITextfield Delegate
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    DBLG
+    if ([textField isEqual:self.dateTxF]) {
+        self.itineraryTableView.hidden = YES;
+        self.datePicker.hidden = NO;
+        self.confirmDateSelectionButton.hidden = NO;
+        [self.datePicker becomeFirstResponder];
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+
+//-(void)textFieldDidEndEditing:(UITextField *)textField
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    DBLG
+    if ([textField isEqual:self.addTourNameTxF]) {
+        self.tourNameLabel.text = textField.text;
+        self.itinerary.nameOfTour = textField.text;
+        textField.text = @"";
+        textField.placeholder = @"change Tour name";
+        if (![textField.text isEqualToString:kBB3DefaultTourName]) {
+        
+        }
+        
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+
+#pragma mark - TableView DataSource
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.listOfStops.count;
+}
+
+/* //TODO: Configure the itinerary Cells...
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *tourStopCell = [tableView dequeueReusableCellWithIdentifier:@"reuseID" forIndexPath:indexPath];
+    
+        //blah blah
+    return cell;
+} */
+
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+
+
+#pragma mark - Category Control helper
+
+-(void)changeTourCategory {
+    DBLG
+    NSUInteger idx                 = self.tourCategorySegControl.selectedSegmentIndex;
+    NSString *chosenCategory       = [self.tourCategorySegControl titleForSegmentAtIndex:idx];
+    self.tourCategory.categoryName = chosenCategory;
+    self.tourCategoryLabel.text    = chosenCategory;
+    self.tourCategoryLabel.text = [NSString stringWithFormat:@"A \"%@\" kind of Tour! 😃", self.tourCategory.categoryName];
+}
+
+
+#pragma mark - DatePicker helper
+
+//-(void)changeTourDate {
+//    
+//}
+
+- (IBAction)confirmDateSelectionButtonTapped:(id)sender {
+    DBLG
+    NSLog(@"tourdate is set for: %@", self.datePicker.date);
+    self.tourDate = self.datePicker.date;
+    
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateStyle        = NSDateFormatterShortStyle;
+    NSString *formattedDateString  = [dateFormatter stringFromDate:self.datePicker.date];
+    
+    self.dateTxF.text = formattedDateString;
+    
+        //return control and state to previously...
+    self.itineraryTableView.hidden         = NO;
+    self.confirmDateSelectionButton.hidden = YES;
+    self.datePicker.hidden                 = YES;
 }
 
 
@@ -96,6 +279,142 @@
         DBLG
         NSLog(@"Need to solve the bug (Invalid write to JSON(TVRItinerary))\nOh, and CLLocation is %@:", [location description]);
     }
+}
+
+    //!!!
+- (IBAction)saveTourButton1:(id)sender {
+        //Save Tour as TRVTourObject to Parse:TRVUser
+}
+
+- (IBAction)chooseCategoryButtonTapped:(id)sender {
+    CZPickerView *categoryPicker = [[CZPickerView alloc] initWithHeaderTitle:@"Tour Category"
+                                                           cancelButtonTitle:@"Still Can't Decide"
+                                                          confirmButtonTitle:@"Yup, that's it!"];
+    categoryPicker.delegate = self;
+    categoryPicker.dataSource = self;
+    categoryPicker.needFooterView = YES;
+    [categoryPicker show];
+}
+
+#pragma mark - CZPickerViewDataSource
+
+-(NSInteger)numberOfRowsInPickerView:(CZPickerView *)pickerView {
+    return 4;
+}
+
+-(NSAttributedString *)czpickerView:(CZPickerView *)pickerView attributedTitleForRow:(NSInteger)row {
+    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
+    return categoryTitles[row];
+}
+
+//#pragma mark - CZPickerViewDelegate
+//
+//-(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
+//    DBLG
+//
+//    /**
+//     *  FIXME: Get Tim/Joe's help on the syntax...
+//     */
+//    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
+//    NSString *chosenCategory = categoryTitles[row];
+//
+//    NSMethodSignature *categoryInitSignature = [TRVTourCategory instanceMethodSignatureForSelector:@selector(initWithName:)];
+//    NSInvocation *createChosenCategoryObject = [NSInvocation invocationWithMethodSignature:categoryInitSignature];
+//    createChosenCategoryObject.target = self.tourCategory;
+//    createChosenCategoryObject.selector = @selector(initWithName:);
+//    [createChosenCategoryObject setArgument:&chosenCategory atIndex:2];
+//    NSUInteger length = [[createChosenCategoryObject methodSignature] methodReturnLength];
+//    buffer = (void *)malloc(length);
+//    
+//    [createChosenCategoryObject invoke];
+//    createChosenCategoryObject getReturnValue:<#(void *)#>
+//    self.tourCategory = //whatever the returnObject is.
+//    self.tourCategory = [[TRVTourCategory alloc] initWithName:categoryTitles[row]];
+//    self.tourCategoryLabel.text = self.tourCategory.categoryName;
+//}
+
+-(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
+    [pickerView resignFirstResponder];
+}
+
+#pragma mark - Parse functionality
+
+    //FIXME Make it "createParseTourandsave"
+-(void)createParseDummyTour {
+    
+    PFUser *currentUser = [PFUser currentUser];
+    PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
+    [theTour setObject:currentUser forKey:@"guideForThisTour"];
+    
+    PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
+    theTour[@"categoryForThisTour"] = @"Drink";
+    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:1000];
+        //    //  theTour[@"tourAverageRating"] = CGFLOAT;
+        //
+        //
+    PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
+    theTour[@"itineraryForThisTour"] = theItinerary;
+    theItinerary[@"nameOfTour"] = @"Some name of tour";
+    
+    UIImage *tourImage = [UIImage imageNamed:@"madrid.jpg"];
+    
+    
+        // converts tour image to 1/5 quality
+    NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
+    PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+    
+    theItinerary[@"tourImage"] = PFImage;
+    
+        //    theItinerary[@"tourImage"] = tourImage;
+        //
+        ////    // theItinerary[@"attractions"] = ARRAY OF ATTRACTIONS;
+        //
+    theStop[@"operatorCost"] = @0;
+    theStop[@"incidentalCost"] = @0;
+    theStop[@"lat"] = @10;
+    theStop[@"lng"] = @10;
+    theStop[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop[@"nameOfPlace"] = @"The Flatiron School";
+    theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
+    theStop[@"addressOfEvent"] = @"123 Nobody St.";
+    
+        //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop[@"image"] = PFImage;
+    
+    NSArray *tourStopsArray = @[theStop, theStop, theStop, theStop];
+    theItinerary[@"tourStops"] = tourStopsArray;
+    theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
+    
+    
+        ////    //  theStop[@"tourStopLocation"] = pfgeopoint;
+        ////
+        ////    //    PFObject *theMarker = [PFObject objectWithClassName:@"GMSMarker"];
+        ////    //    theMarker[@"position"] = PFGEOPOINT;
+        ////    //    theMarker[@"snippet"] = NSSTring;
+        ////    //    theMarker[@"icon"] = UIImage;
+        ////    //    theMarker[@"groundAnchor"] = cgpoint;
+        ////    //    theMarker[@"infoWindowAnchor"] = cgpoint;
+        ////    //
+        ////    //    theStop[@"tourStopMarker"] = theMarker;
+        ////    //
+        ////
+    
+    [theTour saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+        NSLog(@"THE TOUR ID IS: %@", theTour.objectId);
+        
+        
+        [currentUser addObject:theTour forKey:@"myTrips"];
+        [currentUser saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+            if (error){
+                NSLog(@"Cant save to array because: %@", error);
+            } else {
+                NSLog(@"Successfully added stuff to array.");
+            }
+        }];
+        
+        
+    }];
+    
 }
 
 @end

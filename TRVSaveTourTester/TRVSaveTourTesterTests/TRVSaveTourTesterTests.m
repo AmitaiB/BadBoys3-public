@@ -1,19 +1,19 @@
 //
-//  IndigenousTests.m
-//  IndigenousTests
+//  TRVSaveTourTesterTests.m
+//  TRVSaveTourTesterTests
 //
-//  Created by Alan Scarpa on 7/28/15.
-//  Copyright (c) 2015 Bad Boys 3. All rights reserved.
+//  Created by Amitai Blickstein on 8/11/15.
+//  Copyright (c) 2015 Amitai Blickstein, LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-@interface IndigenousTests : XCTestCase
+@interface TRVSaveTourTesterTests : XCTestCase
 
 @end
 
-@implementation IndigenousTests
+@implementation TRVSaveTourTesterTests
 
 - (void)setUp {
     [super setUp];

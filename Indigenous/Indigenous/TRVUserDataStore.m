@@ -70,11 +70,10 @@
             bioForLoggedInUser.lastName = objects[0][@"last_name"];
             bioForLoggedInUser.birthday = objects[0][@"birthday"];
             bioForLoggedInUser.email = objects[0][@"email"];
-            bioForLoggedInUser.homeCity = @"";
-            bioForLoggedInUser.homeCountry = @"";
+            bioForLoggedInUser.homeCity = objects[0][@"homeCity"];
+            bioForLoggedInUser.homeCountry = objects[0][@"homeCountry"];
             bioForLoggedInUser.isGuide = objects[0][@"isGuide"];
            bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
-           // bioForLoggedInUser.language = @"English, Chinese, French";
             
 
             // HARDCODED USER TAGLINE, UNCOMMMENT LINE BELOW ONCE THERE IS PLACE TO INPUT TAGLINE
