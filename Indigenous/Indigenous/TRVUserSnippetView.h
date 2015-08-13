@@ -19,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *oneLinerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeCityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeCountryLabel;
 
 @end

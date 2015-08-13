@@ -29,19 +29,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"VIEW DID APPEAR %@", self.sharedDataStore.loggedInUser.userBio.firstName);
-
-   
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    // set tourist
+    
+    
+    
     
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
-//    self.sharedDataStore.loggedInUser = [[TRVUser alloc]init];
-    self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
     
     [self.sharedDataStore setCurrentUser:[PFUser currentUser] withBlock:^(BOOL success) {
-        
         
         
         PFUser *currentUser = [PFUser currentUser];
@@ -54,29 +48,40 @@
                     
                     NSArray *myTrips = user[@"myTrips"];
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
+                    
+                    self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
+
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
+                    
+                 //   NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+                 //   NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+                    
+                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
+                    self.tripTableView.dataSource = self.tableViewDataSource;
+                    if (self.segmentedControl.selectedSegmentIndex == 1) {
+                        [self.tableViewDataSource changeTripsDisplayed];
+                        [self.tripTableView reloadData];
+                    }
+
+
                 } else {
                     // show modal
                 }
             }];
         }
         
-        NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-        
-        
-        
-        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
-        self.tripTableView.dataSource = self.tableViewDataSource;
-        if (self.segmentedControl.selectedSegmentIndex == 1) {
-            [self.tableViewDataSource changeTripsDisplayed];
-            [self.tripTableView reloadData];
-        }
         
         
         
     }];
 
+
+   
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    // set tourist
+   
 }
 
 
@@ -128,7 +133,7 @@
         [guideForThisRow.myTrips addObject:tour];
         
     } // END OF TOUR FOR LOOP
-        
+    
     NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
     
     }
