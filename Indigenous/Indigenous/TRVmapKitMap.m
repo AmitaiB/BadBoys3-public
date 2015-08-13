@@ -41,6 +41,8 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 @property (nonatomic, strong) CLLocation *location;
 
 
+- (void)locationUpdated:(NSNotification *)notification;
+
 @end
 
 @implementation TRVmapKitMap
@@ -48,7 +50,9 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapView.delegate = self;
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
     [self centerMapOnNYC];
 //    self.mapView.showsUserLocation = YES;
     if (self.userLocationUpdated != TRUE) {
@@ -168,13 +172,17 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 }
                                        
 
-#pragma mark SearchBar Delegate
+#pragma mark SearchBar Delegate methods
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     DBLG
 }
 
-#pragma mark MapView Delegate
+- (void)locationUpdated:(NSNotification *)notifcation {
+        //??? Anybody home?
+}
+
+#pragma mark MapView Delegate methods
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
