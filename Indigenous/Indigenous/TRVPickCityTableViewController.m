@@ -31,6 +31,10 @@
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
 
+    UINavigationBar *navbar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    //do something like background color, title, etc you self
+    [self.view addSubview:navbar];
+    
     
     [self.sharedDataStore setCurrentUser: [PFUser currentUser]];
     self.sharedDataStore.parseUser = [PFUser currentUser];
@@ -65,10 +69,6 @@
       }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 
