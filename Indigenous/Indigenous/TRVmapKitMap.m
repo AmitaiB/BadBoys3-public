@@ -23,7 +23,7 @@
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
-
+    //!!![Amitai] don't forget the awesome hnk_placemarkFromGooglePlace:apiKey:completion:
 
 static NSString *const kTRVMapAnnotationIdentifier     = @"kTRVMapAnnotationIdentifier";
 static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCellIdentifier";
