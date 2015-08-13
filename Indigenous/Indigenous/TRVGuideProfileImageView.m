@@ -48,14 +48,10 @@
     _userForThisGuideProfileView = userForThisGuideProfileView;
     
     self.profileImageView.image = userForThisGuideProfileView.userBio.profileImage;
-    
-    
-    
-    
-    // SET TAGLINE LABEL AS BIO DESCRIPTION FOR NOW, 
     self.guideTagLineLabel.text = userForThisGuideProfileView.userBio.userTagline;
-    NSLog(@"THIS IS THE TAG LINE %@" ,userForThisGuideProfileView.userBio.userTagline);
     self.nameLabel.text = userForThisGuideProfileView.userBio.firstName;
+    
+    
 }
 
 

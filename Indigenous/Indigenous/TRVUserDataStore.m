@@ -80,6 +80,7 @@
             bioForLoggedInUser.isGuide = objects[0][@"isGuide"];
             bioForLoggedInUser.language = objects[0][@"languagesSpoken"];
             bioForLoggedInUser.userTagline = objects[0][@"oneLineBio"];
+            NSLog(@"%@", objects[0][@"oneLineBio"]  );
             bioForLoggedInUser.bioDescription = objects[0][@"bioTextField"];
  
             
