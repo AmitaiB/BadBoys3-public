@@ -83,7 +83,7 @@
     
     self.sharedDataStore               = [TRVUserDataStore sharedUserInfoDataStore];
     TRVBio *userBio                    = self.sharedDataStore.loggedInUser.userBio;
-    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", userBio.firstName];
+    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", (userBio.firstName)? userBio.firstName : @"Jn. Doe"];
 
     
         //    self.saveButtonLabel.hidden = YES;
@@ -114,7 +114,7 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     DBLG
     if ([textField isEqual:self.addTourNameTxF]) {
-        self.tourNameLabel.text = textField.text;
+        self.tourNameLabel.text = [NSString stringWithFormat:@"%@ Tour!", textField.text];
         self.itinerary.nameOfTour = textField.text;
         textField.text = @"";
         textField.placeholder = @"change Tour name";

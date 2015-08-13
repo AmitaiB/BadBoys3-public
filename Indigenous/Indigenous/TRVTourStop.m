@@ -11,40 +11,47 @@
 @implementation TRVTourStop 
 
 
--initWithCoordinates:(CLLocationCoordinate2D)coordinates
+-(instancetype)initWithCoordinates:(CLLocationCoordinate2D)coordinates
         operatorCost:(CGFloat)oCost
       incidentalCost:(CGFloat)iCost
                image:(UIImage *)image
 {
     
-    if (!self) {
-        return nil;
+    if (self = [super init]) {
+        _operatorCost     = oCost;
+        _incidentalCost   = iCost;
+        _tourStopLocation = coordinates;
+        _lat              = coordinates.latitude;
+        _lng              = coordinates.longitude;
+        _tourStopMarker   = [GMSMarker markerWithPosition:coordinates];
+        _nameOfPlace = @"Flatiron School";
+        _descriptionOfEvent = @"best school ever";
+        _tourStopLocation = coordinates;
     }
-    _operatorCost     = oCost;
-    _incidentalCost   = iCost;
-    _tourStopLocation = coordinates;
-    _lat              = coordinates.latitude;
-    _lng              = coordinates.longitude;
-    _tourStopMarker   = [GMSMarker markerWithPosition:coordinates];
-    _nameOfPlace = @"Flatiron School";
-    _descriptionOfEvent = @"best school ever";
     
     return self;
 };
 
--(id)initWithCoordinates:(CLLocationCoordinate2D)coordinates {
+-(instancetype)initWithCoordinates:(CLLocationCoordinate2D)coordinates {
     return [self initWithCoordinates:coordinates
                         operatorCost:0
                       incidentalCost:0
-                               image:[UIImage imageNamed:@"madrid.jpg"]];
+                               image:[UIImage imageWithCIImage:[CIImage emptyImage]]];
     
 }
 
--(id)initWithMapMarker:(GMSMarker *)marker {
+-(instancetype)initWithMapMarker:(GMSMarker *)marker {
     _tourStopMarker = marker;
     return [self initWithCoordinates:marker.position];
 }
 
-
+-(instancetype)initWithAnnotation:(id<MKAnnotation>)originalAnnotation {
+    self.coordinate = originalAnnotation.coordinate;
+        //???:[Amitai]Why can't we set these two properties? B/c they're optional?
+        //    self.title = originalAnnotation.title;
+        //    self.subtitle = originalAnnotation.subtitle;
+    
+    return [self initWithCoordinates:originalAnnotation.coordinate];
+}
 
 @end

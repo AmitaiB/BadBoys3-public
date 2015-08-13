@@ -23,7 +23,7 @@
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
-
+    //!!![Amitai] don't forget the awesome hnk_placemarkFromGooglePlace:apiKey:completion:
 
 static NSString *const kTRVMapAnnotationIdentifier     = @"kTRVMapAnnotationIdentifier";
 static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCellIdentifier";
@@ -37,6 +37,11 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 @property (nonatomic, strong) NSArray *mapLocations;
 @property (nonatomic) BOOL userLocationUpdated;
 
+@property (nonatomic, strong) CLPlacemark *place;
+@property (nonatomic, strong) CLLocation *location;
+
+
+- (void)locationUpdated:(NSNotification *)notification;
 
 @end
 
@@ -45,7 +50,9 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.mapView.delegate = self;
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
     [self centerMapOnNYC];
 //    self.mapView.showsUserLocation = YES;
     if (self.userLocationUpdated != TRUE) {
@@ -90,11 +97,7 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 //    if (self.mapView.userLocation.location.coordinate.latitude != (double)0)
 //        {
             [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate];
-//        } else {
-//            INTULocationManager *locationManager = [INTULocationManager sharedInstance];
-//            [locationManager requestLocationWithDesiredAccuracy:INTULocationAccuracyBlock timeout:15 delayUntilAuthorized:YES block:^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
-//                [self.mapView setCenterCoordinate:currentLocation.coordinate
-//                                         animated:YES];
+//        } else {???
                 self.userLocationUpdated = YES;
 //            }];
 //        }
@@ -132,22 +135,50 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     [self.mapView setRegion:region];
 }
 
+    //TODO: Make sure that something uses this method.
+/**
+ *
+ * CLPlacemark properties:
+ name
+ ISOcountryCode
+ country
+ postal code
+ administrativeArea (state)
+ subAdministrativeArea (county)
+ locality (city)
+ subLocality (neighborhood, 'common name')
+ thoroughfare (street address)
+ subThoroughfare (building number)
+ region (CLRegion the placemark appears in)
+ *
+ *  @param location A location defined by lat and lng.
+ *  @returns in the completion block, sets the VC's 'place' propertty
+ */
 -(void)geocode:(CLLocation*)location {
     CLGeocoder *geocoder = [CLGeocoder new];
 
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         DBLG
+        if (!error) {
+            self.place = [placemarks firstObject];
+        } else {
+            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
+        }
     }];
 }
                                        
 
-#pragma mark SearchBar Delegate
+#pragma mark SearchBar Delegate methods
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     DBLG
 }
 
-#pragma mark MapView Delegate
+- (void)locationUpdated:(NSNotification *)notifcation {
+        //??? Anybody home?
+}
+
+#pragma mark MapView Delegate methods
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
