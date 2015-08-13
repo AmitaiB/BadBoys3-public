@@ -143,12 +143,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Mo-iV-fEu">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Place Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Mo-iV-fEu">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wd1-Ff-4wd">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wd1-Ff-4wd">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -237,11 +237,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tourStopCell" id="SFt-WW-Rbr">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tourStopCell" textLabel="ipS-lq-0ID" detailTextLabel="VMz-15-gqK" style="IBUITableViewCellStyleSubtitle" id="SFt-WW-Rbr">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SFt-WW-Rbr" id="3v3-us-kzp">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ipS-lq-0ID">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VMz-15-gqK">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -252,6 +272,22 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lat." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ww1-VS-0sU">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="210" y="263" width="73" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lng." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fx2-f7-fDY">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="295" y="262" width="73" height="30"/>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -322,6 +358,8 @@
                                 <exclude reference="0ml-2r-iaC"/>
                                 <exclude reference="cdu-jv-L2q"/>
                                 <exclude reference="D8G-sn-nQo"/>
+                                <exclude reference="ww1-VS-0sU"/>
+                                <exclude reference="Fx2-f7-fDY"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Pj1-K5-NG9"/>
@@ -392,6 +430,8 @@
                                 <include reference="0ml-2r-iaC"/>
                                 <include reference="cdu-jv-L2q"/>
                                 <include reference="D8G-sn-nQo"/>
+                                <include reference="ww1-VS-0sU"/>
+                                <include reference="Fx2-f7-fDY"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Pj1-K5-NG9"/>
@@ -453,6 +493,10 @@
                         <outlet property="datePicker" destination="LsU-Fn-08t" id="VTS-vX-eVx"/>
                         <outlet property="dateTxF" destination="nFL-I0-sLL" id="JPe-O7-44O"/>
                         <outlet property="itineraryTableView" destination="cdu-jv-L2q" id="Xav-ES-21x"/>
+                        <outlet property="latTxF" destination="ww1-VS-0sU" id="n1n-3b-MJv"/>
+                        <outlet property="lngTxF" destination="Fx2-f7-fDY" id="jOx-gx-ChU"/>
+                        <outlet property="placeAddressTxF" destination="wd1-Ff-4wd" id="am1-83-PzH"/>
+                        <outlet property="placeNameTxF" destination="6Mo-iV-fEu" id="MmE-6p-szv"/>
                         <outlet property="saveButtonLabel" destination="4pj-ff-QgM" id="wkV-DV-Esg"/>
                         <outlet property="saveTourButton" destination="V8x-Oi-iPZ" id="jMF-aX-Bc1"/>
                         <outlet property="tourCategoryLabel" destination="lok-hC-Ho6" id="r74-pf-TRH"/>
@@ -465,10 +509,10 @@
             </objects>
             <point key="canvasLocation" x="1297.5" y="247"/>
         </scene>
-        <!--View Controller-->
+        <!--Dummy Map Scene-->
         <scene sceneID="Sdc-Jr-S7h">
             <objects>
-                <viewController id="vtX-nK-lGM" sceneMemberID="viewController">
+                <viewController id="vtX-nK-lGM" userLabel="Dummy Map Scene" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g2l-EL-bJf"/>
                         <viewControllerLayoutGuide type="bottom" id="0p6-aF-rQI"/>
@@ -528,7 +572,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11Y-yB-n26" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="928"/>
+            <point key="canvasLocation" x="1926" y="1190"/>
         </scene>
         <!--Google Map View Controller-->
         <scene sceneID="prb-77-kfP">

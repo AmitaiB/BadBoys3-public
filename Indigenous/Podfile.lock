@@ -56,6 +56,7 @@ PODS:
     - Mantle (~> 2.0)
   - HNKServerFacade (0.3.0):
     - AFNetworking (~> 2.5)
+  - INTULocationManager (4.0.0)
   - Mantle (2.0.3):
     - Mantle/extobjc (= 2.0.3)
   - Mantle/extobjc (2.0.3)
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - FoldingTabBar (~> 1.0.1)
   - GoogleMaps
   - HNKGooglePlacesAutocomplete (~> 1.1.0)
+  - INTULocationManager
   - Masonry
   - MBProgressHUD (~> 0.9.1)
   - MPSkewed
@@ -97,6 +99,7 @@ SPEC CHECKSUMS:
   GoogleMaps: ebf08677f181d9c2dcdbd1721d206f02beccc9b1
   HNKGooglePlacesAutocomplete: 0022f666d245c18fb8cd860e79712526d6f88267
   HNKServerFacade: 0fa3839353480b8862563a34903ad1406a38b4c9
+  INTULocationManager: 754f2800415378b7bb2c07be103449e1f6a2cc70
   Mantle: 8d6b14979a082a9ed4994463eb7a4ff576c94632
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad

@@ -20,5 +20,7 @@
 @interface TRVmapKitMap : UIViewController <MKMapViewDelegate, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
 
 @property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
+@property (nonatomic, strong) CLLocation *publicLocation;
+
 
 @end

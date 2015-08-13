@@ -6,13 +6,17 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+#import <INTULocationManager.h>
+
 #import "TRVTour.h"
 #import "TRVTourStop.h"
+#import "TRVmapKitMap.h"
 #import "TRVItinerary.h"
 #import "TRVAddToursVC.h"
 #import "TRVUserDataStore.h"
 #import "TRVLocationManager.h"
 #import "TestMapWithSearchVC.h"
+#import "CLLocation+initWith2D.h"
 #import "TRVGoogleMapViewController.h"
 #import <Parse.h>
 #import <CZPicker.h>
@@ -47,6 +51,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView        *tourImage;
 
 
+@property (weak, nonatomic) IBOutlet UITextField *placeNameTxF;
+@property (weak, nonatomic) IBOutlet UITextField *placeAddressTxF;
+@property (weak, nonatomic) IBOutlet UITextField *latTxF;
+@property (weak, nonatomic) IBOutlet UITextField *lngTxF;
 
 
 
@@ -59,18 +67,33 @@
     //@property (weak, nonatomic) IBOutlet SSFlatDatePicker *datePicker;
 @end
 
-@implementation TRVAddToursVC
+@implementation TRVAddToursVC {
+    __block CLLocation *currentLocation;
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        DBLG
+        if (error) {
+            NSLog(@"Danger Wil Robinson! Danger (PFGeoPoint couldn't get our current location! Error: %@", error);
+        } else {
+            CLLocationCoordinate2D currentPosition = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+            currentLocation = [[CLLocation alloc] initWithCoordinate:currentPosition];
+            NSLog(@"PFGeoPoint says I'm here: %.04f, %.04f", geoPoint.latitude, geoPoint.longitude);
+        }
+    }];
     
         //Setup protocols, initialize singletons, etc.
     self.itineraryTableView.delegate   = self;
     self.itineraryTableView.dataSource = self;
     self.dateTxF.delegate              = self;
     self.addTourNameTxF.delegate       = self;
-
+    self.placeNameTxF.delegate         = self;
+    self.placeAddressTxF.delegate      = self;
     
         //method commented out
 //    [self.datePicker            addTarget:self
@@ -103,6 +126,8 @@
         self.itineraryTableView.hidden = YES;
         self.datePicker.hidden = NO;
         self.confirmDateSelectionButton.hidden = NO;
+        self.latTxF.hidden = YES;
+        self.lngTxF.hidden = YES;
         [self.datePicker becomeFirstResponder];
         return NO;
     } else {
@@ -123,8 +148,10 @@
         
         }
         
-        [textField resignFirstResponder];
+    } else if ([textField isEqual:self.latTxF]) {
+        self.
     }
+    [textField resignFirstResponder];
     return YES;
 }
 
@@ -139,13 +166,16 @@
     return self.listOfStops.count;
 }
 
-/* //TODO: Configure the itinerary Cells...
+
+ //TODO: Configure the itinerary Cells...
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *tourStopCell = [tableView dequeueReusableCellWithIdentifier:@"reuseID" forIndexPath:indexPath];
+    UITableViewCell *tourStopCell = [tableView dequeueReusableCellWithIdentifier:@"tourStopCell" forIndexPath:indexPath];
+    
+    
     
         //blah blah
-    return cell;
-} */
+    return tourStopCell;
+}
 
 
 /*
@@ -215,6 +245,8 @@
     
         //return control and state to previously...
     self.itineraryTableView.hidden         = NO;
+    self.latTxF.hidden                     = NO;
+    self.lngTxF.hidden                     = NO;
     self.confirmDateSelectionButton.hidden = YES;
     self.datePicker.hidden                 = YES;
 }
@@ -224,16 +256,19 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    TRVLocationManager *locationManager = [TRVLocationManager sharedLocationManager];
-    [locationManager conditionalRequestForAuthorizationOfType:kCLAuthorizationStatusAuthorizedAlways inView:self];
+//    TRVLocationManager *locationManager = [TRVLocationManager sharedLocationManager];
+//    [locationManager.locationManager requestAlwaysAuthorization];
+        //    [locationManager conditionalRequestForAuthorizationOfType:kCLAuthorizationStatusAuthorizedAlways inView:self];
+    
     
     
     if ([segue.identifier isEqualToString:@"toMapSegueID"]) {
     TRVGoogleMapViewController *destinationVC = segue.destinationViewController;
         destinationVC.delegate = self;
     } else if ([segue.identifier isEqualToString:@"toAppleMapSegueID"]) {
-        TestMapWithSearchVC *destinationVC = segue.destinationViewController;
+        TRVmapKitMap *destinationVC = segue.destinationViewController;
         destinationVC.delegate = self;
+        destinationVC.publicLocation = currentLocation;
     }
     
     
