@@ -69,7 +69,9 @@
     self.itineraryTableView.delegate   = self;
     self.itineraryTableView.dataSource = self;
     self.dateTxF.delegate              = self;
+
     
+        //method commented out
 //    [self.datePicker            addTarget:self
 //                                   action:@selector(changeTourDate)
 //                         forControlEvents:UIControlEventValueChanged];
