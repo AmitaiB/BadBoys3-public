@@ -7,10 +7,12 @@
 //
 
 #import "TRVBookTourViewController.h"
+#import "TRVUser.h"
 
 @interface TRVBookTourViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameOfTourLabel;
-
+@property (nonatomic, strong) TRVUser *guideForThisTour;
+    
 @end
 
 @implementation TRVBookTourViewController

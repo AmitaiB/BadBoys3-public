@@ -8,9 +8,13 @@
 
 #import "TRVGuideDetailProfileView.h"
 #import <Masonry.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface TRVGuideDetailProfileView ()
 @property (strong, nonatomic) IBOutlet UIView *guideDetailedProfileView;
+@property (weak, nonatomic) IBOutlet UIImageView *guideProfileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *guideFullNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *guideDescription;
 
 
 @end
@@ -53,6 +57,36 @@
         make.edges.equalTo(@0);
     }];
     
+    
+    [self createCircleImageViewMask];
+
+    
 }
+
+
+-(void)setGuideForThisDetailXib:(TRVUser *)guideForThisDetailXib {
+
+    _guideForThisDetailXib = guideForThisDetailXib;
+    self.guideProfileImageView.image = guideForThisDetailXib.userBio.profileImage;
+    NSString *firstName = guideForThisDetailXib.userBio.firstName;
+//    NSString *lastName = guideForThisDetailXib.userBio.lastName;
+    NSString *fullName = [NSString stringWithFormat:@"About %@", firstName];
+    self.guideFullNameLabel.text = fullName;
+    self.guideDescription.text = self.guideForThisDetailXib.userBio.bioDescription;
+    
+}
+
+-(void)createCircleImageViewMask {
+    
+    CALayer *imageLayer = self.guideProfileImageView.layer;
+    //convert uicolor to CGColor
+    imageLayer.borderColor = [[UIColor grayColor] CGColor];
+    [imageLayer setCornerRadius:self.guideProfileImageView.frame.size.width/2];
+    [imageLayer setBorderWidth:2];
+    // This carves the cirle
+    [imageLayer setMasksToBounds:YES];
+    
+}
+
 
 @end

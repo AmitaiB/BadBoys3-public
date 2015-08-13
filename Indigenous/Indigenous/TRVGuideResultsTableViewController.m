@@ -72,8 +72,9 @@
         
         cell.guideForThisCell = self.availableGuides[indexPath.row];
         
-        // setting nib user will parse text labels
+        // setting nib user will parse text labels for these nibs
         cell.profileImageViewNib.userForThisGuideProfileView = self.availableGuides[indexPath.row];
+        cell.detailedProfileNib.guideForThisDetailXib = self.availableGuides[indexPath.row];
         
         // I CONFORM TO THE PROFILE IMAGE TAPPED PROTOCOL
         cell.profileImageViewNib.delegate = self;
