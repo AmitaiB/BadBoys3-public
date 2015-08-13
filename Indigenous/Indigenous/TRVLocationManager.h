@@ -15,6 +15,7 @@ typedef void (^TRVLocationUpdateCompletionBlock)(CLLocation *location, NSError *
 @interface TRVLocationManager : NSObject <CLLocationManagerDelegate>
 
 + (TRVLocationManager *)sharedLocationManager;
++ (void)logLocationToConsole:(CLLocation*)location;
 
 @property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, strong) CLLocationManager *locationManager;

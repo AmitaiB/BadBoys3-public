@@ -74,6 +74,9 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     self.definesPresentationContext = YES;
     self.modalPresentationCapturesStatusBarAppearance = YES;
 
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                                      action:@selector(handleLongPressRecognizer:)];
+    [self.mapView addGestureRecognizer:longPressRecognizer];
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -94,13 +97,8 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 
 -(void)centerMapOnUserLocation {
     self.mapView.showsUserLocation = YES;
-//    if (self.mapView.userLocation.location.coordinate.latitude != (double)0)
-//        {
-            [self.mapView setCenterCoordinate:self.mapView.userLocation.location.coordinate];
-//        } else {???
-                self.userLocationUpdated = YES;
-//            }];
-//        }
+    [self.mapView                    setCenterCoordinate:self.mapView.userLocation.location.coordinate];
+    self.userLocationUpdated       = YES;
 }
 
     //Need to reset the region to a box that will contain all your annotations...
@@ -180,6 +178,21 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
 
 #pragma mark MapView Delegate methods
 
+- (void)handleLongPressRecognizer:(UIGestureRecognizer*)sender {
+    sender.enabled = NO;
+        //Get the point in the view, turn it into a coordinate...
+    CGPoint point = [sender locationInView:self.mapView];
+    CLLocationCoordinate2D touchedCoordinate = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+        //...create your annotation.
+    TRVTourStop *dropPin = [[TRVTourStop alloc] initWithCoordinates:touchedCoordinate];
+    MKAnnotationView *dropPinView = [[MKAnnotationView alloc] initWithAnnotation:dropPin reuseIdentifier:kTRVMapAnnotationIdentifier];
+    dropPinView.draggable = YES;
+    [self.mapView addAnnotation:dropPin];
+    DBLG
+    [TRVLocationManager logLocationToConsole:[[CLLocation alloc] initWithCoordinate:dropPin.coordinate]];
+}
+
+
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
@@ -192,8 +205,6 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
     }
     
     return view;
-    
-    
 }
 
 /*

@@ -129,7 +129,7 @@ static TRVLocationManager *_sharedLocationManager;
 
 #pragma mark - helper methods
 
--(void)logLocationToConsole:(CLLocation*)location
++ (void)logLocationToConsole:(CLLocation*)location
 {
     CLLocationCoordinate2D coord = location.coordinate;
     NSLog(@"Location lat/long: %f,%f",coord.latitude, coord.longitude);
