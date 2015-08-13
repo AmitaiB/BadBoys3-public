@@ -12,6 +12,7 @@
 #import "TRVTourStopCollectionViewDelegateFlowLayout.h"
 #import "UIScrollView+APParallaxHeader.h"
 #import "TRVParallaxHeaderImageView.h"
+#import "TRVBookTourViewController.h"
 //#import "TRVTourStop.h"
 
 #import "Masonry/Masonry.h"
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topBookTourButtonConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *bookTourButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tourStopImageViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookTourBottomConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
 
 
@@ -71,10 +73,25 @@
     [self setupParallaxImage:self.theScrollViewThatHoldsAllTheOtherViews];
     
     _savedAlphaValue = 1;
+    //self.bookTourBottomConstraint.active = NO;
+    //self.topBookTourButtonConstraint.active = NO;
     
+//    [self setUpTourGuideViewController];
+
     if (_isTourGuide == YES){
         [self setUpTourGuideViewController];
     }
+//    else {
+        //[NSLayoutConstraint deactivateConstraints:self.bookTourButton.constraints];
+//        self.bookTourBottomConstraint.active = NO;
+//        self.topBookTourButtonConstraint.active = NO;
+        //[self.contentView setNeedsLayout];
+        //[self.theScrollViewThatHoldsAllTheOtherViews setNeedsLayout];
+        //[self.theScrollViewThatHoldsAllTheOtherViews sizeToFit];
+        //[self.tourStopImageView setNeedsLayout];
+    //}
+    //self.contentView.backgroundColor = [UIColor magentaColor]; NOT THE PROBLEM
+    self.theScrollViewThatHoldsAllTheOtherViews.backgroundColor = [UIColor orangeColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,14 +101,23 @@
 
 -(void)isTourGuideTripViewController {
     _isTourGuide = YES;
-   
 }
 
 -(void)setUpTourGuideViewController {
     self.bookTourButton.hidden = NO;
-    self.topBookTourButtonConstraint.active = YES;
+    self.bookTourButton.backgroundColor = [UIColor greenColor];
+//    self.topBookTourButtonConstraint.active = YES;
+//    self.bookTourBottomConstraint.active = YES;
+    [NSLayoutConstraint activateConstraints:self.bookTourButton.constraints];
     self.tourStopImageViewBottomConstraint.active = NO;
-    [self.contentView layoutIfNeeded];
+//
+//    [self.bookTourButton layoutIfNeeded];
+//    [self.tourStopImageView layoutIfNeeded];
+//    [self.contentView layoutIfNeeded];
+//    [self.theScrollViewThatHoldsAllTheOtherViews layoutIfNeeded];
+//    [self.view layoutIfNeeded];
+   // self.theScrollViewThatHoldsAllTheOtherViews.contentInset = UIEdgeInsetsMake(self.theScrollViewThatHoldsAllTheOtherViews.contentInset.top, 0, 40, 0);
+    
     
 }
 
@@ -118,7 +144,7 @@
     self.parallaxImageView.userInteractionEnabled = YES;
     
     [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:self.parallaxImageView andHeight:self.parallaxImageView.bounds.size.height];
-    [self setupParallaxImageTitle];
+    //[self setupParallaxImageTitle];
     //[self.theScrollViewThatHoldsAllTheOtherViews bringSubviewToFront:self.parallaxHeaderTourNameLabel];
     [self makeContentInsetFullScreen:self.theScrollViewThatHoldsAllTheOtherViews];
 }
@@ -135,7 +161,7 @@
     
     self.theScrollViewThatHoldsAllTheOtherViews.parallaxView.delegate = self;
     // Do any additional setup after loading the view.
-    NSLog(@"The difference: %f", self.parallaxImageView.frame.size.height + self.navigationController.navigationBar.bounds.size.height - [UIScreen mainScreen].bounds.size.height);
+    //NSLog(@"The difference: %f", self.parallaxImageView.frame.size.height + self.navigationController.navigationBar.bounds.size.height - [UIScreen mainScreen].bounds.size.height);
     
     UIView *viewToAddTitleLabelTo = (UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0]);
     [viewToAddTitleLabelTo addSubview:self.parallaxHeaderTourNameLabel];
@@ -165,11 +191,11 @@
     // Do whatever you need to do to the parallaxView or your subview after its frame changed
     //NSLog(@"parallaxView:didChangeFrame: %@", NSStringFromCGRect(frame));
     //[self setTitleLabelFrame:frame];
-    NSLog(@"y value of title: %f", self.parallaxHeaderTourNameLabel.frame.origin.y);
-    NSLog(@"y value of other label: %f", self.tourInfoLabel.frame.origin.y);
-    
-    NSLog(@"y value of bottom of title in absolute coordinates: %f",[self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y + self.parallaxHeaderTourNameLabel.frame.size.height);
-    NSLog(@"y value of tour info label in absolute coordinates: %f", [self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y);
+//    NSLog(@"y value of title: %f", self.parallaxHeaderTourNameLabel.frame.origin.y);
+//    NSLog(@"y value of other label: %f", self.tourInfoLabel.frame.origin.y);
+//    
+//    NSLog(@"y value of bottom of title in absolute coordinates: %f",[self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y + self.parallaxHeaderTourNameLabel.frame.size.height);
+//    NSLog(@"y value of tour info label in absolute coordinates: %f", [self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y);
     
     
     [self setAlphaForParallaxTitleLabel];
@@ -177,7 +203,7 @@
 
 - (void)setAlphaForParallaxTitleLabel {
     self.parallaxHeaderTourNameLabel.alpha = ([self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y + self.parallaxHeaderTourNameLabel.frame.size.height)) / _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
-    NSLog(@"tour name label new alpha: %f", self.parallaxHeaderTourNameLabel.alpha);
+//    NSLog(@"tour name label new alpha: %f", self.parallaxHeaderTourNameLabel.alpha);
 //    self.parallaxHeaderTourNameLabel.alpha = 1;
 //    self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor orangeColor];
 }
@@ -185,8 +211,17 @@
 
 - (IBAction)bookTourButtonTapped:(id)sender {
     
+    UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
     
+    TRVBookTourViewController *destination = [destinationStoryboard instantiateInitialViewController];
     
+    // pass it into confirm purchase Storyboard
+    destination.destinationTour = self.tour;
+    
+    // Alan can you check if this is right
+    [self presentViewController:destination animated:NO completion:nil];
+
+    //NSLog(@"%@", @"PBBBBBBBBBBBT");
     
 }
 
@@ -194,10 +229,10 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.parallaxHeaderTourNameLabel.hidden = NO;
-    UIView *viewToAddTitleLabelTo = ((UIView*)[((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])) subviews][0]);
-    [viewToAddTitleLabelTo bringSubviewToFront:self.parallaxHeaderTourNameLabel];
-    self.parallaxHeaderTourNameLabel.alpha = _savedAlphaValue;
+//    self.parallaxHeaderTourNameLabel.hidden = NO;
+//    UIView *viewToAddTitleLabelTo = ((UIView*)[((UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0])) subviews][0]);
+//    [viewToAddTitleLabelTo bringSubviewToFront:self.parallaxHeaderTourNameLabel];
+//    self.parallaxHeaderTourNameLabel.alpha = _savedAlphaValue;
 }
 
 -(UIView*)viewWithTabBarAsSubview {

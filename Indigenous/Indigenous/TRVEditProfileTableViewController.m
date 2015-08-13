@@ -7,13 +7,12 @@
 //
 
 #import "TRVEditProfileTableViewController.h"
-#import "TRVEditTextViewController.h"
 #import "TRVUserDataStore.h"
 #import <Masonry.h>
 
-@interface TRVEditProfileTableViewController ()<UITextFieldDelegate, editTextProtocol>
+@interface TRVEditProfileTableViewController ()<UITextFieldDelegate>
 
-@property (nonatomic, strong) TRVEditTextViewController *editTextVC;
+//@property (nonatomic, strong) TRVEditTextViewController *editTextVC;
 
 @property (weak, nonatomic) IBOutlet UIView *aboutMeContentView;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
@@ -24,11 +23,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *languagesTextField;
 
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *taglineCell;
-@property (weak, nonatomic) IBOutlet UILabel *taglineLabel;
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *aboutMeCell;
-@property (weak, nonatomic) IBOutlet UILabel *aboutMeLabel;
+@property (weak, nonatomic) IBOutlet UITextView *taglineTextView;
+
+@property (weak, nonatomic) IBOutlet UITextView *aboutMeTextView;
+
 @property (weak, nonatomic) IBOutlet UITextField *homeCityLabel;
 @property (weak, nonatomic) IBOutlet UITextField *homeCountryLabel;
 
@@ -38,9 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.editTextVC = [[TRVEditTextViewController alloc] init];
-    self.editTextVC.delegate = self;
-    
+
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
     UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonPressed)];
@@ -51,6 +48,9 @@
     // set labels
     self.firstNameTextField.text = self.sharedDataStore.loggedInUser.userBio.firstName;
     self.lastNameTextField.text = self.sharedDataStore.loggedInUser.userBio.lastName;
+    self.taglineTextView.text = self.sharedDataStore.loggedInUser.userBio.userTagline;
+    self.aboutMeTextView.text = self.sharedDataStore.loggedInUser.userBio.bioDescription;
+
     self.emailTextField.text = self.sharedDataStore.loggedInUser.userBio.email;
     self.languagesTextField.text = self.sharedDataStore.loggedInUser.userBio.language;
     self.homeCityLabel.text = self.sharedDataStore.loggedInUser.userBio.homeCity;
@@ -82,22 +82,26 @@
     PFObject *userBio = currentUser[@"userBio"];
     
     
-    userBio[@"email"] = self.emailTextField.text;
+    
+    // set on parse
     currentUser[@"email"] = self.emailTextField.text;
+    userBio[@"first_name"] = self.firstNameTextField.text;
+    userBio[@"last_name"] = self.lastNameTextField.text;
+    userBio[@"email"] = self.emailTextField.text;
     userBio[@"languagesSpoken"] = self.languagesTextField.text;
-    userBio[@"oneLineBio"] = self.taglineLabel.text;
-    userBio[@"bioTextField"] = self.aboutMeLabel.text;
+    userBio[@"oneLineBio"] = self.taglineTextView.text;
+    userBio[@"bioTextField"] = self.aboutMeTextView.text;
     userBio[@"homeCity"] = self.homeCityLabel.text;
     userBio[@"homeCountry"] = self.homeCountryLabel.text;
 
     
-    //save locally
+    //set locally
     self.sharedDataStore.loggedInUser.userBio.email = self.emailTextField.text;
     self.sharedDataStore.loggedInUser.userBio.language = self.languagesTextField.text;
     self.sharedDataStore.loggedInUser.userBio.firstName = self.firstNameTextField.text;
     self.sharedDataStore.loggedInUser.userBio.lastName = self.lastNameTextField.text;
-    self.sharedDataStore.loggedInUser.userBio.userTagline = self.taglineLabel.text;
-    self.sharedDataStore.loggedInUser.userBio.bioDescription = self.aboutMeLabel.text;
+    self.sharedDataStore.loggedInUser.userBio.userTagline = self.taglineTextView.text;
+    self.sharedDataStore.loggedInUser.userBio.bioDescription = self.aboutMeTextView.text;
     self.sharedDataStore.loggedInUser.userBio.homeCity = self.homeCityLabel.text;
     self.sharedDataStore.loggedInUser.userBio.homeCountry = self.homeCountryLabel.text;
 
@@ -127,45 +131,6 @@
     return 5;
 }
 
-
-
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//    
-//    
-//    UITableViewCell *theCellClicked = [tableView cellForRowAtIndexPath:indexPath];
-//   
-//    if (theCellClicked == self.taglineCell) {
-//
-//        [self presentEditViewControllerWithText:self.taglineLabel.text];
-//        
-//    } else if (theCellClicked == self.aboutMeCell) {
-//        NSLog(@"are you in here?");
-//        [self presentEditViewControllerWithText:self.aboutMeLabel.text];
-//        
-//    }
-//}
-
--(void)presentEditViewControllerWithText:(NSString *)text {
-    NSLog(@"are you in this segue...");
-
-    UIStoryboard *editText = [UIStoryboard storyboardWithName:@"TRVEditText" bundle:nil];
-    
-    TRVEditTextViewController *destination = (TRVEditTextViewController*)[editText
-                                                                       instantiateViewControllerWithIdentifier: @"editText"];
-    
-//    TRVEditTextViewController *destination = [editText instantiateInitialViewController];
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:destination];
-
-    
-    destination.destinationTextToEdit = text;
-
-    [self presentViewController:navigationController animated:YES completion:nil];
-//    [self presentViewController:destination animated:YES completion:nil];
-    
-}
 
 
 

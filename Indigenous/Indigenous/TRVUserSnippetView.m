@@ -61,6 +61,21 @@
     self.firstNameLabel.text = userForThisSnippetView.userBio.firstName;
     self.lastNameLabel.text = userForThisSnippetView.userBio.lastName;
     self.oneLinerLabel.text = userForThisSnippetView.userBio.userTagline;
+    
+    
+    // optional details
+    if(![self.homeCityLabel.text isEqualToString:@""]) {
+        self.homeCityLabel.text = userForThisSnippetView.userBio.homeCity;
+        self.homeCountryLabel.text = userForThisSnippetView.userBio.homeCountry;
+    } else{
+        // make label height == 0
+        [self.homeCountryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@0);
+        }];
+        [self.homeCityLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@0);
+        }];
+    }
    
 }
 

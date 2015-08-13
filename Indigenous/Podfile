@@ -10,7 +10,6 @@ pod "AFNetworking", "~> 2.0"
 pod "FBSDKShareKit"
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'APParallaxHeader'
-pod 'INTULocationManager', '~> 3.0'
 pod 'FoldingTabBar', '~> 1.0.1'
 pod 'HNKGooglePlacesAutocomplete', '~> 1.1.0'
 pod 'RMSaveButton'

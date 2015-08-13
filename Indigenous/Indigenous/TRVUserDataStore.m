@@ -26,6 +26,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedTasksDataStore = [[TRVUserDataStore alloc] init];
+
     });
     
     return _sharedTasksDataStore;
@@ -35,6 +36,7 @@
 -(instancetype)init {
     self = [super init];
     if (self) {
+//        _loggedInUser.myTrips = [[NSMutableArray alloc] init];
         [TRVNetworkRechabilityMonitor startNetworkReachabilityMonitoring];
         [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
@@ -47,9 +49,12 @@
 
 
 
-- (void) setCurrentUser:(PFUser *)currentUser {
+- (void) setCurrentUser:(PFUser *)currentUser withBlock:(void (^)(BOOL success))completionBlock {
+
 
         _parseUser = currentUser;
+    
+    
         PFQuery *query = [PFQuery queryWithClassName:@"UserBio"];
          PFObject *object = currentUser[@"userBio"];
          [object pinInBackground];
@@ -113,7 +118,7 @@
     
             _loggedInUser = [[TRVUser alloc] initWithBio:bioForLoggedInUser];
             
-            //
+            completionBlock(YES);
             NSLog(@"Welcome %@. ", _loggedInUser.userBio.firstName);
         }
     }];

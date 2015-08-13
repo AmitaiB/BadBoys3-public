@@ -30,10 +30,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+
     
     
-    [self.sharedDataStore setCurrentUser: [PFUser currentUser]];
-    self.sharedDataStore.parseUser = [PFUser currentUser];
+    [self.sharedDataStore setCurrentUser:[PFUser currentUser] withBlock:^(BOOL success) {
+        // done
+    }];
+    
+//     self.sharedDataStore.parseUser = [PFUser currentUser];
     
     
     
