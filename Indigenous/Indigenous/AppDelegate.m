@@ -34,8 +34,6 @@
    // [PFUser enableAutomaticUser];
     
     
-    
-    
     [GMSServices provideAPIKey:GOOGLE_API_KEY];
         //TODO: [Amitai] Check for redundancy:
     [HNKGooglePlacesAutocompleteQuery setupSharedQueryWithAPIKey:GOOGLE_API_KEY];
@@ -50,9 +48,11 @@
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     TRVLocationManager *appLocationManager = [TRVLocationManager sharedLocationManager];
     
-    CLAuthorizationStatus *status = appLocationManager.locationManager.authorizationStatus;
-    
-    [appLocationManager.locationManager stopUpdatingLocation];
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+        //If we have "when in use" authorization, this is not necessary.
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [appLocationManager.locationManager stopUpdatingLocation];
+    }
 }
 
 //- (void)applicationDidEnterBackground:(UIApplication *)application {

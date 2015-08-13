@@ -13,7 +13,7 @@
 #import <Parse.h>
 #import "CustomInfoWindowView.h"
 #import <CoreLocation/CoreLocation.h>
-
+#import "TRVLocationManager.h"
 #import <HNKGooglePlacesAutocomplete.h>
 
 
@@ -32,18 +32,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
         //FIXME: need a way to dismiss the map.
         //update: Still relevant??
-//    UINavigationBar *mapNavBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
-//    [mapNavBar sizeToFit];
-//    mapNavBar.barStyle = UIBarStyleBlackTranslucent;
-//    NSArray *navBarItems = @[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelTapped:)];
-//    [mapNavBar setItems:navBarItems animated:YES];
-//    
-//    UIBarButtonItem *cancelBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(<#selector#>)];
 
-        //Immediately draws a map with the pre-loaded initial location, carried over from the TabBarVC...
+    
+    
+    
     CLLocationCoordinate2D defaultLocation = CLLocationCoordinate2DMake(40, -75);
+
 #pragma mark - MapView Initialization
         //Opens the map to the user's current location.
     GMSCameraPosition *defaultCamera       = [GMSCameraPosition cameraWithTarget:defaultLocation zoom:14];
@@ -63,6 +62,15 @@
     mapView_.delegate = self;
 
         //Optional: Zoom in once we get a lock-on, actual current location
+    
+//    TRVLocationManager *locationManager = [TRVLocationManager sharedLocationManager];
+//    locationManager getLocationWithCompletionBlock:^(CLLocation *location, NSError *error) {
+    /**
+     *  I wrote (rewrote) a nice Location Manager singleton...but Parse does the whole deal for you!
+     *
+     *  @return currentLocation
+     */
+    
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (error) {
             NSLog(@"Danger Wil Robinson! Danger (PFGeoPoint couldn't get our current location! Error: %@", error);
