@@ -23,7 +23,7 @@
 #import "TRVTourStop.h"
 #import <MBProgressHUD.h>
 
-@interface TRVGuideResultsTableViewController ()<UIGestureRecognizerDelegate, FilterProtocol, ImageTapProtocol>
+@interface TRVGuideResultsTableViewController () <UIGestureRecognizerDelegate, FilterProtocol, ImageTapProtocol>
 
 
 @property (nonatomic, strong) NSDictionary *filterDictionary;
@@ -101,6 +101,8 @@
 -(void)passFilterDictionary:(NSDictionary *)dictionary{
     
     self.filterDictionary = dictionary;
+
+
 }
 
 -(void)updateGuidesList {
