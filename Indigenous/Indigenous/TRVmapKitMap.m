@@ -153,18 +153,6 @@ static NSString *const kTRVSearchResultsCellIdentifier = @"kTRVSearchResultsCell
  *  @param location A location defined by lat and lng.
  *  @returns in the completion block, sets the VC's 'place' propertty
  */
--(void)geocode:(CLLocation*)location {
-    CLGeocoder *geocoder = [CLGeocoder new];
-
-    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        DBLG
-        if (!error) {
-            self.place = [placemarks firstObject];
-        } else {
-            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
-        }
-    }];
-}
                                        
 
 #pragma mark SearchBar Delegate methods

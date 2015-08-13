@@ -57,6 +57,7 @@ PODS:
   - HNKServerFacade (0.3.0):
     - AFNetworking (~> 2.5)
   - INTULocationManager (4.0.0)
+  - LMGeocoder (1.0.3)
   - Mantle (2.0.3):
     - Mantle/extobjc (= 2.0.3)
   - Mantle/extobjc (2.0.3)
@@ -68,7 +69,6 @@ PODS:
   - ParseUI (1.1.4):
     - Parse (~> 1.7)
   - RMSaveButton (0.1.0)
-  - SCNumberKeyBoard (0.3.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
@@ -81,13 +81,13 @@ DEPENDENCIES:
   - GoogleMaps
   - HNKGooglePlacesAutocomplete (~> 1.1.0)
   - INTULocationManager
+  - LMGeocoder (~> 1.0)
   - Masonry
   - MBProgressHUD (~> 0.9.1)
   - MPSkewed
   - Parse
   - ParseUI (~> 1.1)
   - RMSaveButton
-  - SCNumberKeyBoard
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -102,6 +102,7 @@ SPEC CHECKSUMS:
   HNKGooglePlacesAutocomplete: 0022f666d245c18fb8cd860e79712526d6f88267
   HNKServerFacade: 0fa3839353480b8862563a34903ad1406a38b4c9
   INTULocationManager: 754f2800415378b7bb2c07be103449e1f6a2cc70
+  LMGeocoder: 100572f9e572a26d3506ee0604d6629bea391767
   Mantle: 8d6b14979a082a9ed4994463eb7a4ff576c94632
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
@@ -109,6 +110,5 @@ SPEC CHECKSUMS:
   Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
   ParseUI: d1228541b02a36a7354c8f47747f5f7a89cf1ff0
   RMSaveButton: 0e3059ab2b7c06b362d9257876fec34f7fc12745
-  SCNumberKeyBoard: da42ff944dd119516a9243fc5d66c25ebf2d4ba3
 
 COCOAPODS: 0.38.2

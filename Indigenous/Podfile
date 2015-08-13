@@ -16,4 +16,5 @@ pod 'RMSaveButton'
 pod "CZPicker"
 
 pod 'INTULocationManager'
-pod 'SCNumberKeyBoard'
+#pod 'SCNumberKeyBoard'
+pod 'LMGeocoder', '~> 1.0'

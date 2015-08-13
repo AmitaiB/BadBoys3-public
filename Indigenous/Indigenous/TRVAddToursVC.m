@@ -8,6 +8,7 @@
 
 #import <INTULocationManager.h>
 
+#import <LMGeocoder.h>
 #import <SCNumberKeyBoard.h>
 #import "TRVTour.h"
 #import "TRVTourStop.h"
@@ -165,12 +166,25 @@
         }
         
     } else if ([textField isEqual:self.latTxF]) {
-        self.inputLatitude = [textField.text integerValue];
+        self.inputLatitude  = [textField.text integerValue];
     } else if ([textField isEqual:self.lngTxF]) {
         self.inputLongitude = [textField.text integerValue];
     } else if ([textField isEqual:self.placeAddressTxF]) {
-        self.inputAddress = textField.text;
+        self.inputAddress   = textField.text;
     }
+    
+    
+    if (self.latTxF.text && self.lngTxF.text) {
+        self.geoConfirmButton.titleLabel.text = @"Reverse-Geocode";
+        self.geoConfirmButton.hidden          = NO;
+    }
+    
+    if ([textField isEqual:self.placeAddressTxF]) {
+        self.inputAddress = self.placeAddressTxF.text;
+        self.geoConfirmButton.titleLabel.text = @"Geocode Loc.";
+        self.geoConfirmButton.hidden          = NO;
+    }
+    
     [textField resignFirstResponder];
     return YES;
 }
@@ -474,6 +488,46 @@
     
 }
 
+/**
+ *  Either the Geocode or Reverse-Geocode Button, depending.
+ *
+ */
 - (IBAction)geoConfirmButtonTapped:(id)sender {
+    LMGeocoder *geocoder = [LMGeocoder sharedInstance];
+    UIButton *geoButton = sender;
+    geoButton.hidden = YES;
+    
+    if ([self.geoConfirmButton.titleLabel.text isEqualToString:@"Reverse-Geocode"]) {
+        [geocoder reverseGeocodeCoordinate:CLLocationCoordinate2DMake(self.inputLatitude, self.inputLongitude) service:kLMGeocoderGoogleService completionHandler:^(NSArray *results, NSError *error) {
+            if (results.count && !error) {
+                LMAddress *address = [results firstObject];
+                NSLog(@"Address: %@", address.formattedAddress);
+            }
+        }];
+    }
+    if ([self.geoConfirmButton.titleLabel.text isEqualToString:@"Geocode Loc."]) {
+        [geocoder geocodeAddressString:self.inputAddress service:kLMGeocoderGoogleService completionHandler:^(NSArray *results, NSError *error) {
+            if (results.count && !error) {
+                LMAddress *address = [results firstObject];
+                NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude, address.coordinate.longitude);
+            }
+        }];
+    }
 }
+
+//
+//-(void)geocode:(CLLocation*)location {
+//    CLGeocoder *geocoder = [CLGeocoder new];
+//    
+//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+//        DBLG
+//        if (!error) {
+//            self.place = [placemarks firstObject];
+//        } else {
+//            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
+//        }
+//    }];
+//}
+
+
 @end
