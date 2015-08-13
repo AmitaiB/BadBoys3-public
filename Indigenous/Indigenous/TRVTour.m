@@ -41,13 +41,6 @@
 }
 
 
-
-//@property (nonatomic, strong) TRVUser *guideForThisTour;
-//@property (nonatomic, strong) TRVItinerary *itineraryForThisTour;
-//@property (nonatomic, strong) TRVTourCategory *categoryForThisTour;
-//@property (nonatomic, strong) NSDate *tourDeparture;        //The date of the start of a tour program.
-//@property (nonatomic) CGFloat *tourAverageRating;
-
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super init]) {
         self.guideForThisTour = [decoder decodeObjectOfClass:[TRVUser class] forKey:@"guideForThisTour"];
