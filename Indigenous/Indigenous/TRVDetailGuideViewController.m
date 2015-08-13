@@ -27,6 +27,8 @@
 #import "TRVUserContactView.h"
 #import "TRVUserProfileImageView.h"
 
+#import "TRVTouristTripDetailViewController.h"
+
 
 
 
@@ -227,7 +229,28 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"showTourDetailSegue" sender:self];
+//    [self performSegueWithIdentifier:@"showTourDetailSegue" sender:self];
+    
+     NSIndexPath *ip = [self.guideTripsTableView indexPathForSelectedRow];
+    
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
+    TRVTouristTripDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"tourDetailVC"];
+    TRVTour *tourForThisRow = [[TRVTour alloc] init];
+    
+    if (self.segmentedControl.selectedSegmentIndex == 0) {
+        tourForThisRow = self.guideCategoryTours[ip.row];
+    } else {
+        tourForThisRow = self.guideOtherTours[ip.row];
+    }
+
+    
+    viewController.tour = tourForThisRow;
+    NSLog(@"%@", viewController.tour.itineraryForThisTour.nameOfTour);
+    [viewController isTourGuideTripViewController];
+    //  [self.view addSubview:viewController.view];
+    
+    [self.navigationController pushViewController:viewController animated:nil];
     
 }
 
@@ -237,22 +260,22 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     
-    if ([segue.identifier isEqualToString:@"showTourDetailSegue"]) {
-        
-        NSIndexPath *ip = [self.guideTripsTableView indexPathForSelectedRow];
-        NSLog(@"THIS IS THE IP%ld", (long)ip.row);
-        TRVTour *tourForThisRow = [[TRVTour alloc] init];
-        
-        if (self.segmentedControl.selectedSegmentIndex == 0) {
-            tourForThisRow = self.guideCategoryTours[ip.row];
-        } else {
-            tourForThisRow = self.guideOtherTours[ip.row];
-        }
-
-        TRVTourDetailViewController *destinationVC = [segue destinationViewController];
-        destinationVC.destinationTour = tourForThisRow;
-        NSLog(@"THE DVC TOUR IS %@", tourForThisRow.itineraryForThisTour.nameOfTour);
-    }
+//    if ([segue.identifier isEqualToString:@"showTourDetailSegue"]) {
+//        
+//        NSIndexPath *ip = [self.guideTripsTableView indexPathForSelectedRow];
+//        NSLog(@"THIS IS THE IP%ld", (long)ip.row);
+//        TRVTour *tourForThisRow = [[TRVTour alloc] init];
+//        
+//        if (self.segmentedControl.selectedSegmentIndex == 0) {
+//            tourForThisRow = self.guideCategoryTours[ip.row];
+//        } else {
+//            tourForThisRow = self.guideOtherTours[ip.row];
+//        }
+//
+//        TRVTourDetailViewController *destinationVC = [segue destinationViewController];
+//        destinationVC.destinationTour = tourForThisRow;
+//        NSLog(@"THE DVC TOUR IS %@", tourForThisRow.itineraryForThisTour.nameOfTour);
+//    }
     
     // Pass the selected object to the new view controller.
 }
