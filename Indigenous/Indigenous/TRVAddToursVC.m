@@ -17,10 +17,9 @@
 #import <RMSaveButton.h>
 #import "TRVUserDataStore.h"
 #import <CZPicker.h>
-#import <SSFlatDatePicker.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
-
+#define kBB3DefaultTourName @"Tour Name"
 
 @interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -118,6 +117,11 @@
         self.tourNameLabel.text = textField.text;
         self.itinerary.nameOfTour = textField.text;
         textField.text = @"";
+        textField.placeholder = @"change Tour name";
+        if (![textField.text isEqualToString:kBB3DefaultTourName]) {
+        
+        }
+        
         [textField resignFirstResponder];
     }
     return YES;

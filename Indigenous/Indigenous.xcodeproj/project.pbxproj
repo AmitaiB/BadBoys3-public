@@ -166,8 +166,6 @@
 		451565181B68221B005A2871 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		451565201B68221B005A2871 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		451565231B68221B005A2871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4515652E1B68221B005A2871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4515652F1B68221B005A2871 /* IndigenousTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndigenousTests.m; sourceTree = "<group>"; };
 		451859521B70FCBF008D7049 /* TRVFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVFilterViewController.h; sourceTree = "<group>"; };
 		451859531B70FCBF008D7049 /* TRVFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVFilterViewController.m; sourceTree = "<group>"; };
 		45ADB90C1B73A7DE0056AF09 /* TRVSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSettingsViewController.h; sourceTree = "<group>"; };
