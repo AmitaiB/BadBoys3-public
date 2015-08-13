@@ -28,6 +28,8 @@
     _tourStopMarker   = [GMSMarker markerWithPosition:coordinates];
     _nameOfPlace = @"Flatiron School";
     _descriptionOfEvent = @"best school ever";
+   
+    self.coordinate = coordinates;
     
     return self;
 };
@@ -36,7 +38,7 @@
     return [self initWithCoordinates:coordinates
                         operatorCost:0
                       incidentalCost:0
-                               image:[UIImage imageNamed:@"madrid.jpg"]];
+                               image:[UIImage imageWithCIImage:[CIImage emptyImage]]];
     
 }
 
@@ -45,6 +47,13 @@
     return [self initWithCoordinates:marker.position];
 }
 
-
+-(id)initWithAnnotation:(id<MKAnnotation>)originalAnnotation {
+    self.coordinate = originalAnnotation.coordinate;
+        //???:[Amitai]Why can't we set these two properties? B/c they're optional?
+        //    self.title = originalAnnotation.title;
+        //    self.subtitle = originalAnnotation.subtitle;
+    
+    return [self initWithCoordinates:originalAnnotation.coordinate];
+}
 
 @end

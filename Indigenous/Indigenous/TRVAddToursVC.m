@@ -17,10 +17,9 @@
 #import <RMSaveButton.h>
 #import "TRVUserDataStore.h"
 #import <CZPicker.h>
-#import <SSFlatDatePicker.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
-
+#define kBB3DefaultTourName @"Tour Name"
 
 @interface TRVAddToursVC () <TRVPickerMapDelegate, MKMapViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -69,7 +68,10 @@
     self.itineraryTableView.delegate   = self;
     self.itineraryTableView.dataSource = self;
     self.dateTxF.delegate              = self;
+    self.addTourNameTxF.delegate       = self;
+
     
+        //method commented out
 //    [self.datePicker            addTarget:self
 //                                   action:@selector(changeTourDate)
 //                         forControlEvents:UIControlEventValueChanged];
@@ -81,7 +83,7 @@
     
     self.sharedDataStore               = [TRVUserDataStore sharedUserInfoDataStore];
     TRVBio *userBio                    = self.sharedDataStore.loggedInUser.userBio;
-    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", userBio.firstName];
+    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", (userBio.firstName)? userBio.firstName : @"Jn. Doe"];
 
     
         //    self.saveButtonLabel.hidden = YES;
@@ -95,6 +97,7 @@
 #pragma mark - UITextfield Delegate
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    DBLG
     if ([textField isEqual:self.dateTxF]) {
         self.itineraryTableView.hidden = YES;
         self.datePicker.hidden = NO;
@@ -106,19 +109,24 @@
     }
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)textField {
 
-}
-
+//-(void)textFieldDidEndEditing:(UITextField *)textField
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    DBLG
     if ([textField isEqual:self.addTourNameTxF]) {
-        self.tourNameLabel.text = textField.text;
+        self.tourNameLabel.text = [NSString stringWithFormat:@"%@ Tour!", textField.text];
         self.itinerary.nameOfTour = textField.text;
         textField.text = @"";
+        textField.placeholder = @"change Tour name";
+        if (![textField.text isEqualToString:kBB3DefaultTourName]) {
+        
+        }
+        
         [textField resignFirstResponder];
     }
     return YES;
 }
+
 
 #pragma mark - TableView DataSource
 
@@ -178,10 +186,12 @@
 #pragma mark - Category Control helper
 
 -(void)changeTourCategory {
-    NSUInteger idx = self.tourCategorySegControl.selectedSegmentIndex;
-    NSString *chosenCategory = [self.tourCategorySegControl titleForSegmentAtIndex:idx];
+    DBLG
+    NSUInteger idx                 = self.tourCategorySegControl.selectedSegmentIndex;
+    NSString *chosenCategory       = [self.tourCategorySegControl titleForSegmentAtIndex:idx];
     self.tourCategory.categoryName = chosenCategory;
-    self.tourCategoryLabel.text = chosenCategory;
+    self.tourCategoryLabel.text    = chosenCategory;
+    self.tourCategoryLabel.text = [NSString stringWithFormat:@"A \"%@\" kind of Tour! 😃", self.tourCategory.categoryName];
 }
 
 
@@ -197,8 +207,8 @@
     self.tourDate = self.datePicker.date;
     
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    dateFormatter.dateStyle = NSDateFormatterShortStyle;
-    NSString *formattedDateString = [dateFormatter stringFromDate:self.datePicker.date];
+    dateFormatter.dateStyle        = NSDateFormatterShortStyle;
+    NSString *formattedDateString  = [dateFormatter stringFromDate:self.datePicker.date];
     
     self.dateTxF.text = formattedDateString;
     

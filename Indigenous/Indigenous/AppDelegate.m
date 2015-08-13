@@ -12,8 +12,9 @@
 #import "TRVConstants.h"
 #import <Parse.h>
 #import <AFNetworkReachabilityManager.h>
-
+#import "TRVLocationManager.h"
 #import <HNKGooglePlacesAutocomplete.h>
+#import <CoreLocation/CoreLocation.h>
 
 
 @interface AppDelegate ()
@@ -33,8 +34,6 @@
    // [PFUser enableAutomaticUser];
     
     
-    
-    
     [GMSServices provideAPIKey:GOOGLE_API_KEY];
         //TODO: [Amitai] Check for redundancy:
     [HNKGooglePlacesAutocompleteQuery setupSharedQueryWithAPIKey:GOOGLE_API_KEY];
@@ -44,11 +43,18 @@
                                     didFinishLaunchingWithOptions:launchOptions];
 }
 
-//- (void)applicationWillResignActive:(UIApplication *)application {
-//    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-//    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-//}
-//
+- (void)applicationWillResignActive:(UIApplication *)application {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    TRVLocationManager *appLocationManager = [TRVLocationManager sharedLocationManager];
+    
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+        //If we have "when in use" authorization, this is not necessary.
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [appLocationManager.locationManager stopUpdatingLocation];
+    }
+}
+
 //- (void)applicationDidEnterBackground:(UIApplication *)application {
 //    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 //    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

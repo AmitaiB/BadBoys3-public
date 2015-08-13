@@ -1,0 +1,14 @@
+//
+//  deleteMe.h
+//  Indigenous
+//
+//  Created by Amitai Blickstein on 8/13/15.
+//  Copyright (c) 2015 Bad Boys 3. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+
+@interface deleteMe : NSObject <MKAnnotation, MKOverlay>
+
+@end

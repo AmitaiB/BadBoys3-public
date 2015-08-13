@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIView *guideProfileView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *guideTagLineLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 
 
 @end
@@ -53,6 +54,7 @@
     
     // SET TAGLINE LABEL AS BIO DESCRIPTION FOR NOW, 
     self.guideTagLineLabel.text = userForThisGuideProfileView.userBio.bioDescription;
+    self.nameLabel.text = userForThisGuideProfileView.userBio.firstName;
 }
 
 

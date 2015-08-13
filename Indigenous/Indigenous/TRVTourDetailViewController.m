@@ -28,9 +28,13 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
     TRVTouristTripDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"tourDetailVC"];
+
+    
     viewController.tour = self.destinationTour;
-   // self.view = viewController.view;
+    NSLog(@"%@", viewController.tour.itineraryForThisTour.nameOfTour);
     [viewController isTourGuideTripViewController];
+  //  [self.view addSubview:viewController.view];
+
     [self.navigationController pushViewController:viewController animated:nil];
     
 //    TRVTourView *selectedTourView = [[TRVTourView alloc] init];
@@ -77,7 +81,6 @@
     
 
 -(void)bookTourButtonPressed:(id)sender {
-    
     
         UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
     

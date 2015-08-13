@@ -31,7 +31,14 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tourStopImageViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookTourBottomConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
+
+
+
+@property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
+
+@property (weak, nonatomic) IBOutlet UIView *contactGuideXib;
+
+
 @property (nonatomic) BOOL isTourGuide;
 @end
 
