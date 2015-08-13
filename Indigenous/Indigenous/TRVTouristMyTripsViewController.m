@@ -28,46 +28,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
-    [self.sharedDataStore setCurrentUser: [PFUser currentUser]];
-    self.sharedDataStore.parseUser = [PFUser currentUser];
+    NSLog(@"VIEW DID APPEAR %@", self.sharedDataStore.loggedInUser.userBio.firstName);
 
+   
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     // set tourist
-    self.tourist = self.sharedDataStore.loggedInUser;
-
     
-    PFUser *currentUser = [PFUser currentUser];
-    if (currentUser) {
-        PFQuery *query = [PFUser query];
-        [query whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
+    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
+//    self.sharedDataStore.loggedInUser = [[TRVUser alloc]init];
+    self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
+    
+    [self.sharedDataStore setCurrentUser:[PFUser currentUser] withBlock:^(BOOL success) {
         
-        [query getObjectInBackgroundWithId:[currentUser objectId] block:^(PFObject *user, NSError *error) {
-            if (!error) {
-                NSArray *myTrips = user[@"myTrips"];
-                
-            [self completeUser:self.tourist bio:self.tourist.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
-            } else {
-                // show modal
-            }
-        }];
-    }
+        
+        
+        PFUser *currentUser = [PFUser currentUser];
+        if (currentUser) {
+            PFQuery *query = [PFUser query];
+            [query whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
+            
+            [query getObjectInBackgroundWithId:[currentUser objectId] block:^(PFObject *user, NSError *error) {
+                if (!error) {
+                    
+                    NSArray *myTrips = user[@"myTrips"];
+                    NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
+                    [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
+                } else {
+                    // show modal
+                }
+            }];
+        }
+        
+        NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+        
+        
+        
+        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
+        self.tripTableView.dataSource = self.tableViewDataSource;
+        if (self.segmentedControl.selectedSegmentIndex == 1) {
+            [self.tableViewDataSource changeTripsDisplayed];
+            [self.tripTableView reloadData];
+        }
+        
+        
+        
+    }];
 
-    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-    
-    
-    
-    
-    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
-    self.tripTableView.dataSource = self.tableViewDataSource;
-    if (self.segmentedControl.selectedSegmentIndex == 1) {
-        [self.tableViewDataSource changeTripsDisplayed];
-        [self.tripTableView reloadData];
-    }
 }
+
+
 
 - (IBAction)segmentedControlChanged:(id)sender {
     [self.tableViewDataSource changeTripsDisplayed];
@@ -77,8 +89,6 @@
 
 -(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user allTrips:(NSArray *)myTrips {
     
-    
-    myTrips = user[@"myTrips"];
     
     for (PFObject *PFTour in myTrips){
         [PFTour fetch];
@@ -111,7 +121,6 @@
             NSData *stopImageData = [imageForStop getData];
             stop.image = [UIImage imageWithData:stopImageData];
             [TRVAllStops addObject:stop];
-            
         }
         
         itinerary.tourStops = TRVAllStops;
@@ -119,14 +128,7 @@
         [guideForThisRow.myTrips addObject:tour];
         
     } // END OF TOUR FOR LOOP
-    
-//    [self.availableGuides addObject:guideForThisRow];
-//    
-//    self.userCount++;
-//    if (self.userCount == self.PFGuides.count){
-//        [self.tableView reloadData];
-//        [self.hud hide:YES];
-    
+        
     NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
     
     }

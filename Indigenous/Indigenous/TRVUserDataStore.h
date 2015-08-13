@@ -16,7 +16,7 @@
 @interface TRVUserDataStore : NSObject
 
 +(instancetype)sharedUserInfoDataStore;
-- (void) setCurrentUser:(PFUser *)currentUser;
+- (void) setCurrentUser:(PFUser *)currentUser withBlock:(void (^)(BOOL success))completionBlock;
 
 @property (nonatomic) NSString *currentInternetStatus;
 
@@ -41,4 +41,3 @@
 @end
 
 
-//zMLdzw2Lh0
