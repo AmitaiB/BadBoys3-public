@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVTour.h"
 
 @interface TRVBookTourTableViewController : UITableViewController
+
+@property (nonatomic, strong) TRVTour *destinationTour;
 
 @end

@@ -37,21 +37,23 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     // Return the number of rows in the section.
-    return 3;
+    return 4;
 }
 
 - (IBAction)goBackButtonPressed:(id)sender {
     
-    [self dismissViewControllerAnimated:NO completion:^{
-        NSLog(@"BYE");
+    [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
 
+- (IBAction)bookTourButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"tourBookedSegue" sender:nil];
+}
 
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:; forIndexPath:indexPath];
     
     // Configure the cell...
     
