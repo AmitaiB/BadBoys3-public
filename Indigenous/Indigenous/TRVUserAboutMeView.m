@@ -44,12 +44,14 @@
                                   owner:self
                                 options:nil];
     
+    // add yourself and make edges to 0
     [self addSubview:self.contentView];
-    
-   
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
+        
+        self.switchToGuideButton.layer.cornerRadius = 5;
     }];
+    
     
 }
 
