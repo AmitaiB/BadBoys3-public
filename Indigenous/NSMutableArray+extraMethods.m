@@ -83,7 +83,8 @@
 
     //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
 
-    [self createParseDummyTour];
+
+    //[self createParseDummyTour];
 
    
     
@@ -98,16 +99,15 @@
     [theTour setObject:currentUser forKey:@"guideForThisTour"];
     
     PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
-    theTour[@"categoryForThisTour"] = @"Drink";
+    theTour[@"categoryForThisTour"] = @"See";
     theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:1000];
-//    //  theTour[@"tourAverageRating"] = CGFLOAT;
-//    
-//    
+    theTour[@"isPurchased"] = @(YES);
+    
     PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
     theTour[@"itineraryForThisTour"] = theItinerary;
     theItinerary[@"nameOfTour"] = @"Some name of tour";
     
-    UIImage *tourImage = [UIImage imageNamed:@"madrid.jpg"];
+    UIImage *tourImage = [UIImage imageNamed:@"beijing.jpg"];
     
     
     // converts tour image to 1/5 quality
@@ -115,11 +115,8 @@
     PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
     
     theItinerary[@"tourImage"] = PFImage;
-    
-//    theItinerary[@"tourImage"] = tourImage;
-   //
-////    // theItinerary[@"attractions"] = ARRAY OF ATTRACTIONS;
-//
+
+
     theStop[@"operatorCost"] = @0;
     theStop[@"incidentalCost"] = @0;
     theStop[@"lat"] = @10;
@@ -137,19 +134,6 @@
     theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
 
     
-////    //  theStop[@"tourStopLocation"] = pfgeopoint;
-////    
-////    //    PFObject *theMarker = [PFObject objectWithClassName:@"GMSMarker"];
-////    //    theMarker[@"position"] = PFGEOPOINT;
-////    //    theMarker[@"snippet"] = NSSTring;
-////    //    theMarker[@"icon"] = UIImage;
-////    //    theMarker[@"groundAnchor"] = cgpoint;
-////    //    theMarker[@"infoWindowAnchor"] = cgpoint;
-////    //
-////    //    theStop[@"tourStopMarker"] = theMarker;
-////    //
-////    
-
     [theTour saveInBackgroundWithBlock:^(BOOL success, NSError *error){
         NSLog(@"THE TOUR ID IS: %@", theTour.objectId);
        

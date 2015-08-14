@@ -68,12 +68,12 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="dpC-Hq-x28"/>
-                                <exclude reference="uye-BA-mU8"/>
                                 <exclude reference="QoI-AD-KMv"/>
                                 <exclude reference="V1d-7e-S59"/>
                                 <exclude reference="pvw-Bi-ij7"/>
                                 <exclude reference="yy8-hy-2LL"/>
+                                <exclude reference="dpC-Hq-x28"/>
+                                <exclude reference="uye-BA-mU8"/>
                             </mask>
                         </variation>
                     </view>

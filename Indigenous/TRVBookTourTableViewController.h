@@ -12,5 +12,7 @@
 @interface TRVBookTourTableViewController : UITableViewController
 
 @property (nonatomic, strong) TRVTour *destinationTour;
+@property (nonatomic, strong) PFObject *destinationPFTour;
+
 
 @end

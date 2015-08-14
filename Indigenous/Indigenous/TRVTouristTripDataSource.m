@@ -38,6 +38,7 @@
     return 1;
 }
 
+
 - (NSInteger)tableView:(UITableView*)tableView
  numberOfRowsInSection:(NSInteger)section {
     if (_past)
@@ -61,6 +62,8 @@
 - (void) changeTripsDisplayed {
     _past = !_past;
 }
+
+
 
 - (NSArray*)filterTripsWithKey:(NSString*)key comparisonResult:(NSComparisonResult)comparisonResult {
     NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {

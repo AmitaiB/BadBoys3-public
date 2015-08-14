@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self setUpUI];
     [PFUser logOut];
     [FBSDKAccessToken setCurrentAccessToken:nil];

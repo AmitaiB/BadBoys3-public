@@ -58,10 +58,12 @@
                     
 //                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
 //                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+//                    
 //                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
 
-                    
+
                     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
+//
                     self.tripTableView.dataSource = self.tableViewDataSource;
                     if (self.segmentedControl.selectedSegmentIndex == 1) {
                         [self.tableViewDataSource changeTripsDisplayed];
@@ -85,7 +87,11 @@
         
     }];
 
-
+    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+                        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
+    self.tripTableView.dataSource = self.tableViewDataSource;
+    [self.tripTableView reloadData];
    
 }
 
@@ -99,7 +105,18 @@
 -(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user allTrips:(NSArray *)myTrips {
     
     
+    
+    
     for (PFObject *PFTour in myTrips){
+        
+        
+        // DOES THIS LINE WORK??
+        
+        if ([PFTour[@"isPurchased"]isEqualToNumber:@(YES)] ) {
+        
+        
+        
+        
         [PFTour fetch];
         TRVTour *tour = [[TRVTour alloc]init];
         tour.guideForThisTour = guideForThisRow;
@@ -136,7 +153,20 @@
         tour.itineraryForThisTour = itinerary;
         [guideForThisRow.myTrips addObject:tour];
         
+        
+    } // end of if statement
+        
     } // END OF TOUR FOR LOOP
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
     

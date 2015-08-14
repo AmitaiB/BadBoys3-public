@@ -14,6 +14,8 @@
 @property (nonatomic, strong, nonnull) UIImage* tourImage;
 @property (nonatomic) NSInteger numberOfStops;
 @property (nonatomic, strong, nonnull) NSMutableArray *tourStops;
+//@property (nonatomic, strong, nonnull) NSDate *dateOfTour;
+
 @property (nonatomic, strong, nonnull) NSArray *attractions; //Attractions: Item of specific interest to travelers, such as natural wonders, manmade facilities and structures, entertainment, and activities.
 
 
