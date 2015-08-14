@@ -35,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *reverseGeoCodeButton;
 @property (weak, nonatomic) IBOutlet UIButton *geoCodeButton;
 - (IBAction)toggleCoordSign:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+- (IBAction)backButton:(id)sender;
 
 
 @end
@@ -45,7 +47,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    self.backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     [SCNumberKeyBoard showWithTextField:self.latTxF block:^(UITextField *textField, NSString *number) {
                 NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
@@ -83,15 +85,29 @@
     return YES;
 }
 
-#pragma mark MKMapViewDelegate methods
-
 
 #pragma mark - Map helper methods
 
 - (IBAction)getCurrentLocationButtonTapped:(id)sender {
-    self.mapView.showsUserLocation = YES;
+    DBLG
 }
 
+#pragma mark - TableViewDelegate & TableViewDataSource methods
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.mapLocations.count; //Is this array getting filled in the first place???
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tourStopCell"];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tourStopCell"];
+    }
+    cell.textLabel.text = self.mapLocations[indexPath.row][@"name"];
+    
+    return cell;
+}
 
 /**
  *  Make an MKPinAnnotationView at the coord locations. Then you can drag it around and/or save it.
@@ -166,4 +182,7 @@
     }
 }
 
+- (IBAction)backButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
