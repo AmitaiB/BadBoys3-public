@@ -37,6 +37,7 @@
 
     [self.navigationController pushViewController:viewController animated:nil];
     
+    
 //    TRVTourView *selectedTourView = [[TRVTourView alloc] init];
 //    selectedTourView.tourForThisTourView = self.destinationTour;
 //    [self.VCContentView addSubview:selectedTourView];

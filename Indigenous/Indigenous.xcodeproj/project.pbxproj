@@ -32,7 +32,6 @@
 		38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */; };
 		38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */; };
 		38B1665C1B7CC135005DA926 /* TRVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1665B1B7CC135005DA926 /* TRVLocationManager.m */; };
-		38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */; };
 		38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */; };
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
 		451565241B68221B005A2871 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451565221B68221B005A2871 /* LaunchScreen.xib */; };
@@ -160,8 +159,6 @@
 		38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Utils.m"; sourceTree = "<group>"; };
 		38B1665A1B7CC135005DA926 /* TRVLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVLocationManager.h; sourceTree = "<group>"; };
 		38B1665B1B7CC135005DA926 /* TRVLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVLocationManager.m; sourceTree = "<group>"; };
-		38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTopLVLMenuViewController.h; sourceTree = "<group>"; };
-		38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTopLVLMenuViewController.m; sourceTree = "<group>"; };
 		38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGoogleAPIClient.h; sourceTree = "<group>"; };
 		38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGoogleAPIClient.m; sourceTree = "<group>"; };
 		451565101B68221B005A2871 /* Indigenous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indigenous.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,8 +436,6 @@
 				3859EDF11B69400E001C5693 /* Models */,
 				94EE0DA61B757A6A00FE114E /* Constants */,
 				384AFBBA1B6969EE00E169A9 /* TourGuideFlow */,
-				38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */,
-				38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */,
 				45E772D61B6962C700003C7C /* Login Signup Flow */,
 				451565201B68221B005A2871 /* Images.xcassets */,
 				451565221B68221B005A2871 /* LaunchScreen.xib */,
@@ -825,7 +820,6 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
-/* possible value...						DevelopmentTeam = DWCYJ9H353; */
 						DevelopmentTeam = 8VC65F749H;
 					};
 				};
@@ -934,10 +928,8 @@
 				9425FA871B72565500689011 /* TRVDetailGuideViewController.m in Sources */,
 				942C18F41B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m in Sources */,
 				94E513981B739EBC002710AF /* TRVUserAboutMeView.m in Sources */,
-				9488A6051B7B6BF90020476B /* TRVEditTextViewController.m in Sources */,
 				FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */,
 				45F925A91B712400009B2E98 /* TRVSubCategoryCollectionView.m in Sources */,
-				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,
 				389646421B6AB67B004FFDB7 /* TRVPickerMapLogic.m in Sources */,
 				FADB8F261B705731009F7C02 /* TRVTourStopCollectionViewDelegateFlowLayout.m in Sources */,
 				FACD73381B73ECBA004F4B14 /* TRVParallaxHeaderImageView.m in Sources */,
