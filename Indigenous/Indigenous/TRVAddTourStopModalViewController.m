@@ -10,6 +10,21 @@
 
 @interface TRVAddTourStopModalViewController ()
 
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+@property (weak, nonatomic) IBOutlet UITextField *latTxF;
+@property (weak, nonatomic) IBOutlet UITextField *lngTxF;
+@property (weak, nonatomic) IBOutlet UITextField *placeNameTxF;
+@property (weak, nonatomic) IBOutlet UITextField *streetAddressTxF;
+@property (weak, nonatomic) IBOutlet UITextField *cityTxF;
+@property (weak, nonatomic) IBOutlet UITextField *stateTxF;
+@property (weak, nonatomic) IBOutlet UITextField *postalCodeTxF;
+@property (weak, nonatomic) IBOutlet UIButton *saveTourStopButton;
+- (IBAction)saveTourStopButtonTapped:(id)sender;
+- (IBAction)reverseGeoCodeButtonTapped:(id)sender;
+- (IBAction)geoCodeButtonTapped:(id)sender;
+
+
 @end
 
 @implementation TRVAddTourStopModalViewController
@@ -34,4 +49,12 @@
 }
 */
 
+- (IBAction)saveTourStopButtonTapped:(id)sender {
+}
+
+- (IBAction)reverseGeoCodeButtonTapped:(id)sender {
+}
+
+- (IBAction)geoCodeButtonTapped:(id)sender {
+}
 @end

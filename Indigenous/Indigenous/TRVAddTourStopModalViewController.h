@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface TRVAddTourStopModalViewController : UIViewController
+@interface TRVAddTourStopModalViewController : UIViewController <UITextFieldDelegate, MKMapViewDelegate>
 
 @end
