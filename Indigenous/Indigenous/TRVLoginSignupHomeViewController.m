@@ -137,7 +137,6 @@
     
     self.hud = [MBProgressHUD showHUDAddedTo:self.loadingView animated:YES];
 
-    
 }
 
 
