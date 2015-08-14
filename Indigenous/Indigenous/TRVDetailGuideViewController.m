@@ -43,6 +43,8 @@
 @property (nonatomic, strong) NSArray *guideCategoryTours;
 @property (nonatomic, strong) NSArray *guideOtherTours;
 @property (nonatomic, strong) UISegmentedControl *segmentedControl;
+
+@property (nonatomic, strong) PFObject *PFTourForThisRow;
 @end
 
 @implementation TRVDetailGuideViewController
@@ -235,17 +237,18 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
     TRVTouristTripDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"tourDetailVC"];
     TRVTour *tourForThisRow = [[TRVTour alloc] init];
-    PFObject *PFTourForThisRow = [[PFObject alloc] init];
     
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         tourForThisRow = self.guideCategoryTours[ip.row];
-        PFTourForThisRow = 
+        self.PFTourForThisRow = self.selectedGuideUser.PFCurrentCategoryTrips[ip.row];
     } else {
         tourForThisRow = self.guideOtherTours[ip.row];
+        self.PFTourForThisRow = self.selectedGuideUser.PFOtherCategoryTrips[ip.row];
     }
 
     
     viewController.tour = tourForThisRow;
+    viewController.PFTour = self.PFTourForThisRow;
     NSLog(@"%@", viewController.tour.itineraryForThisTour.nameOfTour);
     [viewController isTourGuideTripViewController];
     

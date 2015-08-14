@@ -92,8 +92,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iPL-Gz-GYw" id="GO6-8U-1yi">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b16-N4-HTO" customClass="TRVMyToursView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b16-N4-HTO" customClass="TRVMyToursView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="249.5"/>
                                                     <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
                                             </subviews>

@@ -212,12 +212,12 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="EbD-v0-79I"/>
-                                                    <exclude reference="QHB-ck-SN6"/>
                                                     <exclude reference="0jd-3V-fHv"/>
                                                     <exclude reference="dZp-12-nDh"/>
                                                     <exclude reference="yro-AX-LAe"/>
                                                     <exclude reference="zSE-Wc-22g"/>
+                                                    <exclude reference="EbD-v0-79I"/>
+                                                    <exclude reference="QHB-ck-SN6"/>
                                                     <exclude reference="tv5-EB-2XA"/>
                                                     <exclude reference="FAD-lW-cuz"/>
                                                     <exclude reference="XRo-5Y-zNX"/>

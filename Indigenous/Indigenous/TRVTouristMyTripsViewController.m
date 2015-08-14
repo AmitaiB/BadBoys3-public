@@ -60,10 +60,10 @@
 //                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
 //                    
 //                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
-//
+
 
                     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
-                    
+//
                     self.tripTableView.dataSource = self.tableViewDataSource;
                     if (self.segmentedControl.selectedSegmentIndex == 1) {
                         [self.tableViewDataSource changeTripsDisplayed];

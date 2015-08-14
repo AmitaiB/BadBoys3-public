@@ -320,7 +320,7 @@
                                 </vibrancyEffect>
                             </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name Of Tour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dh2-hN-jXf">
-                                <rect key="frame" x="29" y="113" width="303" height="60"/>
+                                <rect key="frame" x="29" y="113" width="302.5" height="60"/>
                                 <color key="backgroundColor" red="0.42481573379999998" green="0.65805213760000003" blue="0.85608033459999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
