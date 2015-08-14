@@ -7,9 +7,9 @@
 //
 
 #import <INTULocationManager.h>
-
+#import "TRVAddTourStopModalViewController.h"
 #import <LMGeocoder.h>
-#import "SCNumberKeyBoard.h"
+#import <SCNumberKeyBoard.h>
 #import "TRVTour.h"
 #import "TRVTourStop.h"
 #import "TRVmapKitMap.h"
@@ -59,16 +59,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *latTxF;
 @property (weak, nonatomic) IBOutlet UITextField *lngTxF;
 
-
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) CLLocationDegrees inputLatitude;
 @property (nonatomic) CLLocationDegrees inputLongitude;
 
 
-@property (weak, nonatomic) IBOutlet UIButton *geoConfirmButton;
+@property (weak, nonatomic) IBOutlet UIButton *tourStopSelectorButton;
 @property (weak, nonatomic) IBOutlet UIButton *addLocToItineraryButton;
 
-- (IBAction)geoConfirmButtonTapped:(id)sender;
+//- (IBAction)geoConfirmButtonTapped:(id)sender;
 - (IBAction)addLocToItineraryButtonTapped:(id)sender;
 
 
@@ -109,6 +108,8 @@
     self.placeNameTxF.delegate         = self;
     self.placeAddressTxF.delegate      = self;
 
+    
+    self.tourStopSelectorButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         //TODO: [Amitai:] It would be swell to fix this...
 //    [SCNumberKeyBoard showWithTextField:self.latTxF block:^(UITextField *textField, NSString *number) {
 //        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
@@ -160,6 +161,7 @@
 
 
 //-(void)textFieldDidEndEditing:(UITextField *)textField
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     DBLG
     if ([textField isEqual:self.addTourNameTxF]) {
@@ -171,28 +173,28 @@
         
         }
         
-    } else if ([textField isEqual:self.latTxF]) {
-        self.inputLatitude  = [textField.text integerValue];
-    } else if ([textField isEqual:self.lngTxF]) {
-        self.inputLongitude = [textField.text integerValue];
-    } else if ([textField isEqual:self.placeAddressTxF]) {
-        self.inputAddress   = textField.text;
+//    } else if ([textField isEqual:self.latTxF]) {
+//        self.inputLatitude  = [textField.text integerValue];
+//    } else if ([textField isEqual:self.lngTxF]) {
+//        self.inputLongitude = [textField.text integerValue];
+//    } else if ([textField isEqual:self.placeAddressTxF]) {
+//        self.inputAddress   = textField.text;
+//    }
+//    
+//    
+//    if (self.latTxF.text && self.lngTxF.text) {
+//        self.tourStopSelectorButton.titleLabel.text = @"Reverse-Geocode";
+//        self.tourStopSelectorButton.hidden          = NO;
+//        self.addLocToItineraryButton.hidden   = NO;
+//        self.coordinate = CLLocationCoordinate2DMake(self.inputLatitude, self.inputLongitude);
+//    }
+//    
+//    if ([textField isEqual:self.placeAddressTxF]) {
+//        self.inputAddress = self.placeAddressTxF.text;
+//        self.tourStopSelectorButton.titleLabel.text = @"Geocode Loc.";
+//        self.tourStopSelectorButton.hidden          = NO;
+//    }
     }
-    
-    
-    if (self.latTxF.text && self.lngTxF.text) {
-        self.geoConfirmButton.titleLabel.text = @"Reverse-Geocode";
-        self.geoConfirmButton.hidden          = NO;
-        self.addLocToItineraryButton.hidden   = NO;
-        self.coordinate = CLLocationCoordinate2DMake(self.inputLatitude, self.inputLongitude);
-    }
-    
-    if ([textField isEqual:self.placeAddressTxF]) {
-        self.inputAddress = self.placeAddressTxF.text;
-        self.geoConfirmButton.titleLabel.text = @"Geocode Loc.";
-        self.geoConfirmButton.hidden          = NO;
-    }
-    
     [textField resignFirstResponder];
     return YES;
 }
@@ -207,7 +209,9 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.listOfStops.count;
 }
-
+/** TODO: option for this...?:
+ *  Detail element of the cell with CLLocationDistance)distanceFromLocation, then sort by the distance...
+ */
 
  //TODO: Configure the itinerary Cells...
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -308,6 +312,9 @@
         TRVmapKitMap *destinationVC = segue.destinationViewController;
         destinationVC.delegate = self;
         destinationVC.publicLocation = currentLocation;
+    } else if ([segue.identifier isEqualToString:@"addTourToGeocodeSegueID"]) {
+        TRVAddTourStopModalViewController *destinationVC = segue.destinationViewController;
+            //add specific instructions here..., e.g., get current location or something...
     }
     
     
@@ -498,48 +505,48 @@
 
 /**
  *  Either the Geocode or Reverse-Geocode Button, depending.
- *
+ *  Pushed to a new controller...
  */
-- (IBAction)geoConfirmButtonTapped:(id)sender {
-    LMGeocoder *geocoder = [LMGeocoder sharedInstance];
-    UIButton *geoButton = sender;
-    geoButton.hidden = YES;
-    
-    if ([self.geoConfirmButton.titleLabel.text isEqualToString:@"Reverse-Geocode"]) {
-        [geocoder reverseGeocodeCoordinate:CLLocationCoordinate2DMake(self.inputLatitude, self.inputLongitude) service:kLMGeocoderGoogleService completionHandler:^(NSArray *results, NSError *error) {
-            if (results.count && !error) {
-                LMAddress *address = [results firstObject];
-                NSLog(@"Address: %@", address.formattedAddress);
-            }
-        }];
-    }
-    if ([self.geoConfirmButton.titleLabel.text isEqualToString:@"Geocode Loc."]) {
-        [geocoder geocodeAddressString:self.inputAddress service:kLMGeocoderGoogleService completionHandler:^(NSArray *results, NSError *error) {
-            if (results.count && !error) {
-                LMAddress *address = [results firstObject];
-                NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude, address.coordinate.longitude);
-            }
-        }];
-    }
-}
+//- (IBAction)geoConfirmButtonTapped:(id)sender {
+//    LMGeocoder *geocoder = [LMGeocoder sharedInstance];
+//    UIButton *geoButton = sender;
+//    geoButton.hidden = YES;
+//    
+//    if ([self.tourStopSelectorButton.titleLabel.text isEqualToString:@"Reverse-Geocode"]) {
+//        [geocoder reverseGeocodeCoordinate:CLLocationCoordinate2DMake(self.inputLatitude, self.inputLongitude) service:kLMGeocoderGoogleService completionHandler:^(NSArray *results, NSError *error) {
+//            if (results.count && !error) {
+//                LMAddress *address = [results firstObject];
+//                NSLog(@"Address: %@", address.formattedAddress);
+//            }
+//        }];
+//    }
+//    if ([self.tourStopSelectorButton.titleLabel.text isEqualToString:@"Geocode Loc."]) {
+//        [geocoder geocodeAddressString:self.inputAddress service:kLMGeocoderGoogleService completionHandler:^(NSArray *results, NSError *error) {
+//            if (results.count && !error) {
+//                LMAddress *address = [results firstObject];
+//                NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude, address.coordinate.longitude);
+//            }
+//        }];
+//    }
+//}
 
 - (IBAction)addLocToItineraryButtonTapped:(id)sender {
     
 }
 
 
--(void)reverseGeocode:(CLLocation*)location {
-    CLGeocoder *geocoder = [CLGeocoder new];
-    
-    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        DBLG
-        if (!error) {
-            self.place = [placemarks firstObject];
-        } else {
-            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
-        }
-    }];
-}
+//-(void)reverseGeocode:(CLLocation*)location {
+//    CLGeocoder *geocoder = [CLGeocoder new];
+//    
+//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+//        DBLG
+//        if (!error) {
+//            self.place = [placemarks firstObject];
+//        } else {
+//            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
+//        }
+//    }];
+//}
 
 
 @end

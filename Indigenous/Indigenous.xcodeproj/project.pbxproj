@@ -31,7 +31,6 @@
 		38A255431B7A383900257F6F /* TRVCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255421B7A383900257F6F /* TRVCustomAnnotation.m */; };
 		38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */; };
 		38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */; };
-		38ACB01F1B7D41A7000F03BC /* SCNumberKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ACB01E1B7D41A7000F03BC /* SCNumberKeyBoard.m */; };
 		38B1665C1B7CC135005DA926 /* TRVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1665B1B7CC135005DA926 /* TRVLocationManager.m */; };
 		38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */; };
 		38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */; };
@@ -159,8 +158,6 @@
 		38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+initWith2D.m"; sourceTree = "<group>"; };
 		38A2554A1B7A50B600257F6F /* CLLocation+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+Utils.h"; sourceTree = "<group>"; };
 		38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Utils.m"; sourceTree = "<group>"; };
-		38ACB01D1B7D41A7000F03BC /* SCNumberKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNumberKeyBoard.h; sourceTree = "<group>"; };
-		38ACB01E1B7D41A7000F03BC /* SCNumberKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNumberKeyBoard.m; sourceTree = "<group>"; };
 		38B1665A1B7CC135005DA926 /* TRVLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVLocationManager.h; sourceTree = "<group>"; };
 		38B1665B1B7CC135005DA926 /* TRVLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVLocationManager.m; sourceTree = "<group>"; };
 		38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTopLVLMenuViewController.h; sourceTree = "<group>"; };
@@ -455,8 +452,6 @@
 		451565131B68221B005A2871 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				38ACB01D1B7D41A7000F03BC /* SCNumberKeyBoard.h */,
-				38ACB01E1B7D41A7000F03BC /* SCNumberKeyBoard.m */,
 				388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */,
 				388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */,
 				388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */,
@@ -940,7 +935,6 @@
 				942C18F41B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m in Sources */,
 				94E513981B739EBC002710AF /* TRVUserAboutMeView.m in Sources */,
 				9488A6051B7B6BF90020476B /* TRVEditTextViewController.m in Sources */,
-				38ACB01F1B7D41A7000F03BC /* SCNumberKeyBoard.m in Sources */,
 				FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */,
 				45F925A91B712400009B2E98 /* TRVSubCategoryCollectionView.m in Sources */,
 				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,

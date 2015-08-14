@@ -5,7 +5,7 @@
 //  Created by Amitai Blickstein on 8/14/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
-#import "SCNumberKeyBoard.h"
+#import <SCNumberKeyBoard.h>
 #import "TRVAddTourStopModalViewController.h"
 #import <Parse.h>
 #import "CLLocation+initWith2D.h"
@@ -38,6 +38,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 - (IBAction)backButton:(id)sender;
 
+@property (nonatomic) BOOL userLocationUpdated;
+
+
 
 @end
 
@@ -46,6 +49,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.userLocationUpdated = NO;
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     

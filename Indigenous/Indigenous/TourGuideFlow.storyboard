@@ -270,42 +270,32 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlT-2s-Fux">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Geocode Location">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="geoConfirmButtonTapped:" destination="Umb-bZ-KvD" eventType="touchUpInside" id="PRT-4c-9g0"/>
-                                    <segue destination="vtX-nK-lGM" kind="presentation" identifier="addTourToGeocodeSegueID" id="mub-zd-6P5"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="cdu-jv-L2q">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tourStopCell" textLabel="ipS-lq-0ID" detailTextLabel="VMz-15-gqK" style="IBUITableViewCellStyleSubtitle" id="SFt-WW-Rbr">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="tourStopCell" textLabel="ipS-lq-0ID" detailTextLabel="DCD-WI-Xcy" style="IBUITableViewCellStyleValue2" id="SFt-WW-Rbr">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SFt-WW-Rbr" id="3v3-us-kzp">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ipS-lq-0ID">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ipS-lq-0ID">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VMz-15-gqK">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DCD-WI-Xcy">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     </variation>
                                                 </label>
                                             </subviews>
@@ -348,6 +338,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nlT-2s-Fux">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Tour Stop Selector">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="190" y="348" width="178" height="30"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="vtX-nK-lGM" kind="presentation" identifier="addTourToGeocodeSegueID" modalTransitionStyle="flipHorizontal" id="mub-zd-6P5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -434,11 +436,11 @@
                                 <exclude reference="D8G-sn-nQo"/>
                                 <exclude reference="ww1-VS-0sU"/>
                                 <exclude reference="Fx2-f7-fDY"/>
-                                <exclude reference="nlT-2s-Fux"/>
                                 <exclude reference="cdu-jv-L2q"/>
                                 <exclude reference="V8x-Oi-iPZ"/>
                                 <exclude reference="Tyx-mY-OdO"/>
                                 <exclude reference="6Mo-iV-fEu"/>
+                                <exclude reference="nlT-2s-Fux"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Q2k-N9-kpp"/>
@@ -521,11 +523,11 @@
                                 <include reference="D8G-sn-nQo"/>
                                 <include reference="ww1-VS-0sU"/>
                                 <include reference="Fx2-f7-fDY"/>
-                                <include reference="nlT-2s-Fux"/>
                                 <include reference="cdu-jv-L2q"/>
                                 <include reference="V8x-Oi-iPZ"/>
                                 <include reference="Tyx-mY-OdO"/>
                                 <include reference="6Mo-iV-fEu"/>
+                                <include reference="nlT-2s-Fux"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Q2k-N9-kpp"/>
@@ -599,7 +601,6 @@
                         <outlet property="currentUserLabel" destination="49h-VA-vj4" id="g19-SO-6Qb"/>
                         <outlet property="datePicker" destination="LsU-Fn-08t" id="VTS-vX-eVx"/>
                         <outlet property="dateTxF" destination="nFL-I0-sLL" id="JPe-O7-44O"/>
-                        <outlet property="geoConfirmButton" destination="nlT-2s-Fux" id="6qt-cg-dcZ"/>
                         <outlet property="itineraryTableView" destination="cdu-jv-L2q" id="Xav-ES-21x"/>
                         <outlet property="latTxF" destination="ww1-VS-0sU" id="n1n-3b-MJv"/>
                         <outlet property="lngTxF" destination="Fx2-f7-fDY" id="jOx-gx-ChU"/>
@@ -610,6 +611,7 @@
                         <outlet property="tourCategorySegControl" destination="iRk-mx-jzZ" id="mpU-5M-TTJ"/>
                         <outlet property="tourImage" destination="tts-zb-b3L" id="adM-cB-eRE"/>
                         <outlet property="tourNameLabel" destination="D8G-sn-nQo" id="vMw-R6-k8U"/>
+                        <outlet property="tourStopSelectorButton" destination="nlT-2s-Fux" id="6zk-sf-A0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Njw-Ck-Vef" userLabel="First Responder" sceneMemberID="firstResponder"/>
