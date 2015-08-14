@@ -32,7 +32,7 @@
 
 
 
-@interface TRVDetailGuideViewController ()<UITableViewDelegate>
+@interface TRVDetailGuideViewController () <UITableViewDelegate>
 
 
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
@@ -247,9 +247,8 @@
     viewController.tour = tourForThisRow;
     NSLog(@"%@", viewController.tour.itineraryForThisTour.nameOfTour);
     [viewController isTourGuideTripViewController];
-    //  [self.view addSubview:viewController.view];
     
-    [self.navigationController pushViewController:viewController animated:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
     
 }
 
