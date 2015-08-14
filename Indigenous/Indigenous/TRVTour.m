@@ -34,6 +34,7 @@
         _guideForThisTour = guideUser;
         _itineraryForThisTour = itinerary;
         _categoryForThisTour = category;
+        _isPurchased = nil;
         [guideUser.myTrips addObject:self];
 
     }

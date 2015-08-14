@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse.h>
 
 @class TRVTour;
 
 @interface TRVTouristTripDetailViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) TRVTour *tour;
+@property (nonatomic, strong) PFObject *PFTour;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
 -(void)isTourGuideTripViewController;

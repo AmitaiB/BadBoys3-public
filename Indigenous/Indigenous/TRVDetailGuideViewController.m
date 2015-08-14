@@ -43,6 +43,8 @@
 @property (nonatomic, strong) NSArray *guideCategoryTours;
 @property (nonatomic, strong) NSArray *guideOtherTours;
 @property (nonatomic, strong) UISegmentedControl *segmentedControl;
+
+@property (nonatomic, strong) PFObject *PFTourForThisRow;
 @end
 
 @implementation TRVDetailGuideViewController
@@ -52,7 +54,7 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
 
 
-    NSLog(@"%@", self.selectedGuideUser.myTrips);
+    NSLog(@"%@", self.selectedGuideUser);
     
     //Instantiate a Image View Nib
     
@@ -238,12 +240,15 @@
     
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         tourForThisRow = self.guideCategoryTours[ip.row];
+        self.PFTourForThisRow = self.selectedGuideUser.PFCurrentCategoryTrips[ip.row];
     } else {
         tourForThisRow = self.guideOtherTours[ip.row];
+        self.PFTourForThisRow = self.selectedGuideUser.PFOtherCategoryTrips[ip.row];
     }
 
     
     viewController.tour = tourForThisRow;
+    viewController.PFTour = self.PFTourForThisRow;
     NSLog(@"%@", viewController.tour.itineraryForThisTour.nameOfTour);
     [viewController isTourGuideTripViewController];
     

@@ -48,61 +48,76 @@
 
 - (IBAction)bookTourButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"tourBookedSegue" sender:nil];
-}
-
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:; forIndexPath:indexPath];
     
-    // Configure the cell...
+    [self bookTour];
     
-    return cell;
+    // LOGIC FOR CREATING A TOUR
+    
+    // 
+    
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+//
+-(void)bookTour {
+//
+//    PFUser *currentUser = [PFUser currentUser];
+//    
+//    PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
+////    [theTour setObject:currentUser forKey:@"guideForThisTour"];
+//    
+//    PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
+//    theTour[@"categoryForThisTour"] = @"See";
+//    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:1000];
+//    theTour[@"isPurchased"] = @(YES);
+//    
+//    PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
+//    theTour[@"itineraryForThisTour"] = theItinerary;
+//    theItinerary[@"nameOfTour"] = @"Some name of tour";
+//    
+//    UIImage *tourImage = [UIImage imageNamed:@"beijing.jpg"];
+//    
+//    
+//    // converts tour image to 1/5 quality
+//    NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
+//    PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+//    
+//    theItinerary[@"tourImage"] = PFImage;
+//    
+//    
+//    theStop[@"operatorCost"] = @0;
+//    theStop[@"incidentalCost"] = @0;
+//    theStop[@"lat"] = @10;
+//    theStop[@"lng"] = @10;
+//    theStop[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+//    theStop[@"nameOfPlace"] = @"The Flatiron School";
+//    theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
+//    theStop[@"addressOfEvent"] = @"123 Nobody St.";
+//    
+//    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+//    theStop[@"image"] = PFImage;
+//    
+//    NSArray *tourStopsArray = @[theStop, theStop, theStop, theStop];
+//    theItinerary[@"tourStops"] = tourStopsArray;
+//    theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
+//    
+//    
+//    [theTour saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+//        NSLog(@"THE TOUR ID IS: %@", theTour.objectId);
+//        
+//        
+//        [currentUser addObject:theTour forKey:@"myTrips"];
+//        [currentUser saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+//            if (error){
+//                NSLog(@"Cant save to array because: %@", error);
+//            } else {
+//                NSLog(@"Successfully added stuff to array.");
+//            }
+//        }];
+//        
+//        
+//    }];
+//    
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -230,6 +230,7 @@
     
     // pass it into confirm purchase Storyboard
     destination.destinationTour = self.tour;
+    destination.destinationPFTour = self.PFTour;
     NSLog(@"THIS IS THE TOUR BEING PASSED %@", self.tour);
     // Alan can you check if this is right
     [self presentViewController:destination animated:YES completion:nil];
