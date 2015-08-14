@@ -59,12 +59,17 @@
 @property (weak, nonatomic) IBOutlet UITextField *latTxF;
 @property (weak, nonatomic) IBOutlet UITextField *lngTxF;
 
+
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic) CLLocationDegrees inputLatitude;
 @property (nonatomic) CLLocationDegrees inputLongitude;
 
+
 @property (weak, nonatomic) IBOutlet UIButton *geoConfirmButton;
+@property (weak, nonatomic) IBOutlet UIButton *addLocToItineraryButton;
 
 - (IBAction)geoConfirmButtonTapped:(id)sender;
+- (IBAction)addLocToItineraryButtonTapped:(id)sender;
 
 
 
@@ -125,7 +130,7 @@
     
     self.sharedDataStore               = [TRVUserDataStore sharedUserInfoDataStore];
     TRVBio *userBio                    = self.sharedDataStore.loggedInUser.userBio;
-    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", (userBio.firstName)? userBio.firstName : @"Jn. Doe"];
+    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", (userBio.firstName)? userBio.firstName : @"J.Doe"];
 
     
         //    self.saveButtonLabel.hidden = YES;
@@ -178,6 +183,8 @@
     if (self.latTxF.text && self.lngTxF.text) {
         self.geoConfirmButton.titleLabel.text = @"Reverse-Geocode";
         self.geoConfirmButton.hidden          = NO;
+        self.addLocToItineraryButton.hidden   = NO;
+        self.coordinate = CLLocationCoordinate2DMake(self.inputLatitude, self.inputLongitude);
     }
     
     if ([textField isEqual:self.placeAddressTxF]) {
@@ -412,18 +419,18 @@
 #pragma mark - Parse functionality
 
     //FIXME Make it "createParseTourandsave"
--(void)createParseDummyTour {
+-(void)createTourWithInputValuesAndSaveToParse {
     
     PFUser *currentUser = [PFUser currentUser];
     PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
     [theTour setObject:currentUser forKey:@"guideForThisTour"];
     
     PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
-    theTour[@"categoryForThisTour"] = @"Drink";
-    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:1000];
-        //    //  theTour[@"tourAverageRating"] = CGFLOAT;
-        //
-        //
+    theTour[@"categoryForThisTour"] = self.tourCategory.categoryName;
+    theTour[@"tourDeparture"] = self.tourDate;
+    /**
+     *  |X|
+     */
     PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
     theTour[@"itineraryForThisTour"] = theItinerary;
     theItinerary[@"nameOfTour"] = @"Some name of tour";
@@ -516,19 +523,23 @@
     }
 }
 
-//
-//-(void)geocode:(CLLocation*)location {
-//    CLGeocoder *geocoder = [CLGeocoder new];
-//    
-//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-//        DBLG
-//        if (!error) {
-//            self.place = [placemarks firstObject];
-//        } else {
-//            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
-//        }
-//    }];
-//}
+- (IBAction)addLocToItineraryButtonTapped:(id)sender {
+    
+}
+
+
+-(void)reverseGeocode:(CLLocation*)location {
+    CLGeocoder *geocoder = [CLGeocoder new];
+    
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        DBLG
+        if (!error) {
+            self.place = [placemarks firstObject];
+        } else {
+            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
+        }
+    }];
+}
 
 
 @end

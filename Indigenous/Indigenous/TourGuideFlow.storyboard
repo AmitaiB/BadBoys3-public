@@ -187,15 +187,6 @@
                                     <!--2015-08-12 19:40:33 +0000-->
                                 </date>
                             </datePicker>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-EZ-mmP">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Select Date">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="confirmDateSelectionButtonTapped:" destination="Umb-bZ-KvD" eventType="touchUpInside" id="aBP-sT-vc0"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lkf-E1-Tvw" userLabel="open MapKit Button">
                                 <rect key="frame" x="127" y="105" width="22" height="22"/>
                                 <connections>
@@ -338,6 +329,24 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyx-mY-OdO">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Add Loc. to Itinerary">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addLocToItineraryButtonTapped:" destination="Umb-bZ-KvD" eventType="touchUpInside" id="1hI-EF-BRd"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-EZ-mmP">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Select Date">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmDateSelectionButtonTapped:" destination="Umb-bZ-KvD" eventType="touchUpInside" id="aBP-sT-vc0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -417,7 +426,6 @@
                                 <exclude reference="lok-hC-Ho6"/>
                                 <exclude reference="iRk-mx-jzZ"/>
                                 <exclude reference="LsU-Fn-08t"/>
-                                <exclude reference="Mgf-EZ-mmP"/>
                                 <exclude reference="lkf-E1-Tvw"/>
                                 <exclude reference="voi-qx-XMk"/>
                                 <exclude reference="dbd-A4-V2Z"/>
@@ -428,6 +436,8 @@
                                 <exclude reference="nlT-2s-Fux"/>
                                 <exclude reference="cdu-jv-L2q"/>
                                 <exclude reference="V8x-Oi-iPZ"/>
+                                <exclude reference="Tyx-mY-OdO"/>
+                                <exclude reference="Mgf-EZ-mmP"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="27Q-IA-fqu"/>
@@ -503,7 +513,6 @@
                                 <include reference="lok-hC-Ho6"/>
                                 <include reference="iRk-mx-jzZ"/>
                                 <include reference="LsU-Fn-08t"/>
-                                <include reference="Mgf-EZ-mmP"/>
                                 <include reference="lkf-E1-Tvw"/>
                                 <include reference="voi-qx-XMk"/>
                                 <include reference="dbd-A4-V2Z"/>
@@ -514,6 +523,8 @@
                                 <include reference="nlT-2s-Fux"/>
                                 <include reference="cdu-jv-L2q"/>
                                 <include reference="V8x-Oi-iPZ"/>
+                                <include reference="Tyx-mY-OdO"/>
+                                <include reference="Mgf-EZ-mmP"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="27Q-IA-fqu"/>
@@ -581,6 +592,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Add Tours" id="Q74-JT-KTx"/>
                     <connections>
+                        <outlet property="addLocToItineraryButton" destination="Tyx-mY-OdO" id="0Cd-zc-6A1"/>
                         <outlet property="addTourNameTxF" destination="GV3-DQ-Zox" id="0Yy-aS-aDq"/>
                         <outlet property="confirmDateSelectionButton" destination="Mgf-EZ-mmP" id="CPn-7k-StJ"/>
                         <outlet property="currentUserLabel" destination="49h-VA-vj4" id="g19-SO-6Qb"/>
@@ -614,29 +626,7 @@
                     <view key="view" contentMode="scaleToFill" id="HSw-1Z-RRo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7S9-Gw-LUw">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Choose Category">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="chooseCategoryButtonTapped:" destination="Umb-bZ-KvD" eventType="touchUpInside" id="530-Y5-4UP"/>
-                                    <action selector="pickDateButtonTapped:" destination="Umb-bZ-KvD" eventType="touchUpInside" id="403-AA-CP1"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="7S9-Gw-LUw"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="7S9-Gw-LUw"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11Y-yB-n26" userLabel="First Responder" sceneMemberID="firstResponder"/>
