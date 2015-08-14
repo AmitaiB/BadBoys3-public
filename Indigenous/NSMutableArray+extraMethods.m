@@ -83,7 +83,7 @@
 
     //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
 
-//    [self createParseDummyTour];
+    [self createParseDummyTour];
 
    
     
