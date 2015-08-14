@@ -13,6 +13,7 @@
 
 //The user that created/owns this Tour object.
 @property (nonatomic, strong) TRVUser *guideForThisTour;
+@property (nonatomic) BOOL *isPurchased;
 @property (nonatomic, strong) TRVItinerary *itineraryForThisTour;
 @property (nonatomic, strong) TRVTourCategory *categoryForThisTour;
 @property (nonatomic, strong) NSDate *tourDeparture;        //The date of the start of a tour program.

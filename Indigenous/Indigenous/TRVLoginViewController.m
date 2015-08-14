@@ -10,6 +10,7 @@
 #import "TRVFacebookLoginHandler.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD.h>
+#import "TRVButton.h"
 
 @interface TRVLoginViewController ()
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
+
 @end
 
 @implementation TRVLoginViewController
@@ -26,7 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpFacebookLoginButton];
-
 }
 
 

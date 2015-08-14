@@ -1,15 +1,30 @@
 //
-//  TRVTourView.m
+//  TRVMyToursView.m
 //  Indigenous
 //
-//  Created by Leo Kwan on 8/6/15.
+//  Created by Leo Kwan on 8/14/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVTourView.h"
-#import <Masonry/Masonry.h>
+#import "TRVMyToursView.h"
+#import <Masonry.h>
+#import "TRVTourStop.h"
 
-@implementation TRVTourView
+@interface TRVMyToursView ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *tourImageView;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UILabel *nameOfTourLabel;
+@property (weak, nonatomic) IBOutlet UILabel *upcomingDateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryIconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *meetAtFirstStopLabel;
+@property (weak, nonatomic) IBOutlet UILabel *withUserLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *withUserImage;
+
+@end
+
+@implementation TRVMyToursView
+
 
 
 
@@ -44,13 +59,7 @@
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
     }];
-
-    [self.categoryIconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.equalTo(self.contentView.mas_height).dividedBy(8);
-        make.width.equalTo(self.categoryIconImageView.mas_height);
-        make.right.equalTo(self.contentView).with.offset(-10);
-        make.bottom.equalTo(self.contentView);
-    }];
+    
     
 }
 
@@ -63,11 +72,10 @@
     self.tourImageView.image = itineraryForThisView.tourImage;
     self.nameOfTourLabel.text = itineraryForThisView.nameOfTour;
     self.categoryIconImageView.image = tourForThisTourView.categoryForThisTour.iconImage;
-    self.numberOfStopsLabel.text = [NSString stringWithFormat:@"%lu stops", itineraryForThisView.tourStops.count];;
-    
-    // Sets the decimal to 1 significant figure
-    self.tourRatingLabel.text = [NSString stringWithFormat:@"Average Rating - %.1f", tourForThisTourView.tourAverageRating];
-};
+    TRVTourStop *firstTourStop = itineraryForThisView.tourStops[0];
+    self.meetAtFirstStopLabel.text = [NSString stringWithFormat:@"Meet at %@", firstTourStop.addressOfEvent];
+    self.withUserImage.image = tourForThisTourView.guideForThisTour.userBio.profileImage;
 
+};
 
 @end

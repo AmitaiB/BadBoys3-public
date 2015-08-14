@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8u-vK-vkl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S8u-vK-vkl">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
 
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
 
     </dependencies>
@@ -106,8 +106,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="JGH-fn-oeP" userLabel="FacebookLoginButton" customClass="FBSDKLoginButton">
-                                <rect key="frame" x="150" y="115" width="300" height="30"/>
+                            <view contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JGH-fn-oeP" userLabel="FacebookLoginButton" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="150" y="115" width="300" height="40"/>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.20392156859999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="facebookButtonTappedAndAlreadyLoggedIn:" destination="JfK-2x-kZL" eventType="valueChanged" id="eVi-a4-YY3"/>
@@ -120,18 +120,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Log In With Email:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79t-An-SZU" customClass="TRVHeaderLabel">
-                                <rect key="frame" x="219" y="218" width="163" height="21"/>
+                                <rect key="frame" x="219.5" y="218" width="162.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOh-vy-dLv">
-                                <rect key="frame" x="151" y="264" width="300" height="30"/>
+                                <rect key="frame" x="151" y="263.5" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hdz-gt-INb">
-                                <rect key="frame" x="150" y="319" width="300" height="30"/>
+                                <rect key="frame" x="150" y="318.5" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
@@ -145,12 +145,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fax-50-Owe" customClass="TRVButton">
-                                <rect key="frame" x="279" y="380" width="43" height="30"/>
+                                <rect key="frame" x="150.5" y="383.5" width="300" height="40"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.3803921569" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6ot-CF-Sh9"/>
+                                    <constraint firstAttribute="width" constant="300" id="nGQ-5Z-sxX"/>
+                                </constraints>
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="nGQ-5Z-sxX"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="JfK-2x-kZL" eventType="touchUpInside" id="ls5-Tp-XNd"/>
                                 </connections>
@@ -160,12 +169,13 @@
                         <constraints>
                             <constraint firstItem="JGH-fn-oeP" firstAttribute="centerX" secondItem="Dpf-7i-cZn" secondAttribute="centerX" id="9ol-8y-XtZ"/>
                             <constraint firstItem="Fax-50-Owe" firstAttribute="centerX" secondItem="Hdz-gt-INb" secondAttribute="centerX" id="AAn-7O-oZ5"/>
+                            <constraint firstItem="Fax-50-Owe" firstAttribute="width" secondItem="Hdz-gt-INb" secondAttribute="width" id="BK3-Or-1fD"/>
                             <constraint firstItem="dmg-YZ-aSh" firstAttribute="top" secondItem="COm-uZ-Rg9" secondAttribute="bottom" constant="42" id="BPd-d1-24e"/>
                             <constraint firstItem="S0N-6c-5rf" firstAttribute="top" secondItem="ugH-tZ-CHe" secondAttribute="bottom" multiplier="5" id="BUT-Wr-6JW"/>
                             <constraint firstItem="jOh-vy-dLv" firstAttribute="width" secondItem="Dpf-7i-cZn" secondAttribute="width" multiplier="0.5" id="CUp-dS-NLX"/>
                             <constraint firstItem="JGH-fn-oeP" firstAttribute="width" secondItem="Dpf-7i-cZn" secondAttribute="width" multiplier="0.5" id="DQQ-fc-5EA"/>
                             <constraint firstItem="jOh-vy-dLv" firstAttribute="width" secondItem="Hdz-gt-INb" secondAttribute="width" id="Gtw-14-yxj"/>
-                            <constraint firstItem="Fax-50-Owe" firstAttribute="top" secondItem="Hdz-gt-INb" secondAttribute="bottom" constant="31" id="L3g-nC-lde"/>
+                            <constraint firstItem="Fax-50-Owe" firstAttribute="top" secondItem="Hdz-gt-INb" secondAttribute="bottom" constant="35" id="L3g-nC-lde"/>
                             <constraint firstItem="JGH-fn-oeP" firstAttribute="top" secondItem="S0N-6c-5rf" secondAttribute="bottom" constant="15" id="Lqr-6s-mIH"/>
                             <constraint firstAttribute="centerX" secondItem="79t-An-SZU" secondAttribute="centerX" id="S3s-L4-ivq"/>
                             <constraint firstItem="JGH-fn-oeP" firstAttribute="height" secondItem="Dpf-7i-cZn" secondAttribute="height" multiplier="0.05" id="TZj-hQ-bBc"/>

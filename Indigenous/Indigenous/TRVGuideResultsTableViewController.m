@@ -105,7 +105,7 @@
 }
 
 -(void)updateGuidesList {
-    
+        
     self.availableGuides = [[NSMutableArray alloc]init];
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText = @"Loading Guides";
@@ -227,12 +227,18 @@
             NSData *stopImageData = [imageForStop getData];
             stop.image = [UIImage imageWithData:stopImageData];
             [TRVAllStops addObject:stop];
-            
         }
         
         itinerary.tourStops = TRVAllStops;
         tour.itineraryForThisTour = itinerary;
         [guideForThisRow.myTrips addObject:tour];
+        
+        if ([PFTour[@"categoryForThisTour"] isEqualToString:self.sharedData.currentCategorySearching.categoryName]){
+            [guideForThisRow.PFCurrentCategoryTrips addObject:PFTour];
+        } else {
+            [guideForThisRow.PFOtherCategoryTrips addObject:PFTour];
+
+        }
         
     } // END OF TOUR FOR LOOP
     

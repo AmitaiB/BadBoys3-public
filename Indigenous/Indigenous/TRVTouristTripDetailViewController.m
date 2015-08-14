@@ -144,7 +144,7 @@
     self.parallaxImageView.userInteractionEnabled = YES;
     
     [self.theScrollViewThatHoldsAllTheOtherViews addParallaxWithView:self.parallaxImageView andHeight:self.parallaxImageView.bounds.size.height];
-    //[self setupParallaxImageTitle];
+    [self setupParallaxImageTitle];
     //[self.theScrollViewThatHoldsAllTheOtherViews bringSubviewToFront:self.parallaxHeaderTourNameLabel];
     [self makeContentInsetFullScreen:self.theScrollViewThatHoldsAllTheOtherViews];
 }
@@ -163,7 +163,7 @@
     // Do any additional setup after loading the view.
     //NSLog(@"The difference: %f", self.parallaxImageView.frame.size.height + self.navigationController.navigationBar.bounds.size.height - [UIScreen mainScreen].bounds.size.height);
     
-    UIView *viewToAddTitleLabelTo = (UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0]);
+    UIView *viewToAddTitleLabelTo = [self parallaxTitleSuperview:[[[UIApplication sharedApplication] keyWindow] subviews][0]]; //(UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0]);
     [viewToAddTitleLabelTo addSubview:self.parallaxHeaderTourNameLabel];
     UITabBar *tabBar = [viewToAddTitleLabelTo subviews][1];
     [self.parallaxHeaderTourNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -176,6 +176,18 @@
     [viewToAddTitleLabelTo bringSubviewToFront:self.parallaxHeaderTourNameLabel];
     
     _originalDistanceFromBottomOfScreenToBottomOfParallaxImage =  [self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y);
+}
+
+-(UIView*)parallaxTitleSuperview:(UIView*)view {
+    NSPredicate *pred = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        return [evaluatedObject isKindOfClass:[UITabBar class]];
+    }];
+    if ([view.subviews count] == 0)
+        return nil;
+    NSArray *maybeTabBar = [view.subviews filteredArrayUsingPredicate:pred];
+    if ([maybeTabBar count] == 1)
+        return [maybeTabBar[0] superview];
+    return [self parallaxTitleSuperview:view.subviews[0]];
 }
 
 - (void)tappedParrallaxImage {
@@ -214,10 +226,12 @@
     UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
     
     TRVBookTourTableViewController *destination = [destinationStoryboard instantiateInitialViewController];
+//    destination.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     // pass it into confirm purchase Storyboard
     destination.destinationTour = self.tour;
-    
+    destination.destinationPFTour = self.PFTour;
+    NSLog(@"THIS IS THE TOUR BEING PASSED %@", self.tour);
     // Alan can you check if this is right
     [self presentViewController:destination animated:YES completion:nil];
     
