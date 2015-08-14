@@ -32,7 +32,8 @@
     if ([title isEqualToString:@"See"]) {
          return [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
     }  else if ([title isEqualToString:@"Play"]) {
-         return  [[TRVTourCategory alloc] initWithName:@"Play" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"beijing.jpg"]];    }  else if ([title isEqualToString:@"Eat"]) {
+         return  [[TRVTourCategory alloc] initWithName:@"Play" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"beijing.jpg"]];
+    }  else if ([title isEqualToString:@"Eat"]) {
         return  [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];
 
     }  else if ([title isEqualToString:@"Drink"]) {

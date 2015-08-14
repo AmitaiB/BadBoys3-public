@@ -105,7 +105,7 @@
 }
 
 -(void)updateGuidesList {
-    
+        
     self.availableGuides = [[NSMutableArray alloc]init];
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText = @"Loading Guides";
@@ -195,6 +195,7 @@
     
     
     NSArray *allTours = user[@"myTrips"];
+    self
     
     for (PFObject *PFTour in allTours){
         [PFTour fetch];
