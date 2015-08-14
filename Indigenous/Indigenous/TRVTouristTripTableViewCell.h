@@ -16,6 +16,6 @@
 
 @property (nonatomic, strong) TRVTour *tour;
 //@property (weak, nonatomic) IBOutlet TRVTourView *tourNib;
-@property (nonatomic, strong) TRVMyToursView *newTourNib;
+@property (weak, nonatomic) IBOutlet TRVMyToursView *TourNib2;
 
 @end

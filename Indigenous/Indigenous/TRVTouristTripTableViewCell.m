@@ -11,12 +11,7 @@
 
 @implementation TRVTouristTripTableViewCell
 
-//-(instancetype)initWithTour:(TRVTour*)tour reuseIdentifier:(NSString*)reuseIdentifier {
-//    if (self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
-//        self.textLabel.text = tour.tourItinerary.name;
-//    }
-//    return self;
-//}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -28,7 +23,7 @@
     
     _tour = tour;
     
-    self.newTourNib.tourForThisTourView = tour;
+    self.TourNib2.tourForThisTourView = tour;
 //    self.tourNib.tourForThisTourView = tour;
 
 }

@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberOfStopsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tourRatingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *upcomingDateLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *wh;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryIconImageView;
 
 
 
