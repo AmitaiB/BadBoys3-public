@@ -41,7 +41,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateGuidesList];
-//    self.tableView.estimatedRowHeight = 300;
     
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
     self.PFGuides = [@[] mutableCopy];
@@ -159,6 +158,10 @@
                                             oneLineSummary:guideBio[@"oneLineBio"]
                                            profileImageURL:guideBio[@"picture"]
                                           nonFacebookImage:guideBio[@"emailPicture"]];
+        
+        // set more properties
+        bio.homeCountry = guideBio[@"homeCity"];
+        bio.homeCity = guideBio[@"homeCountry"];
         
         if (guideBio[@"picture"]){
             [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {

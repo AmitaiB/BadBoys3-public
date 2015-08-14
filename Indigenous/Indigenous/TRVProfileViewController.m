@@ -55,10 +55,8 @@
 
         [self.snippetView mas_makeConstraints:^(MASConstraintMaker *make) {
             
-            
             make.top.equalTo(profileImageView.mas_bottom);
             make.left.and.right.equalTo(self.containerView);
-            
 
         }];
     

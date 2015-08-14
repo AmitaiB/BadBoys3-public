@@ -22,14 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="421" height="329"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekO-oe-Bt2">
-                                <rect key="frame" x="171" y="30" width="79" height="37"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAY-KF-JuG">
-                                <rect key="frame" x="20" y="87" width="381" height="238"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAY-KF-JuG">
+                                <rect key="frame" x="20" y="99" width="381" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="Kfj-E6-Cda"/>
                                 </constraints>
@@ -42,21 +36,44 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="vzJ-cU-EBy">
+                                <rect key="frame" x="196" y="82" width="30" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="9hm-BM-aNU"/>
+                                    <constraint firstAttribute="height" constant="1" id="KCT-Lf-bvq"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekO-oe-Bt2">
+                                <rect key="frame" x="172" y="30" width="79" height="37"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="PAY-KF-JuG" secondAttribute="bottom" constant="5" id="PZD-Xe-WP7"/>
                             <constraint firstAttribute="bottom" secondItem="PAY-KF-JuG" secondAttribute="bottom" constant="8" id="QoI-AD-KMv"/>
                             <constraint firstAttribute="centerX" secondItem="ekO-oe-Bt2" secondAttribute="centerX" id="QvS-ok-fJJ"/>
+                            <constraint firstAttribute="centerX" secondItem="vzJ-cU-EBy" secondAttribute="centerX" id="RZV-NY-zYq"/>
                             <constraint firstItem="PAY-KF-JuG" firstAttribute="top" secondItem="ekO-oe-Bt2" secondAttribute="bottom" constant="20" id="V1d-7e-S59"/>
                             <constraint firstAttribute="trailing" secondItem="PAY-KF-JuG" secondAttribute="trailing" constant="20" id="YOH-6h-qfB"/>
+                            <constraint firstItem="vzJ-cU-EBy" firstAttribute="top" secondItem="IEq-Ef-pps" secondAttribute="top" constant="82" id="dpC-Hq-x28"/>
+                            <constraint firstItem="vzJ-cU-EBy" firstAttribute="top" secondItem="ekO-oe-Bt2" secondAttribute="bottom" constant="15" id="leu-wh-CKi"/>
                             <constraint firstAttribute="centerX" secondItem="PAY-KF-JuG" secondAttribute="centerX" id="pvw-Bi-ij7"/>
                             <constraint firstItem="PAY-KF-JuG" firstAttribute="leading" secondItem="IEq-Ef-pps" secondAttribute="leading" constant="20" id="sbo-qc-0qW"/>
+                            <constraint firstItem="vzJ-cU-EBy" firstAttribute="leading" secondItem="IEq-Ef-pps" secondAttribute="leading" constant="184" id="uye-BA-mU8"/>
+                            <constraint firstItem="PAY-KF-JuG" firstAttribute="top" secondItem="vzJ-cU-EBy" secondAttribute="bottom" constant="16" id="vhV-nd-30F"/>
                             <constraint firstAttribute="centerX" secondItem="PAY-KF-JuG" secondAttribute="centerX" id="yy8-hy-2LL"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="dpC-Hq-x28"/>
+                                <exclude reference="uye-BA-mU8"/>
                                 <exclude reference="QoI-AD-KMv"/>
+                                <exclude reference="V1d-7e-S59"/>
                                 <exclude reference="pvw-Bi-ij7"/>
+                                <exclude reference="yy8-hy-2LL"/>
                             </mask>
                         </variation>
                     </view>
