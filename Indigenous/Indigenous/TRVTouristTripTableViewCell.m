@@ -27,8 +27,9 @@
 - (void)setTour:(TRVTour *)tour {
     
     _tour = tour;
-
-    self.tourNib.tourForThisTourView = tour;
+    
+    self.newTourNib.tourForThisTourView = tour;
+//    self.tourNib.tourForThisTourView = tour;
 
 }
 

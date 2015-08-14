@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="349" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-SG-l7o">
-                                <rect key="frame" x="0.0" y="94" width="600" height="457"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" rowHeight="349" id="iPL-Gz-GYw" customClass="TRVTouristTripTableViewCell">
@@ -128,14 +128,16 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" prompt="My Trips" id="6S6-zR-HLz">
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="NPq-bg-Wa6">
-                            <rect key="frame" x="16" y="37.5" width="568" height="29"/>
+                    <navigationItem key="navigationItem" id="6S6-zR-HLz">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="NPq-bg-Wa6">
+                            <rect key="frame" x="16" y="7" width="568" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.95709043560606055" green="0.95709043560606055" blue="0.95709043560606055" alpha="1" colorSpace="calibratedRGB"/>
                             <segments>
                                 <segment title="Upcoming"/>
                                 <segment title="Past Tours"/>
                             </segments>
+                            <color key="tintColor" red="1" green="0.29411764705882354" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="segmentedControlChanged:" destination="U3t-qH-CFD" eventType="valueChanged" id="hLT-p5-SIM"/>
                             </connections>

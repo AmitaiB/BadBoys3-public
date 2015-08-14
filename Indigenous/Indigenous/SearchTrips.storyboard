@@ -242,7 +242,7 @@
         <!--Pick City Table View Controller-->
         <scene sceneID="efN-5l-52n">
             <objects>
-                <tableViewController id="cVl-pd-AUb" customClass="TRVPickCityTableViewController" sceneMemberID="viewController">
+                <tableViewController modalTransitionStyle="crossDissolve" id="cVl-pd-AUb" customClass="TRVPickCityTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="269" sectionHeaderHeight="22" sectionFooterHeight="22" id="Kxl-y4-nel">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,7 +381,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Uzx-Un-udu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Cxt-RM-glU" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalTransitionStyle="crossDissolve" id="Cxt-RM-glU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="Rp1-m7-NbZ"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TRVTourView.h"
+#import "TRVMyToursView.h"
 
 @class TRVTour;
 
 @interface TRVTouristTripTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) TRVTour *tour;
-@property (weak, nonatomic) IBOutlet TRVTourView *tourNib;
+//@property (weak, nonatomic) IBOutlet TRVTourView *tourNib;
+@property (nonatomic, strong) TRVMyToursView *newTourNib;
 
 @end
