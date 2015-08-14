@@ -52,7 +52,7 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
 
 
-    NSLog(@"%@", self.selectedGuideUser.myTrips);
+    NSLog(@"%@", self.selectedGuideUser);
     
     //Instantiate a Image View Nib
     
@@ -235,9 +235,11 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
     TRVTouristTripDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"tourDetailVC"];
     TRVTour *tourForThisRow = [[TRVTour alloc] init];
+    PFObject *PFTourForThisRow = [[PFObject alloc] init];
     
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         tourForThisRow = self.guideCategoryTours[ip.row];
+        PFTourForThisRow = 
     } else {
         tourForThisRow = self.guideOtherTours[ip.row];
     }

@@ -195,7 +195,6 @@
     
     
     NSArray *allTours = user[@"myTrips"];
-    self
     
     for (PFObject *PFTour in allTours){
         [PFTour fetch];
@@ -228,12 +227,18 @@
             NSData *stopImageData = [imageForStop getData];
             stop.image = [UIImage imageWithData:stopImageData];
             [TRVAllStops addObject:stop];
-            
         }
         
         itinerary.tourStops = TRVAllStops;
         tour.itineraryForThisTour = itinerary;
         [guideForThisRow.myTrips addObject:tour];
+        
+        if ([PFTour[@"categoryForThisTour"] isEqualToString:self.sharedData.currentCategorySearching.categoryName]){
+            [guideForThisRow.PFCurrentCategoryTrips addObject:PFTour];
+        } else {
+            [guideForThisRow.PFOtherCategoryTrips addObject:PFTour];
+
+        }
         
     } // END OF TOUR FOR LOOP
     
