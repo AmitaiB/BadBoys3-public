@@ -16,6 +16,7 @@
 #import "TRVUser.h"
 #import "TRVTour.h"
 #import "TRVTourStop.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface TRVTouristMyTripsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -30,7 +31,9 @@
     [super viewDidLoad];
     NSLog(@"VIEW DID APPEAR %@", self.sharedDataStore.loggedInUser.userBio.firstName);
     
-    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading Trips";
+    hud.labelFont = [UIFont fontWithName:@"Avenir" size:17];
     
     
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
@@ -53,16 +56,23 @@
 
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
                     
-                 //   NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-                 //   NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+//                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+//                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+//                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
+
                     
                     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
                     self.tripTableView.dataSource = self.tableViewDataSource;
                     if (self.segmentedControl.selectedSegmentIndex == 1) {
                         [self.tableViewDataSource changeTripsDisplayed];
-                        [self.tripTableView reloadData];
                     }
 
+                    [self.tripTableView reloadData];
+                    
+                        
+                    [hud hide:YES];
+
+                    
 
                 } else {
                     // show modal
@@ -70,20 +80,14 @@
             }];
         }
         
-        
-        
+
+
         
     }];
 
 
    
 }
-
--(void)viewWillAppear:(BOOL)animated {
-    // set tourist
-   
-}
-
 
 
 - (IBAction)segmentedControlChanged:(id)sender {

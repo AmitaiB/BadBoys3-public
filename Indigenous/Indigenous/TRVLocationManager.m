@@ -8,7 +8,6 @@
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
-
 #import "TRVLocationManager.h"
 #import "TRVTourStop.h"
     //TODO:[Amitai] if there's no wifi, lower the required accuracy of location calls
@@ -86,7 +85,7 @@ static TRVLocationManager *_sharedLocationManager;
     self.hasLocation   = YES;
     self.locationError = nil;
     
-    [self logLocationToConsole:lastLocation];
+    [TRVLocationManager logLocationToConsole:lastLocation];
     
     [self getLocationWithCompletionBlock:nil];
 }
@@ -129,7 +128,7 @@ static TRVLocationManager *_sharedLocationManager;
 
 #pragma mark - helper methods
 
--(void)logLocationToConsole:(CLLocation*)location
++ (void)logLocationToConsole:(CLLocation*)location
 {
     CLLocationCoordinate2D coord = location.coordinate;
     NSLog(@"Location lat/long: %f,%f",coord.latitude, coord.longitude);
@@ -157,6 +156,62 @@ static TRVLocationManager *_sharedLocationManager;
     NSLog(@"Course: %f degrees from true north",direction);
 
 }
+/**
+ *  Requests the desired type of authorization. iOS 7-'s kCLAuthorizationStatusAuthorized (deprecated) = 3, 
+ *  same as the new kCLAuthorizationStatusAuthorizedAlways - no checking needed. Optionally redirects user to
+ *  Settings via AlertController if a presenting viewcontroller is passed (otherwise, pass nil).
+ *
+ *  @param desiredAuthorizationStatus Desired status of type CLA
+ *  @param vc                         A view controller to present the UIAlert
+ */
+- (void)conditionalRequestForAuthorizationOfType:(CLAuthorizationStatus)desiredAuthorizationStatus inView:(UIViewController*)vc {
+        CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    NSLog(@"CLAuthorization status is %i", status);
+
+    NSString *title;
+    NSString *message;
+    UIAlertAction *changeSettings;
+    
+        if (status == kCLAuthorizationStatusDenied ||
+            status == kCLAuthorizationStatusRestricted) {
+            title =  @"Location Services Are Off";;
+            message = @"Go to settings to enable Location Services, cutie 😉";
+            changeSettings = [UIAlertAction actionWithTitle:@"Settings" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                [[UIApplication sharedApplication]openURL:settingsURL];
+            }];
+        } else if (status == kCLAuthorizationStatusNotDetermined) {
+            title = @"Background use is not enabled";
+            message = @"Enable webca--I mean Location Services for not-spying purposes.";
+            changeSettings = [UIAlertAction actionWithTitle:@"Enable" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                switch (desiredAuthorizationStatus) {
+                    case kCLAuthorizationStatusAuthorizedAlways:
+                        [self.locationManager requestAlwaysAuthorization];
+                        break;
+                    case kCLAuthorizationStatusAuthorizedWhenInUse:
+                        [self.locationManager requestWhenInUseAuthorization];
+                        break;
+                    default:
+                        NSLog(@"What kind of status did you REQUEST? It's not where you are, but where you wanna go...");
+                        break;
+                }
+            }];
+            
+            UIAlertController *settingsAlert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+            [settingsAlert addAction:changeSettings];
+            [settingsAlert addAction:cancel];
+            
+                //skip if "nil" is passed
+            if (vc) {
+                [vc presentViewController:settingsAlert animated:YES completion:nil];
+            }
+        }
+}
+
+
+
 
 /**
  *  Region Monitoring delegate methods - for when we implement the Tour Guide Tools...

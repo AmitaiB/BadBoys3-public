@@ -55,10 +55,8 @@
 
         [self.snippetView mas_makeConstraints:^(MASConstraintMaker *make) {
             
-            
             make.top.equalTo(profileImageView.mas_bottom);
             make.left.and.right.equalTo(self.containerView);
-            
 
         }];
     
@@ -95,21 +93,16 @@
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view.mas_width);
         make.bottom.equalTo(self.contactView.mas_bottom);
-//        make.height.equalTo(contactView.mas_c);
     }];
 
 }
 
 -(void)viewWillAppear:(BOOL)animated {
 
-//
-//    
-//    profileImageView.userForThisProfileImageView = self.sharedDataStore.loggedInUser;
+    // set the user every time this view appears
     self.snippetView.userForThisSnippetView = self.user;
-//
-//    aboutMeView.userForThisAboutMeView = self.user;
-//   
     self.contactView.userForThisContactView = self.user;
+    self.aboutMeView.userForThisAboutMeView = self.user;
     }
 
 

@@ -12,7 +12,7 @@
 #import "TRVTourStopCollectionViewDelegateFlowLayout.h"
 #import "UIScrollView+APParallaxHeader.h"
 #import "TRVParallaxHeaderImageView.h"
-#import "TRVBookTourViewController.h"
+#import "TRVBookTourTableViewController.h"
 //#import "TRVTourStop.h"
 
 #import "Masonry/Masonry.h"
@@ -213,15 +213,13 @@
     
     UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
     
-    TRVBookTourViewController *destination = [destinationStoryboard instantiateInitialViewController];
+    TRVBookTourTableViewController *destination = [destinationStoryboard instantiateInitialViewController];
     
     // pass it into confirm purchase Storyboard
     destination.destinationTour = self.tour;
     
     // Alan can you check if this is right
-    [self presentViewController:destination animated:NO completion:nil];
-
-    //NSLog(@"%@", @"PBBBBBBBBBBBT");
+    [self presentViewController:destination animated:YES completion:nil];
     
 }
 

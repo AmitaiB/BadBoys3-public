@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>   //Needed for protocol
-#import "TRVPickerMapViewController.h" //contains protocol
+#import "TRVGoogleMapViewController.h" //contains protocol
 
 @interface TestMapWithSearchVC : UISearchController
 

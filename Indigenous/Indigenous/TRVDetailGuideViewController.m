@@ -77,10 +77,11 @@
     [snippetView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(profileImageView.mas_bottom);
         make.left.and.right.equalTo(self.profileView);
+//        make.height.equalTo(@500);
     }];
     
-    //Instantiate an ABOUT ME  Nib
     
+    //Instantiate an ABOUT ME  Nib
     TRVUserAboutMeView *aboutMeView = [[TRVUserAboutMeView alloc] init];
     aboutMeView.userForThisAboutMeView = self.selectedGuideUser;
 
@@ -117,7 +118,7 @@
     TRVTourCategory *categoryForFirstTab = self.sharedDataStore.currentCategorySearching;
     NSString *categorySearchTabName = [NSString stringWithFormat:@"%@ Tours" ,categoryForFirstTab.categoryName];
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:categorySearchTabName, @"Other Tours", nil]];
-    self.segmentedControl.frame = CGRectMake(35, 200, 250, 50);
+    self.segmentedControl.frame = CGRectMake(50, 200, 250, 50);
     self.segmentedControl.selectedSegmentIndex = 0;
     [self.segmentedControl addTarget:self action:@selector(segmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
     
@@ -208,10 +209,8 @@
             tableViewHeight = @([cellHeight floatValue] * self.guideCategoryTours.count);
         } else {
             tableViewHeight = @([cellHeight floatValue] * self.guideOtherTours.count);
-            NSLog(@"NUMBER OF OTHER TOURS%lu",  self.guideOtherTours.count);
         }
         make.height.equalTo(tableViewHeight);
-        NSLog(@"THIS IS THE HEIGHT OF UPDATED ROW%@", tableViewHeight);
     }];
     
     [self.profileView mas_updateConstraints:^(MASConstraintMaker *make) {

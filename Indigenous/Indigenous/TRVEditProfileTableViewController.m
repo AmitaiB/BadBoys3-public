@@ -49,6 +49,9 @@
     self.firstNameTextField.text = self.sharedDataStore.loggedInUser.userBio.firstName;
     self.lastNameTextField.text = self.sharedDataStore.loggedInUser.userBio.lastName;
     self.taglineTextView.text = self.sharedDataStore.loggedInUser.userBio.userTagline;
+    NSLog(@"THIS IS THE LAST NAME %@", self.sharedDataStore.loggedInUser.userBio.userTagline);
+    NSLog(@"THIS IS THE TAGLINE NAME %@", self.sharedDataStore.loggedInUser.userBio.userTagline);
+    
     self.aboutMeTextView.text = self.sharedDataStore.loggedInUser.userBio.bioDescription;
 
     self.emailTextField.text = self.sharedDataStore.loggedInUser.userBio.email;
@@ -108,7 +111,7 @@
 
     
     // save on parse
-    [currentUser saveEventually];
+    [currentUser saveInBackground];
     
     
     

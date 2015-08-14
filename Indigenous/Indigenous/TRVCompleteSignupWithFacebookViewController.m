@@ -68,6 +68,7 @@
     currentUser[@"userBio"][@"isGuide"] = @(self.isGuide.on);
     currentUser[@"userBio"][@"oneLineBio"] = self.oneLineBio.text;
     currentUser[@"userBio"][@"homeCity"] = self.selectedHomeCity;
+    currentUser[@"userBio"][@"homeCountry"] = @"";
     currentUser[@"userBio"][@"user"] = [PFUser currentUser];
   
 

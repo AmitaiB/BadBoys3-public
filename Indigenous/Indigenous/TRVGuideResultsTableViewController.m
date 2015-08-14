@@ -160,6 +160,10 @@
                                            profileImageURL:guideBio[@"picture"]
                                           nonFacebookImage:guideBio[@"emailPicture"]];
         
+        // set more properties
+        bio.homeCountry = guideBio[@"homeCity"];
+        bio.homeCity = guideBio[@"homeCountry"];
+        
         if (guideBio[@"picture"]){
             [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                 bio.profileImage = response;

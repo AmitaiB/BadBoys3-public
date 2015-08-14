@@ -6,17 +6,24 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVAddToursVC.h"
-#import "TRVPickerMapViewController.h"
-#import "TestMapWithSearchVC.h"
+#import <INTULocationManager.h>
+#import "TRVAddTourStopModalViewController.h"
+#import <LMGeocoder.h>
+#import <SCNumberKeyBoard.h>
 #import "TRVTour.h"
-#import "TRVItinerary.h"
 #import "TRVTourStop.h"
-#import <Parse.h>
-#import <MapKit/MapKit.h>
-#import <RMSaveButton.h>
+#import "TRVmapKitMap.h"
+#import "TRVItinerary.h"
+#import "TRVAddToursVC.h"
 #import "TRVUserDataStore.h"
+#import "TRVLocationManager.h"
+#import "TestMapWithSearchVC.h"
+#import "CLLocation+initWith2D.h"
+#import "TRVGoogleMapViewController.h"
+#import <Parse.h>
 #import <CZPicker.h>
+#import <RMSaveButton.h>
+#import <MapKit/MapKit.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 #define kBB3DefaultTourName @"Tour Name"
@@ -45,31 +52,72 @@
 @property (weak, nonatomic) IBOutlet UILabel            *tourNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView        *tourImage;
 
+@property (nonatomic, strong) NSString *inputAddress;
+
+@property (weak, nonatomic) IBOutlet UITextField *placeNameTxF;
+@property (weak, nonatomic) IBOutlet UITextField *placeAddressTxF;
+@property (weak, nonatomic) IBOutlet UITextField *latTxF;
+@property (weak, nonatomic) IBOutlet UITextField *lngTxF;
+
+@property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic) CLLocationDegrees inputLatitude;
+@property (nonatomic) CLLocationDegrees inputLongitude;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *tourStopSelectorButton;
+@property (weak, nonatomic) IBOutlet UIButton *addLocToItineraryButton;
+
+//- (IBAction)geoConfirmButtonTapped:(id)sender;
+- (IBAction)addLocToItineraryButtonTapped:(id)sender;
 
 
 
     //- (IBAction)chooseCategoryButtonTapped:(id)sender;
 
-    //@property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
-    //@property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
+@property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
+//    @property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
 
     //@property (weak, nonatomic) IBOutlet SSFlatDatePicker *datePicker;
 @end
 
-@implementation TRVAddToursVC
+@implementation TRVAddToursVC {
+    __block CLLocation *currentLocation;
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        DBLG
+        if (error) {
+            NSLog(@"Danger Wil Robinson! Danger (PFGeoPoint couldn't get our current location! Error: %@", error);
+        } else {
+            CLLocationCoordinate2D currentPosition = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+            currentLocation = [[CLLocation alloc] initWithCoordinate:currentPosition];
+            NSLog(@"PFGeoPoint says I'm here: %.04f, %.04f", geoPoint.latitude, geoPoint.longitude);
+        }
+    }];
     
         //Setup protocols, initialize singletons, etc.
     self.itineraryTableView.delegate   = self;
     self.itineraryTableView.dataSource = self;
     self.dateTxF.delegate              = self;
     self.addTourNameTxF.delegate       = self;
+    self.placeNameTxF.delegate         = self;
+    self.placeAddressTxF.delegate      = self;
 
+    
+    self.tourStopSelectorButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        //TODO: [Amitai:] It would be swell to fix this...
+//    [SCNumberKeyBoard showWithTextField:self.latTxF block:^(UITextField *textField, NSString *number) {
+//        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
+//    }];
+//    [SCNumberKeyBoard showWithTextField:self.lngTxF block:^(UITextField *textField, NSString *number) {
+//        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
+//    }];
+    
     
         //method commented out
 //    [self.datePicker            addTarget:self
@@ -83,7 +131,7 @@
     
     self.sharedDataStore               = [TRVUserDataStore sharedUserInfoDataStore];
     TRVBio *userBio                    = self.sharedDataStore.loggedInUser.userBio;
-    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", (userBio.firstName)? userBio.firstName : @"Jn. Doe"];
+    self.currentUserLabel.text         = [NSString stringWithFormat:@"Hi, %@!", (userBio.firstName)? userBio.firstName : @"J.Doe"];
 
     
         //    self.saveButtonLabel.hidden = YES;
@@ -99,9 +147,11 @@
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     DBLG
     if ([textField isEqual:self.dateTxF]) {
-        self.itineraryTableView.hidden = YES;
-        self.datePicker.hidden = NO;
+        self.datePicker.hidden                 = NO;
         self.confirmDateSelectionButton.hidden = NO;
+        self.itineraryTableView.hidden         = YES;
+        self.latTxF.hidden                     = YES;
+        self.lngTxF.hidden                     = YES;
         [self.datePicker becomeFirstResponder];
         return NO;
     } else {
@@ -111,6 +161,7 @@
 
 
 //-(void)textFieldDidEndEditing:(UITextField *)textField
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     DBLG
     if ([textField isEqual:self.addTourNameTxF]) {
@@ -122,8 +173,29 @@
         
         }
         
-        [textField resignFirstResponder];
+//    } else if ([textField isEqual:self.latTxF]) {
+//        self.inputLatitude  = [textField.text integerValue];
+//    } else if ([textField isEqual:self.lngTxF]) {
+//        self.inputLongitude = [textField.text integerValue];
+//    } else if ([textField isEqual:self.placeAddressTxF]) {
+//        self.inputAddress   = textField.text;
+//    }
+//    
+//    
+//    if (self.latTxF.text && self.lngTxF.text) {
+//        self.tourStopSelectorButton.titleLabel.text = @"Reverse-Geocode";
+//        self.tourStopSelectorButton.hidden          = NO;
+//        self.addLocToItineraryButton.hidden   = NO;
+//        self.coordinate = CLLocationCoordinate2DMake(self.inputLatitude, self.inputLongitude);
+//    }
+//    
+//    if ([textField isEqual:self.placeAddressTxF]) {
+//        self.inputAddress = self.placeAddressTxF.text;
+//        self.tourStopSelectorButton.titleLabel.text = @"Geocode Loc.";
+//        self.tourStopSelectorButton.hidden          = NO;
+//    }
     }
+    [textField resignFirstResponder];
     return YES;
 }
 
@@ -137,14 +209,16 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.listOfStops.count;
 }
+/** TODO: option for this...?:
+ *  Detail element of the cell with CLLocationDistance)distanceFromLocation, then sort by the distance...
+ */
 
-/* //TODO: Configure the itinerary Cells...
+ //TODO: Configure the itinerary Cells...
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *tourStopCell = [tableView dequeueReusableCellWithIdentifier:@"reuseID" forIndexPath:indexPath];
-    
+    UITableViewCell *tourStopCell = [tableView dequeueReusableCellWithIdentifier:@"tourStopCell" forIndexPath:indexPath];
         //blah blah
-    return cell;
-} */
+    return tourStopCell;
+}
 
 
 /*
@@ -214,6 +288,8 @@
     
         //return control and state to previously...
     self.itineraryTableView.hidden         = NO;
+    self.latTxF.hidden                     = NO;
+    self.lngTxF.hidden                     = NO;
     self.confirmDateSelectionButton.hidden = YES;
     self.datePicker.hidden                 = YES;
 }
@@ -223,12 +299,22 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    TRVLocationManager *locationManager = [TRVLocationManager sharedLocationManager];
+//    [locationManager.locationManager requestAlwaysAuthorization];
+        //    [locationManager conditionalRequestForAuthorizationOfType:kCLAuthorizationStatusAuthorizedAlways inView:self];
+    
+    
+    
     if ([segue.identifier isEqualToString:@"toMapSegueID"]) {
-    TRVPickerMapViewController *destinationVC = segue.destinationViewController;
+    TRVGoogleMapViewController *destinationVC = segue.destinationViewController;
         destinationVC.delegate = self;
     } else if ([segue.identifier isEqualToString:@"toAppleMapSegueID"]) {
-        TestMapWithSearchVC *destinationVC = segue.destinationViewController;
+        TRVmapKitMap *destinationVC = segue.destinationViewController;
         destinationVC.delegate = self;
+        destinationVC.publicLocation = currentLocation;
+    } else if ([segue.identifier isEqualToString:@"addTourToGeocodeSegueID"]) {
+        TRVAddTourStopModalViewController *destinationVC = segue.destinationViewController;
+            //add specific instructions here..., e.g., get current location or something...
     }
     
     
@@ -340,18 +426,18 @@
 #pragma mark - Parse functionality
 
     //FIXME Make it "createParseTourandsave"
--(void)createParseDummyTour {
+-(void)createTourWithInputValuesAndSaveToParse {
     
     PFUser *currentUser = [PFUser currentUser];
     PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
     [theTour setObject:currentUser forKey:@"guideForThisTour"];
     
     PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
-    theTour[@"categoryForThisTour"] = @"Drink";
-    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:1000];
-        //    //  theTour[@"tourAverageRating"] = CGFLOAT;
-        //
-        //
+    theTour[@"categoryForThisTour"] = self.tourCategory.categoryName;
+    theTour[@"tourDeparture"] = self.tourDate;
+    /**
+     *  |X|
+     */
     PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
     theTour[@"itineraryForThisTour"] = theItinerary;
     theItinerary[@"nameOfTour"] = @"Some name of tour";
@@ -416,5 +502,51 @@
     }];
     
 }
+
+/**
+ *  Either the Geocode or Reverse-Geocode Button, depending.
+ *  Pushed to a new controller...
+ */
+//- (IBAction)geoConfirmButtonTapped:(id)sender {
+//    LMGeocoder *geocoder = [LMGeocoder sharedInstance];
+//    UIButton *geoButton = sender;
+//    geoButton.hidden = YES;
+//    
+//    if ([self.tourStopSelectorButton.titleLabel.text isEqualToString:@"Reverse-Geocode"]) {
+//        [geocoder reverseGeocodeCoordinate:CLLocationCoordinate2DMake(self.inputLatitude, self.inputLongitude) service:kLMGeocoderGoogleService completionHandler:^(NSArray *results, NSError *error) {
+//            if (results.count && !error) {
+//                LMAddress *address = [results firstObject];
+//                NSLog(@"Address: %@", address.formattedAddress);
+//            }
+//        }];
+//    }
+//    if ([self.tourStopSelectorButton.titleLabel.text isEqualToString:@"Geocode Loc."]) {
+//        [geocoder geocodeAddressString:self.inputAddress service:kLMGeocoderGoogleService completionHandler:^(NSArray *results, NSError *error) {
+//            if (results.count && !error) {
+//                LMAddress *address = [results firstObject];
+//                NSLog(@"Coordinate: (%f, %f)", address.coordinate.latitude, address.coordinate.longitude);
+//            }
+//        }];
+//    }
+//}
+
+- (IBAction)addLocToItineraryButtonTapped:(id)sender {
+    
+}
+
+
+//-(void)reverseGeocode:(CLLocation*)location {
+//    CLGeocoder *geocoder = [CLGeocoder new];
+//    
+//    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+//        DBLG
+//        if (!error) {
+//            self.place = [placemarks firstObject];
+//        } else {
+//            NSLog(@"Error in reverseGeocoding that coordinate for you, boss: %@", error.localizedDescription);
+//        }
+//    }];
+//}
+
 
 @end

@@ -12,6 +12,6 @@
 #import <CZPickerView.h>
 
 
-@interface TRVAddToursVC :  UIViewController <CZPickerViewDelegate, CZPickerViewDataSource>
+@interface TRVAddToursVC :  UIViewController <CZPickerViewDelegate, CZPickerViewDataSource, UITableViewDataSource, UITableViewDelegate>
 
 @end
