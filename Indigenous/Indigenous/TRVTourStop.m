@@ -26,7 +26,7 @@
         _tourStopMarker   = [GMSMarker markerWithPosition:coordinates];
         _nameOfPlace = @"Flatiron School";
         _descriptionOfEvent = @"best school ever";
-        self.coordinate = coordinates;
+//        self.coordinate = coordinates;
         _tourStopCLLocation = [[CLLocation alloc] initWithLatitude:_lat longitude:_lng];
 
     }
