@@ -70,8 +70,8 @@
 
     //- (IBAction)chooseCategoryButtonTapped:(id)sender;
 
-    //@property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
-    //@property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
+@property (nonatomic, weak) IBOutlet RMSaveButton *saveTourButton;
+//    @property (weak, nonatomic) IBOutlet UILabel *saveButtonLabel;
 
     //@property (weak, nonatomic) IBOutlet SSFlatDatePicker *datePicker;
 @end
@@ -103,13 +103,14 @@
     self.addTourNameTxF.delegate       = self;
     self.placeNameTxF.delegate         = self;
     self.placeAddressTxF.delegate      = self;
-    
-    [SCNumberKeyBoard showWithTextField:self.latTxF block:^(UITextField *textField, NSString *number) {
-        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
-    }];
-    [SCNumberKeyBoard showWithTextField:self.lngTxF block:^(UITextField *textField, NSString *number) {
-        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
-    }];
+
+        //TODO: [Amitai:] It would be swell to fix this...
+//    [SCNumberKeyBoard showWithTextField:self.latTxF block:^(UITextField *textField, NSString *number) {
+//        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
+//    }];
+//    [SCNumberKeyBoard showWithTextField:self.lngTxF block:^(UITextField *textField, NSString *number) {
+//        NSLog(@"textField!: %@\nnumber (NSString)!: %@", [textField description], number);
+//    }];
     
     
         //method commented out
