@@ -30,14 +30,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
-//    [PFUser logOut];
-//    [FBSDKAccessToken setCurrentAccessToken:nil];
-//    [FBSDKProfile setCurrentProfile:nil];
-//
+    [PFUser logOut];
+    [FBSDKAccessToken setCurrentAccessToken:nil];
+    [FBSDKProfile setCurrentProfile:nil];
+
 
 
   
     
+}
+
+-(BOOL)prefersStatusBarHidden{
+    return YES;
 }
 
 -(void)setUpUI{
@@ -145,7 +149,7 @@
     
     self.loadingView = [[UIView alloc]init];
     
-    self.loadingView.backgroundColor = [UIColor greenColor];
+    self.loadingView.backgroundColor = [UIColor colorWithRed:244/255.0f green:242/255.0f blue:235/255.0f alpha:0];
     
     [self.view addSubview:self.loadingView];
 
@@ -153,6 +157,7 @@
     [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(self.view);
     }];
+    
     
     self.hud = [MBProgressHUD showHUDAddedTo:self.loadingView animated:YES];
 
