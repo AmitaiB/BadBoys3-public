@@ -820,6 +820,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XE8-GL-Ufx">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Get current location">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="197" y="74" width="136" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="getCurrentLocationButtonTapped:" destination="vtX-nK-lGM" eventType="touchUpInside" id="yfN-pk-taW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -902,6 +914,7 @@
                                 <exclude reference="z8n-Mt-jX7"/>
                                 <exclude reference="8lf-og-IIE"/>
                                 <exclude reference="pPf-Fa-RFs"/>
+                                <exclude reference="XE8-GL-Ufx"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="pFr-Lu-Nn6"/>
@@ -962,6 +975,7 @@
                                 <include reference="z8n-Mt-jX7"/>
                                 <include reference="8lf-og-IIE"/>
                                 <include reference="pPf-Fa-RFs"/>
+                                <include reference="XE8-GL-Ufx"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="pFr-Lu-Nn6"/>

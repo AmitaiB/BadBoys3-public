@@ -7,6 +7,10 @@
 //
 #import "SCNumberKeyBoard.h"
 #import "TRVAddTourStopModalViewController.h"
+#import <Parse.h>
+#import "CLLocation+initWith2D.h"
+#import <CoreLocation/CLLocation.h>
+#import "TRVLocationManager.h"
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
@@ -31,7 +35,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *reverseGeoCodeButton;
 @property (weak, nonatomic) IBOutlet UIButton *geoCodeButton;
 - (IBAction)toggleCoordSign:(id)sender;
-- (IBAction)toggleLngSign:(id)sender;
 
 
 @end
@@ -66,11 +69,35 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (self.latTxF.text && self.lngTxF.text) {
         self.reverseGeoCodeButton.enabled = YES;
+        self.saveTourStopButton.enabled = YES;
     }
+    if  (self.placeNameTxF.text.length ||
+        (self.streetAddressTxF.text.length &&
+         self.cityTxF.text.length &&
+         self.stateTxF.text.length) ||
+         self.postalCodeTxF.text) {
+        
+        self.geoCodeButton.enabled = YES;
+    }
+    [textField resignFirstResponder];
     return YES;
 }
 
-#pragma mark - helper methods
+#pragma mark MKMapViewDelegate methods
+
+
+#pragma mark - Map helper methods
+
+- (IBAction)getCurrentLocationButtonTapped:(id)sender {
+    self.mapView.showsUserLocation = YES;
+}
+
+
+/**
+ *  Make an MKPinAnnotationView at the coord locations. Then you can drag it around and/or save it.
+ *
+ *  @return MKPinAnnotationView
+ */
 
 
 
@@ -88,9 +115,37 @@
 }
 
 - (IBAction)reverseGeoCodeButtonTapped:(id)sender {
+    CLGeocoder *geocoder              = [[TRVLocationManager sharedLocationManager] geocoder];
+
+    CLLocationDegrees lat             = (CLLocationDegrees)[self.latTxF.text doubleValue];
+    CLLocationDegrees lng             = (CLLocationDegrees)[self.lngTxF.text doubleValue];
+    CLLocationCoordinate2D testCoords = CLLocationCoordinate2DMake(lat,lng);
+    CLLocation *testLocation          = [[CLLocation alloc] initWithCoordinate:testCoords];
+    
+    [geocoder reverseGeocodeLocation:testLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (placemarks.count) {
+            CLPlacemark *resultsPlacemark = placemarks.firstObject;
+            self.cityTxF.text          = resultsPlacemark.locality;
+            self.streetAddressTxF.text = [NSString stringWithFormat:@"%@ %@", resultsPlacemark.thoroughfare, resultsPlacemark.subThoroughfare];
+            self.postalCodeTxF.text    = resultsPlacemark.postalCode;
+        }
+        if (error) {
+            DBLG
+        }
+        self.saveTourStopButton.enabled = YES;
+    }];
+    
+    self.reverseGeoCodeButton.enabled = NO;
+}
+
+-(void)centerMapOnUserLocation {
+    self.mapView.showsUserLocation = YES;
+    [self.mapView                    setCenterCoordinate:self.mapView.userLocation.location.coordinate];
+    self.userLocationUpdated       = YES;
 }
 
 - (IBAction)geoCodeButtonTapped:(id)sender {
+    
 }
 /**
  *  stringLat → numLat → abs_value(numLat) → That x -1 → stringValue(That) = tada!
