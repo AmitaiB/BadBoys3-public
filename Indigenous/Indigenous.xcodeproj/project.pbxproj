@@ -457,7 +457,6 @@
 				3859EDF11B69400E001C5693 /* Models */,
 				94EE0DA61B757A6A00FE114E /* Constants */,
 				384AFBBA1B6969EE00E169A9 /* TourGuideFlow */,
-
 				456468F51B7E57A1005F5A57 /* Style Classes */,
 				45E772D61B6962C700003C7C /* Login Signup Flow */,
 				451565201B68221B005A2871 /* Images.xcassets */,
@@ -858,8 +857,7 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = DWCYJ9H353;
-
+						DevelopmentTeam = 9RXLE5FXUN;
 					};
 				};
 			};
