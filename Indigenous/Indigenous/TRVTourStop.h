@@ -22,6 +22,7 @@
 @property (nonatomic) CLLocationDegrees lat;
 @property (nonatomic) CLLocationDegrees lng;
 @property (nonatomic) CLLocationCoordinate2D tourStopLocation;
+@property (nonatomic, strong) CLLocation *tourStopCLLocation;
 @property (nonatomic, strong) GMSMarker *tourStopMarker;
 @property (nonatomic, strong) NSString *nameOfPlace;
 @property (nonatomic, strong) NSString *addressOfEvent;
@@ -34,7 +35,9 @@
 
 -(instancetype)initWithCoordinates:(CLLocationCoordinate2D)coordinates;
 
--(instancetype)initWithMapMarker:(GMSMarker *)marker;
+-initWithLocation:(CLLocation*)location;
+
+-initWithMapMarker:(GMSMarker *)marker;
 
 -(instancetype)initWithAnnotation:(id<MKAnnotation>)originalAnnotation;
 

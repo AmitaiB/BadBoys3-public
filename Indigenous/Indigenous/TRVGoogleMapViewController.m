@@ -9,7 +9,7 @@
 //#import "TRVPickerMapLogic.h" //includes GMapsSDK
 #import <GoogleMaps/GoogleMaps.h>
 #import "TRVAddToursVC.h"
-#import "TRVPickerMapViewController.h"
+#import "TRVGoogleMapViewController.h"
 #import <Parse.h>
 #import "CustomInfoWindowView.h"
 #import <CoreLocation/CoreLocation.h>
@@ -17,14 +17,14 @@
 #import <HNKGooglePlacesAutocomplete.h>
 
 
-@interface TRVPickerMapViewController () <GMSMapViewDelegate>
+@interface TRVGoogleMapViewController () <GMSMapViewDelegate>
 
 //@property (nonatomic, strong) GMSMapView *mapView;
 @property (nonatomic, copy) NSSet *markers;
 
 @end
 
-@implementation TRVPickerMapViewController {
+@implementation TRVGoogleMapViewController {
     GMSMapView *mapView_;
     GMSMarker *userSelection_;
     GMSMarker *previousSelection_;
@@ -38,8 +38,6 @@
         //FIXME: need a way to dismiss the map.
         //update: Still relevant??
 
-    
-    
     
     CLLocationCoordinate2D defaultLocation = CLLocationCoordinate2DMake(40, -75);
 

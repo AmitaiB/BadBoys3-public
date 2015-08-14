@@ -10,13 +10,17 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CLLocation+Utils.h"
-#import "TRVPickerMapViewController.h"
+#import "TRVGoogleMapViewController.h"
+#import "TRVTourStop.h"
 #import <HNKGooglePlacesAutocomplete.h>
 #import <AFNetworking.h>
+#import "TRVLocationManager.h"
 
 
 @interface TRVmapKitMap : UIViewController <MKMapViewDelegate, UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
 
 @property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
+@property (nonatomic, strong) CLLocation *publicLocation;
+
 
 @end

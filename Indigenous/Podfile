@@ -14,3 +14,7 @@ pod 'FoldingTabBar', '~> 1.0.1'
 pod 'HNKGooglePlacesAutocomplete', '~> 1.1.0'
 pod 'RMSaveButton'
 pod "CZPicker"
+
+pod 'INTULocationManager'
+pod 'SCNumberKeyBoard'
+pod 'LMGeocoder', '~> 1.0'

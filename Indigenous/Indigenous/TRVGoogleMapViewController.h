@@ -19,7 +19,7 @@
 @end
 
 
-@interface TRVPickerMapViewController : UIViewController
+@interface TRVGoogleMapViewController : UIViewController
 
 @property (nonatomic, strong) id<TRVPickerMapDelegate> delegate;
 
