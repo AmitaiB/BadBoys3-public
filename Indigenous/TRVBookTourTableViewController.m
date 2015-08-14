@@ -7,8 +7,13 @@
 //
 
 #import "TRVBookTourTableViewController.h"
+#import "TRVUserDataStore.h"
+#import <Parse.h>
+
 
 @interface TRVBookTourTableViewController ()
+
+@property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
 
 @end
 
@@ -16,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -51,9 +57,26 @@
     
     [self bookTour];
     
+    PFUser *currentUser = [PFUser currentUser];
+    
+//    NSMutableArray *loggedInUserTrips = currentUser[@"myTrips"];
+//     NSLog(@"%@" ,self.shared)
+    [currentUser addObject:self.destinationPFTour forKey:@"myTrips"];
+    [currentUser save];
+    
+    
+    if ([self.destinationTour.categoryForThisTour.categoryName isEqualToString:self.sharedDataStore.currentCategorySearching.categoryName]) {
+        
+//        
+//        [self.sharedDataStore.loggedInUser.PFallTrips addObject:self.destinationPFTour];
+//        currentUser[@"myTrips"] setArray:;
+        
+        
+
+    }
+
     // LOGIC FOR CREATING A TOUR
     
-    // 
     
 }
 

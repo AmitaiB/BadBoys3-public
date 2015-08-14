@@ -88,8 +88,9 @@
     }];
 
     NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-                        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
+    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
+    
     self.tripTableView.dataSource = self.tableViewDataSource;
     [self.tripTableView reloadData];
    
