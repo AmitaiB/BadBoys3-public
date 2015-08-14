@@ -26,16 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MyTripsStoryboard" bundle:nil];
-    TRVTouristTripDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"tourDetailVC"];
-
     
-    viewController.tour = self.destinationTour;
-    NSLog(@"%@", viewController.tour.itineraryForThisTour.nameOfTour);
-    [viewController isTourGuideTripViewController];
-  //  [self.view addSubview:viewController.view];
-
-    [self.navigationController pushViewController:viewController animated:nil];
     
     
 //    TRVTourView *selectedTourView = [[TRVTourView alloc] init];

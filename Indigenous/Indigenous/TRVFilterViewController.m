@@ -71,15 +71,15 @@
         NSInteger n = [self.prices indexOfObject:self.filterDictionary[@"price"]];
         [self.pricePicker selectRow:n inComponent:0 animated:YES];
         
-            
+        
         
     }
-
+    
     NSInteger row = [self.pricePicker selectedRowInComponent:0];
     self.priceFilter = self.prices[row];
     
     
-
+    
     
 }
 
@@ -87,22 +87,22 @@
     
     NSLog(@"Category: %@", self.dataStore.currentCategorySearching);
     
-    if (self.dataStore.currentCategorySearching == [TRVTourCategory returnEatCategory]){
+    if ([self.dataStore.currentCategorySearching.categoryName isEqualToString:@"Eat"]){
         
         self.subCategories = @[@"Restaurant", @"Street Food", @"Snack", @"Breakfast", @"Brunch", @"Lunch", @"Dinner", @"Dessert", @"Other"];
         
         
-    } else if (self.dataStore.currentCategorySearching == [TRVTourCategory returnDrinkCategory]){
-       
+    } else if ([self.dataStore.currentCategorySearching.categoryName isEqualToString:@"Drink"]){
+        
         self.subCategories = @[@"Beer", @"Wine", @"Hard Liquor", @"Dive Bar", @"Upscale", @"Happy Hour"];
         
         
-    } else if (self.dataStore.currentCategorySearching == [TRVTourCategory returnPlayCategory]){
+    } else if ([self.dataStore.currentCategorySearching.categoryName isEqualToString:@"Play"]){
         
         self.subCategories = @[@"Sports", @"Outdoors", @"Hiking", @"Biking", @"Swimming"];
         
         
-    } else if (self.dataStore.currentCategorySearching == [TRVTourCategory returnCategoryWithTitle:@"See"]){
+    } else if ([self.dataStore.currentCategorySearching.categoryName isEqualToString:@"See"]){
         
         self.subCategories = @[@"Landmarks", @"Nature", @"History", @"Buildings"];
     }
@@ -126,6 +126,7 @@
     
     TRVSubCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
     
+    cell.backgroundColor = [UIColor grayColor];
     cell.categoryLabel.text = self.subCategories[indexPath.row];
     
     if ([self.filterDictionary[@"subCategories"] containsObject:self.subCategories[indexPath.row]]){
@@ -134,7 +135,7 @@
         
         
     }
-
+    
     return cell;
     
 }
@@ -148,17 +149,18 @@
     
     [self.selectedSubCategories addObject:self.subCategories[indexPath.row]];
     
- 
+    
 }
 
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-
+    cell.backgroundColor = [UIColor grayColor];
+    
     [self.selectedSubCategories removeObject:self.subCategories[indexPath.row]];
     
-
+    
 }
 
 
@@ -187,6 +189,8 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.priceFilter = self.prices[row];
+    
+    
 }
 
 
@@ -198,32 +202,20 @@
     
     
     
-//    if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
-//        self.dataStore.filterChoices = nil;
-//        NSLog(@"NIL Datastore: %@", self.dataStore.filterChoices);
-//    } else {
-//        self.dataStore.filterChoices = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                        self.priceFilter,@"price",
-//                                        self.selectedSubCategories, @"subCategories",
-//                                        nil];
-//        
-//        NSLog(@"%@", self.dataStore.filterChoices);
-//    }
+    if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
+        [self.delegate passFilterDictionary:nil];
+    } else {
+        [self.delegate passFilterDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             self.priceFilter,@"price",
+                                             self.selectedSubCategories, @"subCategories",
+                                             nil]];
+    }
     
-    
-  if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
-      [self.delegate passFilterDictionary:nil];
-  } else {
-      [self.delegate passFilterDictionary:[NSDictionary dictionaryWithObjectsAndKeys:
-                                           self.priceFilter,@"price",
-                                           self.selectedSubCategories, @"subCategories",
-                                           nil]];
-  }
-    
+   
     
     
     [self dismissViewControllerAnimated:YES completion:nil];
-
+    
     
 }
 
@@ -232,7 +224,7 @@
 - (IBAction)resetButtonPressed:(id)sender {
     
     
-//  self.dataStore.filterChoices = nil;
+    //  self.dataStore.filterChoices = nil;
     [self.delegate passFilterDictionary:nil];
     self.filterDictionary = nil;
     self.selectedSubCategories = [@[] mutableCopy];
@@ -247,16 +239,17 @@
 
 - (IBAction)dismissButtonPressed:(id)sender {
     
-//    self.dataStore.filterChoices = nil;
+    //    self.dataStore.filterChoices = nil;
     if ([self.priceFilter isEqualToString:@"All Prices"] && self.selectedSubCategories.count == 0){
         [self.delegate passFilterDictionary:nil];
     } else {
         [self.delegate passFilterDictionary:self.filterDictionary];
     }
-//    self.selectedSubCategories = [@[] mutableCopy];
-//    self.priceFilter = self.prices[0];
+    
+    //    self.selectedSubCategories = [@[] mutableCopy];
+    //    self.priceFilter = self.prices[0];
     [self dismissViewControllerAnimated:YES completion:nil];
-
+    
 }
 
 
@@ -277,13 +270,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
