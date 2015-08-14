@@ -13,7 +13,7 @@
 
 @interface TRVGuideProfileImageView ()
 
-@property (strong, nonatomic) IBOutlet UIView *guideProfileView;
+@property (weak, nonatomic) IBOutlet UIView *guideProfileView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *guideTagLineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;

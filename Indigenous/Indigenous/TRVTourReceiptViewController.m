@@ -25,15 +25,14 @@
 
     
     UIViewController *presentingViewController = self.presentingViewController;
-    [self dismissViewControllerAnimated:NO completion:^{
+    
+    // SET THE TRANSITION BACK ON BACK HOME
+    presentingViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    [self dismissViewControllerAnimated:YES completion:^{
         
-        [presentingViewController dismissViewControllerAnimated:NO completion:^{
+        [presentingViewController dismissViewControllerAnimated:YES completion:^{
             
-//            
-//            UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"TRVTabBar" bundle:nil];;
-//            
-//                UIViewController *destination = [destinationStoryboard instantiateInitialViewController];
-//            [self presentViewController:destination animated:YES completion:nil];
         }];
          }];
     

@@ -52,7 +52,6 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
 
 
-
     NSLog(@"%@", self.selectedGuideUser.myTrips);
     
     //Instantiate a Image View Nib
@@ -256,27 +255,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    
-//    if ([segue.identifier isEqualToString:@"showTourDetailSegue"]) {
-//        
-//        NSIndexPath *ip = [self.guideTripsTableView indexPathForSelectedRow];
-//        NSLog(@"THIS IS THE IP%ld", (long)ip.row);
-//        TRVTour *tourForThisRow = [[TRVTour alloc] init];
-//        
-//        if (self.segmentedControl.selectedSegmentIndex == 0) {
-//            tourForThisRow = self.guideCategoryTours[ip.row];
-//        } else {
-//            tourForThisRow = self.guideOtherTours[ip.row];
-//        }
-//
-//        TRVTourDetailViewController *destinationVC = [segue destinationViewController];
-//        destinationVC.destinationTour = tourForThisRow;
-//        NSLog(@"THE DVC TOUR IS %@", tourForThisRow.itineraryForThisTour.nameOfTour);
-//    }
-    
-    // Pass the selected object to the new view controller.
-}
+    }
 
 
 

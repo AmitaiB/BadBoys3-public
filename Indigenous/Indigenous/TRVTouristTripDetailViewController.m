@@ -214,10 +214,11 @@
     UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
     
     TRVBookTourTableViewController *destination = [destinationStoryboard instantiateInitialViewController];
+//    destination.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     
     // pass it into confirm purchase Storyboard
     destination.destinationTour = self.tour;
-    
+    NSLog(@"THIS IS THE TOUR BEING PASSED %@", self.tour);
     // Alan can you check if this is right
     [self presentViewController:destination animated:YES completion:nil];
     

@@ -49,7 +49,7 @@
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
         
-        self.switchToGuideButton.layer.cornerRadius = 5;
+        self.switchToGuideButton.layer.cornerRadius = 2.5;
     }];
     
     

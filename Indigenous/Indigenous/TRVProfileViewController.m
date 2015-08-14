@@ -126,7 +126,13 @@
     
     UIViewController *destination = [tourist instantiateInitialViewController];
     
+    
+
     TRVLoginSignupHomeViewController *homeView = (TRVLoginSignupHomeViewController *)self.presentingViewController;
+    
+    // SET THE TRANSITION BACK TO PICK CITY BACK HOME
+    destination.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
     
     self.delegate = homeView;
     
@@ -134,7 +140,7 @@
     
     [self dismissViewControllerAnimated:NO completion:^{
         
-        [homeView presentViewController:destination animated:NO completion:nil];
+        [homeView presentViewController:destination animated:YES completion:nil];
         
     }];
 }
@@ -148,13 +154,15 @@
     
     TRVLoginSignupHomeViewController *homeView = (TRVLoginSignupHomeViewController *)self.presentingViewController;
     
+    destination.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
     self.delegate = homeView;
     
     [self.delegate switchUserType];
     
     [self dismissViewControllerAnimated:NO completion:^{
         
-        [homeView presentViewController:destination animated:NO completion:nil];
+        [homeView presentViewController:destination animated:YES completion:nil];
         
     }];
 }
