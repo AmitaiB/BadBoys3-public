@@ -12,18 +12,24 @@
 #import <MBProgressHUD.h>
 #import "TRVUserDataStore.h"
 #import <Masonry.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface TRVLoginSignupHomeViewController () 
 
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) UIView *loadingView;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @end
 
 @implementation TRVLoginSignupHomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+    [self setUpUI];
 //    [PFUser logOut];
 //    [FBSDKAccessToken setCurrentAccessToken:nil];
 //    [FBSDKProfile setCurrentProfile:nil];
@@ -31,6 +37,19 @@
 
 
   
+    
+}
+
+-(void)setUpUI{
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"van2" ofType:@"gif"];
+    NSData *gif = [NSData dataWithContentsOfFile:filePath];
+   
+    [self.webView loadData:gif MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
+    
+    self.webView.userInteractionEnabled = NO;
+
+
     
 }
 

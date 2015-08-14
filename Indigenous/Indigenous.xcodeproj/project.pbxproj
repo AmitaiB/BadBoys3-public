@@ -37,6 +37,11 @@
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
 		451565241B68221B005A2871 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451565221B68221B005A2871 /* LaunchScreen.xib */; };
 		451859541B70FCC0008D7049 /* TRVFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451859531B70FCBF008D7049 /* TRVFilterViewController.m */; };
+		456468E61B7E394C005F5A57 /* van.gif in Resources */ = {isa = PBXBuildFile; fileRef = 456468E51B7E394C005F5A57 /* van.gif */; };
+		456468E81B7E401D005F5A57 /* van2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 456468E71B7E401D005F5A57 /* van2.gif */; };
+		456468EE1B7E4394005F5A57 /* TRVButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 456468ED1B7E4394005F5A57 /* TRVButton.m */; };
+		456468F11B7E450D005F5A57 /* TRVHeaderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 456468F01B7E450D005F5A57 /* TRVHeaderLabel.m */; };
+		456468F41B7E5785005F5A57 /* TRVParagraphLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 456468F31B7E5785005F5A57 /* TRVParagraphLabel.m */; };
 		45ADB90E1B73A7DE0056AF09 /* TRVSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45ADB90D1B73A7DE0056AF09 /* TRVSettingsViewController.m */; };
 		45E772D01B68291300003C7C /* TRVBio.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772CF1B68291300003C7C /* TRVBio.m */; };
 		45E772D51B6961D700003C7C /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E772D41B6961D700003C7C /* LoginSignup.storyboard */; };
@@ -173,6 +178,14 @@
 		451565231B68221B005A2871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		451859521B70FCBF008D7049 /* TRVFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVFilterViewController.h; sourceTree = "<group>"; };
 		451859531B70FCBF008D7049 /* TRVFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVFilterViewController.m; sourceTree = "<group>"; };
+		456468E51B7E394C005F5A57 /* van.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = van.gif; path = Images.xcassets/van.gif; sourceTree = "<group>"; };
+		456468E71B7E401D005F5A57 /* van2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = van2.gif; path = Images.xcassets/van2.gif; sourceTree = "<group>"; };
+		456468EC1B7E4394005F5A57 /* TRVButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVButton.h; path = ../TRVButton.h; sourceTree = "<group>"; };
+		456468ED1B7E4394005F5A57 /* TRVButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TRVButton.m; path = ../TRVButton.m; sourceTree = "<group>"; };
+		456468EF1B7E450D005F5A57 /* TRVHeaderLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVHeaderLabel.h; sourceTree = "<group>"; };
+		456468F01B7E450D005F5A57 /* TRVHeaderLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVHeaderLabel.m; sourceTree = "<group>"; };
+		456468F21B7E5785005F5A57 /* TRVParagraphLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVParagraphLabel.h; sourceTree = "<group>"; };
+		456468F31B7E5785005F5A57 /* TRVParagraphLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVParagraphLabel.m; sourceTree = "<group>"; };
 		45ADB90C1B73A7DE0056AF09 /* TRVSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVSettingsViewController.h; sourceTree = "<group>"; };
 		45ADB90D1B73A7DE0056AF09 /* TRVSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVSettingsViewController.m; sourceTree = "<group>"; };
 		45E772CB1B6824C400003C7C /* TRVUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVUser.h; sourceTree = "<group>"; };
@@ -441,6 +454,7 @@
 				384AFBBA1B6969EE00E169A9 /* TourGuideFlow */,
 				38CF38E61B682B7E0035335A /* TRVTopLVLMenuViewController.h */,
 				38CF38E71B682B7E0035335A /* TRVTopLVLMenuViewController.m */,
+				456468F51B7E57A1005F5A57 /* Style Classes */,
 				45E772D61B6962C700003C7C /* Login Signup Flow */,
 				451565201B68221B005A2871 /* Images.xcassets */,
 				451565221B68221B005A2871 /* LaunchScreen.xib */,
@@ -466,6 +480,19 @@
 				451565151B68221B005A2871 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		456468F51B7E57A1005F5A57 /* Style Classes */ = {
+			isa = PBXGroup;
+			children = (
+				456468EC1B7E4394005F5A57 /* TRVButton.h */,
+				456468ED1B7E4394005F5A57 /* TRVButton.m */,
+				456468EF1B7E450D005F5A57 /* TRVHeaderLabel.h */,
+				456468F01B7E450D005F5A57 /* TRVHeaderLabel.m */,
+				456468F21B7E5785005F5A57 /* TRVParagraphLabel.h */,
+				456468F31B7E5785005F5A57 /* TRVParagraphLabel.m */,
+			);
+			name = "Style Classes";
 			sourceTree = "<group>";
 		};
 		45E772D61B6962C700003C7C /* Login Signup Flow */ = {
@@ -494,6 +521,8 @@
 				45E772E81B6A778200003C7C /* TRVFacebookLoginHandler.m */,
 				45E772EA1B6AC4DA00003C7C /* TRVUserSignupHandler.h */,
 				45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */,
+				456468E51B7E394C005F5A57 /* van.gif */,
+				456468E71B7E401D005F5A57 /* van2.gif */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -826,7 +855,6 @@
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = 98E8SVTQ29;
-
 					};
 				};
 			};
@@ -853,6 +881,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				456468E61B7E394C005F5A57 /* van.gif in Resources */,
 				9473D1971B72376500E73B4B /* TRVUserProfileImageView.xib in Resources */,
 				94BB58911B78F4670056D46F /* TRVAllStopsView.xib in Resources */,
 				944AD00B1B6DF4C700404EDD /* TRVGuideProfileImageView.xib in Resources */,
@@ -874,6 +903,7 @@
 				FADB8F2B1B714504009F7C02 /* Carmelo.jpg in Resources */,
 				451565211B68221B005A2871 /* Images.xcassets in Resources */,
 				948246441B7162C300D64432 /* TRVUserContactView.xib in Resources */,
+				456468E81B7E401D005F5A57 /* van2.gif in Resources */,
 				9435DF731B6F1E670054A2F4 /* TRVTourCategoryView.xib in Resources */,
 				946624131B79555000CA365B /* RootGuideTabController.storyboard in Resources */,
 			);
@@ -921,6 +951,7 @@
 			files = (
 				385C46FB1B6BCEA000D9091A /* AppDelegate.m in Sources */,
 				942E0D4B1B740143002D9E90 /* TRVProfileViews.m in Sources */,
+				456468F41B7E5785005F5A57 /* TRVParagraphLabel.m in Sources */,
 				38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */,
 				385C46FA1B6BCE7E00D9091A /* main.m in Sources */,
 				384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */,
@@ -929,12 +960,12 @@
 				3881C8751B7DA757000912B5 /* TRVAddTourStopModalViewController.m in Sources */,
 				94A53C9A1B765E640029D2F7 /* NSMutableArray+extraMethods.m in Sources */,
 				9435DF761B6F21280054A2F4 /* TRVTourCategoryViewController.m in Sources */,
+				456468EE1B7E4394005F5A57 /* TRVButton.m in Sources */,
 				FADB8F291B711866009F7C02 /* TRVTourStopCollectionViewCellView.m in Sources */,
 				45ADB90E1B73A7DE0056AF09 /* TRVSettingsViewController.m in Sources */,
 				9425FA871B72565500689011 /* TRVDetailGuideViewController.m in Sources */,
 				942C18F41B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m in Sources */,
 				94E513981B739EBC002710AF /* TRVUserAboutMeView.m in Sources */,
-				9488A6051B7B6BF90020476B /* TRVEditTextViewController.m in Sources */,
 				FA57FA2D1B6A7A3800CFBB89 /* TRVTouristTripDetailViewController.m in Sources */,
 				45F925A91B712400009B2E98 /* TRVSubCategoryCollectionView.m in Sources */,
 				38CF38E81B682B7E0035335A /* TRVTopLVLMenuViewController.m in Sources */,
@@ -973,6 +1004,7 @@
 				94CDC70F1B7A50DB0054AFA0 /* TRVTourReceiptViewController.m in Sources */,
 				94C2EDAB1B69664400BC2F7C /* TRVSearchViewController.m in Sources */,
 				946AAA911B6C517E00778418 /* TRVConstants.m in Sources */,
+				456468F11B7E450D005F5A57 /* TRVHeaderLabel.m in Sources */,
 				94C2EDA51B69657B00BC2F7C /* TRVSearchTripsViewController.m in Sources */,
 				45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */,
 				388EBC5E1B783AE400D60297 /* CustomInfoWindowView.m in Sources */,
