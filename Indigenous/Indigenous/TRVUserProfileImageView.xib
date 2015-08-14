@@ -19,7 +19,7 @@
                     <rect key="frame" x="10" y="10" width="310" height="294"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.93333333333333335" green="0.92549019607843142" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="a5S-ir-4MK" firstAttribute="top" secondItem="GFM-hy-tqC" secondAttribute="top" constant="10" id="CuH-Dv-d50"/>
                 <constraint firstItem="a5S-ir-4MK" firstAttribute="leading" secondItem="GFM-hy-tqC" secondAttribute="leading" constant="10" id="NNC-wj-m4U"/>
