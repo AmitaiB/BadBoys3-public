@@ -68,6 +68,7 @@
 		944AD0091B6DF4B500404EDD /* TRVGuideProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 944AD0081B6DF4B500404EDD /* TRVGuideProfileImageView.m */; };
 		944AD00B1B6DF4C700404EDD /* TRVGuideProfileImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 944AD00A1B6DF4C700404EDD /* TRVGuideProfileImageView.xib */; };
 		944D31301B770C7A004CF255 /* TRVDetailGuideAllTripsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 944D312F1B770C7A004CF255 /* TRVDetailGuideAllTripsDataSource.m */; };
+		9450B33E1B7D6FBC009CE9FA /* TRVBookTourTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9450B33D1B7D6FBC009CE9FA /* TRVBookTourTableViewController.m */; };
 		946624111B79548100CA365B /* TRVRootGuideTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 946624101B79548100CA365B /* TRVRootGuideTabController.m */; };
 		946624131B79555000CA365B /* RootGuideTabController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946624121B79555000CA365B /* RootGuideTabController.storyboard */; };
 		946AAA911B6C517E00778418 /* TRVConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 946AAA901B6C517E00778418 /* TRVConstants.m */; };
@@ -232,6 +233,8 @@
 		944AD00A1B6DF4C700404EDD /* TRVGuideProfileImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRVGuideProfileImageView.xib; sourceTree = "<group>"; };
 		944D312E1B770C7A004CF255 /* TRVDetailGuideAllTripsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVDetailGuideAllTripsDataSource.h; sourceTree = "<group>"; };
 		944D312F1B770C7A004CF255 /* TRVDetailGuideAllTripsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVDetailGuideAllTripsDataSource.m; sourceTree = "<group>"; };
+		9450B33C1B7D6FBC009CE9FA /* TRVBookTourTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVBookTourTableViewController.h; sourceTree = "<group>"; };
+		9450B33D1B7D6FBC009CE9FA /* TRVBookTourTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVBookTourTableViewController.m; sourceTree = "<group>"; };
 		9466240F1B79548100CA365B /* TRVRootGuideTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVRootGuideTabController.h; sourceTree = "<group>"; };
 		946624101B79548100CA365B /* TRVRootGuideTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVRootGuideTabController.m; sourceTree = "<group>"; };
 		946624121B79555000CA365B /* RootGuideTabController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RootGuideTabController.storyboard; sourceTree = "<group>"; };
@@ -404,6 +407,8 @@
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
+				9450B33C1B7D6FBC009CE9FA /* TRVBookTourTableViewController.h */,
+				9450B33D1B7D6FBC009CE9FA /* TRVBookTourTableViewController.m */,
 				94258ACC1B73F251006F24A8 /* Default-568h@2x.png */,
 				451565121B68221B005A2871 /* Indigenous */,
 				451565111B68221B005A2871 /* Products */,
@@ -975,6 +980,7 @@
 				94BD69021B6EC18A000CDA65 /* TRVGuideResultsTableViewController.m in Sources */,
 				9435DF7C1B6F22630054A2F4 /* TRVTourCategoryCollectionViewCell.m in Sources */,
 				38B1665C1B7CC135005DA926 /* TRVLocationManager.m in Sources */,
+				9450B33E1B7D6FBC009CE9FA /* TRVBookTourTableViewController.m in Sources */,
 				45E772E61B6A695F00003C7C /* TRVSignupWithEmailViewController.m in Sources */,
 				3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */,
 				388EBC551B781DE300D60297 /* SearchViewController.m in Sources */,
