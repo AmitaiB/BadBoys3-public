@@ -34,7 +34,6 @@
     hud.labelText = @"Loading Trips";
     hud.labelFont = [UIFont fontWithName:@"Avenir" size:17];
     
-    
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
     [self.sharedDataStore setCurrentUser:[PFUser currentUser] withBlock:^(BOOL success) {

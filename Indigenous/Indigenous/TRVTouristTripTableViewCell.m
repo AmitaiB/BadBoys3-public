@@ -24,7 +24,6 @@
     _tour = tour;
     
     self.TourNib2.tourForThisTourView = tour;
-//    self.tourNib.tourForThisTourView = tour;
 
 }
 
