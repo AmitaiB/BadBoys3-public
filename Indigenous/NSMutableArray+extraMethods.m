@@ -86,6 +86,7 @@
 
     //[self createParseDummyTour];
 
+
    
     
     return allTripsArray;
