@@ -29,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"VIEW DID APPEAR %@", self.sharedDataStore.loggedInUser.userBio.firstName);
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading Trips";
@@ -55,6 +54,9 @@
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
 
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
+                    
+                    
+                    // uncomment below if you want to load dummy trips
                     
 //                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
 //                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
@@ -92,6 +94,7 @@
 //                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
 //    self.tripTableView.dataSource = self.tableViewDataSource;
 //    [self.tripTableView reloadData];
+        [self.tripTableView reloadData];
    
 }
 
@@ -157,14 +160,6 @@
     } // end of if statement
         
     } // END OF TOUR FOR LOOP
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

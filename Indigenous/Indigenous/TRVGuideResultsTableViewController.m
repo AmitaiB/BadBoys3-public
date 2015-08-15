@@ -232,7 +232,7 @@
         itinerary.tourStops = TRVAllStops;
         tour.itineraryForThisTour = itinerary;
         [guideForThisRow.myTrips addObject:tour];
-        
+        [guideForThisRow.PFallTrips addObject:PFTour];
         if ([PFTour[@"categoryForThisTour"] isEqualToString:self.sharedData.currentCategorySearching.categoryName]){
             [guideForThisRow.PFCurrentCategoryTrips addObject:PFTour];
         } else {

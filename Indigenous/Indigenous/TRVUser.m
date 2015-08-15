@@ -16,6 +16,7 @@
     
     if (self) {
         _userBio = bio;
+        _PFallTrips = [[NSMutableArray alloc] init];
         _PFCurrentCategoryTrips = [[NSMutableArray alloc] init];
         _PFOtherCategoryTrips = [[NSMutableArray alloc] init];
 
@@ -27,6 +28,7 @@
     self = [super init];
     
     if (self) {
+        _PFallTrips = [[NSMutableArray alloc] init];
         _PFCurrentCategoryTrips = [[NSMutableArray alloc] init];
         _PFOtherCategoryTrips = [[NSMutableArray alloc] init];
     }
