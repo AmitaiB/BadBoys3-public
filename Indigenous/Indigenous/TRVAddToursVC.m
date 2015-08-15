@@ -389,7 +389,7 @@
 }
 
 -(NSAttributedString *)czpickerView:(CZPickerView *)pickerView attributedTitleForRow:(NSInteger)row {
-    NSArray *categoryTitles = @[@"See", @"Play", @"Eat", @"Drink"];
+    NSArray *categoryTitles = @[@"See", @"Discover", @"Eat", @"Drink"];
     return categoryTitles[row];
 }
 

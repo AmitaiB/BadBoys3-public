@@ -140,7 +140,7 @@
     
     self.theScrollViewThatHoldsAllTheOtherViews.parallaxView.delegate = self;
     // Do any additional setup after loading the view.
-    //NSLog(@"The difference: %f", self.parallaxImageView.frame.size.height + self.navigationController.navigationBar.bounds.size.height - [UIScreen mainScreen].bounds.size.height);
+   
     
     UIView *viewToAddTitleLabelTo = [self parallaxTitleSuperview:[[[UIApplication sharedApplication] keyWindow] subviews][0]]; //(UIView*)([[[UIApplication sharedApplication] keyWindow] subviews][0]);
     [viewToAddTitleLabelTo addSubview:self.parallaxHeaderTourNameLabel];

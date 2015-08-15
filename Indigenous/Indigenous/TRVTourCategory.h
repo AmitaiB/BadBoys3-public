@@ -20,7 +20,7 @@
 
 +(TRVTourCategory *)returnCategoryWithTitle:(NSString *)title;
 +(TRVTourCategory *)returnSeeCategory;
-+(TRVTourCategory *)returnPlayCategory;
++(TRVTourCategory *)returnDiscoverCategory;
 +(TRVTourCategory *)returnEatCategory;
 +(TRVTourCategory *)returnDrinkCategory;
 
