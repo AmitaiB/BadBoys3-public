@@ -194,7 +194,7 @@
 -(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user {
     
     
-    NSArray *allTours = user[@"myTrips"];
+    NSArray *allTours = user[@"myGuideTrips"];
     
     for (PFObject *PFTour in allTours){
         [PFTour fetch];

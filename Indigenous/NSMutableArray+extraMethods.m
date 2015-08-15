@@ -83,7 +83,7 @@
 
     //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
 
-//    [self createParseDummyTour];
+    [self createParseDummyTour];
 
    
     
@@ -137,7 +137,7 @@
         NSLog(@"THE TOUR ID IS: %@", theTour.objectId);
        
         
-        [currentUser addObject:theTour forKey:@"myTrips"];
+        [currentUser addObject:theTour forKey:@"myGuideTrips"];
         [currentUser saveInBackgroundWithBlock:^(BOOL success, NSError *error){
             if (error){
                 NSLog(@"Cant save to array because: %@", error);
