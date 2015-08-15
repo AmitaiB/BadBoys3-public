@@ -83,7 +83,7 @@
     
     
     [self performSegueWithIdentifier:@"tourBookedSegue" sender:nil];
-    
+
     PFUser *currentUser = [PFUser currentUser];
   
     self.destinationPFTour[@"isPurchased"] = @(YES);
@@ -108,5 +108,6 @@
     
     
 }
+
 
 @end
