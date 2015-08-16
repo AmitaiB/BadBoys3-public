@@ -28,12 +28,21 @@
     [super viewDidLoad];
     self.dataStore = [TRVUserDataStore sharedUserInfoDataStore];
 
+    // Set Transparency
+    
+    [self.navigationController setNavigationBarHidden:NO];
+    
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+//                                                  forBarMetrics:UIBarMetricsDefault]; //
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    self.navigationController.navigationBar.translucent = YES;
+//    self.navigationController.view.backgroundColor = [UIColor clearColor];
+
     // make self as datasource and delegate
     self.categoryCollectionView.delegate =self;
     self.categoryCollectionView.dataSource = self;
-    [self dismissViewIfCategoryNotSelected];
+//    [self dismissViewIfCategoryNotSelected];
 
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
 
     self.tourCategories = [[NSMutableArray alloc] initWithObjects:[TRVTourCategory returnCategoryWithTitle:@"See"],
                                                                                                                 [TRVTourCategory returnCategoryWithTitle:@"Discover"],
@@ -42,6 +51,10 @@
     
     NSLog(@"Selected city is: %@", self.selectedCity);
 
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -57,7 +70,10 @@
     
     TRVTourCategoryCollectionViewCell *cell = (TRVTourCategoryCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"tourCategoryCollectionCell" forIndexPath:indexPath];
     TRVTourCategory *categoryForThisCell = [self.tourCategories objectAtIndex:indexPath.row];
-    
+    cell.categoryView.layer.cornerRadius = 3;
+    cell.categoryView.layer.borderColor = [UIColor grayColor].CGColor;
+    cell.categoryView.layer.borderWidth = 1;
+
     //OVERRIDE SETTER THAT SETS LABELS TO NIB
     
     [cell.categoryView setCategoryForThisView:categoryForThisCell];
@@ -67,15 +83,18 @@
 
 
 
-
-
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath  {
     
     UICollectionViewCell *datasetCell =[collectionView cellForItemAtIndexPath:indexPath];
-    datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
-    
+//    datasetCell.backgroundColor = [UIColor blueColor]; // highlight selection
+    NSLog(@"ARE YOU GETTING CALLED IN THE DID SELECT ITEM?");
     self.dataStore.currentCategorySearching = self.tourCategories[indexPath.row];
-    [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
+    
+//    [self dismissViewControllerAnimated:YES completion:^{
+        [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
+//    }];
+    
+    
 }
 
 
@@ -101,27 +120,27 @@
 }
 
 // methods to dismiss modal
--(void) dismissViewIfCategoryNotSelected {
-    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissModal:)];
-    tapGesture.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:tapGesture];
-}
+//-(void) dismissViewIfCategoryNotSelected {
+//    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissModal:)];
+//    tapGesture.cancelsTouchesInView = NO;
+//    [self.view addGestureRecognizer:tapGesture];
+//}
 
-
-
--(void)dismissModal:(UITapGestureRecognizer *)sender {
-    
-    CGPoint point = [sender locationInView:sender.view];
-    UIView *viewTouched = [sender.view hitTest:point withEvent:nil];
-    if ([viewTouched isKindOfClass:[TRVTourCategoryCollectionViewCell class]]) {
-                NSLog(@"TOUCHING BUTTON");
-    } else {
-                NSLog(@"NOT TOUCHING BUTTON");
-    }
-    
-
-    
-}
+////
+//
+//    -(void)dismissModal:(UITapGestureRecognizer *)sender {
+//        
+//        CGPoint point = [sender locationInView:sender.view];
+//        UIView *viewTouched = [sender.view hitTest:point withEvent:nil];
+//        if ([viewTouched isKindOfClass:[TRVTourCategoryCollectionViewCell class]]) {
+//            [self performSegueWithIdentifier:@"showResultsSegue" sender:nil];
+//        } else {
+//                            NSLog(@"NOT TOUCHING BUTTON");
+//                            [self dismissViewControllerAnimated:YES completion:^{
+//                            }];
+//        }
+//        
+//    }
 
 //-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
 //    if (touch.view != self.view) { // accept only touchs on superview, not accept touchs on subviews
@@ -133,6 +152,11 @@
 //}
 //
 
+- (IBAction)dismissButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        //
+    }];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     

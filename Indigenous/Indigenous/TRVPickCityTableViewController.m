@@ -36,7 +36,6 @@
         // done
     }];
     
-//     self.sharedDataStore.parseUser = [PFUser currentUser];
     
     
     
@@ -54,7 +53,10 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated  {
+    [self.navigationController setNavigationBarHidden:YES];
+
     
+    // for the no internet modal... if there is no internet.. lock the scroll and present a full screen uiview
     [self.modalView setHidden:YES];
     self.tableView.scrollEnabled = YES;
 

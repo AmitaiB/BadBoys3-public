@@ -37,7 +37,7 @@
         return  [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"madrid.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
 
     }  else if ([title isEqualToString:@"Drink"]) {
-        return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"madrid.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];    }
+        return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"drink.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];    }
     return nil;
 }
 
@@ -53,7 +53,7 @@
 }
 
 +(TRVTourCategory *)returnDrinkCategory {
-    return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"leo.jpg"] iconImage:[UIImage imageNamed:@"madrid.jpg"]];
+    return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"drink.jpg"] iconImage:[UIImage imageNamed:@"madrid.jpg"]];
 }
 
 @end
