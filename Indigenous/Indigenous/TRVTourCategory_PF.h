@@ -11,6 +11,14 @@
 @interface TRVTourCategory_PF : PFObject <PFSubclassing>
 + (NSString *)parseClassName;
 
+typedef NS_ENUM(NSInteger, TRVTourCategoryType){
+    TRVTourCategorySee,
+    TRVTourCategoryPlay,
+    TRVTourCategoryEat,
+    TRVTourCategoryDrink
+};
+
+@property (nonatomic) TRVTourCategoryType tourCategory;
 
 
 @end
