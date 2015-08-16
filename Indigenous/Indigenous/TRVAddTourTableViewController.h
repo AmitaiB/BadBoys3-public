@@ -12,5 +12,7 @@
 @interface TRVAddTourTableViewController : UITableViewController
 
 @property (strong, nonatomic) TRVTour_PF *tourData;
+@property (strong, nonatomic) NSArray *tourDataSubtitlesArray;
+@property (strong, nonatomic) NSArray *tourDataDefaultTitlesArray;
 
 @end
