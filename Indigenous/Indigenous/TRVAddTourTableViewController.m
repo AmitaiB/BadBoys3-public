@@ -10,7 +10,11 @@
 #import <UITableViewCell+FlatUI.h>
 #import <UIColor+FlatUI.h>
 
+#define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+
+
 static NSString *cellID = @"cellID";
+static NSString *FUITableViewControllerCellReuseIdentifier = @"FUITableViewControllerCellReuseIdentifier";
 
 @interface TRVAddTourTableViewController ()
 
@@ -27,17 +31,17 @@ static NSString *cellID = @"cellID";
                                    @"Select Theme/Category",
                                    @"Choose Date",
                                    @"Build Itinerary"];
+#pragma mark - FlatUIKit example part 1
+    self.title = @"Table View";
     
-//    self.title = @"Table View";
-//    
-//        //Set the separator color
-//    self.tableView.separatorColor = [UIColor cloudsColor];
-//    
-//        //Set the background color
-//    self.tableView.backgroundColor = [UIColor cloudsColor];
-//    self.tableView.backgroundView = nil;
-//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
-//    
+        //Set the separator color
+    self.tableView.separatorColor = [UIColor cloudsColor];
+    
+        //Set the background color
+    self.tableView.backgroundColor = [UIColor cloudsColor];
+    self.tableView.backgroundView = nil;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:FUITableViewControllerCellReuseIdentifier];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -48,6 +52,7 @@ static NSString *cellID = @"cellID";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
 }
 
 #pragma mark - Table view data source
@@ -60,7 +65,7 @@ static NSString *cellID = @"cellID";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if (section == 0) {
-        return self.defaultTourCellTitles.count;
+        return self.defaultTourCellDetailTitles.count;
     }
     if (section == 1) {
         return 1;
@@ -72,12 +77,22 @@ static NSString *cellID = @"cellID";
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *flatCell = [tableView dequeueReusableCellWithIdentifier:FUITableViewControllerCellReuseIdentifier];
+    UIRectCorner corners = 0;
+    [flatCell configureFlatCellWithColor:[UIColor greenSeaColor]
+                           selectedColor:[UIColor cloudsColor]
+                         roundingCorners:corners];
+    
+    flatCell.cornerRadius = 5.f; //optional
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
     switch (indexPath.section) {
         case 0:
             cell.textLabel.text = self.defaultTourCellTitles[indexPath.row];
             cell.detailTextLabel.text = self.defaultTourCellDetailTitles[indexPath.row];
+            flatCell.textLabel.text = self.defaultTourCellTitles[indexPath.row];
+            flatCell.detailTextLabel.text = self.defaultTourCellDetailTitles[indexPath.row];
             break;
         case 1:
             
@@ -89,6 +104,17 @@ static NSString *cellID = @"cellID";
     return cell;
 }
 
+#pragma mark - Table view delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UIViewController *vc = [self buildPopoverTextFieldVC];
+    if (indexPath.row == 0) {
+        [self presentViewController:vc animated:YES completion:nil];
+    }
+    
+}
 
 /*
 // Override to support conditional editing of the table view.
