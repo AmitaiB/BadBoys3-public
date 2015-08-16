@@ -7,6 +7,10 @@
 //
 
 #import "TRVAddTourTableViewController.h"
+#import <UITableViewCell+FlatUI.h>
+#import <UIColor+FlatUI.h>
+
+static NSString *cellID = @"cellID";
 
 @interface TRVAddTourTableViewController ()
 
@@ -17,6 +21,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.defaultTourCellDetailTitles = @[@"Tour Name", @"Guide", @"Theme/Category", @"Departure Date", @"Itinerary"];
+    self.defaultTourCellTitles = @[@"Name Your Tour",
+                                   @"Confirm Guide",
+                                   @"Select Theme/Category",
+                                   @"Choose Date",
+                                   @"Build Itinerary"];
+    
+//    self.title = @"Table View";
+//    
+//        //Set the separator color
+//    self.tableView.separatorColor = [UIColor cloudsColor];
+//    
+//        //Set the background color
+//    self.tableView.backgroundColor = [UIColor cloudsColor];
+//    self.tableView.backgroundView = nil;
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+//    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -32,26 +53,42 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return self.keyTourProperties.count;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 1;
+    if (section == 0) {
+        return self.defaultTourCellTitles.count;
+    }
+    if (section == 1) {
+        return 1;
+    }
+    
+    
+    return 0;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-    // Configure the cell...
+    switch (indexPath.section) {
+        case 0:
+            cell.textLabel.text = self.defaultTourCellTitles[indexPath.row];
+            cell.detailTextLabel.text = self.defaultTourCellDetailTitles[indexPath.row];
+            break;
+        case 1:
+            
+        default:
+            break;
+    }
+    
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

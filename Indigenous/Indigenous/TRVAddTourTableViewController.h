@@ -10,6 +10,7 @@
 
 @interface TRVAddTourTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *keyTourProperties;
+@property (strong, nonatomic) NSArray *defaultTourCellTitles;
+@property (strong, nonatomic) NSArray *defaultTourCellDetailTitles;
 
 @end
