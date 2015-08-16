@@ -7,6 +7,7 @@
 //
 
 #import "TRVAddTourTableViewController.h"
+#import "TRVEditTourNameViewController.h"
 #import <UITableViewCell+FlatUI.h>
 #import <UIColor+FlatUI.h>
 
@@ -15,6 +16,16 @@
 
 static NSString *cellID = @"cellID";
 static NSString *FUITableViewControllerCellReuseIdentifier = @"FUITableViewControllerCellReuseIdentifier";
+static NSString *toEditTourNameSegueID = @"toEditTourNameSegueID";
+
+NS_ENUM(NSUInteger, TRVTourDetailType) {
+    TRVtourNameDetailType,
+    TRVtourGuideDetailType,
+    TRVTourCategoryDetailType,
+    TRVtourDateDetailType,
+    TRVtourItineraryDetailType
+};
+
 
 @interface TRVAddTourTableViewController ()
 
@@ -77,13 +88,13 @@ static NSString *FUITableViewControllerCellReuseIdentifier = @"FUITableViewContr
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *flatCell = [tableView dequeueReusableCellWithIdentifier:FUITableViewControllerCellReuseIdentifier];
-    UIRectCorner corners = 0;
-    [flatCell configureFlatCellWithColor:[UIColor greenSeaColor]
-                           selectedColor:[UIColor cloudsColor]
-                         roundingCorners:corners];
-    
-    flatCell.cornerRadius = 5.f; //optional
+//    UITableViewCell *flatCell = [tableView dequeueReusableCellWithIdentifier:FUITableViewControllerCellReuseIdentifier];
+//    UIRectCorner corners = 0;
+//    [flatCell configureFlatCellWithColor:[UIColor greenSeaColor]
+//                           selectedColor:[UIColor cloudsColor]
+//                         roundingCorners:corners];
+//    
+//    flatCell.cornerRadius = 5.f; //optional
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
@@ -91,8 +102,8 @@ static NSString *FUITableViewControllerCellReuseIdentifier = @"FUITableViewContr
         case 0:
             cell.textLabel.text = self.defaultTourCellTitles[indexPath.row];
             cell.detailTextLabel.text = self.defaultTourCellDetailTitles[indexPath.row];
-            flatCell.textLabel.text = self.defaultTourCellTitles[indexPath.row];
-            flatCell.detailTextLabel.text = self.defaultTourCellDetailTitles[indexPath.row];
+//            flatCell.textLabel.text = self.defaultTourCellTitles[indexPath.row];
+//            flatCell.detailTextLabel.text = self.defaultTourCellDetailTitles[indexPath.row];
             break;
         case 1:
             
@@ -109,9 +120,8 @@ static NSString *FUITableViewControllerCellReuseIdentifier = @"FUITableViewContr
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *vc = [self buildPopoverTextFieldVC];
     if (indexPath.row == 0) {
-        [self presentViewController:vc animated:YES completion:nil];
+        [self performSegueWithIdentifier:toEditTourNameSegueID sender:self];
     }
     
 }
@@ -150,14 +160,19 @@ static NSString *FUITableViewControllerCellReuseIdentifier = @"FUITableViewContr
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:toEditTourNameSegueID]) {
+        TRVEditTourNameViewController *destinationVC = segue.destinationViewController;
+        destinationVC.editTourNameTxF.delegate = self;
+    }
+    
 }
-*/
+
 
 @end

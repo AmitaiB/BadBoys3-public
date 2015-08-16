@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TRVAddTourTableViewController : UITableViewController
+@interface TRVAddTourTableViewController : UITableViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) NSArray *defaultTourCellTitles;
 @property (strong, nonatomic) NSArray *defaultTourCellDetailTitles;

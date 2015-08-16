@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TiF-ut-9ts">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Add Tour Table View Controller-->
@@ -48,27 +50,62 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="XWC-0b-RR9"/>
+                    <connections>
+                        <segue destination="qBi-ph-SoW" kind="presentation" identifier="toEditTourNameSegueID" id="Nuh-jz-gJ6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0N-Jl-jPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1477.5" y="502"/>
+            <point key="canvasLocation" x="1414.5" y="472"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Tour Name View Controller-->
         <scene sceneID="ffi-lM-Ysd">
             <objects>
-                <viewController id="qBi-ph-SoW" sceneMemberID="viewController">
+                <viewController id="qBi-ph-SoW" userLabel="Edit Tour Name View Controller" customClass="TRVEditTourNameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aJ5-ZE-NVe"/>
                         <viewControllerLayoutGuide type="bottom" id="qTT-qk-mLb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qf1-1l-raW">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tour Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Js1-sX-Yz1" customClass="JOTextField">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Js1-sX-Yz1" firstAttribute="centerY" secondItem="qf1-1l-raW" secondAttribute="centerY" multiplier="0.5" id="Dz5-5f-OcY"/>
+                            <constraint firstItem="Js1-sX-Yz1" firstAttribute="trailing" secondItem="qf1-1l-raW" secondAttribute="trailingMargin" id="pd2-Ja-mpR"/>
+                            <constraint firstItem="Js1-sX-Yz1" firstAttribute="leading" secondItem="qf1-1l-raW" secondAttribute="leadingMargin" id="sTS-bT-146"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Js1-sX-Yz1"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Dz5-5f-OcY"/>
+                                <exclude reference="pd2-Ja-mpR"/>
+                                <exclude reference="sTS-bT-146"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Js1-sX-Yz1"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Dz5-5f-OcY"/>
+                                <include reference="pd2-Ja-mpR"/>
+                                <include reference="sTS-bT-146"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAv-Tr-SiH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="100"/>
+            <point key="canvasLocation" x="2232" y="120"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="MFX-Qc-xmI">
@@ -85,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14t-3I-rvW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="784"/>
+            <point key="canvasLocation" x="2232" y="786"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mbN-vU-v1Z">
