@@ -64,7 +64,6 @@
     } else if (self.userForThisAboutMeView.userBio.isGuide && (user.isOnGuideTabBar == NO)) {
         [self.switchToGuideButton setTitle:@"Switch to Guide" forState:UIControlStateNormal];
     } else {
-//        [self.switchToGuideButton setTitle:@"Switch to Guide" forState:UIControlStateNormal];
         self.switchToGuideButton.hidden = YES;
     }
 }

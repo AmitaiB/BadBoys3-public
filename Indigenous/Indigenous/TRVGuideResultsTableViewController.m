@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateGuidesList];
-    
+
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
     self.PFGuides = [@[] mutableCopy];
 

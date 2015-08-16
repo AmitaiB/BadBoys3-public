@@ -140,7 +140,7 @@
     
     [self dismissViewControllerAnimated:NO completion:^{
         
-        [homeView presentViewController:destination animated:YES completion:nil];
+        [homeView presentViewController:destination animated:NO completion:nil];
         
     }];
 }
@@ -162,7 +162,7 @@
     
     [self dismissViewControllerAnimated:NO completion:^{
         
-        [homeView presentViewController:destination animated:YES completion:nil];
+        [homeView presentViewController:destination animated:NO completion:nil];
         
     }];
 }
