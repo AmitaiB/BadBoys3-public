@@ -56,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="1276.5" y="502"/>
         </scene>
-        <!--Title-->
+        <!--Edit Tour Data View Controller-->
         <scene sceneID="gsJ-am-o6B">
             <objects>
-                <viewController id="3h5-23-5I9" sceneMemberID="viewController">
+                <viewController id="3h5-23-5I9" userLabel="Edit Tour Data View Controller" customClass="TRVEditTourDataViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BbC-45-OUW"/>
                         <viewControllerLayoutGuide type="bottom" id="Bqo-tx-K5O"/>
@@ -72,7 +72,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tfq-zg-MSE">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tfq-zg-MSE" userLabel="Choose Category: See, Play, Eat, Drink">
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
                                 <segments>
                                     <segment title="See"/>
@@ -81,7 +81,7 @@
                                     <segment title="Drink"/>
                                 </segments>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-1o-8HX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5RZ-1o-8HX" userLabel="Display Itinerary Table View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -166,6 +166,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="5hz-hj-N27"/>
                     <connections>
+                        <outlet property="tourCategorySegmentedControl" destination="tfq-zg-MSE" id="7fk-2j-DwC"/>
                         <segue destination="WM4-dP-irz" kind="presentation" id="znw-Kd-ulI"/>
                     </connections>
                 </viewController>
