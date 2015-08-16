@@ -21,7 +21,6 @@ static NSString * const cellReuseID = @"cellReuseID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.tourDataSubtitlesArray = @[@"Tour Name", @"Tour Guide", @"Category/Theme", @"Departure Date", @"Itinerary"];
     self.tourDataDefaultTitlesArray = @[@"Your Awesome Tour!", @"Are you the sherpa?", @"Save Me from The Paradox of Choice!", @"Are we there yet? Clearly not.", @"Where are we going?"];
     
@@ -42,24 +41,33 @@ static NSString * const cellReuseID = @"cellReuseID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    if (section == 1) {
+    if (section == 0) {
         return self.tourDataSubtitlesArray.count;
     }
-    if (section == 2) {
+    if (section == 1) {
         return self.tourData.tourStopGeoPoints.count + 1;
     }
     else return 1;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseID forIndexPath:indexPath];
+    
+    if (indexPath.section == 0) {
+        cell.textLabel.text = self.tourDataDefaultTitlesArray[indexPath.row];
+        cell.detailTextLabel.text = self.tourDataSubtitlesArray[indexPath.row];
+    }
+    if (indexPath.section == 1) {
+        cell.textLabel.text = self.tourData.tourStopGeoPoints[indexPath.row];
+        cell.detailTextLabel.text = @"Reverse Geocode me";
+    }
     
     // Configure the cell...
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
