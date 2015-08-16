@@ -10,15 +10,21 @@
 
 @interface TRVAddTourTableViewController ()
 
+
 @end
 
 @implementation TRVAddTourTableViewController
 
+static NSString * const toEditAllSegueID = @"toEditAllSegueID";
+static NSString * const cellReuseID = @"cellReuseID";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    NSArray *tourDataSubtitlesArray = @[@"Tour Name", @"Tour Guide", @"Category/Theme", @"Departure Date", @"Itinerary"];
+    NSArray *tourDataDefaultTitlesArray = @[@"Your Awesome Tour!", @"Are you the sherpa?", @"Save Me from The Paradox of Choice!", @"Are we there yet? Clearly not.", @"Where are we going?"];
+    
+    
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -32,13 +38,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return self.keyTourProperties.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 1;
 }
@@ -87,7 +91,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -95,6 +99,6 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

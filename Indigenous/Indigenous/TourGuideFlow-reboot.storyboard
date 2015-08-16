@@ -27,7 +27,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="XWC-0b-RR9"/>
                     <connections>
-                        <segue destination="3h5-23-5I9" kind="show" id="Ofv-Nz-1zw"/>
+                        <segue destination="3h5-23-5I9" kind="show" identifier="toEditAllSegueID" id="Ofv-Nz-1zw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U0N-Jl-jPD" userLabel="First Responder" sceneMemberID="firstResponder"/>

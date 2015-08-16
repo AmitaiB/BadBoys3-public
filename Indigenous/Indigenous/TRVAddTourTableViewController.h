@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVTour_PF.h"
 
 @interface TRVAddTourTableViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *keyTourProperties;
+@property (strong, nonatomic) TRVTour_PF *tourData;
 
 @end
