@@ -23,8 +23,10 @@
     //local datastore pin:
 #define localDataStorePinName @"localDataStorePinName"
 
+static NSString *cellID = @"cellID";
+
 typedef NS_ENUM(uint8_t, TRVViewControllerType) {
-    PFEditTourNameVC
+    PFEditTourNameViewController
 };
 
 @interface TRVTourGuideFlowRootTableViewController ()
@@ -70,7 +72,7 @@ typedef NS_ENUM(uint8_t, TRVViewControllerType) {
     PFQuery *localTourDataQuery = [PFQuery queryWithClassName:NSStringFromClass([TRVLocalTourData_PF class])];
     [localTourDataQuery fromPinWithName:localDataStorePinName];
     NSError *error;
-    _localTourFromDatastore = [localTourDataQuery getFirstObject:&error];
+    _localTourFromDatastore = (TRVLocalTourData_PF*)[localTourDataQuery getFirstObject:&error];
     if (error) {
         NSLog(@"Error fetching localTourFromDataStore: %@", error.localizedDescription);
     }
@@ -98,47 +100,38 @@ typedef NS_ENUM(uint8_t, TRVViewControllerType) {
     }
     if (section == 2) {
         return _localTourFromDatastore.tourStopCoordinatesArray.count;
-    }
+    } else return 0;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+    }
+    
+    cell.textLabel.text = _defaultTourCellTitles[indexPath.row];
+    cell.textLabel.text = _tourCellDetailTitles[indexPath.row];
     
     return cell;
 }
-*/
+
+#pragma mark -
+#pragma mark UITableViewDelegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case PFEditTourNameViewController: {
+            TRVEditTourNameViewController *controller = [TRVEditTourNameViewController new];
+            [self.navigationController pushViewController:controller animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.
