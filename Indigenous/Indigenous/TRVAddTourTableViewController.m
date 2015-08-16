@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+#import <CZPicker.h>
 #import "TRVAddTourTableViewController.h"
 
 @interface TRVAddTourTableViewController ()
@@ -23,11 +24,46 @@ static NSString * const cellReuseID = @"cellReuseID";
     
     self.tourDataSubtitlesArray = @[@"Tour Name", @"Tour Guide", @"Category/Theme", @"Departure Date", @"Itinerary"];
     self.tourDataDefaultTitlesArray = @[@"Your Awesome Tour!", @"Are you the sherpa?", @"Save Me from The Paradox of Choice!", @"Are we there yet? Clearly not.", @"Where are we going?"];
-    
+    self.tourCategories = @[@"See", @"Play", @"Eat", @"Drink"];
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+#pragma mark - CZPicker datasource and delegate
+
+-(NSInteger)numberOfRowsInPickerView:(CZPickerView *)pickerView {
+    return self.tourCategories.count;
+}
+
+-(NSString *)czpickerView:(CZPickerView *)pickerView titleForRow:(NSInteger)row {
+    return self.tourCategories[row];
+}
+
+-(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
+    NSArray *categoryTypes = @[TRVTourCategorySee,
+                               TRVTourCategoryPlay,
+                               TRVTourCategoryEat,
+                               TRVTourCategoryDrink];
+    
+    self.tourData.tourCategory = categoryTypes[row];
+    NSLog(@"self.tourData.tourCategory = %@", [self.tourData.tourCategory description]);
+    
+    
+}
+
+-(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
+    
+}
+-(void)czPickTourCategory{
+    CZPickerView *categoryPicker = [[CZPickerView alloc] initWithHeaderTitle:@"Tour Category/Theme"
+                                                           cancelButtonTitle:@"Cancel"
+                                                          confirmButtonTitle:@"Confirm"];
+    categoryPicker.delegate = self;
+    categoryPicker.dataSource = self;
+    [categoryPicker show];
+}
+
 
 
 #pragma mark - Table view data source
@@ -55,8 +91,11 @@ static NSString * const cellReuseID = @"cellReuseID";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseID forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = self.tourDataDefaultTitlesArray[indexPath.row];
         cell.detailTextLabel.text = self.tourDataSubtitlesArray[indexPath.row];
+        if (self.tourData) {
+            <#statements#>
+        }
+        cell.textLabel.text = self.tourDataDefaultTitlesArray[indexPath.row];
     }
     if (indexPath.section == 1) {
         cell.textLabel.text = self.tourData.tourStopGeoPoints[indexPath.row];
