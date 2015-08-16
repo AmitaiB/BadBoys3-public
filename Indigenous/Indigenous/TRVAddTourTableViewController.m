@@ -68,6 +68,11 @@ static NSString * const cellReuseID = @"cellReuseID";
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:toEditAllSegueID sender:self];
+}
+
+
 
 /*
 // Override to support conditional editing of the table view.
