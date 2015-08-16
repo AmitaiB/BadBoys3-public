@@ -80,11 +80,16 @@
 }
 
 - (IBAction)bookTourButtonPressed:(id)sender {
+    
+    
     [self performSegueWithIdentifier:@"tourBookedSegue" sender:nil];
-        
+
     PFUser *currentUser = [PFUser currentUser];
   
     self.destinationPFTour[@"isPurchased"] = @(YES);
+    self.destinationPFTour[@"tourDeparture"] = self.destinationTour.tourDeparture;
+//    self.destinationPFTour[@"guideForThisTour"] =
+    
     [currentUser addObject:self.destinationPFTour forKey:@"myTrips"];
     [currentUser save];
     
@@ -103,8 +108,6 @@
     
     
 }
-
-
 
 
 @end

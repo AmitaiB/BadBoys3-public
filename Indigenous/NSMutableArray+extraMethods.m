@@ -102,8 +102,10 @@
     
     PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
     theTour[@"categoryForThisTour"] = @"See";
-    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:1000];
+    
+    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:10000];
     theTour[@"isPurchased"] = @(YES);
+    
     
     PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
     theTour[@"itineraryForThisTour"] = theItinerary;

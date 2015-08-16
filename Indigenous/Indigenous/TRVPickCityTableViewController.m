@@ -32,7 +32,6 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
 
     
-    
     [self.sharedDataStore setCurrentUser:[PFUser currentUser] withBlock:^(BOOL success) {
         // done
     }];
@@ -48,6 +47,10 @@
     
     self.cities = [[NSMutableArray alloc] initWithObjects:newYork, losAngeles, paris, london, nil];
     
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated  {

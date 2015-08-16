@@ -32,7 +32,7 @@
     self.categoryCollectionView.delegate =self;
     self.categoryCollectionView.dataSource = self;
 
-
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 
     self.tourCategories = [[NSMutableArray alloc] initWithObjects:[TRVTourCategory returnCategoryWithTitle:@"See"],
                                                                                                                 [TRVTourCategory returnCategoryWithTitle:@"Discover"],
