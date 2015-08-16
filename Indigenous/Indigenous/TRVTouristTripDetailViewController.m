@@ -13,7 +13,7 @@
 #import "UIScrollView+APParallaxHeader.h"
 #import "TRVParallaxHeaderImageView.h"
 #import "TRVBookTourTableViewController.h"
-//#import "TRVTourStop.h"
+#import "TRVTourStop.h"
 
 #import "Masonry/Masonry.h"
 
@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tourStopImageViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookTourBottomConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
-
+@property (nonatomic, weak) NSObject<TRVTouristTripDetailViewControllerDelegate> *delegate;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
@@ -52,25 +52,32 @@
         _isTourGuide = NO;
     }
     return self;
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarTitle.title = self.tour.itineraryForThisTour.nameOfTour;
     
+    __weak TRVTouristTripDetailViewController *weakSelf = self;
+    
     self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:self.tour.itineraryForThisTour.tourStops configuration:^(TRVTourStop * stop) {
-        //self.tourStopImageView.image = stop.image;     stops do not yet have images
+        //weakSelf.tourStopImageView.image = stop.image;     //stops do not yet have images
+        //weakSelf.nameOfStop.text = stop.nameOfPlace;
     }];
     self.tourStopCollectionView.dataSource = self.dataSource;
     self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init]; // UILayoutContainerView
+    self.delegate = self.collectionViewDelegate;
     
     self.collectionViewDelegate.imageView = self.tourStopImageView; // FIXME: FIX THIS UGLY SHIT!!
     
     self.tourStopCollectionView.delegate = self.collectionViewDelegate;
     self.tourStopCollectionView.scrollsToTop = NO;
 
+    //[self.tourStopImageView.autoresizingMask = UIImag]
+    
     [self setupParallaxImage:self.theScrollViewThatHoldsAllTheOtherViews];
+    
+
     
     _savedAlphaValue = 1;
 

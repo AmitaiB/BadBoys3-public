@@ -47,16 +47,7 @@
             [query getObjectInBackgroundWithId:[currentUser objectId] block:^(PFObject *user, NSError *error) {
                 if (!error) {
                     
-                    //IF WE ARE IN GUIDE MODE, GO TO myGuide TRIPS
-                    
-                    //ELSE GO TO myTrips
-                    NSArray *myTrips = @[];
-                    if (self.sharedDataStore.isOnGuideTabBar){
-                        myTrips = user[@"myGuideTrips"];
-                    } else {
-                        myTrips = user[@"myTrips"];
-                    }
-                    
+                    NSArray *myTrips = user[@"myTrips"];
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
@@ -73,7 +64,7 @@
 
 
                     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
-//
+
                     self.tripTableView.dataSource = self.tableViewDataSource;
                     if (self.segmentedControl.selectedSegmentIndex == 1) {
                         [self.tableViewDataSource changeTripsDisplayed];
@@ -102,7 +93,6 @@
 //                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
 //    self.tripTableView.dataSource = self.tableViewDataSource;
 //    [self.tripTableView reloadData];
-        [self.tripTableView reloadData];
    
 }
 
@@ -122,13 +112,13 @@
         
         
         // DOES THIS LINE WORK??
-        [PFTour fetch];
-
+        
         if ([PFTour[@"isPurchased"]isEqualToNumber:@(YES)] ) {
         
         
         
         
+        [PFTour fetch];
         TRVTour *tour = [[TRVTour alloc]init];
             
             
