@@ -11,14 +11,6 @@
 
 @class TRVTour, TRVTourStop;
 
-@protocol TRVTouristTripDetailViewControllerDelegate <NSObject>
-
-@required
--(void) configureTourStopImageView:(TRVTourStop*)stop;
-
-@end
-
-
 @interface TRVTouristTripDetailViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) TRVTour *tour;
