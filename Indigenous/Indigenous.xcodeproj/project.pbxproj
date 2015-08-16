@@ -22,6 +22,7 @@
 		385C46FA1B6BCE7E00D9091A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565151B68221B005A2871 /* main.m */; };
 		385C46FB1B6BCEA000D9091A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565181B68221B005A2871 /* AppDelegate.m */; };
 		386CAC2A1B7531A30088781A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 386CAC291B7531A30088781A /* libsqlite3.dylib */; };
+		387BACE51B813377003E3195 /* TRVTour_PF.m in Sources */ = {isa = PBXBuildFile; fileRef = 387BACE41B813377003E3195 /* TRVTour_PF.m */; };
 		3881C8751B7DA757000912B5 /* TRVAddTourStopModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3881C8741B7DA757000912B5 /* TRVAddTourStopModalViewController.m */; };
 		388EBC551B781DE300D60297 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388EBC521B781DE300D60297 /* SearchViewController.m */; };
 		388EBC561B781DE300D60297 /* SelectedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 388EBC541B781DE300D60297 /* SelectedLocation.m */; };
@@ -148,6 +149,8 @@
 		3859EDF21B694031001C5693 /* TRVItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVItinerary.h; sourceTree = "<group>"; };
 		3859EDF31B694031001C5693 /* TRVItinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVItinerary.m; sourceTree = "<group>"; };
 		386CAC291B7531A30088781A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		387BACE31B813377003E3195 /* TRVTour_PF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTour_PF.h; sourceTree = "<group>"; };
+		387BACE41B813377003E3195 /* TRVTour_PF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTour_PF.m; sourceTree = "<group>"; };
 		3881C8731B7DA757000912B5 /* TRVAddTourStopModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVAddTourStopModalViewController.h; sourceTree = "<group>"; };
 		3881C8741B7DA757000912B5 /* TRVAddTourStopModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVAddTourStopModalViewController.m; sourceTree = "<group>"; };
 		388EBC511B781DE300D60297 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 				381CCFAE1B80310900138461 /* TourGuideFlow-reboot.storyboard */,
 				381CCFA71B802CAD00138461 /* TRVAddTourTableViewController.h */,
 				381CCFA81B802CAD00138461 /* TRVAddTourTableViewController.m */,
+				387BACE21B81333C003E3195 /* Models:TourGuideFlow-reboot */,
 			);
 			name = "TourGuideFlow-reboot";
 			sourceTree = "<group>";
@@ -432,6 +436,15 @@
 				384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */,
 			);
 			name = "Not Yet Implemented/Cutting Floor";
+			sourceTree = "<group>";
+		};
+		387BACE21B81333C003E3195 /* Models:TourGuideFlow-reboot */ = {
+			isa = PBXGroup;
+			children = (
+				387BACE31B813377003E3195 /* TRVTour_PF.h */,
+				387BACE41B813377003E3195 /* TRVTour_PF.m */,
+			);
+			name = "Models:TourGuideFlow-reboot";
 			sourceTree = "<group>";
 		};
 		451565071B68221B005A2871 = {
@@ -1044,6 +1057,7 @@
 				948246421B7162B400D64432 /* TRVUserContactView.m in Sources */,
 				948A226A1B73CDC8006FC5BB /* TRVTourView.m in Sources */,
 				94BB58941B78F7E10056D46F /* TRVTourDetailViewController.m in Sources */,
+				387BACE51B813377003E3195 /* TRVTour_PF.m in Sources */,
 				45E772D01B68291300003C7C /* TRVBio.m in Sources */,
 				FADB8F251B705731009F7C02 /* TRVTourStopCollectionViewDataSource.m in Sources */,
 				384AFBC01B696ADB00E169A9 /* TRVTourGuideMyToursVC.m in Sources */,
