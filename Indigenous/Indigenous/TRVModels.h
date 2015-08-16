@@ -9,5 +9,12 @@
 #ifndef Indigenous_TRVModels_h
 #define Indigenous_TRVModels_h
 
+#import "TRVRating.h"
+#import "TRVUser.h"
+#import "TRVUser.h"
+#import "TRVBio.h"
+#import "TRVTour.h"
+#import "TRVItinerary.h"
+#import "TRVTourStop.h"
 
 #endif

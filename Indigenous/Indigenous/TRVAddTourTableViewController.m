@@ -10,6 +10,9 @@
 #import "TRVEditTourNameViewController.h"
 #import <UITableViewCell+FlatUI.h>
 #import <UIColor+FlatUI.h>
+#import "TRVModels.h"
+#import <Parse.h>
+#import "TRVLocalTourData_PF.h"
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
@@ -29,13 +32,17 @@ NS_ENUM(NSUInteger, TRVTourDetailType) {
 
 @interface TRVAddTourTableViewController ()
 
+    //???
+@property (nonatomic) enum TRVTourDetailType currentTourDetailType;
+
+@property (nonatomic, weak) TRVLocalTourData_PF *tourData;
+
 @end
 
 @implementation TRVAddTourTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.defaultTourCellDetailTitles = @[@"Tour Name", @"Guide", @"Theme/Category", @"Departure Date", @"Itinerary"];
     self.defaultTourCellTitles = @[@"Name Your Tour",
                                    @"Confirm Guide",
@@ -69,8 +76,13 @@ NS_ENUM(NSUInteger, TRVTourDetailType) {
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 2;
+    // Return the number of sections. 1 section for the static variables,
+    // one section for the indefinite tourStop array of locations.
+    if (self.tourStopCoordinatesArray.count) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -86,7 +98,7 @@ NS_ENUM(NSUInteger, TRVTourDetailType) {
     return 0;
 }
 
-
+    //case 1 should be expandable, to hold the tourStops...
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    UITableViewCell *flatCell = [tableView dequeueReusableCellWithIdentifier:FUITableViewControllerCellReuseIdentifier];
 //    UIRectCorner corners = 0;
@@ -122,6 +134,63 @@ NS_ENUM(NSUInteger, TRVTourDetailType) {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         [self performSegueWithIdentifier:toEditTourNameSegueID sender:self];
+        self.currentTourDetailType = TRVtourNameDetailType;
+    }
+    
+}
+
+#pragma mark - Textfield delegate methods
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    switch (self.currentTourDetailType) {
+        case TRVtourNameDetailType: {
+            self.tourNameString = textField.text;
+            NSLog(@"The root VC of the input textfield is: %@", [textField.window.rootViewController description]);
+                //edit what happens
+            break;
+        }
+        case TRVtourGuideDetailType: {
+                //etc.
+            break;
+        }
+        case TRVTourCategoryDetailType: {
+                //etc.
+            break;
+        }
+        case TRVtourDateDetailType: {
+                //etc.
+            break;
+        }
+        case TRVtourItineraryDetailType: {
+                //etc.
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    return YES;
+}
+
+#pragma mark - Parse related methods
+
+- (void)loadLocalParseData {
+        //Query setup.
+    NSString *localDataClassName = NSStringFromClass([TRVLocalTourData_PF class]);
+    PFQuery *localDataQuery = [PFQuery queryWithClassName:localDataClassName];
+    [localDataQuery fromPin];
+    NSError *error = nil;
+        //Retrieval.
+    TRVLocalTourData_PF *localTourData = [localDataQuery getFirstObject:&error];
+    
+    if (localTourData.tourNameString) {
+        self.tourNameString = localTourData.tourNameString;
+    }
+    if (localTourData.tourCategoryString) {
+        self.tourCategoryString = localTourData.tourCategoryString;
+    }
+    if (localTourData.depatureDate) {
+        self.depatureDate = localTourData.depatureDate;
     }
     
 }
