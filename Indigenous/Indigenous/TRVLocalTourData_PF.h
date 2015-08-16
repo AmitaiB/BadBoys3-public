@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSString *tourNameString;
 @property (strong, nonatomic) NSString *tourCategoryString;
 @property (strong, nonatomic) NSDate *depatureDate;
-@property (strong, nonatomic) NSMutableArray *tourStopCoordinatesArray;
+@property (strong, nonatomic) NSMutableArray *tourStopCoordinatesArray; //PFGeopoints!
 
 
 @end
