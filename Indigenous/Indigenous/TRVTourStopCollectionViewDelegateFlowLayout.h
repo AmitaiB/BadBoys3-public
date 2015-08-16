@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TRVTouristTripDetailViewController.h"
 
-@interface TRVTourStopCollectionViewDelegateFlowLayout : NSObject <UICollectionViewDelegateFlowLayout>
+@interface TRVTourStopCollectionViewDelegateFlowLayout : NSObject <UICollectionViewDelegateFlowLayout, TRVTouristTripDetailViewControllerDelegate>
 
 @property (nonatomic, strong) UIImageView *imageView;
 

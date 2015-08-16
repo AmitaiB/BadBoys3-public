@@ -56,14 +56,14 @@
 
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
                     
-//                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-//                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-//                    
-//                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
+                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+                    
+                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
 
 
                     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
-//
+
                     self.tripTableView.dataSource = self.tableViewDataSource;
                     if (self.segmentedControl.selectedSegmentIndex == 1) {
                         [self.tableViewDataSource changeTripsDisplayed];
@@ -87,11 +87,11 @@
         
     }];
 
-    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-                        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
-    self.tripTableView.dataSource = self.tableViewDataSource;
-    [self.tripTableView reloadData];
+//    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+//                        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+//                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
+//    self.tripTableView.dataSource = self.tableViewDataSource;
+//    [self.tripTableView reloadData];
    
 }
 

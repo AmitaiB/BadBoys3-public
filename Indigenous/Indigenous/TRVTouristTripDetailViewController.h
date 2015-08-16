@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <Parse.h>
 
-@class TRVTour;
+@class TRVTour, TRVTourStop;
+
+@protocol TRVTouristTripDetailViewControllerDelegate <NSObject>
+
+@required
+-(void) configureTourStopImageView:(TRVTourStop*)stop;
+
+@end
+
 
 @interface TRVTouristTripDetailViewController : UIViewController <UIScrollViewDelegate>
 
