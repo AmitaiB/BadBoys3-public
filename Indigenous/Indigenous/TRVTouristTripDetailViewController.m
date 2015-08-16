@@ -13,11 +13,11 @@
 #import "UIScrollView+APParallaxHeader.h"
 #import "TRVParallaxHeaderImageView.h"
 #import "TRVBookTourTableViewController.h"
-//#import "TRVTourStop.h"
+#import "TRVTourStop.h"
 
 #import "Masonry/Masonry.h"
 
-@interface TRVTouristTripDetailViewController () <APParallaxViewDelegate>
+@interface TRVTouristTripDetailViewController () <APParallaxViewDelegate, TourStopInfoDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarTitle;
 @property (weak, nonatomic) IBOutlet UICollectionView *tourStopCollectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *tourStopImageView;
@@ -31,8 +31,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tourStopImageViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookTourBottomConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
-
-
 
 @property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
 
@@ -52,25 +50,32 @@
         _isTourGuide = NO;
     }
     return self;
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarTitle.title = self.tour.itineraryForThisTour.nameOfTour;
     
+    //__weak TRVTouristTripDetailViewController *weakSelf = self;
+    
     self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:self.tour.itineraryForThisTour.tourStops configuration:^(TRVTourStop * stop) {
-        //self.tourStopImageView.image = stop.image;     stops do not yet have images
+        //weakSelf.tourStopImageView.image = stop.image;     //stops do not yet have images
+        //weakSelf.nameOfStop.text = stop.nameOfPlace;
     }];
     self.tourStopCollectionView.dataSource = self.dataSource;
     self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init]; // UILayoutContainerView
+    self.collectionViewDelegate.delegate = self;
+    //self.collectionViewDelegate.imageView = self.tourStopImageView; // FIXME: FIX THIS UGLY SHIT!!
     
-    self.collectionViewDelegate.imageView = self.tourStopImageView; // FIXME: FIX THIS UGLY SHIT!!
     
     self.tourStopCollectionView.delegate = self.collectionViewDelegate;
     self.tourStopCollectionView.scrollsToTop = NO;
 
+    //[self.tourStopImageView.autoresizingMask = UIImag]
+    
     [self setupParallaxImage:self.theScrollViewThatHoldsAllTheOtherViews];
+    
+
     
     _savedAlphaValue = 1;
 
@@ -101,8 +106,9 @@
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    if ((*targetContentOffset).y == -224)
+    if ((*targetContentOffset).y == -224) {
         [self makeContentInsetFullScreen:scrollView];
+    }
     [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(0, self.parallaxImageView.bounds.size.height - self.view.bounds.size.height / 10, self.view.bounds.size.width, self.view.bounds.size.height / 10)];
 }
 
@@ -208,15 +214,15 @@
     
 }
 
-
+- (void)setStopPropertiesOnSelection:(TRVTourStop *)stop {
+    self.tourStopImageView.image = stop.image;
+    self.nameOfStop.text = stop.nameOfPlace;
+}
 
 
 - (void)viewWillAppear:(BOOL)animated {
-
-}
-
--(UIView*)viewWithTabBarAsSubview {
-    return nil;
+    self.parallaxHeaderTourNameLabel.hidden = NO;
+    self.parallaxHeaderTourNameLabel.alpha = _savedAlphaValue;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

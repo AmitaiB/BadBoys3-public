@@ -49,8 +49,8 @@
     
     // This add subviews to show about root nib view
     [self.categoryContentView addSubview:self.categoryImageView];
+
     [self.categoryContentView addSubview:self.iconImageView];
-    [self.iconImageView setHidden:YES];
     [self.categoryContentView addSubview:self.categoryNameLabel];
     [self.categoryContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);

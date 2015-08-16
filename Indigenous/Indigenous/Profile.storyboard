@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q8H-jy-csn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q8H-jy-csn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -9,7 +9,7 @@
         <!--Settings View Controller-->
         <scene sceneID="gVF-te-aTQ">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="Df2-TG-gk8" customClass="TRVSettingsViewController" sceneMemberID="viewController">
+                <viewController id="Df2-TG-gk8" customClass="TRVSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fyE-Y2-uGZ"/>
                         <viewControllerLayoutGuide type="bottom" id="YaX-7b-4OC"/>
@@ -18,66 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNc-kG-3eh">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XD9-4S-579">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPF-EU-8T5">
-                                            <rect key="frame" x="258" y="266" width="84" height="47"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
-                                            <state key="normal" title="Dismiss">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="dismissButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Dvp-Kx-aHZ"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JI-Jn-hTc">
-                                            <rect key="frame" x="253.5" y="343.5" width="93" height="47"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
-                                            <state key="normal" title="Log Out">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="logOutButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Iat-gr-lN3"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="centerX" secondItem="EPF-EU-8T5" secondAttribute="centerX" id="LiA-oQ-dya"/>
-                                        <constraint firstAttribute="centerY" secondItem="EPF-EU-8T5" secondAttribute="centerY" id="dGU-kR-nL6"/>
-                                        <constraint firstItem="EPF-EU-8T5" firstAttribute="leading" secondItem="4JI-Jn-hTc" secondAttribute="trailing" id="erO-3N-vNr"/>
-                                        <constraint firstAttribute="centerX" secondItem="4JI-Jn-hTc" secondAttribute="centerX" id="mS8-C1-fI0"/>
-                                        <constraint firstItem="4JI-Jn-hTc" firstAttribute="top" secondItem="EPF-EU-8T5" secondAttribute="bottom" constant="30" id="yvK-Y4-ieR"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="erO-3N-vNr"/>
-                                        </mask>
-                                    </variation>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JI-Jn-hTc">
+                                <rect key="frame" x="272" y="510" width="56" height="30"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Iat-gr-lN3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPF-EU-8T5">
+                                <rect key="frame" x="223" y="133" width="54" height="30"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Dvp-Kx-aHZ"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iNc-kG-3eh" secondAttribute="trailing" id="5tK-Eh-aPy"/>
-                            <constraint firstItem="fyE-Y2-uGZ" firstAttribute="bottom" secondItem="iNc-kG-3eh" secondAttribute="bottom" id="7OW-mx-tjS"/>
-                            <constraint firstItem="iNc-kG-3eh" firstAttribute="top" secondItem="fyE-Y2-uGZ" secondAttribute="top" id="BsC-ZP-sgF"/>
-                            <constraint firstItem="iNc-kG-3eh" firstAttribute="leading" secondItem="KXD-Em-8LH" secondAttribute="leading" id="KoX-Z3-Dqg"/>
-                            <constraint firstItem="YaX-7b-4OC" firstAttribute="top" secondItem="iNc-kG-3eh" secondAttribute="bottom" id="fPb-uI-osj"/>
-                            <constraint firstItem="YaX-7b-4OC" firstAttribute="bottom" secondItem="iNc-kG-3eh" secondAttribute="bottom" id="nqa-nX-vxc"/>
+                            <constraint firstAttribute="centerX" secondItem="4JI-Jn-hTc" secondAttribute="centerX" id="Mpr-CF-XDi"/>
+                            <constraint firstAttribute="centerX" secondItem="EPF-EU-8T5" secondAttribute="centerX" constant="50" id="twT-Ga-TWk"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="7OW-mx-tjS"/>
-                                <exclude reference="nqa-nX-vxc"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbT-rX-ZcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -123,7 +87,7 @@
                     <navigationItem key="navigationItem" title="Home" id="KCx-Qd-1OU">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="gXB-WD-Ctr">
                             <connections>
-                                <segue destination="Df2-TG-gk8" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="rRO-1E-rdW"/>
+                                <segue destination="Df2-TG-gk8" kind="presentation" id="rRO-1E-rdW"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="lPw-xw-zDU">
@@ -566,7 +530,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q8H-jy-csn" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="Zjl-pc-Jn9"/>
                     <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2eP-mi-Zay">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

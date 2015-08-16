@@ -29,10 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"VIEW DID APPEAR %@", self.sharedDataStore.loggedInUser.userBio.firstName);
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading Trips";
     hud.labelFont = [UIFont fontWithName:@"Avenir" size:17];
+    
     
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
@@ -47,33 +49,21 @@
             [query getObjectInBackgroundWithId:[currentUser objectId] block:^(PFObject *user, NSError *error) {
                 if (!error) {
                     
-                    //IF WE ARE IN GUIDE MODE, GO TO myGuide TRIPS
-                    
-                    //ELSE GO TO myTrips
-                    NSArray *myTrips = @[];
-                    if (self.sharedDataStore.isOnGuideTabBar){
-                        myTrips = user[@"myGuideTrips"];
-                    } else {
-                        myTrips = user[@"myTrips"];
-                    }
-                    
+                    NSArray *myTrips = user[@"myTrips"];
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
 
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
                     
+                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
                     
-                    // uncomment below if you want to load dummy trips
-                    
-//                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-//                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-//
-//                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
+                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
 
 
                     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
-//
+
                     self.tripTableView.dataSource = self.tableViewDataSource;
                     if (self.segmentedControl.selectedSegmentIndex == 1) {
                         [self.tableViewDataSource changeTripsDisplayed];
@@ -102,7 +92,6 @@
 //                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
 //    self.tripTableView.dataSource = self.tableViewDataSource;
 //    [self.tripTableView reloadData];
-        [self.tripTableView reloadData];
    
 }
 
@@ -122,13 +111,13 @@
         
         
         // DOES THIS LINE WORK??
-        [PFTour fetch];
-
+        
         if ([PFTour[@"isPurchased"]isEqualToNumber:@(YES)] ) {
         
         
         
         
+        [PFTour fetch];
         TRVTour *tour = [[TRVTour alloc]init];
         tour.guideForThisTour = guideForThisRow;
         tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
@@ -168,6 +157,14 @@
     } // end of if statement
         
     } // END OF TOUR FOR LOOP
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -15,6 +15,7 @@
 @interface TRVTouristTripTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) TRVTour *tour;
+//@property (weak, nonatomic) IBOutlet TRVTourView *tourNib;
 @property (weak, nonatomic) IBOutlet TRVMyToursView *TourNib2;
 
 @end

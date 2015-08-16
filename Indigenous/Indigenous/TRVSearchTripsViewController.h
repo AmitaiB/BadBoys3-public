@@ -1,13 +1,13 @@
-////
-////  TRVSearchTripsViewController.h
-////  Indigenous
-////
-////  Created by Leo Kwan on 7/29/15.
-////  Copyright (c) 2015 Bad Boys 3. All rights reserved.
-////
 //
-//#import <UIKit/UIKit.h>
+//  TRVSearchTripsViewController.h
+//  Indigenous
 //
-//@interface TRVSearchTripsViewController : UIViewController
+//  Created by Leo Kwan on 7/29/15.
+//  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
-//@end
+
+#import <UIKit/UIKit.h>
+
+@interface TRVSearchTripsViewController : UIViewController
+
+@end

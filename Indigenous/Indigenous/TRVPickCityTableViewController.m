@@ -32,10 +32,12 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
 
     
+    
     [self.sharedDataStore setCurrentUser:[PFUser currentUser] withBlock:^(BOOL success) {
         // done
     }];
     
+//     self.sharedDataStore.parseUser = [PFUser currentUser];
     
     
     
@@ -48,15 +50,8 @@
     
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
-
 -(void)viewWillAppear:(BOOL)animated  {
-    [self.navigationController setNavigationBarHidden:YES];
-
     
-    // for the no internet modal... if there is no internet.. lock the scroll and present a full screen uiview
     [self.modalView setHidden:YES];
     self.tableView.scrollEnabled = YES;
 
@@ -115,9 +110,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     TRVTourCategoryViewController *destinationVC = [segue destinationViewController];
     destinationVC.selectedCity = self.selectedCity;
-//    destinationVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-//    destinationVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-
     
     // Pass the selected object to the new view controller.
 }
