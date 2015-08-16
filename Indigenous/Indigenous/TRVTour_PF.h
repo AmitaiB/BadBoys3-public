@@ -8,10 +8,14 @@
 
 #import "PFObject.h"
 #import <Parse.h>
+#import "TRVTourCategory_PF.h"
 
 @interface TRVTour_PF : PFObject <PFSubclassing>
 
-@property (strong, nonatomic) NSString *tourName;
+@property (strong, nonatomic) NSString           *tourName;
+@property (strong, nonatomic) TRVTourCategory_PF *tourCategory;
+@property (strong, nonatomic) NSDate             *depatureDate;
+@property (strong, nonatomic) NSMutableArray     *tourStopGeoPoints;
 
 + (NSString *)parseClassName;
 

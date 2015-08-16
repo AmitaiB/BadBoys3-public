@@ -13,10 +13,12 @@
     [self registerSubclass];
 }
 
-
 + (NSString *)parseClassName
 {
     return NSStringFromClass([TRVTour_PF class]);
 }
+
+
+
 
 @end
