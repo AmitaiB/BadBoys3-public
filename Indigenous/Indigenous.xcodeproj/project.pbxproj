@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		016992894F7DEF19D9F69221 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		25FDDFC619B863BD20E0252D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC93E5E15A12FDFA91E23F0 /* libPods.a */; };
+		381CCFA91B802CAD00138461 /* TRVAddTourTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 381CCFA81B802CAD00138461 /* TRVAddTourTableViewController.m */; };
+		381CCFAF1B80310900138461 /* TourGuideFlow-reboot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 381CCFAE1B80310900138461 /* TourGuideFlow-reboot.storyboard */; };
 		384A9C501B7944E100F4C1E0 /* TestMapWithSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384A9C4F1B7944E100F4C1E0 /* TestMapWithSearchVC.m */; };
 		384AFBC01B696ADB00E169A9 /* TRVTourGuideMyToursVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBBF1B696ADB00E169A9 /* TRVTourGuideMyToursVC.m */; };
 		384AFBC31B696B1900E169A9 /* TRVCreateTourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 384AFBC21B696B1900E169A9 /* TRVCreateTourVC.m */; };
@@ -127,6 +129,9 @@
 /* Begin PBXFileReference section */
 		2A091188074B9C927FC5D79C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2DC93E5E15A12FDFA91E23F0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		381CCFA71B802CAD00138461 /* TRVAddTourTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVAddTourTableViewController.h; sourceTree = "<group>"; };
+		381CCFA81B802CAD00138461 /* TRVAddTourTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVAddTourTableViewController.m; sourceTree = "<group>"; };
+		381CCFAE1B80310900138461 /* TourGuideFlow-reboot.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "TourGuideFlow-reboot.storyboard"; sourceTree = "<group>"; };
 		384A9C4E1B7944E100F4C1E0 /* TestMapWithSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMapWithSearchVC.h; sourceTree = "<group>"; };
 		384A9C4F1B7944E100F4C1E0 /* TestMapWithSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMapWithSearchVC.m; sourceTree = "<group>"; };
 		384AFBBE1B696ADB00E169A9 /* TRVTourGuideMyToursVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourGuideMyToursVC.h; sourceTree = "<group>"; };
@@ -351,6 +356,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		381CCFA61B802C3200138461 /* TourGuideFlow-reboot */ = {
+			isa = PBXGroup;
+			children = (
+				381CCFAE1B80310900138461 /* TourGuideFlow-reboot.storyboard */,
+				381CCFA71B802CAD00138461 /* TRVAddTourTableViewController.h */,
+				381CCFA81B802CAD00138461 /* TRVAddTourTableViewController.m */,
+			);
+			name = "TourGuideFlow-reboot";
+			sourceTree = "<group>";
+		};
 		384A9C541B79482600F4C1E0 /* MapKit map */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +471,7 @@
 				FA57FA191B6969EF00CFBB89 /* MyTrips */,
 				3859EDF11B69400E001C5693 /* Models */,
 				94EE0DA61B757A6A00FE114E /* Constants */,
+				381CCFA61B802C3200138461 /* TourGuideFlow-reboot */,
 				384AFBBA1B6969EE00E169A9 /* TourGuideFlow */,
 				456468F51B7E57A1005F5A57 /* Style Classes */,
 				45E772D61B6962C700003C7C /* Login Signup Flow */,
@@ -857,7 +873,7 @@
 				TargetAttributes = {
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = DWCYJ9H353;
+						DevelopmentTeam = 8VC65F749H;
 					};
 				};
 			};
@@ -890,6 +906,7 @@
 				944AD00B1B6DF4C700404EDD /* TRVGuideProfileImageView.xib in Resources */,
 				9482463C1B71529D00D64432 /* TRVUserSnippetView.xib in Resources */,
 				94C2EDA21B69637900BC2F7C /* Profile.storyboard in Resources */,
+				381CCFAF1B80310900138461 /* TourGuideFlow-reboot.storyboard in Resources */,
 				94EB295D1B7845DE00CAB1A5 /* TRVNoNetworkModalView.xib in Resources */,
 				45E772D51B6961D700003C7C /* LoginSignup.storyboard in Resources */,
 				948A22671B73CDB9006FC5BB /* TRVTourView.xib in Resources */,
@@ -984,6 +1001,7 @@
 				45F925AC1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m in Sources */,
 				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
 				944AD0061B6DE4B300404EDD /* TRVGuideProfileTableViewCell.m in Sources */,
+				381CCFA91B802CAD00138461 /* TRVAddTourTableViewController.m in Sources */,
 				388EBC561B781DE300D60297 /* SelectedLocation.m in Sources */,
 				9435DF691B6ED0E30054A2F4 /* TRVCity.m in Sources */,
 				944AD0091B6DF4B500404EDD /* TRVGuideProfileImageView.m in Sources */,
