@@ -113,6 +113,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     TRVTourCategoryViewController *destinationVC = [segue destinationViewController];
     destinationVC.selectedCity = self.selectedCity;
+//    destinationVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+//    destinationVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
     
     // Pass the selected object to the new view controller.
 }
