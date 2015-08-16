@@ -340,6 +340,7 @@
         PFQuery *tourQuery = [PFQuery queryWithClassName:@"ItineraryUnderConstruction"];
                             [tourQuery whereKeyExists:@"Itinerary"];
                             [tourQuery fromPinWithName:@"AddTourVC_Pins"];
+        tourQuery.cachePolicy = kPFCachePolicyIgnoreCache; //I hope this fixes the bug/crash... [Amitai]
         TRVItinerary * itineraryUnderConstruction_TRV;
         PFObject     * itineraryUnderConstruction_PF;
         NSError *queryError = nil;

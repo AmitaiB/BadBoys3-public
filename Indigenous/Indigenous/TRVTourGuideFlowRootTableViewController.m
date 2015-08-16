@@ -11,6 +11,8 @@
 #import <Parse.h>
 #import <ParseUI.h>
 #import "TRVLocalTourData_PF.h"
+#import "TRVTourData_PF.h"
+
 
 /**
  import all linked view controllers here.
@@ -34,6 +36,7 @@ typedef NS_ENUM(uint8_t, TRVViewControllerType) {
     NSArray *_tourCellDetailTitles;
     NSArray *_defaultTourCellTitles;
     TRVLocalTourData_PF *_localTourFromDatastore;
+    TRVTourData_PF *_tourFromDatastore;
 }
 
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
@@ -45,18 +48,10 @@ typedef NS_ENUM(uint8_t, TRVViewControllerType) {
 #pragma mark -
 #pragma mark Init
 
--(instancetype)init {
-    return [self initWithStyle:UITableViewStylePlain];
-}
-
--(instancetype)initWithStyle:(UITableViewStyle)style {
-    return [self init];
-}
-
 -(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (!self) return nil;
-    
+NSLog(@"self.tableView.style = %@", self.tableView.style);
     self.title = @"Populate Tour Data with Parse";
     _tourCellDetailTitles = @[@"Tour Name",
                               @"Guide",
@@ -69,16 +64,40 @@ typedef NS_ENUM(uint8_t, TRVViewControllerType) {
                                @"Choose Date",
                                @"Build Itinerary"];
     
-    PFQuery *localTourDataQuery = [PFQuery queryWithClassName:NSStringFromClass([TRVLocalTourData_PF class])];
-    [localTourDataQuery fromPinWithName:localDataStorePinName];
+    
+//    [Parse enableLocalDatastore];
+
+    /**
+     *  Removed all references to local datastore because of the bug in Parse.
+     */
+//    PFQuery *localTourDataQuery = [PFQuery queryWithClassName:NSStringFromClass([TRVLocalTourData_PF class])];
+//    localTourDataQuery.cachePolicy = kPFCachePolicyIgnoreCache;
+////    [localTourDataQuery fromPin];
+//    [localTourDataQuery fromPinWithName:localDataStorePinName];
+        //http://stackoverflow.com/questions/27720724/parse-com-error-method-not-allowed-when-pinning-is-enabled-when-i-use-a-pfque <-- said that cachePolicy causes the error:
+//    localTourDataQuery.cachePolicy = kPFCachePolicyCacheElseNetwork;
+//    NSError *error;
+//    _localTourFromDatastore = (TRVLocalTourData_PF*)[localTourDataQuery getFirstObject:&error];
+//    if (error) {
+//        NSLog(@"Error fetching localTourFromDataStore: %@", error.localizedDescription);
+//    }
+
+    PFQuery *parseTourDataQuery = [PFQuery queryWithClassName:NSStringFromClass([TRVTourData_PF class])];
     NSError *error;
-    _localTourFromDatastore = (TRVLocalTourData_PF*)[localTourDataQuery getFirstObject:&error];
-    if (error) {
-        NSLog(@"Error fetching localTourFromDataStore: %@", error.localizedDescription);
-    }
+    _tourFromDatastore = [parseTourDataQuery getFirstObject:&error];
     
     return self;
 }
+
+-(instancetype)initWithStyle:(UITableViewStyle)style {
+    return [self initWithNibName:nil bundle:nil];
+}
+
+-(instancetype)init {
+    return [self initWithStyle:nil];
+}
+
+
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     return [self init];

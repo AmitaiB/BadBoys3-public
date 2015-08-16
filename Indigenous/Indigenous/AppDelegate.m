@@ -16,6 +16,8 @@
 #import <HNKGooglePlacesAutocomplete.h>
 #import <CoreLocation/CoreLocation.h>
 
+#define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+
 
 @interface AppDelegate ()
 
@@ -25,12 +27,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+//    Enable pinning in your application. This must be called before your application can use
+//    pinning. The recommended way is to call this method before `setApplicationId:clientKey:`.
+    DBLG
+    NSLog(@"BEFORE: Parse reports that local datastore %@ enabled.", ([Parse isLocalDatastoreEnabled])? @"IS" : @"IS NOT");
     [Parse enableLocalDatastore];
+    
+    NSLog(@"AFTER: Parse reports that local datastore %@ enabled.", ([Parse isLocalDatastoreEnabled])? @"IS" : @"IS NOT");
     
     [Parse setApplicationId:PARSE_APPLICATION_ID
                   clientKey:PARSE_CLIENT_KEY];
-//!!![AMITAI]: This is purely for debugging ↓
+    
+//!!![Amitai]: This is purely for debugging ↓
    // [PFUser enableAutomaticUser];
     
     

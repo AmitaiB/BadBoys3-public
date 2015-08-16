@@ -78,7 +78,7 @@ NS_ENUM(NSUInteger, TRVTourDetailType) {
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections. 1 section for the static variables,
     // one section for the indefinite tourStop array of locations.
-    if (self.tourStopCoordinatesArray.count) {
+    if (_tourData.tourStopCoordinatesArray.count) {
         return 2;
     } else {
         return 1;
@@ -144,7 +144,7 @@ NS_ENUM(NSUInteger, TRVTourDetailType) {
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     switch (self.currentTourDetailType) {
         case TRVtourNameDetailType: {
-            self.tourNameString = textField.text;
+            _tourData.tourNameString = textField.text;
             NSLog(@"The root VC of the input textfield is: %@", [textField.window.rootViewController description]);
                 //edit what happens
             break;
@@ -178,19 +178,20 @@ NS_ENUM(NSUInteger, TRVTourDetailType) {
         //Query setup.
     NSString *localDataClassName = NSStringFromClass([TRVLocalTourData_PF class]);
     PFQuery *localDataQuery = [PFQuery queryWithClassName:localDataClassName];
+    localDataQuery.cachePolicy = kPFCachePolicyIgnoreCache;
     [localDataQuery fromPin];
     NSError *error = nil;
         //Retrieval.
     TRVLocalTourData_PF *localTourData = [localDataQuery getFirstObject:&error];
     
     if (localTourData.tourNameString) {
-        self.tourNameString = localTourData.tourNameString;
+        _tourData.tourNameString = localTourData.tourNameString;
     }
     if (localTourData.tourCategoryString) {
-        self.tourCategoryString = localTourData.tourCategoryString;
+        _tourData.tourCategoryString = localTourData.tourCategoryString;
     }
     if (localTourData.depatureDate) {
-        self.depatureDate = localTourData.depatureDate;
+        _tourData.depatureDate = localTourData.depatureDate;
     }
     
 }
