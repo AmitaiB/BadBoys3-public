@@ -312,8 +312,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wlv-xI-Z3d">
-                                <rect key="frame" x="0.0" y="74" width="600" height="450"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wlv-xI-Z3d">
+                                <rect key="frame" x="0.0" y="75" width="600" height="450"/>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.92549019607843142" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WeI-av-DBa">
                                     <size key="itemSize" width="155" height="163"/>
