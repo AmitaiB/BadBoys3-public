@@ -219,11 +219,8 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-
-}
-
--(UIView*)viewWithTabBarAsSubview {
-    return nil;
+    self.parallaxHeaderTourNameLabel.hidden = NO;
+    self.parallaxHeaderTourNameLabel.alpha = _savedAlphaValue;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
