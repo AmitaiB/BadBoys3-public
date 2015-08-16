@@ -10,6 +10,7 @@
 
 @interface TRVEditTourDataViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tourCategorySegmentedControl;
+- (IBAction)segmentedControlButtonTapped:(id)sender;
 
 @end
 
@@ -19,17 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.tourCategories = @[@"See", @"Play", @"Eat", @"Drink", @"Frolic"];
-    
+    self.tourCategories = @[@"See", @"Play", @"Eat", @"Drink"];
+    self.tourCategorySegmentedControl.selectedSegmentIndex = -1;
         //Initialize the segmented control's segments, and wire it up.
-//    [self.tourCategorySegmentedControl removeAllSegments];
-//    for (NSUInteger i = 0; i < self.tourCategories.count; i++) {
-//        [self.tourCategorySegmentedControl setTitle:self.tourCategories[i] forSegmentAtIndex:i];
-//    }
-    [self.tourCategorySegmentedControl addTarget:self
-                                          action:@selector(czPickTourCategory)
-                                forControlEvents:UIControlEventValueChanged];
-    
+//    [self.tourCategorySegmentedControl addTarget:self
+//                                          action:@selector(czPickTourCategory)
+//                                forControlEvents:UIControlEventValueChanged];
+//    
     
 }
 
@@ -76,4 +73,7 @@
 }
 */
 
+- (IBAction)segmentedControlButtonTapped:(id)sender {
+    [self czPickTourCategory];
+}
 @end
