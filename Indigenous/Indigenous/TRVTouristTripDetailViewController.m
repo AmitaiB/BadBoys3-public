@@ -197,7 +197,7 @@
     UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
     
     TRVBookTourTableViewController *destination = [destinationStoryboard instantiateInitialViewController];
-//    destination.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+
     
     // pass it into confirm purchase Storyboard
     destination.destinationTour = self.tour;
