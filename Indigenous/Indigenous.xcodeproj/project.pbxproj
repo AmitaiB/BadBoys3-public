@@ -21,6 +21,8 @@
 		38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */; };
 		38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */; };
 		38B02B811B822D8A00C2B0A2 /* TourGuideFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B02B801B822D8A00C2B0A2 /* TourGuideFlow.storyboard */; };
+		38B02B841B82332400C2B0A2 /* TRVAddTourDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B02B831B82332400C2B0A2 /* TRVAddTourDataViewController.m */; };
+		38B02B871B82356E00C2B0A2 /* TRVTourDataPF.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B02B861B82356E00C2B0A2 /* TRVTourDataPF.m */; };
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
 		451565241B68221B005A2871 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451565221B68221B005A2871 /* LaunchScreen.xib */; };
 		451859541B70FCC0008D7049 /* TRVFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451859531B70FCBF008D7049 /* TRVFilterViewController.m */; };
@@ -130,6 +132,10 @@
 		38A2554A1B7A50B600257F6F /* CLLocation+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+Utils.h"; sourceTree = "<group>"; };
 		38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Utils.m"; sourceTree = "<group>"; };
 		38B02B801B822D8A00C2B0A2 /* TourGuideFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TourGuideFlow.storyboard; sourceTree = "<group>"; };
+		38B02B821B82332400C2B0A2 /* TRVAddTourDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVAddTourDataViewController.h; sourceTree = "<group>"; };
+		38B02B831B82332400C2B0A2 /* TRVAddTourDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVAddTourDataViewController.m; sourceTree = "<group>"; };
+		38B02B851B82356E00C2B0A2 /* TRVTourDataPF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourDataPF.h; sourceTree = "<group>"; };
+		38B02B861B82356E00C2B0A2 /* TRVTourDataPF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourDataPF.m; sourceTree = "<group>"; };
 		451565101B68221B005A2871 /* Indigenous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indigenous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		451565141B68221B005A2871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		451565151B68221B005A2871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -333,6 +339,10 @@
 			isa = PBXGroup;
 			children = (
 				38B02B801B822D8A00C2B0A2 /* TourGuideFlow.storyboard */,
+				38B02B851B82356E00C2B0A2 /* TRVTourDataPF.h */,
+				38B02B861B82356E00C2B0A2 /* TRVTourDataPF.m */,
+				38B02B821B82332400C2B0A2 /* TRVAddTourDataViewController.h */,
+				38B02B831B82332400C2B0A2 /* TRVAddTourDataViewController.m */,
 			);
 			name = "TourGuideFlow-4th-iteration";
 			sourceTree = "<group>";
@@ -868,11 +878,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B02B871B82356E00C2B0A2 /* TRVTourDataPF.m in Sources */,
 				385C46FB1B6BCEA000D9091A /* AppDelegate.m in Sources */,
 				942E0D4B1B740143002D9E90 /* TRVProfileViews.m in Sources */,
 				456468F41B7E5785005F5A57 /* TRVParagraphLabel.m in Sources */,
 				38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */,
 				385C46FA1B6BCE7E00D9091A /* main.m in Sources */,
+				38B02B841B82332400C2B0A2 /* TRVAddTourDataViewController.m in Sources */,
 				FADB8F241B705731009F7C02 /* TRVTourStopCollectionViewCell.m in Sources */,
 				94BB588F1B78F44B0056D46F /* TRVAllStopsView.m in Sources */,
 				94A53C9A1B765E640029D2F7 /* NSMutableArray+extraMethods.m in Sources */,
