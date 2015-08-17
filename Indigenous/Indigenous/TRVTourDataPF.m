@@ -9,6 +9,14 @@
 #import "TRVTourDataPF.h"
 
 @implementation TRVTourDataPF
+@synthesize tourName;
+@synthesize tourCategories;
+@synthesize tourCategory;
+@synthesize tourDate;
+@synthesize tourImage;
+@synthesize tourItinerary;
+
+
 +(void)load {
     [self registerSubclass];
 }
@@ -17,5 +25,23 @@
 {
     return NSStringFromClass([TRVTourDataPF class]);
 }
+
+-(instancetype)init {
+    self = [super initWithClassName:[TRVTourDataPF parseClassName]];
+    if (!self) {
+        return nil;
+    }
+    
+    tourName       = @"";
+    tourCategory   = @"";
+    tourCategories = @[@"See", @"Play", @"Eat", @"Drink"];
+    tourDate       = [NSDate distantFuture];
+    tourImage      = [PFFile fileWithData:[NSData data]];
+    tourItinerary  = [NSMutableArray arrayWithCapacity:0];
+    
+    return self;
+}
+
+
 
 @end

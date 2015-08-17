@@ -7,6 +7,7 @@
 //
 
 #import "TRVAddTourDataViewController.h"
+#import "TRVTourDataPF.h"
 
 @interface TRVAddTourDataViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tourNameTxF;
@@ -15,26 +16,36 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIImageView *tourImageView;
 
+@property (strong, nonatomic) TRVTourDataPF *tourData;
+
 @end
 
 @implementation TRVAddTourDataViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tourData = [TRVTourDataPF new];
+    
     
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UISegmentedControl methods
+
+-(void)initializeSegmentedControl {
+    [self.tourCategorySegControl setSelectedSegmentIndex:-1];
+}
+
+-(void)assignTourCategory:(NSInteger)categoryNumber {
+    self.tourData.tourCategory = self.tourData.tourCategories[categoryNumber];
+    NSLog(@"TourCategory set to: %@", self.tourData.tourCategory);
 }
 
 #pragma mark - UITextFieldDelegate methods
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-    
+    self.tourData.tourName = textField.text;
+    NSLog(@"TourName set to: %@", self.tourData.tourName);
     return YES;
 }
 
