@@ -9,8 +9,9 @@
 #import <CZPicker.h>
 #import <UIKit/UIKit.h>
 #import "TRVTour_PF.h"
+#import "SBFlatDatePickerDelegate.h"
 
-@interface TRVAddTourTableViewController : UITableViewController <CZPickerViewDataSource, CZPickerViewDelegate>
+@interface TRVAddTourTableViewController : UITableViewController <CZPickerViewDataSource, CZPickerViewDelegate, SBFLatDatePickerDelegate>
 
 @property (strong, nonatomic) TRVTour_PF *tourData;
 @property (strong, nonatomic) NSArray *tourDataSubtitlesArray;

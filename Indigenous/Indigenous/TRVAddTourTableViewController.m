@@ -8,6 +8,10 @@
 
 #import <CZPicker.h>
 #import "TRVAddTourTableViewController.h"
+#import "SBFlatDatePicker.h"
+
+#define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+
 
 @interface TRVAddTourTableViewController ()
 
@@ -69,6 +73,29 @@ static NSString * const cellReuseID = @"cellReuseID";
     [categoryPicker show];
 }
 
+    //https://github.com/SolomonBier/SBFlatDatePicker
+#pragma mark - SBFlatDatePicker delegate
+-(void)sbPickDepartureDate {
+    UIViewController *pickerViewController = [UIViewController new];
+    SBFlatDatePicker *datePicker = [[SBFlatDatePicker alloc] initWithFrame:self.view.bounds];
+    [datePicker.minuterange addIndex:0];
+    [datePicker.minuterange addIndex:20];
+    [datePicker.minuterange addIndex:40];
+//    Customize Day Format
+//    datePicker.dayFormat = @"EEE MMM dd";
+    datePicker.delegate = self;
+    pickerViewController.view = datePicker;
+    [self presentViewController:pickerViewController animated:YES completion:^{
+        DBLG
+    }];
+}
+
+-(void)flatDatePicker:(SBFlatDatePicker *)datePicker saveDate:(NSDate *)date {
+    DBLG
+    NSLog(@"Saving Date: %@", date);
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark - Table view data source
 
@@ -111,6 +138,8 @@ static NSString * const cellReuseID = @"cellReuseID";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == TRVTourCategoryRow) {
         [self czPickTourCategory];
+    } else if (indexPath.row == TRVTourDateRow) {
+        [self sbPickDepartureDate];
     } else {
     [self performSegueWithIdentifier:toEditAllSegueID sender:self];
     }
