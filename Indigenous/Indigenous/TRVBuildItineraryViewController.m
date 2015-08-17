@@ -9,6 +9,10 @@
 #import "TRVBuildItineraryViewController.h"
 
 @interface TRVBuildItineraryViewController ()
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *autocompleteTableView;
+@property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
+@property (weak, nonatomic) IBOutlet UILabel *someLabel;
 
 @end
 

@@ -899,11 +899,18 @@
                     <view key="view" contentMode="scaleToFill" id="tm6-nk-Fng">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YuO-8X-L4V">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="44"/>
+                                </variation>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="t9n-fS-q2m">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="83" y="341" width="200" height="300"/>
+                                    <rect key="frame" x="0.0" y="485" width="400" height="156"/>
                                 </variation>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euW-df-sh1">
@@ -919,32 +926,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="100" y="108" width="200" height="300"/>
+                                    <rect key="frame" x="-8" y="108" width="408" height="205"/>
                                 </variation>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YuO-8X-L4V">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="44"/>
-                                </variation>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="YuO-8X-L4V"/>
                                 <exclude reference="t9n-fS-q2m"/>
                                 <exclude reference="euW-df-sh1"/>
                                 <exclude reference="kpW-KM-SHU"/>
-                                <exclude reference="YuO-8X-L4V"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+                                <include reference="YuO-8X-L4V"/>
                                 <include reference="t9n-fS-q2m"/>
                                 <include reference="euW-df-sh1"/>
                                 <include reference="kpW-KM-SHU"/>
-                                <include reference="YuO-8X-L4V"/>
                             </mask>
                         </variation>
                     </view>
@@ -955,6 +955,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="autocompleteTableView" destination="kpW-KM-SHU" id="oeW-Co-lGM"/>
+                        <outlet property="itineraryTableView" destination="t9n-fS-q2m" id="fqZ-by-NGk"/>
+                        <outlet property="searchBar" destination="YuO-8X-L4V" id="1FG-XD-P0q"/>
+                        <outlet property="someLabel" destination="euW-df-sh1" id="1cc-vx-0kR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aod-3f-vvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

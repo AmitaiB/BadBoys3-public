@@ -82,7 +82,7 @@ DEPENDENCIES:
   - FBSDKShareKit
   - FoldingTabBar (~> 1.0.1)
   - GoogleMaps
-  - HNKGooglePlacesAutocomplete (~> 1.1.0)
+  - HNKGooglePlacesAutocomplete (~> 1.1)
   - INTULocationManager
   - LMGeocoder (~> 1.0)
   - Masonry

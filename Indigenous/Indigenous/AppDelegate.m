@@ -35,7 +35,6 @@
     
     
     [GMSServices provideAPIKey:GOOGLE_API_KEY];
-        //TODO: [Amitai] Check for redundancy:
     [HNKGooglePlacesAutocompleteQuery setupSharedQueryWithAPIKey:GOOGLE_API_KEY];
     
    
