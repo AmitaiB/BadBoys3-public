@@ -8,6 +8,7 @@
 
 #import "TRVMyToursView.h"
 #import <Masonry.h>
+#import "UIImageView+ExtraMethods.h"
 #import "TRVTourStop.h"
 
 @interface TRVMyToursView ()
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *meetAtFirstStopLabel;
 @property (weak, nonatomic) IBOutlet UILabel *withUserLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *withUserImage;
+
 
 @end
 
@@ -92,7 +94,10 @@
     self.categoryIconImageView.image = tourForThisTourView.categoryForThisTour.iconImage;
     TRVTourStop *firstTourStop = itineraryForThisView.tourStops[0];
     self.meetAtFirstStopLabel.text = [NSString stringWithFormat:@"Meet at %@", firstTourStop.addressOfEvent];
+    
+    
     self.withUserImage.image = tourForThisTourView.guideForThisTour.userBio.profileImage;
+    [UIImageView createCircleImageViewMaskWithImageView:self.withUserImage];
 
 };
 
