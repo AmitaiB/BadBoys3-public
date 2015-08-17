@@ -9,7 +9,7 @@
 #import "TRVCompleteSignupWithFacebookViewController.h"
 #import <Parse/Parse.h>
 #import <MBProgressHUD.h>
-@interface TRVCompleteSignupWithFacebookViewController () <UITextViewDelegate>
+@interface TRVCompleteSignupWithFacebookViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *languagesSpokenTextField;
 @property (weak, nonatomic) IBOutlet UITextView *bioTextField;
@@ -17,8 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *oneLineBio;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *homeCitySegmentedControl;
 @property (nonatomic, strong) NSString *selectedHomeCity;
-
-@property (weak, nonatomic) IBOutlet UILabel *yourCityLabel;
 @end
 
 @implementation TRVCompleteSignupWithFacebookViewController
@@ -26,33 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES];
-    self.bioTextField.delegate = self;
-    [self setUpUI];
 
 }
 
--(void)setUpUI {
-//    [yourSwitchObject addTarget:self action:@selector(setState:) forControlEvents:UIControlEventValueChanged];
 
-    
-}
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    if ([textView.text isEqualToString:@"A little bit about you..."]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor]; //optional
-    }
-    [textView becomeFirstResponder];
-}
 
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    if ([textView.text isEqualToString:@""]) {
-        textView.text = @"A little bit about you...";
-        textView.textColor = [UIColor lightGrayColor];
-    }
-    [textView resignFirstResponder];
-}
 
 
 - (IBAction)segmentSelected:(id)sender {

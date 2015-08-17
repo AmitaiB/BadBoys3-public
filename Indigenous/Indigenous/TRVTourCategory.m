@@ -31,8 +31,8 @@
 +(TRVTourCategory *)returnCategoryWithTitle:(NSString *)title {
     if ([title isEqualToString:@"See"]) {
          return [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
-    }  else if ([title isEqualToString:@"Discover"]) {
-         return  [[TRVTourCategory alloc] initWithName:@"Discover" cateogoryImage:[UIImage imageNamed:@"explore"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
+    }  else if ([title isEqualToString:@"Play"]) {
+         return  [[TRVTourCategory alloc] initWithName:@"Play" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
     }  else if ([title isEqualToString:@"Eat"]) {
         return  [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"madrid.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
 
@@ -45,8 +45,8 @@
 +(TRVTourCategory *)returnSeeCategory {
     return [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
 }
-+(TRVTourCategory *)returnDiscoverCategory{
-    return  [[TRVTourCategory alloc] initWithName:@"Discover" cateogoryImage:[UIImage imageNamed:@"water"] iconImage:[UIImage imageNamed:@"water"]];
++(TRVTourCategory *)returnPlayCategory{
+    return  [[TRVTourCategory alloc] initWithName:@"Play" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"beijing.jpg"]];
 }
 +(TRVTourCategory *)returnEatCategory {
     return  [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"london.jpg"] iconImage:[UIImage imageNamed:@"london.jpg"]];

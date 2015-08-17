@@ -215,6 +215,7 @@
     }];
     
     [self.profileView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(self.view.mas_width);
         make.bottom.equalTo(self.guideTripsTableView.mas_bottom).with.offset(10);
     }];
 
@@ -259,8 +260,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-}
+    }
 
 
 

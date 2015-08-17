@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "TRVTouristTripDetailViewController.h"
+
+@protocol TourStopInfoDelegate
+@required
+-(void)setStopPropertiesOnSelection:(TRVTourStop*)stop;
+
+@end
+
 
 @interface TRVTourStopCollectionViewDelegateFlowLayout : NSObject <UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, weak) id<TourStopInfoDelegate> delegate;
 
 @end
