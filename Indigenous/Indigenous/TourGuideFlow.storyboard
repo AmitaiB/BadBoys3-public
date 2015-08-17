@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TAU-Cj-Q2B">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -164,6 +165,33 @@
                                 </variation>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iRk-mx-jzZ">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Title-->
+        <scene sceneID="V2R-0g-16m">
+            <objects>
+                <viewController id="Pwg-WI-TRs" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gqd-Nj-su7"/>
+                        <viewControllerLayoutGuide type="bottom" id="U75-Kr-wRp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="195-H4-jgp">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tour Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YqT-4t-GAF">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="84" y="89" width="232" height="30"/>
+                                </variation>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LZH-5L-k2o">
+>>>>>>> impl the TomPlan
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
                                 <segments>
                                     <segment title="See"/>
@@ -171,6 +199,7 @@
                                     <segment title="Eat"/>
                                     <segment title="Drink"/>
                                 </segments>
+<<<<<<< HEAD
                             </segmentedControl>
                             <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="LsU-Fn-08t">
                                 <rect key="frame" x="-160" y="-81" width="320" height="162"/>
@@ -1093,10 +1122,50 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="4gA-x4-89A"/>
+=======
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="138" width="368" height="29"/>
+                                </variation>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZg-BG-hlt">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Date">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="84" y="192" width="232" height="30"/>
+                                </variation>
+                            </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dA0-GG-KrA">
+                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="461516323.81647199">
+                                    <!--2015-08-17 14:58:43 +0000-->
+                                </date>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="219" width="400" height="162"/>
+                                </variation>
+                            </datePicker>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-ls-nmu">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="84" y="401" width="240" height="128"/>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="YqT-4t-GAF"/>
+                                <exclude reference="LZH-5L-k2o"/>
+                                <exclude reference="QZg-BG-hlt"/>
+                                <exclude reference="dA0-GG-KrA"/>
+                                <exclude reference="Dkp-ls-nmu"/>
+>>>>>>> impl the TomPlan
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
+<<<<<<< HEAD
                                 <include reference="4gA-x4-89A"/>
                             </mask>
                         </variation>
@@ -1202,4 +1271,62 @@
     <resources>
         <image name="placeholder" width="260" height="122"/>
     </resources>
+=======
+                                <include reference="YqT-4t-GAF"/>
+                                <include reference="LZH-5L-k2o"/>
+                                <include reference="QZg-BG-hlt"/>
+                                <include reference="dA0-GG-KrA"/>
+                                <include reference="Dkp-ls-nmu"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="0fr-EE-opW">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="t4A-yW-bX0">
+                            <connections>
+                                <segue destination="mVB-mH-vKs" kind="show" id="okN-MI-d0x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CEP-y5-1M6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912.5" y="39"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="w2E-Y6-JfJ">
+            <objects>
+                <viewController id="mVB-mH-vKs" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jWu-no-Z1w"/>
+                        <viewControllerLayoutGuide type="bottom" id="RPw-wf-d6n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tm6-nk-Fng">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aod-3f-vvn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2680.5" y="39"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Pbq-nz-wmH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ta5-4J-Qi7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ckb-Mc-dtK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Pwg-WI-TRs" kind="relationship" relationship="rootViewController" id="ZRq-p1-SuZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XhR-DW-MNO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1188" y="39"/>
+        </scene>
+    </scenes>
+>>>>>>> impl the TomPlan
 </document>

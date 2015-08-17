@@ -20,6 +20,7 @@
 		388EBC5F1B783AE400D60297 /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */; };
 		38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */; };
 		38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */; };
+		38B02B811B822D8A00C2B0A2 /* TourGuideFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B02B801B822D8A00C2B0A2 /* TourGuideFlow.storyboard */; };
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
 		451565241B68221B005A2871 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451565221B68221B005A2871 /* LaunchScreen.xib */; };
 		451859541B70FCC0008D7049 /* TRVFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 451859531B70FCBF008D7049 /* TRVFilterViewController.m */; };
@@ -128,6 +129,7 @@
 		38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+initWith2D.m"; sourceTree = "<group>"; };
 		38A2554A1B7A50B600257F6F /* CLLocation+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+Utils.h"; sourceTree = "<group>"; };
 		38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Utils.m"; sourceTree = "<group>"; };
+		38B02B801B822D8A00C2B0A2 /* TourGuideFlow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TourGuideFlow.storyboard; sourceTree = "<group>"; };
 		451565101B68221B005A2871 /* Indigenous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indigenous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		451565141B68221B005A2871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		451565151B68221B005A2871 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -327,6 +329,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		38B02B7F1B822D5E00C2B0A2 /* TourGuideFlow-4th-iteration */ = {
+			isa = PBXGroup;
+			children = (
+				38B02B801B822D8A00C2B0A2 /* TourGuideFlow.storyboard */,
+			);
+			name = "TourGuideFlow-4th-iteration";
+			sourceTree = "<group>";
+		};
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +364,7 @@
 				9450B33C1B7D6FBC009CE9FA /* TRVBookTourTableViewController.h */,
 				9450B33D1B7D6FBC009CE9FA /* TRVBookTourTableViewController.m */,
 				94258ACC1B73F251006F24A8 /* Default-568h@2x.png */,
+				38B02B7F1B822D5E00C2B0A2 /* TourGuideFlow-4th-iteration */,
 				94EB295B1B7845B400CAB1A5 /* Views */,
 				944AD0001B6DDEDB00404EDD /* API Clients */,
 				944D312D1B76E126004CF255 /* Categories */,
@@ -793,6 +804,7 @@
 				9473D1971B72376500E73B4B /* TRVUserProfileImageView.xib in Resources */,
 				94BB58911B78F4670056D46F /* TRVAllStopsView.xib in Resources */,
 				944AD00B1B6DF4C700404EDD /* TRVGuideProfileImageView.xib in Resources */,
+				38B02B811B822D8A00C2B0A2 /* TourGuideFlow.storyboard in Resources */,
 				9482463C1B71529D00D64432 /* TRVUserSnippetView.xib in Resources */,
 				94C2EDA21B69637900BC2F7C /* Profile.storyboard in Resources */,
 				94EB295D1B7845DE00CAB1A5 /* TRVNoNetworkModalView.xib in Resources */,
