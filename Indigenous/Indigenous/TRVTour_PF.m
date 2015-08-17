@@ -26,8 +26,13 @@
     self.tourName = @"Your Awesome Tour!";
     self.tourGuide = [PFUser currentUser].username;
     self.tourCategory.tourCategoryType = TRVTourCategoryNull;
-    self.depatureDate = nil;
-    self.tourStopGeoPoints = nil;
+    self.depatureDate = [NSDate date];
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *point, NSError *error) {
+        if (!error) {
+            self.tourStopGeoPoints = [@[point] mutableCopy];
+            NSLog(@"self.tourStopGeoPoints: %@", [self.tourStopGeoPoints description]);
+        } else NSLog(@"%@", error.localizedDescription);
+    }];
     
     return self;
 }
@@ -36,6 +41,11 @@
     return [self initWithDefaultValues];
 }
 
+/**
+ *  Broken. Don't use.
+ *
+ *  @return nil! Dammit!!
+ */
 -(NSArray *)allValues {
     NSMutableArray *temp = [NSMutableArray new];
 
@@ -56,7 +66,7 @@
     if ([@(self.tourStopGeoPoints.count) stringValue]) {
         [temp addObject:[NSString stringWithFormat:@"Itinerary with %@ locations",[@(self.tourStopGeoPoints.count) stringValue]]];
     } [temp addObject:@"....."];
-    
+    NSLog(@"%@", [temp description]);
     return [temp copy];
 }
 

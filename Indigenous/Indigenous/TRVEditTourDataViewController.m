@@ -51,7 +51,6 @@
 }
 
 -(NSString *)czpickerView:(CZPickerView *)pickerView titleForRow:(NSInteger)row {
-    
     return self.tourCategories[row];
 }
 
@@ -60,7 +59,6 @@
 }
 
 -(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
-    
 }
 
 /*

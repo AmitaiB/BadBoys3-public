@@ -136,6 +136,7 @@ static NSString * const cellReuseID = @"cellReuseID";
 
 #pragma mark - Helper methods
 -(void)initizalizeViewControllerArrays {
+    
     self.tourDataSubtitlesArray = @[@"Tour Name",
                                     @"Tour Guide",
                                     @"Category/Theme",
@@ -148,11 +149,10 @@ static NSString * const cellReuseID = @"cellReuseID";
                                         @"Where are we going?"];
     self.tourCategories = @[@"See", @"Play", @"Eat", @"Drink"];
     
-    self.tourDataWithUserInputTitlesArray = [[self.tourData allValues] mutableCopy];
+    self.tourDataWithUserInputTitlesArray = [self.tourDataDefaultTitlesArray mutableCopy];
 
     NSLog(@"self.tourDataWithUserInputTitlesArray: %@, of size: %@", [self.tourDataWithUserInputTitlesArray description], @(self.tourDataWithUserInputTitlesArray.count));
     NSLog(@"The original article: %@ of size %@", [[self.tourData allValues] description], @([self.tourData allValues].count));
-
 }
 
 

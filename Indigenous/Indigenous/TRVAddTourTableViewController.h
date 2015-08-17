@@ -17,5 +17,6 @@
 @property (strong, nonatomic) NSArray *tourDataDefaultTitlesArray;
 @property (strong, nonatomic) NSMutableArray *tourDataWithUserInputTitlesArray;
 @property (strong, nonatomic) NSArray *tourCategories;
+@property (nonatomic) BOOL arraysInitialized;
 
 @end
