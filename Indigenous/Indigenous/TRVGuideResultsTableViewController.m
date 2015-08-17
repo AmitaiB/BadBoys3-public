@@ -113,10 +113,14 @@
     PFQuery *query = [PFUser query];
     [query includeKey:@"userBio"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error){
-    
-        self.userCount = 0;
-        [self findAppropriateGuides:objects];
-        [self createGuides];
+        
+        NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+        
+        [operationQ addOperationWithBlock:^{
+            self.userCount = 0;
+            [self findAppropriateGuides:objects];
+            [self createGuides];
+        }];
         
     }];
     
@@ -246,8 +250,11 @@
     
     self.userCount++;
     if (self.userCount == self.PFGuides.count){
-        [self.tableView reloadData];
-        [self.hud hide:YES];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+            [self.hud hide:YES];
+        }];
+        
     }
     
 }
