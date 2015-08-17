@@ -34,10 +34,12 @@
 
 -(void)initializeSegmentedControl {
     [self.tourCategorySegControl setSelectedSegmentIndex:-1];
+    [self.tourCategorySegControl addTarget:self action:@selector(assignTourCategory) forControlEvents:UIControlEventValueChanged];
 }
 
--(void)assignTourCategory:(NSInteger)categoryNumber {
-    self.tourData.tourCategory = self.tourData.tourCategories[categoryNumber];
+-(void)assignTourCategory {
+    NSString *categoryChosenViaSegmentedControl = self.tourData.tourCategories[self.tourCategorySegControl.selectedSegmentIndex];
+    self.tourData.tourCategory = categoryChosenViaSegmentedControl;
     NSLog(@"TourCategory set to: %@", self.tourData.tourCategory);
 }
 
