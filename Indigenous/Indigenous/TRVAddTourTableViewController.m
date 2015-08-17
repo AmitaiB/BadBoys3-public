@@ -11,6 +11,18 @@
 
 @interface TRVAddTourTableViewController ()
 
+typedef NS_ENUM(NSUInteger, TRVTourDataRow) {
+    TRVTourNameRow,
+    TRVTourGuideRow,
+    TRVTourCategoryRow,
+    TRVTourDateRow,
+    TRVTourItineraryRow
+};
+
+typedef NS_ENUM(NSUInteger, TRVTableViewSectionType) {
+    TRVStaticDataSection,
+    TRVMutableItinerarySection
+};
 
 @end
 
@@ -39,7 +51,8 @@ static NSString * const cellReuseID = @"cellReuseID";
 }
 
 -(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
-    NSLog(@"You tapped row #%ld!", (long)row);
+    NSLog(@"You tapped %@", self.tourCategories[row]);
+    self.tourData.tourCategory.tourCategoryType = (TRVTourCategoryType)row; //Very hacky, I don't like it.
 }
 
 -(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
@@ -67,10 +80,10 @@ static NSString * const cellReuseID = @"cellReuseID";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    if (section == 0) {
+    if (section == TRVStaticDataSection) {
         return self.tourDataSubtitlesArray.count;
     }
-    if (section == 1) {
+    if (section == TRVMutableItinerarySection) {
         return self.tourData.tourStopGeoPoints.count + 1;
     }
     else return 1;
@@ -80,11 +93,11 @@ static NSString * const cellReuseID = @"cellReuseID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseID forIndexPath:indexPath];
     
-    if (indexPath.section == 0) {
+    if (indexPath.section == TRVStaticDataSection) {
         cell.detailTextLabel.text = self.tourDataSubtitlesArray[indexPath.row];
         cell.textLabel.text = self.tourDataWithUserInputTitlesArray[indexPath.row];
     }
-    if (indexPath.section == 1) {
+    if (indexPath.section == TRVMutableItinerarySection) {
         cell.textLabel.text = self.tourData.tourStopGeoPoints[indexPath.row];
         cell.detailTextLabel.text = @"Reverse Geocode me";
     }
@@ -95,7 +108,13 @@ static NSString * const cellReuseID = @"cellReuseID";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == TRVTourCategoryRow) {
+        [self czPickTourCategory];
+    } else {
     [self performSegueWithIdentifier:toEditAllSegueID sender:self];
+    }
+    
+    
 }
 
 

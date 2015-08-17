@@ -22,7 +22,9 @@
 -(NSString *)description {
     NSArray *categoryDescriptions = @[@"See",
                                       @"Play",
-                                      @"Eat", @"Drink", @"NULL"];
+                                      @"Eat",
+                                      @"Drink",
+                                      @"NULL"];
     if (self.tourCategoryType) {
         return categoryDescriptions[self.tourCategoryType];
     }
