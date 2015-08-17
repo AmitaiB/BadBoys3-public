@@ -21,3 +21,4 @@ pod 'SCNumberKeyBoard'
 pod 'LMGeocoder', '~> 1.0'
 pod 'SCLAlertView-Objective-C'
 pod "HNKGooglePlacesAutocomplete", "~> 1.1"
+pod 'FlatUIKit'

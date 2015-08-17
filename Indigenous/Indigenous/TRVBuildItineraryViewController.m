@@ -8,6 +8,8 @@
 
 #import "TRVBuildItineraryViewController.h"
 #import <HNKGooglePlacesAutocomplete.h>
+#import "TRVConstants.h"
+#import <FlatUIKit.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
@@ -17,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *autocompleteTableView;
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
 @property (weak, nonatomic) IBOutlet UILabel *someLabel;
-@property (strong, nonatomic) __block NSMutableArray *searchResults;
+@property (strong, nonatomic) NSMutableArray *searchResults;
 @property (strong, nonatomic) NSMutableArray *currentItinerary;
 
 
@@ -31,6 +33,19 @@ static NSString * const itineraryCellReuseID = @"itineraryCellReuseID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.searchResults                         = [NSMutableArray new];
+    self.currentItinerary                      = [NSMutableArray new];
+
+    self.searchBar.delegate                    = self;
+    self.itineraryTableView.delegate           = self;
+    self.itineraryTableView.dataSource         = self;
+    self.autocompleteTableView.delegate        = self;
+    self.autocompleteTableView.dataSource      = self;
+
+    self.autocompleteTableView.backgroundColor = [UIColor greenSeaColor];
+    self.itineraryTableView.backgroundColor    = [UIColor wisteriaColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,17 +55,50 @@ static NSString * const itineraryCellReuseID = @"itineraryCellReuseID";
 
 #pragma mark - UISearchBarDelegate methods
 
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+    DBLG
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    searchBar.text = @"";
+    [self.searchResults removeAllObjects];
+    [self.autocompleteTableView reloadData];
+    [searchBar resignFirstResponder];
+DBLG
+}
+
+
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     DBLG
-    [[HNKGooglePlacesAutocompleteQuery sharedQuery] fetchPlacesForSearchQuery:searchText completion:^(NSArray *places, NSError *error) {
+    HNKGooglePlacesAutocompleteQuery *googleQueryHNK = [HNKGooglePlacesAutocompleteQuery sharedQuery];
+    
+    self.autocompleteTableView.hidden = NO;
+    
+    [googleQueryHNK fetchPlacesForSearchQuery:searchText completion:^(NSArray *places, NSError *error) {
         if (error) {
             NSLog(@"ERROR! %@", error.localizedDescription);
         } else {
             self.searchResults = [places mutableCopy];
-        NSLog(@"HNKSearch results: %@", [places description]);
+            [self.autocompleteTableView reloadData];
         }
     }];
 }
+
+
+
+/**
+ *  unnecessary, but who knows...?
+ */
+-(void)configureHNKQuery {
+    HNKGooglePlacesAutocompleteQueryConfig *config = [HNKGooglePlacesAutocompleteQueryConfig new];
+    config.country = @"us";
+    config.language = @"en";
+    config.filter = HNKGooglePlaceTypeAutocompleteFilterAddress;
+}
+
+
 
 #pragma mark -TableviewDataSource methods
 
@@ -62,7 +110,6 @@ static NSString * const itineraryCellReuseID = @"itineraryCellReuseID";
     if ([tableView isEqual:self.itineraryTableView]) {
         return self.currentItinerary.count;
     }
-    
     return 0;
 }
 
@@ -70,16 +117,34 @@ static NSString * const itineraryCellReuseID = @"itineraryCellReuseID";
 {
     UITableViewCell *cell;
     if ([tableView isEqual:self.autocompleteTableView]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:searchCellReuseID];
-        cell.textLabel.text = self.searchResults[indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:searchCellReuseID forIndexPath:indexPath];
+        HNKGooglePlacesAutocompletePlace *daPlace = (HNKGooglePlacesAutocompletePlace*)self.searchResults[indexPath.row];
+        cell.textLabel.text = daPlace.name;
     }
     
     if ([tableView isEqual:self.itineraryTableView]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:itineraryCellReuseID];
-        cell.textLabel.text = self.currentItinerary[indexPath.row];
+        cell = [tableView dequeueReusableCellWithIdentifier:itineraryCellReuseID forIndexPath:indexPath];
+        HNKGooglePlacesAutocompletePlace *daPlace = (HNKGooglePlacesAutocompletePlace*)self.currentItinerary[indexPath.row];
+        cell.textLabel.text = daPlace.name;
     }
     return cell;
 }
+
+#pragma mark - TableViewDelegate methods
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([tableView isEqual:self.autocompleteTableView]) {
+        [self.currentItinerary addObject:self.searchResults[indexPath.row]];
+        [self.itineraryTableView reloadData];
+    }
+}
+
+
+-(void)addTourStopToItinerary:(NSString*)tourStopAddress {
+
+    NSLog(@"New Tour Stop! woohoo! %@", tourStopAddress);
+}
+
 /*
  #pragma mark - Navigation
  

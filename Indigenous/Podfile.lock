@@ -41,6 +41,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.5.1):
     - FBSDKCoreKit
+  - FlatUIKit (1.6.2)
   - FoldingTabBar (1.0.1)
   - GoogleMaps (1.10.1)
   - HNKGooglePlacesAutocomplete (1.1.0):
@@ -80,6 +81,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - FlatUIKit
   - FoldingTabBar (~> 1.0.1)
   - GoogleMaps
   - HNKGooglePlacesAutocomplete (~> 1.1)
@@ -102,6 +104,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: f335eaf6865e1e1597dee1debfb533045500da47
   FBSDKLoginKit: 225cc9a388a92916ee3f3bb14422017b6e44b65b
   FBSDKShareKit: 642034ac9f30793dfd897851b724bb4281750266
+  FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
   FoldingTabBar: 3e04c49dbe2b02c529561a4182bf017b928d04d2
   GoogleMaps: ebf08677f181d9c2dcdbd1721d206f02beccc9b1
   HNKGooglePlacesAutocomplete: 0022f666d245c18fb8cd860e79712526d6f88267

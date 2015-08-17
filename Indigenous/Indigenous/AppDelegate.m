@@ -34,8 +34,8 @@
    // [PFUser enableAutomaticUser];
     
     
-    [GMSServices provideAPIKey:GOOGLE_API_KEY];
-    [HNKGooglePlacesAutocompleteQuery setupSharedQueryWithAPIKey:GOOGLE_API_KEY];
+    [GMSServices provideAPIKey:GOOGLE_API_KEY2];
+    [HNKGooglePlacesAutocompleteQuery setupSharedQueryWithAPIKey:GOOGLE_API_KEY2];
     
    
     
