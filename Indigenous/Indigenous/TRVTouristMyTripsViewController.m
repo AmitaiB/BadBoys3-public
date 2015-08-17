@@ -17,6 +17,7 @@
 #import "TRVTour.h"
 #import "TRVTourStop.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "TRVAFNetwokingAPIClient.h"
 
 @interface TRVTouristMyTripsViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -132,22 +133,44 @@
         TRVTour *tour = [[TRVTour alloc]init];
             
             
-//        // get guide for this tour info
+        // get guide for this tour info
         
-//        PFUser *userForThisTour = PFTour[@"guideForThisTour"];
-//        PFObject *userBioForThisUser = userForThisTour[@"userBio"];
-//        [userBioForThisUser fetch];
-//            
-//            
-//            
-//            /// continue herrre
-//        TRVUser *tourGuide = [[TRVUser alloc] init];
-//            tourGuide.userBio.firstName = userBioForThisUser[@"first_name"];
-//        
-//            
+        PFUser *userForThisTour = PFTour[@"guideForThisTour"];
+        [userForThisTour fetch];
+        PFObject *userBioForThisUser = userForThisTour[@"userBio"];
+        [userBioForThisUser fetch];
             
-//        tour.guideForThisTour = PFTour[@"guideForThisTour"];
-            tour.guideForThisTour = guideForThisRow;
+            
+            /// continue herrre
+        TRVUser *tourGuide = [[TRVUser alloc] init];
+        tourGuide.userBio.firstName = userBioForThisUser[@"first_name"];
+//        tourGuideuse.userBio.profileImageURL
+            
+            
+            
+            if (userBioForThisUser[@"picture"]){
+                [TRVAFNetwokingAPIClient getImagesWithURL:userBioForThisUser[@"picture"] withCompletionBlock:^(UIImage *response) {
+                    tourGuide.userBio.profileImage = response;
+                }];
+                
+            } else {
+                
+                PFFile *pictureFile = userBioForThisUser[@"emailPicture"];
+                [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                    if (!error) {
+                        tourGuide.userBio.profileImage = [UIImage imageWithData:data];
+                        tourGuide.userBio.nonFacebookImage = [UIImage imageWithData:data];
+                    } else {
+                        // error block
+                    }
+                }];
+            }
+            
+            
+//
+            
+        tour.guideForThisTour = tourGuide;
+//        tour.guideForThisTour = guideForThisRow;
         tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
         tour.tourDeparture = PFTour[@"tourDeparture"];
         
