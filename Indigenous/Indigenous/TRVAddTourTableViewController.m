@@ -79,7 +79,7 @@ static NSString * const cellReuseID = @"cellReuseID";
 -(void)confirmGuideName {
     SCLAlertView *alert = [[SCLAlertView alloc]initWithNewWindow];
     
-     *textField = [alert addTextField:@"Enter Guide Name"];
+    UITextField *textField = [alert addTextField:@"Enter Guide Name"];
     textField.delegate = self;
     
     [alert addButton:@"Edit Guide Name" target:self selector:nil];

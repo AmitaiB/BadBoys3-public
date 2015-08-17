@@ -7,6 +7,7 @@
 //
 #import <CZPicker.h>
 #import "TRVEditTourDataViewController.h"
+#import <FlatUIKit.h>
 
 @interface TRVEditTourDataViewController ()
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tourCategorySegmentedControl;
@@ -19,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor greenSeaColor];
     
     self.tourCategories = @[@"See", @"Play", @"Eat", @"Drink"];
     self.tourCategorySegmentedControl.selectedSegmentIndex = -1;
