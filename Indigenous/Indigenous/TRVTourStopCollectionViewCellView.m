@@ -41,7 +41,8 @@
     CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
     CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
     CGContextBeginPath(context);
-    CGContextAddEllipseInRect(context, rect);
+    CGRect smallerRect = CGRectInset(rect, 3, 3);
+    CGContextAddEllipseInRect(context, smallerRect);
     CGContextDrawPath(context, kCGPathFillStroke);
     //CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
     //CGRect smallerRect = CGRectInset(self.bounds, self.bounds.size.width/2, self.bounds.size.height/2);

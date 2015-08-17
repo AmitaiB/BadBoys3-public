@@ -55,7 +55,6 @@
                                 options:nil];
 
     [self addSubview:self.contentView];
-    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
     }];
@@ -73,6 +72,10 @@
     
     self.nameOfTourLabel.text = itineraryForThisView.nameOfTour;
     
+    
+    
+    self.withUserLabel.text = tourForThisTourView.guideForThisTour.userBio.firstName;
+    
     // Date Formatter
     
     NSDateFormatter *dayAndMonthFormat = [[NSDateFormatter alloc] init];
@@ -84,7 +87,7 @@
 
     NSString *dayAndMonthOfTrip = [dayAndMonthFormat stringFromDate:dateForThisTour];
 
-    self.upcomingDateLabel.text = dayAndMonthOfTrip;
+    self.upcomingDateLabel.text = [NSString stringWithFormat:@"on %@", dayAndMonthOfTrip];
     
     self.categoryIconImageView.image = tourForThisTourView.categoryForThisTour.iconImage;
     TRVTourStop *firstTourStop = itineraryForThisView.tourStops[0];

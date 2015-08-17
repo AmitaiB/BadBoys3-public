@@ -3,62 +3,56 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TRVMyToursView">
             <connections>
                 <outlet property="categoryIconImageView" destination="p3l-Ca-0VP" id="k6Z-8j-Isb"/>
                 <outlet property="contentView" destination="OoO-yI-cxf" id="7bm-Bl-uPq"/>
-                <outlet property="meetAtFirstStopLabel" destination="O7N-RN-8qc" id="tO1-H9-NTA"/>
+                <outlet property="meetAtFirstStopLabel" destination="iYg-Fp-yTo" id="inw-mK-dRM"/>
                 <outlet property="nameOfTourLabel" destination="uD2-yS-6Oq" id="42e-WM-hGY"/>
                 <outlet property="tourImageView" destination="Dbj-0M-9Ac" id="oUu-NM-KEh"/>
-                <outlet property="upcomingDateLabel" destination="iYg-Fp-yTo" id="T56-0S-MuW"/>
+                <outlet property="upcomingDateLabel" destination="O7N-RN-8qc" id="1fl-jE-fU9"/>
                 <outlet property="withUserImage" destination="gl3-Qz-VDp" id="MYw-xf-LKv"/>
                 <outlet property="withUserLabel" destination="bme-gm-6TH" id="fJH-bz-jOG"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="OoO-yI-cxf">
-            <rect key="frame" x="0.0" y="0.0" width="514" height="214"/>
+            <rect key="frame" x="0.0" y="0.0" width="514" height="230"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="beijing" translatesAutoresizingMaskIntoConstraints="NO" id="Dbj-0M-9Ac">
-                    <rect key="frame" x="0.0" y="0.0" width="514" height="243"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dbj-0M-9Ac">
+                    <rect key="frame" x="0.0" y="8" width="514" height="222"/>
                 </imageView>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ukR-A1-egV">
-                    <rect key="frame" x="0.0" y="0.0" width="514" height="243"/>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukR-A1-egV">
+                    <rect key="frame" x="0.0" y="8" width="514" height="222"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AGZ-gm-r3S">
-                        <rect key="frame" x="0.0" y="0.0" width="514" height="243"/>
+                        <rect key="frame" x="0.0" y="0.0" width="514" height="222"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD2-yS-6Oq">
-                                <rect key="frame" x="83" y="43" width="411" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYg-Fp-yTo">
-                                <rect key="frame" x="25" y="82" width="469" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="first stop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7N-RN-8qc">
-                                <rect key="frame" x="25" y="110" width="469" height="24"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD2-yS-6Oq">
+                                <rect key="frame" x="73" y="30.5" width="421" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p3l-Ca-0VP">
-                                <rect key="frame" x="25" y="27" width="50" height="50"/>
+                                <rect key="frame" x="25" y="27" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="2Qz-Ex-L7o"/>
+                                    <constraint firstAttribute="width" constant="40" id="2Qz-Ex-L7o"/>
                                     <constraint firstAttribute="height" constant="50" id="TWL-qR-h6M"/>
                                     <constraint firstAttribute="width" secondItem="p3l-Ca-0VP" secondAttribute="height" multiplier="1:1" id="Z69-J6-bKF"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="TWL-qR-h6M"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="with" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTf-kE-U7z">
-                                <rect key="frame" x="231" y="154" width="200" height="21"/>
+                                <rect key="frame" x="231" y="162" width="200" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="JIg-sz-1aY"/>
                                 </constraints>
@@ -67,22 +61,34 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bme-gm-6TH">
-                                <rect key="frame" x="231" y="176" width="200" height="21"/>
+                                <rect key="frame" x="231" y="184.5" width="200" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="96i-9a-DQL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gl3-Qz-VDp">
-                                <rect key="frame" x="444" y="154" width="50" height="50"/>
+                                <rect key="frame" x="444" y="162" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Gsf-R1-zpl"/>
                                     <constraint firstAttribute="width" constant="50" id="ig3-48-JBp"/>
                                     <constraint firstAttribute="width" secondItem="gl3-Qz-VDp" secondAttribute="height" multiplier="1:1" id="q4u-58-Amf"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="first stop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYg-Fp-yTo">
+                                <rect key="frame" x="25" y="72" width="469" height="26"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="on Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7N-RN-8qc">
+                                <rect key="frame" x="25" y="106" width="469" height="23.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -119,16 +125,29 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="ukR-A1-egV" firstAttribute="leading" secondItem="Dbj-0M-9Ac" secondAttribute="leading" id="817-5F-8AV"/>
                 <constraint firstAttribute="bottom" secondItem="ukR-A1-egV" secondAttribute="bottom" id="GcQ-Vh-teD"/>
+                <constraint firstAttribute="bottom" secondItem="Dbj-0M-9Ac" secondAttribute="bottom" id="QL7-Mz-l0q"/>
                 <constraint firstAttribute="trailing" secondItem="ukR-A1-egV" secondAttribute="trailing" id="Qcg-7f-dqc"/>
+                <constraint firstItem="ukR-A1-egV" firstAttribute="trailing" secondItem="Dbj-0M-9Ac" secondAttribute="trailing" id="Rgs-fw-aTp"/>
                 <constraint firstItem="ukR-A1-egV" firstAttribute="top" secondItem="OoO-yI-cxf" secondAttribute="top" id="SAW-iH-zjB"/>
+                <constraint firstAttribute="trailing" secondItem="Dbj-0M-9Ac" secondAttribute="trailing" id="Upi-KR-z4w"/>
+                <constraint firstItem="ukR-A1-egV" firstAttribute="top" secondItem="Dbj-0M-9Ac" secondAttribute="top" id="VUK-2Q-qlE"/>
                 <constraint firstItem="ukR-A1-egV" firstAttribute="leading" secondItem="OoO-yI-cxf" secondAttribute="leading" id="WqY-2s-4gk"/>
+                <constraint firstItem="Dbj-0M-9Ac" firstAttribute="top" secondItem="OoO-yI-cxf" secondAttribute="topMargin" id="aCP-OM-3XW"/>
+                <constraint firstItem="Dbj-0M-9Ac" firstAttribute="leading" secondItem="OoO-yI-cxf" secondAttribute="leading" id="j1N-Lt-9Q5"/>
+                <constraint firstItem="ukR-A1-egV" firstAttribute="bottom" secondItem="Dbj-0M-9Ac" secondAttribute="bottom" id="okd-tL-1rW"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="GcQ-Vh-teD"/>
+                    <exclude reference="Qcg-7f-dqc"/>
+                    <exclude reference="SAW-iH-zjB"/>
+                    <exclude reference="WqY-2s-4gk"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="94" y="113"/>
         </view>
     </objects>
-    <resources>
-        <image name="beijing" width="500" height="310"/>
-    </resources>
 </document>

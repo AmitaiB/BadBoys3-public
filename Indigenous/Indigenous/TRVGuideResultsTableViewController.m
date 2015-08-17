@@ -40,10 +40,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateGuidesList];
-
+    
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
     self.PFGuides = [@[] mutableCopy];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -100,12 +100,12 @@
 -(void)passFilterDictionary:(NSDictionary *)dictionary{
     
     self.filterDictionary = dictionary;
-
-
+    
+    
 }
 
 -(void)updateGuidesList {
-        
+    
     self.availableGuides = [[NSMutableArray alloc]init];
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText = @"Loading Guides";
@@ -113,10 +113,13 @@
     PFQuery *query = [PFUser query];
     [query includeKey:@"userBio"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error){
-    
-        self.userCount = 0;
-        [self findAppropriateGuides:objects];
-        [self createGuides];
+        
+        NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+        [operationQ addOperationWithBlock:^{
+            self.userCount = 0;
+            [self findAppropriateGuides:objects];
+            [self createGuides];
+        }];
         
     }];
     
@@ -168,7 +171,10 @@
             [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                 bio.profileImage = response;
                 guideForThisRow.userBio = bio;
-                [self completeUser:guideForThisRow bio:bio parseUser:user];
+                NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+                [operationQ addOperationWithBlock:^{
+                    [self completeUser:guideForThisRow bio:bio parseUser:user];
+                }];
             }];
             
         } else {
@@ -179,8 +185,10 @@
                     bio.profileImage = [UIImage imageWithData:data];
                     bio.nonFacebookImage = [UIImage imageWithData:data];
                     guideForThisRow.userBio = bio;
-                    
-                    [self completeUser:guideForThisRow bio:bio parseUser:user];
+                    NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+                    [operationQ addOperationWithBlock:^{
+                        [self completeUser:guideForThisRow bio:bio parseUser:user];
+                    }];
                     
                 } else {
                     // error block
@@ -237,7 +245,7 @@
             [guideForThisRow.PFCurrentCategoryTrips addObject:PFTour];
         } else {
             [guideForThisRow.PFOtherCategoryTrips addObject:PFTour];
-
+            
         }
         
     } // END OF TOUR FOR LOOP
@@ -246,8 +254,11 @@
     
     self.userCount++;
     if (self.userCount == self.PFGuides.count){
-        [self.tableView reloadData];
-        [self.hud hide:YES];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+            [self.hud hide:YES];
+        }];
+        
     }
     
 }
@@ -265,7 +276,7 @@
     
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
         
-
+        
         TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
         destinationVC.selectedGuideUser = self.destinationGuideUser;
         
