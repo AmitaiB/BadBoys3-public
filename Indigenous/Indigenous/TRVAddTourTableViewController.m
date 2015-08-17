@@ -9,6 +9,8 @@
 #import <CZPicker.h>
 #import "TRVAddTourTableViewController.h"
 #import "SBFlatDatePicker.h"
+#import <SCLAlertView.h>
+
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
@@ -74,9 +76,27 @@ static NSString * const cellReuseID = @"cellReuseID";
 }
 
 #pragma mark - Confirm GuideName methods
+-(void)confirmGuideName {
+    SCLAlertView *alert = [[SCLAlertView alloc]initWithNewWindow];
+    
+     *textField = [alert addTextField:@"Enter Guide Name"];
+    textField.delegate = self;
+    
+    [alert addButton:@"Edit Guide Name" target:self selector:nil];
+    
+    [alert showEdit:self title:@"Edit Guide Name" subTitle:@"Please enter the Guide's name or identifier" closeButtonTitle:@"shrug" duration:0.0f];
+    
+    
+        //Construct URL to sound file
+//    NSString *path = [NSString stringWithFormat:@"Indigenous/Bell%20Transition.mp3", [[NSBundle mainBundle]resourcePath]];
+//    alert.soundURL = [NSURL URLWithString:path];
+}
 
-
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    self.tourData.tourGuide = textField.text;
+    NSLog(@"The new tour Guide name is %@", self.tourData.tourGuide);
+    return YES;
+}
 
     //https://github.com/SolomonBier/SBFlatDatePicker
 #pragma mark - SBFlatDatePicker delegate
@@ -141,14 +161,33 @@ static NSString * const cellReuseID = @"cellReuseID";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == TRVTourCategoryRow) {
-        [self czPickTourCategory];
-    } else if (indexPath.row == TRVTourDateRow) {
-        [self sbPickDepartureDate];
-    } else {
-    [self performSegueWithIdentifier:toEditAllSegueID sender:self];
+    TRVTourDataRow x = indexPath.row;
+    switch (x) {
+        case TRVTourNameRow: {
+            DBLG
+            break;
+        }
+        case TRVTourGuideRow: {
+            [self confirmGuideName];
+            break;
+        }
+        case TRVTourCategoryRow: {
+            [self czPickTourCategory];
+            break;
+        }
+        case TRVTourDateRow: {
+            [self sbPickDepartureDate];
+            break;
+        }
+//        case TRVTourItineraryRow: {
+//            [self performSegueWithIdentifier:/*MAP!!*/ sender:self];
+//            break;
+//        }
+        default: {
+            [self performSegueWithIdentifier:toEditAllSegueID sender:self];
+            break;
+        }
     }
-    
     
 }
 

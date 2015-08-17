@@ -38,6 +38,9 @@
 		38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */; };
 		38B1665C1B7CC135005DA926 /* TRVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1665B1B7CC135005DA926 /* TRVLocationManager.m */; };
 		38CBBA4E1B8182C600B4E7BD /* SBFlatDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CBBA4C1B8182C600B4E7BD /* SBFlatDatePicker.m */; };
+		38CBBA521B819EB400B4E7BD /* Bell Transition.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 38CBBA511B819EB400B4E7BD /* Bell Transition.mp3 */; };
+		38CBBA581B81A98400B4E7BD /* JOTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CBBA551B81A98400B4E7BD /* JOTextField.m */; };
+		38CBBA591B81A98400B4E7BD /* Vars.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CBBA571B81A98400B4E7BD /* Vars.m */; };
 		38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */; };
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
 		451565241B68221B005A2871 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451565221B68221B005A2871 /* LaunchScreen.xib */; };
@@ -184,6 +187,11 @@
 		38CBBA4B1B8182C600B4E7BD /* SBFlatDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBFlatDatePicker.h; sourceTree = "<group>"; };
 		38CBBA4C1B8182C600B4E7BD /* SBFlatDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBFlatDatePicker.m; sourceTree = "<group>"; };
 		38CBBA4D1B8182C600B4E7BD /* SBFlatDatePickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBFlatDatePickerDelegate.h; sourceTree = "<group>"; };
+		38CBBA511B819EB400B4E7BD /* Bell Transition.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Bell Transition.mp3"; sourceTree = "<group>"; };
+		38CBBA541B81A98400B4E7BD /* JOTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JOTextField.h; sourceTree = "<group>"; };
+		38CBBA551B81A98400B4E7BD /* JOTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JOTextField.m; sourceTree = "<group>"; };
+		38CBBA561B81A98400B4E7BD /* Vars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vars.h; sourceTree = "<group>"; };
+		38CBBA571B81A98400B4E7BD /* Vars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vars.m; sourceTree = "<group>"; };
 		38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGoogleAPIClient.h; sourceTree = "<group>"; };
 		38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGoogleAPIClient.m; sourceTree = "<group>"; };
 		451565101B68221B005A2871 /* Indigenous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indigenous.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -471,6 +479,17 @@
 			name = SBFlatDatePicker;
 			sourceTree = "<group>";
 		};
+		38CBBA531B81A96A00B4E7BD /* JOTextField */ = {
+			isa = PBXGroup;
+			children = (
+				38CBBA541B81A98400B4E7BD /* JOTextField.h */,
+				38CBBA551B81A98400B4E7BD /* JOTextField.m */,
+				38CBBA561B81A98400B4E7BD /* Vars.h */,
+				38CBBA571B81A98400B4E7BD /* Vars.m */,
+			);
+			name = JOTextField;
+			sourceTree = "<group>";
+		};
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +532,7 @@
 				456468F51B7E57A1005F5A57 /* Style Classes */,
 				45E772D61B6962C700003C7C /* Login Signup Flow */,
 				451565201B68221B005A2871 /* Images.xcassets */,
+				38CBBA511B819EB400B4E7BD /* Bell Transition.mp3 */,
 				451565221B68221B005A2871 /* LaunchScreen.xib */,
 				451565131B68221B005A2871 /* Supporting Files */,
 			);
@@ -523,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */,
+				38CBBA531B81A96A00B4E7BD /* JOTextField */,
 				38CBBA4A1B8182A600B4E7BD /* SBFlatDatePicker */,
 				388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */,
 				388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */,
@@ -946,6 +967,7 @@
 				94C2EDA21B69637900BC2F7C /* Profile.storyboard in Resources */,
 				381CCFAF1B80310900138461 /* TourGuideFlow-reboot.storyboard in Resources */,
 				94EB295D1B7845DE00CAB1A5 /* TRVNoNetworkModalView.xib in Resources */,
+				38CBBA521B819EB400B4E7BD /* Bell Transition.mp3 in Resources */,
 				45E772D51B6961D700003C7C /* LoginSignup.storyboard in Resources */,
 				948A22671B73CDB9006FC5BB /* TRVTourView.xib in Resources */,
 				388EBC5F1B783AE400D60297 /* CustomInfoWindow.xib in Resources */,
@@ -1050,6 +1072,7 @@
 				9435DF711B6F1E5C0054A2F4 /* TRVTourCategoryView.m in Sources */,
 				45E772E91B6A778200003C7C /* TRVFacebookLoginHandler.m in Sources */,
 				94EA5F7E1B6FEEE1002244D8 /* TRVUserDataStore.m in Sources */,
+				38CBBA581B81A98400B4E7BD /* JOTextField.m in Sources */,
 				94A5559F1B6AD22900076C99 /* TRVUser.m in Sources */,
 				45E772DC1B6A670100003C7C /* TRVLoginViewController.m in Sources */,
 				FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */,
@@ -1097,6 +1120,7 @@
 				942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */,
 				384AFBC91B696B8F00E169A9 /* TRVAddToursVC.m in Sources */,
 				45E772D91B6962E700003C7C /* TRVLoginSignupHomeViewController.m in Sources */,
+				38CBBA591B81A98400B4E7BD /* Vars.m in Sources */,
 				45E772E31B6A68FC00003C7C /* TRVCompleteSignupWithFacebookViewController.m in Sources */,
 				FA57FA1C1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m in Sources */,
 			);
