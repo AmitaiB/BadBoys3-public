@@ -35,8 +35,8 @@
                                                 <action selector="dismissButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Dvp-Kx-aHZ"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JI-Jn-hTc">
-                                            <rect key="frame" x="253.5" y="343.5" width="93" height="47"/>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JI-Jn-hTc">
+                                            <rect key="frame" x="254" y="344" width="93" height="47"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
                                             <state key="normal" title="Log Out">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,6 +120,7 @@
                             <constraint firstItem="xiC-do-ong" firstAttribute="leading" secondItem="zCH-mX-hgd" secondAttribute="leading" id="miI-be-EZ3"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="sTr-86-ckw"/>
                     <navigationItem key="navigationItem" title="Home" id="KCx-Qd-1OU">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="gXB-WD-Ctr">
                             <connections>
@@ -139,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfv-Js-mid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="817"/>
+            <point key="canvasLocation" x="2792" y="817"/>
         </scene>
         <!--Edit Profile Table View Controller-->
         <scene sceneID="Xjb-EJ-rLU">
@@ -558,15 +559,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yma-bF-DdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2706" y="803"/>
+            <point key="canvasLocation" x="3518" y="803"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EPI-ek-vTn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q8H-jy-csn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Zjl-pc-Jn9"/>
                     <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2eP-mi-Zay">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -578,7 +578,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zc-F7-e9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1328" y="823"/>
+            <point key="canvasLocation" x="2026" y="817"/>
         </scene>
     </scenes>
     <resources>
