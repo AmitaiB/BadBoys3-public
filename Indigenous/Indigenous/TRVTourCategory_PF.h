@@ -20,5 +20,6 @@ typedef NS_ENUM(NSInteger, TRVTourCategoryType){
 
 @property (nonatomic) TRVTourCategoryType tourCategory;
 
+-(NSString*)description;
 
 @end

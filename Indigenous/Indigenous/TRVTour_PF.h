@@ -13,12 +13,15 @@
 @interface TRVTour_PF : PFObject <PFSubclassing>
 
 @property (strong, nonatomic) NSString           *tourName;
+@property (strong, nonatomic) NSString           *tourGuide;
 @property (strong, nonatomic) TRVTourCategory_PF *tourCategory;
 @property (strong, nonatomic) NSDate             *depatureDate;
 @property (strong, nonatomic) NSMutableArray     *tourStopGeoPoints;
 
 + (NSString *)parseClassName;
 
+-(instancetype)initWithDefaultValues;
 
+-(instancetype)init;
 
 @end

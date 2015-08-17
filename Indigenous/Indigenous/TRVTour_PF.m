@@ -18,7 +18,23 @@
     return NSStringFromClass([TRVTour_PF class]);
 }
 
+-(instancetype)initWithDefaultValues {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    self.tourGuide = [PFUser currentUser].username;
+    self.tourName = @"Your Awesome Tour!";
+    self.tourCategory = @"The Paradox of Choice!";
+    self.depatureDate = nil;
+    self.tourStopGeoPoints = nil;
+    
+    return self;
+}
 
+-(instancetype)init {
+    return [self initWithDefaultValues];
+}
 
 
 @end
