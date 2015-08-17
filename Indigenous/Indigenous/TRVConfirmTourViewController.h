@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TRVTourObject.h"
 
-@interface TRVConfirmTourViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *tourImage;
-@property (weak, nonatomic) IBOutlet UILabel *tourName;
-@property (weak, nonatomic) IBOutlet UILabel *tourCategory;
-@property (weak, nonatomic) IBOutlet UILabel *tourArea;
-@property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
+@interface TRVConfirmTourViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIImageView *tourImageView;
+@property (weak, nonatomic) IBOutlet UILabel *tourNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tourCategoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tourAreaLabel;
+@property (weak, nonatomic) IBOutlet UITableView *finalItineraryTableView;
 
 @property (strong, nonatomic) TRVTourObject *tourObject;
 

@@ -17,12 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.tourNameLabel.text = self.tourObject.tourName;
+    self.tourCategoryLabel.text = self.tourObject.tourCategory;
+    self.tourAreaLabel.text/*TODO*/;
+    self.tourImageView.image = self.tourObject.tourImage;
+    
+    self.finalItineraryTableView.delegate = self;
+    self.finalItineraryTableView.dataSource = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 //-(void)createParseDummyTourWithName:(NSString*)tourName category:(NSString*)tourCategory date:(NSDate*)departureDate image:(UIImage*)tourImage itinerary:(NSArray*)arrayOfGenericLocations {

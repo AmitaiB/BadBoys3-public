@@ -17,7 +17,7 @@
 @property (strong, nonatomic) NSString       *tourCategory;
 @property (strong, nonatomic) NSDate         *tourDate;
 @property (strong, nonatomic) NSMutableArray *tourItinerary;
-@property (strong, nonatomic) UIImage         *tourImage;
+@property (strong, nonatomic) UIImage        *tourImage;
 
 
 
