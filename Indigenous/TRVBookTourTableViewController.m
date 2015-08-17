@@ -7,6 +7,7 @@
 //
 
 #import "TRVBookTourTableViewController.h"
+#import "TRVTourReceiptViewController.h"
 #import "TRVUserDataStore.h"
 #import <Parse.h>
 
@@ -39,13 +40,11 @@
 //    self.dateOfTourLabel.text = self.destinationTour.tourDeparture;
     
     
-    
     NSString *guideFirstName = self.destinationTour.guideForThisTour.userBio.firstName;
     NSString *guideLastName = self.destinationTour.guideForThisTour.userBio.lastName;
 
     
     self.tourGuideForThisLabel.text = [NSString stringWithFormat:@"with %@", guideFirstName];
-    
     
     self.guideFullNameLabel.text = [NSString stringWithFormat:@"%@ %@" , guideFirstName, guideLastName];
     
@@ -88,26 +87,27 @@
   
     self.destinationPFTour[@"isPurchased"] = @(YES);
     self.destinationPFTour[@"tourDeparture"] = self.destinationTour.tourDeparture;
-//    self.destinationPFTour[@"guideForThisTour"] =
     
     [currentUser addObject:self.destinationPFTour forKey:@"myTrips"];
     [currentUser save];
     
-    
     if ([self.destinationTour.categoryForThisTour.categoryName isEqualToString:self.sharedDataStore.currentCategorySearching.categoryName]) {
         
-//        
-//        [self.sharedDataStore.loggedInUser.PFallTrips addObject:self.destinationPFTour];
-//        currentUser[@"myTrips"] setArray:;
-        
-        
+
 
     }
 
-    // LOGIC FOR CREATING A TOUR
-    
     
 }
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    TRVTourReceiptViewController *destinationVC = segue.destinationViewController;
+    destinationVC.destinationTour = self.destinationTour;
+    
+}
+
 
 
 @end

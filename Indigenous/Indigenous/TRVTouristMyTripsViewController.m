@@ -130,7 +130,9 @@
         
         
         TRVTour *tour = [[TRVTour alloc]init];
-        tour.guideForThisTour = guideForThisRow;
+            
+        //
+        tour.guideForThisTour = PFTour[@"guideForThisTour"];
         tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
         tour.tourDeparture = PFTour[@"tourDeparture"];
         

@@ -7,8 +7,10 @@
 //
 
 #import "TRVTourReceiptViewController.h"
+#import "TRVMyToursView.h"
 
 @interface TRVTourReceiptViewController ()
+@property (weak, nonatomic) IBOutlet TRVMyToursView *tourPurchasedNib;
 
 @end
 
@@ -17,12 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    // set the labels by overriding settenr method!
+    self.tourPurchasedNib.tourForThisTourView = self.destinationTour;
+    
+    
 }
 
 - (IBAction)backToHomeButtonPressed:(id)sender {
-    
-    
-
     
     UIViewController *presentingViewController = self.presentingViewController;
     

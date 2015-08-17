@@ -9,6 +9,17 @@
 #import "TRVTourView.h"
 #import <Masonry/Masonry.h>
 
+@interface TRVTourView ()
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIImageView *tourImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameOfTourLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfStopsLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *tourRatingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *upcomingDateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryIconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *tourPriceLabel;
+@end
+
 @implementation TRVTourView
 
 
@@ -65,8 +76,10 @@
     self.categoryIconImageView.image = tourForThisTourView.categoryForThisTour.iconImage;
     self.numberOfStopsLabel.text = [NSString stringWithFormat:@"%lu stops", itineraryForThisView.tourStops.count];;
     
+    self.tourPriceLabel.text = [NSString stringWithFormat:@"$%lu",tourForThisTourView.costOfTour];
+    
     // Sets the decimal to 1 significant figure
-    self.tourRatingLabel.text = [NSString stringWithFormat:@"Average Rating - %.1f", tourForThisTourView.tourAverageRating];
+//    self.tourRatingLabel.text = [NSString stringWithFormat:@"Average Rating - %.1f", tourForThisTourView.tourAverageRating];
 };
 
 

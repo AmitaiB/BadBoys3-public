@@ -53,7 +53,7 @@
     [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class)
                                   owner:self
                                 options:nil];
-    
+
     [self addSubview:self.contentView];
     self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
