@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		016992894F7DEF19D9F69221 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		25FDDFC619B863BD20E0252D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC93E5E15A12FDFA91E23F0 /* libPods.a */; };
+		3822A4521B82829B006F17B0 /* TRVConfirmTourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3822A4511B82829B006F17B0 /* TRVConfirmTourViewController.m */; };
 		3859EDF01B694003001C5693 /* TRVTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDEF1B694003001C5693 /* TRVTour.m */; };
 		3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDF31B694031001C5693 /* TRVItinerary.m */; };
 		385C46FA1B6BCE7E00D9091A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565151B68221B005A2871 /* main.m */; };
@@ -117,6 +118,8 @@
 /* Begin PBXFileReference section */
 		2A091188074B9C927FC5D79C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2DC93E5E15A12FDFA91E23F0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3822A4501B82829B006F17B0 /* TRVConfirmTourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVConfirmTourViewController.h; sourceTree = "<group>"; };
+		3822A4511B82829B006F17B0 /* TRVConfirmTourViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVConfirmTourViewController.m; sourceTree = "<group>"; };
 		3859EDEE1B694003001C5693 /* TRVTour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTour.h; sourceTree = "<group>"; };
 		3859EDEF1B694003001C5693 /* TRVTour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTour.m; sourceTree = "<group>"; };
 		3859EDF21B694031001C5693 /* TRVItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVItinerary.h; sourceTree = "<group>"; };
@@ -352,6 +355,8 @@
 				38F763E81B825F3800F553EE /* Cutting Floor */,
 				38F763E51B824FB500F553EE /* TRVBuildItineraryViewController.h */,
 				38F763E61B824FB500F553EE /* TRVBuildItineraryViewController.m */,
+				3822A4501B82829B006F17B0 /* TRVConfirmTourViewController.h */,
+				3822A4511B82829B006F17B0 /* TRVConfirmTourViewController.m */,
 			);
 			name = "TourGuideFlow-4th-iteration";
 			sourceTree = "<group>";
@@ -933,6 +938,7 @@
 				45E772E91B6A778200003C7C /* TRVFacebookLoginHandler.m in Sources */,
 				94EA5F7E1B6FEEE1002244D8 /* TRVUserDataStore.m in Sources */,
 				94A5559F1B6AD22900076C99 /* TRVUser.m in Sources */,
+				3822A4521B82829B006F17B0 /* TRVConfirmTourViewController.m in Sources */,
 				45E772DC1B6A670100003C7C /* TRVLoginViewController.m in Sources */,
 				FA57FA1F1B696AF800CFBB89 /* TRVTouristTripTableViewCell.m in Sources */,
 				9435DF6C1B6ED3350054A2F4 /* TRVCityTableViewCell.m in Sources */,

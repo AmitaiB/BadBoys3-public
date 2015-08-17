@@ -21,6 +21,8 @@
 
 -(instancetype)initNameOfTour:(NSString * __nonnull)name tourImage:(UIImage * __nullable)tourImage tourStops:(NSMutableArray * __nonnull)tourStops;
 
+-(instancetype)initWithPlacesArray:(NSArray *)arrayOfGooglePlaces;
+
 -(instancetype)init;
 
 @end

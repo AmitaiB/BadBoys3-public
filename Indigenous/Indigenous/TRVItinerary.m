@@ -5,8 +5,9 @@
 //  Created by Amitai Blickstein on 7/29/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
-
+#import <HNKGooglePlacesAutocompletePlace.h>
 #import "TRVItinerary.h"
+#import "TRVTourStop.h"
 
 @implementation TRVItinerary
 
@@ -23,12 +24,16 @@
     
     return self;
 }
+
+
     //Added under the advice of the TA's...
 -(instancetype)init {
     return [self initNameOfTour:@""
                       tourImage:[UIImage imageNamed:@"button_my_location"]
                       tourStops:[NSMutableArray new]];
 }
+
+
 
 
 

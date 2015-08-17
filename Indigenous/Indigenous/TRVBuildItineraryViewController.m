@@ -136,23 +136,21 @@ DBLG
     if ([tableView isEqual:self.autocompleteTableView]) {
         [self.currentItinerary addObject:self.searchResults[indexPath.row]];
         [self.itineraryTableView reloadData];
+        [self.searchBar.delegate searchBarCancelButtonClicked:self.searchBar]; //Because you want the same functionality to happen.
     }
 }
 
 
--(void)addTourStopToItinerary:(NSString*)tourStopAddress {
-
-    NSLog(@"New Tour Stop! woohoo! %@", tourStopAddress);
-}
-
-/*
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     self.tourObject.tourItinerary = self.currentItinerary;
+     
+     
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
  }
- */
+
 
 @end
