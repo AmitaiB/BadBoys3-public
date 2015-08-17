@@ -6,20 +6,19 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "PFObject.h"
-#import <Parse.h>
+#import <UIKit/UIKit.h>
+//#import "PFObject.h"
+//#import <Parse.h>
 
-@interface TRVTourDataPF : PFObject <PFSubclassing>
+@interface TRVTourData : NSObject
 
 @property (strong, nonatomic) NSString       *tourName;
 @property (strong, nonatomic) NSArray        *tourCategories;
 @property (strong, nonatomic) NSString       *tourCategory;
 @property (strong, nonatomic) NSDate         *tourDate;
 @property (strong, nonatomic) NSMutableArray *tourItinerary;
-@property (strong, nonatomic) PFFile         *tourImage;
+@property (strong, nonatomic) UIImage         *tourImage;
 
-+ (NSString *)parseClassName;
--(instancetype)init;
 
 
 @end

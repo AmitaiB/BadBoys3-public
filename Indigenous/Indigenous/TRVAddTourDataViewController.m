@@ -8,7 +8,7 @@
 #import "TRVBuildItineraryViewController.h"
 #import "TRVTourImagePicker.h"
 #import "TRVAddTourDataViewController.h"
-#import "TRVTourDataPF.h"
+#import "TRVTourData.h"
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 
@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
 
-@property (strong, nonatomic) TRVTourDataPF *tourData;
+@property (strong, nonatomic) TRVTourData *tourData;
 - (IBAction)dateButtonTapped:(id)sender;
 - (IBAction)imageButtonTapped:(id)sender;
 
@@ -30,7 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tourData = [TRVTourDataPF new];
+    self.tourData = [TRVTourData new];
     [self initializeSegmentedControl];
     [self initializeDatePicker];
     // Do any additional setup after loading the view.
