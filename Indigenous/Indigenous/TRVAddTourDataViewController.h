@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TRVAddTourDataViewController : UIViewController <UITextFieldDelegate>
+@interface TRVAddTourDataViewController : UIViewController <UITextFieldDelegate, UIImagePickerControllerDelegate>
 
 @end

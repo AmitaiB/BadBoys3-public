@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRVTourObject.h"
 
 @interface TRVBuildItineraryViewController : UIViewController
+
+@property (strong, nonatomic) TRVTourObject *tourObject;
 
 @end

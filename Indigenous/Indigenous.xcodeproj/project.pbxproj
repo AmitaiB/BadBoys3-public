@@ -349,12 +349,20 @@
 				38B02B861B82356E00C2B0A2 /* TRVTourObject.m */,
 				38B02B821B82332400C2B0A2 /* TRVAddTourDataViewController.h */,
 				38B02B831B82332400C2B0A2 /* TRVAddTourDataViewController.m */,
-				38F763E21B8246C000F553EE /* TRVTourImagePicker.h */,
-				38F763E31B8246C000F553EE /* TRVTourImagePicker.m */,
+				38F763E81B825F3800F553EE /* Cutting Floor */,
 				38F763E51B824FB500F553EE /* TRVBuildItineraryViewController.h */,
 				38F763E61B824FB500F553EE /* TRVBuildItineraryViewController.m */,
 			);
 			name = "TourGuideFlow-4th-iteration";
+			sourceTree = "<group>";
+		};
+		38F763E81B825F3800F553EE /* Cutting Floor */ = {
+			isa = PBXGroup;
+			children = (
+				38F763E21B8246C000F553EE /* TRVTourImagePicker.h */,
+				38F763E31B8246C000F553EE /* TRVTourImagePicker.m */,
+			);
+			name = "Cutting Floor";
 			sourceTree = "<group>";
 		};
 		451565071B68221B005A2871 = {

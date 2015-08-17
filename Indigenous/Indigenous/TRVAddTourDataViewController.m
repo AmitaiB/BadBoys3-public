@@ -74,16 +74,18 @@
         DBLG
     }];
 }
-
+/**
+ *  TODO: Check if device has camera.
+ */
 - (void)takeNewPhoto {
-//    UIImagePickerController *imagePicker = [UIImagePickerController new];
-//    imagePicker.delegate = self;
-//    imagePicker.allowsEditing = YES;
-//    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    
-//    [self presentViewController:imagePicker animated:YES completion:^{
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:imagePicker animated:YES completion:^{
         DBLG
-//    }];
+    }];
 }
 
 - (void)selectExistingPhoto {
@@ -97,6 +99,22 @@
     }];
 }
 
+#pragma mark - UIImagePickerControllerDelegate methods
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [self.imageButton setImage:info[UIImagePickerControllerEditedImage] forState:UIControlStateNormal];
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self presentViewController:picker animated:YES completion:^{
+        DBLG
+    }];
+}
 
 
 
@@ -145,8 +163,11 @@
     self.tourObject.tourDate = self.datePicker.date;
     self.tourObject.tourName = self.tourNameTxF.text;
     self.tourObject.tourCategory = [self.tourCategorySegControl titleForSegmentAtIndex:self.tourCategorySegControl.selectedSegmentIndex];
+    self.tourObject.tourImage =  self.imageButton.imageView.image;
     
-
+    TRVBuildItineraryViewController *destinationVC = segue.destinationViewController;
+    destinationVC.tourObject = self.tourObject;
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
