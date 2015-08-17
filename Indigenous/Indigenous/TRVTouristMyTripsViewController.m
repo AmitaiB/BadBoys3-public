@@ -59,6 +59,7 @@
                         myTrips = user[@"myTrips"];
                     }
                     
+
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
