@@ -53,6 +53,7 @@ static NSString * const cellReuseID = @"cellReuseID";
 -(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
     NSLog(@"You tapped %@", self.tourCategories[row]);
     self.tourData.tourCategory.tourCategoryType = (TRVTourCategoryType)row; //Very hacky, I don't like it.
+    NSLog(@"tourCategoryType...: %@", [self.tourData.tourCategory description]);
 }
 
 -(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {

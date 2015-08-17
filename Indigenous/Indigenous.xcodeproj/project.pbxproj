@@ -37,6 +37,7 @@
 		38A255461B7A3A2A00257F6F /* CLLocation+initWith2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A255451B7A3A2A00257F6F /* CLLocation+initWith2D.m */; };
 		38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */; };
 		38B1665C1B7CC135005DA926 /* TRVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 38B1665B1B7CC135005DA926 /* TRVLocationManager.m */; };
+		38CBBA4E1B8182C600B4E7BD /* SBFlatDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 38CBBA4C1B8182C600B4E7BD /* SBFlatDatePicker.m */; };
 		38E184981B74C36F002756AF /* TRVGoogleAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */; };
 		451565211B68221B005A2871 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 451565201B68221B005A2871 /* Images.xcassets */; };
 		451565241B68221B005A2871 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 451565221B68221B005A2871 /* LaunchScreen.xib */; };
@@ -180,6 +181,9 @@
 		38A2554B1B7A50B600257F6F /* CLLocation+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+Utils.m"; sourceTree = "<group>"; };
 		38B1665A1B7CC135005DA926 /* TRVLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVLocationManager.h; sourceTree = "<group>"; };
 		38B1665B1B7CC135005DA926 /* TRVLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVLocationManager.m; sourceTree = "<group>"; };
+		38CBBA4B1B8182C600B4E7BD /* SBFlatDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBFlatDatePicker.h; sourceTree = "<group>"; };
+		38CBBA4C1B8182C600B4E7BD /* SBFlatDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBFlatDatePicker.m; sourceTree = "<group>"; };
+		38CBBA4D1B8182C600B4E7BD /* SBFlatDatePickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBFlatDatePickerDelegate.h; sourceTree = "<group>"; };
 		38E184961B74C36F002756AF /* TRVGoogleAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVGoogleAPIClient.h; sourceTree = "<group>"; };
 		38E184971B74C36F002756AF /* TRVGoogleAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVGoogleAPIClient.m; sourceTree = "<group>"; };
 		451565101B68221B005A2871 /* Indigenous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Indigenous.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -457,6 +461,16 @@
 			name = "Models:TourGuideFlow-reboot";
 			sourceTree = "<group>";
 		};
+		38CBBA4A1B8182A600B4E7BD /* SBFlatDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				38CBBA4B1B8182C600B4E7BD /* SBFlatDatePicker.h */,
+				38CBBA4C1B8182C600B4E7BD /* SBFlatDatePicker.m */,
+				38CBBA4D1B8182C600B4E7BD /* SBFlatDatePickerDelegate.h */,
+			);
+			name = SBFlatDatePicker;
+			sourceTree = "<group>";
+		};
 		451565071B68221B005A2871 = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				388EBC5B1B783AE400D60297 /* CustomInfoWindowView.h */,
+				38CBBA4A1B8182A600B4E7BD /* SBFlatDatePicker */,
 				388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */,
 				388EBC5D1B783AE400D60297 /* CustomInfoWindow.xib */,
 				388EBC511B781DE300D60297 /* SearchViewController.h */,
@@ -1025,6 +1040,7 @@
 				94C77F871B68354E003836E3 /* TRVTourStop.m in Sources */,
 				944AD0061B6DE4B300404EDD /* TRVGuideProfileTableViewCell.m in Sources */,
 				381CCFA91B802CAD00138461 /* TRVAddTourTableViewController.m in Sources */,
+				38CBBA4E1B8182C600B4E7BD /* SBFlatDatePicker.m in Sources */,
 				388EBC561B781DE300D60297 /* SelectedLocation.m in Sources */,
 				9435DF691B6ED0E30054A2F4 /* TRVCity.m in Sources */,
 				944AD0091B6DF4B500404EDD /* TRVGuideProfileImageView.m in Sources */,

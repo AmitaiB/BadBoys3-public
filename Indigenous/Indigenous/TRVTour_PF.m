@@ -23,16 +23,19 @@
     if (!self) {
         return nil;
     }
-    self.tourName = @"Your Awesome Tour!";
-    self.tourGuide = [PFUser currentUser].username;
-    self.tourCategory.tourCategoryType = TRVTourCategoryNull;
-    self.depatureDate = [NSDate date];
-    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *point, NSError *error) {
-        if (!error) {
-            self.tourStopGeoPoints = [@[point] mutableCopy];
-            NSLog(@"self.tourStopGeoPoints: %@", [self.tourStopGeoPoints description]);
-        } else NSLog(@"%@", error.localizedDescription);
-    }];
+    /**
+     *  Why is this broken???!!!TODO FIXME
+     */
+//    _tourName = @"Your Awesome Tour!";
+//    _tourGuide = [PFUser currentUser].username;
+//    _tourCategory.tourCategoryType = TRVTourCategoryNull;
+//    _depatureDate = [NSDate date];
+//    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *point, NSError *error) {
+//        if (!error) {
+//            _tourStopGeoPoints = [@[point] mutableCopy];
+//            NSLog(@"self.tourStopGeoPoints: %@", [_tourStopGeoPoints description]);
+//        } else NSLog(@"%@", error.localizedDescription);
+//    }];
     
     return self;
 }
