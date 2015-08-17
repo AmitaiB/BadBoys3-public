@@ -18,6 +18,9 @@
     NSLog(@"selected cell's view's frame: %@", NSStringFromCGRect(_myContentView.frame));
 }
 
+-(void)deselectionAnimation {
+    self.backgroundColor = [UIColor blueColor];
+}
 -(void)awakeFromNib {
     [super awakeFromNib];
 //    self.contentView.backgroundColor = [UIColor greenColor];
@@ -26,7 +29,7 @@
 //    self.contentView.bounds = CGRectInset(self.bounds, 10, 10);
 //    self.backgroundView.backgroundColor = [UIColor redColor];
     [self.contentView removeFromSuperview];
-    _myContentView = [[UIView alloc] initWithFrame:CGRectInset(self.bounds, 5, 5)];
+    _myContentView = [[UIView alloc] initWithFrame:CGRectInset(self.bounds, 5, 0)];
     [self addSubview:_myContentView];
     [self setNeedsLayout];
     [self bringSubviewToFront:_myContentView];

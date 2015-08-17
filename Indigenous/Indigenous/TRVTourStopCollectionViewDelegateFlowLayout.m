@@ -28,9 +28,13 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     TRVTourStopCollectionViewCell *cell = (TRVTourStopCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
     [cell selectionAnimation];
-    //self.imageView.image = cell.stop.image;
     [self.delegate setStopPropertiesOnSelection:cell.stop];
     NSLog(@"Selected cell's bounds: %@", NSStringFromCGRect(cell.bounds));
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    TRVTourStopCollectionViewCell *cell = (TRVTourStopCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    [cell deselectionAnimation];
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) TRVTourStop *stop;
 
 -(void)selectionAnimation;
+-(void)deselectionAnimation;
 -(void)fixIt :(CGSize)size;
 
 @end
