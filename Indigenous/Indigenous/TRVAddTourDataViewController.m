@@ -8,7 +8,7 @@
 #import "TRVBuildItineraryViewController.h"
 #import "TRVTourImagePicker.h"
 #import "TRVAddTourDataViewController.h"
-#import "TRVTourData.h"
+#import "TRVTourObject.h"
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 
@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
 
-@property (strong, nonatomic) TRVTourData *tourData;
+@property (strong, nonatomic) TRVTourObject *tourObject;
 - (IBAction)dateButtonTapped:(id)sender;
 - (IBAction)imageButtonTapped:(id)sender;
 
@@ -30,12 +30,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tourData = [TRVTourData new];
+    self.tourObject = [TRVTourObject new];
     [self initializeSegmentedControl];
     [self initializeDatePicker];
     // Do any additional setup after loading the view.
     
-    [PFUser enableAutomaticUser];
+
 }
 
 #pragma mark - ImageView and ImagePicker methods
@@ -51,19 +51,66 @@
 }
 
 - (IBAction)imageButtonTapped:(id)sender {
+    UIAlertController *photoActionAlert = [UIAlertController alertControllerWithTitle:@"Choose Photo Source" message:@"Would you prefer to Select an Existing Photo from your device, or Take a New Photo?" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *takePhotoAction = [UIAlertAction actionWithTitle:@"Take New Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self takeNewPhoto];
+        DBLG
+    }];
+    
+    UIAlertAction *selectPhotoAction = [UIAlertAction actionWithTitle:@"Select Photo" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self selectExistingPhoto];
+        DBLG
+    }];
+
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        DBLG
+    }];
+    [photoActionAlert addAction:takePhotoAction];
+    [photoActionAlert addAction:selectPhotoAction];
+    [photoActionAlert addAction:cancelAction];
+    
+    [self presentViewController:photoActionAlert animated:YES completion:^{
+        DBLG
+    }];
 }
+
+- (void)takeNewPhoto {
+//    UIImagePickerController *imagePicker = [UIImagePickerController new];
+//    imagePicker.delegate = self;
+//    imagePicker.allowsEditing = YES;
+//    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    
+//    [self presentViewController:imagePicker animated:YES completion:^{
+        DBLG
+//    }];
+}
+
+- (void)selectExistingPhoto {
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePicker animated:YES completion:^{
+        DBLG
+    }];
+}
+
+
+
 
 -(void)initializeDatePicker {
     [self.datePicker addTarget:self action:@selector(assignTourDate) forControlEvents:UIControlEventValueChanged];
 }
 
 -(void)assignTourDate {
-    self.tourData.tourDate = self.datePicker.date;
+    
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.timeStyle = NSDateFormatterMediumStyle;
     dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    self.dateButton.titleLabel.text = [dateFormatter stringFromDate:self.tourData.tourDate];
-    NSLog(@"Tour Date set to: %@", [dateFormatter stringFromDate:self.tourData.tourDate]);
+    self.dateButton.titleLabel.text = [dateFormatter stringFromDate:self.tourObject.tourDate];
+    NSLog(@"Tour Date set to: %@", [dateFormatter stringFromDate:self.tourObject.tourDate]);
 }
 
 
@@ -75,27 +122,34 @@
 }
 
 -(void)assignTourCategory {
-    NSString *categoryChosenViaSegmentedControl = self.tourData.tourCategories[self.tourCategorySegControl.selectedSegmentIndex];
-    self.tourData.tourCategory = categoryChosenViaSegmentedControl;
-    NSLog(@"TourCategory set to: %@", self.tourData.tourCategory);
+    NSString *categoryChosenViaSegmentedControl = self.tourObject.tourCategories[self.tourCategorySegControl.selectedSegmentIndex];
+    NSLog(@"TourCategory set to: %@", self.tourObject.tourCategory);
+    NSLog(@"%@", [self.tourCategorySegControl titleForSegmentAtIndex:self.tourCategorySegControl.selectedSegmentIndex]);
 }
 
 #pragma mark - UITextFieldDelegate methods
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    self.tourData.tourName = textField.text;
-    NSLog(@"TourName set to: %@", self.tourData.tourName);
+    NSLog(@"TourName set to: %@", self.tourObject.tourName);
     return YES;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"%@\n%lu\n%@", self.tourNameTxF.text, self.tourCategorySegControl.selectedSegmentIndex, self.datePicker.self);
+    
+    
+    self.tourObject.tourDate = self.datePicker.date;
+    self.tourObject.tourName = self.tourNameTxF.text;
+    self.tourObject.tourCategory = [self.tourCategorySegControl titleForSegmentAtIndex:self.tourCategorySegControl.selectedSegmentIndex];
+    
+
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
