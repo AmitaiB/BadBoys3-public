@@ -20,5 +20,6 @@
 @interface TRVTourStopCollectionViewDelegateFlowLayout : NSObject <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) id<TourStopInfoDelegate> delegate;
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

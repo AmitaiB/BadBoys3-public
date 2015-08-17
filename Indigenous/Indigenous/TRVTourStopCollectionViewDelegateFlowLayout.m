@@ -10,7 +10,7 @@
 #import "TRVTourStopCollectionViewCell.h"
 #import "TRVTourStop.h"
 
-@implementation TRVTourStopCollectionViewDelegateFlowLayout
+@implementation TRVTourStopCollectionViewDelegateFlowLayout 
 
 -(CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
