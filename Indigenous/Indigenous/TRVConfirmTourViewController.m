@@ -8,6 +8,10 @@
 #import <Parse.h>
 #import "TRVConfirmTourViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import <HNKGooglePlacesAutocomplete.h>
+#import <CLPlacemark+HNKAdditions.h>
+#import <RMSaveButton.h>
+
 
 @interface TRVConfirmTourViewController ()
 
@@ -48,59 +52,66 @@ static NSString * const cellReuseID = @"cellReuseID";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseID];
     
-    if (self.isGeocoded) {
-        cell.textLabel.text = self.tourObject.tourItinerary;
-    } cell.textLabel.text = self.tourObject.tourItinerary;
-    
-    
+//    if (self.isGeocoded) {
+        cell.textLabel.text = ((HNKGooglePlacesAutocompletePlace*)self.tourObject.tourItinerary[indexPath.row]).name;
+//    } cell.textLabel.text = self.tourObject.tourItinerary;
+//    
+    return cell;
 }
 
 
 
 -(void)geocodeMe {
-    CLLocationManager *locationManager = [CLLocationManager new];
     CLGeocoder *geocoder = [CLGeocoder new];
-    geocoder geocodeAddressString:<#(NSString *)#> completionHandler:<#^(NSArray *placemarks, NSError *error)completionHandler#>
+    [geocoder geocodeAddressString:@"" completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        
+    }];
     
 
-    geocoder reverseGeocodeLocation:<#(CLLocation *)#> completionHandler:<#^(NSArray *placemarks, NSError *error)completionHandler#>
+    [geocoder reverseGeocodeLocation:nil completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        
+    
 
     /**
      *  deprecated sample error message
      */
     if (error)
     {
-        [self.latitudeTextField setText:@"Not found"];
-        [self.longitudeTextField setText:@"Not found"];
-        
-        UIAlertView *alert =
-        [[UIAlertView alloc] initWithTitle:@"Geocoding Error"
-                                   message:error.localizedDescription
-                                  delegate:nil
-                         cancelButtonTitle:@"OK"
-                         otherButtonTitles: nil];
-        
-        [alert show];
+//        [self.latitudeTextField setText:@"Not found"];
+//        [self.longitudeTextField setText:@"Not found"];
+//        
+//        UIAlertView *alert =
+//        [[UIAlertView alloc] initWithTitle:@"Geocoding Error"
+//                                   message:error.localizedDescription
+//                                  delegate:nil
+//                         cancelButtonTitle:@"OK"
+//                         otherButtonTitles: nil];
+//        
+//        [alert show];
 
         
         /**
          *  deprecated sample success completion block
          */
         if ([placemarks count] > 0) {
-            CLPlacemark *placemark = [placemarks lastObject];
-            
-            NSString *latString =
-            [NSString stringWithFormat:@"%f",
-             placemark.location.coordinate.latitude];
-            
-            [self.latitudeTextField setText:latString];
-            
-            NSString *longString =
-            [NSString stringWithFormat:@"%f",
-             placemark.location.coordinate.longitude];
-            
-            [self.longitudeTextField setText:longString];
-
+//            CLPlacemark *placemark = [placemarks lastObject];
+//            
+//            NSString *latString =
+//            [NSString stringWithFormat:@"%f",
+//             placemark.location.coordinate.latitude];
+//            
+//            [self.latitudeTextField setText:latString];
+//            
+//            NSString *longString =
+//            [NSString stringWithFormat:@"%f",
+//             placemark.location.coordinate.longitude];
+//            
+//            [self.longitudeTextField setText:longString];
+        }
+    }
+        }];
         
 }
 
