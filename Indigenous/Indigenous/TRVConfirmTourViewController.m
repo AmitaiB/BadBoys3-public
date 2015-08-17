@@ -7,12 +7,16 @@
 //
 #import <Parse.h>
 #import "TRVConfirmTourViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface TRVConfirmTourViewController ()
 
 @end
 
 @implementation TRVConfirmTourViewController
+
+static NSString * const cellReuseID = @"cellReuseID";
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,10 +29,117 @@
     
     self.finalItineraryTableView.delegate = self;
     self.finalItineraryTableView.dataSource = self;
+    
+    self.isGeocoded = NO;
+    
+    
+}
+
+#pragma mark - TableviewDelegate and Datasource methods
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tourObject.tourItinerary.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellReuseID];
+    
+    if (self.isGeocoded) {
+        cell.textLabel.text = self.tourObject.tourItinerary;
+    } cell.textLabel.text = self.tourObject.tourItinerary;
+    
+    
 }
 
 
 
+-(void)geocodeMe {
+    CLLocationManager *locationManager = [CLLocationManager new];
+    CLGeocoder *geocoder = [CLGeocoder new];
+    geocoder geocodeAddressString:<#(NSString *)#> completionHandler:<#^(NSArray *placemarks, NSError *error)completionHandler#>
+    
+
+    geocoder reverseGeocodeLocation:<#(CLLocation *)#> completionHandler:<#^(NSArray *placemarks, NSError *error)completionHandler#>
+
+    /**
+     *  deprecated sample error message
+     */
+    if (error)
+    {
+        [self.latitudeTextField setText:@"Not found"];
+        [self.longitudeTextField setText:@"Not found"];
+        
+        UIAlertView *alert =
+        [[UIAlertView alloc] initWithTitle:@"Geocoding Error"
+                                   message:error.localizedDescription
+                                  delegate:nil
+                         cancelButtonTitle:@"OK"
+                         otherButtonTitles: nil];
+        
+        [alert show];
+
+        
+        /**
+         *  deprecated sample success completion block
+         */
+        if ([placemarks count] > 0) {
+            CLPlacemark *placemark = [placemarks lastObject];
+            
+            NSString *latString =
+            [NSString stringWithFormat:@"%f",
+             placemark.location.coordinate.latitude];
+            
+            [self.latitudeTextField setText:latString];
+            
+            NSString *longString =
+            [NSString stringWithFormat:@"%f",
+             placemark.location.coordinate.longitude];
+            
+            [self.longitudeTextField setText:longString];
+
+        
+}
+
+        /*
+         // Override to support conditional editing of the table view.
+         - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+         // Return NO if you do not want the specified item to be editable.
+         return YES;
+         }
+         */
+        
+        /*
+         // Override to support editing the table view.
+         - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+         if (editingStyle == UITableViewCellEditingStyleDelete) {
+         // Delete the row from the data source
+         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+         } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+         }
+         }
+         */
+        
+        /*
+         // Override to support rearranging the table view.
+         - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+         }
+         */
+        
+        /*
+         // Override to support conditional rearranging of the table view.
+         - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+         // Return NO if you do not want the item to be re-orderable.
+         return YES;
+         }
+         */
+        
+
+        
 //-(void)createParseDummyTourWithName:(NSString*)tourName category:(NSString*)tourCategory date:(NSDate*)departureDate image:(UIImage*)tourImage itinerary:(NSArray*)arrayOfGenericLocations {
 //    
 //    PFUser *currentUser = [PFUser currentUser];

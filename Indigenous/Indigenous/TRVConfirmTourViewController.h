@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *finalItineraryTableView;
 
 @property (strong, nonatomic) TRVTourObject *tourObject;
+@property (nonatomic) BOOL isGeocoded;
 
 @end

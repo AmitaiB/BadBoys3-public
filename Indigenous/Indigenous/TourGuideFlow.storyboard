@@ -1080,10 +1080,6 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3h5-0a-xgn">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tour Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nY-XX-kUD">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -1160,6 +1156,19 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3h5-0a-xgn">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseID" id="6KD-71-MA4" userLabel="Final Itinerary Table View Cell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6KD-71-MA4" id="r6N-B8-t5L">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1183,11 +1192,11 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="7Cm-tV-HMI"/>
-                                <exclude reference="3h5-0a-xgn"/>
                                 <exclude reference="8nY-XX-kUD"/>
                                 <exclude reference="kZm-0f-aeR"/>
                                 <exclude reference="9zf-qs-FeT"/>
                                 <exclude reference="gBv-Cv-59J"/>
+                                <exclude reference="3h5-0a-xgn"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="U0d-di-DZZ"/>
@@ -1211,11 +1220,11 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="7Cm-tV-HMI"/>
-                                <include reference="3h5-0a-xgn"/>
                                 <include reference="8nY-XX-kUD"/>
                                 <include reference="kZm-0f-aeR"/>
                                 <include reference="9zf-qs-FeT"/>
                                 <include reference="gBv-Cv-59J"/>
+                                <include reference="3h5-0a-xgn"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="U0d-di-DZZ"/>
