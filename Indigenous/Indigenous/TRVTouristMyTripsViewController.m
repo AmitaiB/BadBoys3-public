@@ -60,7 +60,6 @@
                         myTrips = user[@"myTrips"];
                     }
                     
-                    
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
@@ -68,12 +67,7 @@
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips withCompletionBlock:^(BOOL success) {
                         
                         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            
-                            // uncomment below if you want to load dummy trips
-                            
-                            //                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-                            //                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-                            
+               
                             self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
                             self.tripTableView.dataSource = self.tableViewDataSource;
                             if (self.segmentedControl.selectedSegmentIndex == 1) {
@@ -110,7 +104,6 @@
 
 - (IBAction)segmentedControlChanged:(id)sender {
     [self.tableViewDataSource changeTripsDisplayed];
-    
     [self.tripTableView reloadData];
 }
 
@@ -214,7 +207,6 @@
         
     }];
     
-    // NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
     
 }
 

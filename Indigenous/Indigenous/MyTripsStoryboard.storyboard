@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1j9-JH-MIQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1j9-JH-MIQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -131,7 +131,7 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="ZGd-SG-l7o" secondAttribute="trailing" id="4ij-hE-z4f"/>
                             <constraint firstItem="ZGd-SG-l7o" firstAttribute="leading" secondItem="Pw5-2F-Iqf" secondAttribute="leadingMargin" id="5Qo-5C-T9A"/>
-                            <constraint firstItem="DCu-9p-mn0" firstAttribute="bottom" secondItem="ZGd-SG-l7o" secondAttribute="bottom" id="Fr6-7v-e08"/>
+                            <constraint firstItem="DCu-9p-mn0" firstAttribute="top" secondItem="ZGd-SG-l7o" secondAttribute="bottom" id="Fr6-7v-e08"/>
                             <constraint firstItem="ZGd-SG-l7o" firstAttribute="top" secondItem="BUq-44-NdC" secondAttribute="top" id="GpW-48-BHX"/>
                             <constraint firstItem="ZGd-SG-l7o" firstAttribute="width" secondItem="Pw5-2F-Iqf" secondAttribute="width" id="qCj-Qh-AbR"/>
                             <constraint firstAttribute="centerX" secondItem="ZGd-SG-l7o" secondAttribute="centerX" id="uk6-02-iw4"/>
@@ -158,6 +158,7 @@
                             </connections>
                         </segmentedControl>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="segmentedControl" destination="NPq-bg-Wa6" id="bk9-RX-LDl"/>
                         <outlet property="tripTableView" destination="ZGd-SG-l7o" id="Z2d-6H-YNI"/>
@@ -210,6 +211,12 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OI-QZ-k8a">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avp-TJ-ye3">
                                                 <rect key="frame" x="284" y="589" width="70" height="30"/>
                                                 <constraints>
@@ -222,34 +229,41 @@
                                                     <action selector="bookTourButtonTapped:" destination="gqK-AQ-dGd" eventType="touchUpInside" id="fSE-6l-oCi"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="749" misplaced="YES" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-55-svt">
-                                                <rect key="frame" x="0.0" y="70" width="600" height="481"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OI-QZ-k8a">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whg-kd-fWU" userLabel="Tour Stop Image View" customClass="UIImageView">
+                                                <rect key="frame" x="118" y="155" width="300" height="244"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-wO-y15">
+                                                        <rect key="frame" x="32" y="88" width="42" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerY" secondItem="U4i-wO-y15" secondAttribute="centerY" constant="23.5" id="E01-dV-UVH"/>
+                                                    <constraint firstItem="U4i-wO-y15" firstAttribute="leading" secondItem="whg-kd-fWU" secondAttribute="leading" constant="32" id="ElD-7K-0Lw"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration" label="ContentView"/>
                                         <constraints>
+                                            <constraint firstItem="Avp-TJ-ye3" firstAttribute="top" secondItem="whg-kd-fWU" secondAttribute="bottom" id="02u-fj-Od9"/>
                                             <constraint firstItem="3OI-QZ-k8a" firstAttribute="top" secondItem="5St-oQ-2w6" secondAttribute="top" id="2dT-nD-IHm"/>
                                             <constraint firstAttribute="trailing" secondItem="Avp-TJ-ye3" secondAttribute="trailing" id="5B2-7r-9vS"/>
+                                            <constraint firstAttribute="trailing" secondItem="whg-kd-fWU" secondAttribute="trailing" id="9yg-o4-O9q"/>
                                             <constraint firstAttribute="trailing" secondItem="nbg-1S-hru" secondAttribute="trailing" id="E51-Zi-GvY"/>
                                             <constraint firstItem="3OI-QZ-k8a" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="E9A-Od-lcs"/>
+                                            <constraint firstAttribute="bottom" secondItem="whg-kd-fWU" secondAttribute="bottom" id="Ng2-hT-4z8"/>
+                                            <constraint firstItem="whg-kd-fWU" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="RJH-k8-JBX"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="Shh-I4-9Ny"/>
-                                            <constraint firstItem="Avp-TJ-ye3" firstAttribute="top" secondItem="UbO-55-svt" secondAttribute="bottom" id="The-cU-g7e"/>
                                             <constraint firstAttribute="bottom" secondItem="Avp-TJ-ye3" secondAttribute="bottom" id="UmE-Mf-f7k"/>
+                                            <constraint firstItem="whg-kd-fWU" firstAttribute="top" secondItem="nbg-1S-hru" secondAttribute="bottom" id="XfX-fc-inQ"/>
                                             <constraint firstAttribute="trailing" secondItem="3OI-QZ-k8a" secondAttribute="trailing" id="aQY-5b-IZe"/>
-                                            <constraint firstItem="UbO-55-svt" firstAttribute="top" secondItem="nbg-1S-hru" secondAttribute="bottom" id="cT6-0N-yMl"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="top" secondItem="3OI-QZ-k8a" secondAttribute="bottom" id="dmV-pb-1X2"/>
-                                            <constraint firstAttribute="trailing" secondItem="UbO-55-svt" secondAttribute="trailing" id="eI6-0j-2ay"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="width" secondItem="5St-oQ-2w6" secondAttribute="width" id="fzT-NO-kt7"/>
                                             <constraint firstItem="Avp-TJ-ye3" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="lfW-gr-k1Z"/>
-                                            <constraint firstAttribute="bottom" secondItem="UbO-55-svt" secondAttribute="bottom" id="oUs-MM-Hme"/>
-                                            <constraint firstItem="UbO-55-svt" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="xfq-sD-lJB"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -277,13 +291,14 @@
                         <outlet property="bookTourBottomConstraint" destination="UmE-Mf-f7k" id="lLR-EO-qCv"/>
                         <outlet property="bookTourButton" destination="Avp-TJ-ye3" id="P03-D5-dDV"/>
                         <outlet property="contentView" destination="5St-oQ-2w6" id="Pd6-3a-iGG"/>
+                        <outlet property="nameOfStop" destination="U4i-wO-y15" id="0ep-zh-tTh"/>
                         <outlet property="navBarTitle" destination="3aD-oR-lZn" id="wrw-pr-P4Y"/>
                         <outlet property="theScrollViewThatHoldsAllTheOtherViews" destination="DGP-yU-yMd" id="5z2-fx-oiY"/>
-                        <outlet property="topBookTourButtonConstraint" destination="The-cU-g7e" id="HgC-gg-itw"/>
+                        <outlet property="topBookTourButtonConstraint" destination="02u-fj-Od9" id="G9c-XH-slU"/>
                         <outlet property="tourInfoLabel" destination="3OI-QZ-k8a" id="67h-pa-ccK"/>
                         <outlet property="tourStopCollectionView" destination="nbg-1S-hru" id="vVG-qb-yCj"/>
-                        <outlet property="tourStopImageView" destination="UbO-55-svt" id="ndd-VV-l0O"/>
-                        <outlet property="tourStopImageViewBottomConstraint" destination="oUs-MM-Hme" id="xIM-b3-Khj"/>
+                        <outlet property="tourStopImageView" destination="whg-kd-fWU" id="Gpa-yZ-U5J"/>
+                        <outlet property="tourStopImageViewBottomConstraint" destination="Ng2-hT-4z8" id="cgg-jS-PbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJt-6P-oq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -329,7 +344,4 @@
             <point key="canvasLocation" x="148" y="-1016"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="1" width="1544" height="1024"/>
-    </resources>
 </document>
