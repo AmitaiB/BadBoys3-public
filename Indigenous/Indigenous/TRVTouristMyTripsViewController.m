@@ -131,8 +131,23 @@
         
         TRVTour *tour = [[TRVTour alloc]init];
             
-        //
-        tour.guideForThisTour = PFTour[@"guideForThisTour"];
+            
+//        // get guide for this tour info
+        
+//        PFUser *userForThisTour = PFTour[@"guideForThisTour"];
+//        PFObject *userBioForThisUser = userForThisTour[@"userBio"];
+//        [userBioForThisUser fetch];
+//            
+//            
+//            
+//            /// continue herrre
+//        TRVUser *tourGuide = [[TRVUser alloc] init];
+//            tourGuide.userBio.firstName = userBioForThisUser[@"first_name"];
+//        
+//            
+            
+//        tour.guideForThisTour = PFTour[@"guideForThisTour"];
+            tour.guideForThisTour = guideForThisRow;
         tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
         tour.tourDeparture = PFTour[@"tourDeparture"];
         
