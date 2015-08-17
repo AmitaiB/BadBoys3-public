@@ -159,7 +159,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSLog(@"%@\n%lu\n%@", self.tourNameTxF.text, self.tourCategorySegControl.selectedSegmentIndex, self.datePicker.self);
     
-    
+
     self.tourObject.tourDate = self.datePicker.date;
     self.tourObject.tourName = self.tourNameTxF.text;
     self.tourObject.tourCategory = [self.tourCategorySegControl titleForSegmentAtIndex:self.tourCategorySegControl.selectedSegmentIndex];

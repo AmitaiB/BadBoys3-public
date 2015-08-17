@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TRVTourObject.h"
 
-@interface TRVBuildItineraryViewController : UIViewController
+@interface TRVBuildItineraryViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) TRVTourObject *tourObject;
 
