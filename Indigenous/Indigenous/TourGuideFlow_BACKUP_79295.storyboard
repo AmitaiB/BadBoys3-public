@@ -180,6 +180,7 @@
                         <viewControllerLayoutGuide type="bottom" id="U75-Kr-wRp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="195-H4-jgp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tour Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YqT-4t-GAF">
@@ -191,6 +192,7 @@
                                 </variation>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LZH-5L-k2o">
+>>>>>>> impl the TomPlan
                                 <rect key="frame" x="-61" y="-14" width="123" height="29"/>
                                 <segments>
                                     <segment title="See"/>
@@ -1128,12 +1130,18 @@
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZg-BG-hlt">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <state key="normal" title="Date">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="84" y="192" width="232" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="dateButtonTapped:" destination="Pwg-WI-TRs" eventType="touchUpInside" id="Sal-cu-b76"/>
+                                </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="dA0-GG-KrA">
                                 <rect key="frame" x="-160" y="-81" width="320" height="162"/>
@@ -1144,12 +1152,19 @@
                                     <rect key="frame" x="0.0" y="219" width="400" height="162"/>
                                 </variation>
                             </datePicker>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-ls-nmu">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrx-1L-d2q" userLabel="ImageButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="401" width="240" height="128"/>
+                                    <rect key="frame" x="84" y="401" width="240" height="166"/>
                                 </variation>
-                            </imageView>
+                                <connections>
+                                    <action selector="imageButtonTapped:" destination="Pwg-WI-TRs" eventType="touchUpInside" id="c9q-TN-kPn"/>
+                                    <segue destination="O4Y-8t-2zT" kind="presentation" id="7Fq-wk-vUY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -1158,6 +1173,7 @@
                                 <exclude reference="LZH-5L-k2o"/>
                                 <exclude reference="QZg-BG-hlt"/>
                                 <exclude reference="dA0-GG-KrA"/>
+<<<<<<< HEAD
                                 <exclude reference="Dkp-ls-nmu"/>
 >>>>>>> impl the TomPlan
                             </mask>
@@ -1220,6 +1236,9 @@
                                 <exclude reference="Pye-7y-7rl"/>
                                 <exclude reference="ied-jz-6kK"/>
                                 <exclude reference="zxN-wz-cNa"/>
+=======
+                                <exclude reference="Wrx-1L-d2q"/>
+>>>>>>> adds and wires up Imagepicker controller
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -1275,7 +1294,7 @@
                                 <include reference="LZH-5L-k2o"/>
                                 <include reference="QZg-BG-hlt"/>
                                 <include reference="dA0-GG-KrA"/>
-                                <include reference="Dkp-ls-nmu"/>
+                                <include reference="Wrx-1L-d2q"/>
                             </mask>
                         </variation>
                     </view>
@@ -1287,16 +1306,88 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateButton" destination="QZg-BG-hlt" id="6uq-or-9j9"/>
                         <outlet property="datePicker" destination="dA0-GG-KrA" id="xku-Nv-pHb"/>
                         <outlet property="departureDateLabel" destination="QZg-BG-hlt" id="BZI-D6-pbY"/>
+                        <outlet property="imageButton" destination="Wrx-1L-d2q" id="bG1-ND-fSE"/>
                         <outlet property="tourCategorySegControl" destination="LZH-5L-k2o" id="Rfs-f0-MfY"/>
-                        <outlet property="tourImageView" destination="Dkp-ls-nmu" id="UOj-9f-e7R"/>
                         <outlet property="tourNameTxF" destination="YqT-4t-GAF" id="6x8-WQ-GiB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEP-y5-1M6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1912.5" y="39"/>
+        </scene>
+        <!--Tour Image Picker Controller-->
+        <scene sceneID="3CS-c4-tpw">
+            <objects>
+                <viewController id="O4Y-8t-2zT" customClass="TRVTourImagePickerController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BA3-wQ-jws"/>
+                        <viewControllerLayoutGuide type="bottom" id="duD-ep-L5U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NBH-o0-Hyd">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sMu-hy-33D">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="86" y="124" width="240" height="128"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xt-7M-eNa" userLabel="ImageButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Take New Photo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="244" y="512" width="113" height="61"/>
+                                </variation>
+                                <connections>
+                                    <action selector="imageButtonTapped:" destination="Pwg-WI-TRs" eventType="touchUpInside" id="xfw-s9-G8i"/>
+                                    <action selector="takeNewPhotoButtonTapped:" destination="O4Y-8t-2zT" eventType="touchUpInside" id="e5N-vD-wdO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o02-Wi-2XZ" userLabel="ImageButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Select Photo from Phone">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="485" width="175" height="70"/>
+                                </variation>
+                                <connections>
+                                    <action selector="imageButtonTapped:" destination="Pwg-WI-TRs" eventType="touchUpInside" id="GIc-eG-Fq4"/>
+                                    <action selector="selectExistingPhotoButtonTapped:" destination="O4Y-8t-2zT" eventType="touchUpInside" id="evK-NM-6mI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="sMu-hy-33D"/>
+                                <exclude reference="6xt-7M-eNa"/>
+                                <exclude reference="o02-Wi-2XZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="sMu-hy-33D"/>
+                                <include reference="6xt-7M-eNa"/>
+                                <include reference="o02-Wi-2XZ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="selectExistingPhotoButton" destination="o02-Wi-2XZ" id="x1W-4m-X5d"/>
+                        <outlet property="takeNewPhotoButton" destination="6xt-7M-eNa" id="4bU-kk-UNr"/>
+                        <outlet property="takeNewPhotoButtonTapped" destination="6xt-7M-eNa" id="puW-am-g7B"/>
+                        <outlet property="tourImageSelection" destination="sMu-hy-33D" id="Zxo-tg-vam"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="idO-58-1vi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1912.5" y="723"/>
         </scene>
         <!--Title-->
         <scene sceneID="w2E-Y6-JfJ">
@@ -1307,6 +1398,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RPw-wf-d6n"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tm6-nk-Fng">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YuO-8X-L4V">
@@ -1379,6 +1471,7 @@
                         <viewControllerLayoutGuide type="bottom" id="de1-Kf-doO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="f4m-DD-R84">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Cm-tV-HMI">

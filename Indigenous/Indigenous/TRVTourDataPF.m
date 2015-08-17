@@ -37,7 +37,7 @@
     tourCategories = @[@"See", @"Play", @"Eat", @"Drink"];
     tourDate       = [NSDate distantFuture];
     tourImage      = [PFFile fileWithData:[NSData data]];
-    tourItinerary  = [NSMutableArray arrayWithCapacity:0];
+    tourItinerary  = [NSMutableArray new];
     
     return self;
 }
