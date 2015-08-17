@@ -60,7 +60,6 @@
                         myTrips = user[@"myTrips"];
                     }
                     
-                    
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
@@ -105,7 +104,6 @@
 
 - (IBAction)segmentedControlChanged:(id)sender {
     [self.tableViewDataSource changeTripsDisplayed];
-    
     [self.tripTableView reloadData];
 }
 
@@ -209,7 +207,6 @@
         
     }];
     
-    // NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
     
 }
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse.h>
 
-@class TRVTour;
+@class TRVTour, TRVTourStop;
 
 @interface TRVTouristTripDetailViewController : UIViewController <UIScrollViewDelegate>
 

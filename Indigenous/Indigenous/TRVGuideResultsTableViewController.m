@@ -40,10 +40,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateGuidesList];
-
+    
     self.sharedData = [TRVUserDataStore sharedUserInfoDataStore];
     self.PFGuides = [@[] mutableCopy];
-
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -100,12 +100,12 @@
 -(void)passFilterDictionary:(NSDictionary *)dictionary{
     
     self.filterDictionary = dictionary;
-
-
+    
+    
 }
 
 -(void)updateGuidesList {
-        
+    
     self.availableGuides = [[NSMutableArray alloc]init];
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText = @"Loading Guides";
@@ -173,7 +173,7 @@
                 guideForThisRow.userBio = bio;
                 NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
                 [operationQ addOperationWithBlock:^{
-                [self completeUser:guideForThisRow bio:bio parseUser:user];
+                    [self completeUser:guideForThisRow bio:bio parseUser:user];
                 }];
             }];
             
@@ -187,7 +187,7 @@
                     guideForThisRow.userBio = bio;
                     NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
                     [operationQ addOperationWithBlock:^{
-                    [self completeUser:guideForThisRow bio:bio parseUser:user];
+                        [self completeUser:guideForThisRow bio:bio parseUser:user];
                     }];
                     
                 } else {
@@ -245,7 +245,7 @@
             [guideForThisRow.PFCurrentCategoryTrips addObject:PFTour];
         } else {
             [guideForThisRow.PFOtherCategoryTrips addObject:PFTour];
-
+            
         }
         
     } // END OF TOUR FOR LOOP
@@ -276,7 +276,7 @@
     
     if([segue.identifier isEqualToString:@"detailGuideSegue"]) {
         
-
+        
         TRVDetailGuideViewController *destinationVC = segue.destinationViewController;
         destinationVC.selectedGuideUser = self.destinationGuideUser;
         

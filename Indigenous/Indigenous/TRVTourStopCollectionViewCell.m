@@ -26,7 +26,7 @@
 //    self.contentView.bounds = CGRectInset(self.bounds, 10, 10);
 //    self.backgroundView.backgroundColor = [UIColor redColor];
     [self.contentView removeFromSuperview];
-    _myContentView = [[TRVTourStopCollectionViewCellView alloc] initWithFrame:CGRectOffset(CGRectInset(self.bounds, 5, 5), 0, 0)];
+    _myContentView = [[UIView alloc] initWithFrame:CGRectInset(self.bounds, 5, 5)];
     [self addSubview:_myContentView];
     [self setNeedsLayout];
     [self bringSubviewToFront:_myContentView];

@@ -13,11 +13,11 @@
 #import "UIScrollView+APParallaxHeader.h"
 #import "TRVParallaxHeaderImageView.h"
 #import "TRVBookTourTableViewController.h"
-//#import "TRVTourStop.h"
+#import "TRVTourStop.h"
 
 #import "Masonry/Masonry.h"
 
-@interface TRVTouristTripDetailViewController () <APParallaxViewDelegate>
+@interface TRVTouristTripDetailViewController () <APParallaxViewDelegate, TourStopInfoDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBarTitle;
 @property (weak, nonatomic) IBOutlet UICollectionView *tourStopCollectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *tourStopImageView;
@@ -32,8 +32,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookTourBottomConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
 
-
-
 @property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
 
 @property (weak, nonatomic) IBOutlet UIView *contactGuideXib;
@@ -45,32 +43,49 @@
 @implementation TRVTouristTripDetailViewController {
     CGFloat _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
     CGFloat _savedAlphaValue;
+    BOOL    _initialSetup;
+    BOOL    _startIt;
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]){
         _isTourGuide = NO;
+        _initialSetup = NO;
+        _startIt = NO;
     }
     return self;
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navBarTitle.title = self.tour.itineraryForThisTour.nameOfTour;
     
+    //__weak TRVTouristTripDetailViewController *weakSelf = self;
+    
     self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:self.tour.itineraryForThisTour.tourStops configuration:^(TRVTourStop * stop) {
-        //self.tourStopImageView.image = stop.image;     stops do not yet have images
+        //weakSelf.tourStopImageView.image = stop.image;     //stops do not yet have images
+        //weakSelf.nameOfStop.text = stop.nameOfPlace;
     }];
     self.tourStopCollectionView.dataSource = self.dataSource;
     self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init]; // UILayoutContainerView
+    self.collectionViewDelegate.delegate = self;
+    //self.collectionViewDelegate.imageView = self.tourStopImageView; // FIXME: FIX THIS UGLY SHIT!!
     
-    self.collectionViewDelegate.imageView = self.tourStopImageView; // FIXME: FIX THIS UGLY SHIT!!
     
     self.tourStopCollectionView.delegate = self.collectionViewDelegate;
     self.tourStopCollectionView.scrollsToTop = NO;
-
+    
+    //[self.tourStopCollectionView reloadData];
+    
+    NSIndexPath *indexPath = [self.tourStopCollectionView indexPathForItemAtPoint:CGPointMake(10, 10)];
+    [self.tourStopCollectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    [self.tourStopCollectionView.delegate collectionView:self.tourStopCollectionView didSelectItemAtIndexPath:indexPath];
+    
+    //[self.tourStopImageView.autoresizingMask = UIImag]
+    
     [self setupParallaxImage:self.theScrollViewThatHoldsAllTheOtherViews];
+    
+
     
     _savedAlphaValue = 1;
 
@@ -79,6 +94,8 @@
         [self setUpTourGuideViewController];
     }
     self.theScrollViewThatHoldsAllTheOtherViews.backgroundColor = [UIColor orangeColor];
+    [self selectFirstItemInCollectionView];
+    [self performSelector:@selector(selectFirstItemInCollectionView) withObject:self afterDelay:.25];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,13 +113,12 @@
 
     [NSLayoutConstraint activateConstraints:self.bookTourButton.constraints];
     self.tourStopImageViewBottomConstraint.active = NO;
-
-    
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    if ((*targetContentOffset).y == -224)
+    if ((*targetContentOffset).y == -224) {
         [self makeContentInsetFullScreen:scrollView];
+    }
     [self.parallaxHeaderTourNameLabel setFrame:CGRectMake(0, self.parallaxImageView.bounds.size.height - self.view.bounds.size.height / 10, self.view.bounds.size.width, self.view.bounds.size.height / 10)];
 }
 
@@ -112,6 +128,7 @@
     inset.top = screen.bounds.size.height;
     scrollView.contentInset = inset;
     scrollView.contentOffset = CGPointMake(0, -scrollView.contentInset.top);
+    _startIt = YES;
 }
 
 - (void)setupParallaxImage:(UIScrollView *)scrollView {
@@ -180,15 +197,14 @@
 }
 - (void)parallaxView:(APParallaxView *)view willChangeFrame:(CGRect)frame {
     // Do whatever you need to do to the parallaxView or your subview after its frame changed
-   
-    
-    
+    //if (_startIt && self.parallaxHeaderTourNameLabel.alpha <= .5 && !_initialSetup) {
+        //[self selectFirstItemInCollectionView];
+    //}
     [self setAlphaForParallaxTitleLabel];
 }
 
 - (void)setAlphaForParallaxTitleLabel {
     self.parallaxHeaderTourNameLabel.alpha = ([self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y + self.parallaxHeaderTourNameLabel.frame.size.height)) / _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
-
 }
 
 
@@ -208,15 +224,23 @@
     
 }
 
-
+- (void)setStopPropertiesOnSelection:(TRVTourStop *)stop {
+    self.tourStopImageView.image = stop.image;
+    self.nameOfStop.text = stop.nameOfPlace;
+}
 
 
 - (void)viewWillAppear:(BOOL)animated {
-
+    self.parallaxHeaderTourNameLabel.hidden = NO;
+    self.parallaxHeaderTourNameLabel.alpha = _savedAlphaValue;
 }
 
--(UIView*)viewWithTabBarAsSubview {
-    return nil;
+- (void)selectFirstItemInCollectionView {
+    NSIndexPath *indexPath = [self.tourStopCollectionView indexPathForItemAtPoint:CGPointMake(10, 10)];
+    [self.tourStopCollectionView cellForItemAtIndexPath:indexPath];
+    [self.tourStopCollectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    [self.tourStopCollectionView.delegate collectionView:self.tourStopCollectionView didSelectItemAtIndexPath:indexPath];
+    _initialSetup = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
