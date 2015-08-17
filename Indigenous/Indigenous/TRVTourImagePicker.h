@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TRVTourImagePickerController : UIImagePickerController
+@interface TRVTourImagePicker : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end

@@ -639,15 +639,15 @@
             </objects>
             <point key="canvasLocation" x="1297.5" y="247"/>
         </scene>
-        <!--Dummy Map Scene-->
-        <scene sceneID="Sdc-Jr-S7h">
+        <!--Tour Image Picker-->
+        <scene sceneID="3CS-c4-tpw">
             <objects>
-                <viewController id="vtX-nK-lGM" userLabel="Dummy Map Scene" customClass="TRVAddTourStopModalViewController" sceneMemberID="viewController">
+                <viewController id="O4Y-8t-2zT" customClass="TRVTourImagePicker" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g2l-EL-bJf"/>
                         <viewControllerLayoutGuide type="bottom" id="0p6-aF-rQI"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="HSw-1Z-RRo">
+                    <view key="view" contentMode="scaleToFill" id="NBH-o0-Hyd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

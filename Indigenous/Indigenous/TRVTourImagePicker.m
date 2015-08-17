@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVTourImagePickerController.h"
+#import "TRVTourImagePicker.h"
 
-@interface TRVTourImagePickerController ()
+@interface TRVTourImagePicker ()
 
 @property (strong, nonatomic) IBOutlet UIImageView *tourImageSelection;
 @property (weak, nonatomic) IBOutlet UIButton *selectExistingPhotoButton;
@@ -18,17 +18,26 @@
 
 @end
 
-@implementation TRVTourImagePickerController
+@implementation TRVTourImagePicker
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)takeNewPhotoButtonTapped:(UIButton*)sender {
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
+
+
+- (IBAction)selectExistingPhotoButtonTapped:(id)sender {
+}
+
 
 
 
@@ -42,9 +51,4 @@
 }
 */
 
-- (IBAction)selectExistingPhotoButtonTapped:(id)sender {
-}
-
-- (IBAction)takeNewPhotoButtonTapped:(id)sender {
-}
 @end
