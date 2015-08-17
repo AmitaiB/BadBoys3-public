@@ -49,7 +49,16 @@
             [query getObjectInBackgroundWithId:[currentUser objectId] block:^(PFObject *user, NSError *error) {
                 if (!error) {
                     
-                    NSArray *myTrips = user[@"myTrips"];
+                    //ELSE GO TO myTrips
+                    NSArray *myTrips = @[];
+                    
+                    //STOP GETTING DELETED
+                    if (self.sharedDataStore.isOnGuideTabBar){
+                        myTrips = user[@"myGuideTrips"];
+                    } else {
+                        myTrips = user[@"myTrips"];
+                    }
+                    
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
