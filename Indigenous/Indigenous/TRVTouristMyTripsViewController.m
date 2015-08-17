@@ -180,8 +180,12 @@
     
     NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
     
-    }
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tripTableView reloadData];
+}
 
 
 
