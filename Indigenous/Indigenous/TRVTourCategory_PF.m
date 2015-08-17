@@ -22,9 +22,9 @@
 -(NSString *)description {
     NSArray *categoryDescriptions = @[@"See",
                                       @"Play",
-                                      @"Eat", @"Drink"];
-    if (self.tourCategory) {
-        return categoryDescriptions[self.tourCategory];
+                                      @"Eat", @"Drink", @"NULL"];
+    if (self.tourCategoryType) {
+        return categoryDescriptions[self.tourCategoryType];
     }
     return @"DEFAULT CATEGORY: The worst decision is indecision.";
 }

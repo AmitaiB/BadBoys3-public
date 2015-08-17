@@ -22,16 +22,14 @@ static NSString * const cellReuseID = @"cellReuseID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tourDataSubtitlesArray = @[@"Tour Name", @"Tour Guide", @"Category/Theme", @"Departure Date", @"Itinerary"];
-    self.tourDataDefaultTitlesArray = @[@"Your Awesome Tour!", @"Are you the sherpa?", @"Save Me from The Paradox of Choice!", @"Are we there yet? Clearly not.", @"Where are we going?"];
-    self.tourCategories = @[@"See", @"Play", @"Eat", @"Drink"];
+    [self initizalizeViewControllerArrays];
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-#pragma mark - CZPicker datasource and delegate
 
+#pragma mark - CZPicker datasource and delegate
 -(NSInteger)numberOfRowsInPickerView:(CZPickerView *)pickerView {
     return self.tourCategories.count;
 }
@@ -41,20 +39,13 @@ static NSString * const cellReuseID = @"cellReuseID";
 }
 
 -(void)czpickerView:(CZPickerView *)pickerView didConfirmWithItemAtRow:(NSInteger)row {
-    NSArray *categoryTypes = @[TRVTourCategorySee,
-                               TRVTourCategoryPlay,
-                               TRVTourCategoryEat,
-                               TRVTourCategoryDrink];
-    
-    self.tourData.tourCategory = categoryTypes[row];
-    NSLog(@"self.tourData.tourCategory = %@", [self.tourData.tourCategory description]);
-    
-    
+    NSLog(@"You tapped row #%ld!", (long)row);
 }
 
 -(void)czpickerViewDidClickCancelButton:(CZPickerView *)pickerView {
     
 }
+
 -(void)czPickTourCategory{
     CZPickerView *categoryPicker = [[CZPickerView alloc] initWithHeaderTitle:@"Tour Category/Theme"
                                                            cancelButtonTitle:@"Cancel"
@@ -63,7 +54,6 @@ static NSString * const cellReuseID = @"cellReuseID";
     categoryPicker.dataSource = self;
     [categoryPicker show];
 }
-
 
 
 #pragma mark - Table view data source
@@ -92,10 +82,7 @@ static NSString * const cellReuseID = @"cellReuseID";
     
     if (indexPath.section == 0) {
         cell.detailTextLabel.text = self.tourDataSubtitlesArray[indexPath.row];
-        if (self.tourData) {
-            <#statements#>
-        }
-        cell.textLabel.text = self.tourDataDefaultTitlesArray[indexPath.row];
+        cell.textLabel.text = self.tourDataWithUserInputTitlesArray[indexPath.row];
     }
     if (indexPath.section == 1) {
         cell.textLabel.text = self.tourData.tourStopGeoPoints[indexPath.row];
@@ -147,14 +134,34 @@ static NSString * const cellReuseID = @"cellReuseID";
 }
 */
 
+#pragma mark - Helper methods
+-(void)initizalizeViewControllerArrays {
+    self.tourDataSubtitlesArray = @[@"Tour Name",
+                                    @"Tour Guide",
+                                    @"Category/Theme",
+                                    @"Departure Date",
+                                    @"Itinerary"];
+    self.tourDataDefaultTitlesArray = @[@"Your Awesome Tour!",
+                                        @"Are you the sherpa?",
+                                        @"Save Me from The Paradox of Choice!",
+                                        @"Are we there yet? Clearly not.",
+                                        @"Where are we going?"];
+    self.tourCategories = @[@"See", @"Play", @"Eat", @"Drink"];
+    
+    self.tourDataWithUserInputTitlesArray = [[self.tourData allValues] mutableCopy];
+
+    NSLog(@"self.tourDataWithUserInputTitlesArray: %@, of size: %@", [self.tourDataWithUserInputTitlesArray description], @(self.tourDataWithUserInputTitlesArray.count));
+    NSLog(@"The original article: %@ of size %@", [[self.tourData allValues] description], @([self.tourData allValues].count));
+
+}
+
 
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
+
 
 
 @end

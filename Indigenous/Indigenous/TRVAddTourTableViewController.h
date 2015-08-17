@@ -15,6 +15,7 @@
 @property (strong, nonatomic) TRVTour_PF *tourData;
 @property (strong, nonatomic) NSArray *tourDataSubtitlesArray;
 @property (strong, nonatomic) NSArray *tourDataDefaultTitlesArray;
+@property (strong, nonatomic) NSMutableArray *tourDataWithUserInputTitlesArray;
 @property (strong, nonatomic) NSArray *tourCategories;
 
 @end

@@ -23,9 +23,9 @@
     if (!self) {
         return nil;
     }
-    self.tourGuide = [PFUser currentUser].username;
     self.tourName = @"Your Awesome Tour!";
-    self.tourCategory = @"The Paradox of Choice!";
+    self.tourGuide = [PFUser currentUser].username;
+    self.tourCategory.tourCategoryType = TRVTourCategoryNull;
     self.depatureDate = nil;
     self.tourStopGeoPoints = nil;
     
@@ -38,11 +38,24 @@
 
 -(NSArray *)allValues {
     NSMutableArray *temp = [NSMutableArray new];
-    temp[0] = self.tourGuide;
-    temp[1] = self.tourName;
-    temp[2] = [self.tourCategory description];
-    temp[3] = [self.depatureDate description];
-    temp[4] = [NSString stringWithFormat:@"Itinerary with %@ locations",[@(self.tourStopGeoPoints.count) stringValue]];
+
+    if (self.tourGuide) {
+        [temp addObject:self.tourGuide];
+    } else [temp addObject:@"."];
+    
+    if (self.tourName) {
+        [temp addObject:self.tourName];
+    } else [temp addObject:@".."];
+    
+    if ([self.tourCategory description]) {
+        [temp addObject:[self.tourCategory description]];
+    } else [temp addObject:@"..."];
+    if ([self.depatureDate description]) {
+        [temp addObject:[self.depatureDate description]];
+    } else [temp addObject:@"...."];
+    if ([@(self.tourStopGeoPoints.count) stringValue]) {
+        [temp addObject:[NSString stringWithFormat:@"Itinerary with %@ locations",[@(self.tourStopGeoPoints.count) stringValue]]];
+    } [temp addObject:@"....."];
     
     return [temp copy];
 }

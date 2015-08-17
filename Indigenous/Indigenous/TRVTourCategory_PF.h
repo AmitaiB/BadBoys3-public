@@ -15,10 +15,11 @@ typedef NS_ENUM(NSInteger, TRVTourCategoryType){
     TRVTourCategorySee,
     TRVTourCategoryPlay,
     TRVTourCategoryEat,
-    TRVTourCategoryDrink
+    TRVTourCategoryDrink,
+    TRVTourCategoryNull
 };
 
-@property (nonatomic) TRVTourCategoryType tourCategory;
+@property (nonatomic) TRVTourCategoryType tourCategoryType;
 
 -(NSString*)description;
 
