@@ -257,15 +257,15 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lfH-ib-qa5" id="rMx-io-yep">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwk-L6-IPk">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="269"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kY-5K-cvp">
                                             <rect key="frame" x="167" y="104" width="266" height="62"/>
                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="45"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwk-L6-IPk">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="269"/>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="hwk-L6-IPk" firstAttribute="leading" secondItem="rMx-io-yep" secondAttribute="leading" id="AeU-Bm-Y7i"/>

@@ -22,9 +22,24 @@
                            [[UIStoryboard storyboardWithName:@"TourGuideFlow" bundle:nil] instantiateInitialViewController],
                            [[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController]];
     
+
     
     self.viewControllers = tabbarVCs;
     self.selectedIndex = 0;
+    
+    
+    UITabBarItem *myTripsTab = [[UITabBarItem alloc] initWithTitle:@"My Trips" image:[UIImage imageNamed:@"myTrips"] selectedImage:[UIImage imageNamed:@"myTrips"]];
+    UITabBarItem *makeToursTab = [[UITabBarItem alloc] initWithTitle:@"Create Trip" image:[UIImage imageNamed:@"timeline"] selectedImage:[UIImage imageNamed:@"timeline"]];
+    UITabBarItem *profileTab = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"profileTab"] selectedImage:[UIImage imageNamed:@"profileTab"]];
+
+    
+    UIViewController *firstVC = self.viewControllers[0];
+    UIViewController *secondVC = self.viewControllers[1];
+    UIViewController *thirdVC = self.viewControllers[2];
+    firstVC.tabBarItem = myTripsTab;
+    secondVC.tabBarItem = makeToursTab;
+    thirdVC.tabBarItem = profileTab;
+
     
 }
 

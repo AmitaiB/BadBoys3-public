@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.segmentedControl.frame = CGRectMake(50, 200, 250, 30);
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading Trips";
@@ -64,15 +65,6 @@
 
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
                     
-                    
-                    // uncomment below if you want to load dummy trips
-                    
-//                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-//                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-//
-//                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
-
-
                     self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
 //
                     self.tripTableView.dataSource = self.tableViewDataSource;
@@ -121,17 +113,13 @@
     
     for (PFObject *PFTour in myTrips){
         
-        
-        // DOES THIS LINE WORK??
         [PFTour fetch];
 
         if ([PFTour[@"isPurchased"]isEqualToNumber:@(YES)] ) {
-        
-        
-        
+    
         
         TRVTour *tour = [[TRVTour alloc]init];
-            
+        
             
         // get guide for this tour info
         
@@ -144,10 +132,9 @@
             /// continue herrre
         TRVUser *tourGuide = [[TRVUser alloc] init];
         tourGuide.userBio.firstName = userBioForThisUser[@"first_name"];
-//        tourGuideuse.userBio.profileImageURL
             
             
-            
+            // GET IMAGE FOR GUIDE FOR THIS TOUR
             if (userBioForThisUser[@"picture"]){
                 [TRVAFNetwokingAPIClient getImagesWithURL:userBioForThisUser[@"picture"] withCompletionBlock:^(UIImage *response) {
                     tourGuide.userBio.profileImage = response;
@@ -167,10 +154,8 @@
             }
             
             
-//
-            
+        // GET DETAILS FOR EACH TOUR
         tour.guideForThisTour = tourGuide;
-//        tour.guideForThisTour = guideForThisRow;
         tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
         tour.tourDeparture = PFTour[@"tourDeparture"];
         
