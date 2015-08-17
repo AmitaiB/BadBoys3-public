@@ -21,7 +21,7 @@
     self.clipsToBounds = YES;
     self.titleLabel.font = [UIFont fontWithName:@"Avenir Next" size:20.0];
 //    [self mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.width.equalTo(self.superview).multipliedBy(0.3);
+//        
 //    }];
 }
 

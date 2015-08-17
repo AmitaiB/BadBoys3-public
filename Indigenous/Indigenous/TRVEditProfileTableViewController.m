@@ -83,7 +83,6 @@
     PFUser *currentUser = [PFUser currentUser];
     
     PFObject *userBio = currentUser[@"userBio"];
-//    self.sharedDataStore.loggedInUser
     
     
     

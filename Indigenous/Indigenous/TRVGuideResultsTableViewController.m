@@ -194,7 +194,7 @@
 -(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user {
     
     
-    NSArray *allTours = user[@"myGuideTrips"];
+    NSArray *allTours = user[@"myTrips"];
     
     for (PFObject *PFTour in allTours){
         [PFTour fetch];
@@ -232,7 +232,7 @@
         itinerary.tourStops = TRVAllStops;
         tour.itineraryForThisTour = itinerary;
         [guideForThisRow.myTrips addObject:tour];
-        [guideForThisRow.PFallTrips addObject:PFTour];
+        
         if ([PFTour[@"categoryForThisTour"] isEqualToString:self.sharedData.currentCategorySearching.categoryName]){
             [guideForThisRow.PFCurrentCategoryTrips addObject:PFTour];
         } else {

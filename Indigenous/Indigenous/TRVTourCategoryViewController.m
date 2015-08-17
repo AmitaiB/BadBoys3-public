@@ -33,9 +33,9 @@
     self.categoryCollectionView.dataSource = self;
 
 
-
+//    self.tourCategories = [@[seeCategory, playCategory, eatCategory, drinkCategory] mutableCopy];
     self.tourCategories = [[NSMutableArray alloc] initWithObjects:[TRVTourCategory returnCategoryWithTitle:@"See"],
-                                                                                                                [TRVTourCategory returnCategoryWithTitle:@"Discover"],
+                                                                                                                [TRVTourCategory returnCategoryWithTitle:@"Play"],
                                                                                                                 [TRVTourCategory returnCategoryWithTitle:@"Eat"],
                                                                                                                 [TRVTourCategory returnCategoryWithTitle:@"Drink"], nil];
     
