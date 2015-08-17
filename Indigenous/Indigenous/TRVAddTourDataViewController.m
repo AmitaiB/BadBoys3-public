@@ -5,6 +5,7 @@
 //  Created by Amitai Blickstein on 8/17/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
+#import "TRVBuildItineraryViewController.h"
 #import "TRVTourImagePicker.h"
 #import "TRVAddTourDataViewController.h"
 #import "TRVTourDataPF.h"
@@ -33,6 +34,8 @@
     [self initializeSegmentedControl];
     [self initializeDatePicker];
     // Do any additional setup after loading the view.
+    
+    [PFUser enableAutomaticUser];
 }
 
 #pragma mark - ImageView and ImagePicker methods

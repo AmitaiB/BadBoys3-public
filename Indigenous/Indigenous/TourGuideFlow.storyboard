@@ -1,172 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TAU-Cj-Q2B">
-    <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-    </dependencies>
-    <scenes>
-        <!--My Tours-->
-        <scene sceneID="C3W-Fk-jxS">
-            <objects>
-                <viewController id="SXL-dl-CXS" customClass="TRVTourGuideMyToursVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0vN-KU-Iia"/>
-                        <viewControllerLayoutGuide type="bottom" id="wmB-4L-nqB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ac4-q8-cDN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rT-4j-99E">
-                                <rect key="frame" x="37" y="28" width="113" height="30"/>
-                                <state key="normal" title="Upcoming Tours">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFS-le-N6x">
-                                <rect key="frame" x="177" y="28" width="73" height="30"/>
-                                <state key="normal" title="Past Tours">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="158" y="28" width="113" height="30"/>
-                                </variation>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XTy-x1-IfD">
-                                <rect key="frame" x="0.0" y="251" width="600" height="300"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whatever was last clicked" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79t-1j-qHm">
-                                <rect key="frame" x="16" y="91" width="200" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="GHW-TI-SHp"/>
-                                    <constraint firstAttribute="width" constant="200" id="I14-NP-0m1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCo-Hd-wmJ">
-                                <rect key="frame" x="16" y="138" width="193" height="30"/>
-                                <state key="normal" title="Button: Switch to local view">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="16" y="138" width="191" height="30"/>
-                                </variation>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="79t-1j-qHm" firstAttribute="leading" secondItem="gCo-Hd-wmJ" secondAttribute="leading" id="3Yd-hs-Vfx"/>
-                            <constraint firstItem="DFS-le-N6x" firstAttribute="top" secondItem="0vN-KU-Iia" secondAttribute="bottom" constant="8" id="BgD-uM-JPx"/>
-                            <constraint firstAttribute="width" secondItem="XTy-x1-IfD" secondAttribute="width" id="J7y-xe-vW8"/>
-                            <constraint firstItem="79t-1j-qHm" firstAttribute="leading" secondItem="Ac4-q8-cDN" secondAttribute="leadingMargin" id="JHm-eq-tM9"/>
-                            <constraint firstItem="4rT-4j-99E" firstAttribute="top" secondItem="0vN-KU-Iia" secondAttribute="bottom" constant="8" symbolic="YES" id="Pnn-n2-oOu"/>
-                            <constraint firstItem="wmB-4L-nqB" firstAttribute="top" secondItem="XTy-x1-IfD" secondAttribute="bottom" id="WNh-PJ-lR2"/>
-                            <constraint firstItem="XTy-x1-IfD" firstAttribute="top" secondItem="gCo-Hd-wmJ" secondAttribute="bottom" constant="83" id="a72-6J-yr0"/>
-                            <constraint firstItem="XTy-x1-IfD" firstAttribute="leading" secondItem="Ac4-q8-cDN" secondAttribute="leading" id="gXw-2N-vAQ"/>
-                            <constraint firstItem="DFS-le-N6x" firstAttribute="leading" secondItem="4rT-4j-99E" secondAttribute="trailing" constant="8" symbolic="YES" id="kUy-f2-BFN"/>
-                            <constraint firstItem="4rT-4j-99E" firstAttribute="leading" secondItem="Ac4-q8-cDN" secondAttribute="leadingMargin" constant="21" id="nuo-gz-kqe"/>
-                            <constraint firstItem="79t-1j-qHm" firstAttribute="top" secondItem="DFS-le-N6x" secondAttribute="bottom" constant="33" id="qRz-bo-ncU"/>
-                            <constraint firstItem="DFS-le-N6x" firstAttribute="width" secondItem="4rT-4j-99E" secondAttribute="width" id="rIq-ua-bGX"/>
-                            <constraint firstItem="gCo-Hd-wmJ" firstAttribute="top" secondItem="79t-1j-qHm" secondAttribute="bottom" constant="26" id="w2N-cX-qxi"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="My Tours" id="yP3-VP-ZDN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W0f-sW-9ev" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1298" y="-431"/>
-        </scene>
-        <!--Add Tours-->
-        <scene sceneID="gob-t4-kC7">
-            <objects>
-                <viewController id="Umb-bZ-KvD" customClass="TRVAddToursVC" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Kt5-7R-pa9"/>
-                        <viewControllerLayoutGuide type="bottom" id="foL-KQ-oyP"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Reh-YR-rjz" userLabel="Super View">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="tts-zb-b3L" userLabel="placeholderImage">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
-                                <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49h-VA-vj4" userLabel="currentUser label">
-                                <rect key="frame" x="41" y="168" width="108" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="232" id="5t8-Nm-YcR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5t8-Nm-YcR"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="5t8-Nm-YcR"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add Tour Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GV3-DQ-Zox">
-                                <rect key="frame" x="8" y="58" width="97" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="178" id="U6F-lA-H0t"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="U6F-lA-H0t"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="U6F-lA-H0t"/>
-                                    </mask>
-                                </variation>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nFL-I0-sLL">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wd1-Ff-4wd">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="↑Choose Tour Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lok-hC-Ho6">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="202" id="luW-yn-a5r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="luW-yn-a5r"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="luW-yn-a5r"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iRk-mx-jzZ">
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ta5-4J-Qi7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -1301,7 +1134,7 @@
         <!--Title-->
         <scene sceneID="w2E-Y6-JfJ">
             <objects>
-                <viewController id="mVB-mH-vKs" sceneMemberID="viewController">
+                <viewController id="mVB-mH-vKs" customClass="TRVBuildItineraryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jWu-no-Z1w"/>
                         <viewControllerLayoutGuide type="bottom" id="RPw-wf-d6n"/>
@@ -1309,13 +1142,6 @@
                     <view key="view" contentMode="scaleToFill" id="tm6-nk-Fng">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YuO-8X-L4V">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="44"/>
-                                </variation>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="t9n-fS-q2m">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1339,22 +1165,29 @@
                                     <rect key="frame" x="100" y="108" width="200" height="300"/>
                                 </variation>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="YuO-8X-L4V">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="64" width="400" height="44"/>
+                                </variation>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="YuO-8X-L4V"/>
                                 <exclude reference="t9n-fS-q2m"/>
                                 <exclude reference="euW-df-sh1"/>
                                 <exclude reference="kpW-KM-SHU"/>
+                                <exclude reference="YuO-8X-L4V"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="YuO-8X-L4V"/>
                                 <include reference="t9n-fS-q2m"/>
                                 <include reference="euW-df-sh1"/>
                                 <include reference="kpW-KM-SHU"/>
+                                <include reference="YuO-8X-L4V"/>
                             </mask>
                         </variation>
                     </view>

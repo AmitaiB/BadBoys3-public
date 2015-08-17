@@ -28,7 +28,9 @@
     // Do any additional setup after loading the view.
     BOOL hasCamera = [self checkForCamera];
 
-    
+    if (!hasCamera) {
+        self.takeNewPhotoButton.enabled = NO;
+    }
     
 }
 
