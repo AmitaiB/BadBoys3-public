@@ -8,9 +8,8 @@
 
 #import "TRVTourCategory_PF.h"
 
-@implementation TRVTourCategory_PF {
-    NSArray *categoryDescriptions_ = @[@"See", @"Play", @"Eat", @"Drink"];
-}
+@implementation TRVTourCategory_PF
+    
 +(void)load {
     [self registerSubclass];
 }
@@ -21,8 +20,11 @@
 }
 
 -(NSString *)description {
+    NSArray *categoryDescriptions = @[@"See",
+                                      @"Play",
+                                      @"Eat", @"Drink"];
     if (self.tourCategory) {
-        return categoryDescriptions_[self.tourCategory];
+        return categoryDescriptions[self.tourCategory];
     }
     return @"DEFAULT CATEGORY: The worst decision is indecision.";
 }

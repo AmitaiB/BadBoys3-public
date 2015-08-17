@@ -36,5 +36,16 @@
     return [self initWithDefaultValues];
 }
 
+-(NSArray *)allValues {
+    NSMutableArray *temp = [NSMutableArray new];
+    temp[0] = self.tourGuide;
+    temp[1] = self.tourName;
+    temp[2] = [self.tourCategory description];
+    temp[3] = [self.depatureDate description];
+    temp[4] = [NSString stringWithFormat:@"Itinerary with %@ locations",[@(self.tourStopGeoPoints.count) stringValue]];
+    
+    return [temp copy];
+}
+
 
 @end

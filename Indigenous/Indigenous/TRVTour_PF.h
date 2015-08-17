@@ -24,4 +24,6 @@
 
 -(instancetype)init;
 
+-(NSArray *)allValues;
+
 @end
