@@ -73,6 +73,11 @@ static NSString * const cellReuseID = @"cellReuseID";
     [categoryPicker show];
 }
 
+#pragma mark - Confirm GuideName methods
+
+
+
+
     //https://github.com/SolomonBier/SBFlatDatePicker
 #pragma mark - SBFlatDatePicker delegate
 -(void)sbPickDepartureDate {
