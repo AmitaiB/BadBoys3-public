@@ -68,12 +68,7 @@
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips withCompletionBlock:^(BOOL success) {
                         
                         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                            
-                            // uncomment below if you want to load dummy trips
-                            
-                            //                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-                            //                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-                            
+               
                             self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
                             self.tripTableView.dataSource = self.tableViewDataSource;
                             if (self.segmentedControl.selectedSegmentIndex == 1) {
