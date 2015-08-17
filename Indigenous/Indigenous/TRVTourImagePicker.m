@@ -10,6 +10,7 @@
 
 #import "TRVTourImagePicker.h"
 #import <SCLAlertView.h>
+#import "TRVConfirmTourViewController.h"
 
 @interface TRVTourImagePicker ()
 

@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+#import "TRVConfirmTourViewController.h"
 #import "TRVBuildItineraryViewController.h"
 #import <HNKGooglePlacesAutocomplete.h>
 #import "TRVConstants.h"
@@ -146,7 +147,8 @@ DBLG
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      self.tourObject.tourItinerary = self.currentItinerary;
-     
+     TRVConfirmTourViewController *destinationVC = segue.destinationViewController;
+     destinationVC.tourObject = self.tourObject;
      
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
