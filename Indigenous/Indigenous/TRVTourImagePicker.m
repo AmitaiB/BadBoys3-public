@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
+#define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
+
 #import "TRVTourImagePicker.h"
 
 @interface TRVTourImagePicker ()
@@ -31,13 +33,31 @@
     imagePicker.allowsEditing = YES;
     imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    [self presentViewController:imagePicker animated:YES completion:^{
+        DBLG
+    }];
 }
-
 
 - (IBAction)selectExistingPhotoButtonTapped:(id)sender {
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePicker animated:YES completion:^{
+        DBLG
+    }];
 }
 
+
+#pragma mark - UIImagePickerControlDegelate methods
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.tourImageSelection.image = chosenImage;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
