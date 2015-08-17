@@ -113,10 +113,13 @@
     PFQuery *query = [PFUser query];
     [query includeKey:@"userBio"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error){
-    
-        self.userCount = 0;
-        [self findAppropriateGuides:objects];
-        [self createGuides];
+        
+        NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+        [operationQ addOperationWithBlock:^{
+            self.userCount = 0;
+            [self findAppropriateGuides:objects];
+            [self createGuides];
+        }];
         
     }];
     
@@ -168,7 +171,10 @@
             [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                 bio.profileImage = response;
                 guideForThisRow.userBio = bio;
+                NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+                [operationQ addOperationWithBlock:^{
                 [self completeUser:guideForThisRow bio:bio parseUser:user];
+                }];
             }];
             
         } else {
@@ -179,8 +185,10 @@
                     bio.profileImage = [UIImage imageWithData:data];
                     bio.nonFacebookImage = [UIImage imageWithData:data];
                     guideForThisRow.userBio = bio;
-                    
+                    NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+                    [operationQ addOperationWithBlock:^{
                     [self completeUser:guideForThisRow bio:bio parseUser:user];
+                    }];
                     
                 } else {
                     // error block
@@ -246,8 +254,11 @@
     
     self.userCount++;
     if (self.userCount == self.PFGuides.count){
-        [self.tableView reloadData];
-        [self.hud hide:YES];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self.tableView reloadData];
+            [self.hud hide:YES];
+        }];
+        
     }
     
 }

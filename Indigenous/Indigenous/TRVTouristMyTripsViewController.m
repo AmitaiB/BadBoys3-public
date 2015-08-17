@@ -32,6 +32,11 @@
     [super viewDidLoad];
     self.segmentedControl.frame = CGRectMake(50, 200, 250, 30);
     
+    
+}
+
+
+-(void)setUpUserAndTrips {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading Trips";
     hud.labelFont = [UIFont fontWithName:@"Avenir" size:17];
@@ -39,7 +44,6 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
     [self.sharedDataStore setCurrentUser:[PFUser currentUser] withBlock:^(BOOL success) {
-        
         
         PFUser *currentUser = [PFUser currentUser];
         if (currentUser) {
@@ -49,9 +53,6 @@
             [query getObjectInBackgroundWithId:[currentUser objectId] block:^(PFObject *user, NSError *error) {
                 if (!error) {
                     
-                    //IF WE ARE IN GUIDE MODE, GO TO myGuide TRIPS
-                    
-                    //ELSE GO TO myTrips
                     NSArray *myTrips = @[];
                     if (self.sharedDataStore.isOnGuideTabBar){
                         myTrips = user[@"myGuideTrips"];
@@ -59,146 +60,163 @@
                         myTrips = user[@"myTrips"];
                     }
                     
+                    
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
-
-                    [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
                     
-                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
-//
-                    self.tripTableView.dataSource = self.tableViewDataSource;
-                    if (self.segmentedControl.selectedSegmentIndex == 1) {
-                        [self.tableViewDataSource changeTripsDisplayed];
-                    }
-
-                    [self.tripTableView reloadData];
-                    
+                    [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips withCompletionBlock:^(BOOL success) {
                         
-                    [hud hide:YES];
-
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            
+                            // uncomment below if you want to load dummy trips
+                            
+                            //                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+                            //                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+                            
+                            self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
+                            self.tripTableView.dataSource = self.tableViewDataSource;
+                            if (self.segmentedControl.selectedSegmentIndex == 1) {
+                                [self.tableViewDataSource changeTripsDisplayed];
+                            }
+                            
+                            [self.tripTableView reloadData];
+                            
+                            
+                            [hud hide:YES];
+                            
+                        }];
+                        
+                    }];
                     
-
                 } else {
                     // show modal
                 }
             }];
         }
         
-
-
+        
+        
         
     }];
-
-//    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-//                        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-//                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
-//    self.tripTableView.dataSource = self.tableViewDataSource;
-//    [self.tripTableView reloadData];
-        [self.tripTableView reloadData];
-   
+    
+    
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setUpUserAndTrips];
+}
 
 - (IBAction)segmentedControlChanged:(id)sender {
     [self.tableViewDataSource changeTripsDisplayed];
+    
     [self.tripTableView reloadData];
 }
 
 
--(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user allTrips:(NSArray *)myTrips {
+-(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user allTrips:(NSArray *)myTrips withCompletionBlock:(void (^)(BOOL success))completion {
     
-    
-    
-    
-    for (PFObject *PFTour in myTrips){
+    NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+    [operationQ addOperationWithBlock:^{
         
-        [PFTour fetch];
-
-        if ([PFTour[@"isPurchased"]isEqualToNumber:@(YES)] ) {
-    
-        
-        TRVTour *tour = [[TRVTour alloc]init];
-        
-            
-        // get guide for this tour info
-        
-        PFUser *userForThisTour = PFTour[@"guideForThisTour"];
-        [userForThisTour fetch];
-        PFObject *userBioForThisUser = userForThisTour[@"userBio"];
-        [userBioForThisUser fetch];
+        for (PFObject *PFTour in myTrips){
             
             
-            /// continue herrre
-        TRVUser *tourGuide = [[TRVUser alloc] init];
-        tourGuide.userBio.firstName = userBioForThisUser[@"first_name"];
+            // DOES THIS LINE WORK??
+            [PFTour fetch];
             
-            
-            // GET IMAGE FOR GUIDE FOR THIS TOUR
-            if (userBioForThisUser[@"picture"]){
-                [TRVAFNetwokingAPIClient getImagesWithURL:userBioForThisUser[@"picture"] withCompletionBlock:^(UIImage *response) {
-                    tourGuide.userBio.profileImage = response;
-                }];
+            if ([PFTour[@"isPurchased"]isEqualToNumber:@(YES)] ) {
                 
-            } else {
                 
-                PFFile *pictureFile = userBioForThisUser[@"emailPicture"];
-                [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-                    if (!error) {
-                        tourGuide.userBio.profileImage = [UIImage imageWithData:data];
-                        tourGuide.userBio.nonFacebookImage = [UIImage imageWithData:data];
-                    } else {
-                        // error block
-                    }
-                }];
-            }
+                
+                
+                TRVTour *tour = [[TRVTour alloc]init];
+                
+                
+                // get guide for this tour info
+                
+                PFUser *userForThisTour = PFTour[@"guideForThisTour"];
+                [userForThisTour fetch];
+                PFObject *userBioForThisUser = userForThisTour[@"userBio"];
+                [userBioForThisUser fetch];
+                
+                
+                /// continue herrre
+                TRVUser *tourGuide = [[TRVUser alloc] init];
+                tourGuide.userBio.firstName = userBioForThisUser[@"first_name"];
+                //        tourGuideuse.userBio.profileImageURL
+                
+                
+                
+                if (userBioForThisUser[@"picture"]){
+                    [TRVAFNetwokingAPIClient getImagesWithURL:userBioForThisUser[@"picture"] withCompletionBlock:^(UIImage *response) {
+                        tourGuide.userBio.profileImage = response;
+                    }];
+                    
+                } else {
+                    
+                    PFFile *pictureFile = userBioForThisUser[@"emailPicture"];
+                    [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                        if (!error) {
+                            tourGuide.userBio.profileImage = [UIImage imageWithData:data];
+                            tourGuide.userBio.nonFacebookImage = [UIImage imageWithData:data];
+                        } else {
+                            // error block
+                        }
+                    }];
+                }
+                
+                
+                tour.guideForThisTour = tourGuide;
+                //        tour.guideForThisTour = guideForThisRow;
+                tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
+                tour.tourDeparture = PFTour[@"tourDeparture"];
+                
+                PFObject *PFItinerary = PFTour[@"itineraryForThisTour"];
+                [PFItinerary fetch];
+                
+                TRVItinerary *itinerary = [[TRVItinerary alloc] init];
+                itinerary.nameOfTour = PFItinerary[@"nameOfTour"];
+                itinerary.numberOfStops =  [PFItinerary[@"numberOfStops"] integerValue];
+                PFFile *imageForThisTour = PFItinerary[@"tourImage"];
+                NSData *imageData = [imageForThisTour getData];
+                itinerary.tourImage = [UIImage imageWithData:imageData];
+                
+                NSArray *tourStops = PFItinerary[@"tourStops"];
+                NSMutableArray *TRVAllStops = [[NSMutableArray alloc] init];
+                for (PFObject *PFStop in tourStops){
+                    [PFStop fetch];
+                    TRVTourStop *stop = [[TRVTourStop alloc] init];
+                    stop.lng = [PFStop[@"lng"] floatValue];
+                    stop.lat = [PFStop[@"lat"] floatValue];
+                    stop.nameOfPlace = PFStop[@"nameOfPlace"];
+                    stop.addressOfEvent = PFStop[@"addressOfEvent"];
+                    stop.descriptionOfEvent = PFStop[@"descriptionOfEvent"];
+                    PFFile *imageForStop = PFStop[@"image"];
+                    NSData *stopImageData = [imageForStop getData];
+                    stop.image = [UIImage imageWithData:stopImageData];
+                    [TRVAllStops addObject:stop];
+                }
+                
+                itinerary.tourStops = TRVAllStops;
+                tour.itineraryForThisTour = itinerary;
+                [guideForThisRow.myTrips addObject:tour];
+                
+            } // end of if statement
             
             
-        // GET DETAILS FOR EACH TOUR
-        tour.guideForThisTour = tourGuide;
-        tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
-        tour.tourDeparture = PFTour[@"tourDeparture"];
-        
-        PFObject *PFItinerary = PFTour[@"itineraryForThisTour"];
-        [PFItinerary fetch];
-        
-        TRVItinerary *itinerary = [[TRVItinerary alloc] init];
-        itinerary.nameOfTour = PFItinerary[@"nameOfTour"];
-        itinerary.numberOfStops =  [PFItinerary[@"numberOfStops"] integerValue];
-        PFFile *imageForThisTour = PFItinerary[@"tourImage"];
-        NSData *imageData = [imageForThisTour getData];
-        itinerary.tourImage = [UIImage imageWithData:imageData];
-        
-        NSArray *tourStops = PFItinerary[@"tourStops"];
-        NSMutableArray *TRVAllStops = [[NSMutableArray alloc] init];
-        for (PFObject *PFStop in tourStops){
-            [PFStop fetch];
-            TRVTourStop *stop = [[TRVTourStop alloc] init];
-            stop.lng = [PFStop[@"lng"] floatValue];
-            stop.lat = [PFStop[@"lat"] floatValue];
-            stop.nameOfPlace = PFStop[@"nameOfPlace"];
-            stop.addressOfEvent = PFStop[@"addressOfEvent"];
-            stop.descriptionOfEvent = PFStop[@"descriptionOfEvent"];
-            PFFile *imageForStop = PFStop[@"image"];
-            NSData *stopImageData = [imageForStop getData];
-            stop.image = [UIImage imageWithData:stopImageData];
-            [TRVAllStops addObject:stop];
-        }
-        
-        itinerary.tourStops = TRVAllStops;
-        tour.itineraryForThisTour = itinerary;
-        [guideForThisRow.myTrips addObject:tour];
+        } // END OF TOUR FOR LOOP
         
         
-    } // end of if statement
         
-    } // END OF TOUR FOR LOOP
+        completion(YES);
+        
+    }];
     
+    // NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
     
-    
-    NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
-    
-    }
+}
 
 
 
