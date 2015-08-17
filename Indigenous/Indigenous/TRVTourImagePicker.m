@@ -9,6 +9,7 @@
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 #import "TRVTourImagePicker.h"
+#import <SCLAlertView.h>
 
 @interface TRVTourImagePicker ()
 
@@ -25,6 +26,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    BOOL hasCamera = [self checkForCamera];
+
+    
+    
+}
+
+-(BOOL)checkForCamera {
+    BOOL hasCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    if (!hasCamera) {
+        SCLAlertView *noCameraAlert = [[SCLAlertView alloc] initWithNewWindow];
+        
+        [noCameraAlert showWarning:self title:@"No Camera Detected" subTitle:@"Photos can only be obtained by cameras, or wishing really hard. It is known." closeButtonTitle:@"Thank you, come again!" duration:0.0f];
+    }
+    return hasCamera;
 }
 
 - (IBAction)takeNewPhotoButtonTapped:(UIButton*)sender {
@@ -45,6 +60,12 @@
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController:imagePicker animated:YES completion:^{
+        DBLG
+    }];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self presentViewController:picker animated:YES completion:^{
         DBLG
     }];
 }
