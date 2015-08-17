@@ -30,7 +30,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setUpUserAndTrips];
+   
+}
+
+
+-(void)setUpUserAndTrips {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Loading Trips";
     hud.labelFont = [UIFont fontWithName:@"Avenir" size:17];
@@ -38,7 +43,6 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
     [self.sharedDataStore setCurrentUser:[PFUser currentUser] withBlock:^(BOOL success) {
-        
         
         PFUser *currentUser = [PFUser currentUser];
         if (currentUser) {
@@ -48,9 +52,6 @@
             [query getObjectInBackgroundWithId:[currentUser objectId] block:^(PFObject *user, NSError *error) {
                 if (!error) {
                     
-                    //IF WE ARE IN GUIDE MODE, GO TO myGuide TRIPS
-                    
-                    //ELSE GO TO myTrips
                     NSArray *myTrips = @[];
                     if (self.sharedDataStore.isOnGuideTabBar){
                         myTrips = user[@"myGuideTrips"];
@@ -61,63 +62,61 @@
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
-
-                    [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips];
                     
-                    
-                    // uncomment below if you want to load dummy trips
-                    
-//                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-//                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-//
-//                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
-
-
-                    self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
-//
-                    self.tripTableView.dataSource = self.tableViewDataSource;
-                    if (self.segmentedControl.selectedSegmentIndex == 1) {
-                        [self.tableViewDataSource changeTripsDisplayed];
-                    }
-
-                    [self.tripTableView reloadData];
-                    
+                    [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips withCompletionBlock:^(BOOL success) {
                         
-                    [hud hide:YES];
-
+                        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                            
+                            // uncomment below if you want to load dummy trips
+                            
+                            //                    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
+                            //                    NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
+                            
+                            self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:self.sharedDataStore.loggedInUser.myTrips configuration:nil];
+                            self.tripTableView.dataSource = self.tableViewDataSource;
+                            if (self.segmentedControl.selectedSegmentIndex == 1) {
+                                [self.tableViewDataSource changeTripsDisplayed];
+                            }
+                            
+                            [self.tripTableView reloadData];
+                            
+                            
+                            [hud hide:YES];
+                            
+                        }];
+                        
+                    }];
                     
-
                 } else {
                     // show modal
                 }
             }];
         }
         
-
-
+        
+        
         
     }];
 
-//    NSMutableArray *dummyAllTrips = [[NSMutableArray alloc] init];
-//                        NSMutableArray *allTrips = [dummyAllTrips returnDummyAllTripsArrayForGuide:self.sharedDataStore.loggedInUser];
-//                        self.tableViewDataSource = [[TRVTouristTripDataSource alloc] initWithTrips:allTrips configuration:nil];
-//    self.tripTableView.dataSource = self.tableViewDataSource;
-//    [self.tripTableView reloadData];
-        [self.tripTableView reloadData];
-   
+    
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self setUpUserAndTrips];
+}
 
 - (IBAction)segmentedControlChanged:(id)sender {
     [self.tableViewDataSource changeTripsDisplayed];
+    
     [self.tripTableView reloadData];
 }
 
 
--(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user allTrips:(NSArray *)myTrips {
+-(void)completeUser:(TRVUser*)guideForThisRow bio:(TRVBio*)bio parseUser:(PFUser*)user allTrips:(NSArray *)myTrips withCompletionBlock:(void (^)(BOOL success))completion {
     
-    
-    
+    NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+    [operationQ addOperationWithBlock:^{
     
     for (PFObject *PFTour in myTrips){
         
@@ -167,8 +166,6 @@
             }
             
             
-//
-            
         tour.guideForThisTour = tourGuide;
 //        tour.guideForThisTour = guideForThisRow;
         tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
@@ -204,16 +201,20 @@
         tour.itineraryForThisTour = itinerary;
         [guideForThisRow.myTrips addObject:tour];
         
-        
     } // end of if statement
+   
         
-    } // END OF TOUR FOR LOOP
+} // END OF TOUR FOR LOOP
     
     
     
-    NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
+    completion(YES);
     
-    }
+    }];
+    
+   // NSLog(@"THESE ARE THE USER TRIPS %@",self.tourist.myTrips);
+    
+}
 
 
 

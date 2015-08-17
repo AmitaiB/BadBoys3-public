@@ -115,7 +115,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects,NSError *error){
         
         NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
-        
         [operationQ addOperationWithBlock:^{
             self.userCount = 0;
             [self findAppropriateGuides:objects];
@@ -172,7 +171,10 @@
             [TRVAFNetwokingAPIClient getImagesWithURL:guideBio[@"picture"] withCompletionBlock:^(UIImage *response) {
                 bio.profileImage = response;
                 guideForThisRow.userBio = bio;
+                NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+                [operationQ addOperationWithBlock:^{
                 [self completeUser:guideForThisRow bio:bio parseUser:user];
+                }];
             }];
             
         } else {
@@ -183,8 +185,10 @@
                     bio.profileImage = [UIImage imageWithData:data];
                     bio.nonFacebookImage = [UIImage imageWithData:data];
                     guideForThisRow.userBio = bio;
-                    
+                    NSOperationQueue *operationQ = [[NSOperationQueue alloc]init];
+                    [operationQ addOperationWithBlock:^{
                     [self completeUser:guideForThisRow bio:bio parseUser:user];
+                    }];
                     
                 } else {
                     // error block
