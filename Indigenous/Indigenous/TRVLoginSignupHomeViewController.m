@@ -31,11 +31,11 @@
     [super viewDidLoad];
 
     [self setUpUI];
-    [PFUser logOut];
-    [FBSDKAccessToken setCurrentAccessToken:nil];
-    [FBSDKProfile setCurrentProfile:nil];
+//    [PFUser logOut];
+//    [FBSDKAccessToken setCurrentAccessToken:nil];
+//    [FBSDKProfile setCurrentProfile:nil];
 
-
+//
 
   
     

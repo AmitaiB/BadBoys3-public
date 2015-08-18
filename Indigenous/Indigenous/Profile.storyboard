@@ -18,24 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JI-Jn-hTc">
-                                <rect key="frame" x="272" y="510" width="56" height="30"/>
-                                <state key="normal" title="Log Out">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOutButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Iat-gr-lN3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPF-EU-8T5">
-                                <rect key="frame" x="223" y="133" width="54" height="30"/>
-                                <state key="normal" title="Dismiss">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Dvp-Kx-aHZ"/>
-                                </connections>
-                            </button>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iNc-kG-3eh">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XD9-4S-579">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPF-EU-8T5">
+                                            <rect key="frame" x="258" y="266" width="84" height="47"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                                            <state key="normal" title="Dismiss">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="dismissButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Dvp-Kx-aHZ"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4JI-Jn-hTc">
+                                            <rect key="frame" x="254" y="344" width="93" height="47"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                                            <state key="normal" title="Log Out">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="logOutButtonPressed:" destination="Df2-TG-gk8" eventType="touchUpInside" id="Iat-gr-lN3"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="EPF-EU-8T5" secondAttribute="centerX" id="LiA-oQ-dya"/>
+                                        <constraint firstAttribute="centerY" secondItem="EPF-EU-8T5" secondAttribute="centerY" id="dGU-kR-nL6"/>
+                                        <constraint firstItem="EPF-EU-8T5" firstAttribute="leading" secondItem="4JI-Jn-hTc" secondAttribute="trailing" id="erO-3N-vNr"/>
+                                        <constraint firstAttribute="centerX" secondItem="4JI-Jn-hTc" secondAttribute="centerX" id="mS8-C1-fI0"/>
+                                        <constraint firstItem="4JI-Jn-hTc" firstAttribute="top" secondItem="EPF-EU-8T5" secondAttribute="bottom" constant="30" id="yvK-Y4-ieR"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="erO-3N-vNr"/>
+                                        </mask>
+                                    </variation>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -84,6 +111,7 @@
                             <constraint firstItem="xiC-do-ong" firstAttribute="leading" secondItem="zCH-mX-hgd" secondAttribute="leading" id="miI-be-EZ3"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="sTr-86-ckw"/>
                     <navigationItem key="navigationItem" title="Home" id="KCx-Qd-1OU">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="gXB-WD-Ctr">
                             <connections>
@@ -103,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfv-Js-mid" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="817"/>
+            <point key="canvasLocation" x="2792" y="817"/>
         </scene>
         <!--Edit Profile Table View Controller-->
         <scene sceneID="Xjb-EJ-rLU">
@@ -522,13 +550,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yma-bF-DdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2706" y="803"/>
+            <point key="canvasLocation" x="3518" y="803"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EPI-ek-vTn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q8H-jy-csn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Zjl-pc-Jn9"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2eP-mi-Zay">
@@ -542,7 +569,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6zc-F7-e9L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1328" y="823"/>
+            <point key="canvasLocation" x="2026" y="817"/>
         </scene>
     </scenes>
     <resources>

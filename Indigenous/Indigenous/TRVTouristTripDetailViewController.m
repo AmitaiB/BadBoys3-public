@@ -43,11 +43,15 @@
 @implementation TRVTouristTripDetailViewController {
     CGFloat _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
     CGFloat _savedAlphaValue;
+    BOOL    _initialSetup;
+    BOOL    _startIt;
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]){
         _isTourGuide = NO;
+        _initialSetup = NO;
+        _startIt = NO;
     }
     return self;
 }
@@ -70,7 +74,13 @@
     
     self.tourStopCollectionView.delegate = self.collectionViewDelegate;
     self.tourStopCollectionView.scrollsToTop = NO;
-
+    
+    //[self.tourStopCollectionView reloadData];
+    
+    NSIndexPath *indexPath = [self.tourStopCollectionView indexPathForItemAtPoint:CGPointMake(10, 10)];
+    [self.tourStopCollectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    [self.tourStopCollectionView.delegate collectionView:self.tourStopCollectionView didSelectItemAtIndexPath:indexPath];
+    
     //[self.tourStopImageView.autoresizingMask = UIImag]
     
     [self setupParallaxImage:self.theScrollViewThatHoldsAllTheOtherViews];
@@ -84,6 +94,8 @@
         [self setUpTourGuideViewController];
     }
     self.theScrollViewThatHoldsAllTheOtherViews.backgroundColor = [UIColor orangeColor];
+    [self selectFirstItemInCollectionView];
+    [self performSelector:@selector(selectFirstItemInCollectionView) withObject:self afterDelay:.25];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -101,8 +113,6 @@
 
     [NSLayoutConstraint activateConstraints:self.bookTourButton.constraints];
     self.tourStopImageViewBottomConstraint.active = NO;
-
-    
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
@@ -118,6 +128,7 @@
     inset.top = screen.bounds.size.height;
     scrollView.contentInset = inset;
     scrollView.contentOffset = CGPointMake(0, -scrollView.contentInset.top);
+    _startIt = YES;
 }
 
 - (void)setupParallaxImage:(UIScrollView *)scrollView {
@@ -186,15 +197,14 @@
 }
 - (void)parallaxView:(APParallaxView *)view willChangeFrame:(CGRect)frame {
     // Do whatever you need to do to the parallaxView or your subview after its frame changed
-   
-    
-    
+    //if (_startIt && self.parallaxHeaderTourNameLabel.alpha <= .5 && !_initialSetup) {
+        //[self selectFirstItemInCollectionView];
+    //}
     [self setAlphaForParallaxTitleLabel];
 }
 
 - (void)setAlphaForParallaxTitleLabel {
     self.parallaxHeaderTourNameLabel.alpha = ([self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y + self.parallaxHeaderTourNameLabel.frame.size.height)) / _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
-
 }
 
 
@@ -223,6 +233,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.parallaxHeaderTourNameLabel.hidden = NO;
     self.parallaxHeaderTourNameLabel.alpha = _savedAlphaValue;
+}
+
+- (void)selectFirstItemInCollectionView {
+    NSIndexPath *indexPath = [self.tourStopCollectionView indexPathForItemAtPoint:CGPointMake(10, 10)];
+    [self.tourStopCollectionView cellForItemAtIndexPath:indexPath];
+    [self.tourStopCollectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    [self.tourStopCollectionView.delegate collectionView:self.tourStopCollectionView didSelectItemAtIndexPath:indexPath];
+    _initialSetup = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

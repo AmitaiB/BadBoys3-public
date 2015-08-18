@@ -53,9 +53,8 @@
     [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class)
                                   owner:self
                                 options:nil];
-    
+
     [self addSubview:self.contentView];
-    self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(@0);
     }];
@@ -71,6 +70,24 @@
     
     self.tourImageView.image = itineraryForThisView.tourImage;
     self.nameOfTourLabel.text = itineraryForThisView.nameOfTour;
+    
+    
+    
+    self.withUserLabel.text = tourForThisTourView.guideForThisTour.userBio.firstName;
+    
+    // Date Formatter
+    
+    NSDateFormatter *dayAndMonthFormat = [[NSDateFormatter alloc] init];
+//    NSDateFormatter *yearFormat = [[NSDateFormatter alloc] init];
+    
+    NSDate *dateForThisTour = self.tourForThisTourView.tourDeparture;
+    
+    [dayAndMonthFormat setDateFormat:@"EEE, MMM d"];
+
+    NSString *dayAndMonthOfTrip = [dayAndMonthFormat stringFromDate:dateForThisTour];
+
+    self.upcomingDateLabel.text = [NSString stringWithFormat:@"on %@", dayAndMonthOfTrip];
+    
     self.categoryIconImageView.image = tourForThisTourView.categoryForThisTour.iconImage;
     TRVTourStop *firstTourStop = itineraryForThisView.tourStops[0];
     self.meetAtFirstStopLabel.text = [NSString stringWithFormat:@"Meet at %@", firstTourStop.addressOfEvent];

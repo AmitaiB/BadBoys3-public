@@ -240,9 +240,13 @@
     
     if (self.segmentedControl.selectedSegmentIndex == 0) {
         tourForThisRow = self.guideCategoryTours[ip.row];
+        
+        // CHECK IF THIS FIXES WHO THE REAL GUIDE IS IN OUR TOUR VIEW NIB
+        tourForThisRow.guideForThisTour = self.selectedGuideUser;
         self.PFTourForThisRow = self.selectedGuideUser.PFCurrentCategoryTrips[ip.row];
     } else {
         tourForThisRow = self.guideOtherTours[ip.row];
+        tourForThisRow.guideForThisTour = self.selectedGuideUser;
         self.PFTourForThisRow = self.selectedGuideUser.PFOtherCategoryTrips[ip.row];
     }
 

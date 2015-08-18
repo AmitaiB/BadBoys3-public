@@ -7,7 +7,6 @@
 //
 
 #import "TRVTourDetailViewController.h"
-#import "TRVBookTourViewController.h"
 #import "TRVDetailGuideViewController.h"
 #import "TRVTourReceiptViewController.h"
 #import "TRVAllStopsView.h"
@@ -70,21 +69,21 @@
 //    }];
 
 }
-    
-
--(void)bookTourButtonPressed:(id)sender {
-    
-        UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
-    
-        TRVBookTourViewController *destination = [destinationStoryboard instantiateInitialViewController];
-    
-    // pass it into confirm purchase Storyboard
-    destination.destinationTour = self.destinationTour;
-    
-        // Alan can you check if this is right
-        [self presentViewController:destination animated:NO completion:nil];
-    
-}
+//    
+//
+//-(void)bookTourButtonPressed:(id)sender {
+//    
+//        UIStoryboard *destinationStoryboard = [UIStoryboard storyboardWithName:@"bookTour" bundle:nil];;
+//    
+//        TRVBookTourViewController *destination = [destinationStoryboard instantiateInitialViewController];
+//    
+//    // pass it into confirm purchase Storyboard
+//    destination.destinationTour = self.destinationTour;
+//    
+//        // Alan can you check if this is right
+//        [self presentViewController:destination animated:NO completion:nil];
+//    
+//}
 
 /*
 #pragma mark - Navigation

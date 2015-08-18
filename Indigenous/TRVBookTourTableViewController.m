@@ -7,6 +7,10 @@
 //
 
 #import "TRVBookTourTableViewController.h"
+#import "TRVTourReceiptViewController.h"
+#import "TRVUserDataStore.h"
+#import <Parse.h>
+
 
 @interface TRVBookTourTableViewController ()
 
@@ -17,11 +21,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    NSString *guideFirstName = self.destinationTour.guideForThisTour.userBio.firstName;
+    NSString *guideLastName = self.destinationTour.guideForThisTour.userBio.lastName;
+
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tourGuideForThisLabel.text = [NSString stringWithFormat:@"with %@", guideFirstName];
+    
+    self.guideFullNameLabel.text = [NSString stringWithFormat:@"%@ %@" , guideFirstName, guideLastName];
+    
+    self.guideTaglineLabel.text = self.destinationTour.guideForThisTour.userBio.userTagline;
+    
+    self.guideCityLabel.text = self.destinationTour.guideForThisTour.userBio.homeCity;
+    
+    self.guideCityLabel.text = self.destinationTour.guideForThisTour.userBio.homeCountry;
+
 }
 
 
@@ -48,12 +61,29 @@
 
 - (IBAction)bookTourButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"tourBookedSegue" sender:nil];
+
+    PFUser *currentUser = [PFUser currentUser];
+  
+    self.destinationPFTour[@"isPurchased"] = @(YES);
+    self.destinationPFTour[@"tourDeparture"] = self.destinationTour.tourDeparture;
     
-    [self bookTour];
+    [currentUser addObject:self.destinationPFTour forKey:@"myTrips"];
+    [currentUser save];
     
-    // LOGIC FOR CREATING A TOUR
+    if ([self.destinationTour.categoryForThisTour.categoryName isEqualToString:self.sharedDataStore.currentCategorySearching.categoryName]) {
+        
+
+
+    }
+
     
-    // 
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    TRVTourReceiptViewController *destinationVC = segue.destinationViewController;
+    destinationVC.destinationTour = self.destinationTour;
     
 }
 
@@ -118,6 +148,7 @@
 //    }];
 //    
 }
+
 
 
 @end
