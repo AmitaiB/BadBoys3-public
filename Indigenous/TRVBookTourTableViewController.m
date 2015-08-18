@@ -58,7 +58,7 @@
     self.guideCityLabel.text = self.destinationTour.guideForThisTour.userBio.homeCity;
     
     self.guideCountryLabel.text = self.destinationTour.guideForThisTour.userBio.homeCountry;
-    self.priceOfTourLabel.text = [NSString stringWithFormat:@"@%@", self.destinationTour.costOfTour];
+    self.priceOfTourLabel.text = [NSString stringWithFormat:@"$%@", self.destinationTour.costOfTour];
     
 
 }

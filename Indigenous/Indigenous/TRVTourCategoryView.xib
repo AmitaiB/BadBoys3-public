@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F25a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -20,15 +20,15 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e29-dX-HUB" userLabel="Category Icon Image">
-                    <rect key="frame" x="74.5" y="75" width="50" height="50"/>
+                    <rect key="frame" x="75" y="75" width="50" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="e29-dX-HUB" secondAttribute="height" multiplier="1:1" id="nyC-RC-Rtu"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khX-5L-kQT">
-                    <rect key="frame" x="58" y="132.5" width="84.5" height="27.5"/>
-                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                    <rect key="frame" x="47" y="139" width="106" height="35"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -39,7 +39,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="khX-5L-kQT" firstAttribute="top" secondItem="e29-dX-HUB" secondAttribute="bottom" constant="8" id="8DA-ju-pPE"/>
+                <constraint firstItem="khX-5L-kQT" firstAttribute="top" secondItem="e29-dX-HUB" secondAttribute="bottom" constant="14" id="8DA-ju-pPE"/>
                 <constraint firstItem="khX-5L-kQT" firstAttribute="bottom" secondItem="9oP-n6-DnE" secondAttribute="bottom" constant="-20" id="XTs-6p-M0h"/>
                 <constraint firstAttribute="centerX" secondItem="e29-dX-HUB" secondAttribute="centerX" id="cYp-9R-Ygu"/>
                 <constraint firstAttribute="centerY" secondItem="e29-dX-HUB" secondAttribute="centerY" id="dDq-FM-fBI"/>
