@@ -7,6 +7,7 @@
 //
 
 #import "TRVRootGuideTabController.h"
+#import "NSMutableArray+extraMethods.h"
 
 @interface TRVRootGuideTabController ()
 
@@ -39,6 +40,10 @@
     firstVC.tabBarItem = myTripsTab;
     secondVC.tabBarItem = makeToursTab;
     thirdVC.tabBarItem = profileTab;
+
+ //   [NSMutableArray createParseDummyTour];
+//    [NSMutableArray createParseDummyTour2];
+//    [NSMutableArray createParseDummyTour3];
 
     
 }
