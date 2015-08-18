@@ -34,7 +34,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
 
-@property (weak, nonatomic) IBOutlet UIView *contactGuideXib;
 
 
 @property (nonatomic) BOOL isTourGuide;
@@ -69,8 +68,7 @@
     self.tourStopCollectionView.dataSource = self.dataSource;
     self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init]; // UILayoutContainerView
     self.collectionViewDelegate.delegate = self;
-    //self.collectionViewDelegate.imageView = self.tourStopImageView; // FIXME: FIX THIS UGLY SHIT!!
-    
+    self.tourStopCollectionView.allowsMultipleSelection = NO;
     
     self.tourStopCollectionView.delegate = self.collectionViewDelegate;
     self.tourStopCollectionView.scrollsToTop = NO;
@@ -96,6 +94,8 @@
     self.theScrollViewThatHoldsAllTheOtherViews.backgroundColor = [UIColor orangeColor];
     [self selectFirstItemInCollectionView];
     [self performSelector:@selector(selectFirstItemInCollectionView) withObject:self afterDelay:.25];
+    
+    self.tourInfoLabel.text = @"sjklkljdfjklsdkljsdfkjldfskjldsfkl;dsfjkldsfkl;dsfkl;dsjkldsjkldjkljkldsjkldfsjkldsfk;dsfkdsfdsf;sdfj;sdfj;sdjkldsfjkldsfkl;dfsjklsdfk;dsjkldsdkls;dsdjksfdsfdls;dlsdkls;dkls;dfkls;dfks;dks;dfs;dfsdfs;dfsdfs;\ndfs;dks;dfksds;djlsds;dfs;dls;dkls;dfklsdkls;dklsdkls;skl;sjklsdkl;sdl;sdjsdjklskldklsfjklkl;jklkldfjklssjkldfksdjklsjkljkljksjdfksljklsdfjklsfddjklskjlsdfjklsdkdjlsfkjdsfjksldfkjldkl;fjkls;dfkl;sdkjlsdkjl";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -146,9 +146,14 @@
 }
 
 - (void)setupParallaxImageTitle {
-    self.parallaxHeaderTourNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 1)]; //doesn't matter
+    self.parallaxHeaderTourNameLabel = [[UILabel alloc] init];
     self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor magentaColor];
     self.parallaxHeaderTourNameLabel.text = self.tour.itineraryForThisTour.nameOfTour;
+    
+    
+    [self.parallaxHeaderTourNameLabel setFont:[UIFont fontWithName:@"Avenir" size:30]];
+    [self.parallaxHeaderTourNameLabel sizeToFit];
+    self.parallaxHeaderTourNameLabel.numberOfLines = 0;
     self.parallaxHeaderTourNameLabel.textColor = [UIColor whiteColor];
     self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor clearColor];
     
