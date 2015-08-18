@@ -5,6 +5,8 @@
 //  Created by Amitai Blickstein on 8/17/15.
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
+
+#import <SCLAlertView.h>
 #import "TRVBuildItineraryViewController.h"
 #import "TRVTourImagePicker.h"
 #import "TRVAddTourDataViewController.h"
@@ -153,6 +155,16 @@
 
 
 #pragma mark - Navigation
+
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if (self.tourCategorySegControl.selectedSegmentIndex < 0) {
+        SCLAlertView *noCategoryAlert = [[SCLAlertView alloc] init];
+        [noCategoryAlert showError:@"No Category Selected" subTitle:@"Please select a category for your tour offering." closeButtonTitle:@"Close" duration:1.0];
+        return NO;
+    }
+    return YES;
+}
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

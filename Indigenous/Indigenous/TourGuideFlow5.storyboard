@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="30" id="b1J-Ns-uCa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="b1J-Ns-uCa"/>
@@ -144,17 +144,17 @@
                                 <exclude reference="R5X-6X-7hM"/>
                                 <exclude reference="bSi-RH-3O4"/>
                                 <exclude reference="daH-rO-8Ji"/>
-                                <exclude reference="0yA-c2-vHL"/>
                                 <exclude reference="JD8-kU-kry"/>
                                 <exclude reference="f8L-X3-MIk"/>
-                                <exclude reference="2wN-NF-isR"/>
-                                <exclude reference="9gA-Xf-MDS"/>
-                                <exclude reference="In4-TY-UGN"/>
-                                <exclude reference="qdf-21-mFJ"/>
                                 <exclude reference="GdU-8V-kqw"/>
                                 <exclude reference="Px1-s7-m0C"/>
                                 <exclude reference="RB7-Z2-sqF"/>
                                 <exclude reference="WO7-d2-Giu"/>
+                                <exclude reference="0yA-c2-vHL"/>
+                                <exclude reference="2wN-NF-isR"/>
+                                <exclude reference="9gA-Xf-MDS"/>
+                                <exclude reference="In4-TY-UGN"/>
+                                <exclude reference="qdf-21-mFJ"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -170,17 +170,17 @@
                                 <include reference="R5X-6X-7hM"/>
                                 <include reference="bSi-RH-3O4"/>
                                 <include reference="daH-rO-8Ji"/>
-                                <include reference="0yA-c2-vHL"/>
                                 <include reference="JD8-kU-kry"/>
                                 <include reference="f8L-X3-MIk"/>
-                                <include reference="2wN-NF-isR"/>
-                                <include reference="9gA-Xf-MDS"/>
-                                <include reference="In4-TY-UGN"/>
-                                <include reference="qdf-21-mFJ"/>
                                 <include reference="GdU-8V-kqw"/>
                                 <include reference="Px1-s7-m0C"/>
                                 <include reference="RB7-Z2-sqF"/>
                                 <include reference="WO7-d2-Giu"/>
+                                <include reference="0yA-c2-vHL"/>
+                                <include reference="2wN-NF-isR"/>
+                                <include reference="9gA-Xf-MDS"/>
+                                <include reference="In4-TY-UGN"/>
+                                <include reference="qdf-21-mFJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -244,7 +244,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXI-np-MEZ" userLabel="Panorama View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXI-np-MEZ" userLabel="Panorama View" customClass="GMSPanoramaView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
