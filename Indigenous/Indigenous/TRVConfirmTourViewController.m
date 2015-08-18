@@ -149,7 +149,7 @@ static NSString * const cellReuseID = @"cellReuseID";
         
 
 //    ✅
--(void)createParseTourWithName:(NSString*)tourName category:(NSString*)tourCategory date:(NSDate*)departureDate image:(UIImage*)tourImage itinerary:(NSArray*)arrayOfHNKLocations {
+-(void)createParseTourWithName:(NSString*)tourName category:(NSString*)tourCategory date:(NSDate*)departureDate image:(UIImage*)localTourImage itinerary:(NSArray*)arrayOfHNKLocations {
 //    ✅
     PFUser *currentUser = [PFUser currentUser];
     PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
@@ -163,11 +163,12 @@ static NSString * const cellReuseID = @"cellReuseID";
     theTour[@"itineraryForThisTour"] = theItinerary;
     
     
-    
+        //This gets the GooglePlace overload → NSStrings
     NSMutableArray *arrayOfGenericAddresses;
         for (HNKGooglePlacesAutocompletePlace *place in arrayOfHNKLocations) {
-            [tourStopsArray addObject:place.name];
+            [arrayOfGenericAddresses addObject:place.name];
         }
+    
     
     NSMutableArray *tourStopsArray;
     for (NSString *address in tourStopsArray) {
@@ -183,17 +184,32 @@ static NSString * const cellReuseID = @"cellReuseID";
         /**
          *  important!
          */
-        theStop[@"nameOfPlace"] = <#place name#>;
+        theStop[@"nameOfPlace"] = @"GEOCODE ME A REAL PLACE NAME";
             //TODO give the user a place to add notes to each stop.
         theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
-        theStop[@"addressOfEvent"] = <# address string#>;
+        theStop[@"addressOfEvent"] = address;
         
             // MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
             // CURRENTLY USING PFIMAGE FROM LINE 18, BUT WE WANT A NEW STOP IMAGE.  REPEAT PROCESS FROM
             // LINE 15 - 18
-        theStop[@"image"] = PFImage;
-    }
-    }
+        /**
+         *  TODO - Local TourStopImage
+         *
+         *  @param localTourImage <#localTourImage description#>
+         *  @param .2f            <#.2f description#>
+         *
+         *  @return <#return value description#>
+        !!!NSData *imageData = UIImageJPEGRepresentation(localTourImage, .2f);
+        PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+         theStop[@"image"] = PFImage;
+         */
+
+        [tourStopsArray addObject:theStop];
+    } //Loop ends
+//    ===============================================================
+    /**
+     *  Now we should have an array of tourstops.
+     */
     
 
     /**
@@ -201,7 +217,7 @@ static NSString * const cellReuseID = @"cellReuseID";
      */
         //!!!These 4 lines are done for each image.
         // converts tour image to 1/5 quality
-    NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
+    NSData *imageData = UIImageJPEGRepresentation(localTourImage, .2f);
     PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
     theItinerary[@"tourImage"] = PFImage;
     /**
@@ -215,25 +231,7 @@ static NSString * const cellReuseID = @"cellReuseID";
     /**
      *  important!
      */
-    theStop[@"nameOfPlace"] = <#place name#>;
-        //TODO give the user a place to add notes to each stop.
-    theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
-    theStop[@"addressOfEvent"] = <# address string#>;
-    
-        // MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
-        // CURRENTLY USING PFIMAGE FROM LINE 18, BUT WE WANT A NEW STOP IMAGE.  REPEAT PROCESS FROM
-        // LINE 15 - 18
-    theStop[@"image"] = PFImage;
-    /**
-     *  ↑↑Tour Stop loop ends here.
-     */
-    
-    /**
-     *  Now we have an array of tourStops, to replace the dummy line below.
-     */
-    
-    NSArray *tourStopsArrayy = @[theStop, theStop, theStop, theStop];
-    
+   
     
     theItinerary[@"tourStops"] = tourStopsArray;
     theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
