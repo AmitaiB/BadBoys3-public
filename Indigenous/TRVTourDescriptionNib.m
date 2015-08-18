@@ -10,7 +10,7 @@
 #import <Masonry.h>
 @interface TRVTourDescriptionNib ()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UILabel *tourDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tourDescriptionLabel; 
 
 
 @end
@@ -54,7 +54,7 @@
     
 }
 
--(void)settourForThisDescriptionNib:(TRVTour *)tourForThisDescriptionNib {
+-(void)setTourForThisDescriptionNib:(TRVTour *)tourForThisDescriptionNib {
     
     _tourForThisDescriptionNib = tourForThisDescriptionNib;
     self.tourDescriptionLabel.text = tourForThisDescriptionNib.tourDescription;
