@@ -20,10 +20,10 @@
 @interface TRVBuildItineraryViewController ()
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UITableView *autocompleteTableView;
-@property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
-@property (weak, nonatomic) IBOutlet FUIButton *currentTourStopSelectionButton;
 @property (strong, nonatomic) NSMutableArray *searchResults;
+@property (weak, nonatomic) IBOutlet UITableView *autocompleteTableView;
+
+@property (weak, nonatomic) IBOutlet FUIButton *currentTourStopSelectionButton;
 @property (strong, nonatomic) NSMutableArray *currentItinerary;
 @property (weak, nonatomic) IBOutlet FUIButton *panoramaAndCaptureButton;
 - (IBAction)panoramaAndCaptureButtonTapped:(id)sender;
@@ -32,6 +32,7 @@
 
 @property (strong, nonatomic) CLPlacemark *currentPlacemark;
 
+//@property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
 @end
 
 @implementation TRVBuildItineraryViewController {
@@ -40,7 +41,6 @@
 
 static NSString * const searchCellReuseID = @"searchCellReuseID";
 static NSString * const itineraryCellReuseID = @"itineraryCellReuseID";
-
 
 -(void)loadView {
     [super loadView];
@@ -65,8 +65,8 @@ static NSString * const itineraryCellReuseID = @"itineraryCellReuseID";
     self.currentItinerary                      = [NSMutableArray new];
 
     self.searchBar.delegate                    = self;
-    self.itineraryTableView.delegate           = self;
-    self.itineraryTableView.dataSource         = self;
+//    self.itineraryTableView.delegate           = self;
+//    self.itineraryTableView.dataSource         = self;
     self.autocompleteTableView.delegate        = self;
     self.autocompleteTableView.dataSource      = self;
 
@@ -153,9 +153,9 @@ DBLG
     if ([tableView isEqual:self.autocompleteTableView]) {
         return self.searchResults.count;
     }
-    if ([tableView isEqual:self.itineraryTableView]) {
-        return self.currentItinerary.count;
-    }
+//    if ([tableView isEqual:self.itineraryTableView]) {
+//        return self.currentItinerary.count;
+//    }
     return 0;
 }
 
@@ -168,10 +168,10 @@ DBLG
         cell.textLabel.text = daPlace.name;
     }
     
-    if ([tableView isEqual:self.itineraryTableView]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:itineraryCellReuseID forIndexPath:indexPath];
-        HNKGooglePlacesAutocompletePlace *daPlace = (HNKGooglePlacesAutocompletePlace*)self.currentItinerary[indexPath.row];
-        cell.textLabel.text = daPlace.name;
+//    if ([tableView isEqual:self.itineraryTableView]) {
+//        cell = [tableView dequeueReusableCellWithIdentifier:itineraryCellReuseID forIndexPath:indexPath];
+//        HNKGooglePlacesAutocompletePlace *daPlace = (HNKGooglePlacesAutocompletePlace*)self.currentItinerary[indexPath.row];
+//        cell.textLabel.text = daPlace.name;
     }
     return cell;
 }
@@ -186,7 +186,7 @@ DBLG
      self.currentTourStopSelectionButton.titleLabel.text = addressString;
      self.currentPlacemark = placemark;
  }];
-        [self.itineraryTableView reloadData];
+//        [self.itineraryTableView reloadData];
         [self.searchBar.delegate searchBarCancelButtonClicked:self.searchBar]; //Because you want the same functionality to happen.
     }
 }
