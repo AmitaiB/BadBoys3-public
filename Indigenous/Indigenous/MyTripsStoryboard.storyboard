@@ -91,7 +91,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iPL-Gz-GYw" id="GO6-8U-1yi">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b16-N4-HTO" customClass="TRVMyToursView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b16-N4-HTO" customClass="TRVMyToursView">
                                                     <rect key="frame" x="0.0" y="8" width="600" height="284"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -186,34 +186,20 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5St-oQ-2w6" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="488"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-hq-8uZ" userLabel="TourInfo">
+                                                <rect key="frame" x="150" y="122" width="300" height="244"/>
+                                                <color key="backgroundColor" red="0.32395161319999999" green="1" blue="0.30490875610000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OI-QZ-k8a">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avp-TJ-ye3">
-                                                <rect key="frame" x="284" y="589" width="70" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="K80-4e-NyC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
-                                                <state key="normal" title="Book Tour!">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="bookTourButtonTapped:" destination="gqK-AQ-dGd" eventType="touchUpInside" id="fSE-6l-oCi"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-hq-8uZ">
-                                                <rect key="frame" x="150" y="122" width="300" height="244"/>
-                                                <color key="backgroundColor" red="0.32395161319999999" green="1" blue="0.30490875610000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whg-kd-fWU" userLabel="Tour Stop Image View" customClass="UIImageView">
-                                                <rect key="frame" x="0.0" y="70" width="600" height="1867"/>
+                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whg-kd-fWU" userLabel="Tour Stop Image View" customClass="UIImageView">
+                                                <rect key="frame" x="0.0" y="-689" width="600" height="1867"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-wO-y15">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-wO-y15">
                                                         <rect key="frame" x="32" y="900" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -226,6 +212,20 @@
                                                     <constraint firstItem="U4i-wO-y15" firstAttribute="leading" secondItem="whg-kd-fWU" secondAttribute="leading" constant="32" id="ElD-7K-0Lw"/>
                                                 </constraints>
                                             </view>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avp-TJ-ye3">
+                                                <rect key="frame" x="0.0" y="437" width="600" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="K80-4e-NyC"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
+                                                <state key="normal" title="Book Tour!">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="bookTourButtonTapped:" destination="gqK-AQ-dGd" eventType="touchUpInside" id="fSE-6l-oCi"/>
+                                                </connections>
+                                            </button>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbg-1S-hru">
                                                 <rect key="frame" x="0.0" y="20" width="600" height="50"/>
                                                 <constraints>
@@ -255,17 +255,12 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration" label="ContentView"/>
                                         <constraints>
-                                            <constraint firstItem="Avp-TJ-ye3" firstAttribute="top" secondItem="whg-kd-fWU" secondAttribute="bottom" id="02u-fj-Od9"/>
                                             <constraint firstItem="3OI-QZ-k8a" firstAttribute="top" secondItem="5St-oQ-2w6" secondAttribute="top" id="2dT-nD-IHm"/>
                                             <constraint firstAttribute="trailing" secondItem="Avp-TJ-ye3" secondAttribute="trailing" id="5B2-7r-9vS"/>
-                                            <constraint firstAttribute="trailing" secondItem="whg-kd-fWU" secondAttribute="trailing" id="9yg-o4-O9q"/>
                                             <constraint firstAttribute="trailing" secondItem="nbg-1S-hru" secondAttribute="trailing" id="E51-Zi-GvY"/>
                                             <constraint firstItem="3OI-QZ-k8a" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="E9A-Od-lcs"/>
-                                            <constraint firstAttribute="bottom" secondItem="whg-kd-fWU" secondAttribute="bottom" id="Ng2-hT-4z8"/>
-                                            <constraint firstItem="whg-kd-fWU" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="RJH-k8-JBX"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="Shh-I4-9Ny"/>
                                             <constraint firstAttribute="bottom" secondItem="Avp-TJ-ye3" secondAttribute="bottom" id="UmE-Mf-f7k"/>
-                                            <constraint firstItem="whg-kd-fWU" firstAttribute="top" secondItem="nbg-1S-hru" secondAttribute="bottom" id="XfX-fc-inQ"/>
                                             <constraint firstAttribute="trailing" secondItem="3OI-QZ-k8a" secondAttribute="trailing" id="aQY-5b-IZe"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="top" secondItem="3OI-QZ-k8a" secondAttribute="bottom" id="dmV-pb-1X2"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="width" secondItem="5St-oQ-2w6" secondAttribute="width" id="fzT-NO-kt7"/>
@@ -300,11 +295,9 @@
                         <outlet property="nameOfStop" destination="U4i-wO-y15" id="0ep-zh-tTh"/>
                         <outlet property="navBarTitle" destination="3aD-oR-lZn" id="wrw-pr-P4Y"/>
                         <outlet property="theScrollViewThatHoldsAllTheOtherViews" destination="DGP-yU-yMd" id="5z2-fx-oiY"/>
-                        <outlet property="topBookTourButtonConstraint" destination="02u-fj-Od9" id="G9c-XH-slU"/>
                         <outlet property="tourInfoLabel" destination="3OI-QZ-k8a" id="67h-pa-ccK"/>
                         <outlet property="tourStopCollectionView" destination="nbg-1S-hru" id="vVG-qb-yCj"/>
                         <outlet property="tourStopImageView" destination="whg-kd-fWU" id="Gpa-yZ-U5J"/>
-                        <outlet property="tourStopImageViewBottomConstraint" destination="Ng2-hT-4z8" id="cgg-jS-PbQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJt-6P-oq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
