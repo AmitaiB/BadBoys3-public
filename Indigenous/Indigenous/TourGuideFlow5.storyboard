@@ -185,9 +185,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9Ef-q6-JJJ">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="ib4-eM-DfO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="jTX-bz-6e0">
                             <connections>
-                                <segue destination="TFm-sH-crO" kind="show" id="8xU-h5-lxk"/>
+                                <segue destination="TFm-sH-crO" kind="show" id="UfI-UT-yaV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

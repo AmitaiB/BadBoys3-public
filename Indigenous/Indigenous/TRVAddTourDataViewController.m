@@ -159,10 +159,10 @@
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if (self.tourCategorySegControl.selectedSegmentIndex < 0) {
         SCLAlertView *noCategoryAlert = [[SCLAlertView alloc] init];
-        [noCategoryAlert showError:@"No Category Selected" subTitle:@"Please select a category for your tour offering." closeButtonTitle:@"Close" duration:1.0];
+        [noCategoryAlert showError:@"No Category Selected" subTitle:@"Please select a category for your tour offering." closeButtonTitle:@"Close" duration:0.0f];
+        
         return NO;
-    }
-    return YES;
+    } else return YES;
 }
 
 
