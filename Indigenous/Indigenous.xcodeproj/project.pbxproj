@@ -344,7 +344,7 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		38B02B7F1B822D5E00C2B0A2 /* TourGuideFlow-4th-iteration */ = {
+		38B02B7F1B822D5E00C2B0A2 /* TourGuideFlow-5th-iteration */ = {
 			isa = PBXGroup;
 			children = (
 				3865D8391B82C7F700FECAD5 /* TourGuideFlow5.storyboard */,
@@ -358,7 +358,7 @@
 				3822A4501B82829B006F17B0 /* TRVConfirmTourViewController.h */,
 				3822A4511B82829B006F17B0 /* TRVConfirmTourViewController.m */,
 			);
-			name = "TourGuideFlow-4th-iteration";
+			name = "TourGuideFlow-5th-iteration";
 			sourceTree = "<group>";
 		};
 		38F763E81B825F3800F553EE /* Cutting Floor */ = {
@@ -397,7 +397,7 @@
 				9450B33C1B7D6FBC009CE9FA /* TRVBookTourTableViewController.h */,
 				9450B33D1B7D6FBC009CE9FA /* TRVBookTourTableViewController.m */,
 				94258ACC1B73F251006F24A8 /* Default-568h@2x.png */,
-				38B02B7F1B822D5E00C2B0A2 /* TourGuideFlow-4th-iteration */,
+				38B02B7F1B822D5E00C2B0A2 /* TourGuideFlow-5th-iteration */,
 				94EB295B1B7845B400CAB1A5 /* Views */,
 				944AD0001B6DDEDB00404EDD /* API Clients */,
 				944D312D1B76E126004CF255 /* Categories */,
