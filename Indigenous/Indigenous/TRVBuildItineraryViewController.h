@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TRVTourObject.h"
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface TRVBuildItineraryViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface TRVBuildItineraryViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, GMSPanoramaViewDelegate>
 
 @property (strong, nonatomic) TRVTourObject *tourObject;
 
