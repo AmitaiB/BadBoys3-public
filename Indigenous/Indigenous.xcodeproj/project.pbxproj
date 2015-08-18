@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		016992894F7DEF19D9F69221 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		25FDDFC619B863BD20E0252D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC93E5E15A12FDFA91E23F0 /* libPods.a */; };
 		3822A4521B82829B006F17B0 /* TRVConfirmTourViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3822A4511B82829B006F17B0 /* TRVConfirmTourViewController.m */; };
 		3859EDF01B694003001C5693 /* TRVTour.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDEF1B694003001C5693 /* TRVTour.m */; };
 		3859EDF41B694031001C5693 /* TRVItinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3859EDF31B694031001C5693 /* TRVItinerary.m */; };
@@ -46,6 +45,7 @@
 		45E772EC1B6AC4DA00003C7C /* TRVUserSignupHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E772EB1B6AC4DA00003C7C /* TRVUserSignupHandler.m */; };
 		45F925A91B712400009B2E98 /* TRVSubCategoryCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F925A81B712400009B2E98 /* TRVSubCategoryCollectionView.m */; };
 		45F925AC1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F925AB1B712431009B2E98 /* TRVSubCategoryCollectionViewCell.m */; };
+		7223D972C94CA6DA25A19E4F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC93E5E15A12FDFA91E23F0 /* libPods.a */; };
 		942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 942424881B6DBAAF007BC642 /* TRVRootTabViewController.m */; };
 		94258ACD1B73F251006F24A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 94258ACC1B73F251006F24A8 /* Default-568h@2x.png */; };
 		9425FA871B72565500689011 /* TRVDetailGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425FA861B72565500689011 /* TRVDetailGuideViewController.m */; };
@@ -318,7 +318,7 @@
 			files = (
 				386CAC2A1B7531A30088781A /* libsqlite3.dylib in Frameworks */,
 				016992894F7DEF19D9F69221 /* (null) in Frameworks */,
-				25FDDFC619B863BD20E0252D /* libPods.a in Frameworks */,
+				7223D972C94CA6DA25A19E4F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,8 +932,6 @@
 				9435DF691B6ED0E30054A2F4 /* TRVCity.m in Sources */,
 				944AD0091B6DF4B500404EDD /* TRVGuideProfileImageView.m in Sources */,
 				94EB295A1B7835EF00CAB1A5 /* TRVNetworkRechabilityMonitor.m in Sources */,
-				38A255431B7A383900257F6F /* TRVCustomAnnotation.m in Sources */,
-				94E7B1E31B7A3B71001AB1EE /* TRVBookTourViewController.m in Sources */,
 				9435DF711B6F1E5C0054A2F4 /* TRVTourCategoryView.m in Sources */,
 				45E772E91B6A778200003C7C /* TRVFacebookLoginHandler.m in Sources */,
 				94EA5F7E1B6FEEE1002244D8 /* TRVUserDataStore.m in Sources */,
