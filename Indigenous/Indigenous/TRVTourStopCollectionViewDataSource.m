@@ -30,6 +30,8 @@
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TRVTourStopCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"tourStopCell" forIndexPath:indexPath];
     cell.stop = _stops[indexPath.row];
+    cell.numStop.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
+    //NSLog(@"Cell's frame: %@", NSStringFromCGRect(cell.frame));
     //_configureCell(_stops[indexPath.row]);
     return cell;
 }

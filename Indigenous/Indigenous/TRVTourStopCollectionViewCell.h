@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@class TRVTourStop;
+@class TRVTourStop, TRVTourStopCollectionViewCellView;
 
 @interface TRVTourStopCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) TRVTourStop *stop;
+@property (nonatomic, strong) TRVTourStopCollectionViewCellView *myContentView;
+@property (nonatomic, strong) UILabel *numStop;
 
--(void)selectionAnimation;
--(void)fixIt :(CGSize)size;
+-(void)selectionAnimation:(void (^)())updateImageView;
+-(void)deselectionAnimation;
 
 @end
