@@ -27,8 +27,13 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     TRVTourStopCollectionViewCell *cell = (TRVTourStopCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    [cell selectionAnimation];
-    [self.delegate setStopPropertiesOnSelection:cell.stop];
+    
+    __weak TRVTourStopCollectionViewDelegateFlowLayout *weakSelf = self;
+    [cell selectionAnimation:^{
+        [weakSelf.delegate setStopPropertiesOnSelection:cell.stop];
+    }];
+    
+    //[self.delegate setStopPropertiesOnSelection:cell.stop];
     NSLog(@"Selected cell's bounds: %@", NSStringFromCGRect(cell.bounds));
 }
 

@@ -31,6 +31,9 @@
     [super viewDidLoad];
 
     [self setUpUI];
+    
+    //[PFQuery clearAllCachedResults];
+    
 //    [PFUser logOut];
 //    [FBSDKAccessToken setCurrentAccessToken:nil];
 //    [FBSDKProfile setCurrentProfile:nil];
