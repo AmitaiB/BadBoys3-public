@@ -28,7 +28,7 @@
     
     if (self) {
         _userBio = [[TRVBio alloc] init];
-        _PFallTrips = [[NSMutableArray alloc] init];
+//        _PFallTrips = [[NSMutableArray alloc] init];
         _PFCurrentCategoryTrips = [[NSMutableArray alloc] init];
         _PFOtherCategoryTrips = [[NSMutableArray alloc] init];
     }

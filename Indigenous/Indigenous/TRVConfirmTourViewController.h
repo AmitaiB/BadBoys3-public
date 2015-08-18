@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *tourCategoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tourAreaLabel;
 @property (weak, nonatomic) IBOutlet UITableView *finalItineraryTableView;
+@property (weak, nonatomic) IBOutlet UILabel *tourDateLabel;
+
 
 @property (strong, nonatomic) TRVTourObject *tourObject;
 @property (nonatomic) BOOL isGeocoded;

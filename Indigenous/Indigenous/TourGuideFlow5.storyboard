@@ -227,14 +227,30 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="n8I-fh-K77">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="osu-XR-rPi">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="yto-qb-tHy">
                                             <connections>
-                                                <segue destination="iKx-pS-Z2E" kind="show" id="rDs-6z-ISD"/>
+                                                <segue destination="iKx-pS-Z2E" kind="show" id="QvD-az-FLP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b25-nB-mFn">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="337" width="400" height="219"/>
+                                </variation>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVe-df-K0E">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="28" y="315" width="42" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -254,6 +270,8 @@
                                 <exclude reference="i3C-N1-d1D"/>
                                 <exclude reference="6db-s6-Whn"/>
                                 <exclude reference="aIr-dP-ZSW"/>
+                                <exclude reference="b25-nB-mFn"/>
+                                <exclude reference="hVe-df-K0E"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="3AF-Xu-fkC"/>
@@ -273,6 +291,8 @@
                                 <include reference="i3C-N1-d1D"/>
                                 <include reference="6db-s6-Whn"/>
                                 <include reference="aIr-dP-ZSW"/>
+                                <include reference="b25-nB-mFn"/>
+                                <include reference="hVe-df-K0E"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="3AF-Xu-fkC"/>
@@ -288,19 +308,23 @@
                             </mask>
                         </variation>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="yto-qb-tHy"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="autocompleteTableView" destination="6db-s6-Whn" id="qw7-5u-tVo"/>
+                        <outlet property="itineraryTableView" destination="b25-nB-mFn" id="8AY-be-9q2"/>
+                        <outlet property="searchBar" destination="i3C-N1-d1D" id="fIh-n6-r4N"/>
+                        <outlet property="someLabel" destination="hVe-df-K0E" id="7xV-Ea-yOC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8O-lR-qK7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2293.5" y="506"/>
         </scene>
-        <!--View Controller-->
+        <!--Confirm Tour View Controller-->
         <scene sceneID="bTV-Ry-oHV">
             <objects>
-                <viewController id="iKx-pS-Z2E" sceneMemberID="viewController">
+                <viewController id="iKx-pS-Z2E" customClass="TRVConfirmTourViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vaN-RT-L85"/>
                         <viewControllerLayoutGuide type="bottom" id="kou-aM-w1G"/>
@@ -474,6 +498,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="finalItineraryTableView" destination="fGc-iG-TpF" id="aAr-fS-mBB"/>
+                        <outlet property="tourAreaLabel" destination="wtv-xT-UOB" id="AaI-Ov-dzg"/>
+                        <outlet property="tourCategoryLabel" destination="sSX-mz-ZSu" id="CSR-pS-hlM"/>
+                        <outlet property="tourDateLabel" destination="qae-5w-dzs" id="OAi-tV-1XZ"/>
+                        <outlet property="tourImageView" destination="Awh-WN-SpN" id="wqy-nm-f50"/>
+                        <outlet property="tourNameLabel" destination="z0K-W7-VfR" id="AMN-RP-bz5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rF1-EX-EL7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
