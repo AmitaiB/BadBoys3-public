@@ -16,7 +16,7 @@
     if (self) {
         _categoryName = name;
         _categoryImage = cateogoryImage;
-        _ico    nImage = iconImage;
+        _iconImage = iconImage;
     }
     
     return self;
