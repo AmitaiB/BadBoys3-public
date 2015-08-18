@@ -12,14 +12,14 @@
 
 @implementation TRVTourStopCollectionViewDelegateFlowLayout 
 
--(CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.bounds = CGRectInset(cell.frame, 10, 10);
-    CGFloat width = collectionView.bounds.size.width / 10;
-    CGSize bounds = CGSizeMake(width, collectionView.bounds.size.height);
-    
-    return bounds;
-}
+//-(CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    //UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+//    //cell.bounds = CGRectInset(cell.frame, 10, 10);
+//    //CGFloat width = collectionView.bounds.size.width / 10;
+//    //CGSize bounds = CGSizeMake(width, collectionView.bounds.size.height);
+//    
+//    //return bounds;
+//}
 
 -(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 0;

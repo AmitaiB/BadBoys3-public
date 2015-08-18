@@ -14,7 +14,7 @@
 @implementation TRVTourStopCollectionViewCell
 
 -(void)selectionAnimation:(void (^)())updateImageView {
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor whiteColor];
 //    [UIView animateWithDuration:.25 animations:^{
 //        double rads = DEGREES_TO_RADIANS(90);
 //        CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, rads);
@@ -37,7 +37,7 @@
 -(void)awakeFromNib {
     [super awakeFromNib];
     [self.contentView removeFromSuperview];
-    _myContentView = [[TRVTourStopCollectionViewCellView alloc] initWithFrame:CGRectInset(self.bounds, 5, 0)];
+    _myContentView = [[TRVTourStopCollectionViewCellView alloc] initWithFrame:self.bounds];
     [self addSubview:_myContentView];
     [self setNeedsLayout];
     [self bringSubviewToFront:_myContentView];
@@ -52,7 +52,6 @@
     NSLog(@"x coordinate: %f", self.frame.origin.x);
     NSLog(@"width: %f", self.frame.size.width);
 
-    _myContentView.backgroundColor = [UIColor greenColor];
     _myContentView.translatesAutoresizingMaskIntoConstraints = YES;
 }
 

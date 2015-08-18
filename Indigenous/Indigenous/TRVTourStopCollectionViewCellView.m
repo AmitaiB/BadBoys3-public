@@ -14,7 +14,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if(self) {
-        self.backgroundColor = [UIColor greenColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     
     return self;
@@ -24,7 +24,7 @@
 {
     self = [super initWithFrame:frame];
     if(self) {
-        self.backgroundColor = [UIColor greenColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     
     return self;

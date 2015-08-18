@@ -95,6 +95,8 @@
     self.theScrollViewThatHoldsAllTheOtherViews.backgroundColor = [UIColor orangeColor];
     [self selectFirstItemInCollectionView];
     [self performSelector:@selector(selectFirstItemInCollectionView) withObject:self afterDelay:.25];
+    
+    self.tourInfoLabel.text = @"sjklkljdfjklsdkljsdfkjldfskjldsfkl;dsfjkldsfkl;dsfkl;dsjkldsjkldjkljkldsjkldfsjkldsfk;dsfkdsfdsf;sdfj;sdfj;sdjkldsfjkldsfkl;dfsjklsdfk;dsjkldsdkls;dsdjksfdsfdls;dlsdkls;dkls;dfkls;dfks;dks;dfs;dfsdfs;dfsdfs;\ndfs;dks;dfksds;djlsds;dfs;dls;dkls;dfklsdkls;dklsdkls;skl;sjklsdkl;sdl;sdjsdjklskldklsfjklkl;jklkldfjklssjkldfksdjklsjkljkljksjdfksljklsdfjklsfddjklskjlsdfjklsdkdjlsfkjdsfjksldfkjldkl;fjkls;dfkl;sdkjlsdkjl";
 }
 
 - (void)didReceiveMemoryWarning {
