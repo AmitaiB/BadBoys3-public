@@ -18,10 +18,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if(self) {
-        self.backgroundColor = [UIColor clearColor];
-        _defaultColor = [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1];
-        _usedColor = _defaultColor;
-        _selectedColor = [UIColor yellowColor];
+        [self commonInit];
     }
     
     return self;
@@ -31,13 +28,17 @@
 {
     self = [super initWithFrame:frame];
     if(self) {
-        self.backgroundColor = [UIColor clearColor];
-        _defaultColor = [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1];
-        _usedColor = _defaultColor;
-        _selectedColor = [UIColor yellowColor];
+        [self commonInit];
     }
     
     return self;
+}
+
+-(void)commonInit {
+    self.backgroundColor = [UIColor clearColor];
+    _defaultColor = [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1];
+    _usedColor = _defaultColor;
+    _selectedColor = [UIColor yellowColor];
 }
 
 -(void)toggleColor {
@@ -67,8 +68,8 @@
     CGRect smallerRect = CGRectInset(rect, 5, 1);
     CGContextAddEllipseInRect(context, smallerRect);
     CGContextDrawPath(context, kCGPathFillStroke);
+    
 //    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-
 //    CGRect evenSmallerRect = CGRectInset(smallerRect, 10, 10);
 //    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
 //    CGContextFillEllipseInRect(context, evenSmallerRect);
