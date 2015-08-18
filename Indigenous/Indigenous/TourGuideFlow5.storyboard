@@ -187,7 +187,7 @@
                     <navigationItem key="navigationItem" id="9Ef-q6-JJJ">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="jTX-bz-6e0">
                             <connections>
-                                <segue destination="TFm-sH-crO" kind="show" id="UfI-UT-yaV"/>
+                                <action selector="saveNavBarButtonTapped:" destination="PT0-pX-Zai" id="bIn-Mh-WJt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -197,6 +197,7 @@
                         <outlet property="imageButton" destination="duN-NI-WwV" id="4hb-K6-3U9"/>
                         <outlet property="tourCategorySegControl" destination="qPg-Kx-SgZ" id="kna-LU-wdI"/>
                         <outlet property="tourNameTxF" destination="tn4-HT-PMk" id="flr-af-8T6"/>
+                        <segue destination="TFm-sH-crO" kind="show" identifier="addTourToBuildItinerarySegueID" id="xV1-hB-baS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kx-YK-7tI" userLabel="First Responder" sceneMemberID="firstResponder"/>

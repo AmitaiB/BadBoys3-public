@@ -29,6 +29,8 @@
 
 @implementation TRVAddTourDataViewController
 
+static NSString * const addTourToBuildItinerarySegueID = @"addTourToBuildItinerarySegueID";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tourObject = [TRVTourObject new];
@@ -155,22 +157,25 @@
 
 
 #pragma mark - Navigation
-
--(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+- (IBAction)saveNavBarButtonTapped:(id)sender {
     if (self.tourCategorySegControl.selectedSegmentIndex < 0) {
         SCLAlertView *noCategoryAlert = [[SCLAlertView alloc] init];
         [noCategoryAlert showError:@"No Category Selected" subTitle:@"Please select a category for your tour offering." closeButtonTitle:@"Close" duration:0.0f];
-        
-        return NO;
-    } else return YES;
+    } else {
+        [self performSegueWithIdentifier:addTourToBuildItinerarySegueID sender:sender];
+    }
+    
 }
+
 
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSLog(@"%@\n%lu\n%@", self.tourNameTxF.text, self.tourCategorySegControl.selectedSegmentIndex, self.datePicker.self);
     
-
+    /**
+     *  Uses segue to pass forward Tour information.
+     */
     self.tourObject.tourDate = self.datePicker.date;
     self.tourObject.tourName = self.tourNameTxF.text;
     self.tourObject.tourCategory = [self.tourCategorySegControl titleForSegmentAtIndex:self.tourCategorySegControl.selectedSegmentIndex];

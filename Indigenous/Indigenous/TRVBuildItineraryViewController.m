@@ -18,6 +18,7 @@
 
 
 @interface TRVBuildItineraryViewController ()
+
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *autocompleteTableView;
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
@@ -40,7 +41,10 @@
 static NSString * const searchCellReuseID = @"searchCellReuseID";
 static NSString * const itineraryCellReuseID = @"itineraryCellReuseID";
 
+
 -(void)loadView {
+    [super loadView];
+    
     panoView_ = [[GMSPanoramaView alloc] initWithFrame:CGRectZero];
     self.panoramaView = panoView_;
     panoView_.delegate = self;
