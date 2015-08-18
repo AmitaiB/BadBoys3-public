@@ -18,6 +18,7 @@
 @property (nonatomic, strong) TRVBio *userBio;
 @property (nonatomic) TRVRating *rating;
 @property (nonatomic, strong) NSMutableArray *myTrips;
+@property (nonatomic, strong) NSMutableArray *allTrips;
 @property (nonatomic, strong) NSMutableArray *PFCurrentCategoryTrips;
 @property (nonatomic, strong) NSMutableArray *PFOtherCategoryTrips;
 
