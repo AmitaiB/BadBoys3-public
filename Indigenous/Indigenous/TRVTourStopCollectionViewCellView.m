@@ -38,8 +38,8 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0);
-    CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
-    CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1].CGColor);
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1].CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, rect.size.height/2 - .5);
     CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2 - .5);
@@ -47,7 +47,7 @@
     CGRect smallerRect = CGRectInset(rect, 5, 1);
     CGContextAddEllipseInRect(context, smallerRect);
     CGContextDrawPath(context, kCGPathFillStroke);
-    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
+//    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
 
 //    CGRect evenSmallerRect = CGRectInset(smallerRect, 10, 10);
 //    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
