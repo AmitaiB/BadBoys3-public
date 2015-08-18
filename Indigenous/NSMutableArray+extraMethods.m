@@ -99,7 +99,7 @@
     [theTour setObject:currentUser forKey:@"guideForThisTour"];
     
     PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
-    theTour[@"categoryForThisTour"] = @"See";
+    theTour[@"categoryForThisTour"] = @"Discover";
     
     theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:10000];
     theTour[@"isPurchased"] = @(YES);

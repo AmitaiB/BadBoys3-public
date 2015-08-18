@@ -197,7 +197,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="K80-4e-NyC"/>
                                                 </constraints>
-                                                <state key="normal" title="Book Tour">
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
+                                                <state key="normal" title="Book Tour!">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -208,11 +210,11 @@
                                                 <rect key="frame" x="150" y="122" width="300" height="244"/>
                                                 <color key="backgroundColor" red="0.32395161319999999" green="1" blue="0.30490875610000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whg-kd-fWU" userLabel="Tour Stop Image View" customClass="UIImageView">
-                                                <rect key="frame" x="0.0" y="70" width="600" height="467"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whg-kd-fWU" userLabel="Tour Stop Image View" customClass="UIImageView">
+                                                <rect key="frame" x="0.0" y="70" width="600" height="1867"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-wO-y15">
-                                                        <rect key="frame" x="32" y="200" width="42" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-wO-y15">
+                                                        <rect key="frame" x="32" y="900" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>

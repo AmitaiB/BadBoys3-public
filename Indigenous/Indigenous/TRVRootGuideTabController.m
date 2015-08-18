@@ -41,7 +41,7 @@
     secondVC.tabBarItem = makeToursTab;
     thirdVC.tabBarItem = profileTab;
 
- //   [NSMutableArray createParseDummyTour];
+//    [NSMutableArray createParseDummyTour];
 //    [NSMutableArray createParseDummyTour2];
 //    [NSMutableArray createParseDummyTour3];
 

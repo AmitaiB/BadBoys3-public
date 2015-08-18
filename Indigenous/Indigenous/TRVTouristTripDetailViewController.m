@@ -108,7 +108,7 @@
 
 -(void)setUpTourGuideViewController {
     self.bookTourButton.hidden = NO;
-    self.bookTourButton.backgroundColor = [UIColor greenColor];
+    self.bookTourButton.backgroundColor = [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1];
 
     [NSLayoutConstraint activateConstraints:self.bookTourButton.constraints];
     self.tourStopImageViewBottomConstraint.active = NO;
