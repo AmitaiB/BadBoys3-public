@@ -59,6 +59,9 @@ static NSString * const cellReuseID = @"cellReuseID";
                           date:(NSDate  *)departureDate
                          image:(UIImage *)localTourImage
                      itinerary:(NSArray *)arrayOfHNKLocations {
+        //The ultimateGoal is to fill this array with tourStops...
+    NSMutableArray *tourStopsArray;
+    
 //    ✅
     PFUser *currentUser = [PFUser currentUser];
     PFObject *theTour   = [PFObject objectWithClassName:@"Tour"];
@@ -111,9 +114,10 @@ static NSString * const cellReuseID = @"cellReuseID";
          *
          *  @return <#return value description#>
          */
-        NSData *imageData = UIImageJPEGRepresentation(tourStopImage, .2f);
-        PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
-         theStop[@"image"] = PFImage;
+            //!!!
+//        NSData *imageData = UIImageJPEGRepresentation(tourStopImage, .2f);
+//        PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+//         theStop[@"image"] = PFImage;
 
         [tourStopsArray addObject:theStop];
     } //Loop ends
@@ -121,28 +125,16 @@ static NSString * const cellReuseID = @"cellReuseID";
     /**
      *  Now we should have an array of tourstops.
      */
-    
 
-    /**
-     *  From here until ||    theStop[@"image"] = PFImage; || is done for each tourStop.
-     */
-        //!!!These 4 lines are done for each image.
+    if (!(self.tourAreaLabel.text.length > 0)) {
+        self.tourAreaLabel.text = [((CLPlacemark*)arrayOfPlacemarks[0]).region description];
+    }
+    
         // converts tour image to 1/5 quality
     NSData *imageData = UIImageJPEGRepresentation(localTourImage, .2f);
     PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
     theItinerary[@"tourImage"] = PFImage;
-    /**
-     *  for later:
-     */
-//    theStop[@"operatorCost"] = @0;
-//    theStop[@"incidentalCost"] = @0;
-//    theStop[@"lat"] = @10;
-//    theStop[@"lng"] = @10;
-//    theStop[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
-    /**
-     *  important!
-     */
-   
+    
     
     theItinerary[@"tourStops"] = tourStopsArray;
     theItinerary[@"numberOfStops"] = @(tourStopsArray.count);

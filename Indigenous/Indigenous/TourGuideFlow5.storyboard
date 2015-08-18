@@ -237,22 +237,46 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b25-nB-mFn">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="337" width="400" height="219"/>
-                                </variation>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVe-df-K0E">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Recent Location Selection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVe-df-K0E">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="28" y="315" width="42" height="21"/>
+                                    <rect key="frame" x="16" y="527" width="368" height="21"/>
                                 </variation>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXI-np-MEZ" userLabel="Panorama View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="108" width="400" height="411"/>
+                                </variation>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wJ-oK-65I" customClass="FUIButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="518" width="22" height="22"/>
+                                </variation>
+                                <connections>
+                                    <action selector="panoramaAndCaptureButtonTapped:" destination="TFm-sH-crO" eventType="touchUpInside" id="EEA-0j-BpO"/>
+                                    <action destination="TFm-sH-crO" eventType="touchUpInside" id="ywA-Ph-DG6">
+                                        <string key="selector">propertystrongnonatomicNSMutableArraysearchResultspropertystrongnonatomicNSMutableArraycurrentItinerarypropertyweaknonatomicIBOutletUIButtonpanoramaAndCaptureButtonTapped:</string>
+                                    </action>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKn-bt-fcQ" customClass="FUIButton">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="105" y="254" width="190" height="93"/>
+                                </variation>
+                                <connections>
+                                    <action selector="panoramaAndCaptureButtonTapped:" destination="TFm-sH-crO" eventType="touchUpInside" id="vsr-3I-seG"/>
+                                    <action destination="TFm-sH-crO" eventType="touchUpInside" id="FSu-pq-Ipw">
+                                        <string key="selector">propertystrongnonatomicNSMutableArraysearchResultspropertystrongnonatomicNSMutableArraycurrentItinerarypropertyweaknonatomicIBOutletUIButtonpanoramaAndCaptureButtonTapped:</string>
+                                    </action>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -272,8 +296,10 @@
                                 <exclude reference="i3C-N1-d1D"/>
                                 <exclude reference="6db-s6-Whn"/>
                                 <exclude reference="aIr-dP-ZSW"/>
-                                <exclude reference="b25-nB-mFn"/>
                                 <exclude reference="hVe-df-K0E"/>
+                                <exclude reference="KXI-np-MEZ"/>
+                                <exclude reference="7wJ-oK-65I"/>
+                                <exclude reference="zKn-bt-fcQ"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="3AF-Xu-fkC"/>
@@ -293,8 +319,10 @@
                                 <include reference="i3C-N1-d1D"/>
                                 <include reference="6db-s6-Whn"/>
                                 <include reference="aIr-dP-ZSW"/>
-                                <include reference="b25-nB-mFn"/>
                                 <include reference="hVe-df-K0E"/>
+                                <include reference="KXI-np-MEZ"/>
+                                <include reference="7wJ-oK-65I"/>
+                                <include reference="zKn-bt-fcQ"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="3AF-Xu-fkC"/>
@@ -314,9 +342,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="autocompleteTableView" destination="6db-s6-Whn" id="qw7-5u-tVo"/>
+                        <outlet property="currentTourStopSelection" destination="hVe-df-K0E" id="nok-NT-zCq"/>
                         <outlet property="itineraryTableView" destination="b25-nB-mFn" id="8AY-be-9q2"/>
+                        <outlet property="panoramaAndCaptureButton" destination="7wJ-oK-65I" id="v5P-cT-l9S"/>
+                        <outlet property="panoramaView" destination="KXI-np-MEZ" id="5Xc-rg-qBN"/>
                         <outlet property="searchBar" destination="i3C-N1-d1D" id="fIh-n6-r4N"/>
-                        <outlet property="someLabel" destination="hVe-df-K0E" id="7xV-Ea-yOC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8O-lR-qK7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -525,7 +555,26 @@
                     <view key="view" contentMode="scaleToFill" id="763-Iy-YJ0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="b25-nB-mFn">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="28" width="400" height="219"/>
+                                </variation>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="b25-nB-mFn"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="b25-nB-mFn"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYH-Ny-gCx" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,9 @@
 #import <HNKGooglePlacesAutocomplete.h>
 #import "TRVConstants.h"
 #import <FlatUIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
+#import <CLPlacemark+HNKAdditions.h>
+#import <NSString+Icons.h>
 
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
@@ -19,9 +22,12 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *autocompleteTableView;
 @property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
-@property (weak, nonatomic) IBOutlet UILabel *someLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentTourStopSelection;
 @property (strong, nonatomic) NSMutableArray *searchResults;
 @property (strong, nonatomic) NSMutableArray *currentItinerary;
+@property (weak, nonatomic) IBOutlet FUIButton *panoramaAndCaptureButton;
+- (IBAction)panoramaAndCaptureButtonTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *panoramaView;
 
 
 @end
@@ -44,10 +50,29 @@ static NSString * const itineraryCellReuseID = @"itineraryCellReuseID";
     self.autocompleteTableView.delegate        = self;
     self.autocompleteTableView.dataSource      = self;
 
-    self.autocompleteTableView.backgroundColor = [UIColor greenSeaColor];
-    self.itineraryTableView.backgroundColor    = [UIColor wisteriaColor];
+    [self initializeButton:self.panoramaAndCaptureButton withThemeColor:[UIColor turquoiseColor] andColor:[UIColor greenSeaColor]];
+    self.panoramaAndCaptureButton.titleLabel.font = [UIFont iconFontWithSize:18];
+    self.panoramaAndCaptureButton.titleLabel.text = [NSString iconStringForEnum:FUIImage];
+    self.panoramaAndCaptureButton.layer.zPosition = 1.0;
+    
+    self.panoramaView.layer.zPosition = 0.5;
+    self.panoramaView.backgroundColor = [UIColor cloudsColor];
+    
+//    self.autocompleteTableView.backgroundColor = [UIColor greenSeaColor];
+//    self.itineraryTableView.backgroundColor    = [UIColor wisteriaColor];
     
 }
+
+-(void)initializeButton:(FUIButton*)button withThemeColor:(UIColor*)color1 andColor:(UIColor*)color2 {
+    button.buttonColor = color1;
+    button.shadowColor = color2;
+    button.shadowHeight = 3.0f;
+    button.cornerRadius = 6.0f;
+    button.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -86,8 +111,6 @@ DBLG
         }
     }];
 }
-
-
 
 /**
  *  unnecessary, but who knows...?
@@ -136,6 +159,10 @@ DBLG
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([tableView isEqual:self.autocompleteTableView]) {
         [self.currentItinerary addObject:self.searchResults[indexPath.row]];
+[CLPlacemark hnk_placemarkFromGooglePlace:                                  (HNKGooglePlacesAutocompletePlace*)self.searchResults[indexPath.row]
+ apiKey:GOOGLE_API_KEY2 completion:^(CLPlacemark *placemark, NSString *addressString, NSError *error) {
+     self.currentTourStopSelection.text = addressString;
+ }];
         [self.itineraryTableView reloadData];
         [self.searchBar.delegate searchBarCancelButtonClicked:self.searchBar]; //Because you want the same functionality to happen.
     }
@@ -155,4 +182,8 @@ DBLG
  }
 
 
+- (IBAction)propertystrongnonatomicNSMutableArraysearchResultspropertystrongnonatomicNSMutableArraycurrentItinerarypropertyweaknonatomicIBOutletUIButtonpanoramaAndCaptureButtonTapped:(id)sender {
+}
+- (IBAction)panoramaAndCaptureButtonTapped:(id)sender {
+}
 @end
