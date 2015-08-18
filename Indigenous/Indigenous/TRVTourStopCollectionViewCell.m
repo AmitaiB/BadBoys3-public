@@ -32,7 +32,7 @@
 //        CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, rads);
 //        self.myContentView.transform = transform;
 //    }];
-    self.backgroundColor = [UIColor blueColor];
+    self.backgroundColor = [UIColor clearColor];
 }
 -(void)awakeFromNib {
     [super awakeFromNib];
