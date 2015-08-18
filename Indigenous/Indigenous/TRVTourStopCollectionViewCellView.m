@@ -8,6 +8,8 @@
 
 #import "TRVTourStopCollectionViewCellView.h"
 
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+
 @implementation TRVTourStopCollectionViewCellView {
     UIColor *_defaultColor;
     UIColor *_selectedColor;
@@ -38,15 +40,27 @@
     self.backgroundColor = [UIColor clearColor];
     _defaultColor = [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1];
     _usedColor = _defaultColor;
-    _selectedColor = [UIColor yellowColor];
+    _selectedColor = [UIColor colorWithRed:195/255.0f green:74/255.0f blue:53/255.0f alpha:1];
 }
 
--(void)toggleColor {
+-(void)toggleColor:(void (^)())updateImageView  {
     if (_usedColor == _defaultColor) {
         _usedColor = _selectedColor;
+        [UIView animateWithDuration:.25 animations:^{
+            double rads = DEGREES_TO_RADIANS(90);
+            CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, rads);
+            self.transform = transform;
+        } completion:^(BOOL finished) {
+            updateImageView();
+        }];
     }
     else {
         _usedColor = _defaultColor;
+        [UIView animateWithDuration:.25 animations:^{
+            //double rads = DEGREES_TO_RADIANS(-90);
+            CGAffineTransform transform = CGAffineTransformIdentity; //CGAffineTransformRotate(CGAffineTransformIdentity, rads);
+            self.transform = transform;
+        }];
     }
     [self setNeedsDisplay];
 }

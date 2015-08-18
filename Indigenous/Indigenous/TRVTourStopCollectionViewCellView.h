@@ -10,6 +10,6 @@
 
 @interface TRVTourStopCollectionViewCellView : UIView
 
--(void)toggleColor;
+-(void)toggleColor:(void (^)())updateImageView;
 
 @end

@@ -9,13 +9,11 @@
 #import "TRVTourStopCollectionViewCell.h"
 #import "TRVTourStopCollectionViewCellView.h"
 
-#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
-
 @implementation TRVTourStopCollectionViewCell
 
 -(void)selectionAnimation:(void (^)())updateImageView {
     //self.backgroundColor = [UIColor whiteColor];
-    [self.myContentView toggleColor];
+    [self.myContentView toggleColor:updateImageView];
 //    [UIView animateWithDuration:.25 animations:^{
 //        double rads = DEGREES_TO_RADIANS(90);
 //        CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, rads);
@@ -24,7 +22,7 @@
 //        updateImageView();
 //    }];
     //NSLog(@"selected cell's view's frame: %@", NSStringFromCGRect(_myContentView.frame));
-    updateImageView();
+    //updateImageView();
 }
 
 -(void)deselectionAnimation {
@@ -33,7 +31,7 @@
 //        CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, rads);
 //        self.myContentView.transform = transform;
 //    }];
-    [self.myContentView toggleColor];
+    [self.myContentView toggleColor:nil];
     
     //self.backgroundColor = [UIColor clearColor];
 }
