@@ -20,8 +20,9 @@
 -(NSMutableArray *) returnDummyAllTripsArrayForGuide:(TRVUser *)guide {
 
     NSMutableArray *allTripsArray = [[NSMutableArray alloc] init];
-    NSMutableArray *tourStopsArray = [[NSMutableArray alloc] init];
     
+   
+   // [self createParseDummyTour];
     
 //    TRVTourStop *dummyTourStop1 = [[TRVTourStop alloc] initWithCoordinates:CLLocationCoordinate2DMake(10.0, 10.0)];
 //    dummyTourStop1.image = [UIImage imageNamed:@"madrid.jpg"];

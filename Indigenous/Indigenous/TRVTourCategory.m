@@ -32,12 +32,12 @@
     if ([title isEqualToString:@"See"]) {
          return [[TRVTourCategory alloc] initWithName:@"See" cateogoryImage:[UIImage imageNamed:@"beijing.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
     }  else if ([title isEqualToString:@"Discover"]) {
-         return  [[TRVTourCategory alloc] initWithName:@"Discover" cateogoryImage:[UIImage imageNamed:@"explore"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
+         return  [[TRVTourCategory alloc] initWithName:@"Discover" cateogoryImage:[UIImage imageNamed:@"explore"] iconImage:[UIImage imageNamed:@"discoverIcon"]];
     }  else if ([title isEqualToString:@"Eat"]) {
-        return  [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"madrid.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];
+        return  [[TRVTourCategory alloc] initWithName:@"Eat" cateogoryImage:[UIImage imageNamed:@"madrid.jpg"] iconImage:[UIImage imageNamed:@"eatIcon"]];
 
     }  else if ([title isEqualToString:@"Drink"]) {
-        return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"drink.jpg"] iconImage:[UIImage imageNamed:@"seeCategoryIcon"]];    }
+        return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"drink.jpg"] iconImage:[UIImage imageNamed:@"drinkIcon"]];    }
     return nil;
 }
 
@@ -53,7 +53,7 @@
 }
 
 +(TRVTourCategory *)returnDrinkCategory {
-    return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"drink.jpg"] iconImage:[UIImage imageNamed:@"madrid.jpg"]];
+    return   [[TRVTourCategory alloc] initWithName:@"Drink" cateogoryImage:[UIImage imageNamed:@"drink.jpg"] iconImage:[UIImage imageNamed:@"drinkIcon"]];
 }
 
 @end

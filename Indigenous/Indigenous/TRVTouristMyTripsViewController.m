@@ -7,7 +7,6 @@
 //
 
 #import "NSMutableArray+extraMethods.h"
-
 #import "TRVTouristMyTripsViewController.h"
 #import "TRVTouristTripDataSource.h"
 #import "TRVTouristTripTableViewCell.h"
@@ -74,6 +73,7 @@
                     }
                     
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
+                    
                     
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips withCompletionBlock:^(BOOL success) {
                         
@@ -146,10 +146,8 @@
                 [userBioForThisUser fetch];
                 
                 
-                /// continue herrre
                 TRVUser *tourGuide = [[TRVUser alloc] init];
                 tourGuide.userBio.firstName = userBioForThisUser[@"first_name"];
-                //        tourGuideuse.userBio.profileImageURL
                 
                 
                 
@@ -173,7 +171,7 @@
                 
                 
                 tour.guideForThisTour = tourGuide;
-                //        tour.guideForThisTour = guideForThisRow;
+                tour.costOfTour = PFTour[@"price"];
                 tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
                 tour.tourDeparture = PFTour[@"tourDeparture"];
                 

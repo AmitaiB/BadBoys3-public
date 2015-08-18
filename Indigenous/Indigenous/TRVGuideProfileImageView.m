@@ -9,6 +9,7 @@
 #import "TRVGuideProfileImageView.h"
 #import <Masonry/Masonry.h>
 #import <QuartzCore/QuartzCore.h>
+#import "UIImageView+ExtraMethods.h"
 
 
 @interface TRVGuideProfileImageView ()
@@ -75,7 +76,8 @@
         make.edges.equalTo(@0);
     }];
     
-    [self createCircleImageViewMask];
+    
+    [UIImageView createCircleImageViewMaskWithImageView:self.profileImageView];
 }
 
 - (void)imageTapped:(id)sender {
@@ -84,17 +86,5 @@
     [self.delegate returnUserForThisImageNib:userForThisNib];
 }
 
-
--(void)createCircleImageViewMask {
-    
-    CALayer *imageLayer = self.profileImageView.layer;
-    //convert uicolor to CGColor
-    imageLayer.borderColor = [[UIColor grayColor] CGColor];
-    [imageLayer setCornerRadius:self.profileImageView.frame.size.width/2];
-    [imageLayer setBorderWidth:2];
-    // This carves the cirle
-    [imageLayer setMasksToBounds:YES];
-
-}
 
 @end
