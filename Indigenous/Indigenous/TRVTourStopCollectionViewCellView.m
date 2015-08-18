@@ -14,7 +14,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if(self) {
-        self.backgroundColor = [UIColor greenColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     
     return self;
@@ -24,7 +24,7 @@
 {
     self = [super initWithFrame:frame];
     if(self) {
-        self.backgroundColor = [UIColor greenColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     
     return self;
@@ -41,30 +41,19 @@
     CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
     CGContextSetStrokeColorWithColor(context, [UIColor redColor].CGColor);
     CGContextBeginPath(context);
-    CGRect smallerRect = CGRectInset(rect, 3, 3);
+    CGContextMoveToPoint(context, 0, rect.size.height/2 - .5);
+    CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2 - .5);
+    
+    CGRect smallerRect = CGRectInset(rect, 5, 1);
     CGContextAddEllipseInRect(context, smallerRect);
     CGContextDrawPath(context, kCGPathFillStroke);
-    //CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
-    //CGRect smallerRect = CGRectInset(self.bounds, self.bounds.size.width/2, self.bounds.size.height/2);
-    //CGContextFillEllipseInRect(context, rect);
-    //CGContextStrokePath(context);
+    CGContextSetStrokeColorWithColor(context, [UIColor whiteColor].CGColor);
 
-//    var context = UIGraphicsGetCurrentContext()
-//    CGContextSetLineWidth(context, 2.0)
-//    CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
-//    if drawIt == DrawIt.o {
-//        var rectangle = CGRectMake(4, 4, self.frame.width-8, self.frame.height-8)
-//        CGContextAddEllipseInRect(context, rectangle)
-//    }
-//    else if drawIt == DrawIt.x {
-//        var rectangle = CGRectMake(4, 4, self.frame.width-8, self.frame.height-8)
-//        CGContextMoveToPoint(context, rectangle.origin.x, rectangle.origin.y)
-//        CGContextAddLineToPoint(context, rectangle.width, rectangle.height)
-//        CGContextMoveToPoint(context, rectangle.origin.x + rectangle.width, rectangle.origin.y)
-//        CGContextAddLineToPoint(context, rectangle.origin.x, rectangle.origin.y + rectangle.height)
-//    }
-//    CGContextStrokePath(context)
-}
+//    CGRect evenSmallerRect = CGRectInset(smallerRect, 10, 10);
+//    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+//    CGContextFillEllipseInRect(context, evenSmallerRect);
+    
+    }
 
 
 @end
