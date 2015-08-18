@@ -157,16 +157,15 @@ static NSString * const addTourToBuildItinerarySegueID = @"addTourToBuildItinera
 
 
 #pragma mark - Navigation
-- (IBAction)saveNavBarButtonTapped:(id)sender {
-    if (self.tourCategorySegControl.selectedSegmentIndex < 0) {
-        SCLAlertView *noCategoryAlert = [[SCLAlertView alloc] init];
+    //Current debug guess: initWithWindow goes with one kind of method.
+    //initWithWindow
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if (self.tourCategorySegControl.selectedSegmentIndex == -1) {
+        SCLAlertView *noCategoryAlert = [[SCLAlertView alloc] initWithNewWindow];
         [noCategoryAlert showError:@"No Category Selected" subTitle:@"Please select a category for your tour offering." closeButtonTitle:@"Close" duration:0.0f];
-    } else {
-        [self performSegueWithIdentifier:addTourToBuildItinerarySegueID sender:sender];
-    }
-    
+        return NO;
+    } else return YES;
 }
-
 
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
