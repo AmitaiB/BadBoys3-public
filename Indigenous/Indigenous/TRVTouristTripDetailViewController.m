@@ -12,6 +12,7 @@
 #import "TRVTourStopCollectionViewDelegateFlowLayout.h"
 #import "UIScrollView+APParallaxHeader.h"
 #import "TRVParallaxHeaderImageView.h"
+#import "TRVTourDescriptionNib.h"
 #import "TRVBookTourTableViewController.h"
 #import "TRVTourStop.h"
 
@@ -30,10 +31,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *bookTourButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tourStopImageViewBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bookTourBottomConstraint;
-@property (weak, nonatomic) IBOutlet UILabel *tourInfoLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
 
+@property (weak, nonatomic) IBOutlet TRVTourDescriptionNib *tourDescriptionNib;
 
 
 @property (nonatomic) BOOL isTourGuide;
@@ -59,11 +60,16 @@
     [super viewDidLoad];
     self.navBarTitle.title = self.tour.itineraryForThisTour.nameOfTour;
     
-    //__weak TRVTouristTripDetailViewController *weakSelf = self;
+    
+    
+//   // set tour for tour description nib
+    self.tourDescriptionNib.tourForThisDescriptionNib = self.tour;
+    [self.tourDescriptionNib performSelector:@selector(setTourForThisDescriptionNib:) withObject:self.tour afterDelay:.25];
+    NSLog(@"%@", self.tour.tourDescription);
+    
     
     self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:self.tour.itineraryForThisTour.tourStops configuration:^(TRVTourStop * stop) {
-        //weakSelf.tourStopImageView.image = stop.image;     //stops do not yet have images
-        //weakSelf.nameOfStop.text = stop.nameOfPlace;
+       
     }];
     self.tourStopCollectionView.dataSource = self.dataSource;
     self.collectionViewDelegate = [[TRVTourStopCollectionViewDelegateFlowLayout alloc] init]; // UILayoutContainerView
@@ -91,12 +97,10 @@
     if (_isTourGuide == YES){
         [self setUpTourGuideViewController];
     }
-    self.theScrollViewThatHoldsAllTheOtherViews.backgroundColor = [UIColor orangeColor];
     [self selectFirstItemInCollectionView];
     [self performSelector:@selector(selectFirstItemInCollectionView) withObject:self afterDelay:.25];
     
-    self.tourInfoLabel.text = @"sjklkljdfjklsdkljsdfkjldfskjldsfkl;dsfjkldsfkl;dsfkl;dsjkldsjkldjkljkldsjkldfsjkldsfk;dsfkdsfdsf;sdfj;sdfj;sdjkldsfjkldsfkl;dfsjklsdfk;dsjkldsdkls;dsdjksfdsfdls;dlsdkls;dkls;dfkls;dfks;dks;dfs;dfsdfs;dfsdfs;\ndfs;dks;dfksds;djlsds;dfs;dls;dkls;dfklsdkls;dklsdkls;skl;sjklsdkl;sdl;sdjsdjklskldklsfjklkl;jklkldfjklssjkldfksdjklsjkljkljksjdfksljklsdfjklsfddjklskjlsdfjklsdkdjlsfkjdsfjksldfkjldkl;fjkls;dfkl;sdkjlsdkjl";
-}
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -109,7 +113,7 @@
 
 -(void)setUpTourGuideViewController {
     self.bookTourButton.hidden = NO;
-    self.bookTourButton.backgroundColor = [UIColor greenColor];
+    self.bookTourButton.backgroundColor = [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1];
 
     [NSLayoutConstraint activateConstraints:self.bookTourButton.constraints];
     self.tourStopImageViewBottomConstraint.active = NO;
@@ -143,6 +147,9 @@
     [self setupParallaxImageTitle];
     //[self.theScrollViewThatHoldsAllTheOtherViews bringSubviewToFront:self.parallaxHeaderTourNameLabel];
     [self makeContentInsetFullScreen:self.theScrollViewThatHoldsAllTheOtherViews];
+    
+    //
+    [self.tourDescriptionNib.superview layoutSubviews];
 }
 
 - (void)setupParallaxImageTitle {
@@ -176,7 +183,7 @@
     
     [viewToAddTitleLabelTo bringSubviewToFront:self.parallaxHeaderTourNameLabel];
     
-    _originalDistanceFromBottomOfScreenToBottomOfParallaxImage =  [self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y);
+    _originalDistanceFromBottomOfScreenToBottomOfParallaxImage =  [self.tourDescriptionNib.superview convertPoint:self.tourDescriptionNib.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y);
 }
 
 -(UIView*)parallaxTitleSuperview:(UIView*)view {
@@ -209,7 +216,7 @@
 }
 
 - (void)setAlphaForParallaxTitleLabel {
-    self.parallaxHeaderTourNameLabel.alpha = ([self.tourInfoLabel.superview convertPoint:self.tourInfoLabel.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y + self.parallaxHeaderTourNameLabel.frame.size.height)) / _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
+    self.parallaxHeaderTourNameLabel.alpha = ([self.tourDescriptionNib.superview convertPoint:self.tourDescriptionNib.frame.origin toView:nil].y - ([self.parallaxHeaderTourNameLabel.superview convertPoint:self.parallaxHeaderTourNameLabel.frame.origin toView:nil].y + self.parallaxHeaderTourNameLabel.frame.size.height)) / _originalDistanceFromBottomOfScreenToBottomOfParallaxImage;
 }
 
 
