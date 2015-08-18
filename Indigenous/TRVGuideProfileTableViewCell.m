@@ -53,7 +53,9 @@
         make.right.equalTo(self.contentView.mas_right);
         
 //         SET the height of Profile scroll view to 2/3 of entire cell height
-        make.height.equalTo(self.contentView.mas_height).dividedBy(1.25);
+//        make.height.equalTo(self.contentView.mas_height).dividedBy(1.25);
+        make.height.equalTo(self.contentView.mas_height);
+
         
         
     }];

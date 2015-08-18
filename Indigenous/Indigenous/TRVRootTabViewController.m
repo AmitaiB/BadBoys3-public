@@ -8,6 +8,7 @@
 
 #import "TRVRootTabViewController.h"
 
+
 @interface TRVRootTabViewController ()
 
 @end
@@ -38,7 +39,6 @@
     secondVC.tabBarItem = findToursTab;
     thirdVC.tabBarItem = profileTab;
 
-    
     
     
 

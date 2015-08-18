@@ -13,6 +13,7 @@
 #import "TRVUserDataStore.h"
 #import <Masonry.h>
 #import <QuartzCore/QuartzCore.h>
+#import "NSMutableArray+extraMethods.h"
 
 @interface TRVLoginSignupHomeViewController () 
 
@@ -36,8 +37,7 @@
     [FBSDKAccessToken setCurrentAccessToken:nil];
     [FBSDKProfile setCurrentProfile:nil];
 
-//
-
+    
   
     
 }
@@ -101,7 +101,8 @@
 
 
 -(void)transitionToHome{
-    
+    [PFQuery clearAllCachedResults];
+
     TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
     
     // User is logged in, do work such as go to next view controller.
