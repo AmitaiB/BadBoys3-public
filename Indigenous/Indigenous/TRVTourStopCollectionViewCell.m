@@ -14,7 +14,8 @@
 @implementation TRVTourStopCollectionViewCell
 
 -(void)selectionAnimation:(void (^)())updateImageView {
-    self.backgroundColor = [UIColor whiteColor];
+    //self.backgroundColor = [UIColor whiteColor];
+    [self.myContentView toggleColor];
 //    [UIView animateWithDuration:.25 animations:^{
 //        double rads = DEGREES_TO_RADIANS(90);
 //        CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, rads);
@@ -32,7 +33,9 @@
 //        CGAffineTransform transform = CGAffineTransformRotate(CGAffineTransformIdentity, rads);
 //        self.myContentView.transform = transform;
 //    }];
-    self.backgroundColor = [UIColor clearColor];
+    [self.myContentView toggleColor];
+    
+    //self.backgroundColor = [UIColor clearColor];
 }
 -(void)awakeFromNib {
     [super awakeFromNib];

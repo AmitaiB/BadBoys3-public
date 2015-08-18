@@ -8,13 +8,20 @@
 
 #import "TRVTourStopCollectionViewCellView.h"
 
-@implementation TRVTourStopCollectionViewCellView
+@implementation TRVTourStopCollectionViewCellView {
+    UIColor *_defaultColor;
+    UIColor *_selectedColor;
+    UIColor *_usedColor;
+}
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if(self) {
         self.backgroundColor = [UIColor clearColor];
+        _defaultColor = [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1];
+        _usedColor = _defaultColor;
+        _selectedColor = [UIColor yellowColor];
     }
     
     return self;
@@ -25,9 +32,22 @@
     self = [super initWithFrame:frame];
     if(self) {
         self.backgroundColor = [UIColor clearColor];
+        _defaultColor = [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1];
+        _usedColor = _defaultColor;
+        _selectedColor = [UIColor yellowColor];
     }
     
     return self;
+}
+
+-(void)toggleColor {
+    if (_usedColor == _defaultColor) {
+        _usedColor = _selectedColor;
+    }
+    else {
+        _usedColor = _defaultColor;
+    }
+    [self setNeedsDisplay];
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -38,8 +58,8 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0);
-    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1].CGColor);
-    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:253/255.0f green:97/255.0f blue:47/255.0f alpha:1].CGColor);
+    CGContextSetFillColorWithColor(context, _usedColor.CGColor);
+    CGContextSetStrokeColorWithColor(context, _usedColor.CGColor);
     CGContextBeginPath(context);
     CGContextMoveToPoint(context, 0, rect.size.height/2 - .5);
     CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2 - .5);
