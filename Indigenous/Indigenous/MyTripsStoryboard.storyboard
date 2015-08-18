@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1j9-JH-MIQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1j9-JH-MIQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -186,12 +186,6 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5St-oQ-2w6" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="488"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OI-QZ-k8a">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avp-TJ-ye3">
                                                 <rect key="frame" x="284" y="589" width="70" height="30"/>
                                                 <constraints>
@@ -204,14 +198,14 @@
                                                     <action selector="bookTourButtonTapped:" destination="gqK-AQ-dGd" eventType="touchUpInside" id="fSE-6l-oCi"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-hq-8uZ">
+                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-hq-8uZ" userLabel="TourInfo" customClass="UILabel">
                                                 <rect key="frame" x="150" y="122" width="300" height="244"/>
                                                 <color key="backgroundColor" red="0.32395161319999999" green="1" blue="0.30490875610000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whg-kd-fWU" userLabel="Tour Stop Image View" customClass="UIImageView">
+                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="whg-kd-fWU" userLabel="Tour Stop Image View" customClass="UIImageView">
                                                 <rect key="frame" x="0.0" y="70" width="600" height="467"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-wO-y15">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4i-wO-y15">
                                                         <rect key="frame" x="32" y="200" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -224,7 +218,7 @@
                                                     <constraint firstItem="U4i-wO-y15" firstAttribute="leading" secondItem="whg-kd-fWU" secondAttribute="leading" constant="32" id="ElD-7K-0Lw"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbg-1S-hru">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="751" ambiguous="YES" misplaced="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nbg-1S-hru">
                                                 <rect key="frame" x="0.0" y="20" width="600" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="ghk-eG-hYE"/>
@@ -254,20 +248,20 @@
                                         <accessibility key="accessibilityConfiguration" label="ContentView"/>
                                         <constraints>
                                             <constraint firstItem="Avp-TJ-ye3" firstAttribute="top" secondItem="whg-kd-fWU" secondAttribute="bottom" id="02u-fj-Od9"/>
-                                            <constraint firstItem="3OI-QZ-k8a" firstAttribute="top" secondItem="5St-oQ-2w6" secondAttribute="top" id="2dT-nD-IHm"/>
                                             <constraint firstAttribute="trailing" secondItem="Avp-TJ-ye3" secondAttribute="trailing" id="5B2-7r-9vS"/>
                                             <constraint firstAttribute="trailing" secondItem="whg-kd-fWU" secondAttribute="trailing" id="9yg-o4-O9q"/>
+                                            <constraint firstItem="TNj-hq-8uZ" firstAttribute="top" secondItem="5St-oQ-2w6" secondAttribute="top" id="Dzt-TQ-WYQ"/>
                                             <constraint firstAttribute="trailing" secondItem="nbg-1S-hru" secondAttribute="trailing" id="E51-Zi-GvY"/>
-                                            <constraint firstItem="3OI-QZ-k8a" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="E9A-Od-lcs"/>
                                             <constraint firstAttribute="bottom" secondItem="whg-kd-fWU" secondAttribute="bottom" id="Ng2-hT-4z8"/>
                                             <constraint firstItem="whg-kd-fWU" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="RJH-k8-JBX"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="Shh-I4-9Ny"/>
                                             <constraint firstAttribute="bottom" secondItem="Avp-TJ-ye3" secondAttribute="bottom" id="UmE-Mf-f7k"/>
                                             <constraint firstItem="whg-kd-fWU" firstAttribute="top" secondItem="nbg-1S-hru" secondAttribute="bottom" id="XfX-fc-inQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="3OI-QZ-k8a" secondAttribute="trailing" id="aQY-5b-IZe"/>
-                                            <constraint firstItem="nbg-1S-hru" firstAttribute="top" secondItem="3OI-QZ-k8a" secondAttribute="bottom" id="dmV-pb-1X2"/>
                                             <constraint firstItem="nbg-1S-hru" firstAttribute="width" secondItem="5St-oQ-2w6" secondAttribute="width" id="fzT-NO-kt7"/>
+                                            <constraint firstItem="TNj-hq-8uZ" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="lGb-us-fF8"/>
                                             <constraint firstItem="Avp-TJ-ye3" firstAttribute="leading" secondItem="5St-oQ-2w6" secondAttribute="leading" id="lfW-gr-k1Z"/>
+                                            <constraint firstAttribute="trailing" secondItem="TNj-hq-8uZ" secondAttribute="trailing" id="ogc-Ot-XME"/>
+                                            <constraint firstItem="TNj-hq-8uZ" firstAttribute="bottom" secondItem="nbg-1S-hru" secondAttribute="top" id="slo-0i-vMj"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -299,7 +293,7 @@
                         <outlet property="navBarTitle" destination="3aD-oR-lZn" id="wrw-pr-P4Y"/>
                         <outlet property="theScrollViewThatHoldsAllTheOtherViews" destination="DGP-yU-yMd" id="5z2-fx-oiY"/>
                         <outlet property="topBookTourButtonConstraint" destination="02u-fj-Od9" id="G9c-XH-slU"/>
-                        <outlet property="tourInfoLabel" destination="3OI-QZ-k8a" id="67h-pa-ccK"/>
+                        <outlet property="tourInfoLabel" destination="TNj-hq-8uZ" id="teO-GO-GNn"/>
                         <outlet property="tourStopCollectionView" destination="nbg-1S-hru" id="vVG-qb-yCj"/>
                         <outlet property="tourStopImageView" destination="whg-kd-fWU" id="Gpa-yZ-U5J"/>
                         <outlet property="tourStopImageViewBottomConstraint" destination="Ng2-hT-4z8" id="cgg-jS-PbQ"/>
