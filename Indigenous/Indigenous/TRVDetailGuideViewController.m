@@ -142,9 +142,6 @@
     
     // Register cell
         [self.guideTripsTableView registerClass:[TRVTouristTripTableViewCell class] forCellReuseIdentifier:@"tripCell"];
-        
-        self.guideTripsTableView.backgroundColor = [UIColor orangeColor];
-    
 
         
     // set delegate and datasource owner

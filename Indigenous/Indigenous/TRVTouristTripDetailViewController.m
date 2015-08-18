@@ -12,6 +12,7 @@
 #import "TRVTourStopCollectionViewDelegateFlowLayout.h"
 #import "UIScrollView+APParallaxHeader.h"
 #import "TRVParallaxHeaderImageView.h"
+#import "TRVTourDescriptionNib.h"
 #import "TRVBookTourTableViewController.h"
 #import "TRVTourStop.h"
 
@@ -34,6 +35,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
 
+@property (weak, nonatomic) IBOutlet TRVTourDescriptionNib *tourDescriptionNib;
 
 
 @property (nonatomic) BOOL isTourGuide;
@@ -59,7 +61,11 @@
     [super viewDidLoad];
     self.navBarTitle.title = self.tour.itineraryForThisTour.nameOfTour;
     
-    //__weak TRVTouristTripDetailViewController *weakSelf = self;
+    
+    
+//   // set tour for tour description nib
+    
+    self.tourDescriptionNib.tourForThisDescriptionNib = self.tour;
     
     self.dataSource = [[TRVTourStopCollectionViewDataSource alloc] initWithStops:self.tour.itineraryForThisTour.tourStops configuration:^(TRVTourStop * stop) {
         //weakSelf.tourStopImageView.image = stop.image;     //stops do not yet have images
