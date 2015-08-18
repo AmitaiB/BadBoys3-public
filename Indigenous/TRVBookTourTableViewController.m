@@ -8,6 +8,7 @@
 
 #import "TRVBookTourTableViewController.h"
 #import "TRVTourReceiptViewController.h"
+#import "NSString+TRVExtraMethods.h"
 #import "TRVUserDataStore.h"
 #import <Parse.h>
 
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *guideTaglineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *guideCityLabel;
 @property (weak, nonatomic) IBOutlet UILabel *guideCountryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceOfTourLabel;
 
 
 
@@ -37,7 +39,6 @@
     self.sharedDataStore = [TRVUserDataStore sharedUserInfoDataStore];
     
     self.nameOfTourLabel.text = self.destinationTour.itineraryForThisTour.nameOfTour;
-//    self.dateOfTourLabel.text = self.destinationTour.tourDeparture;
     
     
     NSString *guideFirstName = self.destinationTour.guideForThisTour.userBio.firstName;
@@ -48,11 +49,17 @@
     
     self.guideFullNameLabel.text = [NSString stringWithFormat:@"%@ %@" , guideFirstName, guideLastName];
     
+    NSString *dateOfTourForThisView = [NSString formatDateDepartureForTour:self.destinationTour];
+    
+    self.dateOfTourLabel.text = [NSString stringWithFormat:@"on %@" ,dateOfTourForThisView];
+    
     self.guideTaglineLabel.text = self.destinationTour.guideForThisTour.userBio.userTagline;
     
     self.guideCityLabel.text = self.destinationTour.guideForThisTour.userBio.homeCity;
     
-    self.guideCityLabel.text = self.destinationTour.guideForThisTour.userBio.homeCountry;
+    self.guideCountryLabel.text = self.destinationTour.guideForThisTour.userBio.homeCountry;
+    self.priceOfTourLabel.text = [NSString stringWithFormat:@"$%@", self.destinationTour.costOfTour];
+    
 
 }
 

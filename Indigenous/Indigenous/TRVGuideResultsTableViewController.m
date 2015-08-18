@@ -208,6 +208,8 @@
         [PFTour fetch];
         TRVTour *tour = [[TRVTour alloc]init];
         tour.guideForThisTour = guideForThisRow;
+        NSNumber *priceOfTour = PFTour[@"price"];
+        tour.costOfTour = priceOfTour;
         tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
         tour.tourDeparture = PFTour[@"tourDeparture"];
         

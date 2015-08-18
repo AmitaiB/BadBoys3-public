@@ -20,8 +20,9 @@
 -(NSMutableArray *) returnDummyAllTripsArrayForGuide:(TRVUser *)guide {
 
     NSMutableArray *allTripsArray = [[NSMutableArray alloc] init];
-    NSMutableArray *tourStopsArray = [[NSMutableArray alloc] init];
     
+   
+   // [self createParseDummyTour];
     
 //    TRVTourStop *dummyTourStop1 = [[TRVTourStop alloc] initWithCoordinates:CLLocationCoordinate2DMake(10.0, 10.0)];
 //    dummyTourStop1.image = [UIImage imageNamed:@"madrid.jpg"];
@@ -83,10 +84,7 @@
 
     //COMMENT OUT IF YOU DO NOT WANT TO CREATE DUMMY DATA
 
-
-    //[self createParseDummyTour];
-
-    [self createParseDummyTour];
+   // [self createParseDummyTour];
 
    
     
@@ -94,7 +92,7 @@
 }
 
 
--(void)createParseDummyTour {
++(void)createParseDummyTour {
     
     PFUser *currentUser = [PFUser currentUser];
     PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
@@ -105,35 +103,79 @@
     
     theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:10000];
     theTour[@"isPurchased"] = @(YES);
+    theTour[@"price"] = @(99);
     
     
-    PFObject *theStop = [PFObject objectWithClassName:@"TourStop"];
     theTour[@"itineraryForThisTour"] = theItinerary;
-    theItinerary[@"nameOfTour"] = @"Some name of tour";
+    theItinerary[@"nameOfTour"] = @"Wall St. Walk";
     
-    UIImage *tourImage = [UIImage imageNamed:@"beijing.jpg"];
-    
-    
+    UIImage *tourImage = [UIImage imageNamed:@"fedHall.jpg"];
     // converts tour image to 1/5 quality
     NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
     PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
     
     theItinerary[@"tourImage"] = PFImage;
 
-
-    theStop[@"operatorCost"] = @0;
-    theStop[@"incidentalCost"] = @0;
-    theStop[@"lat"] = @10;
-    theStop[@"lng"] = @10;
-    theStop[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
-    theStop[@"nameOfPlace"] = @"The Flatiron School";
-    theStop[@"descriptionOfEvent"] = @"We will be running through the six with our woes.  You know how that goes.";
-    theStop[@"addressOfEvent"] = @"123 Nobody St.";
+    PFObject *theStop1 = [PFObject objectWithClassName:@"TourStop"];
+    PFObject *theStop2 = [PFObject objectWithClassName:@"TourStop"];
+    PFObject *theStop3 = [PFObject objectWithClassName:@"TourStop"];
     
+    theStop1[@"operatorCost"] = @0;
+    theStop1[@"incidentalCost"] = @0;
+    theStop1[@"lat"] = @10;
+    theStop1[@"lng"] = @10;
+    theStop1[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop1[@"nameOfPlace"] = @"New York Stock Exchange";
+    theStop1[@"descriptionOfEvent"] = @"We will start by walking down the historic Wall St. and straight to the New York Stock Exchange.  See where all the action happens.";
+    theStop1[@"addressOfEvent"] = @"11 Wall St, New York, NY 10005";
+    
+    UIImage *stopImage1 = [UIImage imageNamed:@"stockExchange.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData1 = UIImageJPEGRepresentation(stopImage1, .2f);
+    PFFile *PFImage1 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData1];
     //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
-    theStop[@"image"] = PFImage;
+    theStop1[@"image"] = PFImage1;
     
-    NSArray *tourStopsArray = @[theStop, theStop, theStop, theStop];
+    
+    theStop2[@"operatorCost"] = @0;
+    theStop2[@"incidentalCost"] = @0;
+    theStop2[@"lat"] = @10;
+    theStop2[@"lng"] = @10;
+    theStop2[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop2[@"nameOfPlace"] = @"The Charging Bull";
+    theStop2[@"descriptionOfEvent"] = @"Let's take a stop at the Charging Bull!  An amazing and fun photo opportunity.";
+    theStop2[@"addressOfEvent"] = @"Broadway & Morris St, New York, NY";
+    
+    UIImage *stopImage2 = [UIImage imageNamed:@"bull.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData2 = UIImageJPEGRepresentation(stopImage2, .2f);
+    PFFile *PFImage2 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData2];
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop2[@"image"] = PFImage2;
+    
+    
+    
+    
+    theStop3[@"operatorCost"] = @0;
+    theStop3[@"incidentalCost"] = @0;
+    theStop3[@"lat"] = @10;
+    theStop3[@"lng"] = @10;
+    theStop3[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop3[@"nameOfPlace"] = @"Federal Hall";
+    theStop3[@"descriptionOfEvent"] = @"Take a dive into American history at Federal Hall.  This is where Wasington was sworn in and the Bill of Rights was written!";
+    theStop3[@"addressOfEvent"] = @"26 Wall St, New York, NY 10005";
+    
+    UIImage *stopImage3 = [UIImage imageNamed:@"george.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData3 = UIImageJPEGRepresentation(stopImage3, .2f);
+    PFFile *PFImage3 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData3];
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop3[@"image"] = PFImage3;
+    
+    
+    
+    
+    NSArray *tourStopsArray = @[theStop1, theStop2, theStop3];
     theItinerary[@"tourStops"] = tourStopsArray;
     theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
 
@@ -155,6 +197,216 @@
     }];
     
 }
+
++(void)createParseDummyTour2 {
+    
+    PFUser *currentUser = [PFUser currentUser];
+    PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
+    [theTour setObject:currentUser forKey:@"guideForThisTour"];
+    
+    PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
+    theTour[@"categoryForThisTour"] = @"See";
+    
+    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:10000];
+    theTour[@"isPurchased"] = @(YES);
+    theTour[@"price"] = @(99);
+    
+    
+    theTour[@"itineraryForThisTour"] = theItinerary;
+    theItinerary[@"nameOfTour"] = @"Central Park Adventure";
+    
+    UIImage *tourImage = [UIImage imageNamed:@"centralParkMain.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
+    PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+    
+    theItinerary[@"tourImage"] = PFImage;
+    
+    PFObject *theStop1 = [PFObject objectWithClassName:@"TourStop"];
+    PFObject *theStop2 = [PFObject objectWithClassName:@"TourStop"];
+    
+    theStop1[@"operatorCost"] = @0;
+    theStop1[@"incidentalCost"] = @0;
+    theStop1[@"lat"] = @10;
+    theStop1[@"lng"] = @10;
+    theStop1[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop1[@"nameOfPlace"] = @"Feeding The Ducks";
+    theStop1[@"descriptionOfEvent"] = @"Let's give back to nature, by feeding bread to the wildlife.  These ducks are gorgeous animals!";
+    theStop1[@"addressOfEvent"] = @"Central Park West & W. 86th St., New York, NY 10005";
+    
+    UIImage *stopImage1 = [UIImage imageNamed:@"lake.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData1 = UIImageJPEGRepresentation(stopImage1, .2f);
+    PFFile *PFImage1 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData1];
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop1[@"image"] = PFImage1;
+    
+    
+    theStop2[@"operatorCost"] = @0;
+    theStop2[@"incidentalCost"] = @0;
+    theStop2[@"lat"] = @10;
+    theStop2[@"lng"] = @10;
+    theStop2[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop2[@"nameOfPlace"] = @"Lay In The Park";
+    theStop2[@"descriptionOfEvent"] = @"After a nice afternoon at the lake, we will lay in the grass and observe the horniculture.  Take in the beauty.";
+    theStop2[@"addressOfEvent"] = @"Central Park West & W. 86th St., New York, NY 10005";
+    
+    UIImage *stopImage2 = [UIImage imageNamed:@"lay.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData2 = UIImageJPEGRepresentation(stopImage2, .4f);
+    PFFile *PFImage2 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData2];
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop2[@"image"] = PFImage2;
+    
+    
+    
+    
+//    theStop3[@"operatorCost"] = @0;
+//    theStop3[@"incidentalCost"] = @0;
+//    theStop3[@"lat"] = @10;
+//    theStop3[@"lng"] = @10;
+//    theStop3[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+//    theStop3[@"nameOfPlace"] = @"Federal Hall";
+//    theStop3[@"descriptionOfEvent"] = @"Take a dive into American history at Federal Hall.  This is where Wasington was sworn in and the Bill of Rights was written!";
+//    theStop3[@"addressOfEvent"] = @"26 Wall St, New York, NY 10005";
+//    
+//    UIImage *stopImage3 = [UIImage imageNamed:@"george.jpg"];
+//    // converts tour image to 1/5 quality
+//    NSData *imageData3 = UIImageJPEGRepresentation(stopImage3, .2f);
+//    PFFile *PFImage3 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData3];
+//    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+//    theStop3[@"image"] = PFImage3;
+//    
+    
+    
+    
+    NSArray *tourStopsArray = @[theStop1, theStop2];
+    theItinerary[@"tourStops"] = tourStopsArray;
+    theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
+    
+    
+    [theTour saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+        NSLog(@"THE TOUR ID IS: %@", theTour.objectId);
+        
+        
+        [currentUser addObject:theTour forKey:@"myGuideTrips"];
+        [currentUser saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+            if (error){
+                NSLog(@"Cant save to array because: %@", error);
+            } else {
+                NSLog(@"Successfully added stuff to array.");
+            }
+        }];
+        
+        
+    }];
+    
+}
+
++(void)createParseDummyTour3 {
+    
+    PFUser *currentUser = [PFUser currentUser];
+    PFObject *theTour = [PFObject objectWithClassName:@"Tour"];
+    [theTour setObject:currentUser forKey:@"guideForThisTour"];
+    
+    PFObject *theItinerary = [PFObject objectWithClassName:@"Itinerary"];
+    theTour[@"categoryForThisTour"] = @"See";
+    
+    theTour[@"tourDeparture"] = [NSDate dateWithTimeIntervalSinceNow:10000];
+    theTour[@"isPurchased"] = @(YES);
+    theTour[@"price"] = @(99);
+    
+    
+    theTour[@"itineraryForThisTour"] = theItinerary;
+    theItinerary[@"nameOfTour"] = @"Explore Times Square";
+    
+    UIImage *tourImage = [UIImage imageNamed:@"timeSquareMain.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData = UIImageJPEGRepresentation(tourImage, .2f);
+    PFFile *PFImage = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData];
+    
+    theItinerary[@"tourImage"] = PFImage;
+    
+    PFObject *theStop1 = [PFObject objectWithClassName:@"TourStop"];
+    PFObject *theStop2 = [PFObject objectWithClassName:@"TourStop"];
+    PFObject *theStop3 = [PFObject objectWithClassName:@"TourStop"];
+    
+    theStop1[@"operatorCost"] = @0;
+    theStop1[@"incidentalCost"] = @0;
+    theStop1[@"lat"] = @10;
+    theStop1[@"lng"] = @10;
+    theStop1[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop1[@"nameOfPlace"] = @"Disney Store";
+    theStop1[@"descriptionOfEvent"] = @"Let's take a stroll through the magical world of Disney and they landmark store.  An amazing experience for people of all ages.";
+    theStop1[@"addressOfEvent"] = @"1540 Broadway, New York, NY 10036";
+    
+    UIImage *stopImage1 = [UIImage imageNamed:@"disney.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData1 = UIImageJPEGRepresentation(stopImage1, .2f);
+    PFFile *PFImage1 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData1];
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop1[@"image"] = PFImage1;
+    
+    
+    theStop2[@"operatorCost"] = @0;
+    theStop2[@"incidentalCost"] = @0;
+    theStop2[@"lat"] = @10;
+    theStop2[@"lng"] = @10;
+    theStop2[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop2[@"nameOfPlace"] = @"Watch Wicked!";
+    theStop2[@"descriptionOfEvent"] = @"We'll be watching the world reknown, legendary play known as Wicked!  I've got 10 free tickets, just for this tour.  Truly a once in a lifetime opportunity.";
+    theStop2[@"addressOfEvent"] = @"222 West 51st Street New York, NY";
+    
+    UIImage *stopImage2 = [UIImage imageNamed:@"play.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData2 = UIImageJPEGRepresentation(stopImage2, .2f);
+    PFFile *PFImage2 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData2];
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop2[@"image"] = PFImage2;
+    
+    
+    theStop3[@"operatorCost"] = @0;
+    theStop3[@"incidentalCost"] = @0;
+    theStop3[@"lat"] = @10;
+    theStop3[@"lng"] = @10;
+    theStop3[@"coordinatePoint"] = [PFGeoPoint geoPointWithLatitude:10.0 longitude:10.0];
+    theStop3[@"nameOfPlace"] = @"Meet The Cast!";
+    theStop3[@"descriptionOfEvent"] = @"Thanks to my Broadway experience, I'll give you a behind the scenes experience and introduce you to a few of the famous characters found on Broadway.";
+    theStop3[@"addressOfEvent"] = @"26 Wall St, New York, NY 10005";
+    
+    UIImage *stopImage3 = [UIImage imageNamed:@"characters.jpg"];
+    // converts tour image to 1/5 quality
+    NSData *imageData3 = UIImageJPEGRepresentation(stopImage3, .2f);
+    PFFile *PFImage3 = [PFFile fileWithName:theItinerary[@"nameOfTour"] data:imageData3];
+    //MAKE SURE THAT THIS IS A PFFILE.   LOOK AT ABOVE CODE WHICH TAKES NSDATA AND CONVERTS TO PFFILE.
+    theStop3[@"image"] = PFImage3;
+    
+    
+    
+    
+    NSArray *tourStopsArray = @[theStop1, theStop2, theStop3];
+    theItinerary[@"tourStops"] = tourStopsArray;
+    theItinerary[@"numberOfStops"] = @(tourStopsArray.count);
+    
+    
+    [theTour saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+        NSLog(@"THE TOUR ID IS: %@", theTour.objectId);
+        
+        
+        [currentUser addObject:theTour forKey:@"myGuideTrips"];
+        [currentUser saveInBackgroundWithBlock:^(BOOL success, NSError *error){
+            if (error){
+                NSLog(@"Cant save to array because: %@", error);
+            } else {
+                NSLog(@"Successfully added stuff to array.");
+            }
+        }];
+        
+        
+    }];
+    
+}
+
 
 
 @end

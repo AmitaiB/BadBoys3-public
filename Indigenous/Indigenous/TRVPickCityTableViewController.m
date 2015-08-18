@@ -40,7 +40,7 @@
     
     
     TRVCity *newYork = [[TRVCity alloc] initWithName:@"New York" image:[UIImage imageNamed:@"newyork"]];
-    TRVCity *losAngeles = [[TRVCity alloc] initWithName:@"Los Angeles" image:[UIImage imageNamed:@"beijing"]];
+    TRVCity *losAngeles = [[TRVCity alloc] initWithName:@"Los Angeles" image:[UIImage imageNamed:@"LA"]];
     TRVCity *paris = [[TRVCity alloc] initWithName:@"Paris" image:[UIImage imageNamed:@"london"]];
     TRVCity *london = [[TRVCity alloc] initWithName:@"London" image:[UIImage imageNamed:@"madrid"]];
     

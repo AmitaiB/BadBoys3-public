@@ -13,7 +13,11 @@
 @interface NSMutableArray (extraMethods)
 
 @property (nonatomic, strong) TRVUser *guide;
--(NSMutableArray *) returnDummyAllTripsArrayForGuide:(TRVUser *)guide;
++(NSMutableArray *) returnDummyAllTripsArrayForGuide:(TRVUser *)guide;
++(void)createParseDummyTour;
++(void)createParseDummyTour2;
++(void)createParseDummyTour3;
+
 
 
 @end
