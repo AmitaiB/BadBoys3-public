@@ -58,6 +58,8 @@
 		9425FA871B72565500689011 /* TRVDetailGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9425FA861B72565500689011 /* TRVDetailGuideViewController.m */; };
 		942C18EE1B6BDD9300E1AC91 /* SearchTrips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */; };
 		942C18F41B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 942C18F31B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m */; };
+		942D1C241B82BDB8008F90D5 /* TRVTourDescriptionNib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 942D1C231B82BDB8008F90D5 /* TRVTourDescriptionNib.xib */; };
+		942D1C271B82BDCA008F90D5 /* TRVTourDescriptionNib.m in Sources */ = {isa = PBXBuildFile; fileRef = 942D1C261B82BDCA008F90D5 /* TRVTourDescriptionNib.m */; };
 		942E0D4B1B740143002D9E90 /* TRVProfileViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 942E0D4A1B740143002D9E90 /* TRVProfileViews.m */; };
 		942E0D4E1B7403D8002D9E90 /* TRVProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 942E0D4D1B7403D8002D9E90 /* TRVProfileView.m */; };
 		942EE9311B77D06F00D42B2B /* TRVAllToursFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 942EE9301B77D06F00D42B2B /* TRVAllToursFilter.m */; };
@@ -220,6 +222,9 @@
 		942C18ED1B6BDD9300E1AC91 /* SearchTrips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchTrips.storyboard; sourceTree = "<group>"; };
 		942C18F21B6C016800E1AC91 /* TRVAFNetwokingAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVAFNetwokingAPIClient.h; sourceTree = "<group>"; };
 		942C18F31B6C016800E1AC91 /* TRVAFNetwokingAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVAFNetwokingAPIClient.m; sourceTree = "<group>"; };
+		942D1C231B82BDB8008F90D5 /* TRVTourDescriptionNib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TRVTourDescriptionNib.xib; sourceTree = "<group>"; };
+		942D1C251B82BDCA008F90D5 /* TRVTourDescriptionNib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVTourDescriptionNib.h; sourceTree = "<group>"; };
+		942D1C261B82BDCA008F90D5 /* TRVTourDescriptionNib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVTourDescriptionNib.m; sourceTree = "<group>"; };
 		942E0D491B740143002D9E90 /* TRVProfileViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVProfileViews.h; sourceTree = "<group>"; };
 		942E0D4A1B740143002D9E90 /* TRVProfileViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVProfileViews.m; sourceTree = "<group>"; };
 		942E0D4C1B7403D8002D9E90 /* TRVProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TRVProfileView.h; path = ../TRVProfileView.h; sourceTree = "<group>"; };
@@ -427,6 +432,9 @@
 			children = (
 				949ECD411B82A9A6007FF1DF /* NSString+TRVExtraMethods.h */,
 				949ECD421B82A9A6007FF1DF /* NSString+TRVExtraMethods.m */,
+				942D1C231B82BDB8008F90D5 /* TRVTourDescriptionNib.xib */,
+				942D1C251B82BDCA008F90D5 /* TRVTourDescriptionNib.h */,
+				942D1C261B82BDCA008F90D5 /* TRVTourDescriptionNib.m */,
 				451565121B68221B005A2871 /* Indigenous */,
 				451565111B68221B005A2871 /* Products */,
 				5C48CC399C45D8E89A305C19 /* Pods */,
@@ -863,7 +871,6 @@
 					4515650F1B68221B005A2871 = {
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = DWCYJ9H353;
-
 					};
 				};
 			};
@@ -915,6 +922,7 @@
 				948246441B7162C300D64432 /* TRVUserContactView.xib in Resources */,
 				456468E81B7E401D005F5A57 /* van2.gif in Resources */,
 				9435DF731B6F1E670054A2F4 /* TRVTourCategoryView.xib in Resources */,
+				942D1C241B82BDB8008F90D5 /* TRVTourDescriptionNib.xib in Resources */,
 				946624131B79555000CA365B /* RootGuideTabController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1044,6 +1052,7 @@
 				942424891B6DBAAF007BC642 /* TRVRootTabViewController.m in Sources */,
 				384AFBC91B696B8F00E169A9 /* TRVAddToursVC.m in Sources */,
 				45E772D91B6962E700003C7C /* TRVLoginSignupHomeViewController.m in Sources */,
+				942D1C271B82BDCA008F90D5 /* TRVTourDescriptionNib.m in Sources */,
 				45E772E31B6A68FC00003C7C /* TRVCompleteSignupWithFacebookViewController.m in Sources */,
 				FA57FA1C1B696A9100CFBB89 /* TRVTouristMyTripsViewController.m in Sources */,
 			);

@@ -179,6 +179,7 @@
                 
                 tour.guideForThisTour = tourGuide;
                 tour.costOfTour = PFTour[@"price"];
+                tour.tourDescription = PFTour[@"tourDescription"];
                 tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
                 tour.tourDeparture = PFTour[@"tourDeparture"];
                 
