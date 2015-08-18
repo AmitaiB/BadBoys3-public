@@ -22,7 +22,7 @@
     NSMutableArray *allTripsArray = [[NSMutableArray alloc] init];
     
    
-//    [self createParseDummyTour];
+    [self createParseDummyTour];
 
    
     

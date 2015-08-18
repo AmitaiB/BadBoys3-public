@@ -8,6 +8,7 @@
 
 #import "TRVMyToursView.h"
 #import <Masonry.h>
+#import "NSString+TRVExtraMethods.h"
 #import "UIImageView+ExtraMethods.h"
 #import "TRVTourStop.h"
 
@@ -75,20 +76,11 @@
     self.nameOfTourLabel.text = itineraryForThisView.nameOfTour;
     
     
-    
     self.withUserLabel.text = tourForThisTourView.guideForThisTour.userBio.firstName;
     
-    // Date Formatter
     
-    NSDateFormatter *dayAndMonthFormat = [[NSDateFormatter alloc] init];
-//    NSDateFormatter *yearFormat = [[NSDateFormatter alloc] init];
+    NSString *dayAndMonthOfTrip = [NSString formatDateDepartureForTour:tourForThisTourView];
     
-    NSDate *dateForThisTour = self.tourForThisTourView.tourDeparture;
-    
-    [dayAndMonthFormat setDateFormat:@"EEE, MMM d"];
-
-    NSString *dayAndMonthOfTrip = [dayAndMonthFormat stringFromDate:dateForThisTour];
-
     self.upcomingDateLabel.text = [NSString stringWithFormat:@"on %@", dayAndMonthOfTrip];
     
     self.categoryIconImageView.image = tourForThisTourView.categoryForThisTour.iconImage;
@@ -100,5 +92,8 @@
     [UIImageView createCircleImageViewMaskWithImageView:self.withUserImage];
 
 };
+
+
+
 
 @end

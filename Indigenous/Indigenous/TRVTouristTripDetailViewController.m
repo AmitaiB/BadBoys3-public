@@ -34,7 +34,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *nameOfStop;
 
-@property (weak, nonatomic) IBOutlet UIView *contactGuideXib;
 
 
 @property (nonatomic) BOOL isTourGuide;
@@ -146,9 +145,14 @@
 }
 
 - (void)setupParallaxImageTitle {
-    self.parallaxHeaderTourNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 1)]; //doesn't matter
+    self.parallaxHeaderTourNameLabel = [[UILabel alloc] init];
     self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor magentaColor];
     self.parallaxHeaderTourNameLabel.text = self.tour.itineraryForThisTour.nameOfTour;
+    
+    
+    [self.parallaxHeaderTourNameLabel setFont:[UIFont fontWithName:@"Avenir" size:30]];
+    [self.parallaxHeaderTourNameLabel sizeToFit];
+    self.parallaxHeaderTourNameLabel.numberOfLines = 0;
     self.parallaxHeaderTourNameLabel.textColor = [UIColor whiteColor];
     self.parallaxHeaderTourNameLabel.backgroundColor = [UIColor clearColor];
     

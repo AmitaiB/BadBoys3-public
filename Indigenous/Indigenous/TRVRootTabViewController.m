@@ -27,7 +27,7 @@
     
     
     UITabBarItem *myTripsTab = [[UITabBarItem alloc] initWithTitle:@"My Trips" image:[UIImage imageNamed:@"myTrips"] selectedImage:[UIImage imageNamed:@"myTrips"]];
-    UITabBarItem *findToursTab = [[UITabBarItem alloc] initWithTitle:@"Create Trip" image:[UIImage imageNamed:@"findTrip"] selectedImage:[UIImage imageNamed:@"findTrip"]];
+    UITabBarItem *findToursTab = [[UITabBarItem alloc] initWithTitle:@"Find Trip" image:[UIImage imageNamed:@"findTrip"] selectedImage:[UIImage imageNamed:@"findTrip"]];
     UITabBarItem *profileTab = [[UITabBarItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"profileTab"] selectedImage:[UIImage imageNamed:@"profileTab"]];
     
     

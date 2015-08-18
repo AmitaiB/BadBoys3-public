@@ -24,14 +24,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Tour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw7-7h-ZQ8">
-                                                    <rect key="frame" x="28" y="151" width="125" height="28"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                                    <rect key="frame" x="28" y="151" width="156" height="35"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of tour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbi-5N-ChS">
-                                                    <rect key="frame" x="28" y="241" width="111" height="28"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                                    <rect key="frame" x="28" y="237" width="126" height="32"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="23"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -54,20 +54,21 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="with Guide first name on ..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfS-aL-IS8">
-                                                    <rect key="frame" x="28" y="193" width="246" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="with Guide first name on ..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfS-aL-IS8">
+                                                    <rect key="frame" x="28" y="190" width="246" height="28"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.93333333333333335" green="0.92156862745098034" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="icM-SU-eDn" firstAttribute="top" secondItem="mR9-z0-Yfj" secondAttribute="topMargin" constant="80" id="7HZ-lb-hXL"/>
                                                 <constraint firstItem="tw7-7h-ZQ8" firstAttribute="leading" secondItem="mR9-z0-Yfj" secondAttribute="leadingMargin" constant="20" id="7Zg-G6-y1C"/>
                                                 <constraint firstItem="cfS-aL-IS8" firstAttribute="leading" secondItem="tw7-7h-ZQ8" secondAttribute="leading" id="BtL-PV-Wqn"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="zox-BX-CgE" secondAttribute="trailing" constant="20" id="GK7-79-oeR"/>
                                                 <constraint firstItem="tw7-7h-ZQ8" firstAttribute="top" secondItem="icM-SU-eDn" secondAttribute="bottom" constant="36" id="Mlv-vN-RsR"/>
-                                                <constraint firstItem="cfS-aL-IS8" firstAttribute="top" secondItem="tw7-7h-ZQ8" secondAttribute="bottom" constant="15" id="RFe-wK-2IF"/>
+                                                <constraint firstItem="cfS-aL-IS8" firstAttribute="top" secondItem="tw7-7h-ZQ8" secondAttribute="bottom" constant="4" id="RFe-wK-2IF"/>
                                                 <constraint firstItem="Rbi-5N-ChS" firstAttribute="leading" secondItem="cfS-aL-IS8" secondAttribute="leading" id="V35-5c-CQW"/>
                                                 <constraint firstItem="tw7-7h-ZQ8" firstAttribute="top" secondItem="mR9-z0-Yfj" secondAttribute="topMargin" constant="158" id="YPP-eO-qqm"/>
                                                 <constraint firstItem="Rbi-5N-ChS" firstAttribute="top" secondItem="cfS-aL-IS8" secondAttribute="bottom" constant="20" id="bGM-ac-J3g"/>
@@ -97,27 +98,27 @@
                                                         <constraint firstAttribute="width" constant="75" id="wJx-1t-oci"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tagline" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRN-YG-96d">
-                                                    <rect key="frame" x="113" y="44" width="469" height="22"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Leo Kwan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-mU-FxZ">
+                                                    <rect key="frame" x="18" y="13" width="91" height="29"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tagline" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRN-YG-96d">
+                                                    <rect key="frame" x="113" y="45" width="469" height="22"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zB2-vt-D0q">
                                                     <rect key="frame" x="113" y="99" width="59" height="22"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN0-nq-kxq">
-                                                    <rect key="frame" x="113" y="71" width="29" height="22"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Leo Kwan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFu-mU-FxZ">
-                                                    <rect key="frame" x="18" y="13" width="91" height="29"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN0-nq-kxq">
+                                                    <rect key="frame" x="113" y="72" width="29" height="22"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -159,6 +160,35 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.92156862750000001" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="3fg-bR-PQY">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fg-bR-PQY" id="hEE-Um-bXc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYp-yR-oWE">
+                                                    <rect key="frame" x="48" y="50" width="504" height="50"/>
+                                                    <color key="backgroundColor" red="1" green="0.98218170149999995" blue="0.41968016479999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="XLY-lm-TIU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
+                                                    <state key="normal" title="Book Tour">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="bookTourButtonPressed:" destination="s3w-fN-y0L" eventType="touchUpInside" id="J6y-N3-qXE"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DYp-yR-oWE" secondAttribute="trailing" constant="40" id="3xx-G5-vtF"/>
+                                                <constraint firstAttribute="centerY" secondItem="DYp-yR-oWE" secondAttribute="centerY" id="9f6-nE-Bke"/>
+                                                <constraint firstItem="DYp-yR-oWE" firstAttribute="leading" secondItem="hEE-Um-bXc" secondAttribute="leadingMargin" constant="40" id="I6Q-e2-kCM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.92156862750000001" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="175" id="jcs-eM-gne">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -195,10 +225,10 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Remaining" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiu-N0-ouL">
-                                                    <rect key="frame" x="481" y="138" width="99" height="28"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free Tour!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiu-N0-ouL">
+                                                    <rect key="frame" x="478" y="137" width="102" height="31"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                                    <color key="textColor" red="0.07914811010630575" green="0.78537326388888884" blue="0.17313964965983994" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HPb-aa-Okl">
@@ -209,8 +239,8 @@
                                                         <constraint firstAttribute="width" constant="100" id="sAV-fP-Bm5"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Available Credit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbg-v4-UyO">
-                                                    <rect key="frame" x="432" y="101" width="148" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="$1000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbg-v4-UyO">
+                                                    <rect key="frame" x="520" y="101" width="60" height="28"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -247,33 +277,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="3fg-bR-PQY">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fg-bR-PQY" id="hEE-Um-bXc">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYp-yR-oWE">
-                                                    <rect key="frame" x="48" y="50" width="504" height="50"/>
-                                                    <color key="backgroundColor" red="1" green="0.98218170149999995" blue="0.41968016479999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="XLY-lm-TIU"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
-                                                    <state key="normal" title="Book Tour">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="bookTourButtonPressed:" destination="s3w-fN-y0L" eventType="touchUpInside" id="J6y-N3-qXE"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="DYp-yR-oWE" secondAttribute="trailing" constant="40" id="3xx-G5-vtF"/>
-                                                <constraint firstAttribute="centerY" secondItem="DYp-yR-oWE" secondAttribute="centerY" id="9f6-nE-Bke"/>
-                                                <constraint firstItem="DYp-yR-oWE" firstAttribute="leading" secondItem="hEE-Um-bXc" secondAttribute="leadingMargin" constant="40" id="I6Q-e2-kCM"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93333333330000001" green="0.92156862750000001" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -291,6 +295,7 @@
                         <outlet property="guideProfileImageLabel" destination="Sry-yW-BRJ" id="nEI-nQ-hN2"/>
                         <outlet property="guideTaglineLabel" destination="NRN-YG-96d" id="wqc-iw-j1h"/>
                         <outlet property="nameOfTourLabel" destination="tw7-7h-ZQ8" id="mEd-M9-hKe"/>
+                        <outlet property="priceOfTourLabel" destination="DR0-kj-KNe" id="KDh-NA-dZn"/>
                         <outlet property="tourGuideForThisLabel" destination="cfS-aL-IS8" id="HPX-rD-WC1"/>
                         <segue destination="15a-bS-8Yv" kind="presentation" identifier="tourBookedSegue" id="sY9-eb-bZ7"/>
                     </connections>
