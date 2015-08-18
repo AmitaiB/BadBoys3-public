@@ -238,7 +238,18 @@
 
 - (void)setStopPropertiesOnSelection:(TRVTourStop *)stop {
     self.tourStopImageView.image = stop.image;
-    self.nameOfStop.text = stop.nameOfPlace;
+    
+    self.nameOfStop.numberOfLines = 0;
+    CGRect frame = self.nameOfStop.frame;
+    frame.size.width += 30;
+    frame.size.height += 30;
+    self.nameOfStop.frame = frame;
+    self.nameOfStop.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+    self.nameOfStop.text = stop.descriptionOfEvent;
+    
+    NSLog(@"Description: %@", stop.descriptionOfEvent);
+
+
 }
 
 
