@@ -7,7 +7,6 @@
 //
 
 #import "NSMutableArray+extraMethods.h"
-
 #import "TRVTouristMyTripsViewController.h"
 #import "TRVTouristTripDataSource.h"
 #import "TRVTouristTripTableViewCell.h"
@@ -24,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tripTableView;
 @property (nonatomic, strong) TRVTouristTripDataSource *tableViewDataSource;
 @property (nonatomic, strong) TRVUserDataStore *sharedDataStore;
+@property (nonatomic, strong) MBProgressHUD *noTours;
 @end
 
 @implementation TRVTouristMyTripsViewController
@@ -63,7 +63,18 @@
                     
                     NSLog(@"MY TRIPS ARRAY FROM PARSE: %@", myTrips);
                     
+                    if (myTrips.count == 0){
+                        //add subview
+                        [hud hide:YES];
+                        self.noTours = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
+                        self.noTours.mode = MBProgressHUDModeText;
+                        self.noTours.labelText = @"No Tours Found.  Get Searching!";
+                        self.noTours.labelFont = [UIFont fontWithName:@"Avenir" size:17];
+                        return;
+                    }
+                    
                     self.sharedDataStore.loggedInUser.myTrips = [[NSMutableArray alloc]init];
+                    
                     
                     [self completeUser:self.sharedDataStore.loggedInUser bio:self.sharedDataStore.loggedInUser.userBio parseUser:[PFUser currentUser] allTrips:myTrips withCompletionBlock:^(BOOL success) {
                         
@@ -100,6 +111,13 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
+    if (!user.isOnGuideTabBar){
+        self.addTourButton.enabled = NO;
+        self.addTourButton.tintColor = [UIColor clearColor];
+    } else {
+        self.addTourButton.width = 0;
+    }
     [self setUpUserAndTrips];
 }
 
@@ -136,10 +154,8 @@
                 [userBioForThisUser fetch];
                 
                 
-                /// continue herrre
                 TRVUser *tourGuide = [[TRVUser alloc] init];
                 tourGuide.userBio.firstName = userBioForThisUser[@"first_name"];
-                //        tourGuideuse.userBio.profileImageURL
                 
                 
                 
@@ -163,7 +179,8 @@
                 
                 
                 tour.guideForThisTour = tourGuide;
-                //        tour.guideForThisTour = guideForThisRow;
+                tour.costOfTour = PFTour[@"price"];
+                tour.tourDescription = PFTour[@"tourDescription"];
                 tour.categoryForThisTour = [TRVTourCategory returnCategoryWithTitle:PFTour[@"categoryForThisTour"]];
                 tour.tourDeparture = PFTour[@"tourDeparture"];
                 
@@ -213,7 +230,11 @@
 
 
 
-
+-(void)viewDidDisappear:(BOOL)animated {
+    
+    [self.noTours hide:YES];
+    [super viewDidDisappear:animated];
+}
 
 
 #pragma mark - Navigation

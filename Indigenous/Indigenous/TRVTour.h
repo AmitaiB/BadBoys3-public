@@ -18,7 +18,9 @@
 @property (nonatomic, strong) TRVTourCategory *categoryForThisTour;
 @property (nonatomic, strong) NSDate *tourDeparture;        //The date of the start of a tour program.
 @property (nonatomic) CGFloat tourAverageRating;
-@property (nonatomic) NSUInteger costOfTour;          //itemizing and calculating all the costs the tour
+@property (nonatomic) NSNumber *costOfTour;
+@property (nonatomic, strong) NSString *tourDescription;
+//itemizing and calculating all the costs the tour
 -(instancetype)initWithGuideUser:(TRVUser *)guideUser itineraryForThisTour:(TRVItinerary *)itinerary categoryForThisTour:(TRVTourCategory *)category;
 
 @end
