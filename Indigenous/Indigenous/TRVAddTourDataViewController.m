@@ -15,7 +15,6 @@
 @interface TRVAddTourDataViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tourNameTxF;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tourCategorySegControl;
-@property (weak, nonatomic) IBOutlet UIButton *departureDateLabel;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;

@@ -58,25 +58,6 @@
                                     </mask>
                                 </variation>
                             </segmentedControl>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EGA-cQ-2qv">
-                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="9zm-5v-N9F"/>
-                                </constraints>
-                                <date key="date" timeIntervalSinceReferenceDate="461555937.79668599">
-                                    <!--2015-08-18 01:58:57 +0000-->
-                                </date>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="9zm-5v-N9F"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="9zm-5v-N9F"/>
-                                    </mask>
-                                </variation>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhX-sv-0Ge">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
@@ -102,95 +83,121 @@
                                     <action selector="dateButtonTapped:" destination="PT0-pX-Zai" eventType="touchUpInside" id="HFQ-zu-oPO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duN-NI-WwV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duN-NI-WwV">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
                                 </accessibility>
-                                <state key="normal" title="Button" backgroundImage="octocat"/>
+                                <state key="normal" backgroundImage="octocat"/>
                                 <connections>
                                     <action selector="imageButtonTapped:" destination="PT0-pX-Zai" eventType="touchUpInside" id="iqY-Tw-gYp"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="EGA-cQ-2qv">
+                                <rect key="frame" x="-160" y="-81" width="320" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="Hdz-WO-Wbo"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="461555937.79668599">
+                                    <!--2015-08-18 01:58:57 +0000-->
+                                </date>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Hdz-WO-Wbo"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Hdz-WO-Wbo"/>
+                                    </mask>
+                                </variation>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qPg-Kx-SgZ" firstAttribute="top" secondItem="tn4-HT-PMk" secondAttribute="bottom" constant="8" symbolic="YES" id="0yA-c2-vHL"/>
-                            <constraint firstItem="EGA-cQ-2qv" firstAttribute="leading" secondItem="uNY-Oe-vq3" secondAttribute="leading" id="6lY-9g-QuL"/>
+                            <constraint firstAttribute="trailing" secondItem="EGA-cQ-2qv" secondAttribute="trailing" id="2wN-NF-isR"/>
                             <constraint firstItem="tn4-HT-PMk" firstAttribute="trailing" secondItem="qPg-Kx-SgZ" secondAttribute="trailing" id="7VR-2L-nOc"/>
+                            <constraint firstItem="EGA-cQ-2qv" firstAttribute="top" secondItem="BhX-sv-0Ge" secondAttribute="bottom" constant="36" id="9gA-Xf-MDS"/>
+                            <constraint firstItem="duN-NI-WwV" firstAttribute="leading" secondItem="uNY-Oe-vq3" secondAttribute="leadingMargin" constant="77" id="GdU-8V-kqw"/>
+                            <constraint firstItem="EGA-cQ-2qv" firstAttribute="leading" secondItem="uNY-Oe-vq3" secondAttribute="leading" id="In4-TY-UGN"/>
                             <constraint firstItem="BhX-sv-0Ge" firstAttribute="centerX" secondItem="qPg-Kx-SgZ" secondAttribute="centerX" id="JD8-kU-kry"/>
-                            <constraint firstItem="duN-NI-WwV" firstAttribute="leading" secondItem="uNY-Oe-vq3" secondAttribute="leadingMargin" constant="76" id="P79-5G-KwY"/>
+                            <constraint firstItem="duN-NI-WwV" firstAttribute="top" secondItem="EGA-cQ-2qv" secondAttribute="bottom" constant="8" symbolic="YES" id="Px1-s7-m0C"/>
                             <constraint firstItem="tn4-HT-PMk" firstAttribute="leading" secondItem="qPg-Kx-SgZ" secondAttribute="leading" id="R5X-6X-7hM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="duN-NI-WwV" secondAttribute="trailing" constant="94" id="bML-4G-o6x"/>
-                            <constraint firstItem="duN-NI-WwV" firstAttribute="top" secondItem="EGA-cQ-2qv" secondAttribute="bottom" constant="8" symbolic="YES" id="bQk-sc-d8h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="duN-NI-WwV" secondAttribute="trailing" constant="93" id="RB7-Z2-sqF"/>
+                            <constraint firstAttribute="bottom" secondItem="duN-NI-WwV" secondAttribute="bottom" constant="20" symbolic="YES" id="WO7-d2-Giu"/>
                             <constraint firstItem="tn4-HT-PMk" firstAttribute="top" secondItem="oyM-Dr-pG6" secondAttribute="bottom" constant="24" id="bSi-RH-3O4"/>
                             <constraint firstItem="tn4-HT-PMk" firstAttribute="leading" secondItem="uNY-Oe-vq3" secondAttribute="leadingMargin" id="daH-rO-8Ji"/>
-                            <constraint firstItem="EGA-cQ-2qv" firstAttribute="top" secondItem="BhX-sv-0Ge" secondAttribute="bottom" constant="15" id="exL-8c-RdX"/>
                             <constraint firstItem="BhX-sv-0Ge" firstAttribute="top" secondItem="qPg-Kx-SgZ" secondAttribute="bottom" constant="14" id="f8L-X3-MIk"/>
-                            <constraint firstItem="KYk-ba-OcR" firstAttribute="top" secondItem="duN-NI-WwV" secondAttribute="bottom" constant="41" id="fn1-A6-6zu"/>
-                            <constraint firstItem="EGA-cQ-2qv" firstAttribute="centerX" secondItem="BhX-sv-0Ge" secondAttribute="centerX" id="mVg-Kv-nja"/>
-                            <constraint firstAttribute="trailing" secondItem="EGA-cQ-2qv" secondAttribute="trailing" id="spp-4j-hHL"/>
+                            <constraint firstItem="EGA-cQ-2qv" firstAttribute="centerX" secondItem="BhX-sv-0Ge" secondAttribute="centerX" id="qdf-21-mFJ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="tn4-HT-PMk"/>
                                 <exclude reference="qPg-Kx-SgZ"/>
-                                <exclude reference="EGA-cQ-2qv"/>
                                 <exclude reference="BhX-sv-0Ge"/>
                                 <exclude reference="duN-NI-WwV"/>
+                                <exclude reference="EGA-cQ-2qv"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="fn1-A6-6zu"/>
                                 <exclude reference="7VR-2L-nOc"/>
                                 <exclude reference="R5X-6X-7hM"/>
                                 <exclude reference="bSi-RH-3O4"/>
                                 <exclude reference="daH-rO-8Ji"/>
+                                <exclude reference="0yA-c2-vHL"/>
                                 <exclude reference="JD8-kU-kry"/>
                                 <exclude reference="f8L-X3-MIk"/>
-                                <exclude reference="P79-5G-KwY"/>
-                                <exclude reference="bML-4G-o6x"/>
-                                <exclude reference="bQk-sc-d8h"/>
-                                <exclude reference="0yA-c2-vHL"/>
-                                <exclude reference="6lY-9g-QuL"/>
-                                <exclude reference="exL-8c-RdX"/>
-                                <exclude reference="mVg-Kv-nja"/>
-                                <exclude reference="spp-4j-hHL"/>
+                                <exclude reference="2wN-NF-isR"/>
+                                <exclude reference="9gA-Xf-MDS"/>
+                                <exclude reference="In4-TY-UGN"/>
+                                <exclude reference="qdf-21-mFJ"/>
+                                <exclude reference="GdU-8V-kqw"/>
+                                <exclude reference="Px1-s7-m0C"/>
+                                <exclude reference="RB7-Z2-sqF"/>
+                                <exclude reference="WO7-d2-Giu"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="tn4-HT-PMk"/>
                                 <include reference="qPg-Kx-SgZ"/>
-                                <include reference="EGA-cQ-2qv"/>
                                 <include reference="BhX-sv-0Ge"/>
                                 <include reference="duN-NI-WwV"/>
+                                <include reference="EGA-cQ-2qv"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="fn1-A6-6zu"/>
                                 <include reference="7VR-2L-nOc"/>
                                 <include reference="R5X-6X-7hM"/>
                                 <include reference="bSi-RH-3O4"/>
                                 <include reference="daH-rO-8Ji"/>
+                                <include reference="0yA-c2-vHL"/>
                                 <include reference="JD8-kU-kry"/>
                                 <include reference="f8L-X3-MIk"/>
-                                <include reference="P79-5G-KwY"/>
-                                <include reference="bML-4G-o6x"/>
-                                <include reference="bQk-sc-d8h"/>
-                                <include reference="0yA-c2-vHL"/>
-                                <include reference="6lY-9g-QuL"/>
-                                <include reference="exL-8c-RdX"/>
-                                <include reference="mVg-Kv-nja"/>
-                                <include reference="spp-4j-hHL"/>
+                                <include reference="2wN-NF-isR"/>
+                                <include reference="9gA-Xf-MDS"/>
+                                <include reference="In4-TY-UGN"/>
+                                <include reference="qdf-21-mFJ"/>
+                                <include reference="GdU-8V-kqw"/>
+                                <include reference="Px1-s7-m0C"/>
+                                <include reference="RB7-Z2-sqF"/>
+                                <include reference="WO7-d2-Giu"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="9Ef-q6-JJJ">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="ib4-eM-DfO">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ib4-eM-DfO">
                             <connections>
                                 <segue destination="TFm-sH-crO" kind="show" id="8xU-h5-lxk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateButton" destination="BhX-sv-0Ge" id="JGD-0h-8Ci"/>
+                        <outlet property="datePicker" destination="EGA-cQ-2qv" id="X2f-sV-lmc"/>
+                        <outlet property="imageButton" destination="duN-NI-WwV" id="4hb-K6-3U9"/>
+                        <outlet property="tourCategorySegControl" destination="qPg-Kx-SgZ" id="kna-LU-wdI"/>
+                        <outlet property="tourNameTxF" destination="tn4-HT-PMk" id="flr-af-8T6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9kx-YK-7tI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -229,7 +236,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="n8I-fh-K77">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="yto-qb-tHy">
+                                        <barButtonItem key="rightBarButtonItem" title="Review &gt;" id="yto-qb-tHy">
                                             <connections>
                                                 <segue destination="iKx-pS-Z2E" kind="show" id="QvD-az-FLP"/>
                                             </connections>
