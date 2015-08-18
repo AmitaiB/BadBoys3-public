@@ -13,5 +13,7 @@
 @interface TRVTouristMyTripsViewController : UIViewController
 
 @property (nonatomic, strong) TRVUser *tourist;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addTourButton;
+
 
 @end

@@ -110,6 +110,13 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    TRVUserDataStore *user = [TRVUserDataStore sharedUserInfoDataStore];
+    if (!user.isOnGuideTabBar){
+        self.addTourButton.enabled = NO;
+        self.addTourButton.tintColor = [UIColor clearColor];
+    } else {
+        self.addTourButton.width = 0;
+    }
     [self setUpUserAndTrips];
 }
 
