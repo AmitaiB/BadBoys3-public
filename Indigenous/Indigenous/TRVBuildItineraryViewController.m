@@ -172,7 +172,7 @@ DBLG
 //        cell = [tableView dequeueReusableCellWithIdentifier:itineraryCellReuseID forIndexPath:indexPath];
 //        HNKGooglePlacesAutocompletePlace *daPlace = (HNKGooglePlacesAutocompletePlace*)self.currentItinerary[indexPath.row];
 //        cell.textLabel.text = daPlace.name;
-    }
+//    }
     return cell;
 }
 

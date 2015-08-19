@@ -19,6 +19,7 @@
 		385C46FA1B6BCE7E00D9091A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565151B68221B005A2871 /* main.m */; };
 		385C46FB1B6BCEA000D9091A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 451565181B68221B005A2871 /* AppDelegate.m */; };
 		386CAC2A1B7531A30088781A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 386CAC291B7531A30088781A /* libsqlite3.dylib */; };
+		387D0DA61B83FF5A0080A753 /* TRVDataFromMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 387D0DA51B83FF5A0080A753 /* TRVDataFromMapViewController.m */; };
 		388EBC551B781DE300D60297 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 388EBC521B781DE300D60297 /* SearchViewController.m */; };
 		388EBC561B781DE300D60297 /* SelectedLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 388EBC541B781DE300D60297 /* SelectedLocation.m */; };
 		388EBC5E1B783AE400D60297 /* CustomInfoWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 388EBC5C1B783AE400D60297 /* CustomInfoWindowView.m */; };
@@ -135,6 +136,8 @@
 		3859EDF21B694031001C5693 /* TRVItinerary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVItinerary.h; sourceTree = "<group>"; };
 		3859EDF31B694031001C5693 /* TRVItinerary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVItinerary.m; sourceTree = "<group>"; };
 		386CAC291B7531A30088781A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		387D0DA41B83FF5A0080A753 /* TRVDataFromMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVDataFromMapViewController.h; sourceTree = "<group>"; };
+		387D0DA51B83FF5A0080A753 /* TRVDataFromMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVDataFromMapViewController.m; sourceTree = "<group>"; };
 		388EBC511B781DE300D60297 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		388EBC521B781DE300D60297 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		388EBC531B781DE300D60297 /* SelectedLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedLocation.h; sourceTree = "<group>"; };
@@ -337,14 +340,16 @@
 			isa = PBXGroup;
 			children = (
 				380B15A21B8373A800F50CF2 /* TourGuideFlow5.storyboard */,
+				380B15A41B83743F00F50CF2 /* TRVAddTourDataViewController.h */,
+				380B15A51B83743F00F50CF2 /* TRVAddTourDataViewController.m */,
 				380B15A71B83746C00F50CF2 /* TRVBuildItineraryViewController.h */,
 				380B15A81B83746C00F50CF2 /* TRVBuildItineraryViewController.m */,
 				380B15A91B83746C00F50CF2 /* TRVConfirmTourViewController.h */,
 				380B15AA1B83746C00F50CF2 /* TRVConfirmTourViewController.m */,
+				387D0DA41B83FF5A0080A753 /* TRVDataFromMapViewController.h */,
+				387D0DA51B83FF5A0080A753 /* TRVDataFromMapViewController.m */,
 				380B15AB1B83746C00F50CF2 /* TRVTourObject.h */,
 				380B15AC1B83746C00F50CF2 /* TRVTourObject.m */,
-				380B15A41B83743F00F50CF2 /* TRVAddTourDataViewController.h */,
-				380B15A51B83743F00F50CF2 /* TRVAddTourDataViewController.m */,
 			);
 			name = TourGuideFlow;
 			sourceTree = "<group>";
@@ -978,6 +983,7 @@
 				45E772D01B68291300003C7C /* TRVBio.m in Sources */,
 				FADB8F251B705731009F7C02 /* TRVTourStopCollectionViewDataSource.m in Sources */,
 				94EB29601B78464300CAB1A5 /* TRVNoNetworkModalView.m in Sources */,
+				387D0DA61B83FF5A0080A753 /* TRVDataFromMapViewController.m in Sources */,
 				38A2554C1B7A50B600257F6F /* CLLocation+Utils.m in Sources */,
 				9482463F1B7152E100D64432 /* TRVUserSnippetView.m in Sources */,
 				3859EDF01B694003001C5693 /* TRVTour.m in Sources */,
