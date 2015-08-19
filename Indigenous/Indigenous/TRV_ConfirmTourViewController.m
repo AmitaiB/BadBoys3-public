@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 #import <Parse.h>
-#import "TRVConfirmTourViewController.h"
+#import "TRV_ConfirmTourViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <HNKGooglePlacesAutocomplete.h>
 #import <CLPlacemark+HNKAdditions.h>
@@ -15,11 +15,11 @@
 #import <AddressBookUI/AddressBookUI.h>
 
 
-@interface TRVConfirmTourViewController ()
+@interface TRV_ConfirmTourViewController ()
 
 @end
 
-@implementation TRVConfirmTourViewController
+@implementation TRV_ConfirmTourViewController
 
 static NSString * const cellReuseID = @"cellReuseID";
 

@@ -7,33 +7,33 @@
 //
 
 #import <SCLAlertView.h>
-#import "TRVBuildItineraryViewController.h"
+#import "TRV_BuildItineraryViewController.h"
 #import "TRVTourImagePicker.h"
-#import "TRVAddTourDataViewController.h"
-#import "TRVTourObject.h"
+#import "TRV_AddTourDataViewController.h"
+#import "TRV_TourObject.h"
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 
-@interface TRVAddTourDataViewController ()
+@interface TRV_AddTourDataViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *tourNameTxF;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tourCategorySegControl;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *imageButton;
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
 
-@property (strong, nonatomic) TRVTourObject *tourObject;
+@property (strong, nonatomic) TRV_TourObject *tourObject;
 - (IBAction)dateButtonTapped:(id)sender;
 - (IBAction)imageButtonTapped:(id)sender;
 
 @end
 
-@implementation TRVAddTourDataViewController
+@implementation TRV_AddTourDataViewController
 
 static NSString * const addTourToBuildItinerarySegueID = @"addTourToBuildItinerarySegueID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tourObject = [TRVTourObject new];
+    self.tourObject = [TRV_TourObject new];
     [self initializeSegmentedControl];
     [self initializeDatePicker];
     // Do any additional setup after loading the view.
@@ -180,7 +180,7 @@ static NSString * const addTourToBuildItinerarySegueID = @"addTourToBuildItinera
     self.tourObject.tourCategory = [self.tourCategorySegControl titleForSegmentAtIndex:self.tourCategorySegControl.selectedSegmentIndex];
     self.tourObject.tourImage =  self.imageButton.imageView.image;
     
-    TRVBuildItineraryViewController *destinationVC = segue.destinationViewController;
+    TRV_BuildItineraryViewController *destinationVC = segue.destinationViewController;
     destinationVC.tourObject = self.tourObject;
     
     // Get the new view controller using [segue destinationViewController].

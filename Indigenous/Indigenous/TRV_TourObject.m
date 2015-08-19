@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVTourObject.h"
+#import "TRV_TourObject.h"
 
-@implementation TRVTourObject
+@implementation TRV_TourObject
 
 -(instancetype)init {
     self = [super init];

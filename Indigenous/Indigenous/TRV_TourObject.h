@@ -10,7 +10,7 @@
 //#import "PFObject.h"
 //#import <Parse.h>
 
-@interface TRVTourObject : NSObject
+@interface TRV_TourObject : NSObject
 
 @property (strong, nonatomic) NSString       *tourName;
 @property (strong, nonatomic) NSArray        *tourCategories;

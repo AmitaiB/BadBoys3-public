@@ -9,7 +9,7 @@
         <!--Add Tour Data View Controller-->
         <scene sceneID="7OZ-ff-Be1">
             <objects>
-                <viewController id="PT0-pX-Zai" customClass="TRVAddTourDataViewController" sceneMemberID="viewController">
+                <viewController id="PT0-pX-Zai" customClass="TRV_AddTourDataViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oyM-Dr-pG6"/>
                         <viewControllerLayoutGuide type="bottom" id="KYk-ba-OcR"/>
@@ -206,7 +206,7 @@
         <!--Build Itinerary View Controller-->
         <scene sceneID="Yrd-zy-tKl">
             <objects>
-                <viewController id="TFm-sH-crO" customClass="TRVBuildItineraryViewController" sceneMemberID="viewController">
+                <viewController id="TFm-sH-crO" customClass="TRV_BuildItineraryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yDt-I1-n1R"/>
                         <viewControllerLayoutGuide type="bottom" id="qEb-bE-f29"/>
@@ -326,20 +326,20 @@
                                 <exclude reference="Pzc-Ws-20j"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="7fm-eQ-GfZ"/>
+                                <exclude reference="LmP-Qe-qxv"/>
+                                <exclude reference="tOw-FM-kUY"/>
                                 <exclude reference="doR-Gz-Svq"/>
                                 <exclude reference="4hW-qb-UDf"/>
                                 <exclude reference="HBr-Ai-wf8"/>
                                 <exclude reference="HFD-kz-CFS"/>
                                 <exclude reference="Uaz-8w-4HO"/>
                                 <exclude reference="jOH-63-pk4"/>
+                                <exclude reference="9qe-aL-msS"/>
+                                <exclude reference="dll-ok-9h3"/>
                                 <exclude reference="6ih-TS-kVS"/>
                                 <exclude reference="BKp-5a-Z6y"/>
                                 <exclude reference="qzO-LJ-fBm"/>
-                                <exclude reference="7fm-eQ-GfZ"/>
-                                <exclude reference="LmP-Qe-qxv"/>
-                                <exclude reference="tOw-FM-kUY"/>
-                                <exclude reference="9qe-aL-msS"/>
-                                <exclude reference="dll-ok-9h3"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -352,20 +352,20 @@
                                 <include reference="Pzc-Ws-20j"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7fm-eQ-GfZ"/>
+                                <include reference="LmP-Qe-qxv"/>
+                                <include reference="tOw-FM-kUY"/>
                                 <include reference="doR-Gz-Svq"/>
                                 <include reference="4hW-qb-UDf"/>
                                 <include reference="HBr-Ai-wf8"/>
                                 <include reference="HFD-kz-CFS"/>
                                 <include reference="Uaz-8w-4HO"/>
                                 <include reference="jOH-63-pk4"/>
+                                <include reference="9qe-aL-msS"/>
+                                <include reference="dll-ok-9h3"/>
                                 <include reference="6ih-TS-kVS"/>
                                 <include reference="BKp-5a-Z6y"/>
                                 <include reference="qzO-LJ-fBm"/>
-                                <include reference="7fm-eQ-GfZ"/>
-                                <include reference="LmP-Qe-qxv"/>
-                                <include reference="tOw-FM-kUY"/>
-                                <include reference="9qe-aL-msS"/>
-                                <include reference="dll-ok-9h3"/>
                             </mask>
                         </variation>
                     </view>
@@ -387,7 +387,7 @@
         <!--Confirm Tour View Controller-->
         <scene sceneID="bTV-Ry-oHV">
             <objects>
-                <viewController id="iKx-pS-Z2E" customClass="TRVConfirmTourViewController" sceneMemberID="viewController">
+                <viewController id="iKx-pS-Z2E" customClass="TRV_ConfirmTourViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vaN-RT-L85"/>
                         <viewControllerLayoutGuide type="bottom" id="kou-aM-w1G"/>

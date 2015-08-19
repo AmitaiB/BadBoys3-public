@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Bad Boys 3. All rights reserved.
 //
 
-#import "TRVConfirmTourViewController.h"
-#import "TRVBuildItineraryViewController.h"
+#import "TRV_ConfirmTourViewController.h"
+#import "TRV_BuildItineraryViewController.h"
 #import <HNKGooglePlacesAutocomplete.h>
 #import "TRVConstants.h"
 #import <FlatUIKit.h>
@@ -17,7 +17,7 @@
 #define DBLG NSLog(@"%@ reporting!", NSStringFromSelector(_cmd));
 
 
-@interface TRVBuildItineraryViewController ()
+@interface TRV_BuildItineraryViewController ()
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *searchResults;
@@ -35,7 +35,7 @@
 //@property (weak, nonatomic) IBOutlet UITableView *itineraryTableView;
 @end
 
-@implementation TRVBuildItineraryViewController {
+@implementation TRV_BuildItineraryViewController {
     GMSPanoramaView *panoView_;
 }
 
@@ -197,7 +197,7 @@ DBLG
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      self.tourObject.tourItinerary = self.currentItinerary;
-     TRVConfirmTourViewController *destinationVC = segue.destinationViewController;
+     TRV_ConfirmTourViewController *destinationVC = segue.destinationViewController;
      destinationVC.tourObject = self.tourObject;
      
  // Get the new view controller using [segue destinationViewController].

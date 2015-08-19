@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TRVTourObject.h"
+#import "TRV_TourObject.h"
 
-@interface TRVConfirmTourViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TRV_ConfirmTourViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *tourImageView;
 @property (weak, nonatomic) IBOutlet UILabel *tourNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tourCategoryLabel;
@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tourDateLabel;
 
 
-@property (strong, nonatomic) TRVTourObject *tourObject;
+@property (strong, nonatomic) TRV_TourObject *tourObject;
 @property (nonatomic) BOOL isGeocoded;
 
 @end
